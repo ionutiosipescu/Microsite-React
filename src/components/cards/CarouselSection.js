@@ -11,6 +11,7 @@ const CarouselContainer = styled.div`
   width: 100%;
   //   background-color: white;
   background-color: ${(props) => props.backgroundColor || ""};
+  color: ${(props) => props.textColor || "white"};
   h3 {
     color: ${(props) => props.titleColor || ""};
     font-size: 18px;
@@ -24,12 +25,14 @@ const CarouselSection = ({
   categoryCarousel,
   backgroundColor,
   titleColor,
+  textColor,
   arr,
 }) => {
   return (
     <CarouselContainer
       backgroundColor={backgroundColor}
       titleColor={titleColor}
+      textColor={textColor}
       className="container p-4"
     >
       <h3>{categoryCarousel || ""}</h3>

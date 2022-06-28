@@ -2,6 +2,10 @@ import React from "react";
 import HeroSection from "../../components/cards/HeroSection";
 import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
+import RecongnitionSection from "../../components/section/RecongnitionSection";
+
+//import data
+import { arr2 } from "../../data";
 
 const heroSection = {
   title: "emea heltcare & live sciences",
@@ -51,8 +55,17 @@ const Home = () => {
         backgroundColor="white"
         arr={arr}
         titleColor="aqua"
+        textColor="#000"
       />
       <QualitiesSection />
+      <RecongnitionSection arr={arr2} titleSection="Recent Recongnition" />
+      <CarouselSection
+        categoryCarousel={"Healthcare & Live Sciences News"}
+        backgroundColor="#283670"
+        arr={arr}
+        titleColor="aqua"
+        textColor="#fff"
+      />
     </div>
   );
 };
