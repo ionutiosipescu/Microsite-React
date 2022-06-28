@@ -15,6 +15,9 @@ const CarouselContainer = styled.div`
     color: ${(props) => props.titleColor || ""};
     font-size: 18px;
   }
+  p {
+    font-size: 14px;
+  }
 `;
 
 const CarouselSection = ({
@@ -35,7 +38,7 @@ const CarouselSection = ({
           <div className="d-flex justify-content-around">
             <div className="col-sm-12 col-md-11 col-lg-5 m-4 ">
               <h6>{arr[0].title}</h6>
-              <span className="text-muted "> {arr[0].date}</span>
+              <span className="text-muted"> {arr[0].date}</span>
               <p className="py-4">{arr[0].desciption}</p>
             </div>
             <div className="col-sm-12 col-md-11 col-lg-5 m-4">
