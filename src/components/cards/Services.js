@@ -5,7 +5,7 @@ const Card = styled.div`
 	border-bottom: 1px solid gray;
 	margin: 1.5rem 0;
 
-	h5 {
+	h4 {
 		font-weight: bold;
 	}
 	p {
@@ -16,7 +16,7 @@ const Card = styled.div`
 const Services = ({ title, conntent }) => {
 	return (
 		<Card>
-			<h5>{title}</h5>
+			<h4>{title}</h4>
 			<p>{conntent}</p>
 		</Card>
 	)

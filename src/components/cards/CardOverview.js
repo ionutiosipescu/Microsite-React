@@ -27,12 +27,14 @@ const Content = styled.div`
 	padding: 20px;
 	text-transform: uppercase;
 	color: var(--orange2);
+	font-weight: bold;
 
 	h4 {
 		padding: 0;
 		margin: 0;
 		color: white;
 		text-transform: uppercase;
+		font-weight: bold;
 	}
 `
 
@@ -49,7 +51,7 @@ const CardProfessionals = ({ name, imageSrc, position, country }) => {
 					<div>{position}</div>
 					<div>{country}</div>
 				</Content>
-				<YellowButton text={'connect'} radius={'0'} />
+				{/* <YellowButton text={'connect'} radius={'0'} /> */}
 			</CardBody>
 		</Card>
 	)
