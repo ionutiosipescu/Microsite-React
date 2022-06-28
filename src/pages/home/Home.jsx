@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react'
+import HeroSection from '../../components/cards/HeroSection'
 
 const Home = () => {
-  return <div>Home</div>;
-};
+	return (
+		<div>
+			<HeroSection />
+			hell
+		</div>
+	)
+}
 
-export default Home;
+export default Home

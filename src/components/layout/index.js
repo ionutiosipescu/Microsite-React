@@ -6,6 +6,7 @@ import Footer from './Footer'
 const Page = styled.div`
 	max-width: 80%;
 	margin: 0 auto;
+	background-color: white;
 	// border: 2px solid red;
 `
 const Container = styled.div`
@@ -15,7 +16,6 @@ const Container = styled.div`
 const Content = styled.div``
 
 const Layout = props => {
-	console.log(props)
 	return (
 		<Container>
 			<Page>
