@@ -44,6 +44,7 @@ const Home = () => {
 			<HeroSection
 				title={heroSection.title}
 				backgroundUrl={heroSection.backgroundUrl}
+				buttonText={'contact us'}
 			/>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
