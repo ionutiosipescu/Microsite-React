@@ -11,3 +11,11 @@
 	--orange1: #df8e25;
 	--orange2: #be7a22;
 }
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: 0;
+	font-family: 'Open Sans', sans-serif;
+}

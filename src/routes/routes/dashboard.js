@@ -36,11 +36,6 @@ const routes = [
 		element: <ExpertiseQuality />,
 	},
 	{
-		path: routeNames.expertiseQuality,
-		exact: true,
-		element: <ExpertiseQuality />,
-	},
-	{
 		path: routeNames.expertisePharma,
 		exact: true,
 		element: <ExpertisePharma />,
