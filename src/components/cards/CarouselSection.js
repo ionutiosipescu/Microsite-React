@@ -42,7 +42,7 @@ const CarouselSection = ({
       titleColor={titleColor}
       textColor={textColor}
       textDate={textDate}
-      className="container p-4"
+      className=" p-4"
     >
       <h3>{categoryCarousel || ""}</h3>
       <Carousel className="carousel1">
