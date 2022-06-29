@@ -7,10 +7,11 @@ import { Carousel } from "react-bootstrap";
 import "../cards/CarouselSection.scss";
 
 const CarouselContainer = styled.div`
-  height: 320px;
+  // height: 320px;
   width: 100%;
   background-color: white;
   //   background-color: ${(props) => props.backgroundColor || ""};
+  padding: 30px 0px;
   h3 {
     color: #000;
     font-weight: 600;
@@ -56,12 +57,12 @@ const RecongnitionSection = ({ arr, titleSection }) => {
           <Carousel.Item>
             <div className="d-flex justify-content-around">
               <div className="col-sm-12 col-md-11 col-lg-5 m-4">
-                <p className="py-1">{arr[2].desciption}</p>
+                <p className="">{arr[2].desciption}</p>
                 <span>{arr[2].author}</span>
                 <p>{arr[2].authorPosition}</p>
               </div>
               <div className="col-sm-12 col-md-11 col-lg-5 m-4">
-                <p className="py-1">{arr[3].desciption}</p>
+                <p className="">{arr[3].desciption}</p>
                 <span>{arr[3].author}</span>
                 <p>{arr[3].authorPosition}</p>
               </div>

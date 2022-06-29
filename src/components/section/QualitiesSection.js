@@ -4,7 +4,7 @@ import QualityCard from "../cards/QualityCard";
 import { arrQualities } from "../../data";
 
 const QualitiesSectionContainer = styled.div`
-  height: 700px;
+  // height: 700px;
   width: 100%;
   background-color: white;
 `;
