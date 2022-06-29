@@ -42,12 +42,12 @@ const RecongnitionSection = ({ arr, titleSection }) => {
         <Carousel className="carousel1">
           <Carousel.Item className="row">
             <div className="d-flex justify-content-around">
-              <div className="col-sm-12 col-md-11 col-lg-5  ">
+              <div className="col-sm-12 col-md-11 col-lg-5 m-4  ">
                 <p className="">{arr[0].desciption}</p>
                 <span>{arr[0].author}</span>
                 <p>{arr[0].authorPosition}</p>
               </div>
-              <div className="col-sm-12 col-md-11 col-lg-5 ">
+              <div className="col-sm-12 col-md-11 col-lg-5  m-4 ">
                 <p className="">{arr[1].desciption}</p>
                 <span>{arr[1].author}</span>
                 <p>{arr[1].authorPosition}</p>
