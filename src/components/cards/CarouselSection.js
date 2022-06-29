@@ -20,6 +20,9 @@ const CarouselContainer = styled.div`
     color: ${(props) => props.titleColor || ""};
     font-size: 18px;
   }
+  h6 {
+    font-weight: bold;
+  }
   p {
     font-size: 14px;
   }
