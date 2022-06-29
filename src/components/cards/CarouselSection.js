@@ -7,7 +7,7 @@ import { Carousel } from "react-bootstrap";
 import "./CarouselSection.scss";
 
 const CarouselContainer = styled.div`
-  height: 320px;
+  // height: 320px;
   width: 100%;
   //   background-color: white;
   background-color: ${(props) => props.backgroundColor || ""};
