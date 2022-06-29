@@ -8,7 +8,6 @@ const AllRoutes = () => (
 	<BrowserRouter>
 		<Layout>
 			<Routes>
-				{/* <Route path="/" element={<Layout />}> */}
 				{routes.map((route, i) => {
 					return <Route key={i} {...route} />
 				})}

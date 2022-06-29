@@ -7,13 +7,17 @@ import {
 	Insight,
 	Leadership,
 	About,
+	InsightCase,
+	InsightLatest,
 } from '../../pages/'
 
 export const routeNames = {
 	home: '/',
-	insight: '/insight',
 	leadership: '/leadership',
 	contact: '/contact',
+	insight: '/insight',
+	insightLatest: '/insight/latest',
+	insightCase: '/insight/case',
 
 	expertise: '/expertise',
 	expertiseQuality: '/expertise/quality',
@@ -50,6 +54,16 @@ const routes = [
 		path: routeNames.insight,
 		exact: true,
 		element: <Insight />,
+	},
+	{
+		path: routeNames.insightLatest,
+		exact: true,
+		element: <InsightLatest />,
+	},
+	{
+		path: routeNames.insightCase,
+		exact: true,
+		element: <InsightCase />,
 	},
 	{
 		path: routeNames.leadership,

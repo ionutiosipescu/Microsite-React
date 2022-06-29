@@ -1,31 +1,21 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
 import image from '../images/ConnorWine'
 import styled from 'styled-components'
+import YellowButton from '../buttons/YellowButton'
 
 const Card = styled.div`
 	display: flex;
-	width: 400px;
-	background: var(--darkBlue);
+
+	background: #2f2f7e;
 `
 
 const CardBody = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 100%;
-	padding: 30px;
-
-	h5 {
-		text-transform: uppercase;
-		color: white;
-		// margin-bottom: 10px;
-	}
-
-	p {
-		text-transform: uppercase;
-		color: var(--orange2);
-		padding: 0;
-		margin: 0;
-	}
 `
+
 const ImageContainer = styled.div`
 	background: gray;
 	img {
@@ -33,7 +23,33 @@ const ImageContainer = styled.div`
 	}
 `
 
-const CardProfessionals = ({ imageSrc, name, position }) => {
+const Content = styled.div`
+	padding: 20px;
+	text-transform: uppercase;
+	color: var(--orange2);
+	font-weight: bold;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	h4 {
+		padding: 0;
+		margin: 0;
+		color: white;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+`
+
+const CardProfessionals = ({
+	name,
+	imageSrc,
+	position,
+	country,
+	buttonText,
+}) => {
 	return (
 		<Card>
 			<ImageContainer>
@@ -41,10 +57,14 @@ const CardProfessionals = ({ imageSrc, name, position }) => {
 			</ImageContainer>
 
 			<CardBody>
-				<h5>{name}</h5>
-				<div>
-					<p>{position}</p>
-				</div>
+				<Content>
+					<h4>{name}</h4>
+					<div>
+						<div>{position}</div>
+						<div>{country}</div>
+					</div>
+				</Content>
+				{buttonText ? <YellowButton text={buttonText} radius={'0'} /> : ''}
 			</CardBody>
 		</Card>
 	)
