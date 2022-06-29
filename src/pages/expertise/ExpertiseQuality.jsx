@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import {
 	HeroSection,
 	Services,
-	CardOverview,
+	CardProfessionals,
 	CarouselSection,
 } from '../../components/cards'
 import CurrentRoute from '../../components/CurrentRoute'
@@ -17,6 +17,7 @@ const ExpertiseQuality = () => {
 		name: 'Connor Colquhoun',
 		position: 'wine connoisseur',
 		// country: 'japan',
+		buttonText: 'connect',
 	}
 	const arr = [
 		{
@@ -98,8 +99,8 @@ const ExpertiseQuality = () => {
 					/>
 				</Col>
 				<Col className="border-start border-secondary m-0 p-0">
-					<CardOverview {...cardContent} />
-					<CardOverview {...cardContent} />
+					<CardProfessionals {...cardContent} />
+					<CardProfessionals {...cardContent} />
 				</Col>
 			</Row>
 			<CarouselSection

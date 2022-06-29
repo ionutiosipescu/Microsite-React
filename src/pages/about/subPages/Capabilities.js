@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import CardOverview from '../../../components/cards/CardOverview'
+import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../components/images/ConnorWine'
 
@@ -68,8 +68,8 @@ const Capabilities = () => {
 					</p>
 				</Col>
 				<Col className="col-4 p-0">
-					<CardOverview {...cardContent} />
-					<CardOverview {...cardContent} />
+					<CardProfessionals {...cardContent} />
+					<CardProfessionals {...cardContent} />
 					<CareersInDigital />
 				</Col>
 			</Row>

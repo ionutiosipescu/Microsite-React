@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Card, Row, Col, Container } from 'react-bootstrap'
 import YellowButton from '../../../components/buttons/YellowButton'
 import { NewsCell } from './subPages.style'
-import CardOverview from '../../../components/cards/CardOverview'
+import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../components/images/ConnorWine'
 
@@ -94,8 +94,8 @@ const Overview = () => {
 					</Row>
 				</Col>
 				<Col className="col-4 p-0">
-					<CardOverview {...cardContent} />
-					<CardOverview {...cardContent} />
+					<CardProfessionals {...cardContent} />
+					<CardProfessionals {...cardContent} />
 
 					<CareersInDigital />
 				</Col>
