@@ -9,20 +9,20 @@ import { ChevronRight, ChevronRightBlue } from "../../components/icons";
 
 const LatestInsightsContainer = styled.div`
   width: 100%;
-  margin: 0;
+  // margin: auto;
 
-  h7 {
+  h6 {
     color: #0089ff;
   }
 
-  h7 img {
+  h6 img {
     width: 13px;
     color: #0089ff;
     margin: 0px 10px;
   }
 `;
 const PostsContainer = styled.div`
-  width: 90%;
+  width: 94%;
   height: 90%;
   margin: auto;
   display: flex;
@@ -51,7 +51,7 @@ const InsightLatest = () => {
       />
       <div className="container-fluid d-flex justify-content-around  bg-primary ">
         {arr1?.map((element, key) => (
-          <div className=" p-2 " id={key}>
+          <div className=" p-2 " key={key.toString()}>
             <button
               type="button"
               className="btn btn-primary border-0"
@@ -70,7 +70,7 @@ const InsightLatest = () => {
       </div>
       <div className="container  bg-white h-100 ">
         <div className="p-4">
-          <h7>
+          <h6>
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
             <ChevronRightBlue />
@@ -78,19 +78,20 @@ const InsightLatest = () => {
               LocationName[1]?.slice(1)}{" "}
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
-          </h7>
+          </h6>
         </div>
 
         <PostsContainer>
-          {articles.map((post) => (
-            <PostCard post={post} />
+          {articles.map((post, index) => (
+            <PostCard post={post} key={index.toString()} />
           ))}
         </PostsContainer>
       </div>
+
       <CarouselSection
         categoryCarousel={"Healthcare & Live Sciences News"}
         backgroundColor="#283670"
-        arr={arr}
+        arr={arrCarousel}
         titleColor="aqua"
         textColor="#fff"
         textDate="#fff"
@@ -188,6 +189,37 @@ const arr = [
     id: 4,
     title: "lorem-ipsum.4",
     category: "country",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+];
+
+const arrCarousel = [
+  {
+    id: 1,
+    title: "lorem-ipsum.line1",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 2,
+    title: "lorem-ipsum.2",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 3,
+    title: "lorem-ipsum.3",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 4,
+    title: "lorem-ipsum.4",
     date: new Date().toLocaleDateString(),
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
