@@ -49,7 +49,7 @@ const InsightLatest = () => {
         title="Latest Insights"
         backgroundUrl="https://images.pexels.com/photos/5483071/pexels-photo-5483071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-      <div className="container d-flex justify-content-around  bg-primary ">
+      <div className="container-fluid d-flex justify-content-around  bg-primary ">
         {arr1?.map((element, key) => (
           <div className=" p-2 " id={key}>
             <button
