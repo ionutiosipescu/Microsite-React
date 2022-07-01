@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronRight } from '../icons'
+import { ChevronRight } from '../../assets/icons'
 
 const Card = styled.div`
 	display: flex;

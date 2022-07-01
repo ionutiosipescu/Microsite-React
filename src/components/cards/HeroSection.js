@@ -1,13 +1,15 @@
-import digital from '../../components/images/digital'
+import digital from '../../assets/images/digital'
 import React from 'react'
 import styled from 'styled-components'
 import YellowButton from '../buttons/YellowButton'
-import image from '../../components/images/ConnorWine'
+import image from '../../assets/images/ConnorWine'
 
 const Hero = styled.div`
 	height: 400px;
 	width: 100%;
-	padding: 70px;
+	/* padding: 2rem; */
+	/* margin: 2rem; */
+	padding: 3rem;
 	background-size: cover;
 	background-image: url(${props => props.backgroundUrl || digital});
 
@@ -15,9 +17,12 @@ const Hero = styled.div`
 
 	h1 {
 		color: white;
-		font-size: 5rem;
+		font-size: clamp(2.25rem, 5vw, 5rem);
+
 		margin: 0;
-		line-height: 100%;
+		/* margin: 0 1rem; */
+		/* line-height: 100%; */
+		word-wrap: break-word;
 	}
 
 	h4 {

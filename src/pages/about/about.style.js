@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-// import digital from '../../components/images/digital.jpg'
-import digital from '../../components/images/digital'
+// import digital from '../../assets/images/digital.jpg'
+import digital from '../../assets/images/digital'
 
 export const CustomNavbar = styled.div`
 	display: flex;

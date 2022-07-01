@@ -8,16 +8,20 @@ const Card = styled.div`
 	background: #2f2f7e;
 	/* min-width: 400px;
 	min-height: 300px; */
-	max-width: 500px;
-	min-height: 300px;
-	transform: scale(${props => props.transform || 1});
+	max-width: 300px;
+	/* height: 100%; */
+
+	/* min-height: 100%; */
+	/* margin-bottom: 2rem; */
+	/* max-height: 180px; */
+	/* max-height: 200px; */
+	/* transform: scale(0.8); */
 `
 
 const CardBody = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 100%;
 	/* flex: 2; */
 	/* align-items: center; */
 	/* width: 100px; */
@@ -25,8 +29,9 @@ const CardBody = styled.div`
 
 const ImageContainer = styled.div`
 	background: gray;
-	width: 300px;
+	/* width: 100px; */
 	/* flex: 1; */
+	min-width: 120px;
 	img {
 		/* width: 200px; */
 		width: 100%;
@@ -40,8 +45,9 @@ const Content = styled.div`
 	text-transform: uppercase;
 	color: var(--orange2);
 	font-weight: bold;
-	/* width: 100%; */
 	height: 100%;
+	width: 200px;
+	/* width: 65%; */
 
 	display: flex;
 	flex-direction: column;
@@ -50,7 +56,7 @@ const Content = styled.div`
 	/* justify-content: space-between; */
 	/* gap: 1rem; */
 
-	h2 {
+	h5 {
 		padding: 0;
 		margin: 0;
 		color: white;
@@ -59,27 +65,26 @@ const Content = styled.div`
 	}
 
 	div {
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 `
 
-const CardProfessionals = ({
+const ProfessionalsCardSmall = ({
 	name,
 	imageSrc,
 	position,
 	country,
 	buttonText,
-	transform,
 }) => {
 	return (
-		<Card transform={transform}>
+		<Card>
 			<ImageContainer>
 				<img src={imageSrc || image} alt="portrait"></img>
 			</ImageContainer>
 
 			<CardBody>
 				<Content>
-					<h2>{name || 'Connor Colquhoun'}</h2>
+					<h5>{name || 'Connor Colquhoun'}</h5>
 					<div>
 						<div>{position || 'wine connoisseur'}</div>
 						<div>{country} </div>
@@ -91,4 +96,4 @@ const CardProfessionals = ({
 	)
 }
 
-export default CardProfessionals
+export default ProfessionalsCardSmall

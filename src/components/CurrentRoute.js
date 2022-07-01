@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronRight } from '../components/icons'
+import { ChevronRight } from '../assets/icons'
 
 const Route = styled.div`
 	color: var(--lightBlue);

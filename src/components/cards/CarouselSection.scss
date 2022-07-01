@@ -1,6 +1,6 @@
 .carousel1 .carousel-control-prev-icon,
 .carousel1 .carousel-control-next-icon {
-  display: none;
+	display: none;
 }
 
 // .carousel1 .carousel-indicators [data-bs-target] {
@@ -39,14 +39,14 @@
 // }
 
 .react-multi-carousel-dot button {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  // color: orange;
-  border: 3px solid orange !important;
-  background: #fff;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	// color: orange;
+	border: 3px solid orange !important;
+	background: #fff;
 }
 
 .react-multi-carousel-dot--active button {
-  background: orange;
+	background: orange;
 }

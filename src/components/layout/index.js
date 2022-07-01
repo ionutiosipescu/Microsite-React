@@ -2,12 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import Navbar from './NavBar'
 import Footer from './Footer'
+import { size } from '../../utils/breakpoints'
 
 const Page = styled.div`
-	max-width: 80%;
 	margin: 0 auto;
 	background-color: white;
-	// border: 2px solid red;
+
+	@media ${size.xl} {
+		max-width: 80%;
+	}
+
+	/* @media ${size.laptopL} {
+			max-width: 70%;
+		} */
 `
 const Container = styled.div`
 	background: var(--gray1);

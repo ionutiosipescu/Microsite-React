@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import CardInsights from '../../../components/cards/CardInsights'
-import image from '../../../components/images/ConnorWine'
+import image from '../../../assets/images/ConnorWine'
 
 const Insights = () => {
 	// this is the Insights that will come from drupal
