@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
-import image from '../../../components/images/ConnorWine'
+import image from '../../../assets/images/ConnorWine'
 
 const Capabilities = () => {
 	// Card overview content from backend

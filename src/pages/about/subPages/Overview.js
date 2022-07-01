@@ -4,7 +4,7 @@ import YellowButton from '../../../components/buttons/YellowButton'
 import { NewsCell } from './subPages.style'
 import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
-import image from '../../../components/images/ConnorWine'
+import image from '../../../assets/images/ConnorWine'
 
 const Overview = () => {
 	// Card overview content from backend

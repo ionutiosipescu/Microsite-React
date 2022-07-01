@@ -7,7 +7,8 @@ import {
 	CarouselSection,
 } from '../../components/cards'
 import CurrentRoute from '../../components/CurrentRoute'
-import Connor from '../../components/images/ConnorWine'
+import Connor from '../../assets/images/ConnorWine'
+import { arr } from '../../utils/data'
 
 const ExpertisePharma = () => {
 	// Card content
@@ -18,36 +19,6 @@ const ExpertisePharma = () => {
 		// country: 'japan',
 		buttonText: 'connect',
 	}
-	const arr = [
-		{
-			id: 1,
-			title: 'lorem-ipsum.line1',
-			date: new Date().toLocaleDateString(),
-			desciption:
-				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-		},
-		{
-			id: 2,
-			title: 'lorem-ipsum.2',
-			date: new Date().toLocaleDateString(),
-			desciption:
-				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-		},
-		{
-			id: 3,
-			title: 'lorem-ipsum.3',
-			date: new Date().toLocaleDateString(),
-			desciption:
-				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-		},
-		{
-			id: 4,
-			title: 'lorem-ipsum.4',
-			date: new Date().toLocaleDateString(),
-			desciption:
-				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-		},
-	]
 
 	return (
 		<>
@@ -55,8 +26,8 @@ const ExpertisePharma = () => {
 				title={'pharma & medtech portfolio management'}
 				pageTitle={'Expertise'}
 			/>
-			<Row className="p-0 m-0">
-				<Col className="col-8 m-4 ">
+			<Row className="p-0 m-0 d-flex flex-column flex-lg-row ">
+				<Col className="m-4 flex-grow-1">
 					<CurrentRoute
 						route={'Expertise'}
 						subRoute={'Pharma & MedTech portfolio management'}
@@ -98,7 +69,7 @@ const ExpertisePharma = () => {
 						}
 					/>
 				</Col>
-				<Col className="border-start border-secondary m-0 p-0">
+				<Col className="border-start border-secondary  p-lg-0 m-4 m-lg-0 flex-grow-0 gap-3">
 					<CardProfessionals {...cardContent} />
 					<CardProfessionals {...cardContent} />
 				</Col>

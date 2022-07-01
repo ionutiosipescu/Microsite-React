@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, NavDropdown, Nav, Form, Button } from 'react-bootstrap'
 import CardProfessionals from '../../../components/cards/CardProfessionals'
 import { CardHolder } from './subPages.style'
-import image from '../../../components/images/ConnorWine'
+import image from '../../../assets/images/ConnorWine'
 import { CustomNavbar } from './subPages.style.js'
 
 const Professionals = () => {

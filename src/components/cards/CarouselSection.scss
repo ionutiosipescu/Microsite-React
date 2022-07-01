@@ -1,22 +1,22 @@
 .carousel1 .carousel-control-prev-icon,
 .carousel1 .carousel-control-next-icon {
-  display: none;
+	display: none;
 }
 
 .carousel1 .carousel-indicators [data-bs-target] {
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  color: orange;
-  border: 3px solid orange !important;
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	color: orange;
+	border: 3px solid orange !important;
 
-  opacity: 1;
+	opacity: 1;
 }
 .carousel-indicators {
-  //   bottom: -40px !important;
+	//   bottom: -40px !important;
 }
 
 .carousel-indicators .active {
-  opacity: 0;
-  background: orange !important;
+	opacity: 0;
+	background: orange !important;
 }

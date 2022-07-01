@@ -5,7 +5,7 @@ import QualitiesSection from '../../components/section/QualitiesSection'
 import RecongnitionSection from '../../components/section/RecongnitionSection'
 
 //import data
-import { arr2 } from '../../data'
+import { arr2 } from '../../utils/data'
 
 const heroSection = {
 	title: 'emea heltcare & live sciences',
@@ -49,6 +49,7 @@ const Home = () => {
 			<HeroSection
 				title={heroSection.title}
 				backgroundUrl={heroSection.backgroundUrl}
+				buttonText={'contact us'}
 			/>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}

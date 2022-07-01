@@ -4,15 +4,15 @@ import styled from 'styled-components'
 const Button = styled.button`
 	background: var(--orange1);
 	color: white;
-	height: 50px;
 
 	border: 1px solid #df8e25;
 
 	text-transform: uppercase;
-	padding: 0 20px;
+	padding: 15px 20px;
+	/* text-align: center; */
 
 	border-radius: ${props => props.radius || '5px'};
-	width: ${props => props.width || 'auto'};
+	/* width: ${props => props.width || 'auto'}; */
 `
 
 const YellowButton = props => {

@@ -7,7 +7,7 @@ import { CustomNavbar, NavItem } from './about.style'
 import SubPage from './subPages/'
 import YellowButton from '../../components/buttons/YellowButton'
 import HeroSection from '../../components/cards/HeroSection'
-import digital from '../../components/images/digital'
+import digital from '../../assets/images/digital'
 
 const About = () => {
 	const dispatch = useDispatch()
@@ -64,6 +64,7 @@ const About = () => {
 					{'Professionals'}
 				</NavItem>
 			</CustomNavbar>
+
 			<SubPage subPage={subPage} />
 		</>
 	)

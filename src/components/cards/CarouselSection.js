@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import digital from '../../components/images/digital'
+import digital from '../../assets/images/digital'
 import { Carousel } from 'react-bootstrap'
 
 //style to overload the carousel's indicators
