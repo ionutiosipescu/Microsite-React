@@ -9,7 +9,7 @@ const QualitiesSectionContainer = styled.div`
   background-color: white;
 `;
 const Qualities = styled.div`
-  width: 90%;
+  width: 94%;
   height: 90%;
   background-color: #ebebeb;
   margin: auto;
