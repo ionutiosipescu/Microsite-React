@@ -8,6 +8,7 @@ import {
 } from '../../components/cards'
 import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
+import { arr } from '../../utils/data'
 
 const LeaadersContainer = styled.div`
 	display: flex;
@@ -19,11 +20,6 @@ const LeaadersContainer = styled.div`
 	div {
 		/* flex-s */
 	}
-`
-
-const Play = styled.div`
-	display: flex;
-	height: 300px;
 `
 
 const Leadership = () => {
@@ -75,26 +71,26 @@ const Leadership = () => {
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
-			<Play>
-				<dic>1</dic>
-				<dic>2</dic>
-				<dic>3</dic>
-			</Play>
 
 			<h4 className="m-4 fw-bold">LEADERS</h4>
 			<div onClick={() => console.log('hello')}>Hello</div>
 			<LeaadersContainer>
-				{cardContentList.map((cardContent, index) => (
+				{/* {cardContentList.map((cardContent, index) => (
 					<div key={index} onClick={() => handleClick(cardContent)}>
 						<ProfessionalsCardSmall {...cardContent} />
 					</div>
-				))}
-				{/* {cardContentList.map((cardContent, index) => (
-					<ProfessionalsCardSmall {...cardContent} />
 				))} */}
+				{cardContentList.map((cardContent, index) => (
+					<ProfessionalsCardSmall {...cardContent} />
+				))}
 			</LeaadersContainer>
-
 			<DetailedProfessionalsCard {...content} />
+			<CarouselSection
+				categoryCarousel={'Healthcare & Live Sciences News'}
+				backgroundColor="var(--darkBlue)"
+				arr={arr}
+				titleColor="aqua"
+			/>
 		</>
 	)
 }

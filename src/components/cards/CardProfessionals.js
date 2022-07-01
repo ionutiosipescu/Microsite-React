@@ -17,6 +17,7 @@ const CardBody = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 100%;
 	/* flex: 2; */
 	/* align-items: center; */
 	/* width: 100px; */
@@ -39,6 +40,7 @@ const Content = styled.div`
 	text-transform: uppercase;
 	color: var(--orange2);
 	font-weight: bold;
+	/* width: 100%; */
 	height: 100%;
 
 	display: flex;
