@@ -38,12 +38,21 @@ const ContactSection = styled.div`
     outline: none;
     transition: box-shadow 0.2s ease-out;
   }
+  .form__textarea {
+    width: 100%;
+    line-height: 2;
+
+    border: none;
+    outline: none;
+    transition: box-shadow 0.2s ease-out;
+    height: 100px;
+  }
   .form__optional {
     font-family: "HelveticaNeueW01-55Roma", Helvetica, Arial, sans-serif;
     font-size: 13px;
     font-style: italic;
     display: inline-block;
-    margin-left: 0.3rem;
+    margin-left: 0.2rem;
   }
 `;
 
@@ -149,7 +158,7 @@ const Contact = () => {
                 Message
               </label>
               <textarea
-                className="form__input form__input--required"
+                className="form__textarea form__input--required"
                 id="Message"
                 type="text"
                 cols="40"
