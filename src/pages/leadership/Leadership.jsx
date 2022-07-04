@@ -16,6 +16,7 @@ const LeaadersContainer = styled.div`
 	/* padding: 0; */
 	gap: 3rem;
 	flex-wrap: wrap;
+	position: relative;
 
 	div {
 		/* flex-s */
@@ -74,17 +75,22 @@ const Leadership = () => {
 
 			<h4 className="m-4 fw-bold">LEADERS</h4>
 			<div onClick={() => console.log('hello')}>Hello</div>
+			<div
+				style={{
+					position: 'relative',
+				}}
+			>
+				<ProfessionalsCardSmall />
+			</div>
 			<LeaadersContainer>
-				{/* {cardContentList.map((cardContent, index) => (
-					<div key={index} onClick={() => handleClick(cardContent)}>
-						<ProfessionalsCardSmall {...cardContent} />
-					</div>
-				))} */}
-				{cardContentList.map((cardContent, index) => (
-					<ProfessionalsCardSmall {...cardContent} />
-				))}
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
+				<ProfessionalsCardSmall />
 			</LeaadersContainer>
-			<DetailedProfessionalsCard {...content} />
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
 				backgroundColor="var(--darkBlue)"

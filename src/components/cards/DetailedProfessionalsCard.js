@@ -4,14 +4,22 @@ import Connor from '../../assets/images/ConnorWine'
 
 const Card = styled.div`
 	background: var(--gray3);
-	height: 600px;
 	display: flex;
 	padding: 4rem 2rem;
 	gap: 2rem;
+	min-height: 400px;
+
+	/*Trying to make Card pop up from the row of leaders*/
+	position: absolute;
+	z-index: 1;
+	right: 0;
+	left: 0;
+	width: 100%;
+	/* margin-bottom: 3rem; */
 `
 const ImageContainer = styled.div`
-	/* background-image: url(${Connor}); */
 	background: darkgray;
+	background-image: url(${Connor});
 
 	flex: 1;
 
@@ -19,6 +27,10 @@ const ImageContainer = styled.div`
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	btn {
+		top: 20rem;
 	}
 `
 
@@ -28,9 +40,6 @@ const Content = styled.div`
 		font-weight: bold;
 	}
 
-	/* & :first-child {
-		font-weight: bold;
-	} */
 	& :nth-child(2) {
 		font-weight: bold;
 		text-transform: uppercase;
@@ -85,8 +94,8 @@ const DetailedProfessionalsCard = ({
 	return (
 		<Card>
 			<ImageContainer>
-				<img src={Connor}></img>
-				{/* <button>Button</button> */}
+				{/* <img src={Connor}></img> */}
+				<button>Button</button>
 			</ImageContainer>
 			<Content>
 				<h4>{name}</h4>
