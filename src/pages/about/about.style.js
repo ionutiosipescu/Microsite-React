@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 // import digital from '../../assets/images/digital.jpg'
 import digital from '../../assets/images/digital'
+import { size } from '../../utils/breakpoints'
+
 
 export const CustomNavbar = styled.div`
-	display: flex;
 	font-size: 1.5rem;
 	background: var(--darkBlue);
 	color: white;
@@ -11,6 +12,12 @@ export const CustomNavbar = styled.div`
 	:hover {
 		cursor: pointer;
 	}
+	@media ${size.smm} {
+		text-align: center;
+	}
+	 @media ${size.md_m} {
+		display: flex;
+	 }
 `
 
 export const NavItem = styled.div`
