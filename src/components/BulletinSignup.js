@@ -9,7 +9,7 @@ const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px;
-	height: 200px;
+	height: 310px;
 	background: var(--gray2);
 	// background: red;
 
@@ -17,27 +17,33 @@ const Container = styled.div`
 		flex: 2;
 		text-transform: uppercase;
 	}
+  @media ${size.md} {
+		height: auto;
+	 }
 `
 
 const Input = styled.input`
-  height: 100%;
+  height: 50px;
   width: 100%;
   border: none;
   padding-left: 20px;
 
+
   @media ${size.smm} {
 		font-size: 1rem;
     margin-left: 0;
+    margin-bottom: 20px;
 	 }
   @media ${size.sm} {
 		font-size: 1.5rem;
     margin-left: 20px;
+    margin-bottom: 0;
 	 }
   `
   ;
 
 const Form = styled.form`
-  height: 50px;
+  height: auto;
   display: flex;
   justify-content: flex-end;
   width: inherit;
@@ -50,8 +56,8 @@ const BulletinSignup = () => {
     // <Container className="my-5">
     <Container className="flex-column flex-md-row flex-sm-column justify-content-md-between justify-content-sm-evenly justify-content-evenly">
       <h3 className="fw-bold">{"A&M BULLETIN SIGNUP"}</h3>
-      <Form className="">
-        <Input placeholder={"Email Address"} className="w-75" />
+      <Form className="flex-column flex-sm-column flex-md-row align-items-center">
+        <Input placeholder={"Email Address"} />
         <YellowButton text={"Subscribe"} radius={"0"} />
       </Form>
     </Container>
