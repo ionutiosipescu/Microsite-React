@@ -29,6 +29,7 @@ const ImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  //it didn't work well 100%
   .buttonContainer {
     position: absolute;
     display: flex;
