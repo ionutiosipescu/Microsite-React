@@ -5,7 +5,7 @@ import YellowButton from '../buttons/YellowButton'
 
 const Card = styled.div`
 	display: flex;
-	background: #2f2f7e;
+	background: var(--darkBlue);
 	/* min-width: 400px;
 	min-height: 300px; */
 	max-width: 500px;

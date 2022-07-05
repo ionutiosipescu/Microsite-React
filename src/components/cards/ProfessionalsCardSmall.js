@@ -1,99 +1,106 @@
-import React from 'react'
-import image from '../../assets/images/ConnorWine'
-import styled from 'styled-components'
-import YellowButton from '../buttons/YellowButton'
+import React, { useState } from "react";
+import image from "../../assets/images/ConnorWine";
+import styled from "styled-components";
+import YellowButton from "../buttons/YellowButton";
+import DetailedProfessionalsCard from "./DetailedProfessionalsCard";
+
+const Container = styled.div`
+  margin-bottom: ${(props) => (props.marginBottom ? "420px" : "0")};
+`;
 
 const Card = styled.div`
-	display: flex;
-	background: #2f2f7e;
-	/* min-width: 400px;
-	min-height: 300px; */
-	max-width: 300px;
-	/* height: 100%; */
+  display: flex;
+  background: var(--darkBlue);
+  max-width: 300px;
 
-	/* min-height: 100%; */
-	/* margin-bottom: 2rem; */
-	/* max-height: 180px; */
-	/* max-height: 200px; */
-	/* transform: scale(0.8); */
-`
+  /* margin-bottom: 4rem; */
+`;
 
 const CardBody = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	/* flex: 2; */
-	/* align-items: center; */
-	/* width: 100px; */
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
 const ImageContainer = styled.div`
-	background: gray;
-	/* width: 100px; */
-	/* flex: 1; */
-	min-width: 120px;
-	img {
-		/* width: 200px; */
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-`
+  background: gray;
+  min-width: 120px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
 const Content = styled.div`
-	padding: 20px;
-	text-transform: uppercase;
-	color: var(--orange2);
-	font-weight: bold;
-	height: 100%;
-	width: 200px;
-	/* width: 65%; */
+  padding: 20px;
+  text-transform: uppercase;
+  color: var(--orange2);
+  font-weight: bold;
+  height: 100%;
+  width: 200px;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
-	/* justify-content: space-between; */
-	/* gap: 1rem; */
+  h5 {
+    padding: 0;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
 
-	h5 {
-		padding: 0;
-		margin: 0;
-		color: white;
-		text-transform: uppercase;
-		font-weight: bold;
-	}
-
-	div {
-		font-size: 1rem;
-	}
-`
+  div {
+    font-size: 1rem;
+  }
+`;
 
 const ProfessionalsCardSmall = ({
-	name,
-	imageSrc,
-	position,
-	country,
-	buttonText,
+  card,
+  buttonText,
+  handleSelectedPerson,
+  content,
+  open,
+  toggle,
+  index,
 }) => {
-	return (
-		<Card>
-			<ImageContainer>
-				<img src={imageSrc || image} alt="portrait"></img>
-			</ImageContainer>
+  const [hideDetailedCard, setHideDetailedCard] = useState(false);
 
-			<CardBody>
-				<Content>
-					<h5>{name || 'Connor Colquhoun'}</h5>
-					<div>
-						<div>{position || 'wine connoisseur'}</div>
-						<div>{country} </div>
-					</div>
-				</Content>
-				{buttonText ? <YellowButton text={buttonText} radius={'0'} /> : ''}
-			</CardBody>
-		</Card>
-	)
-}
+  const handleClick = () => {
+    setHideDetailedCard(!hideDetailedCard);
+  };
 
-export default ProfessionalsCardSmall
+  return (
+    <Container marginBottom={open[index]}>
+      <Card
+        onClick={() => {
+          toggle(index);
+        }}
+      >
+        <ImageContainer>
+          {/* <img src={card?.imageSrc || image} alt="portrait"></img> */}
+        </ImageContainer>
+
+        <CardBody>
+          <Content>
+            <h5>{card?.name || "Connor Colquhoun"}</h5>
+            <div>
+              <div>{card?.position || "wine connoisseur"}</div>
+              <div>{card?.country} </div>
+            </div>
+          </Content>
+          {buttonText ? <YellowButton text={buttonText} radius={"0"} /> : ""}
+        </CardBody>
+      </Card>
+      {open[index] ? (
+        <DetailedProfessionalsCard content={card} className="" />
+      ) : (
+        ""
+      )}
+    </Container>
+  );
+};
+
+export default ProfessionalsCardSmall;

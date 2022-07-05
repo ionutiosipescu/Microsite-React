@@ -26,13 +26,15 @@ const About = () => {
 		newsRelease: 'newsRelease',
 		insights: 'insights',
 		professionals: 'professionals',
+		practice: 'practice',
+		
 	}
 
 	return (
 		<>
 			<HeroSection title={'a&m digital capabilities'} />
 
-			<CustomNavbar bg="light" expand="lg">
+			<CustomNavbar  bg="light" expand="lg">
 				<NavItem
 					onClick={() => handleSubPage(subPages.overview)}
 					clicked={subPage === subPages.overview}
@@ -62,6 +64,12 @@ const About = () => {
 					clicked={subPage === subPages.professionals}
 				>
 					{'Professionals'}
+				</NavItem>
+				<NavItem
+					onClick={() => handleSubPage(subPages.practice)}
+					clicked={subPage === subPages.practice}
+				>
+					{'Practice'}
 				</NavItem>
 			</CustomNavbar>
 
