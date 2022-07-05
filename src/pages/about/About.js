@@ -34,7 +34,7 @@ const About = () => {
 		<>
 			<HeroSection title={'a&m digital capabilities'} />
 
-			<CustomNavbar  bg="light" expand="lg">
+			<CustomNavbar bg="light" expand="lg">
 				<NavItem
 					onClick={() => handleSubPage(subPages.overview)}
 					clicked={subPage === subPages.overview}

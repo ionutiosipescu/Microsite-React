@@ -8,17 +8,44 @@ import {
 	FormControl,
 	Button,
 } from 'react-bootstrap'
+import { CustomNavbar } from './NavBar.style'
 import { routeNames } from '../../routes/routes'
 import { Search } from '../../assets/icons'
-import "./NavBar.css"
+import "./NavBar.style.js"
+import styled from 'styled-components'
+
+
 
 const NavBar = () => {
+	const CustomNavbar = styled(Navbar)`
+#navbarScrollingDropdown, .web-title {
+    color: rgba(0,0,0,.9) ;
+    padding: 20px 12px  !important;
+}
+.nav-item.show.dropdown{
+    background-color: #00254A;
+}
+.nav-item.show.dropdown a {
+    color: white !important;
+ }
+.nav-item.show.dropdown div {
+    background-color: #00254A;
+    border-radius: 0;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border: 0;
+
+ }
+.nav-item.show.dropdown a {
+     background-color: #00254A;
+ }
+`
 	return (
-		<Navbar className='py-0' bg="light" expand="lg">
+		<CustomNavbar className='py-0' bg="" expand="lg">
 			<Container fluid>
-				<Navbar.Brand href={routeNames.home}>Logo</Navbar.Brand>
-				<Navbar.Toggle aria-controls="navbarScroll" />
-				<Navbar.Collapse id="navbarScroll">
+				<CustomNavbar.Brand href={routeNames.home}>Logo</CustomNavbar.Brand>
+				<CustomNavbar.Toggle aria-controls="navbarScroll" />
+				<CustomNavbar.Collapse id="navbarScroll">
 					<Nav className="me-auto my-2 my-lg-0 fw-bold f">
 						<Nav.Link className='active web-title' href={routeNames.home}>{'HLS Home'}</Nav.Link>
 
@@ -46,9 +73,9 @@ const NavBar = () => {
 					<Nav>
 						<Nav.Link className='' href="#action2">{<Search />}</Nav.Link>
 					</Nav>
-				</Navbar.Collapse>
+				</CustomNavbar.Collapse>
 			</Container>
-		</Navbar>
+		</CustomNavbar>
 	)
 }
 
