@@ -80,7 +80,7 @@ const ProfessionalsCardSmall = ({
         }}
       >
         <ImageContainer>
-          {/* <img src={card?.imageSrc || image} alt="portrait"></img> */}
+          <img src={card?.imageSrc || image} alt="portrait"></img>
         </ImageContainer>
 
         <CardBody>
