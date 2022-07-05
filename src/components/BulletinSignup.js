@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import YellowButton from "./buttons/YellowButton";
+import { size } from '../utils/breakpoints'
 
 const Container = styled.div`
   display: flex;
@@ -22,23 +23,34 @@ const Input = styled.input`
   height: 100%;
   width: 100%;
   border: none;
-
-  font-size: 1.5rem;
   padding-left: 20px;
-`;
+
+  @media ${size.smm} {
+		font-size: 1rem;
+    margin-left: 0;
+	 }
+  @media ${size.sm} {
+		font-size: 1.5rem;
+    margin-left: 20px;
+	 }
+  `
+  ;
 
 const Form = styled.form`
-  flex: 3;
   height: 50px;
   display: flex;
   justify-content: flex-end;
+  width: inherit;
+  @media ${size.smm} {
+    margin-left: 0px;
+	 }
 `;
 const BulletinSignup = () => {
   return (
     // <Container className="my-5">
-    <Container>
-      <h3>{"A&M BUlletin SIGNUP"}</h3>
-      <Form>
+    <Container className="flex-column flex-md-row flex-sm-column justify-content-md-between justify-content-sm-evenly justify-content-evenly">
+      <h3 className="fw-bold">{"A&M BULLETIN SIGNUP"}</h3>
+      <Form className="">
         <Input placeholder={"Email Address"} className="w-75" />
         <YellowButton text={"Subscribe"} radius={"0"} />
       </Form>

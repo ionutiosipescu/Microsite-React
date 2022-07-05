@@ -16,7 +16,7 @@ const Button = styled.button`
 `
 
 const YellowButton = props => {
-	return <Button {...props}>{props.text}</Button>
+	return <Button {...props} className='fw-bol'>{props.text}</Button>
 }
 
 export default YellowButton
