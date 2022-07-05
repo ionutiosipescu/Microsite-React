@@ -3,20 +3,50 @@
 	display: none;
 }
 
-.carousel1 .carousel-indicators [data-bs-target] {
-	height: 15px;
-	width: 15px;
+// .carousel1 .carousel-indicators [data-bs-target] {
+//   height: 15px;
+//   width: 15px;
+//   border-radius: 50%;
+//   color: orange;
+//   border: 3px solid orange !important;
+
+//   opacity: 1;
+// }
+// .carousel-indicators {
+//   //   bottom: -40px !important;
+//   margin-top: 10px;
+// }
+
+// .carousel-indicators .active {
+//   opacity: 0;
+//   background: orange !important;
+// }
+// .react-multi-carousel-dot-list {
+//   justify-content: center;
+//   position: absolute;
+//   width: 100%;
+//   opacity: 1;
+//   padding-top: 10px;
+// }
+
+// .react-multi-carousel-dot button {
+//   height: 15px;
+//   width: 15px;
+//   border-radius: 50%;
+//   // color: orange;
+//   border: 3px solid orange !important;
+//   background: #fff;
+// }
+
+.react-multi-carousel-dot button {
+	height: 20px;
+	width: 20px;
 	border-radius: 50%;
-	color: orange;
+	// color: orange;
 	border: 3px solid orange !important;
-
-	opacity: 1;
-}
-.carousel-indicators {
-	//   bottom: -40px !important;
+	background: #fff;
 }
 
-.carousel-indicators .active {
-	opacity: 0;
-	background: orange !important;
+.react-multi-carousel-dot--active button {
+	background: orange;
 }

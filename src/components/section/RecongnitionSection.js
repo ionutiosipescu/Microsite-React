@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import digital from '../../assets/images/digital'
-import { Carousel } from 'react-bootstrap'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 //style to overload the carousel's indicators
 import '../cards/CarouselSection.scss'
 
 const CarouselContainer = styled.div`
-	// height: 320px;
+	// height: 100%;
 	width: 100%;
 	background-color: white;
 	//   background-color: ${props => props.backgroundColor || ''};
@@ -20,58 +21,55 @@ const CarouselContainer = styled.div`
 	p {
 		font-size: 14px;
 	}
-	.containerSection {
-		width: 90%;
-		height: 90%;
-
-		margin: auto;
-		border-radius: 10px;
-		display: flex;
-		flex-wrap: wrap;
-	}
 `
 
 const RecongnitionSection = ({ arr, titleSection }) => {
 	return (
 		<CarouselContainer
-		//   backgroundColor={backgroundColor}
-		//   titleColor={titleColor}
+			//   backgroundColor={backgroundColor}
+			//   titleColor={titleColor}
+			className="p-4"
 		>
-			<div className="containerSection">
+			<div className="mx-3">
 				<h3>{titleSection || ''}</h3>
-				<Carousel className="carousel1">
-					<Carousel.Item className="row">
-						<div className="d-flex justify-content-around">
-							<div className="col-sm-12 col-md-11 col-lg-5  ">
-								<p className="">{arr[0].desciption}</p>
-								<span>{arr[0].author}</span>
-								<p>{arr[0].authorPosition}</p>
-							</div>
-							<div className="col-sm-12 col-md-11 col-lg-5 ">
-								<p className="">{arr[1].desciption}</p>
-								<span>{arr[1].author}</span>
-								<p>{arr[1].authorPosition}</p>
-							</div>
+				<Carousel
+					responsive={responsive}
+					removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+					// deviceType={this.props.deviceType}
+					// dotListClass="react-multi-carousel-dot-list"
+					showDots
+				>
+					{arr.map((element, index) => (
+						<div className="py-3" key={index}>
+							<p className="">{element?.desciption}</p>
+							<span>{element?.author.toUpperCase()}</span>
+							<p className="">{element?.authorPosition}</p>
 						</div>
-					</Carousel.Item>
-					<Carousel.Item>
-						<div className="d-flex justify-content-around">
-							<div className="col-sm-12 col-md-11 col-lg-5 m-4">
-								<p className="">{arr[2].desciption}</p>
-								<span>{arr[2].author}</span>
-								<p>{arr[2].authorPosition}</p>
-							</div>
-							<div className="col-sm-12 col-md-11 col-lg-5 m-4">
-								<p className="">{arr[3].desciption}</p>
-								<span>{arr[3].author}</span>
-								<p>{arr[3].authorPosition}</p>
-							</div>
-						</div>
-					</Carousel.Item>
+					))}
 				</Carousel>
 			</div>
 		</CarouselContainer>
 	)
+}
+
+const responsive = {
+	superLargeDesktop: {
+		// the naming can be any, depends on you.
+		breakpoint: { max: 4000, min: 3000 },
+		items: 2,
+	},
+	desktop: {
+		breakpoint: { max: 3000, min: 800 },
+		items: 2,
+	},
+	tablet: {
+		breakpoint: { max: 800, min: 545 },
+		items: 1,
+	},
+	mobile: {
+		breakpoint: { max: 545, min: 10 },
+		items: 1,
+	},
 }
 
 export default RecongnitionSection

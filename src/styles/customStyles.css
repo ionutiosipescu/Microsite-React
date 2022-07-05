@@ -1,27 +1,25 @@
 :root {
-	--whiteText: rgb(232, 230, 227)
+  --gray1: #eae6e6;
+  --gray2: #cfcdcd;
+  --gray3: #bfbfbf;
 
-	--gray1: #eae6e6;
-	--gray2: #cfcdcd;
-	--gray3: #bfbfbf;
+  --darkBlue: #2f2f7e;
+  --darkBlue1: #bbbbff;
 
-	--darkBlue: rgb(0, 34, 58);
-	--darkBlue1: #bbbbff;
+  --lightBlue: #5e5eeb;
 
-	--lightBlue: #5e5eeb;
-
-	--orange1: rgb(166, 102, 0);
-	--orange2: rgb(255, 179, 59);
+  --orange1: #df8e25;
+  --orange2: #be7a22;
 }
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	outline: 0;
-	font-family: Helvetica Neue LT Std, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 0;
+  font-family: Helvetica Neue LT Std, Arial, sans-serif;
 
-	/* font-family: " Helvetica Neue LT Std", roman;
+  /* font-family: " Helvetica Neue LT Std", roman;
    */
-	/* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
+  /* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
 }
