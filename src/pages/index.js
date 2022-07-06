@@ -8,3 +8,4 @@ export { default as About } from "./about/About";
 export { default as Dashboard } from "./dashboard/Dashboard";
 export { default as InsightCase } from "./insight/InsightCase";
 export { default as InsightLatest } from "./insight/InsightLatest";
+export { default as InsightCaseArticlePage } from "./insight/InsightCaseArticlePage";

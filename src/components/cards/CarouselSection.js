@@ -18,7 +18,7 @@ const CarouselContainer = styled.div`
     color: ${(props) => props.textDate || "white"};
   }
   h3 {
-    color: ${(props) => props.titleColor || ""};
+    color: ${(props) => props.titleColor || "white"};
     font-size: 18px;
   }
   h6 {

@@ -113,7 +113,7 @@ const InsightCase = () => {
 
         <PostsContainer>
           {articles.map((post) => (
-            <PostCard post={post} />
+            <PostCard post={post} locationName={LocationName} />
           ))}
         </PostsContainer>
       </div>
