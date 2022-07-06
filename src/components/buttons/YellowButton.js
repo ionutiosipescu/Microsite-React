@@ -13,14 +13,11 @@ const Button = styled.button`
 	padding: 15px 20px;
 	/* text-align: center; */
 
-	border-radius: ${props => props.radius || '5px'};
+	border-radius: ${props => props.radius || '0'};
 	width: ${props => props.width || 'auto'}; 
 	height: ${props => props.heigth || "50px"};
 
-	@media ${size.smm} {
-		border-radius: 5px;
-	 }
-	@media ${size.sm} {
+	@media ${size.md} {
 		border-radius: 0;
 	 }
 `
