@@ -11,8 +11,12 @@ const Card = styled.div`
   }
 
   .sectionTitle {
-    color: #057fbe;
+    color: #047ebd;
     font-size: 24px;
+    font: normal normal bold 24px/28px Roboto;
+  }
+  .sectionDescription {
+    color: #171717;
   }
 `;
 

@@ -7,6 +7,8 @@ import PostCard from "../../components/cards/PostCard";
 
 import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
 
+import { sizem } from "../../utils/breakpoints";
+
 const LatestInsightsContainer = styled.div`
   width: 100%;
   margin: 0;
@@ -20,6 +22,32 @@ const LatestInsightsContainer = styled.div`
     color: #0085ca;
     margin: 0px 10px;
   }
+  .costumNavbar {
+    background-color: #002b49;
+  }
+  .costumNavbar button {
+    color: #fff;
+    background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+    color: ${(props) => (props.clicked ? "black" : "white")};
+  }
+  // @media ${sizem.smm} {
+  //   .costumNavbar {
+  //     text-align: center;
+  //   }
+  // }
+  @media only screen and ${sizem.mdm} {
+    .costumNavbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+`;
+const CostumButton = styled.div`
+  color: #fff;
+  background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+  color: ${(props) => (props.clicked ? "black" : "white")};
 `;
 
 const PostsContainer = styled.div`
@@ -50,13 +78,14 @@ const InsightCase = () => {
         title=" Case Studies"
         backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-      <div className="container-fluid d-flex justify-content-around  bg-primary ">
+      <div className="container-fluid d-flex justify-content-around  costumNavbar ">
         {arr1?.map((element, key) => (
           <div className=" p-2 " id={key}>
             <button
               type="button"
-              className="btn btn-primary border-0"
+              className="btn  border-0"
               onClick={() => handleFilterArticles(element)}
+              clicked={element}
             >
               {element}
             </button>
