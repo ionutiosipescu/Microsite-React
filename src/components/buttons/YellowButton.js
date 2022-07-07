@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { size } from '../../utils/breakpoints'
+
 
 const Button = styled.button`
 	background: var(--orange1);
@@ -11,8 +13,13 @@ const Button = styled.button`
 	padding: 15px 20px;
 	/* text-align: center; */
 
-	border-radius: ${props => props.radius || '5px'};
-	/* width: ${props => props.width || 'auto'}; */
+	border-radius: ${props => props.radius || '0'};
+	width: ${props => props.width || 'auto'}; 
+	height: ${props => props.heigth || "50px"};
+
+	@media ${size.md} {
+		border-radius: 0;
+	 }
 `
 
 const YellowButton = props => {

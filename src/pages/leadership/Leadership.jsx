@@ -88,6 +88,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
@@ -101,6 +103,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
@@ -114,6 +118,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
@@ -127,6 +133,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
@@ -140,6 +148,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
@@ -153,6 +163,8 @@ const cardContentList = [
 		phone: '+1 (555) 555-5555',
 		twitter: '@ConnorWine',
 		LinkedIn: 'LinkedIn',
+		imageSrc:
+			'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		description:
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},

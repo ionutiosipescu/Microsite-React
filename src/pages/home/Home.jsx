@@ -49,25 +49,26 @@ const Home = () => {
 			<HeroSection
 				title={heroSection.title}
 				backgroundUrl={heroSection.backgroundUrl}
-				buttonText={'contact us'}
 			/>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
 				backgroundColor="white"
 				arr={arr}
-				titleColor="aqua"
+				titleColor="#0085CA"
 				textColor="#000"
-				textDate="gray"
+				textDate="#949494"
+				carouselDotBackground="white"
 			/>
 			<QualitiesSection />
 			<RecongnitionSection arr={arr2} titleSection="Recent Recongnition" />
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
-				backgroundColor="#283670"
+				backgroundColor="#002B49"
 				arr={arr}
-				titleColor="aqua"
+				titleColor="#0085CA"
 				textColor="#fff"
-				textDate="gray"
+				textDate="#FFF"
+				carouselDotBackground="#002b49"
 			/>
 		</div>
 	)
