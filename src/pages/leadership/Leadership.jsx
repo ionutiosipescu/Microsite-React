@@ -1,169 +1,79 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
-  HeroSection,
-  ProfessionalsCardSmall,
-  CarouselSection,
-  DetailedProfessionalsCard,
-  CardProfessionals,
-} from "../../components/cards";
-import { Container } from "react-bootstrap";
-import styled from "styled-components";
-import { arr } from "../../utils/data";
+	HeroSection,
+	ProfessionalsCardSmall,
+	CarouselSection,
+	DetailedProfessionalsCard,
+	CardProfessionals,
+} from '../../components/cards'
+import { Container } from 'react-bootstrap'
+import styled from 'styled-components'
+import { leadersList, arr } from '../../utils/data'
 
 const LeaadersContainer = styled.div`
-  display: flex;
-  margin: 2rem 0;
-  /* padding: 0; */
-  gap: 3rem;
-  flex-wrap: wrap;
-  position: relative;
+	display: grid;
 
-  div {
-    /* flex-s */
-  }
-`;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 4rem;
+	position: relative;
+
+	div {
+		/* max-width: 600px; */
+	}
+`
 
 const Leadership = () => {
-  const [open, setOpen] = useState(Array.from(cardContentList, () => false));
-  const [content, setContent] = useState();
+	const [openedState, setOpenedState] = useState(
+		Array.from(leadersList, () => false)
+	)
 
-  const handleClick = (cardContent) => {
-    setContent(cardContent);
-    console.log(cardContent);
-  };
-  const toggle = (index) => {
-    const newOpenState = [false];
-    newOpenState[index] = !newOpenState[index];
-    setOpen(newOpenState);
-  };
+	const handleDisplay = index => {
+		console.log('this is the index', index)
+		if (!openedState[index]) {
+			let arr = Array.from(leadersList, () => false)
+			arr[index] = true
+			setOpenedState([...arr])
+		} else {
+			setOpenedState(Array.from(leadersList, () => false))
+		}
+	}
 
-  return (
-    <>
-      <HeroSection title={"helthcare & live sciences leaders"} />
+	return (
+		<>
+			<HeroSection title={'helthcare & live sciences leaders'} />
 
-      <h4 className="m-4 fw-bold">LEADERS</h4>
-      {/* <div onClick={() => console.log("hello")}>Hello</div> */}
-      <div
-        style={{
-          position: "relative",
-        }}
-      >
-        {/* <ProfessionalsCardSmall /> */}
-      </div>
-      <LeaadersContainer>
-        {cardContentList.map((card, index) => (
-          <ProfessionalsCardSmall
-            card={card}
-            index={index}
-            open={open}
-            toggle={toggle}
-            content={content}
-          />
-        ))}
-      </LeaadersContainer>
-      <CarouselSection
-        categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="#002B49"
-        arr={arr}
-        titleColor="#0085CA"
-        textColor="#fff"
-        textDate="#fff"
-        carouselDotBackground="#002b49"
-      />
-    </>
-  );
-};
+			<h4 className="m-4 fw-bold">LEADERS</h4>
+			<div>Hello</div>
+			<div
+				className="m-4"
+				style={{
+					position: 'relative',
+				}}
+			>
+				<LeaadersContainer>
+					{leadersList.map((cardInfo, index) => {
+						return (
+							<ProfessionalsCardSmall
+								key={index}
+								cardInfo={cardInfo}
+								index={index}
+								openedState={openedState}
+								handleDisplay={handleDisplay}
+								showDetails={openedState[index]}
+							/>
+						)
+					})}
+				</LeaadersContainer>
+			</div>
 
-export default Leadership;
-const cardContentList = [
-  {
-    id: 1,
-    name: "Connor Colquhoun",
-    position: "wine ",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-  {
-    id: 2,
-    name: "Connor Colquhoun",
-    position: "wine lover",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-  {
-    id: 3,
-    name: "Connor Colquhoun",
-    position: "wine enjoyer",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-  {
-    id: 4,
-    name: "Connor Colquhoun",
-    position: "wine ",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-  {
-    id: 5,
-    name: "Connor Colquhoun",
-    position: "wine lover",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-  {
-    id: 6,
-    name: "Connor Colquhoun",
-    position: "wine enjoyer",
-    country: "japan",
-    location: "New York, USA",
-    mail: "Connor.Wine@gmail.com",
-    phone: "+1 (555) 555-5555",
-    twitter: "@ConnorWine",
-    LinkedIn: "LinkedIn",
-    imageSrc:
-      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    description:
-      "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
-  },
-];
+			<CarouselSection
+				categoryCarousel={'Healthcare & Live Sciences News'}
+				backgroundColor="var(--darkBlue)"
+				arr={arr}
+				titleColor="aqua"
+			/>
+		</>
+	)
+}
+
+export default Leadership
