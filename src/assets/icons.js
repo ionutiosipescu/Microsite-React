@@ -1,5 +1,5 @@
-const iconsPath = "./icons/";
-// const iconsPath = '../../public/assets/icons/'
+const iconsPath = "/icons/";
+// const iconsPath = "../../public/assets/icons/";
 
 const icon = (className, name) => (
   <img

@@ -20,6 +20,14 @@ const LatestInsightsContainer = styled.div`
     color: #0089ff;
     margin: 0px 10px;
   }
+
+  .costumNavbar {
+    background-color: var(--darkBlue);
+  }
+  .costumButton {
+    background-color: var(--darkBlue);
+    color: #fff;
+  }
 `;
 const PostsContainer = styled.div`
   width: 94%;
@@ -49,12 +57,12 @@ const InsightLatest = () => {
         title="Latest Insights"
         backgroundUrl="https://images.pexels.com/photos/5483071/pexels-photo-5483071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-      <div className="container-fluid d-flex justify-content-around  bg-primary ">
+      <div className="container-fluid d-flex justify-content-around  costumNavbar">
         {arr1?.map((element, key) => (
           <div className=" p-2 " key={key.toString()}>
             <button
               type="button"
-              className="btn btn-primary border-0"
+              className="btn costumButton border-0"
               onClick={() => handleFilterArticles(element)}
             >
               {element}
