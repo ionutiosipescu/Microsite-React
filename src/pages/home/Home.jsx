@@ -67,7 +67,7 @@ const Home = () => {
         arr={arr}
         titleColor="#0085CA"
         textColor="#fff"
-        textDate="#FFFFFF"
+        textDate="#FFF"
         carouselDotBackground="#002b49"
       />
     </div>
