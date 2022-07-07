@@ -35,7 +35,7 @@ const LatestInsightsContainer = styled.div`
   //     text-align: center;
   //   }
   // }
-  @media only screen and ${sizem.mdm} {
+  @media ${sizem.mdm} {
     .costumNavbar {
       display: flex;
       flex-direction: column;
