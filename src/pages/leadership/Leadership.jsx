@@ -3,12 +3,11 @@ import {
 	HeroSection,
 	ProfessionalsCardSmall,
 	CarouselSection,
-	DetailedProfessionalsCard,
-	CardProfessionals,
 } from '../../components/cards'
-import { Container } from 'react-bootstrap'
 import styled from 'styled-components'
 import { leadersList, arr } from '../../utils/data'
+import InPageNavbar from '../../components/Navbar/CustomNavbar'
+import CurrentRoute from '../../components/CurrentRoute'
 
 const LeaadersContainer = styled.div`
 	display: grid;
@@ -16,10 +15,6 @@ const LeaadersContainer = styled.div`
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 4rem;
 	position: relative;
-
-	div {
-		/* max-width: 600px; */
-	}
 `
 
 const Leadership = () => {
@@ -41,8 +36,8 @@ const Leadership = () => {
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
-
-			<h4 className="m-4 fw-bold">LEADERS</h4>
+			<InPageNavbar />
+			<h4 className="m-4 fw-bold text-primary">LEADERS</h4>
 			<div>Hello</div>
 			<div
 				className="m-4"

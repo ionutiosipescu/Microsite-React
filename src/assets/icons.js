@@ -10,13 +10,6 @@ const icon = (className, name) => (
 	/>
 )
 
-// const icon = (className, name) => (
-// 	<img
-// 		className={className}
-// 		src={'../../public/icons/' + name + '.svg'}
-// 		alt=" "
-// 	/>
-// )
 const iconPng = (className, name) => (
 	<img className={className} src={iconsPath + name + '.png'} alt=" " />
 )

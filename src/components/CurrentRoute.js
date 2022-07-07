@@ -1,6 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ChevronRight } from '../assets/icons'
+import {
+	ChevronRight,
+	Search,
+	XIcon,
+	ChevronRightBlue,
+	LinkedIn,
+	Facebook,
+	Twitter,
+	YouTube,
+} from '../assets/icons'
 
 const Route = styled.div`
 	color: var(--lightBlue);
