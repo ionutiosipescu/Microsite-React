@@ -9,14 +9,20 @@ const Button = styled.button`
 
 	text-transform: uppercase;
 	padding: 15px 20px;
-	/* text-align: center; */
 
 	border-radius: ${props => props.radius || '5px'};
-	/* width: ${props => props.width || 'auto'}; */
+	/* border-radius: ${radius => radius || '5px'}; */
+
+	width: ${props => props.width || 'auto'};
 `
 
-const YellowButton = props => {
-	return <Button {...props} className='fw-bol'>{props.text}</Button>
+const YellowButton = ({ text, radius, width }) => {
+	// return <Button radius={radius}>{text}</Button>
+	return (
+		<Button radius={radius} width={width}>
+			{text}
+		</Button>
+	)
 }
 
 export default YellowButton

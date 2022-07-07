@@ -8,22 +8,32 @@ import {
 	FormControl,
 	Button,
 } from 'react-bootstrap'
+import { CustomNavbar } from './NavBar.styles.js'
 import { routeNames } from '../../routes/routes'
 import { Search } from '../../assets/icons'
-import "./NavBar.css"
+// import './NavBar.styles.js'
 
 const NavBar = () => {
 	return (
-		<Navbar className='py-0' bg="light" expand="lg">
+		<CustomNavbar className="py-0" expand="lg">
 			<Container fluid>
-				<Navbar.Brand href={routeNames.home}>Logo</Navbar.Brand>
-				<Navbar.Toggle aria-controls="navbarScroll" />
-				<Navbar.Collapse id="navbarScroll">
+				<CustomNavbar.Brand href={routeNames.home}>Logo</CustomNavbar.Brand>
+				<CustomNavbar.Toggle aria-controls="navbarScroll" />
+				<CustomNavbar.Collapse id="navbarScroll">
 					<Nav className="me-auto my-2 my-lg-0 fw-bold f">
-						<Nav.Link className='active web-title' href={routeNames.home}>{'HLS Home'}</Nav.Link>
+						<Nav.Link className="active web-title" href={routeNames.home}>
+							{'HLS Home'}
+						</Nav.Link>
 
-						<NavDropdown className='' title="Expertise" id="navbarScrollingDropdown">
-							<NavDropdown.Item href={routeNames.expertiseQuality}>
+						<NavDropdown
+							className=""
+							title="Expertise"
+							id="navbarScrollingDropdown"
+						>
+							<NavDropdown.Item
+								href={routeNames.expertiseQuality}
+								id="something"
+							>
 								{'Quality Efficiency Improvement'}
 							</NavDropdown.Item>
 							<NavDropdown.Item href={routeNames.expertisePharma}>
@@ -32,7 +42,11 @@ const NavBar = () => {
 						</NavDropdown>
 
 						{/* <Nav.Link href={routeNames.insight}>{"Insights"}</Nav.Link> */}
-						<NavDropdown className='' title="Insights" id="navbarScrollingDropdown">
+						<NavDropdown
+							className=""
+							title="Insights"
+							id="navbarScrollingDropdown"
+						>
 							<NavDropdown.Item href={routeNames.insightLatest}>
 								{'Latest Insights'}
 							</NavDropdown.Item>
@@ -40,15 +54,21 @@ const NavBar = () => {
 								{'Case Studies'}
 							</NavDropdown.Item>
 						</NavDropdown>
-						<Nav.Link className='active web-title' href={routeNames.leadership}>{'Leadership'}</Nav.Link>
-						<Nav.Link className='active web-title' href={routeNames.contact}>{'Contact'}</Nav.Link>
+						<Nav.Link className="active web-title" href={routeNames.leadership}>
+							{'Leadership'}
+						</Nav.Link>
+						<Nav.Link className="active web-title" href={routeNames.contact}>
+							{'Contact'}
+						</Nav.Link>
 					</Nav>
 					<Nav>
-						<Nav.Link className='' href="#action2">{<Search />}</Nav.Link>
+						<Nav.Link className="" href="#action2">
+							{<Search />}
+						</Nav.Link>
 					</Nav>
-				</Navbar.Collapse>
+				</CustomNavbar.Collapse>
 			</Container>
-		</Navbar>
+		</CustomNavbar>
 	)
 }
 
