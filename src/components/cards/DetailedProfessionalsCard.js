@@ -1,90 +1,113 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { XIcon, Twitter } from '../../assets/icons'
-import YellowButton from '../buttons/YellowButton'
-import Connor from '../../assets/images/ConnorWine'
+import React, { useState, useRef, useEffect } from "react";
 import {
-	Card,
-	Header,
-	Info,
-	ContainerMobile,
-	ContactInfo,
-	Dropdown,
-	PersonalInfo,
-	XContainer,
-	CardBody,
-	ImageContainer,
-	Content,
-	DescriptionDesktop,
-} from './styles/DetailedProfessionalsCard.styles'
+  XIcon,
+  Twitter,
+  IconTriangle,
+  ChevronRightBlue,
+} from "../../assets/icons";
+import YellowButton from "../buttons/YellowButton";
+import Connor from "../../assets/images/ConnorWine";
+import {
+  Card,
+  Header,
+  Info,
+  ContainerMobile,
+  ContactInfo,
+  Dropdown,
+  PersonalInfo,
+  XContainer,
+  CardBody,
+  ImageContainer,
+  ImageTriangleContainer,
+  Content,
+  DescriptionDesktop,
+} from "./styles/DetailedProfessionalsCard.styles";
 
 const DetailedProfessionalsCard = ({
-	content,
-	handleDisplay,
-	index,
-	setMargin,
-	showDetails,
+  content,
+  handleDisplay,
+  index,
+  setMargin,
+  showDetails,
 }) => {
-	const [display, setDisplay] = useState('none')
-	const [borderBottom, setBorderBottom] = useState(true)
-	const detailedCard = useRef(null)
+  const [display, setDisplay] = useState("none");
+  const [borderBottom, setBorderBottom] = useState(true);
+  const detailedCard = useRef(null);
 
-	useEffect(() => {
-		if (showDetails) {
-			setMargin(detailedCard.current.clientHeight)
-		}
-	})
+  useEffect(() => {
+    if (showDetails) {
+      setMargin(detailedCard.current.clientHeight);
+    }
+  });
 
-	const handleClick = () => {
-		if (display === 'none') {
-			setDisplay('initial')
-		} else {
-			setDisplay('none')
-		}
+  const handleClick = () => {
+    if (display === "none") {
+      setDisplay("initial");
+    } else {
+      setDisplay("none");
+    }
 
-		setBorderBottom(!borderBottom)
-	}
+    setBorderBottom(!borderBottom);
+  };
 
-	return (
-		<Card ref={detailedCard}>
-			<div className="d-flex">
-				<XContainer onClick={() => handleDisplay(index)}>
-					<XIcon className={'x-icon'} />
-				</XContainer>
-			</div>
-			<CardBody>
-				<Header>
-					<ImageContainer>
-						<img src={Connor}></img>
-						<YellowButton text="Connect" radius={'0'} />
-					</ImageContainer>
-					<Content>
-						<h4>{content?.name}</h4>
-						<p>{content?.position}</p>
-						<DescriptionDesktop>{content?.description}</DescriptionDesktop>
-						<a>Read More</a>
-					</Content>
-				</Header>
+  return (
+    <>
+      <ImageTriangleContainer>
+        <IconTriangle
+          className="imgTriangle"
+          // src="https://www.alvarezandmarsal.com/themes/custom/am/images/icons/icon-our-people-tab.png"
+          // className="img imageTriangle"
+          //   style={{ height: "20px", paddingLeft: "50%", marginBottom: "-2px" }}
+          // style={{ height: "20px", paddingLeft: "50%", marginBottom: "-1px" }}
+        />
+      </ImageTriangleContainer>
+      {/* <img
+        src="https://www.alvarezandmarsal.com/themes/custom/am/images/icons/icon-our-people-tab.png"
+        // className="img imageTriangle"
+        style={{ height: "20px", paddingLeft: "50%", marginBottom: "-2px" }}
+        // style={{ height: "20px", paddingLeft: "50%", marginBottom: "-1px" }}
+      /> */}
+      <Card ref={detailedCard}>
+        <div className="d-flex">
+          <XContainer onClick={() => handleDisplay(index)}>
+            <XIcon className={"x-icon"} />
+          </XContainer>
+        </div>
+        <CardBody>
+          <Header>
+            <ImageContainer>
+              <img src={Connor}></img>
+              <YellowButton text="Connect" radius={"0"} />
+            </ImageContainer>
+            <Content>
+              <h4>{content?.name}</h4>
+              <p>{content?.position}</p>
+              <DescriptionDesktop>{content?.description}</DescriptionDesktop>
+              <a>Read More</a>
+            </Content>
+          </Header>
 
-				<Info>
-					<ContainerMobile>
-						<YellowButton text={'connect'} width={'100%'} />
-						<div>{content?.description}</div>
-					</ContainerMobile>
+          <Info>
+            <ContainerMobile>
+              <YellowButton text={"connect"} width={"100%"} />
+              <div>{content?.description}</div>
+            </ContainerMobile>
 
-					<ContactInfo onClick={handleClick} borderBottom={borderBottom}>
-						{'contact info'}
-					</ContactInfo>
-					<Dropdown display={display}>
-						<PersonalInfo title="locaton" content={content?.country} />
-						<PersonalInfo title="email" content={content?.mail} />
-						<PersonalInfo title="telephone" content={content?.phone} />
-						<PersonalInfo title="twitter" content={content?.twitter} />
-						<PersonalInfo title="connect on" content={content?.LinkedIn} />
-					</Dropdown>
-				</Info>
-			</CardBody>
-		</Card>
-	)
-}
+            <ContactInfo onClick={handleClick} borderBottom={borderBottom}>
+              {"contact info"}
+            </ContactInfo>
+            <Dropdown display={display}>
+              <PersonalInfo title="locaton" content={content?.country} />
+              <PersonalInfo title="email" content={content?.mail} />
+              <PersonalInfo title="telephone" content={content?.phone} />
+              <PersonalInfo title="twitter" content={content?.twitter} />
+              <PersonalInfo title="connect on" content={content?.LinkedIn} />
+            </Dropdown>
+          </Info>
+        </CardBody>
+      </Card>{" "}
+    </>
+  );
+};
 
-export default DetailedProfessionalsCard
+export default DetailedProfessionalsCard;
