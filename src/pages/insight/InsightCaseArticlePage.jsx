@@ -64,6 +64,7 @@ const InsightCaseArticlePage = ({ locationName }) => {
             </div>
             <div className="row">
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
+                {/*------------------------------------------------------------- LeftSectionIcons */}
                 <div className="">
                   <div className="pt-2">
                     <YouTube />
@@ -77,6 +78,7 @@ const InsightCaseArticlePage = ({ locationName }) => {
                 </div>
               </div>
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
+                {/*---------------------------------------------------- SectionDescription */}
                 <div>date</div>
                 <p className="pt-3">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -110,7 +112,7 @@ const InsightCaseArticlePage = ({ locationName }) => {
               </div>
             </div>
           </div>
-          {/*--------------------------------------------- second section */}
+          {/*--------------------------------------------- FEATURED PROFILES  */}
           <div className="col-12 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
             <div className="">
               <h3 className="text-align-center">title Section</h3>{" "}
@@ -129,9 +131,26 @@ const InsightCaseArticlePage = ({ locationName }) => {
                 <span className="text-muted">Position</span>
               </div>
             </div>
+            {/* -------------------------------------------------------Stay connnected */}
             <div className="linksContainer ">
               <h3> Stay Connected </h3>
               <div className="links container-fluid  ">
+                <div className="link  py-2 d-flex justify-content-between ">
+                  <div className="image  col-md-2 col-lg-2 ">
+                    <LinkedIn className="img img-rounded " />
+                  </div>
+                  <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
+                    Join A&M on Linkedin
+                  </div>
+                </div>
+                <div className="link  py-2 d-flex justify-content-between ">
+                  <div className="image  col-md-2 col-lg-2 ">
+                    <LinkedIn className="img img-rounded " />
+                  </div>
+                  <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
+                    Join A&M on Linkedin
+                  </div>
+                </div>
                 <div className="link  py-2 d-flex justify-content-between ">
                   <div className="image  col-md-2 col-lg-2 ">
                     <LinkedIn className="img img-rounded " />
