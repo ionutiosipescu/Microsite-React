@@ -124,6 +124,7 @@ const InsightCase = () => {
         titleColor="#0085CA"
         textColor="#fff"
         textDate="#fff"
+        carouselDotBackground="#002b49"
       />
     </LatestInsightsContainer>
   );
