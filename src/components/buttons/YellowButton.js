@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { size } from '../../utils/breakpoints'
 
-
 const Button = styled.button`
 	background: var(--orange1);
 	color: white;
@@ -11,19 +10,20 @@ const Button = styled.button`
 
 	text-transform: uppercase;
 	padding: 15px 20px;
-	/* text-align: center; */
 
-	border-radius: ${props => props.radius || '0'};
-	width: ${props => props.width || 'auto'}; 
-	height: ${props => props.heigth || "50px"};
+	border-radius: ${props => props.radius || '5px'};
+	/* border-radius: ${radius => radius || '5px'}; */
 
-	@media ${size.md} {
-		border-radius: 0;
-	 }
+	width: ${props => props.width || 'auto'};
 `
 
-const YellowButton = props => {
-	return <Button {...props} className='fw-bol'>{props.text}</Button>
+const YellowButton = ({ text, radius, width }) => {
+	// return <Button radius={radius}>{text}</Button>
+	return (
+		<Button radius={radius} width={width}>
+			{text}
+		</Button>
+	)
 }
 
 export default YellowButton
