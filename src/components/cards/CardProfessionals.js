@@ -17,7 +17,6 @@ const CardBody = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 100%;
 	/* flex: 2; */
 	/* align-items: center; */
 	/* width: 100px; */

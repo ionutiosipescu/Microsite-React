@@ -113,7 +113,7 @@ const InsightCase = () => {
 
         <PostsContainer>
           {articles.map((post) => (
-            <PostCard post={post} />
+            <PostCard post={post} locationName={LocationName} />
           ))}
         </PostsContainer>
       </div>
@@ -124,6 +124,7 @@ const InsightCase = () => {
         titleColor="#0085CA"
         textColor="#fff"
         textDate="#fff"
+        carouselDotBackground="#002b49"
       />
     </LatestInsightsContainer>
   );

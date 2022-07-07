@@ -1,106 +1,57 @@
-import React, { useState } from "react";
-import image from "../../assets/images/ConnorWine";
-import styled from "styled-components";
-import YellowButton from "../buttons/YellowButton";
-import DetailedProfessionalsCard from "./DetailedProfessionalsCard";
-
-const Container = styled.div`
-  margin-bottom: ${(props) => (props.marginBottom ? "420px" : "0")};
-`;
-
-const Card = styled.div`
-  display: flex;
-  background: var(--darkBlue);
-  max-width: 300px;
-
-  /* margin-bottom: 4rem; */
-`;
-
-const CardBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const ImageContainer = styled.div`
-  background: gray;
-  min-width: 120px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const Content = styled.div`
-  padding: 20px;
-  text-transform: uppercase;
-  color: var(--orange2);
-  font-weight: bold;
-  height: 100%;
-  width: 200px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
-  h5 {
-    padding: 0;
-    margin: 0;
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-
-  div {
-    font-size: 1rem;
-  }
-`;
+import React, { useEffect, useState } from 'react'
+import image from '../../assets/images/ConnorWine'
+import YellowButton from '../buttons/YellowButton'
+import DetailedProfessionalsCard from './DetailedProfessionalsCard'
+import {
+	Container,
+	Card,
+	ImageContainer,
+	CardBody,
+	Content,
+} from './styles/ProfessionalsCardSmall.styles'
 
 const ProfessionalsCardSmall = ({
-  card,
-  buttonText,
-  handleSelectedPerson,
-  content,
-  open,
-  toggle,
-  index,
+	cardInfo,
+	index,
+	handleDisplay,
+	showDetails,
 }) => {
-  const [hideDetailedCard, setHideDetailedCard] = useState(false);
+	const [margin, setMargin] = useState(0)
 
-  const handleClick = () => {
-    setHideDetailedCard(!hideDetailedCard);
-  };
+	useEffect(() => {
+		if (!showDetails) {
+			setMargin(0)
+		}
+	})
 
-  return (
-    <Container marginBottom={open[index]}>
-      <Card
-        onClick={() => {
-          toggle(index);
-        }}
-      >
-        <ImageContainer>
-          <img src={card?.imageSrc || image} alt="portrait"></img>
-        </ImageContainer>
+	return (
+		<Container margin={margin}>
+			<Card onClick={() => handleDisplay(index)}>
+				<ImageContainer>
+					<img src={cardInfo?.image || image} alt="portrait"></img>
+				</ImageContainer>
 
-        <CardBody>
-          <Content>
-            <h5>{card?.name || "Connor Colquhoun"}</h5>
-            <div>
-              <div>{card?.position || "wine connoisseur"}</div>
-              <div>{card?.country} </div>
-            </div>
-          </Content>
-          {buttonText ? <YellowButton text={buttonText} radius={"0"} /> : ""}
-        </CardBody>
-      </Card>
-      {open[index] ? (
-        <DetailedProfessionalsCard content={card} className="" />
-      ) : (
-        ""
-      )}
-    </Container>
-  );
-};
+				<CardBody>
+					<Content>
+						<h5>{cardInfo?.name || 'Connor Colquhoun'}</h5>
+						<div>
+							<div>{cardInfo?.position || 'wine connoisseur'}</div>
+							<div>{cardInfo?.country} </div>
+						</div>
+					</Content>
+				</CardBody>
+			</Card>
+			{showDetails && (
+				<DetailedProfessionalsCard
+					content={cardInfo}
+					index={index}
+					handleDisplay={handleDisplay}
+					setMargin={setMargin}
+					showDetails={showDetails}
+				/>
+			)}
+		</Container>
+	)
+}
 
-export default ProfessionalsCardSmall;
+export default ProfessionalsCardSmall
