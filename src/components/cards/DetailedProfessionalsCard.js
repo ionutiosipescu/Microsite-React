@@ -81,9 +81,11 @@ const DetailedProfessionalsCard = ({
             </ImageContainer>
             <Content>
               <h4>{content?.name}</h4>
-              <p>{content?.position}</p>
-              <DescriptionDesktop>{content?.description}</DescriptionDesktop>
-              <a>Read More</a>
+              <p className="text-muted">{content?.position}</p>
+              <DescriptionDesktop>
+                <p>{content?.description}</p>
+              </DescriptionDesktop>
+              <a className="fw-bold text-reset">Read More</a>
             </Content>
           </Header>
 
