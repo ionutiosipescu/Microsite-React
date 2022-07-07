@@ -52,8 +52,8 @@ const RecongnitionSection = ({ arr, titleSection }) => {
           showDots
         >
           {arr.map((element, index) => (
-            <div className="py-3" key={index}>
-              <p className="">{element?.desciption}</p>
+            <div className="py-3 me-5" key={index}>
+              <p className="fst-italic">{element?.desciption}</p>
               <span>{element?.author.toUpperCase()}</span>
               <p className="">{element?.authorPosition}</p>
             </div>

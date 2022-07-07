@@ -42,7 +42,7 @@ const Leadership = () => {
       <HeroSection title={"helthcare & live sciences leaders"} />
 
       <h4 className="m-4 fw-bold">LEADERS</h4>
-      <div onClick={() => console.log("hello")}>Hello</div>
+      {/* <div onClick={() => console.log("hello")}>Hello</div> */}
       <div
         style={{
           position: "relative",
@@ -63,9 +63,12 @@ const Leadership = () => {
       </LeaadersContainer>
       <CarouselSection
         categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="var(--darkBlue)"
+        backgroundColor="#002B49"
         arr={arr}
-        titleColor="aqua"
+        titleColor="#0085CA"
+        textColor="#fff"
+        textDate="#fff"
+        carouselDotBackground="#002b49"
       />
     </>
   );
