@@ -1,28 +1,28 @@
 :root {
-  --gray1: #eae6e6;
-  --gray2: #cfcdcd;
-  --gray3: #bfbfbf;
-  --gray4: #666;
+	--gray1: #eae6e6;
+	--gray2: #cfcdcd;
+	--gray3: #bfbfbf;
+	--gray4: #666;
 
-  --darkBlue: #002b49;
-  --darkBlue1: #bbbbff;
+	--darkBlue: #002b49;
+	--darkBlue1: #061931;
 
-  --lightBlue: #5e5eeb;
+	--lightBlue: #5e5eeb;
 
-  --orange1: #df8e25;
-  --orange2: #be7a22;
+	--orange1: #df8e25;
+	--orange2: #be7a22;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  outline: 0;
-  font-family: Helvetica Neue LT Std, Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: 0;
+	font-family: Helvetica Neue LT Std, Arial, sans-serif;
 
-  /* font-family: " Helvetica Neue LT Std", roman;
+	/* font-family: " Helvetica Neue LT Std", roman;
    */
-  /* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
+	/* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
 }
 /* #navbarScrollingDropdown {
   color: rgba(0,0,0,.9) !important;
