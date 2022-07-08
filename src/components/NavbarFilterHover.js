@@ -11,7 +11,6 @@ import {
 import { routeNames } from '../routes/routes'
 import { Search } from '../assets/icons'
 import styled from 'styled-components'
-import { ListGroup } from 'react-bootstrap'
 
 const NavbarFilter = () => {
 	const CustomNavbar = styled(Navbar)`
@@ -20,47 +19,12 @@ const NavbarFilter = () => {
 .navbarScrollingDropdown, .web-title {
     color: #fff ;
     padding: 20px 12px  !important;
-	cursor: pointer;
 }
-.nav-item.show.dropdown ul{
-    background-color: var(--darkBlue1);
-	padding: 12px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	height: auto;
-	max-width: 287%;
-    width: 501px;
-	justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
+.nav-item.show.dropdown{
+    background-color: #002B49;
 }
-.nav-item.show.dropdown li {
+.nav-item.show.dropdown a {
     color: #fff !important;
-	flex: none;
-    padding: 0px 0px 15px 9px;
-    transition: all 0.15s ease-in;
-    font-size: 14px;
-	width: 134.344px;
-	height: auto;
- }
-.nav-item.show.dropdown li:hover {
-    color: #0085CA;	
- }
-
- .nav-item.dropdown {
-    transition: all 0.2s ease-in;
-	height: 65px;
-	width: 165px;
-	display: flex;
-    justify-content: center;
-    align-items: center;
- }
- .nav-item.dropdown:hover {
-	background-color: var(--darkBlue1);
- }
- .nav-item.show.dropdown {
-	background-color: var(--darkBlue1);
  }
 .nav-item.show.dropdown div {
     background-color: #002B49;
@@ -70,39 +34,57 @@ const NavbarFilter = () => {
     border: 0;
 
  }
+.nav-item.show.dropdown a {
+     background-color: #002B49;
+ }
 .nav-link {
 color: #fff !important;
  }
-.dropdown-menu.show {
-	padding: 0 !important;
+ .nav-item:hover .dropdown-menu {
+    display: block !important;
 }
 `
+// const [articles, setArticles] = useState([...arr]);
 
+
+// const handleFilterArticles = (title) => {
+//     var newArr = arr.filter((post) => post.category == title.toLowerCase());
+//     setArticles(newArr);
+//   };
+const [show, setShow] = useState(false);
+const showDropdown = (e)=>{
+    setShow(show);
+}
+const hideDropdown = e => {
+    setShow(false);
+}
+  
 	return (
 		<CustomNavbar className="p-0" expand="lg">
-			<Container fluid className='p-0'>
+			<Container fluid>
 				<CustomNavbar.Toggle aria-controls="navbarScroll" />
-					<CustomNavbar.Collapse id="navbarScroll" className=''>
-						<Nav className="me-auto my-2 my-lg-0 fw-bold " >
+					<CustomNavbar.Collapse id="navbarScroll" >
+						<Nav className="me-auto my-2 my-lg-0 fw-bold f" >
 
 							{arr1?.map((element) => {
 								return (
+								
 									<NavDropdown className=" p-2 navbarScrollingDropdown " 
 									title={element.title}
 									id="navbarScroll"
+									renderMenuOnMount={true}
+									onMouseEnter={showDropdown} 
+									onMouseLeave={hideDropdown}
 									>
-									<ListGroup as="ul" className=''>	
 									{element?.sublinks.map((link) => {
 										return (
-											<ListGroup rel={element.id} as="li" href="#">	
-										
+
+										<NavDropdown.Item className='' href={"#"} >
 											{link}
-										
-										</ListGroup>
+										</NavDropdown.Item>
 										)
 									})}
 								
-								</ListGroup>
 								</NavDropdown>
 							)})}
 							
@@ -131,7 +113,7 @@ const arr1 = [
 	{
 	id: 2,
 	title:"Industry", 
-	sublinks: ["Link1","Link2", "Link6","Link1","Link2", "Link3","Link1","Link2", "Link3","Link1","Link2", "Link3","Link1","Link1","Link1","Link1","Link1","Link1"]
+	sublinks: ["Link1","Link2", "Link6"]
 },
 	{
 	id: 3,
