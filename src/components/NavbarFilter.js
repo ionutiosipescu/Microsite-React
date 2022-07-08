@@ -43,9 +43,10 @@ const NavbarFilter = () => {
     font-size: 14px;
 	width: 134.344px;
 	height: auto;
+
  }
 .nav-item.show.dropdown li:hover {
-    color: #0085CA;	
+    color: #0085CA !important;	
  }
 
  .nav-item.dropdown {
@@ -76,6 +77,11 @@ color: #fff !important;
 .dropdown-menu.show {
 	padding: 0 !important;
 }
+#list-group-li {
+	flex: none !important;
+	text-decoration: none;
+	flex-direction: row;
+}
 `
 
 	return (
@@ -94,7 +100,7 @@ color: #fff !important;
 									<ListGroup as="ul" className=''>	
 									{element?.sublinks.map((link) => {
 										return (
-											<ListGroup rel={element.id} as="li" href="#">	
+											<ListGroup rel={element.id} as="li" href="#" id="list-group-li">	
 										
 											{link}
 										
