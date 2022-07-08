@@ -40,6 +40,9 @@ const NavbarFilter = () => {
 .nav-link {
 color: #fff !important;
  }
+ .nav-item:hover .dropdown-menu {
+    display: block !important;
+}
 `
 // const [articles, setArticles] = useState([...arr]);
 
@@ -48,31 +51,35 @@ color: #fff !important;
 //     var newArr = arr.filter((post) => post.category == title.toLowerCase());
 //     setArticles(newArr);
 //   };
-const [visible, setVisible] = useState(false);
-
-const handleHover = () => {
-  setVisible((prevVisible) => (prevVisible = !prevVisible));
-};
+const [show, setShow] = useState(false);
+const showDropdown = (e)=>{
+    setShow(show);
+}
+const hideDropdown = e => {
+    setShow(false);
+}
   
 	return (
 		<CustomNavbar className="p-0" expand="lg">
 			<Container fluid>
 				<CustomNavbar.Toggle aria-controls="navbarScroll" />
-					<CustomNavbar.Collapse id="navbarScroll" onMouseOver={handleHover}>
-						<Nav className="me-auto my-2 my-lg-0 fw-bold f">
+					<CustomNavbar.Collapse id="navbarScroll" >
+						<Nav className="me-auto my-2 my-lg-0 fw-bold f" >
 
 							{arr1?.map((element) => {
 								return (
 								
-								<NavDropdown className=" p-2 navbarScrollingDropdown" 
-								title={element.title}
-								id="navbarScroll"
-								show={visible}
-								>
+									<NavDropdown className=" p-2 navbarScrollingDropdown " 
+									title={element.title}
+									id="navbarScroll"
+									renderMenuOnMount={true}
+									onMouseEnter={showDropdown} 
+									onMouseLeave={hideDropdown}
+									>
 									{element?.sublinks.map((link) => {
 										return (
 
-										<NavDropdown.Item className='' href={"#"}>
+										<NavDropdown.Item className='' href={"#"} >
 											{link}
 										</NavDropdown.Item>
 										)
@@ -106,7 +113,7 @@ const arr1 = [
 	{
 	id: 2,
 	title:"Industry", 
-	sublinks: ["Link1","Link2", "Link3"]
+	sublinks: ["Link1","Link2", "Link6"]
 },
 	{
 	id: 3,
