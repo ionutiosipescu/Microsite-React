@@ -1,0 +1,15 @@
+// $primary: yellow;
+// $shit: blue;
+
+@import '../../node_modules/bootstrap/scss/_functions';
+@import '../../node_modules/bootstrap/scss/_variables';
+
+$custom-theme-colors: (
+	'darkblue': blue,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// /home/len/Work/am-hls/node_modules/bootstrap/scss/_functions.scss
+
+@import '../../node_modules/bootstrap/scss/bootstrap';

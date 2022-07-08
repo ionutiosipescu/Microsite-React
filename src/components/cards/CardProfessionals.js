@@ -10,7 +10,7 @@ const Card = styled.div`
 	min-height: 300px; */
 	max-width: 500px;
 	min-height: 300px;
-	transform: scale(${props => props.transform || 1});
+	transform: scale(${({ transform }) => transform || 1});
 `
 
 const CardBody = styled.div`

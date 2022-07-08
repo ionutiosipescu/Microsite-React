@@ -38,7 +38,11 @@ const Leadership = () => {
 			<HeroSection title={'helthcare & live sciences leaders'} />
 			<InPageNavbar />
 			<h4 className="m-4 fw-bold text-primary">LEADERS</h4>
-			<div>Hello</div>
+			<div className="bg-primary">Hello</div>
+			<div className="bg-shit">Hello</div>
+
+			<button className="btn-darkblue">this is a button</button>
+			<div>hey</div>
 			<div
 				className="m-4"
 				style={{
