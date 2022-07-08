@@ -19,7 +19,7 @@ const SubPage = ({ subPage }) => {
 	}
 
 	return (
-		<Container fluid className="bg-light">
+		<Container fluid className="bg-light px-0">
 			{subPages[subPage]}
 		</Container>
 	)
