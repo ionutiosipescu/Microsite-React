@@ -13,6 +13,8 @@ import { Search } from '../../assets/icons'
 import styled from 'styled-components'
 
 const CustomNavbar = styled(Navbar)`
+	max-width: 1280px;
+	width: 100%;
 	#navbarScrollingDropdown,
 	.web-title {
 		color: rgba(0, 0, 0, 0.9);

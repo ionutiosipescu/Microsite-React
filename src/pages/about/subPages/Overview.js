@@ -5,6 +5,9 @@ import { NewsCell } from './subPages.style'
 import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../assets/images/ConnorWine'
+import Over from './Over.style.css'
+
+
 
 const Overview = () => {
 	// Card overview content from backend
@@ -13,12 +16,12 @@ const Overview = () => {
 		name: 'Connor Colquhoun',
 		position: 'wine connoisseur',
 		country: 'japan',
+		buttonText: "connect",
 	}
-
 	return (
 		<>
-			<Row className="">
-				<Col className="p-5">
+			<Row id='cont'>
+				<Col className="p-5 col-8">
 					<h1 className="my-4">
 						Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
 					</h1>
@@ -93,7 +96,7 @@ const Overview = () => {
 						</Col>
 					</Row>
 				</Col>
-				<Col className="col-4 p-0">
+				<Col className="col-4 p-0 col" id='special'>
 					<CardProfessionals {...cardContent} />
 					<CardProfessionals {...cardContent} />
 
