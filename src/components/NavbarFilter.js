@@ -73,13 +73,12 @@ const NavbarFilter = () => {
         display: flex;
         width: 200px;
         font-size: 25px;
-
         align-items: center;
         /* content: "Filter  result by "; */
         color: #fff;
       }
       .nav-link {
-        width: 80%;
+        width: 94%;
         margin: auto;
         color: #fff !important;
         display: flex;
@@ -118,11 +117,8 @@ const NavbarFilter = () => {
     <CustomNavbar className="p-0" expand="lg">
       <Container fluid className="d-flex justify-content-between">
         <CustomNavbar.Toggle aria-controls="navbarScroll" />
-        <CustomNavbar.Collapse
-          id="navbarScroll"
-          className="justify-content-around"
-        >
-          <Nav>
+        <CustomNavbar.Collapse id="navbarScroll" className=" ">
+          <Nav className="w-75 , justify-content-between">
             {arr1?.map((element) => {
               return (
                 <NavDropdown
@@ -144,13 +140,12 @@ const NavbarFilter = () => {
               );
             })}
           </Nav>
-          <div className="d-flex justify-content-end d-none d-lg-block">
-            {" "}
+          <div className="d-flex justify-content-center d-none d-lg-block ms-5">
             <Form>
               <Form.Control
                 type="search"
                 placeholder="Search"
-                className="me-2"
+                className=""
                 aria-label="Search"
               />
             </Form>
