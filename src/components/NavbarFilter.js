@@ -11,8 +11,8 @@ import {
 import { routeNames } from "../routes/routes";
 import { Search } from "../assets/icons";
 import styled from "styled-components";
+import { ListGroup } from "react-bootstrap";
 import { sizem } from "../utils/breakpoints";
-
 const NavbarFilter = () => {
   const CustomNavbar = styled(Navbar)`
     background: #002b49;

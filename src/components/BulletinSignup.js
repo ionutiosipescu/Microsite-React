@@ -61,6 +61,11 @@ const Form = styled.form`
 		align-items: flex-start;
 	}
 `
+// const YellowButton = styled.button`
+// @media ${size.md} {
+// 		border-radius: 0;
+// 	}
+// `
 const BulletinSignup = () => {
 	return (
 		// <Container className="my-5">
@@ -68,7 +73,7 @@ const BulletinSignup = () => {
 			<h3 className="fw-bold mb-0">{'A&M BULLETIN SIGNUP'}</h3>
 			<Form>
 				<Input placeholder={'Email Address'} />
-				<YellowButton text={'Subscribe'} radius={'5px'} width={'170px'} />
+				<YellowButton text={'Subscribe'} radius={'5px'} width={'170px'} height={"50px"} />
 			</Form>
 		</Container>
 	)
