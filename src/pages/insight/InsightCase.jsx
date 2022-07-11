@@ -8,6 +8,7 @@ import PostCard from "../../components/cards/PostCard";
 import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
 
 import { sizem } from "../../utils/breakpoints";
+import NavbarFilter from "../../components/NavbarFilter";
 
 const LatestInsightsContainer = styled.div`
   width: 100%;
@@ -35,7 +36,7 @@ const LatestInsightsContainer = styled.div`
   //     text-align: center;
   //   }
   // }
-  @media only screen and ${sizem.mdm} {
+  @media ${sizem.mdm} {
     .costumNavbar {
       display: flex;
       flex-direction: column;
@@ -78,7 +79,7 @@ const InsightCase = () => {
         title=" Case Studies"
         backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-      <div className="container-fluid d-flex justify-content-around  costumNavbar ">
+      {/* <div className="container-fluid d-flex justify-content-around  costumNavbar ">
         {arr1?.map((element, key) => (
           <div className=" p-2 " id={key}>
             <button
@@ -97,7 +98,8 @@ const InsightCase = () => {
             placeholder="Enter Author's Name"
           />
         </div>
-      </div>
+      </div> */}
+      <NavbarFilter />
       <div className="container  bg-white h-100 ">
         <div className="p-4">
           <h7>

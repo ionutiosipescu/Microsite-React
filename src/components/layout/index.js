@@ -7,14 +7,8 @@ import { size } from '../../utils/breakpoints'
 const Page = styled.div`
 	margin: 0 auto;
 	background-color: white;
-
-	@media ${size.xl} {
-		max-width: 80%;
-	}
-
-	/* @media ${size.laptopL} {
-			max-width: 70%;
-		} */
+    max-width: 1280px;
+	width: 100%;
 `
 const Container = styled.div`
 	background: var(--gray1);

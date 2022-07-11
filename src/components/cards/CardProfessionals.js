@@ -84,7 +84,7 @@ const CardProfessionals = ({
 						<div>{country} </div>
 					</div>
 				</Content>
-				{buttonText ? <YellowButton text={buttonText} radius={'0'} /> : ''}
+				{buttonText ? <YellowButton text={buttonText} radius={'0'} height={'57px'} /> : ''}
 			</CardBody>
 		</Card>
 	)

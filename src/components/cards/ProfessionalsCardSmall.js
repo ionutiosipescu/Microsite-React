@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import image from '../../assets/images/ConnorWine'
+import connor from '../../assets/images/ConnorWine'
 import YellowButton from '../buttons/YellowButton'
 import DetailedProfessionalsCard from './DetailedProfessionalsCard'
 import {
@@ -22,13 +22,13 @@ const ProfessionalsCardSmall = ({
 		if (!showDetails) {
 			setMargin(0)
 		}
-	})
+	}, [showDetails])
 
 	return (
 		<Container margin={margin}>
 			<Card onClick={() => handleDisplay(index)}>
 				<ImageContainer>
-					<img src={cardInfo?.image || image} alt="portrait"></img>
+					<img src={cardInfo?.image || connor} alt="portrait"></img>
 				</ImageContainer>
 
 				<CardBody>

@@ -31,7 +31,7 @@ const PageContainer = styled.div`
     font-size: 12px;
     border-radius: 50%;
   }
-  @media only screen and ${sizem.mdm} {
+  @media ${sizem.mdm} {
     .secondSection {
       text-align: center;
     }
