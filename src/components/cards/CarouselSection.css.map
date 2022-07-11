@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC,2BAA2B;AACtC,UAAU,CAAC,2BAA2B,CAAC;EACrC,OAAO,EAAE,IAAI;CACd",
-    "sources": [
-        "CarouselSection.scss"
-    ],
-    "names": [],
-    "file": "CarouselSection.css"
-}

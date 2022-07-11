@@ -16,7 +16,7 @@ import SearchBar from './SearchBar'
 const InPageNavbar = () => {
 	return (
 		<StyledNavbar className="py-0" expand="lg">
-			<Container fluid className="">
+			<Container fluid className="pr-1">
 				<StyledNavbar.Brand href={routeNames.home}>Logo</StyledNavbar.Brand>
 				<StyledNavbar.Toggle aria-controls="navbarScroll" />
 				<StyledNavbar.Collapse id="navbarScroll">

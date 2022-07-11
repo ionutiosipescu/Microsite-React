@@ -33,7 +33,9 @@ const Form = styled.form`
 		/* background-color: red; */
 		padding: 1rem;
 	}
+
 	button {
+		width: 70px;
 		img {
 			width: 20px;
 			color: white;
@@ -46,7 +48,7 @@ const SearchBar = () => {
 		<Form>
 			<input type={'text'} placeholder={'Search by name'}></input>
 			{/* <input type={'submit'} placeholder={'asdf'} text="fuck"></input> */}
-			<button type={'submit'} placeholder={'asdf'} text="fuck">
+			<button type={'submit'} placeholder={'asdf'}>
 				<Search />
 			</button>
 		</Form>

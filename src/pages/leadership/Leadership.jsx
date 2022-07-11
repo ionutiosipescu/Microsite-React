@@ -41,8 +41,8 @@ const Leadership = () => {
 			<div className="bg-primary">Hello</div>
 			<div className="bg-shit">Hello</div>
 
-			<button className="btn-darkblue">this is a button</button>
-			<div>hey</div>
+			<button className="btn-darkblue p-4">this is a button</button>
+			<div className="bg-primary pr-4">hey</div>
 			<div
 				className="m-4"
 				style={{
