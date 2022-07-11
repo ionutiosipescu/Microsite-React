@@ -7,7 +7,8 @@ const Card = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	// align-items: center;
+
+	align-items: flex-start;
 	height: 400px;
 	padding: 30px;
 
@@ -35,7 +36,7 @@ const CareersInDigital = () => {
 				Mollit non voluptate ipsum cillum. Cillum mollit deserunt nulla sunt et
 				enim voluptate. Labore reprehenderit et in aliquip laborum pariatur.
 			</p>
-			<YellowButton text="SEARCH AND APPLY" width="auto" />
+			<YellowButton text="SEARCH AND APPLY" width={"auto"} height={"50px"} radius={"5px"}/>
 		</Card>
 	)
 }
