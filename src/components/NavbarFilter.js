@@ -12,7 +12,7 @@ import { routeNames } from "../routes/routes";
 import { Search } from "../assets/icons";
 import styled from "styled-components";
 import { ListGroup } from "react-bootstrap";
-import { sizem } from "../utils/breakpoints";
+import { sizem, size } from "../utils/breakpoints";
 const NavbarFilter = () => {
   const CustomNavbar = styled(Navbar)`
     background: #002b49;
@@ -45,6 +45,21 @@ const NavbarFilter = () => {
     //  .nav-item:hover .dropdown-menu {
     //     display: block !important;
     // }
+    /* .FullNavbar {
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+    } */
+    @media ${size.lg} {
+      .dropdown-toggle::after {
+        display: none;
+      }
+      .FullNavbar {
+        width: 75%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
 
     @media ${sizem.lgm} {
       .navbar-toggler {
@@ -57,7 +72,7 @@ const NavbarFilter = () => {
         /* border: 2px solid red; */
         display: felx;
         display: flex;
-        flex-direction: row-reverse;
+        /* flex-direction: row-reverse; */
         width: 100%;
         justify-content: space-between;
       }
@@ -65,8 +80,9 @@ const NavbarFilter = () => {
         font-size: 30px;
         content: "Filter  result by ";
       }
-      .navbar-light .navbar-toggler-icon {
-        /* background-image: url(data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke=%27rgba%280, 0, 0, 0.55%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e); */
+      .navbar-toggler-icon {
+        background-image: url("") !important;
+        display: none;
       }
       .navbar-toggler-icon:after {
         margin-top: 10px;
@@ -78,7 +94,7 @@ const NavbarFilter = () => {
         color: #fff;
       }
       .nav-link {
-        width: 94%;
+        width: 100%;
         margin: auto;
         color: #fff !important;
         display: flex;
@@ -118,7 +134,7 @@ const NavbarFilter = () => {
       <Container fluid className="d-flex justify-content-between">
         <CustomNavbar.Toggle aria-controls="navbarScroll" />
         <CustomNavbar.Collapse id="navbarScroll" className=" ">
-          <Nav className="w-75 , justify-content-between">
+          <Nav className=" FullNavbar">
             {arr1?.map((element) => {
               return (
                 <NavDropdown
@@ -128,6 +144,7 @@ const NavbarFilter = () => {
                   renderMenuOnMount={true}
                   onMouseEnter={showDropdown}
                   onMouseLeave={hideDropdown}
+                  onClick={() => console.log(element)}
                 >
                   {element?.sublinks.map((link) => {
                     return (
@@ -144,7 +161,7 @@ const NavbarFilter = () => {
             <Form>
               <Form.Control
                 type="search"
-                placeholder="Search"
+                placeholder="Enter Author's Name"
                 className=""
                 aria-label="Search"
               />
