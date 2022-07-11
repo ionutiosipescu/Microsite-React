@@ -16,7 +16,7 @@ import { NewsCell } from './subPages.style'
 import QualityCard from '../../../components/cards/QualityCard'
 import { arrQualities } from '../../../utils/data'
 import { CustomNavbar } from '../about.style'
-import NavbarFilter from '../../../components/Navbar/NavbarFilter'
+import NavbarFilter from '../../../components/NavbarComponents/NavbarFilter'
 import styled from 'styled-components'
 
 const Practice = () => {

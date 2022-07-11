@@ -5,8 +5,13 @@ import {
 	CarouselSection,
 } from '../../components/cards'
 import styled from 'styled-components'
-import { leadersList, arr } from '../../utils/data'
-import InPageNavbar from '../../components/Navbar/CustomNavbar'
+import { leadersList, arr, links } from '../../utils/data'
+import {
+	Navbar,
+	NavbarCell,
+	NavbarDropdown,
+	SearchBar,
+} from '../../components/NavbarComponents'
 import CurrentRoute from '../../components/CurrentRoute'
 
 const LeaadersContainer = styled.div`
@@ -36,19 +41,19 @@ const Leadership = () => {
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
-			<InPageNavbar />
-			<h4 className="m-4 fw-bold text-primary">LEADERS</h4>
-			<div className="bg-primary">Hello</div>
-			<div className="bg-shit">Hello</div>
+			<Navbar searchBar={true}>
+				<NavbarCell>Fuck</NavbarCell>
+				<NavbarCell>Fuck1</NavbarCell>
+				<NavbarCell>Fuck2</NavbarCell>
+				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
+				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
 
-			<button className="btn-darkblue p-4">this is a button</button>
-			<div className="bg-primary pr-4">hey</div>
-			<div
-				className="m-4"
-				style={{
-					position: 'relative',
-				}}
-			>
+				{/* <SearchBar /> */}
+			</Navbar>
+
+			{/* <NavbarCell /> */}
+
+			<div className="m-4">
 				<LeaadersContainer>
 					{leadersList.map((cardInfo, index) => {
 						return (
