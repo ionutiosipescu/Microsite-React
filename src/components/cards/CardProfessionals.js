@@ -9,20 +9,9 @@ const Card = styled.div`
 	background: var(--darkBlue);
 	/* min-width: 400px;
 	min-height: 300px; */
-	/* max-width: 500px; */
-	/* min-height: 300px; */
-	transform: scale(${props => props.transform || 1});
-	height: 95.297px;
-	width: 100%;
-	@media ${size.sm} {
-		height: 146.609px;
-	}		
-	@media ${size.lg} {
-		height: 168.609px;
-	}		
-	@media ${size.xl} {
-		height: 219.922px;
-	}		
+	max-width: 500px;
+	min-height: 300px;
+	transform: scale(${({ transform }) => transform || 1});
 `
 
 const CardBody = styled.div`
@@ -49,17 +38,17 @@ const ImageContainer = styled.div`
 		img {
 			width: 100px;
 		}
-	}	
+	}
 	@media ${size.lg} {
 		img {
 			width: 115px;
 		}
-	}	
+	}
 	@media ${size.xl} {
 		img {
 			width: 150px;
 		}
-	}	
+	}
 `
 
 const Content = styled.div`
@@ -82,12 +71,12 @@ const Content = styled.div`
 			font-size: 15px !important;
 		}
 		div {
-		font-size: 10px !important;
+			font-size: 10px !important;
 		}
 		.CardProfessionalsButton {
 			height: 50px !important;
 		}
-	}	
+	}
 
 	h2 {
 		padding: 0;
@@ -96,7 +85,7 @@ const Content = styled.div`
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 20px;
-	}	
+	}
 
 	div {
 		font-size: 16px;
@@ -125,7 +114,17 @@ const CardProfessionals = ({
 						<div>{country} </div>
 					</div>
 				</Content>
-				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"}/> : ''}
+				{buttonText ? (
+					<YellowButton
+						className="CardProfessionalsButton"
+						text={buttonText}
+						radius={'0'}
+						height={'50px'}
+						display={'none'}
+					/>
+				) : (
+					''
+				)}
 			</CardBody>
 		</Card>
 	)
