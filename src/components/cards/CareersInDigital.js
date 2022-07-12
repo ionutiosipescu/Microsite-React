@@ -23,12 +23,6 @@ const Card = styled.div`
 		// color: gray;
 	}
 
-	button {
-		// color: red;
-		justify-self: start;
-		border-radius: 5px;
-	}
-
 `
 
 const CareersInDigital = () => {

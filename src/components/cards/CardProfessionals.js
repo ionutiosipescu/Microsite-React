@@ -17,7 +17,7 @@ const Card = styled.div`
 	height: 95.297px;
 	width: 100%;
 	@media ${size.sm} {
-		height: 146.609px;
+		height:  146.609px;
 	}		
 	@media ${size.lg} {
 		height: 168.609px;
@@ -43,6 +43,11 @@ const CardBody = styled.div`
 		background-color: var(--coralBlue);
 		border-color: var(--coralBlue);
 	}
+	@media ${size.lg} {
+	  button {
+		display: block;
+	  }
+	}	
 `
 
 const ImageContainer = styled.div`
@@ -135,7 +140,7 @@ const Button = styled.button`
 	max-width: 30px;
     transition: background-color 0.2s ease-out;
 	@media ${size.lg} {
-	display: none;
+	display: none !important;
 	}
 `
 
@@ -163,7 +168,7 @@ const CardProfessionals = ({
 						<div className='country'>{country} </div>
 					</div>
 				</Content>
-				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"}/> : ''}
+				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"} /> : ''}
 				<CardArrow>
 				<Button className='whitebutton'>
 						<ChevronRight />
