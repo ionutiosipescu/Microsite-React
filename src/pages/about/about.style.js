@@ -27,5 +27,5 @@ export const NavItem = styled.div`
 	background: ${props => (props.clicked ? 'white' : 'var(--darkBlue)')};
 	color: ${props => (props.clicked ? 'black' : 'white')};
 	/* border-bottom: 1px solid; */
-		${props => (props.clicked ? 'var(--darkBlue1)' : 'none')};
+		${props => (props.clicked ? 'var(--darkBlue1)' : 'none')}
 `

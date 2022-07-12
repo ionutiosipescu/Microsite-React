@@ -16,15 +16,19 @@ const Button = styled.button`
 
 	width: ${props => props.width || 'auto'};
 	height: ${props => props.height || 'auto'};
+	display: ${props => props.display || 'block'};
 	 @media ${size.md} {
 		border-radius: 0;
 	} 
+	 @media ${size.lg} {
+		display: block;
+	} 
 `
 
-const YellowButton = ({ text, radius, width, height }) => {
+const YellowButton = ({ text, radius, width, height, display }) => {
 	// return <Button radius={radius}>{text}</Button>
 	return (
-		<Button radius={radius} width={width} height={height}>
+		<Button radius={radius} width={width} height={height} display={display}>
 			{text}
 		</Button>
 	)

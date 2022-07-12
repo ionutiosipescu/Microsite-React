@@ -6,9 +6,11 @@ import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../assets/images/ConnorWine'
 import Over from './Over.style.css'
+import styled from 'styled-components'
 
 
 
+	
 const Overview = () => {
 	// Card overview content from backend
 	const cardContent = {
@@ -20,8 +22,8 @@ const Overview = () => {
 	}
 	return (
 		<>
-			<Row id='cont'>
-				<Col className="p-5 col-8">
+			<Row className='p-0 m-0 d-flex flex-column flex-lg-row'>
+				<Col className="m-4 col-8">
 					<h1 className="my-4">
 						Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
 					</h1>
@@ -96,9 +98,9 @@ const Overview = () => {
 						</Col>
 					</Row>
 				</Col>
-				<Col className="col-4 p-0 col" id='special'>
+				<Col className="p-lg-0 flex-grow-1 gap-3 w-100 px-0 mt-4 mt-lg-0 ms-lg-4 " id='special'>
 					<CardProfessionals {...cardContent} />
-					<CardProfessionals {...cardContent} />
+					
 
 					<CareersInDigital />
 				</Col>
