@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { size } from '../../utils/breakpoints'
 
-export const Cell = styled.div`
+export const Cell = styled.li`
 	display: flex;
 	height: 100%;
-	padding: 0 3rem;
-	vertical-align: middle;
 	align-items: center;
 
+	padding: 0.5rem 1rem;
 	/* border: 2px solid red; */
 
 	transition: all 0.2s ease-in-out;
@@ -22,12 +22,15 @@ export const Cell = styled.div`
 		text-decoration: none;
 		color: white;
 	}
+	@media ${size.lg} {
+		padding: 0 2rem;
+	}
 `
 
-const NavbarCell = ({ children, link }) => {
+const NavbarCell = ({ children, href }) => {
 	return (
 		<Cell>
-			<a href={link}>{children}</a>
+			<a href={href}>{children}</a>
 		</Cell>
 	)
 }

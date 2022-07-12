@@ -41,17 +41,14 @@ const Leadership = () => {
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
-			<Navbar searchBar={true}>
-				<NavbarCell>Fuck</NavbarCell>
+
+			<Navbar searchBar spread>
+				<NavbarCell href={'asd'}>Fuck</NavbarCell>
 				<NavbarCell>Fuck1</NavbarCell>
 				<NavbarCell>Fuck2</NavbarCell>
+				<NavbarDropdown links={links}>Something</NavbarDropdown>
 				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
-				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
-
-				{/* <SearchBar /> */}
 			</Navbar>
-
-			{/* <NavbarCell /> */}
 
 			<div className="m-4">
 				<LeaadersContainer>

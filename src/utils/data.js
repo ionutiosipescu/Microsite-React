@@ -213,47 +213,38 @@ export const leadersList = [
 
 export const links = [
 	{
-		id: 10,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 9,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 8,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 7,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 6,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 5,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 4,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 3,
 		name: 'sublink',
 		href: '/',
 	},
 	{
-		id: 2,
 		name: 'sublink',
 		href: '/',
 	},

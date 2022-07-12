@@ -5,13 +5,11 @@ import { size } from '../../utils/breakpoints'
 
 const Form = styled.form`
 	display: ${props => {
-		return props.show ? 'none' : 'flex'
+		return props.visible ? 'none' : 'flex'
 	}};
 
-	font-size: 1.5rem;
+	font-size: 1rem;
 
-	/* This?  */
-	/* height: 100%; */
 	height: 70px;
 
 	margin-left: auto;
@@ -30,7 +28,6 @@ const Form = styled.form`
 		::placeholder {
 			color: white;
 		}
-		/* display */
 
 		@media ${size.lg} {
 			display: initial;
@@ -54,7 +51,7 @@ const Form = styled.form`
 	}
 `
 
-const SearchBar = ({ show, handleClick, disappearOnMobile }) => {
+const SearchBar = ({ visible, handleClick, disappearOnMobile }) => {
 	const [userInput, setUserInput] = useState(null)
 
 	const handleChange = e => {
@@ -62,7 +59,7 @@ const SearchBar = ({ show, handleClick, disappearOnMobile }) => {
 	}
 
 	return (
-		<Form show={show} disappearOnMobile={disappearOnMobile}>
+		<Form visible={visible} disappearOnMobile={disappearOnMobile}>
 			<input
 				type={'text'}
 				placeholder={'Search by name'}
