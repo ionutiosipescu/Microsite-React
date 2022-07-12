@@ -12,7 +12,7 @@ const ContactSection = styled.div`
   width: 100%;
   background-color: white;
 
-  h1 {
+  contact-am-heading {
     font-family: "DINNextW01-CondensedMed", "Arial Narrow", Tahoma, sans-serif;
     font-weight: normal;
     font-size: 2rem;
@@ -117,7 +117,7 @@ const Contact = () => {
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (value.match(/^[a-zA-Z0-9@.?!]*$/) && name !== "email") {
+    if (value.match(/^[a-zA-Z0-9@.?!]*$/)) {
       setValues({
         ...values,
         [name]: value,
@@ -133,7 +133,7 @@ const Contact = () => {
 
       <div className="content  bg-white py-5 ">
         <div className=" content w-75 m-auto pt-2">
-          <h1 class="contact-am-heading ">Contact A&amp;M</h1>
+          <h1 className="contact-am-heading ">Contact A&amp;M</h1>
         </div>
         <div className="containerForm w-75 m-auto ">
           <div className="form form--contact  py-5">

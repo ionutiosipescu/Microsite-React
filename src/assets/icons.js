@@ -11,7 +11,12 @@ const icon = (className, name) => (
 );
 
 const iconPng = (className, name) => (
-  <img className={className} src={iconsPath + name + ".png"} alt=" " />
+  <img
+    className={className}
+    src={iconsPath + name + ".png"}
+    height="32px"
+    alt=" "
+  />
 );
 
 const Search = ({ className }) => icon(className, "search");
@@ -23,7 +28,12 @@ const Twitter = ({ className }) => icon(className, "twitter");
 const XIcon = ({ className }) => icon(className, "xIcon");
 
 const ChevronRightBlue = ({ className }) => iconPng(className, "chevron");
+const ChevronRightWhite = ({ className }) => iconPng(className, "chevron");
 const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
+const PdfIcon = ({ className }) => iconPng(className, "pdf");
+const DocumentIcon = ({ className }) => iconPng(className, "document");
+const ShareIcon = ({ className }) => iconPng(className, "share");
+const LetterIcon = ({ className }) => iconPng(className, "letter");
 // const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
 
 export {
@@ -31,9 +41,14 @@ export {
   XIcon,
   ChevronRight,
   ChevronRightBlue,
+  ChevronRightWhite,
   LinkedIn,
   Facebook,
   Twitter,
   YouTube,
   IconTriangle,
+  PdfIcon,
+  DocumentIcon,
+  ShareIcon,
+  LetterIcon,
 };

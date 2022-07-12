@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button, Card, Row, Col, Container } from 'react-bootstrap'
+import {Row, Col, Container } from 'react-bootstrap'
 import YellowButton from '../../../components/buttons/YellowButton'
 import { NewsCell } from './subPages.style'
 import CardProfessionals from '../../../components/cards/CardProfessionals'
 import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../assets/images/ConnorWine'
-import Over from './Over.style.css'
-import styled from 'styled-components'
+
+
 
 
 
@@ -23,7 +23,7 @@ const Overview = () => {
 	return (
 		<>
 			<Row className='p-0 m-0 d-flex flex-column flex-lg-row'>
-				<Col className="m-4 col-8">
+				<Col lg={8} className="">
 					<h1 className="my-4">
 						Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
 					</h1>
@@ -98,7 +98,7 @@ const Overview = () => {
 						</Col>
 					</Row>
 				</Col>
-				<Col className="p-lg-0 flex-grow-1 gap-3 w-100 px-0 mt-4 mt-lg-0 ms-lg-4 " id='special'>
+				<Col lg={4} className=" px-0 ps-lg-5 flex-grow-1">
 					<CardProfessionals {...cardContent} />
 					
 

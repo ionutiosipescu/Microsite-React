@@ -11,6 +11,10 @@ import {
   LinkedIn,
   Twitter,
   YouTube,
+  DocumentIcon,
+  PdfIcon,
+  ShareIcon,
+  LetterIcon,
 } from "../../assets/icons";
 import { sizem } from "../../utils/breakpoints";
 
@@ -67,13 +71,16 @@ const InsightCaseArticlePage = ({ locationName }) => {
                 {/*------------------------------------------------------------- LeftSectionIcons */}
                 <div className="">
                   <div className="pt-2">
-                    <YouTube />
+                    <ShareIcon />
                   </div>
-                  <div className="pt-2">
-                    <Facebook />
+                  <div className="pt-4">
+                    <DocumentIcon />
                   </div>
-                  <div className="pt-2">
-                    <Twitter />
+                  <div className="pt-4">
+                    <LetterIcon />
+                  </div>
+                  <div className="pt-4">
+                    <PdfIcon />
                   </div>
                 </div>
               </div>
@@ -105,7 +112,10 @@ const InsightCaseArticlePage = ({ locationName }) => {
                   ))}
                 </div>
                 <div className="pt-4 learnMore">
-                  <a href="https://www.google.com" className="text-info">
+                  <a
+                    href="https://www.google.com"
+                    className="text-info text-decoration-none"
+                  >
                     Learn mode now.
                   </a>
                 </div>
