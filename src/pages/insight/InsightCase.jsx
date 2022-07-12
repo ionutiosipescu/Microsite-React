@@ -19,7 +19,8 @@ const LatestInsightsContainer = styled.div`
   }
 
   h7 img {
-    width: 13px;
+    width: 16px;
+    height: 16px;
     color: #0085ca;
     margin: 0px 10px;
   }
