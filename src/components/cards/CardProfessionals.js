@@ -32,9 +32,13 @@ const CardBody = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	width: -webkit-fill-available;
+
 	@media ${size.lg} {
 	   flex-direction: column;
 	}	
+	button {
+		transition: background-color 0.2s ease-out;
+	}
 	button:hover {
 		background-color: var(--coralBlue);
 		border-color: var(--coralBlue);
@@ -104,7 +108,13 @@ const Content = styled.div`
 		font-weight: bold;
 		font-size: 20px;
 	}	
-
+	h2, .country {
+		transition: color 0.2s ease-out;
+		cursor: pointer;
+	}
+	h2:hover, .country:hover {
+		color: var(--coralBlue);
+	}
 	div {
 		font-size: 16px;
 	}
@@ -150,7 +160,7 @@ const CardProfessionals = ({
 					<h2>{name || 'Connor Colquhoun'}</h2>
 					<div>
 						<div>{position || 'wine connoisseur'}</div>
-						<div>{country} </div>
+						<div className='country'>{country} </div>
 					</div>
 				</Content>
 				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"}/> : ''}
