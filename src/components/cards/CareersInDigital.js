@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import YellowButton from '../buttons/YellowButton'
+import { size } from '../../utils/breakpoints'
 
 const Card = styled.div`
 	background: var(--gray3);
@@ -25,7 +26,9 @@ const Card = styled.div`
 	button {
 		// color: red;
 		justify-self: start;
+		border-radius: 5px;
 	}
+
 `
 
 const CareersInDigital = () => {

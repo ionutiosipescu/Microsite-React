@@ -23,6 +23,7 @@ const Twitter = ({ className }) => icon(className, "twitter");
 const XIcon = ({ className }) => icon(className, "xIcon");
 
 const ChevronRightBlue = ({ className }) => iconPng(className, "chevron");
+const ChevronRightWhite = ({ className }) => iconPng(className, "chevron");
 const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
 // const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
 
@@ -31,6 +32,7 @@ export {
   XIcon,
   ChevronRight,
   ChevronRightBlue,
+  ChevronRightWhite,
   LinkedIn,
   Facebook,
   Twitter,

@@ -3,6 +3,8 @@ import image from '../../assets/images/ConnorWine'
 import styled from 'styled-components'
 import YellowButton from '../buttons/YellowButton'
 import { size } from '../../utils/breakpoints'
+import { ChevronRight } from '../../assets/icons'
+
 
 const Card = styled.div`
 	display: flex;
@@ -27,12 +29,16 @@ const Card = styled.div`
 
 const CardBody = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	width: -webkit-fill-available;
-	/* flex: 2; */
-	/* align-items: center; */
-	/* width: 100px; */
+	@media ${size.lg} {
+	   flex-direction: column;
+	}	
+	button:hover {
+		background-color: var(--coralBlue);
+		border-color: var(--coralBlue);
+	}
 `
 
 const ImageContainer = styled.div`
@@ -62,6 +68,7 @@ const ImageContainer = styled.div`
 	}	
 `
 
+
 const Content = styled.div`
 	padding: 20px;
 	text-transform: uppercase;
@@ -72,7 +79,7 @@ const Content = styled.div`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 
 	/* justify-content: space-between; */
 	/* gap: 1rem; */
@@ -102,6 +109,27 @@ const Content = styled.div`
 		font-size: 16px;
 	}
 `
+const CardArrow = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	button:hover {
+		background-color: var(--coralBlue);
+	}
+`
+const Button = styled.button`
+	background-color: rgba(0, 0, 0, 0);
+	border: 0;
+	height: 100%;
+	max-width: 30px;
+    transition: background-color 0.2s ease-out;
+	@media ${size.lg} {
+	display: none;
+	}
+`
+
+
 
 const CardProfessionals = ({
 	name,
@@ -126,6 +154,11 @@ const CardProfessionals = ({
 					</div>
 				</Content>
 				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"}/> : ''}
+				<CardArrow>
+				<Button className='whitebutton'>
+						<ChevronRight />
+				</Button>
+			</CardArrow>
 			</CardBody>
 		</Card>
 	)
