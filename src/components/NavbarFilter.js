@@ -8,8 +8,8 @@ import {
 	FormControl,
 	Button,
 } from 'react-bootstrap'
-import { routeNames } from '../../routes/routes'
-import { Search } from '../../assets/icons'
+import { routeNames } from '../routes/routes'
+import { Search } from '../assets/icons'
 import styled from 'styled-components'
 
 const CustomNavbar = styled(Navbar)`
