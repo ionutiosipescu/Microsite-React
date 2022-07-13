@@ -210,3 +210,42 @@ export const leadersList = [
 			'Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .',
 	},
 ]
+
+export const links = [
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+	{
+		name: 'sublink',
+		href: '/',
+	},
+]

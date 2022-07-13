@@ -5,8 +5,13 @@ import {
 	CarouselSection,
 } from '../../components/cards'
 import styled from 'styled-components'
-import { leadersList, arr } from '../../utils/data'
-import InPageNavbar from '../../components/Navbar/CustomNavbar'
+import { leadersList, arr, links } from '../../utils/data'
+import {
+	Navbar,
+	NavbarCell,
+	NavbarDropdown,
+	SearchBar,
+} from '../../components/NavbarComponents'
 import CurrentRoute from '../../components/CurrentRoute'
 
 const LeaadersContainer = styled.div`
@@ -36,15 +41,16 @@ const Leadership = () => {
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
-			<InPageNavbar />
-			<h4 className="m-4 fw-bold text-primary">LEADERS</h4>
-			<div>Hello</div>
-			<div
-				className="m-4"
-				style={{
-					position: 'relative',
-				}}
-			>
+
+			<Navbar searchBar spread>
+				<NavbarCell href={'asd'}>Fuck</NavbarCell>
+				<NavbarCell>Fuck1</NavbarCell>
+				<NavbarCell>Fuck2</NavbarCell>
+				<NavbarDropdown links={links}>Something</NavbarDropdown>
+				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
+			</Navbar>
+
+			<div className="m-4">
 				<LeaadersContainer>
 					{leadersList.map((cardInfo, index) => {
 						return (
