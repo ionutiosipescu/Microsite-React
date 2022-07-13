@@ -23,7 +23,7 @@ const Overview = () => {
 	return (
 		<>
 			<Row className='p-0 m-0 d-flex flex-column flex-lg-row'>
-				<Col lg={8} className="">
+				<Col lg={8} >
 					<h1 className="my-4">
 						Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
 					</h1>
