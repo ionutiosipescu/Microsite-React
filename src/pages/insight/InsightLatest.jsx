@@ -8,6 +8,7 @@ import PostCard from "../../components/cards/PostCard";
 import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
 import { sizem } from "../../utils/breakpoints";
 import NavbarFilter from "../../components/NavbarFilter";
+import { XIcon } from "../../assets/icons";
 
 const LatestInsightsContainer = styled.div`
   width: 100%;
@@ -66,11 +67,29 @@ const InsightLatest = () => {
   const LocationName = location?.pathname.split("/").slice(1, 3);
 
   const [articles, setArticles] = useState([...arr]);
-
+  const [itemsFilter, setItemsFilter] = useState([]);
   //filter array by button value
   const handleFilterArticles = (title) => {
     var newArr = arr.filter((post) => post.category == title.toLowerCase());
     setArticles(newArr);
+  };
+  const handleAddFilterItem = (item) => {
+    console.log(item);
+    if (itemsFilter.indexOf(item) === -1) {
+      setItemsFilter((oldArr) => [...oldArr, item]);
+    }
+
+    // let arrItemsFilter = itemsFilter;
+    // if (arrItemsFilter.indexOf(item) === -1) {
+    //   arrItemsFilter.push(item);
+    //   console.log(itemsFilter);
+    //   // setItemsFilter((prevState) => [...prevState, item]);
+    //   setItemsFilter(arrItemsFilter);
+    // }
+  };
+  const handleDeleteFilterItem = (itemx) => {
+    console.log(itemx);
+    setItemsFilter(itemsFilter.filter((item) => item !== itemx));
   };
 
   return (
@@ -99,7 +118,31 @@ const InsightLatest = () => {
           />
         </div>
       </div> */}
-      <NavbarFilter />
+      <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
+      {itemsFilter.length !== 0 && (
+        <div
+          className="container-fluid  w-100 d-flex align-items-center filterItem"
+          style={{ height: "60px", backgroundColor: "#00000029" }}
+        >
+          {itemsFilter?.map((itemFilter) => (
+            <div
+              className="filterItem  d-flex px-2 align-items-center ms-2 rounded-2 bg-light"
+              style={{ height: "40px" }}
+            >
+              <div>{itemFilter}</div>
+              <div
+                className="ms-2 d-flex "
+                onClick={() => {
+                  handleDeleteFilterItem(itemFilter);
+                  // console.log(itemFilter);
+                }}
+              >
+                <XIcon />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="container  bg-white h-100 ">
         <div className="p-4">
           <h7>

@@ -100,6 +100,108 @@ const NavbarFilter = () => {
 	)
 }
 
+const CustomNavbar = styled(Navbar)`
+  background: #002b49;
+  // height: 40px;
+  // background: green;
+  .navbarScrollingDropdown,
+  .web-title {
+    color: #fff;
+    padding: 20px 12px !important;
+  }
+  .nav-item.show.dropdown {
+    background-color: #002b49;
+  }
+  .nav-item.show.dropdown a {
+    color: #fff !important;
+  }
+  .nav-item.show.dropdown div {
+    background-color: #002b49;
+    border-radius: 0;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border: 0;
+  }
+  .nav-item.show.dropdown a {
+    background-color: #002b49;
+  }
+  .nav-link {
+    color: #fff !important;
+  }
+  //  .nav-item:hover .dropdown-menu {
+  //     display: block !important;
+  // }
+  /* .FullNavbar {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+} */
+  @media ${size.lg} {
+    .dropdown-toggle::after {
+      display: none;
+    }
+    .FullNavbar {
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  @media ${sizem.lgm} {
+    .navbar-toggler {
+      margin-top: 10px;
+      width: 200px;
+      font-size: 25px;
+      align-items: center;
+      content: "Filter  result by ";
+      color: #fff;
+      /* border: 2px solid red; */
+      display: felx;
+      display: flex;
+      /* flex-direction: row-reverse; */
+      width: 100%;
+      justify-content: space-between;
+    }
+    .navbar-toggler:after {
+      font-size: 30px;
+      content: "Filter  result by ";
+    }
+    .navbar-toggler-icon {
+      background-image: url("") !important;
+      display: none;
+    }
+    .navbar-toggler-icon:after {
+      margin-top: 10px;
+      display: flex;
+      width: 200px;
+      font-size: 25px;
+      align-items: center;
+      /* content: "Filter  result by "; */
+      color: #fff;
+    }
+    .nav-link {
+      width: 100%;
+      margin: auto;
+      color: #fff !important;
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+    }
+    .nav-link:before {
+      transform: rotate(-0deg);
+    }
+    .nav-link:hover:before {
+      transform: rotate(-0deg);
+    }
+    .nav-link:after {
+      transform: rotate(-90deg);
+    }
+    .nav-link:hover:after {
+      transform: rotate(-0deg);
+    }
+  }
+`;
+
 const arr1 = [
 	{
 		id: 1,

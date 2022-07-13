@@ -11,41 +11,41 @@ import { sizem } from '../../utils/breakpoints'
 import NavbarFilter from '../../components/NavbarFilter'
 
 const LatestInsightsContainer = styled.div`
-	width: 100%;
-	margin: 0;
+  width: 100%;
+  margin: 0;
 
-	h7 {
-		color: #0085ca;
-	}
+  h6 {
+    color: #0085ca;
+  }
 
-	h7 img {
-		width: 16px;
-		height: 16px;
-		color: #0085ca;
-		margin: 0px 10px;
-	}
-	.costumNavbar {
-		background-color: #002b49;
-	}
-	.costumNavbar button {
-		color: #fff;
-		background-color: ${props => (props.clicked ? 'white' : '#002B49')};
-		color: ${props => (props.clicked ? 'black' : 'white')};
-	}
-	// @media ${sizem.smm} {
-	//   .costumNavbar {
-	//     text-align: center;
-	//   }
-	// }
-	@media ${sizem.mdm} {
-		.costumNavbar {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			text-align: center;
-		}
-	}
-`
+  h6 img {
+    width: 16px;
+    height: 16px;
+    color: #0085ca;
+    margin: 0px 10px;
+  }
+  .costumNavbar {
+    background-color: #002b49;
+  }
+  .costumNavbar button {
+    color: #fff;
+    background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+    color: ${(props) => (props.clicked ? "black" : "white")};
+  }
+  // @media ${sizem.smm} {
+  //   .costumNavbar {
+  //     text-align: center;
+  //   }
+  // }
+  @media ${sizem.mdm} {
+    .costumNavbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+`;
 const CostumButton = styled.div`
 	color: #fff;
 	background-color: ${props => (props.clicked ? 'white' : '#002B49')};
@@ -89,15 +89,18 @@ const InsightCase = () => {
               onClick={() => handleFilterArticles(element)}
               clicked={element}
             >
-              {element}
-            </button>
-          </div>
-        ))}
-        <div className=" p-2">
-          <input
-            className="h-100 rounded border-0 p-2"
-            placeholder="Enter Author's Name"
-          />
+              <div>{itemFilter}</div>
+              <div
+                className="ms-2 d-flex "
+                onClick={() => {
+                  handleDeleteFilterItem(itemFilter);
+                  // console.log(itemFilter);
+                }}
+              >
+                <XIcon />
+              </div>
+            </div>
+          ))}
         </div>
       </div> */}
 			<NavbarFilter />
