@@ -12,38 +12,6 @@ import { routeNames } from '../routes/routes'
 import { Search } from '../assets/icons'
 import styled from 'styled-components'
 
-const CustomNavbar = styled(Navbar)`
-	background: var(--darkBlue);
-
-	.navbarScrollingDropdown,
-	.web-title {
-		color: #fff;
-		padding: 20px 12px !important;
-	}
-	.nav-item.show.dropdown {
-		background-color: #002b49;
-	}
-	.nav-item.show.dropdown a {
-		color: #fff !important;
-	}
-	.nav-item.show.dropdown div {
-		background-color: #002b49;
-		border-radius: 0;
-		margin-top: 0;
-		padding-bottom: 0.5rem;
-		border: 0;
-	}
-	.nav-item.show.dropdown a {
-		background-color: #002b49;
-	}
-	.nav-link {
-		color: #fff !important;
-	}
-	.nav-item:hover .dropdown-menu {
-		display: block !important;
-	}
-`
-
 const NavbarFilter = () => {
 	// const [articles, setArticles] = useState([...arr]);
 
@@ -102,8 +70,6 @@ const NavbarFilter = () => {
 
 const CustomNavbar = styled(Navbar)`
   background: #002b49;
-  // height: 40px;
-  // background: green;
   .navbarScrollingDropdown,
   .web-title {
     color: #fff;
@@ -128,14 +94,6 @@ const CustomNavbar = styled(Navbar)`
   .nav-link {
     color: #fff !important;
   }
-  //  .nav-item:hover .dropdown-menu {
-  //     display: block !important;
-  // }
-  /* .FullNavbar {
-  width: 75%;
-  display: flex;
-  justify-content: space-between;
-} */
   @media ${size.lg} {
     .dropdown-toggle::after {
       display: none;
@@ -155,10 +113,8 @@ const CustomNavbar = styled(Navbar)`
       align-items: center;
       content: "Filter  result by ";
       color: #fff;
-      /* border: 2px solid red; */
       display: felx;
       display: flex;
-      /* flex-direction: row-reverse; */
       width: 100%;
       justify-content: space-between;
     }
@@ -176,7 +132,6 @@ const CustomNavbar = styled(Navbar)`
       width: 200px;
       font-size: 25px;
       align-items: center;
-      /* content: "Filter  result by "; */
       color: #fff;
     }
     .nav-link {
