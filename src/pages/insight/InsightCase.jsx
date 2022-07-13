@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
-import styled from 'styled-components'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import styled from "styled-components";
 
-import { HeroSection, CarouselSection } from '../../components/cards'
-import PostCard from '../../components/cards/PostCard'
+import { HeroSection, CarouselSection } from "../../components/cards";
+import PostCard from "../../components/cards/PostCard";
 
-import { ChevronRight, ChevronRightBlue } from '../../assets/icons'
+import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
 
-import { sizem } from '../../utils/breakpoints'
-import NavbarFilter from '../../components/NavbarFilter'
+import { sizem } from "../../utils/breakpoints";
+import NavbarFilter from "../../components/NavbarFilter";
+import { XIcon } from "../../assets/icons";
 
 const LatestInsightsContainer = styled.div`
   width: 100%;
@@ -47,19 +48,19 @@ const LatestInsightsContainer = styled.div`
   }
 `;
 const CostumButton = styled.div`
-	color: #fff;
-	background-color: ${props => (props.clicked ? 'white' : '#002B49')};
-	color: ${props => (props.clicked ? 'black' : 'white')};
-`
+  color: #fff;
+  background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+  color: ${(props) => (props.clicked ? "black" : "white")};
+`;
 
 const PostsContainer = styled.div`
-	width: 90%;
-	height: 90%;
-	margin: auto;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-`
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 const InsightCase = () => {
   //tale URL to and edit it
@@ -113,7 +114,6 @@ const InsightCase = () => {
         title=" Case Studies"
         backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-
       <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
       {itemsFilter.length !== 0 && (
         <div
@@ -138,131 +138,131 @@ const InsightCase = () => {
             </div>
           ))}
         </div>
-      </div> */}
-			<NavbarFilter />
-			<div className="container  bg-white h-100 ">
-				<div className="p-4">
-					<h7>
-						{LocationName[0]?.charAt(0).toUpperCase() +
-							LocationName[0]?.slice(1)}
-						<ChevronRightBlue />
-						{LocationName[1]?.charAt(0).toUpperCase() +
-							LocationName[1]?.slice(1)}{' '}
-						{LocationName[0]?.charAt(0).toUpperCase() +
-							LocationName[0]?.slice(1)}
-					</h7>
-				</div>
+      )}
 
-				<PostsContainer>
-					{articles.map(post => (
-						<PostCard post={post} locationName={LocationName} />
-					))}
-				</PostsContainer>
-			</div>
-			<CarouselSection
-				categoryCarousel={'Healthcare & Live Sciences News'}
-				backgroundColor="#002B49"
-				arr={arr}
-				titleColor="#0085CA"
-				textColor="#fff"
-				textDate="#fff"
-				carouselDotBackground="#002b49"
-			/>
-		</LatestInsightsContainer>
-	)
-}
+      <div className="container  bg-white h-100 ">
+        <div className="p-4">
+          <h7>
+            {LocationName[0]?.charAt(0).toUpperCase() +
+              LocationName[0]?.slice(1)}
+            <ChevronRightBlue />
+            {LocationName[1]?.charAt(0).toUpperCase() +
+              LocationName[1]?.slice(1)}{" "}
+            {LocationName[0]?.charAt(0).toUpperCase() +
+              LocationName[0]?.slice(1)}
+          </h7>
+        </div>
 
-export default InsightCase
+        <PostsContainer>
+          {articles.map((post) => (
+            <PostCard post={post} locationName={LocationName} />
+          ))}
+        </PostsContainer>
+      </div>
+      <CarouselSection
+        categoryCarousel={"Healthcare & Live Sciences News"}
+        backgroundColor="#002B49"
+        arr={arr}
+        titleColor="#0085CA"
+        textColor="#fff"
+        textDate="#fff"
+        carouselDotBackground="#002b49"
+      />
+    </LatestInsightsContainer>
+  );
+};
+
+export default InsightCase;
 
 const arr1 = [
-	'Expertise',
-	'Industry',
-	'Country',
-	'Year',
-	'Buletin Type',
-	'Media Type',
-]
+  "Expertise",
+  "Industry",
+  "Country",
+  "Year",
+  "Buletin Type",
+  "Media Type",
+];
 
 const arr = [
-	{
-		id: 1,
-		title: 'lorem-ipsum.line1',
-		date: new Date().toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		}),
-		category: 'expertise',
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-	{
-		id: 2,
-		title: 'lorem-ipsum.2',
-		category: 'expertise',
-		date: new Date().toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		}),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-	{
-		id: 3,
-		title: 'lorem-ipsum.3',
-		category: 'industry',
-		date: new Date().toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		}),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-	{
-		id: 4,
-		title: 'lorem-ipsum.4',
-		category: 'country',
-		date: new Date().toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		}),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
+  {
+    id: 1,
+    title: "lorem-ipsum.line1",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    category: "expertise",
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 2,
+    title: "lorem-ipsum.2",
+    category: "expertise",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 3,
+    title: "lorem-ipsum.3",
+    category: "industry",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 4,
+    title: "lorem-ipsum.4",
+    category: "country",
+    date: new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
 
-	{
-		id: 2,
-		title: 'lorem-ipsum.2',
-		category: 'country',
-		date: new Date().toLocaleDateString(),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-	{
-		id: 1,
-		title: 'lorem-ipsum.line1',
-		category: 'country',
-		date: new Date().toLocaleDateString(),
-		desciption:
-			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at illo ipsam, magni nostrum ad neque reprehenderit illum excepturi asperiores blanditiis dignissimos? Enim deserunt ea optio tempore. Est distinctio veritatis repellat! adipisicing elit. Praesentium at illo ipsam, magni nostrum ad neque reprehenderit illum excepturi asperiores blanditiis dignissimos? Enim deserunt ea optio tempore. Est distinctio veritatis repellat',
-	},
-	{
-		id: 3,
-		title: 'lorem-ipsum.3',
-		category: 'buletin type',
-		date: new Date().toLocaleDateString(),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-	{
-		id: 4,
-		title: 'lorem-ipsum.4',
-		category: 'country',
-		date: new Date().toLocaleDateString(),
-		desciption:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-	},
-]
+  {
+    id: 2,
+    title: "lorem-ipsum.2",
+    category: "country",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 1,
+    title: "lorem-ipsum.line1",
+    category: "country",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at illo ipsam, magni nostrum ad neque reprehenderit illum excepturi asperiores blanditiis dignissimos? Enim deserunt ea optio tempore. Est distinctio veritatis repellat! adipisicing elit. Praesentium at illo ipsam, magni nostrum ad neque reprehenderit illum excepturi asperiores blanditiis dignissimos? Enim deserunt ea optio tempore. Est distinctio veritatis repellat",
+  },
+  {
+    id: 3,
+    title: "lorem-ipsum.3",
+    category: "buletin type",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+  {
+    id: 4,
+    title: "lorem-ipsum.4",
+    category: "country",
+    date: new Date().toLocaleDateString(),
+    desciption:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+  },
+];
