@@ -6,31 +6,54 @@ import { HeroSection, CarouselSection } from "../../components/cards";
 import PostCard from "../../components/cards/PostCard";
 
 import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
+import { sizem } from "../../utils/breakpoints";
+import NavbarFilter from "../../components/NavbarFilter";
+import { XIcon } from "../../assets/icons";
 
 const LatestInsightsContainer = styled.div`
   width: 100%;
-  // margin: auto;
+  margin: 0;
 
-  .textCategory {
+  h7 {
     color: #0085ca;
   }
 
-  h6 img {
-    width: 13px;
-    color: #0089ff;
+  h7 img {
+    width: 16px;
+    height: 16px;
+    color: #0085ca;
     margin: 0px 10px;
   }
-
   .costumNavbar {
-    background-color: var(--darkBlue);
+    background-color: #002b49;
   }
-  .costumButton {
-    background-color: var(--darkBlue);
+  .costumNavbar button {
     color: #fff;
+    background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+    color: ${(props) => (props.clicked ? "black" : "white")};
+  }
+  // @media ${sizem.smm} {
+  //   .costumNavbar {
+  //     text-align: center;
+  //   }
+  // }
+  @media ${sizem.mdm} {
+    .costumNavbar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
   }
 `;
+const CostumButton = styled.div`
+  color: #fff;
+  background-color: ${(props) => (props.clicked ? "white" : "#002B49")};
+  color: ${(props) => (props.clicked ? "black" : "white")};
+`;
+
 const PostsContainer = styled.div`
-  width: 94%;
+  width: 90%;
   height: 90%;
   margin: auto;
   display: flex;
@@ -44,26 +67,45 @@ const InsightLatest = () => {
   const LocationName = location?.pathname.split("/").slice(1, 3);
 
   const [articles, setArticles] = useState([...arr]);
-
+  const [itemsFilter, setItemsFilter] = useState([]);
   //filter array by button value
   const handleFilterArticles = (title) => {
     var newArr = arr.filter((post) => post.category == title.toLowerCase());
     setArticles(newArr);
   };
+  const handleAddFilterItem = (item) => {
+    console.log(item);
+    if (itemsFilter.indexOf(item) === -1) {
+      setItemsFilter((oldArr) => [...oldArr, item]);
+    }
+
+    // let arrItemsFilter = itemsFilter;
+    // if (arrItemsFilter.indexOf(item) === -1) {
+    //   arrItemsFilter.push(item);
+    //   console.log(itemsFilter);
+    //   // setItemsFilter((prevState) => [...prevState, item]);
+    //   setItemsFilter(arrItemsFilter);
+    // }
+  };
+  const handleDeleteFilterItem = (itemx) => {
+    console.log(itemx);
+    setItemsFilter(itemsFilter.filter((item) => item !== itemx));
+  };
 
   return (
     <LatestInsightsContainer>
       <HeroSection
-        title="Latest Insights"
-        backgroundUrl="https://images.pexels.com/photos/5483071/pexels-photo-5483071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        title=" Latest Studies"
+        backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-      <div className="container-fluid d-flex justify-content-around  costumNavbar">
+      {/* <div className="container-fluid d-flex justify-content-around  costumNavbar ">
         {arr1?.map((element, key) => (
-          <div className=" p-2 " key={key.toString()}>
+          <div className=" p-2 " id={key}>
             <button
               type="button"
-              className="btn costumButton border-0"
+              className="btn  border-0"
               onClick={() => handleFilterArticles(element)}
+              clicked={element}
             >
               {element}
             </button>
@@ -75,10 +117,35 @@ const InsightLatest = () => {
             placeholder="Enter Author's Name"
           />
         </div>
-      </div>
+      </div> */}
+      <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
+      {itemsFilter.length !== 0 && (
+        <div
+          className="container-fluid  w-100 d-flex align-items-center filterItem"
+          style={{ height: "60px", backgroundColor: "#00000029" }}
+        >
+          {itemsFilter?.map((itemFilter) => (
+            <div
+              className="filterItem  d-flex px-2 align-items-center ms-2 rounded-2 bg-light"
+              style={{ height: "40px" }}
+            >
+              <div>{itemFilter}</div>
+              <div
+                className="ms-2 d-flex "
+                onClick={() => {
+                  handleDeleteFilterItem(itemFilter);
+                  // console.log(itemFilter);
+                }}
+              >
+                <XIcon />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="container  bg-white h-100 ">
         <div className="p-4">
-          <h6 className="textCategory">
+          <h7>
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
             <ChevronRightBlue />
@@ -86,23 +153,22 @@ const InsightLatest = () => {
               LocationName[1]?.slice(1)}{" "}
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
-          </h6>
+          </h7>
         </div>
 
         <PostsContainer>
-          {articles.map((post, index) => (
-            <PostCard post={post} key={index.toString()} />
+          {articles.map((post) => (
+            <PostCard post={post} locationName={LocationName} />
           ))}
         </PostsContainer>
       </div>
-
       <CarouselSection
-        arr={arrCarousel}
         categoryCarousel={"Healthcare & Live Sciences News"}
         backgroundColor="#002B49"
+        arr={arr}
         titleColor="#0085CA"
         textColor="#fff"
-        textDate="#FFFFFF"
+        textDate="#fff"
         carouselDotBackground="#002b49"
       />
     </LatestInsightsContainer>
@@ -198,37 +264,6 @@ const arr = [
     id: 4,
     title: "lorem-ipsum.4",
     category: "country",
-    date: new Date().toLocaleDateString(),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-];
-
-const arrCarousel = [
-  {
-    id: 1,
-    title: "lorem-ipsum.line1",
-    date: new Date().toLocaleDateString(),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 2,
-    title: "lorem-ipsum.2",
-    date: new Date().toLocaleDateString(),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 3,
-    title: "lorem-ipsum.3",
-    date: new Date().toLocaleDateString(),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 4,
-    title: "lorem-ipsum.4",
     date: new Date().toLocaleDateString(),
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",

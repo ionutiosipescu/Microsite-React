@@ -5,7 +5,6 @@ import YellowButton from '../buttons/YellowButton'
 import { size } from '../../utils/breakpoints'
 import { ChevronRight } from '../../assets/icons'
 
-
 const Card = styled.div`
 	display: flex;
 	background: var(--darkBlue);
@@ -17,14 +16,14 @@ const Card = styled.div`
 	height: 95.297px;
 	width: 100%;
 	@media ${size.sm} {
-		height:  146.609px;
-	}		
+		height: 146.609px;
+	}
 	@media ${size.lg} {
 		height: 168.609px;
-	}		
+	}
 	@media ${size.xl} {
 		height: 219.922px;
-	}		
+	}
 `
 
 const CardBody = styled.div`
@@ -34,8 +33,8 @@ const CardBody = styled.div`
 	width: -webkit-fill-available;
 
 	@media ${size.lg} {
-	   flex-direction: column;
-	}	
+		flex-direction: column;
+	}
 	button {
 		transition: background-color 0.2s ease-out;
 	}
@@ -44,10 +43,10 @@ const CardBody = styled.div`
 		border-color: var(--coralBlue);
 	}
 	@media ${size.lg} {
-	  button {
-		display: block;
-	  }
-	}	
+		button {
+			display: block;
+		}
+	}
 `
 
 const ImageContainer = styled.div`
@@ -64,19 +63,18 @@ const ImageContainer = styled.div`
 		img {
 			width: 100px;
 		}
-	}	
+	}
 	@media ${size.lg} {
 		img {
 			width: 115px;
 		}
-	}	
+	}
 	@media ${size.xl} {
 		img {
 			width: 150px;
 		}
-	}	
+	}
 `
-
 
 const Content = styled.div`
 	padding: 20px;
@@ -98,12 +96,12 @@ const Content = styled.div`
 			font-size: 15px !important;
 		}
 		div {
-		font-size: 10px !important;
+			font-size: 10px !important;
 		}
 		.CardProfessionalsButton {
 			height: 50px !important;
 		}
-	}	
+	}
 
 	h2 {
 		padding: 0;
@@ -112,12 +110,14 @@ const Content = styled.div`
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 20px;
-	}	
-	h2, .country {
+	}
+	h2,
+	.country {
 		transition: color 0.2s ease-out;
 		cursor: pointer;
 	}
-	h2:hover, .country:hover {
+	h2:hover,
+	.country:hover {
 		color: var(--coralBlue);
 	}
 	div {
@@ -138,13 +138,11 @@ const Button = styled.button`
 	border: 0;
 	height: 100%;
 	max-width: 30px;
-    transition: background-color 0.2s ease-out;
+	transition: background-color 0.2s ease-out;
 	@media ${size.lg} {
-	display: none !important;
+		display: none !important;
 	}
 `
-
-
 
 const CardProfessionals = ({
 	name,
@@ -165,15 +163,25 @@ const CardProfessionals = ({
 					<h2>{name || 'Connor Colquhoun'}</h2>
 					<div>
 						<div>{position || 'wine connoisseur'}</div>
-						<div className='country'>{country} </div>
+						<div className="country">{country} </div>
 					</div>
 				</Content>
-				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"} /> : ''}
+				{buttonText ? (
+					<YellowButton
+						className="CardProfessionalsButton"
+						text={buttonText}
+						radius={'0'}
+						height={'50px'}
+						display={'none'}
+					/>
+				) : (
+					''
+				)}
 				<CardArrow>
-				<Button className='whitebutton'>
+					<Button className="whitebutton">
 						<ChevronRight />
-				</Button>
-			</CardArrow>
+					</Button>
+				</CardArrow>
 			</CardBody>
 		</Card>
 	)
