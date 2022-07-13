@@ -8,21 +8,21 @@ import { ChevronRight } from '../../assets/icons'
 const Card = styled.div`
 	display: flex;
 	background: var(--darkBlue);
-	/* min-width: 400px;
-	min-height: 300px; */
-	/* max-width: 500px; */
-	/* min-height: 300px; */
 	transform: scale(${props => props.transform || 1});
-	height: 95.297px;
+	/* height: 95.297px; */
+	height: 5.9565rem;
 	width: 100%;
 	@media ${size.sm} {
-		height: 146.609px;
+		/* height: 146.609px; */
+		height: 9.1633rem;
 	}
 	@media ${size.lg} {
-		height: 168.609px;
+		/* height: 168.609px; */
+		height: 10.539rem;
 	}
 	@media ${size.xl} {
-		height: 219.922px;
+		/* height: 219.922px; */
+		height: 13.746rem;
 	}
 `
 
