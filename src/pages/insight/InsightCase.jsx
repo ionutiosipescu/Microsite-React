@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { HeroSection, CarouselSection } from "../../components/cards";
 import PostCard from "../../components/cards/PostCard";
 
-import { ChevronRight, ChevronRightBlue } from "../../assets/icons";
+import { ChevronRight, ChevronRightBlue, XIcon } from "../../assets/icons";
 
 import { sizem } from "../../utils/breakpoints";
 import NavbarFilter from "../../components/NavbarFilter";
@@ -14,11 +14,11 @@ const LatestInsightsContainer = styled.div`
   width: 100%;
   margin: 0;
 
-  h7 {
+  h6 {
     color: #0085ca;
   }
 
-  h7 img {
+  h6 img {
     width: 16px;
     height: 16px;
     color: #0085ca;
@@ -67,11 +67,45 @@ const InsightCase = () => {
   const LocationName = location?.pathname.split("/").slice(1, 3);
 
   const [articles, setArticles] = useState([...arr]);
+  const [itemsFilter, setItemsFilter] = useState([]);
+
+  useEffect(() => {
+    //  let newArray = articles.filter((itemsFilter) =>)
+    // console.log(filteredArticles);
+    console.log(itemsFilter);
+    console.log(articles);
+    let j = [];
+    articles.forEach((article) => {
+      itemsFilter.forEach((x) => {
+        if (article.category.toLowerCase() == x.toLowerCase()) {
+          j.push(article);
+        }
+      });
+    });
+    setArticles(j);
+    // let res = articles.filter((item) =>
+    //   itemsFilter.includes(item.category.toLowerCase())
+    // );
+    // let res = articles.filter(
+    //   (item) => itemsFilter[0]?.toLowerCase() == item.category.toLowerCase()
+    // );
+
+    // console.log(res);
+  }, [itemsFilter]);
 
   //filter array by button value
-  const handleFilterArticles = (title) => {
-    var newArr = arr.filter((post) => post.category == title.toLowerCase());
-    setArticles(newArr);
+  // const handleFilterArticles = (title) => {
+  //   var newArr = arr.filter((post) => post.category == title.toLowerCase());
+  //   setArticles(newArr);
+  // };
+  const handleAddFilterItem = (item) => {
+    if (itemsFilter.indexOf(item) === -1) {
+      setItemsFilter((oldArr) => [...oldArr, item]);
+    }
+  };
+
+  const handleDeleteFilterItem = (itemx) => {
+    setItemsFilter(itemsFilter.filter((item) => item !== itemx));
   };
 
   return (
@@ -80,30 +114,35 @@ const InsightCase = () => {
         title=" Case Studies"
         backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
-      {/* <div className="container-fluid d-flex justify-content-around  costumNavbar ">
-        {arr1?.map((element, key) => (
-          <div className=" p-2 " id={key}>
-            <button
-              type="button"
-              className="btn  border-0"
-              onClick={() => handleFilterArticles(element)}
-              clicked={element}
+
+      <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
+      {itemsFilter !== 0 && (
+        <div
+          className="container-fluid  w-100 d-flex align-items-center filterItem"
+          style={{ height: "60px", backgroundColor: "#00000029" }}
+        >
+          {itemsFilter?.map((itemFilter) => (
+            <div
+              className="filterItem  d-flex px-2 align-items-center ms-2 rounded-2 bg-light"
+              style={{ height: "40px" }}
             >
-              {element}
-            </button>
-          </div>
-        ))}
-        <div className=" p-2">
-          <input
-            className="h-100 rounded border-0 p-2"
-            placeholder="Enter Author's Name"
-          />
+              <div>{itemFilter}</div>
+              <div
+                className="ms-2 d-flex "
+                onClick={() => {
+                  handleDeleteFilterItem(itemFilter);
+                  // console.log(itemFilter);
+                }}
+              >
+                <XIcon />
+              </div>
+            </div>
+          ))}
         </div>
-      </div> */}
-      <NavbarFilter />
+      )}
       <div className="container  bg-white h-100 ">
         <div className="p-4">
-          <h7>
+          <h6>
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
             <ChevronRightBlue />
@@ -111,7 +150,7 @@ const InsightCase = () => {
               LocationName[1]?.slice(1)}{" "}
             {LocationName[0]?.charAt(0).toUpperCase() +
               LocationName[0]?.slice(1)}
-          </h7>
+          </h6>
         </div>
 
         <PostsContainer>
@@ -153,14 +192,14 @@ const arr = [
       month: "long",
       day: "numeric",
     }),
-    category: "expertise",
+    category: "link11",
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
   {
     id: 2,
     title: "lorem-ipsum.2",
-    category: "expertise",
+    category: "link14",
     date: new Date().toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
