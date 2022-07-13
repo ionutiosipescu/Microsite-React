@@ -35,7 +35,8 @@ button {
 	line-height: 3.125rem;
 }
 button:hover {
-		background-color: var(--coralBlue);
+		background-color: var(--hover-blue);
+		border-color: var(--hover-blue);
 	}
 `
 

@@ -39,8 +39,8 @@ const CardBody = styled.div`
 		transition: background-color 0.2s ease-out;
 	}
 	button:hover {
-		background-color: var(--coralBlue);
-		border-color: var(--coralBlue);
+		background-color: var(--hover-blue);
+		border-color: var(--hover-blue);
 	}
 	@media ${size.lg} {
 		button {
@@ -118,7 +118,7 @@ const Content = styled.div`
 	}
 	h2:hover,
 	.country:hover {
-		color: var(--coralBlue);
+		color: var(--hover-blue);
 	}
 	div {
 		font-size: 16px;
@@ -130,7 +130,7 @@ const CardArrow = styled.div`
 	justify-content: end;
 	align-items: center;
 	button:hover {
-		background-color: var(--coralBlue);
+		background-color: var(--hover-blue);
 	}
 `
 const Button = styled.button`
