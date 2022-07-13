@@ -34,9 +34,9 @@ button {
     transition: background-color 0.2s ease-out;
 	line-height: 3.125rem;
 }
-/* button:hover {
+button:hover {
 		background-color: var(--coralBlue);
-	} */
+	}
 `
 
 const CareersInDigital = () => {
