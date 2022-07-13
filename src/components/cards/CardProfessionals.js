@@ -3,6 +3,7 @@ import image from '../../assets/images/ConnorWine'
 import styled from 'styled-components'
 import YellowButton from '../buttons/YellowButton'
 import { size } from '../../utils/breakpoints'
+import { ChevronRight } from '../../assets/icons'
 
 const Card = styled.div`
 	display: flex;
@@ -16,23 +17,36 @@ const Card = styled.div`
 	width: 100%;
 	@media ${size.sm} {
 		height: 146.609px;
-	}		
+	}
 	@media ${size.lg} {
 		height: 168.609px;
-	}		
+	}
 	@media ${size.xl} {
 		height: 219.922px;
-	}		
+	}
 `
 
 const CardBody = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	width: -webkit-fill-available;
-	/* flex: 2; */
-	/* align-items: center; */
-	/* width: 100px; */
+
+	@media ${size.lg} {
+		flex-direction: column;
+	}
+	button {
+		transition: background-color 0.2s ease-out;
+	}
+	button:hover {
+		background-color: var(--coralBlue);
+		border-color: var(--coralBlue);
+	}
+	@media ${size.lg} {
+		button {
+			display: block;
+		}
+	}
 `
 
 const ImageContainer = styled.div`
@@ -49,17 +63,17 @@ const ImageContainer = styled.div`
 		img {
 			width: 100px;
 		}
-	}	
+	}
 	@media ${size.lg} {
 		img {
 			width: 115px;
 		}
-	}	
+	}
 	@media ${size.xl} {
 		img {
 			width: 150px;
 		}
-	}	
+	}
 `
 
 const Content = styled.div`
@@ -72,7 +86,7 @@ const Content = styled.div`
 
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 
 	/* justify-content: space-between; */
 	/* gap: 1rem; */
@@ -82,12 +96,12 @@ const Content = styled.div`
 			font-size: 15px !important;
 		}
 		div {
-		font-size: 10px !important;
+			font-size: 10px !important;
 		}
 		.CardProfessionalsButton {
 			height: 50px !important;
 		}
-	}	
+	}
 
 	h2 {
 		padding: 0;
@@ -96,10 +110,37 @@ const Content = styled.div`
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 20px;
-	}	
-
+	}
+	h2,
+	.country {
+		transition: color 0.2s ease-out;
+		cursor: pointer;
+	}
+	h2:hover,
+	.country:hover {
+		color: var(--coralBlue);
+	}
 	div {
 		font-size: 16px;
+	}
+`
+const CardArrow = styled.div`
+	flex: 1;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	button:hover {
+		background-color: var(--coralBlue);
+	}
+`
+const Button = styled.button`
+	background-color: rgba(0, 0, 0, 0);
+	border: 0;
+	height: 100%;
+	max-width: 30px;
+	transition: background-color 0.2s ease-out;
+	@media ${size.lg} {
+		display: none !important;
 	}
 `
 
@@ -122,10 +163,25 @@ const CardProfessionals = ({
 					<h2>{name || 'Connor Colquhoun'}</h2>
 					<div>
 						<div>{position || 'wine connoisseur'}</div>
-						<div>{country} </div>
+						<div className="country">{country} </div>
 					</div>
 				</Content>
-				{buttonText ? <YellowButton className="CardProfessionalsButton" text={buttonText} radius={'0'} height={'50px'} display={"none"}/> : ''}
+				{buttonText ? (
+					<YellowButton
+						className="CardProfessionalsButton"
+						text={buttonText}
+						radius={'0'}
+						height={'50px'}
+						display={'none'}
+					/>
+				) : (
+					''
+				)}
+				<CardArrow>
+					<Button className="whitebutton">
+						<ChevronRight />
+					</Button>
+				</CardArrow>
 			</CardBody>
 		</Card>
 	)
