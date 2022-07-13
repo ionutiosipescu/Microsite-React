@@ -62,32 +62,68 @@ const PostsContainer = styled.div`
 `
 
 const InsightCase = () => {
-	//tale URL to and edit it
-	const location = useLocation()
-	const LocationName = location?.pathname.split('/').slice(1, 3)
+  //tale URL to and edit it
+  const location = useLocation();
+  const LocationName = location?.pathname.split("/").slice(1, 3);
 
-	const [articles, setArticles] = useState([...arr])
+  const [articles, setArticles] = useState([...arr]);
+  const [itemsFilter, setItemsFilter] = useState([]);
 
-	//filter array by button value
-	const handleFilterArticles = title => {
-		var newArr = arr.filter(post => post.category == title.toLowerCase())
-		setArticles(newArr)
-	}
+  useEffect(() => {
+    //  let newArray = articles.filter((itemsFilter) =>)
+    // console.log(filteredArticles);
+    // console.log(itemsFilter);
+    // console.log(articles);
+    // let j = [];
+    // articles.forEach((article) => {
+    //   itemsFilter.forEach((x) => {
+    //     if (article.category.toLowerCase() == x.toLowerCase()) {
+    //       j.push(article);
+    //     }
+    //   });
+    // });
+    // setArticles(j);
+    // let res = articles.filter((item) =>
+    //   itemsFilter.includes(item.category.toLowerCase())
+    // );
+    // let res = articles.filter(
+    //   (item) => itemsFilter[0]?.toLowerCase() == item.category.toLowerCase()
+    // );
+    // console.log(res);
+  }, [itemsFilter]);
 
-	return (
-		<LatestInsightsContainer>
-			<HeroSection
-				title=" Case Studies"
-				backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-			/>
-			{/* <div className="container-fluid d-flex justify-content-around  costumNavbar ">
-        {arr1?.map((element, key) => (
-          <div className=" p-2 " id={key}>
-            <button
-              type="button"
-              className="btn  border-0"
-              onClick={() => handleFilterArticles(element)}
-              clicked={element}
+  //filter array by button value
+  // const handleFilterArticles = (title) => {
+  //   var newArr = arr.filter((post) => post.category == title.toLowerCase());
+  //   setArticles(newArr);
+  // };
+  const handleAddFilterItem = (item) => {
+    if (itemsFilter.indexOf(item) === -1) {
+      setItemsFilter((oldArr) => [...oldArr, item]);
+    }
+  };
+
+  const handleDeleteFilterItem = (itemx) => {
+    setItemsFilter(itemsFilter.filter((item) => item !== itemx));
+  };
+
+  return (
+    <LatestInsightsContainer>
+      <HeroSection
+        title=" Case Studies"
+        backgroundUrl="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      />
+
+      <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
+      {itemsFilter.length !== 0 && (
+        <div
+          className="container-fluid  w-100 d-flex align-items-center filterItem"
+          style={{ height: "60px", backgroundColor: "#00000029" }}
+        >
+          {itemsFilter?.map((itemFilter) => (
+            <div
+              className="filterItem  d-flex px-2 align-items-center ms-2 rounded-2 bg-light"
+              style={{ height: "40px" }}
             >
               <div>{itemFilter}</div>
               <div
