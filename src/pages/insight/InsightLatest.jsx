@@ -119,7 +119,7 @@ const InsightLatest = () => {
         </div>
       </div> */}
       <NavbarFilter handleAddFilterItem={handleAddFilterItem} />
-      {itemsFilter !== 0 && (
+      {itemsFilter.length !== 0 && (
         <div
           className="container-fluid  w-100 d-flex align-items-center filterItem"
           style={{ height: "60px", backgroundColor: "#00000029" }}
