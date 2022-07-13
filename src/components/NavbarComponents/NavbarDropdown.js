@@ -28,7 +28,7 @@ const Dropdown = styled.ul`
 		);
 
 		div {
-			/* How the heck do i vertically text? */
+			/* How the heck do i vertically align text? */
 			padding: 0.5rem 0;
 			display: flex;
 			justify-content: center;
@@ -37,9 +37,17 @@ const Dropdown = styled.ul`
 	}
 `
 
-const NavbarDropdown = ({ children, links }) => {
+const NavbarDropdown = ({
+	children,
+	links,
+	filter,
+	setTagsArray,
+	tagsArray,
+}) => {
 	const [show, setShow] = useState(false)
 	let columns
+
+	console.log(links)
 
 	if (links.length < 5) {
 		columns = 1
@@ -53,13 +61,23 @@ const NavbarDropdown = ({ children, links }) => {
 		setShow(!show)
 	}
 
+	const addTag = link => {
+		console.log('hello')
+		tagsArray.push(link.name)
+		setTagsArray(tagsArray)
+	}
+
 	return (
 		<div onClick={handleClick}>
 			<Cell as={'div'}>{children}</Cell>
 			<Dropdown show={show} columns={columns}>
 				{links.map((link, index) => (
-					<DropdownCell key={index}>
-						<a href={link.href}>{link.name}</a>
+					<DropdownCell key={index} onClick={link => addTag(link)}>
+						{!filter ? (
+							<a>{link.name}</a>
+						) : (
+							<a href={links.href}>{link.name}</a>
+						)}
 					</DropdownCell>
 				))}
 			</Dropdown>

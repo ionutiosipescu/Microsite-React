@@ -5,7 +5,7 @@ import {
 	CarouselSection,
 } from '../../components/cards'
 import styled from 'styled-components'
-import { leadersList, arr, links } from '../../utils/data'
+import { tags, leadersList, arr, links } from '../../utils/data'
 import {
 	Navbar,
 	NavbarCell,
@@ -13,6 +13,7 @@ import {
 	SearchBar,
 } from '../../components/NavbarComponents'
 import CurrentRoute from '../../components/CurrentRoute'
+import FilterBy from '../../components/FilterBy'
 
 const LeaadersContainer = styled.div`
 	display: grid;
@@ -26,6 +27,24 @@ const Leadership = () => {
 	const [openedState, setOpenedState] = useState(
 		Array.from(leadersList, () => false)
 	)
+	const [tagsArray, setTagsArray] = useState([
+		'fuck',
+		'fuck2',
+		'fuck3',
+		'fuck4',
+		'fuck',
+		'fuck2',
+		'fuck3',
+		'fuck4',
+		'fuck',
+		'fuck2',
+		'fuck3',
+		'fuck4',
+		'fuck',
+		'fuck2',
+		'fuck3',
+		'fuck4',
+	])
 
 	const handleDisplay = index => {
 		console.log('this is the index', index)
@@ -42,13 +61,29 @@ const Leadership = () => {
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
 
-			<Navbar searchBar spread>
-				<NavbarCell href={'asd'}>Fuck</NavbarCell>
+			<Navbar searchBar>
+				<NavbarCell>Fuck</NavbarCell>
 				<NavbarCell>Fuck1</NavbarCell>
 				<NavbarCell>Fuck2</NavbarCell>
-				<NavbarDropdown links={links}>Something</NavbarDropdown>
-				<NavbarDropdown links={links}>DropDown</NavbarDropdown>
+				<NavbarDropdown
+					links={links}
+					tagsArray={tagsArray}
+					setTagsArray={setTagsArray}
+					filter
+				>
+					Something
+				</NavbarDropdown>
+				<NavbarDropdown
+					links={links}
+					tagsArray={tagsArray}
+					setTagsArray={setTagsArray}
+					filter
+				>
+					DropDown
+				</NavbarDropdown>
 			</Navbar>
+
+			<FilterBy tagsArray={tagsArray} setTagsArray={setTagsArray} />
 
 			<div className="m-4">
 				<LeaadersContainer>
