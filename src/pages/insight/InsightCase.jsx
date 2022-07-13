@@ -72,24 +72,23 @@ const InsightCase = () => {
   useEffect(() => {
     //  let newArray = articles.filter((itemsFilter) =>)
     // console.log(filteredArticles);
-    console.log(itemsFilter);
-    console.log(articles);
-    let j = [];
-    articles.forEach((article) => {
-      itemsFilter.forEach((x) => {
-        if (article.category.toLowerCase() == x.toLowerCase()) {
-          j.push(article);
-        }
-      });
-    });
-    setArticles(j);
+    // console.log(itemsFilter);
+    // console.log(articles);
+    // let j = [];
+    // articles.forEach((article) => {
+    //   itemsFilter.forEach((x) => {
+    //     if (article.category.toLowerCase() == x.toLowerCase()) {
+    //       j.push(article);
+    //     }
+    //   });
+    // });
+    // setArticles(j);
     // let res = articles.filter((item) =>
     //   itemsFilter.includes(item.category.toLowerCase())
     // );
     // let res = articles.filter(
     //   (item) => itemsFilter[0]?.toLowerCase() == item.category.toLowerCase()
     // );
-
     // console.log(res);
   }, [itemsFilter]);
 
