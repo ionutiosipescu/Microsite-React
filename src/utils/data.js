@@ -249,3 +249,33 @@ export const links = [
 		href: '/',
 	},
 ]
+
+export const tags = [
+	{
+		tag: 'sublink1',
+	},
+	{
+		tag: 'sublink2',
+	},
+	{
+		tag: 'sublink3',
+	},
+	{
+		tag: 'sublink4',
+	},
+	{
+		tag: 'sublink5',
+	},
+	{
+		tag: 'sublink6',
+	},
+	{
+		tag: 'sublink7',
+	},
+	{
+		tag: 'sublink8',
+	},
+	{
+		tag: 'sublink9',
+	},
+]

@@ -8,12 +8,14 @@
 	--darkBlue1: #061931;
 
 	--lightBlue: #5e5eeb;
+
 	--hover-blue: #0085ca;
 	--searchBarBlue: #003e6a;
 
 	--orange1: #df8e25;
-	--orange2: #be7a22;
+	--orange2: #cf7f00;
 }
+
 * {
 	padding: 0;
 	margin: 0;
@@ -25,6 +27,17 @@
    */
 	/* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
 }
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* a {
+	text-decoration: none;
+	color: #000;
+} */
 /* #navbarScrollingDropdown {
   color: rgba(0,0,0,.9) !important;
 } */

@@ -8,21 +8,21 @@ import { ChevronRight } from '../../assets/icons'
 const Card = styled.div`
 	display: flex;
 	background: var(--darkBlue);
-	/* min-width: 400px;
-	min-height: 300px; */
-	/* max-width: 500px; */
-	/* min-height: 300px; */
 	transform: scale(${props => props.transform || 1});
-	height: 95.297px;
+	/* height: 95.297px; */
+	height: 5.9565rem;
 	width: 100%;
 	@media ${size.sm} {
-		height: 146.609px;
+		/* height: 146.609px; */
+		height: 9.1633rem;
 	}
 	@media ${size.lg} {
-		height: 168.609px;
+		/* height: 168.609px; */
+		height: 10.539rem;
 	}
 	@media ${size.xl} {
-		height: 219.922px;
+		/* height: 219.922px; */
+		height: 13.746rem;
 	}
 `
 
@@ -39,8 +39,8 @@ const CardBody = styled.div`
 		transition: background-color 0.2s ease-out;
 	}
 	button:hover {
-		background-color: var(--coralBlue);
-		border-color: var(--coralBlue);
+		background-color: var(--hover-blue);
+		border-color: var(--hover-blue);
 	}
 	@media ${size.lg} {
 		button {
@@ -118,7 +118,7 @@ const Content = styled.div`
 	}
 	h2:hover,
 	.country:hover {
-		color: var(--coralBlue);
+		color: var(--hover-blue);
 	}
 	div {
 		font-size: 16px;
@@ -130,7 +130,7 @@ const CardArrow = styled.div`
 	justify-content: end;
 	align-items: center;
 	button:hover {
-		background-color: var(--coralBlue);
+		background-color: var(--hover-blue);
 	}
 `
 const Button = styled.button`
