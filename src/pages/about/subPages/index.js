@@ -9,7 +9,7 @@ import News from "./News";
 import Locations from "./Locations";
 import { Container } from "react-bootstrap";
 
-const SubPage = ({ subPage }) => {
+const SubPage = ({ subPage, handleSubPage }) => {
   const subPages = {
     overview: <Overview />,
     services: <Services />,

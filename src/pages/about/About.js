@@ -16,6 +16,7 @@ const About = () => {
   // console.log(testReducer)
 
   const handleSubPage = (name) => {
+    console.log(name);
     setSubPage(name);
   };
 
@@ -82,7 +83,7 @@ const About = () => {
           {"Locations"}
         </NavItem>
       </CustomNavbar>
-      <SubPage subPage={subPage} />
+      <SubPage subPage={subPage} handleSubPage={handleSubPage} />
     </>
   );
 };
