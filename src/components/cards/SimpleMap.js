@@ -7,10 +7,10 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function SimpleMap() {
   const defaultProps = {
     center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
+      lat: 44.4268,
+      lng: 26.1025,
     },
-    zoom: 11,
+    zoom: 8,
   };
 
   return (
@@ -18,7 +18,7 @@ export default function SimpleMap() {
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: "AIzaSyA16d9FJFh__vK04jU1P64vnEpPc3jenec",
+          key: "AIzaSyB8EZbNyny7DGFI-ZWmVTRqh6Ip_bgCnp4",
         }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
