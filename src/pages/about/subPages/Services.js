@@ -24,7 +24,7 @@ const Services = () => {
   return (
     <ServicesContainer>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
-        <Col lg={8} className=" border p-5">
+        <Col lg={9} className=" border border-2  border-end p-5">
           <h1 className="my-4">
             Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
           </h1>
@@ -52,7 +52,7 @@ const Services = () => {
             </Row>
           </div>
         </Col>
-        <Col lg={3} className=" px-0 ps-lg-5 flex-grow-1 ">
+        <Col lg={3} className=" px-0 flex-grow-1 ">
           <CardProfessionals {...cardContent} />
           <CardProfessionals {...cardContent} />
         </Col>
