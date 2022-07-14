@@ -29,9 +29,9 @@ const TagContainer = styled.div`
 	}
 `
 
-const Tag = ({ tag, setTagsArray, tagsArray }) => {
+const Tag = ({ tag, setFilterByTags, filterByTags }) => {
 	const handleClick = () => {
-		setTagsArray(tagsArray.filter(item => item !== tag))
+		setFilterByTags(filterByTags.filter(item => item !== tag))
 	}
 
 	return (
@@ -42,15 +42,15 @@ const Tag = ({ tag, setTagsArray, tagsArray }) => {
 	)
 }
 
-const FilterBy = ({ tagsArray, setTagsArray }) => {
+const FilterBy = ({ filterByTags, setFilterByTags }) => {
 	return (
-		<Container arrLength={tagsArray.length !== 0}>
-			{tagsArray.map((tag, index) => (
+		<Container arrLength={filterByTags.length !== 0}>
+			{filterByTags.map((tag, index) => (
 				<Tag
 					key={index}
 					tag={tag}
-					setTagsArray={setTagsArray}
-					tagsArray={tagsArray}
+					setFilterByTags={setFilterByTags}
+					filterByTags={filterByTags}
 				/>
 			))}
 		</Container>

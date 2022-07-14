@@ -27,7 +27,7 @@ const Leadership = () => {
 	const [openedState, setOpenedState] = useState(
 		Array.from(leadersList, () => false)
 	)
-	const [tagsArray, setTagsArray] = useState([
+	const [filterByTags, setFilterByTags] = useState([
 		'fuck',
 		'fuck2',
 		'fuck3',
@@ -66,24 +66,24 @@ const Leadership = () => {
 				<NavbarCell>Fuck1</NavbarCell>
 				<NavbarCell>Fuck2</NavbarCell>
 				<NavbarDropdown
-					links={links}
-					tagsArray={tagsArray}
-					setTagsArray={setTagsArray}
+					data={links}
+					filterByTags={filterByTags}
+					setFilterByTags={setFilterByTags}
 					filter
 				>
 					Something
 				</NavbarDropdown>
 				<NavbarDropdown
-					links={links}
-					tagsArray={tagsArray}
-					setTagsArray={setTagsArray}
+					data={links}
+					filterByTags={filterByTags}
+					setFilterByTags={setFilterByTags}
 					filter
 				>
 					DropDown
 				</NavbarDropdown>
 			</Navbar>
 
-			<FilterBy tagsArray={tagsArray} setTagsArray={setTagsArray} />
+			<FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
 
 			<div className="m-4">
 				<LeaadersContainer>

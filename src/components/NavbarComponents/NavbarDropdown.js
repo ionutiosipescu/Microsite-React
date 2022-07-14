@@ -39,19 +39,17 @@ const Dropdown = styled.ul`
 
 const NavbarDropdown = ({
 	children,
-	links,
+	data,
+	setFilterByTags,
+	filterByTags,
 	filter,
-	setTagsArray,
-	tagsArray,
 }) => {
 	const [show, setShow] = useState(false)
 	let columns
 
-	console.log(links)
-
-	if (links.length < 5) {
+	if (data.length < 5) {
 		columns = 1
-	} else if (links.length < 9) {
+	} else if (data.length < 9) {
 		columns = 2
 	} else {
 		columns = 3
@@ -62,22 +60,18 @@ const NavbarDropdown = ({
 	}
 
 	const addTag = link => {
-		console.log('hello')
-		tagsArray.push(link.name)
-		setTagsArray(tagsArray)
+		filterByTags.push(link.name)
+
+		setFilterByTags([...filterByTags])
 	}
 
 	return (
 		<div onClick={handleClick}>
 			<Cell as={'div'}>{children}</Cell>
 			<Dropdown show={show} columns={columns}>
-				{links.map((link, index) => (
-					<DropdownCell key={index} onClick={link => addTag(link)}>
-						{!filter ? (
-							<a>{link.name}</a>
-						) : (
-							<a href={links.href}>{link.name}</a>
-						)}
+				{data.map((link, index) => (
+					<DropdownCell key={index} onClick={() => addTag(link)}>
+						{!filter ? <a>{link.name}</a> : <a href={data.href}>{link.name}</a>}
 					</DropdownCell>
 				))}
 			</Dropdown>
