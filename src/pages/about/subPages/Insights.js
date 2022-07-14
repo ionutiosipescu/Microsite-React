@@ -31,15 +31,18 @@ const Insights = () => {
 
   return (
     <>
-      {drupal.map((insight, index) => (
-        <CardInsights
-          key={index}
-          image={insight.image}
-          type={insight.type}
-          title={insight.title}
-          content={insight.content}
-        />
-      ))}
+      <div></div>
+      <Container>
+        {drupal.map((insight, index) => (
+          <CardInsights
+            key={index}
+            image={insight.image}
+            type={insight.type}
+            title={insight.title}
+            content={insight.content}
+          />
+        ))}
+      </Container>
     </>
   );
 };
