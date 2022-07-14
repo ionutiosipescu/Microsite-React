@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import CardsLocations from '../../../components/cards/CardsLocations'
+import SimpleMap from '../../../components/cards/SimpleMap'
 
 const Locations = () => {
   return <>
@@ -22,7 +23,7 @@ const Locations = () => {
           <CardsLocations/>
           </Col>
           <Col lg={6}>
-           
+           <SimpleMap/>
           </Col>
         </Row>
       </Container>
