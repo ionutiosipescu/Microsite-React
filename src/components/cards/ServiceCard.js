@@ -16,7 +16,7 @@ const ServiceCard = ({ data }) => {
     }
     button {
       font-size: 13px;
-      height: 50%;
+      height: 50px
       border-radius: 5px;
     }
   `;
@@ -34,6 +34,7 @@ const ServiceCard = ({ data }) => {
             <YellowButton
               text={data.textButton ?? "contact our team"}
               // width="80%"
+
               className=""
             />
           </Col>
