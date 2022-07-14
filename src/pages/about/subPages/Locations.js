@@ -17,12 +17,12 @@ const Locations = () => {
           </Col>
         </Row>
         <Row className='p-0 m-0 d-flex flex-lg-row'>
-          <Col lg={6} className="d-flex flex-md-wrap flex-column flex-md-row">
+          <Col xl={6} className="d-flex flex-md-wrap flex-column flex-md-row">
           <CardsLocations/>
           <CardsLocations/>
           <CardsLocations/>
           </Col>
-          <Col lg={6}>
+          <Col xl={6} className="my-5 my-lg-0">
            <SimpleMap/>
           </Col>
         </Row>
