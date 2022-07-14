@@ -20,7 +20,7 @@ const SubPage = ({ subPage, handleSubPage }) => {
   };
 
   return (
-    <Container fluid className="bg-light p-0">
+    <Container fluid className="mb-5 p-0">
       {subPages[subPage]}
     </Container>
   );
