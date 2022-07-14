@@ -2,21 +2,19 @@ import React from "react";
 import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import YellowButton from "../../../components/buttons/YellowButton";
 import { NewsCell } from "./subPages.style";
-import CardOverview from "../../../components/cards/CareersInDigital";
+import CardOverview from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 
 const Overview = () => {
-  // Card overview content from backend
   const cardContent = {
     imageSrc: image,
     name: "Connor Colquhoun",
     position: "wine connoisseur",
     country: "japan",
-    buttonText: "Connect",
+    buttonText: "connect",
   };
-
   return (
     <>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row">

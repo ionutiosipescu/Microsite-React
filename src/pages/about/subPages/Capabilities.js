@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import CardOverview from "../../../components/cards/CardProfessionals";
+import { CardProfessionals } from "../../../components/cards";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
+import YellowButton from "../../../components/buttons/YellowButton";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -11,12 +12,13 @@ const Capabilities = () => {
     name: "Connor Colquhoun",
     position: "wine connoisseur",
     country: "japan",
+    buttonText: "connect",
   };
 
   return (
     <>
-      <Row>
-        <Col className="p-5">
+      <Row className="p-0 m-0 d-flex flex-column flex-lg-row">
+        <Col lg={8}>
           <h2>Our Goal is to Deliver practical</h2>
           <p>
             Proident veniam quis proident duis velit. Id ipsum mollit officia
@@ -68,8 +70,8 @@ const Capabilities = () => {
           </p>
         </Col>
         <Col className="col-4 p-0">
-          <CardOverview {...cardContent} />
-          <CardOverview {...cardContent} />
+          <CardProfessionals {...cardContent} />
+          <CardProfessionals {...cardContent} />
           <CareersInDigital />
         </Col>
       </Row>
