@@ -12,6 +12,11 @@ const Container = styled.nav`
 	font-size: 1rem;
 	min-height: 70px;
 
+	a {
+		color: white;
+		text-decoration: none;
+	}
+
 	& > form {
 		display: none;
 
@@ -27,6 +32,7 @@ const Container = styled.nav`
 		display: ${props => (props.toggle ? 'column' : 'none')};
 
 		display: column;
+		/* color: white; */
 
 		@media ${size.lg} {
 			display: flex;
@@ -42,9 +48,23 @@ const Container = styled.nav`
 	}
 `
 
-const MobileDropdown = styled(Cell)`
-	padding: 0 0 0 2rem;
-	min-height: 70px;
+const MobileDropdown = styled.div`
+	display: flex;
+
+	div {
+		transition: all 0.2s ease-in-out;
+		display: flex;
+		align-items: center;
+		padding-left: 2rem;
+		min-height: 70px;
+
+		flex-grow: 1;
+
+		:hover {
+			cursor: pointer;
+			color: var(--orange2);
+		}
+	}
 
 	@media ${size.lg} {
 		display: none;
@@ -52,13 +72,14 @@ const MobileDropdown = styled(Cell)`
 `
 
 const Navbar = ({ children, searchBar, spread }) => {
-	console.log('Navbar spread: ', spread)
+	// console.log('Navbar spread: ', spread)
 
 	const [visible, setVisible] = useState(false)
 
 	const [toggle, setToggle] = useState(false)
 
 	const handleClick = (e, userInput) => {
+		console.log('click')
 		if (userInput == null) {
 			e.preventDefault()
 			setVisible(!visible)
@@ -75,8 +96,8 @@ const Navbar = ({ children, searchBar, spread }) => {
 		<>
 			<SearchBar visible={!visible} handleClick={handleClick} />
 			<Container toggle={toggle} spread={spread}>
-				<MobileDropdown as={'div'} onClick={handleToggle}>
-					{'Filter results by'}
+				<MobileDropdown as={'div'}>
+					<div onClick={handleToggle}>{'Filter results by'}</div>
 
 					{searchBar && (
 						<SearchBar

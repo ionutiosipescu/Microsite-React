@@ -8,7 +8,6 @@ export const Cell = styled.li`
 	align-items: center;
 
 	padding: 0.5rem 1rem;
-	/* border: 2px solid red; */
 
 	transition: all 0.2s ease-in-out;
 
@@ -16,12 +15,14 @@ export const Cell = styled.li`
 		background-color: var(--darkBlue1);
 		cursor: pointer;
 		color: var(--hover-blue);
+
+		/* Without the css bellow if 'a' elem has a href, the color will not change. Anoying. Don't know a better way of fixing this*/
+		a {
+			transition: all 0.2s ease-in-out;
+			color: var(--hover-blue);
+		}
 	}
 
-	a {
-		text-decoration: none;
-		color: white;
-	}
 	@media ${size.lg} {
 		padding: 0 2rem;
 	}
