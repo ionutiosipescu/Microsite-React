@@ -25,7 +25,7 @@ export const routeNames = {
   expertiseQuality: "/expertise/quality",
   expertisePharma: "/expertise/pharma",
 
-  about: "/about",
+  about: "/brazilian",
   dashboard: "/dashboard",
 };
 

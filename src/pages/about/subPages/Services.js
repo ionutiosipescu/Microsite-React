@@ -6,17 +6,14 @@ import CardOverview from "../../../components/cards/CareersInDigital";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
-
-const Overview = () => {
-  // Card overview content from backend
-  const cardContent = {
-    imageSrc: image,
-    name: "Connor Colquhoun",
-    position: "wine connoisseur",
-    country: "japan",
-    buttonText: "Connect",
-  };
-
+const cardContent = {
+  imageSrc: image,
+  name: "Connor Colquhoun",
+  position: "wine connoisseur",
+  country: "japan",
+  buttonText: "Connect",
+};
+const Services = () => {
   return (
     <>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row">
@@ -34,45 +31,33 @@ const Overview = () => {
             in in minim sunt exercitation et ipsum dolor et. Commodo cillum
             dolor aliquip occaecat velit proident.
           </p>
-          <div className="my-3 border-bottom border-top border-3">
-            <h4 className=" py-2" style={{ color: "var(--lightBlue)" }}>
-              {" "}
-              Brazilian Restructuring and Insolvency Engagements
-            </h4>
-            <p>
-              Esse incididunt deserunt esse aute. Est proident excepteur
-              deserunt in in minim sunt exercitation et ipsum dolor et. Commodo
-              cillum dolor aliquip occaecat velit proident.
-            </p>
-          </div>
-          <Container
-            className=" my-4 p-4 "
-            style={{ background: "var(--gray1" }}
-          >
+
+          <Container className=" my-4 p-4 " style={{ background: "white" }}>
             <Row className="rounded">
               <Col>
                 <h4 className="fw-bold " style={{ color: "var(--lightBlue)" }}>
                   Our Services
                 </h4>
                 <Row className="my-4 fw-bold">
-                  <Col>
-                    <div>Coorporate Transformation</div>
-                    <div>Restructuring & Turnaround</div>
-                    <div>Private Equity Services</div>
-                    <div>Interim and Crisis Management</div>
-                    <div>Transaction Advisory</div>
-                    <div> Disputes and Investigations</div>
-                  </Col>
-                  <Col>
-                    <div>Judicial Administration / Trustee Services</div>
-                    <div>Infrastructure & Capital Projects</div>
-                    <div> Real Estate</div>
-                    <YellowButton
-                      text={"Read more about our Services"}
-                      width="80%"
-                      className="mt-4 fs-7"
-                    />
-                  </Col>
+                  <div>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book. It has survived not only five centuries,
+                  </div>
+                  <Row className="my-3">
+                    <Col>
+                      <div> l </div>
+                    </Col>
+                    <Col>
+                      <YellowButton
+                        text={"Read more about our Services"}
+                        // width="80%"
+                        className="mt-4 fs-7"
+                      />
+                    </Col>
+                  </Row>
                 </Row>
               </Col>
             </Row>
@@ -81,12 +66,10 @@ const Overview = () => {
         <Col lg={4} className=" px-0 ps-lg-5 flex-grow-1">
           <CardProfessionals {...cardContent} />
           <CardProfessionals {...cardContent} />
-
-          <CareersInDigital />
         </Col>
       </Row>
     </>
   );
 };
 
-export default Overview;
+export default Services;
