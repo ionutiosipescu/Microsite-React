@@ -16,7 +16,7 @@ const ServiceCard = ({ data }) => {
     }
     button {
       font-size: 13px;
-      height: 50px
+      height: 50px;
       border-radius: 5px;
     }
   `;
@@ -33,6 +33,7 @@ const ServiceCard = ({ data }) => {
           <Col lg={4} className="d-flex align-items-center">
             <YellowButton
               text={data.textButton ?? "contact our team"}
+              onClick={() => {}}
               // width="80%"
 
               className=""

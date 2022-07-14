@@ -20,7 +20,7 @@ const cardContent = {
 
 const ServicesContainer = styled.div``;
 
-const Services = () => {
+const Services = ({ handleSubPage }) => {
   return (
     <ServicesContainer>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
