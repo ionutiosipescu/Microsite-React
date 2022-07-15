@@ -9,7 +9,7 @@ import YellowButton from "../../components/buttons/YellowButton";
 import HeroSection from "../../components/cards/HeroSection";
 import digital from "../../assets/images/digital";
 
-const About = () => {
+const Brazil = () => {
   const dispatch = useDispatch();
   const testReducer = useSelector((state) => state.test);
   const [subPage, setSubPage] = useState("overview");
@@ -88,4 +88,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Brazil;
