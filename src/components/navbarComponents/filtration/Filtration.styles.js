@@ -29,7 +29,6 @@ export const Container = styled.nav`
 		display: ${props => (props.toggle ? 'column' : 'none')};
 
 		display: column;
-		/* color: white; */
 
 		@media ${size.lg} {
 			display: flex;
@@ -90,6 +89,23 @@ export const Form = styled.form`
 		:hover {
 			background-color: white;
 		}
+	}
+`
+
+export const StyledSearchBar2 = styled.div`
+	display: none;
+	align-items: center;
+	padding: 0.5rem 1rem;
+
+	input {
+		color: red;
+		height: 70%;
+		border-radius: 10px;
+		padding: 1rem;
+	}
+
+	@media ${size.lg} {
+		display: flex;
 	}
 `
 

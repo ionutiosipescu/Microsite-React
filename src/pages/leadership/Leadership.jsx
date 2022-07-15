@@ -32,17 +32,6 @@ const Leadership = () => {
 	)
 	const [filterByTags, setFilterByTags] = useState([
 		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
 		'fuck',
 		'fuck2',
 		'fuck3',
@@ -75,6 +64,18 @@ const Leadership = () => {
 
 			<FiltrationNavbar
 				searchBar
+				filterByTags={filterByTags}
+				setFilterByTags={setFilterByTags}
+			>
+				<NavbarDropdown data={links}>Something</NavbarDropdown>
+				<NavbarDropdown data={links}>DropDown</NavbarDropdown>
+				<NavbarDropdown data={links}>Something</NavbarDropdown>
+				<NavbarDropdown data={links}>Something2</NavbarDropdown>
+			</FiltrationNavbar>
+
+			<FiltrationNavbar
+				searchBar2={'enter search here'}
+				spread
 				filterByTags={filterByTags}
 				setFilterByTags={setFilterByTags}
 			>

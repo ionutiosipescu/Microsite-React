@@ -7,14 +7,12 @@ import { size } from '../../utils/breakpoints'
 const Page = styled.div`
 	margin: 0 auto;
 	background-color: white;
-    max-width: 1280px;
+	max-width: 1280px;
 	width: 100%;
 `
 const Container = styled.div`
 	background: var(--gray1);
 `
-
-const Content = styled.div``
 
 const Layout = props => {
 	return (
