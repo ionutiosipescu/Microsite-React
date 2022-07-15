@@ -19,10 +19,21 @@ const FooterContainer = styled.footer`
 
 const LinksC = styled.div`
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  .media {
+    justify-content: space-between;
+  }
+  .Global {
+    padding-bottom: 0;
+  }
+  .Careers {
+    padding-top: 0;
+  }
 `;
 
 const Col = styled.div`
+width: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -31,50 +42,62 @@ const Col = styled.div`
   p {
     font-weight: bold;
   }
-`;
+`
+const ColContainer = styled.div`
+display: flex;
+`
+const ColBox = styled.div`
+
+`
 
 const Copyright = styled.div`
   background: black;
   color: white;
   padding: 20px;
   // flex: 2;
-  width: 70%;
-  line-height: 10px;
+  width: 100%;
+  
+  p {
+    line-height: 1.2;
+  }
 `;
 
 const Footer = () => {
   return (
-    <FooterContainer className="bg-light">
+    <FooterContainer className="bg-light fluid">
       <BulletinSignup />
       <LinksC>
+        <ColContainer>
+          <ColBox>
+            <Col className="Global">
+              <p>Global Locations</p>
+              <p>Expertise</p>
+              <p>Industries</p>
+              <p>Insights</p>
+              <p>Our People</p>
+            </Col>
+            <Col className="Careers">
+              <p>Careers </p>
+              <p>#AMon Social</p>
+              <p>A&M on Covid-19</p>
+              <p>About A&M</p>
+            </Col>
+          </ColBox>
+          <Col className="Contact">
+            <p>Contact</p>
+            <p>Alumni</p>
+            <p>A&M Capital</p>
+            <p>A&M Capital Real Estate</p>
+            <p>Employee Portal</p>
+            <p>Privacy Policy</p>
+            <p>Privacy Shield Notice</p>
+            <p> California Privacy Notice</p>
+            <p>Cookie Policy</p>
+            <p>Terms of Use</p>
+          </Col>
+        </ColContainer>
         <Col>
-          <p>Global Locations</p>
-          <p>Expertise</p>
-          <p>Industries</p>
-          <p>Insights</p>
-          <p>Our People</p>
-        </Col>
-        <Col>
-          <p>Careers </p>
-          <p>#AMon Social</p>
-          <p>A&M on Covid-19</p>
-          <p>About A&M</p>
-        </Col>
-
-        <Col>
-          <p>Contact</p>
-          <p>Alumni</p>
-          <p>A&M Capital</p>
-          <p>A&M Capital Real Estate</p>
-          <p>Employee Portal</p>
-          <p>Privacy Policy</p>
-          <p>Privacy Shield Notice</p>
-          <p> California Privacy Notice</p>
-          <p>Cookie Policy</p>
-          <p>Terms of Use</p>
-        </Col>
-        <Col>
-          <div className="d-flex gap-3">
+          <div className="d-flex gap-3 media">
             <LinkedIn />
             <YouTube />
             <Facebook />
@@ -83,7 +106,7 @@ const Footer = () => {
         </Col>
       </LinksC>
       <Copyright>
-        <p className="pt-2">
+        <p >
           © Copyright 2022, Alvarez & Marsal Holdings, LLC. All Rights Reserved.
         </p>
         <p>
