@@ -1,44 +1,55 @@
-import digital from '../../assets/images/digital'
-import React from 'react'
-import styled from 'styled-components'
-import image from '../../assets/images/ConnorWine'
-import HeroCardBrazilTransparent from './HeroCardBrazilTransparent'
+import digital from "../../assets/images/digital";
+import React from "react";
+import styled from "styled-components";
+import image from "../../assets/images/ConnorWine";
+import HeroCardBrazilTransparent from "./HeroCardBrazilTransparent";
 
 const Hero = styled.div`
-	position: relative;
-	height: 400px;
-	width: 100%;
-	/* padding: 2rem; */
-	/* margin: 2rem; */
-	padding: 3rem;
-	background-size: cover;
-	background-image: url(${props => props.backgroundUrl || digital});
+  position: relative;
+  height: 400px;
+  width: 100%;
+  /* padding: 2rem; */
+  /* margin: 2rem; */
+  padding: 3rem;
+  background-size: cover;
+  background-image: url(${(props) => props.backgroundUrl || digital});
 
-	text-transform: uppercase;
+  text-transform: uppercase;
 
-	h1 {
-		color: white;
-		font-size: clamp(2.25rem, 5vw, 5rem);
+  /* align title to center  , but if title it's long looks bad ________________________________________ */
+  /* display: flex;
+  align-items: center; */
 
-		margin: 0;
-		/* margin: 0 1rem; */
-		/* line-height: 100%; */
-		word-wrap: break-word;
-	}
+  h1 {
+    color: white;
+    font-size: clamp(2.25rem, 5vw, 5rem);
 
-	h4 {
-		color: var(--orange2);
-		margin: 0;
-	}
-`
+    margin: 0;
+    /* margin: 0 1rem; */
+    /* line-height: 100%; */
+    word-wrap: break-word;
+  }
 
-const HeroSection = ({ title, backgroundUrl, buttonText, pageTitle, transparent  }) => {
-	return (
-		<Hero backgroundUrl={backgroundUrl}>
-			<h1>{title}</h1>
-			{transparent && <HeroCardBrazilTransparent/>}
-		</Hero>
-	)
-}
+  h4 {
+    color: var(--orange2);
+    margin: 0;
+  }
+`;
 
-export default HeroSection
+const HeroSection = ({
+  title,
+  backgroundUrl,
+  buttonText,
+  pageTitle,
+  transparent,
+}) => {
+  return (
+    <Hero backgroundUrl={backgroundUrl}>
+      <h1>{title}</h1>
+
+      {transparent && <HeroCardBrazilTransparent />}
+    </Hero>
+  );
+};
+
+export default HeroSection;
