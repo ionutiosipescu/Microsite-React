@@ -2,10 +2,14 @@ import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import CardsLocations from '../../../components/cards/CardsLocations'
 import SimpleMap from '../../../components/cards/SimpleMap'
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const Locations = () => {
   return <>
       <Container>
+        <Row>
+          <TranslateButton text1={"English"} text2={"Portugheze"}/>
+        </Row>
         <Row>
           <Col>
               <h2>
