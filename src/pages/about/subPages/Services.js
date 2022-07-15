@@ -19,13 +19,17 @@ const cardContent = {
   buttonText: "Connect",
 };
 
-const ServicesContainer = styled.div``;
+const ServicesContainer = styled.div`
+  .firstSection {
+    border-right: 2px solid var(--gray5);
+  }
+`;
 
 const Services = ({ handleSubPage }) => {
   return (
     <ServicesContainer>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
-        <Col lg={9} className=" border border-2  border-end p-5">
+        <Col lg={9} className=" firstSection p-5">
           <Row>
             <TranslateButton text1={"English"} text2={"Portuguese"} />
           </Row>
