@@ -49,7 +49,7 @@ const Leadership = () => {
 		'fuck4',
 	])
 
-	const [clickedNavbarCell, setClickedNavbarCell] = useState('')
+	const [clickedNavbarCell, setClickedNavbarCell] = useState(null)
 
 	const handleDisplay = index => {
 		console.log('this is the index', index)
@@ -66,6 +66,8 @@ const Leadership = () => {
 		button: <YellowButton />,
 		card: <ProfessionalsCardSmall />,
 	}
+	let arr = [<YellowButton />, <ProfessionalsCardSmall />]
+	// console.log(clickedNavbarCell)
 
 	return (
 		<>
@@ -83,12 +85,13 @@ const Leadership = () => {
 			</FiltrationNavbar>
 
 			<NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
-				<NavigationCell element={'button'}> First</NavigationCell>
-				<NavigationCell element={'card'}> First1</NavigationCell>
-				<NavigationCell element={'button'}> First2</NavigationCell>
+				<NavigationCell> First</NavigationCell>
+				<NavigationCell> First1</NavigationCell>
+				<NavigationCell> First2</NavigationCell>
 			</NavigationNavbar>
 
 			<FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+			{arr[clickedNavbarCell]}
 
 			<div className="m-4">
 				<LeaadersContainer>
