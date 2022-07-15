@@ -4,6 +4,7 @@ import NewsCard from '../../../components/cards/NewsCard'
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import PostCard from "../../../components/cards/PostCard";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const News = () => {
   const PostsContainer = styled.div`
@@ -22,11 +23,19 @@ const [articles, setArticles] = useState([...arr]);
 const [itemsFilter, setItemsFilter] = useState([]);
   return (
     <>
-			<PostsContainer>
-          {articles.map((post) => (
-            <PostCard post={post} locationName={LocationName} />
-          ))}
-        </PostsContainer>
+       
+       
+			<Container>
+        <Row className="m-auto">
+                  <TranslateButton text1={"English"} text2={"Portugheze"} />
+                <PostsContainer>
+                        
+                          {articles.map((post) => (
+                            <PostCard post={post} locationName={LocationName} />
+                          ))}
+                        </PostsContainer>
+              </Row>
+      </Container>
 		</>
   );
 };

@@ -4,6 +4,7 @@ import CardProfessionals from "../../../components/cards/CardProfessionals";
 import { CardHolder } from "./subPages.style";
 import image from "../../../assets/images/ConnorWine";
 import { CustomNavbar } from "./subPages.style.js";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const Professionals = () => {
   // Professionals from backend

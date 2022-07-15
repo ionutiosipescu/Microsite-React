@@ -9,6 +9,7 @@ import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import { ServiceCard } from "../../../components/cards/";
 // import ServicesCard from "../../../components/cards/ServiceCard";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const cardContent = {
   imageSrc: image,
@@ -24,7 +25,9 @@ const Services = ({ handleSubPage }) => {
   return (
     <ServicesContainer>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
-        <Col lg={9} className=" border border-2  border-end p-5">
+        <Col lg={9} className=" border border-2  border-end ">
+        <TranslateButton text1={"English"} text2={"Portugheze"} />
+
           <h1 className="my-4">
             Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
           </h1>
@@ -40,7 +43,7 @@ const Services = ({ handleSubPage }) => {
           </p>
 
           <div className=" my-4  " style={{ background: "white" }}>
-            <Row className="rounded">
+            <Row className="rounded ">
               <Col>
                 <h4 className="fw-bold " style={{ color: "var(--lightBlue)" }}>
                   Our Services
@@ -48,7 +51,7 @@ const Services = ({ handleSubPage }) => {
               </Col>
               <ServiceCard data={data} />
               <ServiceCard data={data} />
-              {/* <ServiceCard data={data} /> */}
+              <ServiceCard data={data} />
             </Row>
           </div>
         </Col>

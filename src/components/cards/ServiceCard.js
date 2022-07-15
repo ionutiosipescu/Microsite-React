@@ -5,6 +5,9 @@ import YellowButton from "../buttons/YellowButton";
 
 const ServiceCard = ({ data }) => {
   const ServicesCardContainer = styled.div`
+  .ceva:last-of-type {
+    border-bottom:  0 !important;
+  }
     .cardTitle {
       font-size: 18px;
       font-weight: bold;
@@ -25,7 +28,7 @@ const ServiceCard = ({ data }) => {
       <Row className="my-4 fw-bold   ">
         <h3 className=" cardTitle">{data.title}</h3>
 
-        <Row className="border-bottom">
+        <Row className="border-bottom ceva">
           <Col lg={8}>
             <p className="cardDescription">{data.description}</p>
           </Col>

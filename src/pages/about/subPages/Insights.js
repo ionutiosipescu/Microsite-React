@@ -1,7 +1,8 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import CardInsights from "../../../components/cards/CardInsights";
 import image from "../../../assets/images/ConnorWine";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const Insights = () => {
   // this is the Insights that will come from drupal
@@ -31,7 +32,7 @@ const Insights = () => {
 
   return (
     <>
-      <div></div>
+    <TranslateButton/>
       <Container>
         {drupal.map((insight, index) => (
           <CardInsights
