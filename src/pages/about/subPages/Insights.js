@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import CardInsights from "../../../components/cards/CardInsights";
+import CardInsightsBrazilian from "../../../components/cards/CardInsightsBrazilian";
 import image from "../../../assets/images/ConnorWine";
 import TranslateButton from "../../../components/buttons/TranslateButton";
 
@@ -38,9 +38,9 @@ const Insights = () => {
           <TranslateButton text1={"English"} text2={"Portuguese"} />
         </Row>
       </div>
-      <Container>
+      <Container className="">
         {drupal.map((insight, index) => (
-          <CardInsights
+          <CardInsightsBrazilian
             key={index}
             image={insight.image}
             type={insight.type}
