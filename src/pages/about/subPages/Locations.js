@@ -14,6 +14,9 @@ const Locations = () => {
     <>
       <Container>
         <Row>
+          <TranslateButton text1={"English"} text2={"Portugheze"}/>
+        </Row>
+        <Row>
           <Col>
             <h2>Serving businesses, governments and communities worldwide.</h2>
             <p>
