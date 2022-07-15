@@ -2,16 +2,21 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import styled from "styled-components";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => (
+  <div>
+    <i className="fa-solid fa-map-pin fs-1"></i>
+  </div>
+);
 
-export default function SimpleMap() {
+export default function SimpleMap({ cardLocation }) {
   const defaultProps = {
     center: {
-      lat: 44.4268,
-      lng: 26.1025,
+      lat: -3.119027,
+      lng: -60.021731,
     },
-    zoom: 8,
+    zoom: 6,
   };
+  console.log(cardLocation);
 
   return (
     // Important! Always set the container height explicitly
@@ -23,7 +28,12 @@ export default function SimpleMap() {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
+        <AnyReactComponent
+          lat={cardLocation?.lat}
+          lng={cardLocation?.lng}
+          text="My Marker"
+        />
+        {/* <Marker lat={defaultProps.center.lat} lng={defaultProps.center.lng} /> */}
       </GoogleMapReact>
     </div>
   );
