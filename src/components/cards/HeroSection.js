@@ -1,10 +1,11 @@
 import digital from '../../assets/images/digital'
 import React from 'react'
 import styled from 'styled-components'
-import YellowButton from '../buttons/YellowButton'
 import image from '../../assets/images/ConnorWine'
+import HeroCardBrazilTransparent from './HeroCardBrazilTransparent'
 
 const Hero = styled.div`
+	position: relative;
 	height: 400px;
 	width: 100%;
 	/* padding: 2rem; */
@@ -31,12 +32,11 @@ const Hero = styled.div`
 	}
 `
 
-const HeroSection = ({ title, backgroundUrl, buttonText, pageTitle }) => {
+const HeroSection = ({ title, backgroundUrl, buttonText, pageTitle, transparent  }) => {
 	return (
 		<Hero backgroundUrl={backgroundUrl}>
-			{pageTitle ? <h4>{pageTitle}</h4> : ''}
 			<h1>{title}</h1>
-			{buttonText ? <YellowButton text={buttonText} /> : ''}
+			{transparent && <HeroCardBrazilTransparent/>}
 		</Hero>
 	)
 }

@@ -48,7 +48,7 @@ const Services = ({ handleSubPage }) => {
           </p>
 
           <div className=" my-4  " style={{ background: "white" }}>
-            <Row className="rounded">
+            <Row className="rounded ">
               <Col>
                 <h4 className="fw-bold " style={{ color: "var(--lightBlue)" }}>
                   Our Services
@@ -56,7 +56,7 @@ const Services = ({ handleSubPage }) => {
               </Col>
               <ServiceCard data={data} />
               <ServiceCard data={data} />
-              {/* <ServiceCard data={data} /> */}
+              <ServiceCard data={data} />
             </Row>
           </div>
         </Col>

@@ -43,6 +43,7 @@ const Brazil = () => {
         title={heroSectionData.title}
         backgroundUrl={heroSectionData.backgroundUrl}
         handleSubPage={handleSubPage}
+        transparent
       />
 
       <CustomNavbar bg="light" expand="lg">
