@@ -17,7 +17,7 @@ const Overview = () => {
     buttonText: "connect",
   };
   return (
-    <>
+    <div>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row">
         <Col lg={8}>
         <TranslateButton text1={"English"} text2={"Portugheze"} />
@@ -86,7 +86,7 @@ const Overview = () => {
           <CareersInDigital />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

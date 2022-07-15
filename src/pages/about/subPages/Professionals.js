@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, NavDropdown, Nav, Form, Button } from "react-bootstrap";
+import {
+  Container,
+  NavDropdown,
+  Nav,
+  Form,
+  Button,
+  Row,
+} from "react-bootstrap";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import { CardHolder } from "./subPages.style";
 import image from "../../../assets/images/ConnorWine";
@@ -16,17 +23,23 @@ const Professionals = () => {
 
   return (
     <>
-      <h2>
-        Qui excepteur aute dolore proident adipisicing ullamco laborum.
-        consectetur.
-      </h2>
-      <p>
-        Et enim ex magna aliqua deserunt aliqua nisi cupidatat. Sit irure aliqua
-        aute aliquip ea nisi culpa aliqua nisi quis nostrud cillum culpa nulla.
-        Cillum do incididunt eu cupidatat. Velit reprehenderit eiusmod anim amet
-        id aliquip enim eiusmod culpa. Consequat quis ut incididunt duis nulla
-        magna eiusmod est nulla eiusmod elit laborum do.
-      </p>
+      <div className="container p-4">
+        <Row>
+          <TranslateButton text1={"English"} text2={"Portuguese"} />
+        </Row>
+        <h2>
+          Qui excepteur aute dolore proident adipisicing ullamco laborum.
+          consectetur.
+        </h2>
+        <p>
+          Et enim ex magna aliqua deserunt aliqua nisi cupidatat. Sit irure
+          aliqua aute aliquip ea nisi culpa aliqua nisi quis nostrud cillum
+          culpa nulla. Cillum do incididunt eu cupidatat. Velit reprehenderit
+          eiusmod anim amet id aliquip enim eiusmod culpa. Consequat quis ut
+          incididunt duis nulla magna eiusmod est nulla eiusmod elit laborum do.
+        </p>
+      </div>
+
       <CustomNavbar expand="lg">
         <Container fluid>
           <CustomNavbar.Toggle aria-controls="navbarScroll" />

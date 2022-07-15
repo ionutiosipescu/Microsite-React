@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container, Row, Col } from 'react-bootstrap'
-import NewsCard from '../../../components/cards/NewsCard'
+import { Card, Container, Row, Col } from "react-bootstrap";
+import NewsCard from "../../../components/cards/NewsCard";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 import PostCard from "../../../components/cards/PostCard";
@@ -8,19 +8,19 @@ import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const News = () => {
   const PostsContainer = styled.div`
-  width: 90%;
-  height: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  `;
 
-const location = useLocation();
-const LocationName = location?.pathname.split("/").slice(1, 3);
+  const location = useLocation();
+  const LocationName = location?.pathname.split("/").slice(1, 3);
 
-const [articles, setArticles] = useState([...arr]);
-const [itemsFilter, setItemsFilter] = useState([]);
+  const [articles, setArticles] = useState([...arr]);
+  const [itemsFilter, setItemsFilter] = useState([]);
   return (
     <>
        
@@ -39,8 +39,6 @@ const [itemsFilter, setItemsFilter] = useState([]);
 		</>
   );
 };
-
-
 
 export default News;
 

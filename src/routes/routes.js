@@ -6,10 +6,11 @@ import {
   Home,
   Insight,
   Leadership,
-  About,
+  Brazil,
   InsightCase,
   InsightLatest,
   InsightCaseArticlePage,
+  Digital,
 } from "../pages/";
 
 export const routeNames = {
@@ -25,8 +26,9 @@ export const routeNames = {
   expertiseQuality: "/expertise/quality",
   expertisePharma: "/expertise/pharma",
 
-  about: "/brazilian",
+  brazilian: "/brazilian",
   dashboard: "/dashboard",
+  digital: "/digital",
 };
 
 export const routes = [
@@ -83,14 +85,19 @@ export const routes = [
     element: <Contact />,
   },
   {
-    path: routeNames.about,
+    path: routeNames.brazilian,
     exact: true,
-    element: <About />,
+    element: <Brazil />,
   },
   {
     path: routeNames.dashboard,
     exact: true,
     element: <Dashboard />,
+  },
+  {
+    path: routeNames.digital,
+    exact: true,
+    element: <Digital />,
   },
 ];
 
