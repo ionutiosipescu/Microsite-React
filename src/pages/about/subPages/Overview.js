@@ -72,7 +72,7 @@ const Overview = () => {
                     <YellowButton
                       text={"Read more about our Services"}
                       width="80%"
-                      className="mt-4 fs-7"
+                      className="mt-4 fs-4"
                     />
                   </Col>
                 </Row>
