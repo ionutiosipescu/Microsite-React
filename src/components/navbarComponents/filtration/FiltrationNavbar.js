@@ -1,75 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState, createContext } from 'react'
 import { SearchBar } from '../index'
-import { Cell } from './NavbarCell'
-import { size } from '../../../utils/breakpoints'
+import { Container, MobileDropdown } from './Filtration.styles'
 
-const Container = styled.nav`
-	display: column;
-
-	background-color: var(--darkBlue);
-	color: white;
-	font-size: 1rem;
-	min-height: 70px;
-
-	a {
-		color: white;
-		text-decoration: none;
-	}
-
-	& > form {
-		display: none;
-
-		@media ${size.lg} {
-			display: flex;
-		}
-	}
-
-	& > ul {
-		flex-grow: 1;
-
-		margin-bottom: 0;
-		display: ${props => (props.toggle ? 'column' : 'none')};
-
-		display: column;
-		/* color: white; */
-
-		@media ${size.lg} {
-			display: flex;
-			padding-left: 0;
-
-			justify-content: ${props =>
-				props.spread ? 'space-between' : 'flex-start'};
-		}
-	}
-
-	@media ${size.lg} {
-		display: flex;
-	}
-`
-
-const MobileDropdown = styled.div`
-	display: flex;
-
-	div {
-		transition: all 0.2s ease-in-out;
-		display: flex;
-		align-items: center;
-		padding-left: 2rem;
-		min-height: 70px;
-
-		flex-grow: 1;
-
-		:hover {
-			cursor: pointer;
-			color: var(--orange2);
-		}
-	}
-
-	@media ${size.lg} {
-		display: none;
-	}
-`
+export const NavbarContext = createContext(null)
 
 const Navbar = ({
 	children,
@@ -78,11 +11,13 @@ const Navbar = ({
 	filterByTags,
 	setFilterByTags,
 }) => {
-	// console.log('Navbar spread: ', spread)
-
 	const [visible, setVisible] = useState(false)
-
 	const [toggle, setToggle] = useState(false)
+
+	const vals = {
+		filterByTags: filterByTags,
+		setFilterByTags: setFilterByTags,
+	}
 
 	const handleClick = (e, userInput) => {
 		console.log('click')
@@ -117,7 +52,9 @@ const Navbar = ({
 						/>
 					)}
 				</MobileDropdown>
-				<ul>{children}</ul>
+				<NavbarContext.Provider value={vals}>
+					<ul>{children}</ul>
+				</NavbarContext.Provider>
 				{searchBar && (
 					<SearchBar
 						// visible={visible}
