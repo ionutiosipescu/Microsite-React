@@ -88,8 +88,6 @@ const Leadership = () => {
 				<NavigationCell element={'button'}> First2</NavigationCell>
 			</NavigationNavbar>
 
-			{/* {elements[]} */}
-
 			<FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
 
 			<div className="m-4">
