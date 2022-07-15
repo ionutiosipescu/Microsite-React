@@ -213,69 +213,30 @@ export const leadersList = [
 
 export const links = [
 	{
-		name: 'sublink',
-		href: '/',
+		name: 'sublink1',
+	},
+	{
+		name: 'sublink2',
+	},
+	{
+		name: 'sublink3',
+	},
+	{
+		name: 'sublink4',
+	},
+	{
+		name: 'sublink5',
 	},
 	{
 		name: 'sublink',
-		href: '/',
 	},
 	{
 		name: 'sublink',
-		href: '/',
 	},
 	{
 		name: 'sublink',
-		href: '/',
 	},
 	{
 		name: 'sublink',
-		href: '/',
-	},
-	{
-		name: 'sublink',
-		href: '/',
-	},
-	{
-		name: 'sublink',
-		href: '/',
-	},
-	{
-		name: 'sublink',
-		href: '/',
-	},
-	{
-		name: 'sublink',
-		href: '/',
-	},
-]
-
-export const tags = [
-	{
-		tag: 'sublink1',
-	},
-	{
-		tag: 'sublink2',
-	},
-	{
-		tag: 'sublink3',
-	},
-	{
-		tag: 'sublink4',
-	},
-	{
-		tag: 'sublink5',
-	},
-	{
-		tag: 'sublink6',
-	},
-	{
-		tag: 'sublink7',
-	},
-	{
-		tag: 'sublink8',
-	},
-	{
-		tag: 'sublink9',
 	},
 ]
