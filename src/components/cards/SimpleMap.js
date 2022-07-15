@@ -20,7 +20,7 @@ export default function SimpleMap({ cardLocation }) {
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "500px", width: "100%" }}>
+    <div style={{ height: "500px", width: "90%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
           key: "AIzaSyB8EZbNyny7DGFI-ZWmVTRqh6Ip_bgCnp4",

@@ -23,7 +23,7 @@ const News = () => {
   const [itemsFilter, setItemsFilter] = useState([]);
   return (
     <>
-      <Row className="px-5">
+      <Row className="p-5">
         <TranslateButton text1={"English"} text2={"Portuguese"} />
       </Row>
       <PostsContainer>

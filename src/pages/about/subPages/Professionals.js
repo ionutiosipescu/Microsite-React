@@ -23,7 +23,7 @@ const Professionals = () => {
 
   return (
     <>
-      <div className="container p-4">
+      <div className="container p-5">
         <Row>
           <TranslateButton text1={"English"} text2={"Portuguese"} />
         </Row>

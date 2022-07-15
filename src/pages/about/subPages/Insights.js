@@ -34,7 +34,7 @@ const Insights = () => {
     <>
       <div>
         {" "}
-        <Row className="px-4">
+        <Row className="p-5">
           <TranslateButton text1={"English"} text2={"Portuguese"} />
         </Row>
       </div>

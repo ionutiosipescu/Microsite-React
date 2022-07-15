@@ -13,7 +13,7 @@ const Locations = () => {
   };
   return (
     <>
-      <Container>
+      <Container className="p-3">
         <Row>
           <TranslateButton text1={"English"} text2={"Portugheze"} />
         </Row>
