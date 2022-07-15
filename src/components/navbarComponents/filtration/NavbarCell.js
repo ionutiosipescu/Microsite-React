@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { size } from '../../utils/breakpoints'
+import { size } from '../../../utils/breakpoints'
 
 export const Cell = styled.li`
 	display: flex;

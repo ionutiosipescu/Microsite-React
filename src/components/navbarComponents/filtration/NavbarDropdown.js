@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Cell } from './NavbarCell'
-import { size } from '../../utils/breakpoints'
+import { size } from '../../../utils/breakpoints'
 
 const DropdownCell = styled(Cell)`
 	padding: 1rem 2rem;
@@ -71,7 +71,8 @@ const NavbarDropdown = ({
 			<Dropdown show={show} columns={columns}>
 				{data.map((link, index) => (
 					<DropdownCell key={index} onClick={() => addTag(link)}>
-						{!filter ? <a>{link.name}</a> : <a href={data.href}>{link.name}</a>}
+						{/* {!filter ? <a>{link.name}</a> : <a href={data.href}>{link.name}</a>} */}
+						<a href={link.href}>{link.name}</a>
 					</DropdownCell>
 				))}
 			</Dropdown>

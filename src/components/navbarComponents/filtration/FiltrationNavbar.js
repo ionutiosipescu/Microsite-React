@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { SearchBar } from '.'
+import { SearchBar } from '../index'
 import { Cell } from './NavbarCell'
-import { size } from '../../utils/breakpoints'
+import { size } from '../../../utils/breakpoints'
 
 const Container = styled.nav`
 	display: column;
@@ -71,7 +71,13 @@ const MobileDropdown = styled.div`
 	}
 `
 
-const Navbar = ({ children, searchBar, spread }) => {
+const Navbar = ({
+	children,
+	searchBar,
+	spread,
+	filterByTags,
+	setFilterByTags,
+}) => {
 	// console.log('Navbar spread: ', spread)
 
 	const [visible, setVisible] = useState(false)
@@ -96,7 +102,11 @@ const Navbar = ({ children, searchBar, spread }) => {
 		<>
 			<SearchBar visible={!visible} handleClick={handleClick} />
 			<Container toggle={toggle} spread={spread}>
-				<MobileDropdown as={'div'}>
+				<MobileDropdown
+					as={'div'}
+					filterByTags={filterByTags}
+					setFilterByTags={setFilterByTags}
+				>
 					<div onClick={handleToggle}>{'Filter results by'}</div>
 
 					{searchBar && (

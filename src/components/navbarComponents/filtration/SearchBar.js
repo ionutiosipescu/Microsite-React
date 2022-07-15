@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Search } from '../../assets/icons'
-import { size } from '../../utils/breakpoints'
+import { Search } from '../../../assets/icons'
+import { size } from '../../../utils/breakpoints'
 
 const Form = styled.form`
 	display: ${props => {

@@ -7,13 +7,16 @@ import {
 import styled from 'styled-components'
 import { tags, leadersList, arr, links } from '../../utils/data'
 import {
-	Navbar,
+	FiltrationNavbar,
 	NavbarCell,
 	NavbarDropdown,
 	SearchBar,
-} from '../../components/NavbarComponents'
+	NavigationCell,
+	NavigationNavbar,
+} from '../../components/navbarComponents'
 import CurrentRoute from '../../components/CurrentRoute'
 import FilterBy from '../../components/FilterBy'
+import YellowButton from '../../components/buttons/YellowButton'
 
 const LeaadersContainer = styled.div`
 	display: grid;
@@ -46,6 +49,8 @@ const Leadership = () => {
 		'fuck4',
 	])
 
+	const [clickedNavbarCell, setClickedNavbarCell] = useState('')
+
 	const handleDisplay = index => {
 		console.log('this is the index', index)
 		if (!openedState[index]) {
@@ -57,31 +62,33 @@ const Leadership = () => {
 		}
 	}
 
+	let elements = {
+		button: <YellowButton />,
+		card: <ProfessionalsCardSmall />,
+	}
+
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
 
-			<Navbar searchBar>
-				<NavbarCell>Fuck</NavbarCell>
-				<NavbarCell>Fuck1</NavbarCell>
-				<NavbarCell>Fuck2</NavbarCell>
-				<NavbarDropdown
-					data={links}
-					filterByTags={filterByTags}
-					setFilterByTags={setFilterByTags}
-					filter
-				>
-					Something
-				</NavbarDropdown>
-				<NavbarDropdown
-					data={links}
-					filterByTags={filterByTags}
-					setFilterByTags={setFilterByTags}
-					filter
-				>
-					DropDown
-				</NavbarDropdown>
-			</Navbar>
+			<FiltrationNavbar
+				searchBar
+				filterByTags={filterByTags}
+				setFilterByTags={setFilterByTags}
+			>
+				<NavbarDropdown data={links}>Something</NavbarDropdown>
+				<NavbarDropdown data={links}>DropDown</NavbarDropdown>
+				<NavbarDropdown data={links}>Something</NavbarDropdown>
+				<NavbarDropdown data={links}>Something2</NavbarDropdown>
+			</FiltrationNavbar>
+
+			<NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
+				<NavigationCell element={'button'}> First</NavigationCell>
+				<NavigationCell element={'card'}> First1</NavigationCell>
+				<NavigationCell element={'button'}> First2</NavigationCell>
+			</NavigationNavbar>
+
+			{/* {elements[]} */}
 
 			<FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
 

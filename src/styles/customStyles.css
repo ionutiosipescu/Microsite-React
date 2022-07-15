@@ -3,7 +3,7 @@
 	--gray2: #cfcdcd;
 	--gray3: #bfbfbf;
 	--gray4: #666;
-	--gray5: #EEEEEE;
+	--gray5: #eeeeee;
 
 	--darkBlue: #002b49;
 	--darkBlue1: #061931;
@@ -24,10 +24,6 @@
 	box-sizing: border-box;
 	outline: 0;
 	font-family: Helvetica Neue LT Std, Arial, sans-serif;
-
-	/* font-family: " Helvetica Neue LT Std", roman;
-   */
-	/* font-family-helvetica-neue-lt-std: Helvetica Neue LT Std */
 }
 
 ul {
@@ -35,11 +31,3 @@ ul {
 	margin: 0;
 	padding: 0;
 }
-
-/* a {
-	text-decoration: none;
-	color: #000;
-} */
-/* #navbarScrollingDropdown {
-  color: rgba(0,0,0,.9) !important;
-} */
