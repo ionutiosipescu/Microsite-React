@@ -9,6 +9,7 @@ import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import { ServiceCard } from "../../../components/cards/";
 // import ServicesCard from "../../../components/cards/ServiceCard";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const cardContent = {
   imageSrc: image,
@@ -25,6 +26,9 @@ const Services = ({ handleSubPage }) => {
     <ServicesContainer>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
         <Col lg={9} className=" border border-2  border-end p-5">
+          <Row>
+            <TranslateButton text1={"English"} text2={"Portuguese"} />
+          </Row>
           <h1 className="my-4">
             Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
           </h1>
