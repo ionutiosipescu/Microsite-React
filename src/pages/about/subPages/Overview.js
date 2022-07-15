@@ -6,6 +6,7 @@ import CardOverview from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
+import TranslateButton from "../../../components/buttons/TranslateButton";
 
 const Overview = () => {
   const cardContent = {
@@ -16,9 +17,12 @@ const Overview = () => {
     buttonText: "connect",
   };
   return (
-    <>
+    <div>
       <Row className="p-0 m-0 d-flex flex-column flex-lg-row">
-        <Col lg={8}>
+        <Col lg={8} className="px-4">
+          <Row>
+            <TranslateButton text1={"English"} text2={"Portuguese"} />
+          </Row>
           <h1 className="my-4">
             Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
           </h1>
@@ -83,7 +87,7 @@ const Overview = () => {
           <CareersInDigital />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
