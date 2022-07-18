@@ -1,31 +1,38 @@
 import React, { useState } from "react";
-import {
-  Container,
-  NavDropdown,
-  Nav,
-  Form,
-  Button,
-  Row,
-} from "react-bootstrap";
-import CardProfessionals from "../../../components/cards/CardProfessionals";
-import { CardHolder } from "./subPages.style";
-import image from "../../../assets/images/ConnorWine";
-import { CustomNavbar } from "./subPages.style.js";
-import TranslateButton from "../../../components/buttons/TranslateButton";
-import { leadersList } from "../../../utils/data";
+import { Row } from "react-bootstrap";
 
+//images
+import image from "../../../assets/images/ConnorWine";
+
+//data
+import { leadersList, links, arr } from "../../../utils/data";
+
+// costum components
+import TranslateButton from "../../../components/buttons/TranslateButton";
 import { LeaadersContainer } from "../../leadership/Leadership";
 import { ProfessionalsCardSmall } from "../../../components/cards";
+import {
+  FiltrationNavbar,
+  NavbarDropdown,
+} from "../../../components/navbarComponents";
+import FilterBy from "../../../components/FilterBy";
+
 const Professionals = () => {
+  //state of modal
   const [openedState, setOpenedState] = useState(
     Array.from(leadersList, () => false)
   );
-  // Professionals from backend
-  const professionals = {
-    imageSrc: image,
-    name: "Connor Colquhoun",
-    position: "wine connoisseur",
-  };
+  const [clickedNavbarCell, setClickedNavbarCell] = useState(null);
+  const [filterByTags, setFilterByTags] = useState([
+    "fuck",
+    "fuck2",
+    "fuck3",
+    "fuck4",
+    "fuck",
+    "fuck2",
+  ]);
+
+  //handle position of modal
   const handleDisplay = (index) => {
     console.log("this is the index", index);
     if (!openedState[index]) {
@@ -36,6 +43,7 @@ const Professionals = () => {
       setOpenedState(Array.from(leadersList, () => false));
     }
   };
+
   return (
     <>
       <div className="container p-5">
@@ -54,73 +62,20 @@ const Professionals = () => {
           incididunt duis nulla magna eiusmod est nulla eiusmod elit laborum do.
         </p>
       </div>
-
-      <CustomNavbar expand="lg">
-        <Container fluid>
-          <CustomNavbar.Toggle aria-controls="navbarScroll" />
-          <CustomNavbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              <NavDropdown title="Expertise" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Industry" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Country" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="City" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-            </Form>
-          </CustomNavbar.Collapse>
-        </Container>
-      </CustomNavbar>
+      <FiltrationNavbar
+        searchBar
+        filterByTags={filterByTags}
+        setFilterByTags={setFilterByTags}
+      >
+        <NavbarDropdown data={links}>Something</NavbarDropdown>
+        <NavbarDropdown data={links}>DropDown</NavbarDropdown>
+        <NavbarDropdown data={links}>Something</NavbarDropdown>
+        <NavbarDropdown data={links}>Something2</NavbarDropdown>
+      </FiltrationNavbar>
+      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      {arr[clickedNavbarCell]}
 
       <h3 className="m-3">Leaders</h3>
-
-      {/* <CardProfessionals /> */}
-
       <div className="m-4">
         <LeaadersContainer>
           {leadersList.map((cardInfo, index) => {
