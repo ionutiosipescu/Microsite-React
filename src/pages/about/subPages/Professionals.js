@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   NavDropdown,
@@ -12,15 +12,30 @@ import { CardHolder } from "./subPages.style";
 import image from "../../../assets/images/ConnorWine";
 import { CustomNavbar } from "./subPages.style.js";
 import TranslateButton from "../../../components/buttons/TranslateButton";
+import { leadersList } from "../../../utils/data";
 
+import { LeaadersContainer } from "../../leadership/Leadership";
+import { ProfessionalsCardSmall } from "../../../components/cards";
 const Professionals = () => {
+  const [openedState, setOpenedState] = useState(
+    Array.from(leadersList, () => false)
+  );
   // Professionals from backend
   const professionals = {
     imageSrc: image,
     name: "Connor Colquhoun",
     position: "wine connoisseur",
   };
-
+  const handleDisplay = (index) => {
+    console.log("this is the index", index);
+    if (!openedState[index]) {
+      let arr = Array.from(leadersList, () => false);
+      arr[index] = true;
+      setOpenedState([...arr]);
+    } else {
+      setOpenedState(Array.from(leadersList, () => false));
+    }
+  };
   return (
     <>
       <div className="container p-5">
@@ -106,18 +121,22 @@ const Professionals = () => {
 
       {/* <CardProfessionals /> */}
 
-      <CardHolder>
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-        <CardProfessionals {...professionals} />
-      </CardHolder>
+      <div className="m-4">
+        <LeaadersContainer>
+          {leadersList.map((cardInfo, index) => {
+            return (
+              <ProfessionalsCardSmall
+                key={index}
+                cardInfo={cardInfo}
+                index={index}
+                openedState={openedState}
+                handleDisplay={handleDisplay}
+                showDetails={openedState[index]}
+              />
+            );
+          })}
+        </LeaadersContainer>
+      </div>
     </>
   );
 };
