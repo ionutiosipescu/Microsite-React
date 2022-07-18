@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { test } from '../../store/actions/test'
 import HeroSection from '../../components/cards/HeroSection'
 import {
 	Overview,
@@ -8,6 +6,7 @@ import {
 	Professionals,
 	NewsRelease,
 	Capabilities,
+	Practice,
 } from './subPages'
 import {
 	NavigationCell,
@@ -25,6 +24,7 @@ const Digital = () => {
 		<NewsRelease />,
 		<Insights />,
 		<Professionals />,
+		<Practice />,
 	]
 
 	return (
@@ -42,6 +42,7 @@ const Digital = () => {
 				<NavigationCell> {'news'}</NavigationCell>
 				<NavigationCell> Insights</NavigationCell>
 				<NavigationCell> Professionals</NavigationCell>
+				<NavigationCell> Practice</NavigationCell>
 			</NavigationNavbar>
 
 			{subPages[clickedNavbarCell]}
