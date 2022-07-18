@@ -54,7 +54,7 @@ const PageContainer = styled.div`
 
 const InsightCaseArticlePage = ({ locationName }) => {
   const { id } = useParams();
-  console.log(locationName);
+
   return (
     <PageContainer>
       <HeroSection

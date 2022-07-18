@@ -14,10 +14,10 @@ const Locations = () => {
   return (
     <>
       <Container className="p-3">
-        <Row>
+        <Row className="p-3">
           <TranslateButton text1={"English"} text2={"Portugheze"} />
         </Row>
-        <Row>
+        <Row className="p-3">
           <Col>
             <h2>Serving businesses, governments and communities worldwide.</h2>
             <p>
