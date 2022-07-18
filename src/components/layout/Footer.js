@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Form, Button, Nav } from "react-bootstrap";
 import BulletinSignup from "../BulletinSignup";
 import { LinkedIn, Facebook, Twitter, YouTube } from "../../assets/icons";
+import { size } from "../../utils/breakpoints";
 // import FacebookIcon from '@mui/icons-material/Facebook'
 
 const FooterContainer = styled.footer`
@@ -30,6 +31,10 @@ const LinksC = styled.div`
   .Careers {
     padding-top: 0;
   }
+  @media ${size.sm} {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 `;
 
 const Col = styled.div`
@@ -45,9 +50,31 @@ width: 100%;
 `
 const ColContainer = styled.div`
 display: flex;
+.Contact {
+    width: 50%;
+    padding-right: 1rem;
+    }
+@media ${size.sm} {
+    width: 60%;
+  
+  }
+@media ${size.lg} {
+    width: 70%;
+    .Contact {
+      width: 33%;
+    }
+  }
 `
 const ColBox = styled.div`
-
+    width: 50%;
+    padding-right: 1rem;
+@media ${size.lg} {
+    width: 66%;
+    display: flex;
+    .Careers {
+      padding-top: 30px;
+    }
+  }
 `
 
 const Copyright = styled.div`
@@ -59,6 +86,9 @@ const Copyright = styled.div`
   
   p {
     line-height: 1.2;
+  }
+  @media ${size.lg} {
+  width: 70%;
   }
 `;
 
