@@ -52,14 +52,12 @@ const Card = styled.div`
 `;
 
 const CareersInDigital = ({ cardCity, handleCardLocation }) => {
-  const handleSendLocation = (coords) => {
-    console.log(coords);
-  };
+  // const handleCardLocation = (coords) => {
+  //   console.log(coords);
+  // };
   return (
     <Card>
-      <h3 onClick={() => handleCardLocation(cardCity.coords)}>
-        {cardCity.title}
-      </h3>
+      <h3>{cardCity.title}</h3>
       <span>{cardCity.phone}</span>
       <ul>
         <li>{cardCity.address}</li>
@@ -75,7 +73,7 @@ const CareersInDigital = ({ cardCity, handleCardLocation }) => {
         width={"auto"}
         height={"50px"}
         radius={"3px"}
-        // onClick={() => handleSendLocation(cardCity.coords)}
+        onClick={() => handleCardLocation(cardCity.coords)}
       />
     </Card>
   );
