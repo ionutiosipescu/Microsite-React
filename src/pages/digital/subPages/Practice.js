@@ -1,109 +1,40 @@
-import React from 'react'
-import {
-	Button,
-	Card,
-	Row,
-	Col,
-	Container,
-	NavDropdown,
-	Nav,
-	Form,
-	Navbar,
-} from 'react-bootstrap'
-import { routeNames } from '../../../routes/routes'
-import YellowButton from '../../../components/buttons/YellowButton'
-import { NewsCell } from './subPages.style'
-import QualityCard from '../../../components/cards/QualityCard'
-import { arrQualities } from '../../../utils/data'
-import { CustomNavbar } from '../about.style'
-// import NavbarFilter from '../../components/Navbar/NavbarFilter'
-import NavbarFilter from '../../../components/NavbarFilter'
-import styled from 'styled-components'
+import React from "react";
+import { Row, Col, Container } from "react-bootstrap";
+import YellowButton from "../../../components/buttons/YellowButton";
+import { NewsCell } from "./subPages.style";
+import CardProfessionals from "../../../components/cards/CardProfessionals";
+import CareersInDigital from "../../../components/cards/CareersInDigital";
+import image from "../../../assets/images/ConnorWine";
+import { Col_3, Col_9, Row_9_3 } from "../../../components/layout/Rows&Collumns/Rows&Collumns";
+import CardCapabilities from "../../../components/cards/CardCapabilities";
+import RelatedInsight_Table from "../../../components/tables/RelatedInsight-Table";
+import Heading_Paragraph from "../../../components/H&P/H&P";
 
 const Practice = () => {
-	return (
-		<>
-			<NavbarFilter />
-			<Row className="justify-content-start">
-				<Col className="p-5 col-8">
-					<h1 className="my-4">
-						Lorem IpsuCulpa sint magna ullamco irure reprehenderit occaecat
-					</h1>
-					<p>
-						Esse incididunt deserunt esse aute. Est proident excepteur deserunt
-						cillum labore ea esse eiusmod do aliqua anim. Eiusmod elit enim id
-						dolor aliquip occaecat velit proident.
-					</p>
-					<p>
-						Esse incididunt deserunt esse aute. Est proident excepteur deserunt
-						in in minim sunt exercitation et ipsum dolor et. Commodo cillum
-						dolor aliquip occaecat velit proident.
-					</p>
-				</Col>
-			</Row>
+  // Card overview content from backend
+  const cardContent = {
+    imageSrc: image,
+    name: "Connor Colquhoun",
+    position: "wine connoisseur",
+    country: "japan",
+    buttonText: "connect",
+  };
+  return (
+    <>
+      <Row_9_3>
+        <Col_9>
+        <Heading_Paragraph/>  
+          <RelatedInsight_Table/>
+		  <CardCapabilities/>
+		</Col_9>
+        <Col_3>
+          <CardProfessionals {...cardContent} />
+          <CardProfessionals {...cardContent} />
+          <CareersInDigital />
+        </Col_3>
+      </Row_9_3>
+    </>
+  );
+};
 
-			<Row className="justify-content-start">
-				<Col className="col-6 my-5 ms-3 p-4 bg-secondary rounded">
-					<h4 className="fw-bold text-info">Our Capabilities</h4>
-					<Row className="my-4 fw-bold">
-						<Col>
-							<div>Digital Strategy</div>
-							<div>Digital Strategy</div>
-						</Col>
-						<Col>
-							<div>Digital Strategy</div>
-							<div>Digital Strategy</div>
-						</Col>
-						<Col>
-							<div>Digital Strategy</div>
-							<div>Digital Strategy</div>
-							{/* <img src={digital}></img> */}
-						</Col>
-					</Row>
-					<YellowButton
-						text={'Read more about our Capabilities'}
-					></YellowButton>
-				</Col>
-			</Row>
-
-			<h2 className="fw-bold">Related Insight</h2>
-			<Row>
-				<Col>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-				</Col>
-				<Col>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-					<NewsCell>
-						<h4 className="fw-bold">Lorem</h4>
-						<p className="text-muted">15/5/2020</p>
-					</NewsCell>
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<QualityCard quality={arrQualities[4]} />
-				</Col>
-			</Row>
-		</>
-	)
-}
-
-export default Practice
+export default Practice;
