@@ -1,80 +1,52 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { test } from "../../store/actions/test";
-import { Hero } from "./about.style";
-import { Container } from "react-bootstrap";
-import { CustomNavbar, NavItem } from "./about.style";
-import SubPage from "./subPages";
-import YellowButton from "../../components/buttons/YellowButton";
-import HeroSection from "../../components/cards/HeroSection";
-import digital from "../../assets/images/digital";
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { test } from '../../store/actions/test'
+import HeroSection from '../../components/cards/HeroSection'
+import {
+	Overview,
+	Insights,
+	Professionals,
+	NewsRelease,
+	Capabilities,
+} from './subPages'
+import {
+	NavigationCell,
+	NavigationNavbar,
+} from '../../components/navbarComponents/'
 
 const Digital = () => {
-  const dispatch = useDispatch();
-  const testReducer = useSelector((state) => state.test);
-  const [subPage, setSubPage] = useState("overview");
-  // console.log(testReducer)
+	// The index of the of the item clicked in the navbar
+	const [clickedNavbarCell, setClickedNavbarCell] = useState(0)
 
-  const handleSubPage = (name) => {
-    setSubPage(name);
-  };
+	// The order of the sub pages in the array is important since it is used with the index from above
+	const subPages = [
+		<Overview />,
+		<Capabilities />,
+		<NewsRelease />,
+		<Insights />,
+		<Professionals />,
+	]
 
-  //
-  const subPages = {
-    overview: "overview",
-    capabilities: "capabilities",
-    newsRelease: "newsRelease",
-    insights: "insights",
-    professionals: "professionals",
-    practice: "practice",
-  };
+	return (
+		<>
+			<HeroSection
+				title={'a&m digital capabilities'}
+				backgroundUrl={
+					'https://www.alvarezandmarsal.com/sites/default/files/styles/wide_3_2_desktop/public/countrypage_brazil.jpg?itok=XVXwKdCi'
+				}
+			/>
 
-  return (
-    <>
-      <HeroSection title={"a&m digital capabilities"} />
+			<NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
+				<NavigationCell>Overview</NavigationCell>
+				<NavigationCell> capabilities</NavigationCell>
+				<NavigationCell> {'news'}</NavigationCell>
+				<NavigationCell> Insights</NavigationCell>
+				<NavigationCell> Professionals</NavigationCell>
+			</NavigationNavbar>
 
-      <CustomNavbar bg="light" expand="lg">
-        <NavItem
-          onClick={() => handleSubPage(subPages.overview)}
-          clicked={subPage === subPages.overview}
-        >
-          {"Overview"}
-        </NavItem>
-        <NavItem
-          onClick={() => handleSubPage(subPages.capabilities)}
-          clicked={subPage === subPages.capabilities}
-        >
-          {"Capabilities"}
-        </NavItem>
-        <NavItem
-          onClick={() => handleSubPage(subPages.newsRelease)}
-          clicked={subPage === subPages.newsRelease}
-        >
-          {"News & Release"}
-        </NavItem>
-        <NavItem
-          onClick={() => handleSubPage(subPages.insights)}
-          clicked={subPage === subPages.insights}
-        >
-          {"Insights"}
-        </NavItem>
-        <NavItem
-          onClick={() => handleSubPage(subPages.professionals)}
-          clicked={subPage === subPages.professionals}
-        >
-          {"Professionals"}
-        </NavItem>
-        <NavItem
-          onClick={() => handleSubPage(subPages.practice)}
-          clicked={subPage === subPages.practice}
-        >
-          {"Practice"}
-        </NavItem>
-      </CustomNavbar>
+			{subPages[clickedNavbarCell]}
+		</>
+	)
+}
 
-      <SubPage subPage={subPage} />
-    </>
-  );
-};
-
-export default Digital;
+export default Digital

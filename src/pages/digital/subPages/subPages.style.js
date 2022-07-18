@@ -17,12 +17,4 @@ export const CustomNavbar = styled(Navbar)`
 	font-size: 20px;
 
 	color: white;
-
-	// a {
-	// 	color: white;
-	// }
-
-	// div {
-	// 	color: white;
-	// }
 `

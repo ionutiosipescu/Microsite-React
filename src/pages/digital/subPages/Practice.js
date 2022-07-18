@@ -1,24 +1,10 @@
 import React from 'react'
-import {
-	Button,
-	Card,
-	Row,
-	Col,
-	Container,
-	NavDropdown,
-	Nav,
-	Form,
-	Navbar,
-} from 'react-bootstrap'
-import { routeNames } from '../../../routes/routes'
+import { Row, Col } from 'react-bootstrap'
 import YellowButton from '../../../components/buttons/YellowButton'
 import { NewsCell } from './subPages.style'
 import QualityCard from '../../../components/cards/QualityCard'
 import { arrQualities } from '../../../utils/data'
-import { CustomNavbar } from '../about.style'
-// import NavbarFilter from '../../components/Navbar/NavbarFilter'
 import NavbarFilter from '../../../components/NavbarFilter'
-import styled from 'styled-components'
 
 const Practice = () => {
 	return (

@@ -8,13 +8,10 @@ import styled from 'styled-components'
 import { tags, leadersList, arr, links } from '../../utils/data'
 import {
 	FiltrationNavbar,
-	NavbarCell,
 	NavbarDropdown,
-	SearchBar,
 	NavigationCell,
 	NavigationNavbar,
 } from '../../components/navbarComponents'
-import CurrentRoute from '../../components/CurrentRoute'
 import FilterBy from '../../components/FilterBy'
 import YellowButton from '../../components/buttons/YellowButton'
 
