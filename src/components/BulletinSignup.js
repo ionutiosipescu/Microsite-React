@@ -60,16 +60,18 @@ const Form = styled.form`
 		flex-direction: row;
 		align-items: flex-start;
 	}
+
 	@media ${size.md} {
 		button {
 			border-radius: 0;
 		}
-	} 
-	 @media ${size.lg} {
+	}
+
+	@media ${size.lg} {
 		button {
 			display: block;
 		}
-	} 
+	}
 `
 const BulletinSignup = () => {
 	return (
@@ -78,9 +80,12 @@ const BulletinSignup = () => {
 			<h3 className="fw-bold mb-0">{'A&M BULLETIN SIGNUP'}</h3>
 			<Form>
 				<Input placeholder={'Email Address'} />
-				<YellowButton text={'Subscribe'} radius={'5px'} width={'170px'} height={"50px"}
-				
-				 />
+				<YellowButton
+					text={'Subscribe'}
+					radius={'5px'}
+					width={'170px'}
+					height={'50px'}
+				/>
 			</Form>
 		</Container>
 	)
