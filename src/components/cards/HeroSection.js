@@ -17,19 +17,21 @@ const Hero = styled.div`
   text-transform: uppercase;
 
   /* align title to center  , but if title it's long looks bad ________________________________________ */
-  /* display: flex;
-  align-items: center; */
+  display: flex;
+  align-items: center;
 
   h1 {
     color: white;
-    font-size: clamp(2.25rem, 5vw, 5rem);
-
+    font-size: 90px;
+    font-family: "Arial, Narrow Bold", Arial, sans-serif;
+    text-shadow: 10px 10px 10px #00000029;
+    /* font-weight: bold; */
     margin: 0;
+    padding-left: 40px;
     /* margin: 0 1rem; */
     /* line-height: 100%; */
     word-wrap: break-word;
   }
-
   h4 {
     color: var(--orange2);
     margin: 0;

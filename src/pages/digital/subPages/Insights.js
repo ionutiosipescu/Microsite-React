@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import CardInsightsBrazilian from "../../../components/cards/CardInsightsBrazilian";
+import CardInsights from "../../../components/cards/CardInsights";
 import image from "../../../assets/images/ConnorWine";
 
 const Insights = () => {
@@ -32,7 +32,7 @@ const Insights = () => {
   return (
     <>
       {drupal.map((insight, index) => (
-        <CardInsightsBrazilian
+        <CardInsights
           key={index}
           image={insight.image}
           type={insight.type}

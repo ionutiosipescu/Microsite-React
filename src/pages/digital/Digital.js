@@ -32,7 +32,7 @@ const Digital = () => {
       <HeroSection
         title={"a&m digital capabilities"}
         backgroundUrl={
-          "https://www.alvarezandmarsal.com/sites/default/files/styles/wide_3_2_desktop/public/countrypage_brazil.jpg?itok=XVXwKdCi"
+          "https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         }
       />
 
