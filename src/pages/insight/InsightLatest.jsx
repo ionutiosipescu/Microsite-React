@@ -8,7 +8,7 @@ import {
 	NavbarDropdown,
 } from '../../components/navbarComponents'
 
-import { CurrentRoute, FilterBy } from '../../components'
+import { BreadCrumb, FilterBy } from '../../components'
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
 
 const PostsContainer = styled.div`
@@ -51,7 +51,7 @@ const InsightLatest = () => {
 
 			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
 
-			<CurrentRoute route={'Insights'} subRoute={'Latest Insights'} />
+			<BreadCrumb route={'Insights'} subRoute={'Latest Insights'} />
 
 			<PostsContainer>
 				{PostsArr.map((post, index) => (

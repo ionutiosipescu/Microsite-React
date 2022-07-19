@@ -14,7 +14,7 @@ import {
 	NavigationCell,
 	NavigationNavbar,
 } from '../../components/navbarComponents'
-import CurrentRoute from '../../components/CurrentRoute'
+import BreadCrumb from '../../components/BreadCrumb'
 import FilterBy from '../../components/FilterBy'
 import YellowButton from '../../components/buttons/YellowButton'
 
