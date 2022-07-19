@@ -74,34 +74,36 @@ const InsightCaseArticlePage = ({ locationName }) => {
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
                 {/*------------------------------------------------------------- LeftSectionIcons */}
                 <div className="leftSection">
-                  <div className="pt-2">
-                    <ShareIcon />
-                  </div>
-                  <div className="pt-4">
-                    <DocumentIcon />
-                  </div>
-                  <div className="pt-4">
-                    <LetterIcon />
-                  </div>
-                  <div className="pt-4">
-                    <PdfIcon />
-                  </div>
+                  {[
+                    <ShareIcon />,
+                    <DocumentIcon />,
+                    <LetterIcon />,
+                    <PdfIcon />,
+                  ].map((x) => (
+                    <div className="pt-4">{x}</div>
+                  ))}
                 </div>
               </div>
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
                 {/*---------------------------------------------------- SectionDescription */}
-                <div>date</div>
-                <p className="pt-3">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempore itaque perferendis provident ipsa et temporibus
-                  aspernatur architecto quaerat. Recusandae saepe perferendis
-                  quae temporibus iste excepturi eveniet debitis quidem placeat
-                  eos.
-                </p>
-                <p className="pt-3">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempore itaque perferendis provident ipsa et temporibus
-                </p>
+                <div>
+                  <span className="text-muted text-italic">
+                    {new Date().toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                </div>
+                {[1, 2].map((x) => (
+                  <p className="pt-3">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Tempore itaque perferendis provident ipsa et temporibus
+                    aspernatur architecto quaerat. Recusandae saepe perferendis
+                    quae temporibus iste excepturi eveniet debitis quidem
+                    placeat eos.
+                  </p>
+                ))}
                 {/*-------------------------------- imagesContainer */}
                 <div className="d-flex pt-4 ">
                   {arrImages.map((image) => (
@@ -125,61 +127,14 @@ const InsightCaseArticlePage = ({ locationName }) => {
           </div>
           {/*--------------------------------------------- FEATURED PROFILES  */}
           <div className="col-12 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
-            <div className="">
-              <h3 className="text-align-center">title Section</h3>{" "}
-            </div>
-            <div className="managers">
-              <div className="manager d-flex flex-column py-3">
-                <span>Name</span>
-                <span className="text-muted">Position</span>
-              </div>
-              <div className="manager d-flex flex-column py-3">
-                <span>Name</span>
-                <span className="text-muted">Position</span>
-              </div>
-              <div className="manager d-flex flex-column py-3">
-                <span>Name</span>
-                <span className="text-muted">Position</span>
-              </div>
-            </div>
             {/* -------------------------------------------------------Stay connnected */}
-            <div className="linksContainer ">
-              <h3> Stay Connected </h3>
-              <div className="links container-fluid  ">
-                <div className="link  py-2 d-flex justify-content-between ">
-                  <div className="image  col-md-2 col-lg-2 ">
-                    <LinkedIn className="img img-rounded " />
-                  </div>
-                  <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-                    Join A&M on Linkedin
-                  </div>
-                </div>
-                <div className="link  py-2 d-flex justify-content-between ">
-                  <div className="image  col-md-2 col-lg-2 ">
-                    <LinkedIn className="img img-rounded " />
-                  </div>
-                  <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-                    Join A&M on Linkedin
-                  </div>
-                </div>
-                <div className="link  py-2 d-flex justify-content-between ">
-                  <div className="image  col-md-2 col-lg-2 ">
-                    <LinkedIn className="img img-rounded " />
-                  </div>
-                  <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-                    Join A&M on Linkedin
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ListManagers
+              titleSection={"Featured Profiles"}
+              managers={managers}
+            />
+            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
           </div>
         </div>
-
-        {/* <PostsContainer>
-          {articles.map((post) => (
-            <PostCard post={post} LocationName={LocationName} />
-          ))}
-        </PostsContainer> */}
       </div>
       <div>
         <CarouselSection
@@ -286,3 +241,75 @@ const arr = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
 ];
+const managers = [
+  {
+    id: 1,
+    name: "Name1",
+    position: "position1",
+  },
+  {
+    id: 2,
+    name: "Name2",
+    position: "position2",
+  },
+  {
+    id: 3,
+    name: "Name3",
+    position: "position3",
+  },
+];
+
+const iconsArr = [
+  { id: 1, icon: <Facebook />, text: "Facebook" },
+  {
+    id: 2,
+    icon: <LinkedIn />,
+    text: "Linkedin",
+  },
+  {
+    id: 3,
+    icon: <Twitter />,
+    text: "Twitter",
+  },
+  {
+    id: 3,
+    icon: <YouTube />,
+    text: "YouTube",
+  },
+];
+
+const ListManagers = ({ titleSection, managers }) => {
+  return (
+    <>
+      <div className="">
+        <h3 className="text-align-center">{titleSection}</h3>{" "}
+      </div>
+      <div className="managers">
+        {managers.map((x) => (
+          <div className="manager d-flex flex-column py-3">
+            <span>{x.name}</span>
+            <span className="text-muted">{x.position}</span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
+
+const LinksList = ({ titleSection, linkIcons }) => {
+  return (
+    <div className="linksContainer ">
+      <h3> {titleSection} </h3>
+      <div className="links container-fluid  ">
+        {linkIcons.map((x) => (
+          <div className="link  py-2 d-flex justify-content-between ">
+            <div className="image  col-md-2 col-lg-2 ">{x.icon}</div>
+            <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
+              Join A&M on {x.text}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

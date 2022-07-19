@@ -11,6 +11,7 @@ import {
   InsightLatest,
   InsightCaseArticlePage,
   Digital,
+  DigitalInsighthPodcast,
 } from "../pages/";
 
 export const routeNames = {
@@ -29,6 +30,7 @@ export const routeNames = {
   brazilian: "/brazilian",
   dashboard: "/dashboard",
   digital: "/digital",
+  digitalInsighthPodcast: "/digital/insights/:id",
 };
 
 export const routes = [
@@ -98,6 +100,11 @@ export const routes = [
     path: routeNames.digital,
     exact: true,
     element: <Digital />,
+  },
+  {
+    path: routeNames.digitalInsighthPodcast,
+    exact: true,
+    element: <DigitalInsighthPodcast />,
   },
 ];
 

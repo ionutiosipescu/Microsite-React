@@ -17,8 +17,8 @@ const Hero = styled.div`
   text-transform: uppercase;
 
   /* align title to center  , but if title it's long looks bad ________________________________________ */
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
 
   h1 {
     color: white;
@@ -33,6 +33,7 @@ const Hero = styled.div`
     word-wrap: break-word;
   }
   h4 {
+    padding-left: 40px;
     color: var(--orange2);
     margin: 0;
   }
@@ -43,10 +44,14 @@ const HeroSection = ({
   backgroundUrl,
   buttonText,
   pageTitle,
+  pageTitleCenter,
   transparent,
 }) => {
   return (
     <Hero backgroundUrl={backgroundUrl}>
+      {pageTitle && <h4>{pageTitle}</h4>}
+      {pageTitleCenter && <h4 className="text-center">{pageTitleCenter}</h4>}
+
       <h1>{title}</h1>
 
       {transparent && <HeroCardBrazilTransparent />}

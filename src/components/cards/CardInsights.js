@@ -31,10 +31,8 @@ const CardBody = styled.div`
     font-weight: bold;
     text-transform: uppercase;
   }
-
   h4 {
   }
-
   p {
     font-size: 14px;
   }
@@ -53,11 +51,16 @@ const CardContainer = styled.div`
   .accordion-item {
     border: none;
   }
+  cursor: pointer;
 `;
 
-const CardInsights = ({ image, type, title, content }) => {
+const CardInsights = ({ image, type, title, content, onClick }) => {
   return (
-    <CardContainer>
+    <CardContainer
+      onClick={() => {
+        onClick();
+      }}
+    >
       <Card>
         <ImageContainer>
           <img src={image} alt="Insight photo" />
