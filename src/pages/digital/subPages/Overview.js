@@ -5,6 +5,7 @@ import { NewsCell } from "./subPages.style";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
+import CardCapabilities from "../../../components/cards/CardCapabilities";
 
 const Overview = () => {
   // Card overview content from backend
@@ -32,34 +33,7 @@ const Overview = () => {
             in in minim sunt exercitation et ipsum dolor et. Commodo cillum
             dolor aliquip occaecat velit proident.
           </p>
-          <Container
-            className=" my-4 p-4 "
-            style={{ background: "var(--gray1" }}
-          >
-            <Row>
-              <Col>
-                <h4 className="fw-bold text-primary">Our Capabilities</h4>
-                <Row className="my-4 fw-bold">
-                  <Col>
-                    <div>Digital Strategy</div>
-                    <div>Digital Strategy</div>
-                  </Col>
-                  <Col>
-                    <div>Digital Strategy</div>
-                    <div>Digital Strategy</div>
-                  </Col>
-                  <Col>
-                    <div>Digital Strategy</div>
-                    <div>Digital Strategy</div>
-                    {/* <img src={digital}></img> */}
-                  </Col>
-                </Row>
-                <YellowButton
-                  text={"Read more about our Capabilities"}
-                ></YellowButton>
-              </Col>
-            </Row>
-          </Container>
+          <CardCapabilities/>
 
           <h2 className="fw-bold">Related Insight</h2>
           <Row>
