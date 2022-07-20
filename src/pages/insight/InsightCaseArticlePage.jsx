@@ -1,59 +1,60 @@
-import React from "react";
-import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import React from 'react'
+import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import { BreadCrumb } from '../../components'
 
-import { HeroSection, CarouselSection } from "../../components/cards";
+import { HeroSection, CarouselSection } from '../../components/cards'
 import {
-  ChevronRight,
-  ChevronRightBlue,
-  Facebook,
-  LinkedIn,
-  Twitter,
-  YouTube,
-  DocumentIcon,
-  PdfIcon,
-  ShareIcon,
-  LetterIcon,
-} from "../../assets/icons";
-import { sizem } from "../../utils/breakpoints";
+	ChevronRight,
+	ChevronRightBlue,
+	Facebook,
+	LinkedIn,
+	Twitter,
+	YouTube,
+	DocumentIcon,
+	PdfIcon,
+	ShareIcon,
+	LetterIcon,
+} from '../../assets/icons'
+import { sizem } from '../../utils/breakpoints'
 
 const PageContainer = styled.div`
-  .textCategory {
-    color: #0085ca;
-  }
+	.textCategory {
+		color: #0085ca;
+	}
 
-  h6 img {
-    width: 13px;
-    color: #0085ca;
-    margin: 0px 10px;
-  }
-  .link {
-    font-size: 14px;
-  }
-  .link img {
-    font-size: 12px;
-    border-radius: 50%;
-  }
-  .leftSection {
-    img {
-      width: 32px;
-    }
-  }
-  @media ${sizem.mdm} {
-    .secondSection {
-      text-align: center;
-    }
-    .link {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center !important;
-    }
-  }
-`;
+	h6 img {
+		width: 13px;
+		color: #0085ca;
+		margin: 0px 10px;
+	}
+	.link {
+		font-size: 14px;
+	}
+	.link img {
+		font-size: 12px;
+		border-radius: 50%;
+	}
+	.leftSection {
+		img {
+			width: 32px;
+		}
+	}
+	@media ${sizem.mdm} {
+		.secondSection {
+			text-align: center;
+		}
+		.link {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center !important;
+		}
+	}
+`
 
 const InsightCaseArticlePage = ({ locationName }) => {
-  const { id } = useParams();
+	const { id } = useParams()
 
   return (
     <PageContainer>
@@ -151,62 +152,62 @@ const InsightCaseArticlePage = ({ locationName }) => {
   );
 };
 
-export default InsightCaseArticlePage;
+export default InsightCaseArticlePage
 
 const arrImages = [
-  "https://images.unsplash.com/photo-1657039875202-b7472f549b3f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-  //   "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-  //   "https://images.unsplash.com/photo-1536412597336-ade7b523ecfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-];
+	'https://images.unsplash.com/photo-1657039875202-b7472f549b3f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+	//   "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+	//   "https://images.unsplash.com/photo-1536412597336-ade7b523ecfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+]
 const arr = [
-  {
-    id: 1,
-    title: "lorem-ipsum.line1",
-    date: new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    category: "expertise",
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 2,
-    title: "lorem-ipsum.2",
-    category: "expertise",
-    date: new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 3,
-    title: "lorem-ipsum.3",
-    category: "industry",
-    date: new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
-  {
-    id: 4,
-    title: "lorem-ipsum.4",
-    category: "country",
-    date: new Date().toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    desciption:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
-  },
+	{
+		id: 1,
+		title: 'lorem-ipsum.line1',
+		date: new Date().toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		}),
+		category: 'expertise',
+		desciption:
+			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+	},
+	{
+		id: 2,
+		title: 'lorem-ipsum.2',
+		category: 'expertise',
+		date: new Date().toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		}),
+		desciption:
+			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+	},
+	{
+		id: 3,
+		title: 'lorem-ipsum.3',
+		category: 'industry',
+		date: new Date().toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		}),
+		desciption:
+			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+	},
+	{
+		id: 4,
+		title: 'lorem-ipsum.4',
+		category: 'country',
+		date: new Date().toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		}),
+		desciption:
+			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
+	},
 
   {
     id: 2,

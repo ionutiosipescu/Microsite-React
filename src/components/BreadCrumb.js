@@ -17,7 +17,7 @@ const Route = styled.div`
 	}
 `
 
-const CurrentRoute = ({ route, subRoute }) => {
+const BreadCrumb = ({ route, subRoute }) => {
 	return (
 		<Route>
 			<span>{route}</span>
@@ -27,4 +27,4 @@ const CurrentRoute = ({ route, subRoute }) => {
 	)
 }
 
-export default CurrentRoute
+export default BreadCrumb

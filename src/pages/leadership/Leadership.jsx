@@ -8,10 +8,13 @@ import styled from 'styled-components'
 import { tags, leadersList, arr, links } from '../../utils/data'
 import {
 	FiltrationNavbar,
+	NavbarCell,
 	NavbarDropdown,
+	SearchBar,
 	NavigationCell,
 	NavigationNavbar,
 } from '../../components/navbarComponents'
+import BreadCrumb from '../../components/BreadCrumb'
 import FilterBy from '../../components/FilterBy'
 import YellowButton from '../../components/buttons/YellowButton'
 
@@ -48,10 +51,6 @@ const Leadership = () => {
 		}
 	}
 
-	let elements = {
-		button: <YellowButton />,
-		card: <ProfessionalsCardSmall />,
-	}
 	let arr = [<YellowButton />, <ProfessionalsCardSmall />]
 	// console.log(clickedNavbarCell)
 

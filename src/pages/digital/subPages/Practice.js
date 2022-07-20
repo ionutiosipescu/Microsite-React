@@ -1,7 +1,4 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import YellowButton from "../../../components/buttons/YellowButton";
-import { NewsCell } from "./subPages.style";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
@@ -11,7 +8,6 @@ import RelatedInsight_Table from "../../../components/tables/RelatedInsight-Tabl
 import Heading_Paragraph from "../../../components/H&P/H&P";
 
 const Practice = () => {
-  // Card overview content from backend
   const cardContent = {
     imageSrc: image,
     name: "Connor Colquhoun",
