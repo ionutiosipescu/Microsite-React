@@ -22,15 +22,18 @@ const Hero = styled.div`
 
   h1 {
     color: white;
-    font-size: clamp(2.25rem, 5vw, 5rem);
-
+    font-size: 90px;
+    font-family: "Arial, Narrow Bold", Arial, sans-serif;
+    text-shadow: 10px 10px 10px #00000029;
+    /* font-weight: bold; */
     margin: 0;
+    padding-left: 40px;
     /* margin: 0 1rem; */
     /* line-height: 100%; */
     word-wrap: break-word;
   }
-
   h4 {
+    padding-left: 40px;
     color: var(--orange2);
     margin: 0;
   }
@@ -41,10 +44,14 @@ const HeroSection = ({
   backgroundUrl,
   buttonText,
   pageTitle,
+  pageTitleCenter,
   transparent,
 }) => {
   return (
     <Hero backgroundUrl={backgroundUrl}>
+      {pageTitle && <h4>{pageTitle}</h4>}
+      {pageTitleCenter && <h4 className="text-center">{pageTitleCenter}</h4>}
+
       <h1>{title}</h1>
 
       {transparent && <HeroCardBrazilTransparent />}

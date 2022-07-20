@@ -4,8 +4,11 @@ import { ChevronRight } from "../../assets/icons";
 
 const Card = styled.div`
   display: flex;
-  padding: 20px;
-  border-bottom: 1px solid black;
+  display: flex;
+  padding: 20px 0px;
+  margin: 10px 25px;
+  border-bottom: 2px solid var(--gray5);
+
   gap: 20px;
 `;
 const ImageContainer = styled.div`
@@ -22,16 +25,16 @@ const ImageContainer = styled.div`
 `;
 const CardBody = styled.div`
   flex: 5;
-  padding: 10px;
+  padding: 10px 0px;
   h6 {
-    color: #5656db;
+    color: var(--hover-blue);
+    font-weight: bold;
     text-transform: uppercase;
   }
-
   h4 {
   }
-
   p {
+    font-size: 14px;
   }
 `;
 const CardArrow = styled.div`
@@ -39,24 +42,40 @@ const CardArrow = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  img {
+    height: 20px;
+    width: 20px;
+  }
+`;
+const CardContainer = styled.div`
+  .accordion-item {
+    border: none;
+  }
+  cursor: pointer;
 `;
 
-const CardInsights = ({ image, type, title, content }) => {
+const CardInsights = ({ image, type, title, content, onClick }) => {
   return (
-    <Card>
-      <ImageContainer>
-        <img src={image} alt="Insight photo" />
-      </ImageContainer>
+    <CardContainer
+      onClick={() => {
+        onClick();
+      }}
+    >
+      <Card>
+        <ImageContainer>
+          <img src={image} alt="Insight photo" />
+        </ImageContainer>
 
-      <CardBody>
-        <h6>{type}</h6>
-        <h4>{title}</h4>
-        <p className="text-muted">{content}</p>
-      </CardBody>
-      <CardArrow>
-        <ChevronRight />
-      </CardArrow>
-    </Card>
+        <CardBody>
+          <h6>{type}</h6>
+          <h4>{title}</h4>
+          <p className="text-muted">{content}</p>
+        </CardBody>
+        <CardArrow>
+          <ChevronRight />
+        </CardArrow>
+      </Card>
+    </CardContainer>
   );
 };
 
