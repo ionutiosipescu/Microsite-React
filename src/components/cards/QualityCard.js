@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 
 const Card = styled.div`
   //   border: 2px solid red;
@@ -21,6 +22,7 @@ const Card = styled.div`
 `;
 
 const QualityCard = ({ quality }) => {
+  const navigate = useNavigate();
   return (
     <Card className="col-lg-4" id={quality.id}>
       <div className="d-flex m-4">
@@ -28,7 +30,12 @@ const QualityCard = ({ quality }) => {
           <img src={quality.iconUrl} />
         </div>
         <div className="row m-2">
-          <h4 className="sectionTitle">{quality.sectionTitle}</h4>
+          <h4
+            className="sectionTitle"
+            onClick={() => navigate("/expertise/quality")}
+          >
+            {quality.sectionTitle}
+          </h4>
           <span className="sectionDescription">
             {quality.sectionDescription}
           </span>

@@ -38,6 +38,10 @@ const DigitalInsighthPodcast = () => {
     }
     .link {
       font-size: 14px;
+      :hover {
+        color: #0085ca;
+        /* background-color: #0085ca; */
+      }
     }
     .link img {
       font-size: 12px;
@@ -268,7 +272,7 @@ const LinksList = ({ titleSection, linkIcons }) => {
           <div className="link  py-2 d-flex justify-content-between ">
             <div className="image  col-md-2 col-lg-2 ">{x.icon}</div>
             <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-              Join A&M on {x.text}
+              <span className="">Join A&M on {x.text}</span>
             </div>
           </div>
         ))}
