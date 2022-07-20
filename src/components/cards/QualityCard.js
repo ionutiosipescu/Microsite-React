@@ -15,6 +15,9 @@ const Card = styled.div`
     color: #047ebd;
     font-size: 24px;
     font: normal normal bold 24px/28px Roboto;
+    :hover {
+      cursor: pointer;
+    }
   }
   .sectionDescription {
     color: #171717;
