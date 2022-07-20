@@ -8,6 +8,7 @@ import image from "../../../assets/images/ConnorWine";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import TranslateButton from "../../../components/buttons/TranslateButton";
 import styled from "styled-components";
+import CardOurServices from "../../../components/cards/CardOurServices";
 
 const OverviewContainer = styled.div`
   .firstSection {
@@ -78,38 +79,7 @@ const Overview = () => {
               cillum dolor aliquip occaecat velit proident.
             </p>
           </div>
-          <Container
-            className=" my-4 p-4 rounded"
-            style={{ background: "var(--gray1" }}
-          >
-            <Row className=" ">
-              <Col>
-                <h4 className="fw-bold " style={{ color: "var(--lightBlue)" }}>
-                  Our Services
-                </h4>
-                <Row className="my-4 fw-bold">
-                  <Col>
-                    <div>Coorporate Transformation</div>
-                    <div>Restructuring & Turnaround</div>
-                    <div>Private Equity Services</div>
-                    <div>Interim and Crisis Management</div>
-                    <div>Transaction Advisory</div>
-                    <div> Disputes and Investigations</div>
-                  </Col>
-                  <Col>
-                    <div>Judicial Administration / Trustee Services</div>
-                    <div>Infrastructure & Capital Projects</div>
-                    <div> Real Estate</div>
-                    <YellowButton
-                      text={"Read more about our Services"}
-                      width="80%"
-                      className="mt-4 fs-4"
-                    />
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
+          <CardOurServices/>
         </Col>
         <Col lg={3} className=" px-0  flex-grow-1">
           <CardProfessionals {...cardContent} />
