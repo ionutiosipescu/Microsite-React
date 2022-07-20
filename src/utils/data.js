@@ -213,13 +213,13 @@ export const leadersList = [
 
 export const links = [
 	{
-		name: 'sublink1',
+		name: 'Japan',
 	},
 	{
-		name: 'sublink2',
+		name: 'Usa',
 	},
 	{
-		name: 'sublink3',
+		name: 'something else',
 	},
 	{
 		name: 'sublink4',

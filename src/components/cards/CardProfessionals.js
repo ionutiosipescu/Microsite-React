@@ -111,11 +111,13 @@ const Content = styled.div`
 		font-weight: bold;
 		font-size: 20px;
 	}
+
 	h2,
 	.country {
 		transition: color 0.2s ease-out;
 		cursor: pointer;
 	}
+
 	h2:hover,
 	.country:hover {
 		color: var(--hover-blue);
