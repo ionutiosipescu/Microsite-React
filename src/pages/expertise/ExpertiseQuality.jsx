@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 // import {
-// 	Row_9_3,
-// 	Col_3,
-// 	Col_9,
+// 	StyledRow,
+// 	StyledCol2,
+// 	StyledCol1,
 // } from '../../components/layout/Rows&Collumns/Rows&Collumns'
 
 import {
@@ -38,7 +38,6 @@ const ExpertisePharma = () => {
 						route={'Expertise'}
 						subRoute={'Pharma & MedTech portfolio management'}
 					/>
-
 					<p>
 						Sit excepteur ullamco tempor excepteur fugiat amet culpa consectetur
 						ea ut fugiat. Laborum irure non qui nulla minim anim reprehenderit

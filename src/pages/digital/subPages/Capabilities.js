@@ -1,8 +1,12 @@
 import React from 'react'
-import { Container, Row, Col, Card } from 'react-bootstrap'
-import CardProfessionals from '../../../components/cards/CardProfessionals'
-import CareersInDigital from '../../../components/cards/CareersInDigital'
+import { CareersInDigital, CardProfessionals } from '../../../components/cards/'
 import image from '../../../assets/images/ConnorWine'
+import IFrame from '../../../components/IFrame'
+import {
+	StyledCol2,
+	StyledCol1,
+	StyledRow,
+} from '../../../components/layout/Rows&Collumns/Rows&Collumns.style.js'
 
 const Capabilities = () => {
 	// Card overview content from backend
@@ -11,12 +15,13 @@ const Capabilities = () => {
 		name: 'Connor Colquhoun',
 		position: 'wine connoisseur',
 		country: 'japan',
+		buttonText: 'connect',
 	}
 
 	return (
 		<>
-			<Row>
-				<Col className="p-5">
+			<StyledRow>
+				<StyledCol1>
 					<h2>Our Goal is to Deliver practical</h2>
 					<p>
 						Proident veniam quis proident duis velit. Id ipsum mollit officia
@@ -49,30 +54,20 @@ const Capabilities = () => {
 						Nisi sint officia ea ex proident enim Lorem voluptate non esse
 					</p>
 
-					<iframe
-						src={
-							'https://www.youtube.com/embed?v=pxhJIRpLrPE&list=PLzK3tNHBiZt71HrEvPO0sVN16s-Au7yiz&index=22'
-						}
-						title="Trash Taste"
-						width="100%"
-						height="400px"
-					>
-						This is the{' '}
-					</iframe>
-
+					<IFrame />
 					<h2>Our Goal is to Deliver practical</h2>
 					<p>
 						Proident veniam quis proident duis velit. Id ipsum mollit officia
 						sint irure enim magna nisi. Nostrud cupidatat adipisicing tempor eu.
 						Nisi sint officia ea ex proident enim Lorem voluptate non esse
 					</p>
-				</Col>
-				<Col className="col-4 p-0">
+				</StyledCol1>
+				<StyledCol2>
 					<CardProfessionals {...cardContent} />
 					<CardProfessionals {...cardContent} />
 					<CareersInDigital />
-				</Col>
-			</Row>
+				</StyledCol2>
+			</StyledRow>
 		</>
 	)
 }

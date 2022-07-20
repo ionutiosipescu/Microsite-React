@@ -1,15 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Button, Card, Row, Col, Container } from 'react-bootstrap'
-import YellowButton from '../../../components/buttons/YellowButton'
-import { NewsCell } from './subPages.style'
-import CardOverview from '../../../components/cards/CareersInDigital'
-import CareersInDigital from '../../../components/cards/CareersInDigital'
 import image from '../../../assets/images/ConnorWine'
-import CardProfessionals from '../../../components/cards/CardProfessionals'
-import { ServiceCard } from '../../../components/cards/'
-// import ServicesCard from "../../../components/cards/ServiceCard";
 import TranslateButton from '../../../components/buttons/TranslateButton'
+
+import { CardProfessionals, ServiceCard } from '../../../components/cards'
+import {
+	StyledCol2,
+	StyledCol1,
+	StyledRow,
+} from '../../../components/layout/Rows&Collumns/Rows&Collumns.style.js'
 
 const cardContent = {
 	imageSrc: image,
@@ -19,17 +18,11 @@ const cardContent = {
 	buttonText: 'Connect',
 }
 
-const ServicesContainer = styled.div`
-	.firstSection {
-		border-right: 2px solid var(--gray5);
-	}
-`
-
 const Services = () => {
 	return (
-		<ServicesContainer>
-			<Row className="p-0 m-0 d-flex flex-column flex-lg-row bg-white">
-				<Col lg={9} className=" firstSection p-5">
+		<>
+			<StyledRow>
+				<StyledCol1>
 					<Row>
 						<TranslateButton text1={'English'} text2={'Portuguese'} />
 					</Row>
@@ -59,13 +52,13 @@ const Services = () => {
 							<ServiceCard data={data} />
 						</Row>
 					</div>
-				</Col>
-				<Col lg={3} className=" px-0 flex-grow-1 ">
+				</StyledCol1>
+				<StyledCol2>
 					<CardProfessionals {...cardContent} />
 					<CardProfessionals {...cardContent} />
-				</Col>
-			</Row>
-		</ServicesContainer>
+				</StyledCol2>
+			</StyledRow>
+		</>
 	)
 }
 

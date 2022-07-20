@@ -95,12 +95,12 @@ export const Form = styled.form`
 export const StyledSearchBar2 = styled.div`
 	display: none;
 	align-items: center;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 3rem;
 
 	input {
 		color: red;
 		height: 70%;
-		border-radius: 10px;
+		border-radius: 5px;
 		padding: 1rem;
 	}
 

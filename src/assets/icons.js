@@ -23,9 +23,10 @@ const YouTube = props => icon(props, 'youtube', 'youtube icon')
 const Facebook = props => icon(props, 'facebook', 'facebook icon')
 const Twitter = props => icon(props, 'twitter', 'twitter icon')
 const XIcon = props => icon(props, 'xIcon', 'cancel icon')
+const ChevronRightWhite = props =>
+	icon(props, 'chevronRightWhite', 'chevron right icon')
 
 const ChevronRightBlue = ({ className }) => iconPng(className, 'chevron')
-const ChevronRightWhite = ({ className }) => iconPng(className, 'chevron')
 const IconTriangle = ({ className }) => iconPng(className, 'iconTriangle')
 const PdfIcon = ({ className }) => iconPng(className, 'pdf')
 const DocumentIcon = ({ className }) => iconPng(className, 'document')

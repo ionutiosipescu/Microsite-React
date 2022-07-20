@@ -1,40 +1,22 @@
 import React from 'react'
-import image from '../../assets/images/ConnorWine'
+import Connor from '../../assets/images/ConnorWine'
 import styled from 'styled-components'
 import YellowButton from '../buttons/YellowButton'
 import { size } from '../../utils/breakpoints'
-import { ChevronRight } from '../../assets/icons'
+import { ChevronRightWhite } from '../../assets/icons'
 
 const Card = styled.div`
 	display: flex;
 	background: var(--darkBlue);
-	transform: scale(${props => props.transform || 1});
-	/* height: 95.297px; */
-	height: 5.9565rem;
 	width: 100%;
-	@media ${size.sm} {
-		/* height: 146.609px; */
-		height: 9.1633rem;
-	}
-	@media ${size.lg} {
-		/* height: 168.609px; */
-		height: 10.539rem;
-	}
-	@media ${size.xl} {
-		/* height: 219.922px; */
-		height: 13.746rem;
-	}
+	height: 200px;
 `
 
 const CardBody = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: -webkit-fill-available;
 
-	@media ${size.lg} {
-		flex-direction: column;
-	}
 	button {
 		transition: background-color 0.2s ease-out;
 	}
@@ -47,31 +29,35 @@ const CardBody = styled.div`
 			display: block;
 		}
 	}
+
+	@media ${size.lg} {
+		flex-direction: column;
+	}
 `
 
 const ImageContainer = styled.div`
 	background: gray;
-	/* width: 300px; */
-	/* flex: 1; */
 	img {
-		/* width: 200px; */
-		width: 65px;
+		width: 100px;
 		height: 100%;
 		object-fit: cover;
 	}
+
 	@media ${size.sm} {
 		img {
-			width: 100px;
+			width: 125px;
 		}
 	}
-	@media ${size.lg} {
-		img {
-			width: 115px;
-		}
-	}
-	@media ${size.xl} {
+
+	@media ${size.md} {
 		img {
 			width: 150px;
+		}
+	}
+
+	@media ${size.lg} {
+		img {
+			width: 170px;
 		}
 	}
 `
@@ -79,71 +65,65 @@ const ImageContainer = styled.div`
 const Content = styled.div`
 	padding: 20px;
 	text-transform: uppercase;
-	color: var(--orange2);
-	font-weight: bold;
-	/* width: 100%; */
 	height: 100%;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 
-	/* justify-content: space-between; */
-	/* gap: 1rem; */
 	@media ${size.lg} {
 		padding: 0 20px;
-		h2 {
-			font-size: 15px !important;
-		}
-		div {
-			font-size: 10px !important;
-		}
-		.CardProfessionalsButton {
-			height: 50px !important;
-		}
+	}
+`
+
+const ArrowContainer = styled.div`
+	display: flex;
+	margin-left: auto;
+	cursor: pointer;
+
+	:hover {
+		background: var(--hover-blue);
 	}
 
-	h2 {
-		padding: 0;
-		margin: 0;
-		color: white;
-		text-transform: uppercase;
-		font-weight: bold;
-		font-size: 20px;
+	@media ${size.lg} {
+		display: none;
 	}
+`
 
-	h2,
-	.country {
-		transition: color 0.2s ease-out;
-		cursor: pointer;
-	}
+const Name = styled.a`
+	color: white;
+	text-decoration: none;
+	font-size: 1.875rem;
+	font-weight: bold;
+	line-height: 0.8;
+	padding-bottom: 5px;
+	cursor: pointer;
 
-	h2:hover,
-	.country:hover {
+	:hover {
 		color: var(--hover-blue);
 	}
-	div {
-		font-size: 16px;
+`
+
+const Info = styled.a`
+	color: var(--orange2);
+	text-decoration: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	line-height: 1;
+	cursor: pointer;
+
+	:hover {
+		color: var(--hover-blue);
 	}
 `
-const CardArrow = styled.div`
-	flex: 1;
-	display: flex;
-	justify-content: end;
-	align-items: center;
-	button:hover {
-		background-color: var(--hover-blue);
-	}
-`
-const Button = styled.button`
-	background-color: rgba(0, 0, 0, 0);
-	border: 0;
-	height: 100%;
-	max-width: 30px;
-	transition: background-color 0.2s ease-out;
-	@media ${size.lg} {
-		display: none !important;
-	}
+
+const Position = styled.p`
+	color: var(--orange2);
+	text-decoration: none;
+	font-size: 1.25rem;
+	font-weight: bold;
+	line-height: 1;
+	margin: 0;
 `
 
 const CardProfessionals = ({
@@ -152,39 +132,31 @@ const CardProfessionals = ({
 	position,
 	country,
 	buttonText,
-	transform,
 }) => {
 	return (
-		<Card transform={transform}>
+		<Card>
 			<ImageContainer>
-				<img src={imageSrc || image} alt="portrait"></img>
+				<img src={imageSrc || Connor} alt="portrait"></img>
 			</ImageContainer>
 
 			<CardBody>
 				<Content>
-					<h2>{name || 'Connor Colquhoun'}</h2>
-					<div>
-						<div>{position || 'wine connoisseur'}</div>
-						<div className="country">{country} </div>
-					</div>
+					<Name>{name || 'Connor Colquhoun'}</Name>
+					<Position>{position || 'wine connoisseur'}</Position>
+					<Info>{country} </Info>
 				</Content>
-				{buttonText ? (
+				{buttonText && (
 					<YellowButton
-						className="CardProfessionalsButton"
 						text={buttonText}
 						radius={'0'}
 						height={'50px'}
 						display={'none'}
 					/>
-				) : (
-					''
 				)}
-				<CardArrow>
-					<Button className="whitebutton">
-						<ChevronRight />
-					</Button>
-				</CardArrow>
 			</CardBody>
+			<ArrowContainer>
+				<ChevronRightWhite width="50px" />
+			</ArrowContainer>
 		</Card>
 	)
 }
