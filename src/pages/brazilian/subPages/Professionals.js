@@ -8,6 +8,7 @@ import image from '../../../assets/images/ConnorWine'
 import { leadersList, links, arr } from '../../../utils/data'
 
 // costum components
+import { Container } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
 import TranslateButton from '../../../components/buttons/TranslateButton'
 import { LeaadersContainer } from '../../leadership/Leadership'
 import { ProfessionalsCardSmall } from '../../../components/cards'
@@ -46,10 +47,8 @@ const Professionals = () => {
 
 	return (
 		<>
-			<div className="container p-5">
-				<Row>
-					<TranslateButton text1={'English'} text2={'Portuguese'} />
-				</Row>
+			<Container>
+				<TranslateButton text1={'English'} text2={'Portuguese'} />
 				<h2>
 					Qui excepteur aute dolore proident adipisicing ullamco laborum.
 					consectetur.
@@ -61,8 +60,7 @@ const Professionals = () => {
 					eiusmod anim amet id aliquip enim eiusmod culpa. Consequat quis ut
 					incididunt duis nulla magna eiusmod est nulla eiusmod elit laborum do.
 				</p>
-			</div>
-
+			</Container>
 			<FiltrationNavbar
 				searchBar
 				filterByTags={filterByTags}

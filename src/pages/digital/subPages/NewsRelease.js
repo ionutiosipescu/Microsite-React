@@ -1,5 +1,4 @@
 import React from 'react'
-import { Card, Container, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components'
 import { PostCard } from '../../../components/cards'
 
@@ -17,13 +16,11 @@ const PostsContainer = styled.div`
 const NewsRelease = () => {
 	return (
 		<>
-			<Row className="p-3">
-				<PostsContainer>
-					{PostsArr.map((post, index) => (
-						<PostCard post={post} key={index} />
-					))}
-				</PostsContainer>
-			</Row>
+			<PostsContainer>
+				{PostsArr.map((post, index) => (
+					<PostCard post={post} key={index} />
+				))}
+			</PostsContainer>
 		</>
 	)
 }

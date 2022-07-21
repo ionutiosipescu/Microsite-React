@@ -1,6 +1,4 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
-// import CardInsightsBrazilian from "../../../components/cards/CardInsightsBrazilian";
 import { CardInsights } from '../../../components/cards/'
 import image from '../../../assets/images/ConnorWine'
 
