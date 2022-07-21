@@ -3,7 +3,7 @@ import { useLocation } from 'react-router'
 import styled from 'styled-components'
 import PostCard from '../../../components/cards/PostCard'
 import TranslateButton from '../../../components/buttons/TranslateButton'
-import { Container } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
+import { StyledContainer } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
 
 const News = () => {
 	const PostsContainer = styled.div`
@@ -17,14 +17,14 @@ const News = () => {
 	const LocationName = location?.pathname.split('/').slice(1, 3)
 
 	return (
-		<Container>
+		<StyledContainer>
 			<TranslateButton text1={'English'} text2={'Portuguese'} />
 			<PostsContainer>
 				{arr.map(post => (
 					<PostCard post={post} locationName={LocationName} />
 				))}
 			</PostsContainer>
-		</Container>
+		</StyledContainer>
 	)
 }
 

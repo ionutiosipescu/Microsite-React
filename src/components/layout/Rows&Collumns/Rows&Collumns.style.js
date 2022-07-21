@@ -20,6 +20,6 @@ export const StyledCol2 = styled.div`
 	flex: 1 0 35%;
 `
 
-export const Container = styled.div`
+export const StyledContainer = styled.div`
 	padding: 2rem;
 `

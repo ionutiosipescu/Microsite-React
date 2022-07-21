@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-
+import Axios from 'axios'
 import { PostCard, HeroSection, CarouselSection } from '../../components/cards'
 import {
 	FiltrationNavbar,
@@ -20,8 +19,9 @@ const PostsContainer = styled.div`
 `
 
 const InsightLatest = () => {
-	const location = useLocation()
-	const LocationName = location?.pathname.split('/').slice(1, 3)
+	// const location = useLocation()
+	// const locationName = location?.pathname.split('/').slice(1, 3)
+	const [postContent, setPostContent] = useState([])
 	const [filterByTags, setFilterByTags] = useState([
 		'fuck',
 		'fuck',
@@ -29,6 +29,29 @@ const InsightLatest = () => {
 		'fuck3',
 		'fuck4',
 	])
+	const baseApiUrl = process.env.REACT_APP_BASE_API_URL
+
+	useEffect(() => {
+		const link =
+			baseApiUrl +
+			'/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created'
+
+		Axios.get(link).then(res => {
+			console.log(res.data)
+			const arr = []
+			res.data.data.map(item => {
+				let data = {}
+				data.title = item.attributes.title
+				data.teaserText = item.attributes.field_teaser_text
+				data.date = item.attributes.created
+				data.id = item.id
+				arr.push(data)
+			})
+			setPostContent([...arr])
+		})
+	}, [])
+
+	console.log(postContent)
 
 	return (
 		<>
@@ -54,8 +77,8 @@ const InsightLatest = () => {
 			<BreadCrumb route={'Insights'} subRoute={'Latest Insights'} />
 
 			<PostsContainer>
-				{PostsArr.map((post, index) => (
-					<PostCard post={post} locationName={LocationName} key={index} />
+				{postContent.map((post, index) => (
+					<PostCard post={post} key={index} />
 				))}
 			</PostsContainer>
 			<CarouselSection

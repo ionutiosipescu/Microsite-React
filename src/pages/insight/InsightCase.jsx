@@ -19,7 +19,7 @@ const PostsContainer = styled.div`
 
 const InsightCase = () => {
 	const location = useLocation()
-	const LocationName = location?.pathname.split('/').slice(1, 3)
+	const locationName = location?.pathname.split('/').slice(1, 3)
 	const [filterByTags, setFilterByTags] = useState([
 		'fuck',
 		'fuck',
@@ -55,7 +55,7 @@ const InsightCase = () => {
 
 			<PostsContainer>
 				{PostsArr.map((post, index) => (
-					<PostCard post={post} locationName={LocationName} key={index} />
+					<PostCard post={post} locationName={locationName} key={index} />
 				))}
 			</PostsContainer>
 			<CarouselSection

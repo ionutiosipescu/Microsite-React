@@ -1,7 +1,7 @@
 import React from 'react'
 import CardInsights from '../../../components/cards/CardInsights'
 import image from '../../../assets/images/ConnorWine'
-import { Container } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
+import { StyledContainer } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
 
 import TranslateButton from '../../../components/buttons/TranslateButton'
 
@@ -32,7 +32,7 @@ const Insights = () => {
 	]
 
 	return (
-		<Container>
+		<StyledContainer>
 			<TranslateButton text1={'English'} text2={'Portuguese'} />
 			{drupal.map((insight, index) => (
 				<CardInsights
@@ -43,7 +43,7 @@ const Insights = () => {
 					content={insight.content}
 				/>
 			))}
-		</Container>
+		</StyledContainer>
 	)
 }
 
