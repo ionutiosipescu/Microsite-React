@@ -8,7 +8,7 @@ import RecongnitionSection from "../../components/section/RecongnitionSection";
 import { arr2 } from "../../utils/data";
 import {
   fetchHeroSectionDataHome,
-  getCaseStudiesArticles,
+  getCarouselArticles,
   getArticle,
 } from "../../API";
 
@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchHeroSectionDataHome(setHeroSectionData);
-    getCaseStudiesArticles(setCarouselData);
+    getCarouselArticles(setCarouselData);
   }, []);
 
   return (

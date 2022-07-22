@@ -1,74 +1,82 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router'
-import styled from 'styled-components'
-import { PostCard, HeroSection, CarouselSection } from '../../components/cards'
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
+import styled from "styled-components";
+import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
 import {
-	FiltrationNavbar,
-	NavbarDropdown,
-} from '../../components/navbarComponents'
-import { BreadCrumb, FilterBy } from '../../components'
-import { filtrationNavbarData, PostsArr } from '../../utils/data'
+  FiltrationNavbar,
+  NavbarDropdown,
+} from "../../components/navbarComponents";
+import { BreadCrumb, FilterBy } from "../../components";
+import { filtrationNavbarData, PostsArr } from "../../utils/data";
+
+import {
+  getCaseStudiesArticles,
+  fetchHeroSectionDataHome,
+  getCarouselArticles,
+} from "../../API";
 
 const PostsContainer = styled.div`
-	padding: 2rem;
-	margin: auto;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-`
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 const InsightCase = () => {
-	const location = useLocation()
-	const locationName = location?.pathname.split('/').slice(1, 3)
-	const [filterByTags, setFilterByTags] = useState([
-		'fuck',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-	])
+  const location = useLocation();
+  const [heroSectionData, setHeroSectionData] = useState();
+  const [articles, setArticles] = useState([]);
+  const [carouselData, setCarouelData] = useState([]);
 
-	return (
-		<>
-			<HeroSection
-				title=" Case Studies"
-				backgroundUrl={
-					'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-				}
-			/>
+  const locationName = location?.pathname.split("/").slice(1, 3);
+  const [filterByTags, setFilterByTags] = useState([]);
 
-			<FiltrationNavbar
-				searchBar2={'search'}
-				setFilterByTags={setFilterByTags}
-				filterByTags={filterByTags}
-			>
-				{filtrationNavbarData.map((item, index) => (
-					<NavbarDropdown data={item.tagNames} key={index}>
-						{item.title}
-					</NavbarDropdown>
-				))}
-			</FiltrationNavbar>
+  useEffect(() => {
+    fetchHeroSectionDataHome(setHeroSectionData);
+    getCaseStudiesArticles(setArticles);
+    getCarouselArticles(setCarouelData);
+  }, []);
 
-			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
+  return (
+    <>
+      <HeroSection
+        title={heroSectionData?.title}
+        backgroundUrl={heroSectionData?.backgroundUrl}
+      />
 
-			<BreadCrumb route={'Insights'} subRoute={'Latest Case'} />
+      <FiltrationNavbar
+        searchBar2={"search"}
+        setFilterByTags={setFilterByTags}
+        filterByTags={filterByTags}
+      >
+        {filtrationNavbarData.map((item, index) => (
+          <NavbarDropdown data={item.tagNames} key={index}>
+            {item.title}
+          </NavbarDropdown>
+        ))}
+      </FiltrationNavbar>
 
-			<PostsContainer>
-				{PostsArr.map((post, index) => (
-					<PostCard post={post} locationName={locationName} key={index} />
-				))}
-			</PostsContainer>
-			<CarouselSection
-				categoryCarousel={'Healthcare & Live Sciences News'}
-				backgroundColor="#002B49"
-				arr={PostsArr}
-				titleColor="#0085CA"
-				textColor="#fff"
-				textDate="#fff"
-				carouselDotBackground="#002b49"
-			/>
-		</>
-	)
-}
+      <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
 
-export default InsightCase
+      <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
+
+      <PostsContainer>
+        {articles.map((post, index) => (
+          <PostCard post={post} locationName={locationName} key={index} />
+        ))}
+      </PostsContainer>
+      <CarouselSection
+        categoryCarousel={"Healthcare & Live Sciences News"}
+        backgroundColor="#002B49"
+        arr={carouselData}
+        titleColor="#0085CA"
+        textColor="#fff"
+        textDate="#fff"
+        carouselDotBackground="#002b49"
+      />
+    </>
+  );
+};
+
+export default InsightCase;
