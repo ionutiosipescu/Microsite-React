@@ -21,17 +21,10 @@ const PostsContainer = styled.div`
 `
 
 const InsightLatest = () => {
-	const [postContent, setPostContent] = useState([])
-	const [filterByTags, setFilterByTags] = useState([
-		'fuck',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-	])
-	// console.log(getArticle())
-	console.log(getArticle)
+	const [filterByTags, setFilterByTags] = useState(['fuck', 'fuck', 'fuck2'])
 
+	// Getting the latest articles from server
+	const [postContent, setPostContent] = useState([])
 	useEffect(() => {
 		getArticle(setPostContent)
 	}, [])
