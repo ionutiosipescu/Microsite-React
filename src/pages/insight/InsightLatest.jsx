@@ -9,6 +9,8 @@ import {
 
 import { BreadCrumb, FilterBy } from '../../components'
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
+// import { getArticle } from '../../API'
+import { getArticle } from '../../API'
 
 const PostsContainer = styled.div`
 	padding: 2rem;
@@ -19,8 +21,6 @@ const PostsContainer = styled.div`
 `
 
 const InsightLatest = () => {
-	// const location = useLocation()
-	// const locationName = location?.pathname.split('/').slice(1, 3)
 	const [postContent, setPostContent] = useState([])
 	const [filterByTags, setFilterByTags] = useState([
 		'fuck',
@@ -29,26 +29,11 @@ const InsightLatest = () => {
 		'fuck3',
 		'fuck4',
 	])
-	const baseApiUrl = process.env.REACT_APP_BASE_API_URL
+	// console.log(getArticle())
+	console.log(getArticle)
 
 	useEffect(() => {
-		const link =
-			baseApiUrl +
-			'/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created'
-
-		Axios.get(link).then(res => {
-			console.log(res.data)
-			const arr = []
-			res.data.data.map(item => {
-				let data = {}
-				data.title = item.attributes.title
-				data.teaserText = item.attributes.field_teaser_text
-				data.date = item.attributes.created
-				data.id = item.id
-				arr.push(data)
-			})
-			setPostContent([...arr])
-		})
+		getArticle(setPostContent)
 	}, [])
 
 	console.log(postContent)
