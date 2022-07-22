@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import image from "../../assets/images/ConnorWine";
 import HeroCardBrazilTransparent from "./HeroCardBrazilTransparent";
+import YellowButton from "../buttons/YellowButton";
 
 const Hero = styled.div`
   position: relative;
@@ -12,14 +13,14 @@ const Hero = styled.div`
   /* margin: 2rem; */
   padding: 3rem;
   background-size: cover;
-  background-image: url(${(props) => props.backgroundUrl || digital});
+  background-image: url(${(props) => props.backgroundUrl || ""});
 
   text-transform: uppercase;
 
   /* align title to center  , but if title it's long looks bad ________________________________________ */
   /* display: flex;
   align-items: center; */
-
+  padding-left: 40px;
   h1 {
     color: white;
     font-size: 90px;
@@ -27,13 +28,12 @@ const Hero = styled.div`
     text-shadow: 10px 10px 10px #00000029;
     /* font-weight: bold; */
     margin: 0;
-    padding-left: 40px;
+
     /* margin: 0 1rem; */
     /* line-height: 100%; */
     word-wrap: break-word;
   }
   h4 {
-    padding-left: 40px;
     color: var(--orange2);
     margin: 0;
   }
@@ -53,7 +53,7 @@ const HeroSection = ({
       {pageTitleCenter && <h4 className="text-center">{pageTitleCenter}</h4>}
 
       <h1>{title}</h1>
-
+      {buttonText && <YellowButton text={buttonText} />}
       {transparent && <HeroCardBrazilTransparent />}
     </Hero>
   );

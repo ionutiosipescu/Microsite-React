@@ -72,9 +72,16 @@ const CarouselSection = ({
       >
         {arr.map((element, index) => (
           <div className="m-3" key={index}>
-            <h6>{element.title}</h6>
-            <span className="text-date"> {element.date}</span>
-            <p className="py-4">{element.desciption}</p>
+            <h6>{element?.title}</h6>
+            <span className="text-date">
+              {new Date(element?.date).toLocaleDateString("en-US", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
+            </span>
+
+            <p className="py-4">{element?.description}</p>
           </div>
         ))}
       </Carousel>

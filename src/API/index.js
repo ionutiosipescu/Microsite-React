@@ -1,1 +1,3 @@
-export { getArticle } from './articles'
+export { getArticle } from "./articles";
+export { fetchHeroSectionDataHome } from "./heroSection";
+export { getCaseStudiesArticles } from "./articles";
