@@ -60,6 +60,7 @@ export const getCaseStudiesArticles = async (setContent) => {
   await Axios.get(link)
     .then((res) => {
       const articles = res.data.data;
+      console.log(articles);
       allAuthors = res.data.included;
       articles.forEach((article) => {
         // console.log(article.attributes?.field_metatag);
@@ -72,6 +73,7 @@ export const getCaseStudiesArticles = async (setContent) => {
             article.attributes?.revision_timestamp
           ).toLocaleDateString(),
           authorsData: article.relationships.field_authors?.data,
+          body: article.attributes.body.value,
         };
         parsedArticles.push(art);
       });

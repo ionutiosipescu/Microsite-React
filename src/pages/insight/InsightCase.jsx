@@ -37,7 +37,7 @@ const InsightCase = () => {
     getCaseStudiesArticles(setArticles);
     getCarouselArticles(setCarouelData);
   }, []);
-
+  console.log(articles);
   return (
     <>
       <HeroSection
