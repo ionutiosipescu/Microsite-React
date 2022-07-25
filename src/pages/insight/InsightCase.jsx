@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router'
 import styled from 'styled-components'
 import { PostCard, HeroSection, CarouselSection } from '../../components/cards'
@@ -7,10 +7,12 @@ import {
 	NavbarDropdown,
 } from '../../components/navbarComponents'
 import { BreadCrumb, FilterBy } from '../../components'
+import { getArticles } from '../../API'
+
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
+import { StyledContainer } from '../../components/layout/Rows&Collumns/Rows&Collumns.style'
 
 const PostsContainer = styled.div`
-	padding: 2rem;
 	margin: auto;
 	display: flex;
 	justify-content: space-between;
@@ -20,13 +22,13 @@ const PostsContainer = styled.div`
 const InsightCase = () => {
 	const location = useLocation()
 	const locationName = location?.pathname.split('/').slice(1, 3)
-	const [filterByTags, setFilterByTags] = useState([
-		'fuck',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-	])
+	const [filterByTags, setFilterByTags] = useState(['fuck', 'fuck1'])
+
+	// Getting the latest articles from server
+	const [postsContent, setPostsContent] = useState([])
+	useEffect(() => {
+		getArticles(setPostsContent, 'latest insights')
+	}, [])
 
 	return (
 		<>
@@ -50,14 +52,14 @@ const InsightCase = () => {
 			</FiltrationNavbar>
 
 			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
-
-			<BreadCrumb route={'Insights'} subRoute={'Latest Case'} />
-
-			<PostsContainer>
-				{PostsArr.map((post, index) => (
-					<PostCard post={post} locationName={locationName} key={index} />
-				))}
-			</PostsContainer>
+			<StyledContainer>
+				<BreadCrumb route={'Insights'} subRoute={'Latest Case'} />
+				<PostsContainer>
+					{postsContent.map((post, index) => (
+						<PostCard {...post} locationName={locationName} key={index} />
+					))}
+				</PostsContainer>
+			</StyledContainer>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
 				backgroundColor="#002B49"

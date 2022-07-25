@@ -14,8 +14,6 @@ export const grabDataFromIncluded = (includedField, object, index) => {
 }
 
 export const getLink = (articleType, amount) => {
-	amount = null
-
 	if (amount == null) {
 		amount = '&page[limit]=6'
 	} else {

@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import { PostCard, NewsCard } from '../../../components/cards'
 import { getArticles } from '../../../API'
 
-//data
-import { PostsArr } from '../../../utils/data'
-
 const PostsContainer = styled.div`
 	padding: 2rem;
 	margin: auto;
@@ -21,7 +18,7 @@ const NewsRelease = () => {
 		getArticles(setNews, 'news')
 	}, [])
 
-	console.log(news)
+	// console.log(news)
 
 	return (
 		<PostsContainer>

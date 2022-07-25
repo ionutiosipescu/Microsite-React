@@ -5,12 +5,14 @@ const baseApiUrl = process.env.REACT_APP_BASE_API_URL
 
 export const getArticles = async (setContent, articleType, amount) => {
 	const link = getLink(articleType, amount)
+	console.log(amount)
 
 	await Axios.get(link).then(res => {
 		const arr = []
 
 		res.data.data.map(item => {
 			let data = {}
+
 			data.title = item.attributes.title
 			data.teaserText = item.attributes.field_teaser_text
 			data.date = item.attributes.created
