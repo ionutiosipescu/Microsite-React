@@ -10,7 +10,7 @@ import {
 import { BreadCrumb, FilterBy } from '../../components'
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
 // import { getArticle } from '../../API'
-import { getArticle } from '../../API'
+import { getArticles } from '../../API'
 
 const PostsContainer = styled.div`
 	padding: 2rem;
@@ -26,7 +26,7 @@ const InsightLatest = () => {
 	// Getting the latest articles from server
 	const [postContent, setPostContent] = useState([])
 	useEffect(() => {
-		getArticle(setPostContent)
+		getArticles(setPostContent, 'latest insights')
 	}, [])
 
 	console.log(postContent)
@@ -56,7 +56,7 @@ const InsightLatest = () => {
 
 			<PostsContainer>
 				{postContent.map((post, index) => (
-					<PostCard post={post} key={index} />
+					<PostCard {...post} key={index} />
 				))}
 			</PostsContainer>
 			<CarouselSection

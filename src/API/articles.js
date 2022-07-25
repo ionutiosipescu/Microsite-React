@@ -1,11 +1,10 @@
 import Axios from 'axios'
+import { getLink } from './helper'
 
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL
 
-export const getArticle = async setContent => {
-	const link =
-		baseApiUrl +
-		'/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created'
+export const getArticles = async (setContent, articleType, amount) => {
+	const link = getLink(articleType, amount)
 
 	await Axios.get(link).then(res => {
 		const arr = []
