@@ -16,7 +16,10 @@ export const getPodcasts = setContent => {
 
 			data.title = item.attributes.title
 			data.teaserText = item.attributes.field_teaser_text
-			data.date = item.attributes.created
+			data.date = new Date(
+				item.attributes.revision_timestamp
+			).toLocaleDateString()
+
 			data.image =
 				imageLink + grabDataFromIncluded('field_teaser_image', res.data, index)
 			data.type = grabDataFromIncluded('node_type', res.data, index)

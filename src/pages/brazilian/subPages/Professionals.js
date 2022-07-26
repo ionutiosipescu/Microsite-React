@@ -25,12 +25,12 @@ const Professionals = () => {
 	)
 
 	const [filterByTags, setFilterByTags] = useState([
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-		'fuck',
-		'fuck2',
+		'sunshine',
+		'sunshine2',
+		'sunshine3',
+		'sunshine4',
+		'sunshine',
+		'sunshine2',
 	])
 
 	//handle position of modal

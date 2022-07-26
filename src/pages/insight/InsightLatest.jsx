@@ -19,12 +19,16 @@ const PostsContainer = styled.div`
 `
 
 const InsightLatest = () => {
-	const [filterByTags, setFilterByTags] = useState(['fuck', 'fuck', 'fuck2'])
+	const [filterByTags, setFilterByTags] = useState([
+		'sunshine',
+		'sunshine',
+		'sunshine2',
+	])
 
 	// Getting the latest articles from server
 	const [postsContent, setPostsContent] = useState([])
 	useEffect(() => {
-		getArticles(setPostsContent, 'latest insights')
+		getArticles(setPostsContent, 'insights')
 	}, [])
 
 	// console.log(postsContent)
@@ -47,8 +51,8 @@ const InsightLatest = () => {
 					</NavbarDropdown>
 				))}
 			</FiltrationNavbar>
-
 			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
+
 			<StyledContainer>
 				<BreadCrumb route={'Insights'} subRoute={'Latest Insights'} />
 

@@ -23,7 +23,7 @@ export const getLink = (articleType, amount) => {
 	switch (articleType.toLowerCase()) {
 		case 'news':
 			return `${baseApiUrl}/node/article?include=field_category&filter[field_category.id]=9fe2a194-380a-4c67-886d-93f945c30a5f${amount}&sort=-created`
-		case 'latest insights':
+		case 'insights':
 			return `${baseApiUrl}/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare${amount}&sort=-created${amount}`
 		default:
 			return 'default'

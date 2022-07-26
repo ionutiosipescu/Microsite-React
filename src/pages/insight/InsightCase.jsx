@@ -22,12 +22,12 @@ const PostsContainer = styled.div`
 const InsightCase = () => {
 	const location = useLocation()
 	const locationName = location?.pathname.split('/').slice(1, 3)
-	const [filterByTags, setFilterByTags] = useState(['fuck', 'fuck1'])
+	const [filterByTags, setFilterByTags] = useState(['sunshine', 'sunshine1'])
 
 	// Getting the latest articles from server
 	const [postsContent, setPostsContent] = useState([])
 	useEffect(() => {
-		getArticles(setPostsContent, 'latest insights')
+		getArticles(setPostsContent, 'insights')
 	}, [])
 
 	return (

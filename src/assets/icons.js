@@ -17,14 +17,17 @@ const iconPng = (className, name) => (
 )
 
 const Search = props => icon(props, 'search', 'search icon')
-const ChevronRight = props => icon(props, 'chevronRight', 'chevron right icon')
 const LinkedIn = props => icon(props, 'linkedin', 'linkedin icon')
 const YouTube = props => icon(props, 'youtube', 'youtube icon')
 const Facebook = props => icon(props, 'facebook', 'facebook icon')
 const Twitter = props => icon(props, 'twitter', 'twitter icon')
 const XIcon = props => icon(props, 'xIcon', 'cancel icon')
+const ChevronRight = props => icon(props, 'chevronRight', 'chevron right icon')
 const ChevronRightWhite = props =>
 	icon(props, 'chevronRightWhite', 'chevron right icon')
+const ChevronUpWhite = props => icon(props, 'chevronUpWhite', 'chevron up icon')
+const ChevronDownWhite = props =>
+	icon(props, 'chevronDownWhite', 'chevron down icon')
 
 const ChevronRightBlue = ({ className }) => iconPng(className, 'chevron')
 const IconTriangle = ({ className }) => iconPng(className, 'iconTriangle')
@@ -34,6 +37,8 @@ const ShareIcon = ({ className }) => iconPng(className, 'share')
 const LetterIcon = ({ className }) => iconPng(className, 'letter')
 
 export {
+	ChevronUpWhite,
+	ChevronDownWhite,
 	Search,
 	XIcon,
 	ChevronRight,

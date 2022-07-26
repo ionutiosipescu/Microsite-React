@@ -15,7 +15,9 @@ export const getArticles = async (setContent, articleType, amount) => {
 
 			data.title = item.attributes.title
 			data.teaserText = item.attributes.field_teaser_text
-			data.date = item.attributes.created
+			data.date = new Date(
+				item.attributes.revision_timestamp
+			).toLocaleDateString()
 			data.id = item.id
 
 			arr.push(data)

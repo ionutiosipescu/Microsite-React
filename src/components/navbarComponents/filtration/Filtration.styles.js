@@ -99,7 +99,6 @@ export const StyledSearchBar2 = styled.div`
 	flex: 2;
 
 	input {
-		color: red;
 		height: 70%;
 		border-radius: 5px;
 		padding: 1rem;
@@ -142,10 +141,21 @@ export const Cell = styled.li`
 
 	transition: all 0.2s ease-in-out;
 
+	img {
+		padding-left: 0.5rem;
+		transition: all 0.2s ease-in-out;
+	}
+
 	:hover {
 		background-color: var(--darkBlue1);
 		cursor: pointer;
 		color: var(--hover-blue);
+
+		img {
+			transform: rotate(180deg);
+			padding-right: 0.5rem;
+			padding-left: 0;
+		}
 
 		/* Without the css bellow if 'a' elem has a href, the color will not change. Anoying. Don't know a better way of fixing this*/
 		a {
