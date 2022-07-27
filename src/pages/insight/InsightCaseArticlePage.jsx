@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useParams, useLocation } from "react-router-dom";
 import { BreadCrumb } from "../../components";
@@ -15,8 +15,14 @@ import {
   PdfIcon,
   ShareIcon,
   LetterIcon,
+  Envelope,
 } from "../../assets/icons";
 import { sizem } from "../../utils/breakpoints";
+import { Cell } from "../../components/navbarComponents/navigation/Navigation.styles";
+import {
+  FiltrationNavbar,
+  NavbarDropdown,
+} from "../../components/navbarComponents";
 
 const PageContainer = styled.div`
   .textCategory {
@@ -35,11 +41,7 @@ const PageContainer = styled.div`
     font-size: 12px;
     border-radius: 50%;
   }
-  .leftSection {
-    img {
-      width: 32px;
-    }
-  }
+
   @media ${sizem.mdm} {
     .secondSection {
       text-align: center;
@@ -63,14 +65,77 @@ const PageContainer = styled.div`
     color: #666666;
     line-height: 1rem;
   }
+  .leftSection {
+    .iconContainer {
+      height: 4.375rem;
+      width: 4.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    img {
+      width: 32px;
+    }
+  }
+  .containerIcons {
+    display: flex;
+    position: absolute;
+    /* flex-direction: column; */
+    /* top: -1rem; */
+    margin: 0px 0px 0px 270px;
+
+    .iconDiv {
+      height: 4.375rem;
+      width: 13.375rem;
+
+      background-color: #0085ca;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      line-height: 4.375rem;
+      color: #fff;
+      /* margin-left: -20px; */
+      /* border: 2px solid red; */
+      cursor: pointer;
+      :hover {
+        cursor: pointer;
+        background-color: yellow;
+      }
+    }
+  }
+  .menuIconActive {
+    background-color: #0085ca;
+    /* margin-right: 0px; */
+  }
 `;
 
 const InsightCaseArticlePage = ({}) => {
   const { state } = useLocation();
   const { id } = useParams();
-  //   console.log(id.slice(0, 35));
+  const [toggle, setToggle] = useState(false);
+  const [highlightedCell, setHighlightedCell] = useState(0);
 
   const articleDescription = state.body;
+
+  const [showChildrenIcons, setShowChildrenIcons] = useState(true);
+  const [openedState, setOpenedState] = useState(
+    Array.from(leftSectionIcons, () => false)
+  );
+
+  const handleDisplay = (index) => {
+    setToggle(!toggle);
+    // console.log("this is the index", index);
+    if (!openedState[index]) {
+      let arr = Array.from(leftSectionIcons, () => false);
+      arr[index] = true;
+      setOpenedState([...arr]);
+    } else {
+      setOpenedState(Array.from(leftSectionIcons, () => false));
+    }
+  };
   return (
     <PageContainer>
       <HeroSection
@@ -89,15 +154,32 @@ const InsightCaseArticlePage = ({}) => {
             <div className="row">
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
                 {/*------------------------------------------------------------- LeftSectionIcons */}
+
                 <div className="leftSection">
-                  {[
-                    <ShareIcon />,
-                    <DocumentIcon />,
-                    <LetterIcon />,
-                    <PdfIcon />,
-                  ].map((x, index) => (
-                    <div className="pt-4" key={index}>
-                      {x}
+                  {leftSectionIcons.map((x, index) => (
+                    <div
+                      // className=""
+                      key={index}
+                      className={` iconContainer ${
+                        openedState[index] && "menuIconActive"
+                      }`}
+                      onClick={() => {
+                        handleDisplay(index);
+                      }}
+                    >
+                      <div>{x.icon}</div>
+                      {openedState[index] && (
+                        <span className="containerIcons">
+                          {x?.children.map((icon, index) => (
+                            <div
+                              className="iconDiv"
+                              style={{ backgroundColor: `${icon.color}` }}
+                            >
+                              {icon.icon || icon.text}
+                            </div>
+                          ))}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -122,9 +204,9 @@ const InsightCaseArticlePage = ({}) => {
                     placeat eos.
                   </p>
                 ))} */}
-                <h4 className="pt-3 fw-bold">{state.title} </h4>
+                <h4 className="pt-5 fw-bold">{state.title} </h4>
                 <div
-                  className="pt-3"
+                  className="pt-3 text-decoration-none"
                   dangerouslySetInnerHTML={{ __html: articleDescription }}
                 ></div>
 
@@ -158,7 +240,11 @@ const InsightCaseArticlePage = ({}) => {
               titleSection={"Featured Profiles"}
               managers={state.authorsData}
             />
-            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
+            <LinksList
+              titleSection={"Stay Connected"}
+              linkIcons={iconsArr}
+              className=""
+            />
           </div>
         </div>
       </div>
@@ -178,6 +264,42 @@ const InsightCaseArticlePage = ({}) => {
 };
 
 export default InsightCaseArticlePage;
+
+const leftSectionIcons = [
+  {
+    id: 0,
+    icon: <ShareIcon />,
+    children: [
+      {
+        color: "#0085CA",
+        icon: <Facebook />,
+      },
+      {
+        color: "#002B49",
+        icon: <LinkedIn />,
+      },
+      {
+        color: "#171717",
+        icon: <Twitter />,
+      },
+    ],
+  },
+  {
+    id: 1,
+    icon: <DocumentIcon />,
+    children: [{ text: "Printable Version", color: "#0085CA" }],
+  },
+  {
+    id: 2,
+    icon: <LetterIcon />,
+    children: [{ text: "SEND BY EMAIL", color: "#0085CA" }],
+  },
+  {
+    id: 3,
+    icon: <PdfIcon />,
+    children: [{ text: "PDF VERSION", color: "#0085CA" }],
+  },
+];
 
 const arrImages = [
   "https://images.unsplash.com/photo-1657039875202-b7472f549b3f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
@@ -268,25 +390,6 @@ const arr = [
   },
 ];
 
-const iconsArr = [
-  { id: 1, icon: <Facebook />, text: "Facebook" },
-  {
-    id: 2,
-    icon: <LinkedIn />,
-    text: "Linkedin",
-  },
-  {
-    id: 3,
-    icon: <Twitter />,
-    text: "Twitter",
-  },
-  {
-    id: 3,
-    icon: <YouTube />,
-    text: "YouTube",
-  },
-];
-
 const ListManagers = ({ titleSection, managers }) => {
   return (
     <>
@@ -300,7 +403,7 @@ const ListManagers = ({ titleSection, managers }) => {
               {x.firstName} {x.lastName}
             </span>
             {/* <span className="text-muted">{x.position}</span> */}
-            <span className="text-muted positionAuthor">{x.type}</span>
+            <span className="text-muted positionAuthor">{x.profession}</span>
           </div>
         ))}
       </div>
@@ -310,7 +413,7 @@ const ListManagers = ({ titleSection, managers }) => {
 
 const LinksList = ({ titleSection, linkIcons }) => {
   return (
-    <div className="linksContainer ">
+    <div className="linksContainer pt-5">
       <h3> {titleSection} </h3>
       <div className="links container-fluid  ">
         {linkIcons.map((x, index) => (
@@ -328,3 +431,57 @@ const LinksList = ({ titleSection, linkIcons }) => {
     </div>
   );
 };
+
+const filtrationNavbarData = [
+  {
+    title: "Expretise",
+    tagNames: [
+      { name: "/expretise", href: "" },
+      { name: "/expretise", href: "" },
+    ],
+  },
+  {
+    title: "Industry",
+    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
+  },
+  {
+    title: "Country",
+    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
+  },
+  {
+    title: "Year",
+    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
+  },
+  {
+    title: "Bulletin Type",
+    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
+  },
+  {
+    title: "Media Type",
+    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
+  },
+];
+
+const iconsArr = [
+  { id: 1, icon: <Facebook />, text: "Facebook" },
+  {
+    id: 2,
+    icon: <LinkedIn />,
+    text: "Linkedin",
+  },
+  {
+    id: 3,
+    icon: <Twitter />,
+    text: "Twitter",
+  },
+  {
+    id: 3,
+    icon: <YouTube />,
+    text: "YouTube",
+  },
+  {
+    id: 4,
+    icon: <Envelope />,
+    text: "Sign Up for A&M Newsletters",
+  },
+];

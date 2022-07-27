@@ -54,14 +54,16 @@ export const getCarouselArticles = async (setContent) => {
 export const getCaseStudiesArticles = async (setContent) => {
   const link =
     baseApiUrl +
-    "/node/article?include=field_authors&field_primary_industry&filter%5Bfield_primary_industry.name%5D=healthcare&page%5Blimit%5D=8&sort=-created";
+    "/node/article?include=field_authors,field_primary_industry,field_authors.field_professional_title&filter[field_primary_industry.name]=healthcare&page%5Blimit%5D=8&sort=-created";
   let parsedArticles = [];
   var allAuthors = [];
+
   await Axios.get(link)
     .then((res) => {
       const articles = res.data.data;
-      console.log(articles);
+
       allAuthors = res.data.included;
+      console.log(allAuthors);
       articles.forEach((article) => {
         // console.log(article.attributes?.field_metatag);
         let art = {
@@ -84,12 +86,26 @@ export const getCaseStudiesArticles = async (setContent) => {
     article.authorsData.map((author) => {
       allAuthors.forEach((x) => {
         if (x.id == author.id) {
+          author.id = x.id;
+          author.professionId =
+            x?.relationships?.field_professional_title?.data[0]?.id;
           author.firstName = x.attributes.field_first_name;
           author.lastName = x.attributes.field_last_name;
         }
       });
     });
   });
+  parsedArticles.map((article) => {
+    article.authorsData.map((author) => {
+      allAuthors.forEach((x) => {
+        if (author.professionId == x.id) {
+          author.profession = x?.attributes?.name;
+        }
+      });
+    });
+  });
+
+  console.log(parsedArticles);
 
   setContent(parsedArticles);
 };

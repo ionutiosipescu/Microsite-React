@@ -25,6 +25,7 @@ const PostsContainer = styled.div`
 
 const InsightCase = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
   const [heroSectionData, setHeroSectionData] = useState();
   const [articles, setArticles] = useState([]);
   const [carouselData, setCarouelData] = useState([]);
@@ -33,11 +34,13 @@ const InsightCase = () => {
   const [filterByTags, setFilterByTags] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     fetchHeroSectionDataHome(setHeroSectionData);
     getCaseStudiesArticles(setArticles);
     getCarouselArticles(setCarouelData);
+    setLoading(false);
   }, []);
-  console.log(articles);
+
   return (
     <>
       <HeroSection
@@ -61,11 +64,18 @@ const InsightCase = () => {
 
       <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
 
-      <PostsContainer>
-        {articles.map((post, index) => (
-          <PostCard post={post} locationName={locationName} key={index} />
-        ))}
-      </PostsContainer>
+      {loading ? (
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      ) : (
+        <PostsContainer>
+          {articles.map((post, index) => (
+            <PostCard post={post} locationName={locationName} key={index} />
+          ))}
+        </PostsContainer>
+      )}
+
       <CarouselSection
         categoryCarousel={"Healthcare & Live Sciences News"}
         backgroundColor="#002B49"
