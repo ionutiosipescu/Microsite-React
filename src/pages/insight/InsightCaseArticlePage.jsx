@@ -83,11 +83,11 @@ const PageContainer = styled.div`
     position: absolute;
     /* flex-direction: column; */
     /* top: -1rem; */
-    margin: 0px 0px 0px 270px;
-
+    margin: 0px 0px 0px 330px;
+    width: 16.375rem;
     .iconDiv {
       height: 4.375rem;
-      width: 13.375rem;
+      width: 100%;
 
       background-color: #0085ca;
       justify-content: center;
@@ -110,24 +110,52 @@ const PageContainer = styled.div`
     background-color: #0085ca;
     /* margin-right: 0px; */
   }
+
+  .link {
+    :hover {
+      .image {
+        cursor: pointer;
+        background-color: var(--hover-blue);
+      }
+      .textLinks {
+        cursor: pointer;
+        color: var(--hover-blue);
+      }
+    }
+  }
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--gray3);
+    /* border: 2px solid red; */
+  }
+
+  .textLinks {
+    :hover {
+      cursor: pointer;
+      color: var(--hover-blue);
+    }
+  }
 `;
 
 const InsightCaseArticlePage = ({}) => {
   const { state } = useLocation();
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
-  const [highlightedCell, setHighlightedCell] = useState(0);
 
   const articleDescription = state.body;
 
-  const [showChildrenIcons, setShowChildrenIcons] = useState(true);
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
   );
 
   const handleDisplay = (index) => {
     setToggle(!toggle);
-    // console.log("this is the index", index);
+
     if (!openedState[index]) {
       let arr = Array.from(leftSectionIcons, () => false);
       arr[index] = true;
@@ -155,7 +183,7 @@ const InsightCaseArticlePage = ({}) => {
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
                 {/*------------------------------------------------------------- LeftSectionIcons */}
 
-                <div className="leftSection">
+                <div className="leftSection pt-3">
                   {leftSectionIcons.map((x, index) => (
                     <div
                       // className=""
@@ -423,7 +451,7 @@ const LinksList = ({ titleSection, linkIcons }) => {
           >
             <div className="image  col-md-2 col-lg-2 ">{x.icon}</div>
             <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-              Join A&M on {x.text}
+              <span className="textLinks">Join A&M on {x.text} </span>
             </div>
           </div>
         ))}
@@ -431,36 +459,6 @@ const LinksList = ({ titleSection, linkIcons }) => {
     </div>
   );
 };
-
-const filtrationNavbarData = [
-  {
-    title: "Expretise",
-    tagNames: [
-      { name: "/expretise", href: "" },
-      { name: "/expretise", href: "" },
-    ],
-  },
-  {
-    title: "Industry",
-    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
-  },
-  {
-    title: "Country",
-    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
-  },
-  {
-    title: "Year",
-    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
-  },
-  {
-    title: "Bulletin Type",
-    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
-  },
-  {
-    title: "Media Type",
-    tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
-  },
-];
 
 const iconsArr = [
   { id: 1, icon: <Facebook />, text: "Facebook" },
