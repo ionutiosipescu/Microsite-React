@@ -23,12 +23,14 @@ const News = () => {
 		getArticles(setNews, 'news', 10)
 	}, [])
 
+	console.log(news)
+
 	return (
 		<StyledContainer>
 			<TranslateButton text1={'English'} text2={'Portuguese'} />
 			<PostsContainer>
 				{news.map(post => (
-					<PostCard {...post} locationName={LocationName} />
+					<PostCard post={news} locationName={LocationName} />
 				))}
 			</PostsContainer>
 		</StyledContainer>

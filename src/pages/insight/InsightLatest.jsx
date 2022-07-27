@@ -58,7 +58,7 @@ const InsightLatest = () => {
 
 				<PostsContainer>
 					{postsContent.map((post, index) => (
-						<PostCard {...post} key={index} />
+						<PostCard post={post} key={index} />
 					))}
 				</PostsContainer>
 			</StyledContainer>
