@@ -28,17 +28,17 @@ export const getArticles = async (setContent, articleType, amount) => {
 
   await Axios.get(link).then((res) => {
     const arr = [];
-
+    console.log(res.data.data);
     res.data.data.map((item) => {
       let data = {};
 
       data.title = item.attributes.title;
       data.teaserText = item.attributes.field_teaser_text;
-
+      data.body = item.attributes.body.value;
       data.date = new Date(
         item.attributes.revision_timestamp
       ).toLocaleDateString();
-
+      data.authorsData = item.relationships.field_authors?.data;
       data.id = item.id;
 
       arr.push(data);

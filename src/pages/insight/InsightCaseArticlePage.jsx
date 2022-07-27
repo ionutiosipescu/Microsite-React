@@ -425,7 +425,7 @@ const ListManagers = ({ titleSection, managers }) => {
         <h3 className="text-align-center">{titleSection}</h3>{" "}
       </div>
       <div className="managers">
-        {managers.map((x, index) => (
+        {managers?.map((x, index) => (
           <div className="manager d-flex flex-column py-3" key={index}>
             <span className="nameAuthor">
               {x.firstName} {x.lastName}

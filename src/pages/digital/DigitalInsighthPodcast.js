@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 
@@ -103,12 +103,103 @@ const DigitalInsighthPodcast = () => {
       border-radius: 10px;
       padding: 5px 10px;
     }
+    .link {
+      :hover {
+        .image {
+          cursor: pointer;
+          background-color: var(--hover-blue);
+        }
+        .textLinks {
+          cursor: pointer;
+          color: var(--hover-blue);
+        }
+      }
+    }
+    .image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--gray3);
+      /* border: 2px solid red; */
+    }
+
+    .textLinks {
+      :hover {
+        cursor: pointer;
+        color: var(--hover-blue);
+      }
+    }
+
+    .leftSection {
+      .iconContainer {
+        height: 4.375rem;
+        width: 4.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      img {
+        width: 32px;
+      }
+    }
+    .containerIcons {
+      display: flex;
+      position: absolute;
+      /* flex-direction: column; */
+      /* top: -1rem; */
+      margin: 0px 0px 0px 330px;
+      width: 16.375rem;
+      .iconDiv {
+        height: 4.375rem;
+        width: 100%;
+
+        background-color: #0085ca;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 1.125rem;
+        text-transform: uppercase;
+        line-height: 4.375rem;
+        color: #fff;
+        /* margin-left: -20px; */
+        /* border: 2px solid red; */
+        cursor: pointer;
+        :hover {
+          cursor: pointer;
+          background-color: yellow;
+        }
+      }
+    }
+    .menuIconActive {
+      background-color: #0085ca;
+      /* margin-right: 0px; */
+    }
   `;
+  const [toggle, setToggle] = useState(false);
+  const [openedState, setOpenedState] = useState(
+    Array.from(leftSectionIcons, () => false)
+  );
+
+  const handleDisplay = (index) => {
+    setToggle(!toggle);
+
+    if (!openedState[index]) {
+      let arr = Array.from(leftSectionIcons, () => false);
+      arr[index] = true;
+      setOpenedState([...arr]);
+    } else {
+      setOpenedState(Array.from(leftSectionIcons, () => false));
+    }
+  };
   return (
     <PageContainer>
       <HeroSection
         backgroundUrl={state?.image}
-        title={state.title}
+        title={state?.title}
         pageTitleCenter={"PODCAST"}
       />
       <div className="container-fluid  bg-white  d-flex flex-direction-column">
@@ -118,14 +209,32 @@ const DigitalInsighthPodcast = () => {
             <div className="row">
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
                 {/*------------------------------------------------------------- LeftSectionIcons */}
-                <div className="leftSection">
-                  {[
-                    <ShareIcon />,
-                    <DocumentIcon />,
-                    <LetterIcon />,
-                    <PdfIcon />,
-                  ].map((x) => (
-                    <div className="pt-4">{x}</div>
+                <div className="leftSection pt-3">
+                  {leftSectionIcons.map((x, index) => (
+                    <div
+                      // className=""
+                      key={index}
+                      className={` iconContainer ${
+                        openedState[index] && "menuIconActive"
+                      }`}
+                      onClick={() => {
+                        handleDisplay(index);
+                      }}
+                    >
+                      <div>{x.icon}</div>
+                      {openedState[index] && (
+                        <span className="containerIcons">
+                          {x?.children.map((icon, index) => (
+                            <div
+                              className="iconDiv"
+                              style={{ backgroundColor: `${icon.color}` }}
+                            >
+                              {icon.icon || icon.text}
+                            </div>
+                          ))}
+                        </span>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -226,7 +335,7 @@ const iconsArr = [
 const SubscribeSection = ({ titleSection, iconsArr }) => {
   return (
     <>
-      <h4 className="fw-bold">{titleSection} :</h4>
+      <h4 className="fw-bold">{titleSection || ""} :</h4>
       <div className="d-flex w-100 pt-2 row ">
         {iconsArr.map((x) => (
           <div className="card col-lg-3 col-md-6">
@@ -236,7 +345,7 @@ const SubscribeSection = ({ titleSection, iconsArr }) => {
               <div className="px-3">
                 <span className="text-muted fs-6">Listen on</span>
                 <br />
-                <span className="  fs-4 lh-1">{x.text}</span>
+                <span className="  fs-4 lh-1">{x?.text}</span>
               </div>
             </div>
           </div>
@@ -249,13 +358,13 @@ const ListManagers = ({ titleSection, managers }) => {
   return (
     <>
       <div className="">
-        <h3 className="text-align-center">{titleSection}</h3>{" "}
+        <h3 className="text-align-center">{titleSection || ""}</h3>{" "}
       </div>
       <div className="managers">
         {managers.map((x) => (
           <div className="manager d-flex flex-column py-3">
             <span>{x.name}</span>
-            <span className="text-muted">{x.position}</span>
+            <span className="text-muted">{x?.position}</span>
           </div>
         ))}
       </div>
@@ -265,14 +374,17 @@ const ListManagers = ({ titleSection, managers }) => {
 
 const LinksList = ({ titleSection, linkIcons }) => {
   return (
-    <div className="linksContainer ">
+    <div className="linksContainer pt-5">
       <h3> {titleSection} </h3>
       <div className="links container-fluid  ">
-        {linkIcons.map((x) => (
-          <div className="link  py-2 d-flex justify-content-between ">
-            <div className="image  col-md-2 col-lg-2 ">{x.icon}</div>
+        {linkIcons.map((x, index) => (
+          <div
+            className="link  py-2 d-flex justify-content-between "
+            key={index}
+          >
+            <div className="image  col-md-2 col-lg-2 ">{x?.icon}</div>
             <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
-              <span className="">Join A&M on {x.text}</span>
+              <span className="textLinks">Join A&M on {x?.text} </span>
             </div>
           </div>
         ))}
@@ -280,3 +392,39 @@ const LinksList = ({ titleSection, linkIcons }) => {
     </div>
   );
 };
+
+const leftSectionIcons = [
+  {
+    id: 0,
+    icon: <ShareIcon />,
+    children: [
+      {
+        color: "#0085CA",
+        icon: <Facebook />,
+      },
+      {
+        color: "#002B49",
+        icon: <LinkedIn />,
+      },
+      {
+        color: "#171717",
+        icon: <Twitter />,
+      },
+    ],
+  },
+  {
+    id: 1,
+    icon: <DocumentIcon />,
+    children: [{ text: "Printable Version", color: "#0085CA" }],
+  },
+  {
+    id: 2,
+    icon: <LetterIcon />,
+    children: [{ text: "SEND BY EMAIL", color: "#0085CA" }],
+  },
+  {
+    id: 3,
+    icon: <PdfIcon />,
+    children: [{ text: "PDF VERSION", color: "#0085CA" }],
+  },
+];

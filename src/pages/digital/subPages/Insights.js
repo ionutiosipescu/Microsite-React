@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { CardInsights } from '../../../components/cards/'
-import { getPodcasts } from '../../../API'
+import React, { useEffect, useState } from "react";
+
+import { CardInsights } from "../../../components/cards/";
+import { getPodcasts } from "../../../API";
 
 const Insights = () => {
-	const [podcasts, setPodcasts] = useState([])
+  const [podcasts, setPodcasts] = useState([]);
 
-	useEffect(() => {
-		getPodcasts(setPodcasts)
-	}, [])
+  useEffect(() => {
+    getPodcasts(setPodcasts);
+  }, []);
 
-	// console.log(podcasts)
+  // console.log(podcasts)
 
-	return (
-		<>
-			{podcasts.map((podcast, index) => (
-				<CardInsights
-					key={index}
-					image={podcast.image}
-					type={podcast.type}
-					title={podcast.title}
-					teaserText={podcast.teaserText}
-				/>
-			))}
-		</>
-	)
-}
+  return (
+    <>
+      {podcasts.map((podcast, index) => (
+        <CardInsights
+          key={index}
+          podcast={podcast}
+          //   image={podcast.image}
+          //   type={podcast.type}
+          //   title={podcast.title}
+          //   teaserText={podcast.teaserText}
+        />
+      ))}
+    </>
+  );
+};
 
-export default Insights
+export default Insights;
