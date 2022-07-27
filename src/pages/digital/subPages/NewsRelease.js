@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { PostCard } from '../../../components/cards'
-
-//data
-import { PostsArr } from '../../../utils/data'
+import { PostCard, NewsCard } from '../../../components/cards'
+import { getArticles } from '../../../API'
 
 const PostsContainer = styled.div`
 	padding: 2rem;
@@ -14,14 +12,20 @@ const PostsContainer = styled.div`
 `
 
 const NewsRelease = () => {
+	const [news, setNews] = useState([])
+
+	useEffect(() => {
+		getArticles(setNews, 'news')
+	}, [])
+
+	// console.log(news)
+
 	return (
-		<>
-			<PostsContainer>
-				{PostsArr.map((post, index) => (
-					<PostCard post={post} key={index} />
-				))}
-			</PostsContainer>
-		</>
+		<PostsContainer>
+			{news.map((post, index) => (
+				<PostCard {...post} key={index} />
+			))}
+		</PostsContainer>
 	)
 }
 

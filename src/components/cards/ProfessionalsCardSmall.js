@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import connor from '../../assets/images/ConnorWine'
-import YellowButton from '../buttons/YellowButton'
 import DetailedProfessionalsCard from './DetailedProfessionalsCard'
 import {
 	Container,

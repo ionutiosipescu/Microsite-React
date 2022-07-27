@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { ChevronUpWhite } from '../../../assets/icons'
 import { Cell, Dropdown, DropdownCell } from './Filtration.styles'
 import { NavbarContext } from './FiltrationNavbar'
 
@@ -28,7 +29,10 @@ const NavbarDropdown = ({ children, data }) => {
 
 	return (
 		<div onClick={handleClick}>
-			<Cell as={'div'}>{children}</Cell>
+			<Cell as={'div'}>
+				{children}
+				<ChevronUpWhite />
+			</Cell>
 			<Dropdown show={showDropdown} columns={columns}>
 				{data.map((link, index) => (
 					<DropdownCell key={index} onClick={() => addTag(link)}>

@@ -1,42 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardInsights } from '../../../components/cards/'
-import image from '../../../assets/images/ConnorWine'
+import { getPodcasts } from '../../../API'
 
 const Insights = () => {
-	// this is the Insights that will come from drupal
-	let drupal = [
-		{
-			image: image,
-			type: 'podcast',
-			title: 'This is a very long Title',
-			content:
-				'laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea.',
-		},
-		{
-			image: image,
-			type: 'podcast',
-			title: 'This is a very long Title',
-			content:
-				'laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea.',
-		},
-		{
-			image: image,
-			type: 'podcast',
-			title: 'This is a very long Title',
-			content:
-				'laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea.',
-		},
-	]
+	const [podcasts, setPodcasts] = useState([])
+
+	useEffect(() => {
+		getPodcasts(setPodcasts)
+	}, [])
+
+	// console.log(podcasts)
 
 	return (
 		<>
-			{drupal.map((insight, index) => (
+			{podcasts.map((podcast, index) => (
 				<CardInsights
 					key={index}
-					image={insight.image}
-					type={insight.type}
-					title={insight.title}
-					content={insight.content}
+					image={podcast.image}
+					type={podcast.type}
+					title={podcast.title}
+					teaserText={podcast.teaserText}
 				/>
 			))}
 		</>

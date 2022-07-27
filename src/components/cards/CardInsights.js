@@ -14,11 +14,14 @@ const ImageContainer = styled.div`
 
 	img {
 		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 `
 const CardBody = styled.div`
 	flex: 5;
 	padding: 10px;
+
 	h6 {
 		margin: 0;
 		color: var(--hover-blue);
@@ -28,9 +31,11 @@ const CardBody = styled.div`
 	h4 {
 		margin: 0;
 		font-weight: bold;
-	}
+		cursor: pointer;
 
-	p {
+		:hover {
+			color: var(--hover-blue);
+		}
 	}
 `
 const CardArrow = styled.div`
@@ -38,9 +43,11 @@ const CardArrow = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	cursor: pointer;
 `
 
-const CardInsights = ({ image, type, title, content, href }) => {
+const CardInsights = ({ image, type, title, teaserText, href }) => {
 	return (
 		<Card>
 			<ImageContainer>
@@ -50,7 +57,7 @@ const CardInsights = ({ image, type, title, content, href }) => {
 			<CardBody>
 				<h6>{type}</h6>
 				<h4>{title}</h4>
-				<p className="text-muted">{content}</p>
+				<p className="text-muted">{teaserText}</p>
 			</CardBody>
 			<CardArrow>
 				<ChevronRight />

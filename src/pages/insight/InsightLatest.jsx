@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Axios from 'axios'
 import { PostCard, HeroSection, CarouselSection } from '../../components/cards'
 import {
 	FiltrationNavbar,
@@ -9,11 +8,10 @@ import {
 
 import { BreadCrumb, FilterBy } from '../../components'
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
-// import { getArticle } from '../../API'
-import { getArticle } from '../../API'
+import { getArticles } from '../../API'
+import { StyledContainer } from '../../components/layout/Rows&Collumns/Rows&Collumns.style'
 
 const PostsContainer = styled.div`
-	padding: 2rem;
 	margin: auto;
 	display: flex;
 	justify-content: space-between;
@@ -21,15 +19,19 @@ const PostsContainer = styled.div`
 `
 
 const InsightLatest = () => {
-	const [filterByTags, setFilterByTags] = useState(['fuck', 'fuck', 'fuck2'])
+	const [filterByTags, setFilterByTags] = useState([
+		'sunshine',
+		'sunshine',
+		'sunshine2',
+	])
 
 	// Getting the latest articles from server
-	const [postContent, setPostContent] = useState([])
+	const [postsContent, setPostsContent] = useState([])
 	useEffect(() => {
-		getArticle(setPostContent)
+		getArticles(setPostsContent, 'insights')
 	}, [])
 
-	console.log(postContent)
+	// console.log(postsContent)
 
 	return (
 		<>
@@ -49,16 +51,17 @@ const InsightLatest = () => {
 					</NavbarDropdown>
 				))}
 			</FiltrationNavbar>
-
 			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
 
-			<BreadCrumb route={'Insights'} subRoute={'Latest Insights'} />
+			<StyledContainer>
+				<BreadCrumb route={'Insights'} subRoute={'Latest Insights'} />
 
-			<PostsContainer>
-				{postContent.map((post, index) => (
-					<PostCard post={post} key={index} />
-				))}
-			</PostsContainer>
+				<PostsContainer>
+					{postsContent.map((post, index) => (
+						<PostCard {...post} key={index} />
+					))}
+				</PostsContainer>
+			</StyledContainer>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
 				backgroundColor="#002B49"

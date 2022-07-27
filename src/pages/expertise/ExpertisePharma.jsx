@@ -32,7 +32,6 @@ const ExpertisePharma = () => {
 						route={'Expertise'}
 						subRoute={'Pharma & MedTech portfolio management'}
 					/>
-
 					<p>
 						Sit excepteur ullamco tempor excepteur fugiat amet culpa consectetur
 						ea ut fugiat. Laborum irure non qui nulla minim anim reprehenderit

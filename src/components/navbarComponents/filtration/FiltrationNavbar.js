@@ -16,18 +16,24 @@ const Navbar = ({
 	const [visible, setVisible] = useState(false)
 	const [toggle, setToggle] = useState(false)
 
-	const vals = {
+	const values = {
 		filterByTags: filterByTags,
 		setFilterByTags: setFilterByTags,
 	}
 
-	const handleClick = (e, userInput) => {
-		console.log('click')
-		if (userInput == null) {
-			e.preventDefault()
+	const handleSubmit = (e, userInput, openBigNavbar) => {
+		e.preventDefault()
+		console.log('this is userInput', userInput)
+		console.log(userInput)
+
+		console.log(openBigNavbar)
+		if (openBigNavbar && userInput === '') {
 			setVisible(!visible)
 		} else {
-			// Logic to search for user input or Api call?
+			filterByTags.push(userInput)
+			setFilterByTags([...filterByTags])
+
+			console.log('submit')
 		}
 	}
 
@@ -37,7 +43,11 @@ const Navbar = ({
 
 	return (
 		<>
-			<SearchBar visible={!visible} handleClick={handleClick} />
+			<SearchBar
+				visible={!visible}
+				handleSubmit={handleSubmit}
+				{...searchBar}
+			/>
 			<Container toggle={toggle} spread={spread}>
 				<MobileDropdown
 					as={'div'}
@@ -49,18 +59,26 @@ const Navbar = ({
 					{searchBar && (
 						<SearchBar
 							visible={visible}
-							handleClick={handleClick}
-							disappearOnMobile={true}
+							disappearOnMobile
+							{...searchBar}
+							handleSubmit={handleSubmit}
+							openBigNavbar
 						/>
 					)}
 				</MobileDropdown>
-				<NavbarContext.Provider value={vals}>
+				<NavbarContext.Provider value={values}>
 					<ul>
 						{children}
-						{searchBar2 && <SearchBar2 placeholder={searchBar2} />}
+						{searchBar2 && <SearchBar2 {...searchBar2} />}
 					</ul>
 				</NavbarContext.Provider>
-				{searchBar && <SearchBar disappearOnMobile={true} />}
+				{searchBar && (
+					<SearchBar
+						disappearOnMobile
+						handleSubmit={handleSubmit}
+						{...searchBar}
+					/>
+				)}
 			</Container>
 		</>
 	)

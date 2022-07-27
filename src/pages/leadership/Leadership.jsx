@@ -30,14 +30,8 @@ const Leadership = () => {
 	const [openedState, setOpenedState] = useState(
 		Array.from(leadersList, () => false)
 	)
-	const [filterByTags, setFilterByTags] = useState([
-		'fuck',
-		'fuck',
-		'fuck2',
-		'fuck3',
-		'fuck4',
-	])
-
+	const [filterByTags, setFilterByTags] = useState(['sunshine', 'sunshine'])
+	const [inputText, setInputText] = useState('')
 	const [clickedNavbarCell, setClickedNavbarCell] = useState(null)
 
 	const handleDisplay = index => {
@@ -52,14 +46,15 @@ const Leadership = () => {
 	}
 
 	let arr = [<YellowButton />, <ProfessionalsCardSmall />]
-	// console.log(clickedNavbarCell)
+
+	console.log(inputText)
 
 	return (
 		<>
 			<HeroSection title={'helthcare & live sciences leaders'} />
 
 			<FiltrationNavbar
-				searchBar
+				searchBar={{ placeholder: 'enter search here', setInputText }}
 				filterByTags={filterByTags}
 				setFilterByTags={setFilterByTags}
 			>
@@ -70,7 +65,7 @@ const Leadership = () => {
 			</FiltrationNavbar>
 
 			<FiltrationNavbar
-				searchBar2={'enter search here'}
+				searchBar2={{ placeholder: 'enter search here', setInputText }}
 				spread
 				filterByTags={filterByTags}
 				setFilterByTags={setFilterByTags}
