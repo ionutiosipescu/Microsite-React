@@ -98,11 +98,14 @@ export const StyledSearchBar2 = styled.div`
 	padding: 0.5rem 3rem;
 	flex: 2;
 
-	input {
-		height: 70%;
-		border-radius: 5px;
-		padding: 1rem;
+	form {
 		width: 100%;
+		input {
+			width: 100%;
+			height: 70%;
+			border-radius: 5px;
+			padding: 1rem;
+		}
 	}
 
 	@media ${size.lg} {

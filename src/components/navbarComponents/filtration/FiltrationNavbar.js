@@ -25,8 +25,8 @@ const Navbar = ({
 		e.preventDefault()
 		console.log('this is userInput', userInput)
 		console.log(userInput)
-
 		console.log(openBigNavbar)
+
 		if (openBigNavbar && userInput === '') {
 			setVisible(!visible)
 		} else {
@@ -69,7 +69,9 @@ const Navbar = ({
 				<NavbarContext.Provider value={values}>
 					<ul>
 						{children}
-						{searchBar2 && <SearchBar2 {...searchBar2} />}
+						{searchBar2 && (
+							<SearchBar2 {...searchBar2} handleSubmit={handleSubmit} />
+						)}
 					</ul>
 				</NavbarContext.Provider>
 				{searchBar && (
