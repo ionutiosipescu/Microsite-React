@@ -15,7 +15,7 @@ import {
   PdfIcon,
   ShareIcon,
   LetterIcon,
-  Envelope,
+  // Envelope,
 } from "../../assets/icons";
 import { sizem } from "../../utils/breakpoints";
 import { Cell } from "../../components/navbarComponents/navigation/Navigation.styles";
@@ -479,7 +479,7 @@ const iconsArr = [
   },
   {
     id: 4,
-    icon: <Envelope />,
+    // icon: <Envelope />,
     text: "Sign Up for A&M Newsletters",
   },
 ];

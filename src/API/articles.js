@@ -1,5 +1,5 @@
 import Axios from "axios";
-
+import { getLink } from "./helper";
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 
 export const getArticle = async (setContent) => {
@@ -19,6 +19,31 @@ export const getArticle = async (setContent) => {
 
       arr.push(data);
     });
+    setContent([...arr]);
+  });
+};
+export const getArticles = async (setContent, articleType, amount) => {
+  const link = getLink(articleType, amount);
+  console.log(amount);
+
+  await Axios.get(link).then((res) => {
+    const arr = [];
+
+    res.data.data.map((item) => {
+      let data = {};
+
+      data.title = item.attributes.title;
+      data.teaserText = item.attributes.field_teaser_text;
+
+      data.date = new Date(
+        item.attributes.revision_timestamp
+      ).toLocaleDateString();
+
+      data.id = item.id;
+
+      arr.push(data);
+    });
+
     setContent([...arr]);
   });
 };

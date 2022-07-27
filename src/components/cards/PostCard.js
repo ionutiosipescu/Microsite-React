@@ -21,10 +21,10 @@ const PostCard = ({ post }) => {
           navigate(`/insights/case/${post.title}`, { state: post })
         }
       >
-        {post.title}
+        {post?.title}
       </CustomTitle>
-      <span className="text-muted"> {post.date}</span>
-      <p className="py-2 fs-6">{post.teaserText}</p>
+      <span className="text-muted"> {post?.date}</span>
+      <p className="py-2 fs-6">{post?.teaserText}</p>
     </div>
   );
 };
