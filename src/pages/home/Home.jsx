@@ -7,19 +7,19 @@ import RecongnitionSection from '../../components/section/RecongnitionSection'
 //import data
 import { arr2 } from '../../utils/data'
 import {
-	fetchHeroSectionDataHome,
-	getCaseStudiesArticles,
-	getArticles,
-} from '../../API'
+  fetchHeroSectionDataHome,
+  getCarouselArticles,
+  getArticle,
+} from "../../API";
 
 const Home = () => {
 	const [heroSectionData, setHeroSectionData] = useState()
 	const [carouselData, setCarouselData] = useState([])
 
-	useEffect(() => {
-		fetchHeroSectionDataHome(setHeroSectionData)
-		getCaseStudiesArticles(setCarouselData)
-	}, [])
+  useEffect(() => {
+    fetchHeroSectionDataHome(setHeroSectionData);
+    getCarouselArticles(setCarouselData);
+  }, []);
 
 	return (
 		<div>

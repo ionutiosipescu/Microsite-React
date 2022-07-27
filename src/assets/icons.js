@@ -1,20 +1,20 @@
-const iconsPath = '/icons/'
+const iconsPath = "/icons/";
 
 const icon = (props, name, alt) => {
-	return (
-		<img
-			src={iconsPath + name + '.svg'}
-			alt={alt}
-			className={props?.className}
-			width={props?.width}
-			height={props?.height}
-		/>
-	)
-}
+  return (
+    <img
+      src={iconsPath + name + ".svg"}
+      alt={alt}
+      className={props?.className}
+      width={props?.width}
+      height={props?.height}
+    />
+  );
+};
 
 const iconPng = (className, name) => (
-	<img className={className} src={iconsPath + name + '.png'} />
-)
+  <img className={className} src={iconsPath + name + ".png"} />
+);
 
 const Search = props => icon(props, 'search', 'search icon')
 const LinkedIn = props => icon(props, 'linkedin', 'linkedin icon')
@@ -29,12 +29,12 @@ const ChevronUpWhite = props => icon(props, 'chevronUpWhite', 'chevron up icon')
 const ChevronDownWhite = props =>
 	icon(props, 'chevronDownWhite', 'chevron down icon')
 
-const ChevronRightBlue = ({ className }) => iconPng(className, 'chevron')
-const IconTriangle = ({ className }) => iconPng(className, 'iconTriangle')
-const PdfIcon = ({ className }) => iconPng(className, 'pdf')
-const DocumentIcon = ({ className }) => iconPng(className, 'document')
-const ShareIcon = ({ className }) => iconPng(className, 'share')
-const LetterIcon = ({ className }) => iconPng(className, 'letter')
+const ChevronRightBlue = ({ className }) => iconPng(className, "chevron");
+const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
+const PdfIcon = ({ className }) => iconPng(className, "pdf");
+const DocumentIcon = ({ className }) => iconPng(className, "document");
+const ShareIcon = ({ className }) => iconPng(className, "share");
+const LetterIcon = ({ className }) => iconPng(className, "letter");
 
 export {
 	ChevronUpWhite,
