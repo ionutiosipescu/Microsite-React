@@ -9,13 +9,19 @@ import {
   Button,
 } from "react-bootstrap";
 import { routeNames } from "../../routes/routes";
-import { Search, XIcon } from "../../assets/icons";
+import { Search, XIcon, Logo } from "../../assets/icons";
 import styled from "styled-components";
 import { sizem } from "../../utils/breakpoints";
 
 const CustomNavbar = styled(Navbar)`
   max-width: 1280px;
   width: 100%;
+  .logo {
+    img {
+      width: 45px;
+      height: 40px;
+    }
+  }
   #navbarScrollingDropdown,
   .web-title {
     color: rgba(0, 0, 0, 0.9);
@@ -117,7 +123,9 @@ const NavBar = () => {
       )}
       <CustomNavbar className="py-0 " expand="lg">
         <Container fluid>
-          <CustomNavbar.Brand href={routeNames.home}>Logo</CustomNavbar.Brand>
+          <CustomNavbar.Brand href={routeNames.home} className="logo">
+            <Logo style={{ width: "40px" }} />
+          </CustomNavbar.Brand>
           <div className="d-flex justify-content-around mx-3 align-items-center">
             <CustomNavbar.Toggle aria-controls="navbarScroll" />
             <CustomNavbar.Text

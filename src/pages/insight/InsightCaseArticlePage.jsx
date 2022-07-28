@@ -152,7 +152,7 @@ const InsightCaseArticlePage = ({}) => {
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
   const [carouselData, setCarouselData] = useState([]);
-
+  const [bgColor, setBgColor] = useState("#C620A7");
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
   );

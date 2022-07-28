@@ -16,18 +16,21 @@ const iconPng = (className, name) => (
   <img className={className} src={iconsPath + name + ".png"} />
 );
 
-const Search = props => icon(props, 'search', 'search icon')
-const LinkedIn = props => icon(props, 'linkedin', 'linkedin icon')
-const YouTube = props => icon(props, 'youtube', 'youtube icon')
-const Facebook = props => icon(props, 'facebook', 'facebook icon')
-const Twitter = props => icon(props, 'twitter', 'twitter icon')
-const XIcon = props => icon(props, 'xIcon', 'cancel icon')
-const ChevronRight = props => icon(props, 'chevronRight', 'chevron right icon')
-const ChevronRightWhite = props =>
-	icon(props, 'chevronRightWhite', 'chevron right icon')
-const ChevronUpWhite = props => icon(props, 'chevronUpWhite', 'chevron up icon')
-const ChevronDownWhite = props =>
-	icon(props, 'chevronDownWhite', 'chevron down icon')
+const Search = (props) => icon(props, "search", "search icon");
+const LinkedIn = (props) => icon(props, "linkedin", "linkedin icon");
+const YouTube = (props) => icon(props, "youtube", "youtube icon");
+const Facebook = (props) => icon(props, "facebook", "facebook icon");
+const Twitter = (props) => icon(props, "twitter", "twitter icon");
+const XIcon = (props) => icon(props, "xIcon", "cancel icon");
+const ChevronRight = (props) =>
+  icon(props, "chevronRight", "chevron right icon");
+const ChevronRightWhite = (props) =>
+  icon(props, "chevronRightWhite", "chevron right icon");
+const ChevronUpWhite = (props) =>
+  icon(props, "chevronUpWhite", "chevron up icon");
+const ChevronDownWhite = (props) =>
+  icon(props, "chevronDownWhite", "chevron down icon");
+const Logo = ({ className }) => icon(className, "logo", "logo");
 
 const ChevronRightBlue = ({ className }) => iconPng(className, "chevron");
 const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
@@ -37,20 +40,21 @@ const ShareIcon = ({ className }) => iconPng(className, "share");
 const LetterIcon = ({ className }) => iconPng(className, "letter");
 
 export {
-	ChevronUpWhite,
-	ChevronDownWhite,
-	Search,
-	XIcon,
-	ChevronRight,
-	ChevronRightBlue,
-	ChevronRightWhite,
-	LinkedIn,
-	Facebook,
-	Twitter,
-	YouTube,
-	IconTriangle,
-	PdfIcon,
-	DocumentIcon,
-	ShareIcon,
-	LetterIcon,
-}
+  Logo,
+  ChevronUpWhite,
+  ChevronDownWhite,
+  Search,
+  XIcon,
+  ChevronRight,
+  ChevronRightBlue,
+  ChevronRightWhite,
+  LinkedIn,
+  Facebook,
+  Twitter,
+  YouTube,
+  IconTriangle,
+  PdfIcon,
+  DocumentIcon,
+  ShareIcon,
+  LetterIcon,
+};
