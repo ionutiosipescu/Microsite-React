@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-// import {
-// 	StyledRow,
-// 	StyledCol2,
-// 	StyledCol1,
-// } from '../../components/layout/Rows&Collumns/Rows&Collumns'
+import {
+	StyledCol2,
+	StyledCol1,
+	StyledRow,
+} from '../../components/layout/Rows&Collumns/Rows&Collumns.style.js'
 
 import {
 	HeroSection,
@@ -32,8 +32,8 @@ const ExpertisePharma = () => {
 				title={'quality efficiency improvment'}
 				pageTitle={'Expertise'}
 			/>
-			<Row className="p-0 m-0 d-flex flex-column flex-lg-row ">
-				<Col className="m-4 flex-grow-1">
+			<StyledRow>
+				<StyledCol1>
 					<BreadCrumb
 						route={'Expertise'}
 						subRoute={'Pharma & MedTech portfolio management'}
@@ -73,12 +73,12 @@ const ExpertisePharma = () => {
 							'ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim '
 						}
 					/>
-				</Col>
-				<Col className="border-start border-secondary  p-lg-0 m-4 m-lg-0 flex-grow-0 gap-3">
+				</StyledCol1>
+				<StyledCol2>
 					<CardProfessionals {...cardContent} />
 					<CardProfessionals {...cardContent} />
-				</Col>
-			</Row>
+				</StyledCol2>
+			</StyledRow>
 			<CarouselSection
 				categoryCarousel={'Healthcare & Live Sciences News'}
 				backgroundColor="#002B49"

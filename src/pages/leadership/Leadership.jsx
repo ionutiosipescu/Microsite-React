@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	HeroSection,
 	ProfessionalsCardSmall,
@@ -17,6 +17,13 @@ import {
 import BreadCrumb from '../../components/BreadCrumb'
 import FilterBy from '../../components/FilterBy'
 import YellowButton from '../../components/buttons/YellowButton'
+import {
+	getCaseStudiesArticles,
+	fetchHeroSectionDataHome,
+	getCarouselArticles,
+	getExpertiseFields,
+	getCountries,
+} from '../../API'
 
 export const LeaadersContainer = styled.div`
 	display: grid;
@@ -47,7 +54,12 @@ const Leadership = () => {
 
 	let arr = [<YellowButton />, <ProfessionalsCardSmall />]
 
-	console.log(inputText)
+	useEffect(() => {
+		getExpertiseFields()
+		getCountries()
+	}, [])
+
+	// console.log(inputText)
 
 	return (
 		<>

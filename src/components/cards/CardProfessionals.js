@@ -20,10 +20,12 @@ const CardBody = styled.div`
 	button {
 		transition: background-color 0.2s ease-out;
 	}
+
 	button:hover {
 		background-color: var(--hover-blue);
 		border-color: var(--hover-blue);
 	}
+
 	@media ${size.lg} {
 		button {
 			display: block;
@@ -52,12 +54,6 @@ const ImageContainer = styled.div`
 	@media ${size.md} {
 		img {
 			width: 150px;
-		}
-	}
-
-	@media ${size.lg} {
-		img {
-			width: 170px;
 		}
 	}
 `

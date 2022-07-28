@@ -8,20 +8,18 @@ const SearchBar2 = ({ placeholder, handleSubmit }) => {
 	}
 
 	return (
-		<StyledSearchBar2>
-			<form
-				onSubmit={e => {
-					setUserInput('')
-					handleSubmit(e, userInput)
-				}}
-			>
-				<input
-					type={'text'}
-					placeholder={placeholder}
-					value={userInput}
-					onChange={e => handleChange(e)}
-				></input>
-			</form>
+		<StyledSearchBar2
+			onSubmit={e => {
+				setUserInput('')
+				handleSubmit(e, userInput)
+			}}
+		>
+			<input
+				type={'text'}
+				placeholder={placeholder}
+				value={userInput}
+				onChange={e => handleChange(e)}
+			></input>
 		</StyledSearchBar2>
 	)
 }
