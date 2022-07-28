@@ -28,6 +28,7 @@ export const getArticles = async (setContent, articleType, amount) => {
 		})
 
 		setContent([...arr])
+		console.log(arr)
 	})
 }
 

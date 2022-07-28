@@ -9,11 +9,14 @@ import {
 import { BreadCrumb, FilterBy } from '../../components'
 import { filtrationNavbarData, PostsArr } from '../../utils/data'
 import { StyledContainer } from '../../components/layout/Rows&Collumns/Rows&Collumns.style'
+// import Axios from 'axios'
+// import { getLink } from './helper'
 
 import {
 	getCaseStudiesArticles,
 	fetchHeroSectionDataHome,
 	getCarouselArticles,
+	getArticles
 } from '../../API'
 
 const PostsContainer = styled.div`
@@ -29,6 +32,7 @@ const InsightCase = () => {
 	const [heroSectionData, setHeroSectionData] = useState()
 	const [articles, setArticles] = useState([])
 	const [carouselData, setCarouelData] = useState([])
+	const [getArticles1, setgetArticles1] = useState([])
 
 	const locationName = location?.pathname.split('/').slice(1, 3)
 	const [filterByTags, setFilterByTags] = useState([])
@@ -39,8 +43,12 @@ const InsightCase = () => {
 		getCaseStudiesArticles(setArticles)
 		getCarouselArticles(setCarouelData)
 		setLoading(false)
+		getArticles(setgetArticles1)
 	}, [])
 
+	console.log(getArticles1)
+
+	
 	return (
 		<>
 			<HeroSection
@@ -73,7 +81,7 @@ const InsightCase = () => {
 					<PostsContainer>
 						{articles.map((post, index) => (
 							<PostCard post={post} locationName={locationName} key={index} />
-						))}
+							))}
 					</PostsContainer>
 				)}
 			</StyledContainer>
