@@ -6,6 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 
 //style to overload the carousel's indicators
 import "./CarouselSection.scss";
+import { dateFromSecondsToShortLocale } from "../../utils";
 
 const CarouselContainer = styled.div`
   // height: 320px;
@@ -70,18 +71,14 @@ const CarouselSection = ({
         autoPlay
         infinite
       >
-        {arr.map((element, index) => (
+        {arr?.map((element, index) => (
           <div className="m-3" key={index}>
             <h6>{element?.title}</h6>
             <span className="text-date">
-              {new Date(element?.date).toLocaleDateString("en-US", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
+              {dateFromSecondsToShortLocale(element?.created)}
             </span>
 
-            <p className="py-4">{element?.description}</p>
+            <p className="py-4">{element?.text_teaser}</p>
           </div>
         ))}
       </Carousel>

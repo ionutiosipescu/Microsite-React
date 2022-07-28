@@ -23,6 +23,7 @@ import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
+import { dateToShortLocale } from "../../utils";
 
 const PageContainer = styled.div`
   .textCategory {
@@ -216,11 +217,7 @@ const InsightCaseArticlePage = ({}) => {
                 {/*---------------------------------------------------- SectionDescription */}
                 <div>
                   <span className="text-muted text-italic">
-                    {new Date(state?.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                    {dateToShortLocale(state?.date)}
                   </span>
                 </div>
                 {/* {[1, 2].map((x, index) => (
