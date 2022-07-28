@@ -45,7 +45,7 @@ const Home = () => {
           />
           <QualitiesSection />
           <RecongnitionSection
-            arr={carouselData?.quotes.reverse()}
+            arr={carouselData?.quotes}
             titleSection="Recent Recongnition"
           />
           <CarouselSection
