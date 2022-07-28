@@ -4,4 +4,4 @@ export { fetchHeroSectionDataHome } from "./heroSection";
 export { getCarouselArticles } from "./articles";
 export { getCaseStudiesArticles } from "./articles";
 export { getPodcasts } from "./podcasts";
-export { fetchData } from "./home";
+export { fetchData, fetchRecentRecognition } from "./home";

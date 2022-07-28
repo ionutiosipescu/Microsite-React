@@ -5,16 +5,21 @@ import QualitiesSection from "../../components/section/QualitiesSection";
 import RecongnitionSection from "../../components/section/RecongnitionSection";
 import { Spinner } from "../../components";
 
-import { fetchHeroSectionDataHome, fetchData } from "../../API";
+import {
+  fetchHeroSectionDataHome,
+  fetchData,
+  fetchRecentRecognition,
+} from "../../API";
 
 const Home = () => {
   const [heroSectionData, setHeroSectionData] = useState();
   const [carouselData, setCarouselData] = useState([]);
+  const [recentRecognition, setRecentRecognition] = useState([]);
   //   const [carouselData2, setCarouselData2] = useState([]);
 
   useEffect(() => {
     fetchHeroSectionDataHome(setHeroSectionData);
-    // getCarouselArticles(setCarouselData);
+    fetchRecentRecognition(setRecentRecognition);
     fetchData(setCarouselData);
   }, []);
 
@@ -40,7 +45,7 @@ const Home = () => {
           />
           <QualitiesSection />
           <RecongnitionSection
-            arr={carouselData?.quotes}
+            arr={carouselData?.quotes.reverse()}
             titleSection="Recent Recongnition"
           />
           <CarouselSection
