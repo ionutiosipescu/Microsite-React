@@ -60,10 +60,10 @@ const InsightCase = () => {
 				))}
 			</FiltrationNavbar>
 
-			<FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
-
-			<StyledContainer>
-				<BreadCrumb route={'Insights'} subRoute={'Case Studies'} />
+      <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
+      <div className="breadCrumbContainer px-4 pt-4">
+        <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
+      </div>
 
 				{loading ? (
 					<div class="spinner-border text-primary" role="status">
