@@ -28,7 +28,7 @@ const Home = () => {
       <HeroSection
         title={heroSectionData?.title}
         backgroundUrl={heroSectionData?.backgroundUrl}
-        buttonText="CONTACT"
+        buttonText="CONTACT US"
       />
       {carouselData.length === 0 ? (
         <Spinner />
