@@ -115,6 +115,8 @@ const PageContainer = styled.div`
   }
 
   .link {
+    text-decoration: none;
+    color: #000;
     :hover {
       .image {
         cursor: pointer;
@@ -439,15 +441,17 @@ const LinksList = ({ titleSection, linkIcons }) => {
       <h3> {titleSection} </h3>
       <div className="links container-fluid  ">
         {linkIcons.map((x, index) => (
-          <div
+          <a
             className="link  py-2 d-flex justify-content-between "
             key={index}
+            href={x?.link}
+            target="_blank"
           >
             <div className="image  col-md-2 col-lg-2 ">{x.icon}</div>
             <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
               <span className="textLinks">Join A&M on {x.text} </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -455,25 +459,34 @@ const LinksList = ({ titleSection, linkIcons }) => {
 };
 
 const iconsArr = [
-  { id: 1, icon: <Facebook />, text: "Facebook" },
+  {
+    id: 1,
+    icon: <Facebook />,
+    text: "Facebook",
+    link: "https://www.facebook.com/alvarezandmarsal",
+  },
   {
     id: 2,
     icon: <LinkedIn />,
     text: "Linkedin",
+    link: "www.linkedin.com/company/162399",
   },
   {
     id: 3,
     icon: <Twitter />,
     text: "Twitter",
+    link: "https://twitter.com/alvarezmarsal",
   },
   {
     id: 3,
     icon: <YouTube />,
     text: "YouTube",
+    link: "https://www.youtube.com/user/AlvarezMarsal",
   },
   {
     id: 4,
     // icon: <Envelope />,
     text: "Sign Up for A&M Newsletters",
+    link: "https://bulletins.alvarezandmarsal.com/",
   },
 ];
