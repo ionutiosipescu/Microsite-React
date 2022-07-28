@@ -109,7 +109,7 @@ const LeftSection = () => {
 										<div
 											// className=""
 											key={index}
-											className={` iconContainer && iconDiv  ${
+											className={`iconContainer ${
 												openedState[index] && 'menuIconActive'
 											}`}
 											onMouseOver={() => {
