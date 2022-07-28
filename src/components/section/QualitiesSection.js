@@ -22,8 +22,8 @@ const QualitiesSection = () => {
   return (
     <QualitiesSectionContainer>
       <Qualities>
-        {arrQualities.map((quality) => (
-          <QualityCard quality={quality} />
+        {arrQualities.map((quality, index) => (
+          <QualityCard quality={quality} key={index} />
         ))}
       </Qualities>
     </QualitiesSectionContainer>

@@ -20,9 +20,10 @@ import {
 import { sizem } from '../../utils/breakpoints'
 import { Cell } from '../../components/navbarComponents/navigation/Navigation.styles'
 import {
-	FiltrationNavbar,
-	NavbarDropdown,
-} from '../../components/navbarComponents'
+  FiltrationNavbar,
+  NavbarDropdown,
+} from "../../components/navbarComponents";
+import { dateToShortLocale } from "../../utils";
 
 const PageContainer = styled.div`
 	.textCategory {
@@ -181,47 +182,43 @@ const InsightCaseArticlePage = ({}) => {
 							<div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
 								{/*------------------------------------------------------------- LeftSectionIcons */}
 
-								<div className="leftSection pt-3">
-									{leftSectionIcons.map((x, index) => (
-										<div
-											// className=""
-											key={index}
-											className={` iconContainer ${
-												openedState[index] && 'menuIconActive'
-											}`}
-											onClick={() => {
-												handleDisplay(index)
-											}}
-										>
-											<div>{x.icon}</div>
-											{openedState[index] && (
-												<span className="containerIcons">
-													{x?.children.map((icon, index) => (
-														<div
-															className="iconDiv"
-															style={{ backgroundColor: `${icon.color}` }}
-														>
-															{icon.icon || icon.text}
-														</div>
-													))}
-												</span>
-											)}
-										</div>
-									))}
-								</div>
-							</div>
-							<div className=" col-9 col-sm-10 col-md-10 col-lg-11">
-								{/*---------------------------------------------------- SectionDescription */}
-								<div>
-									<span className="text-muted text-italic">
-										{new Date(state?.date).toLocaleDateString('en-US', {
-											year: 'numeric',
-											month: 'short',
-											day: 'numeric',
-										})}
-									</span>
-								</div>
-								{/* {[1, 2].map((x, index) => (
+                <div className="leftSection pt-3">
+                  {leftSectionIcons.map((x, index) => (
+                    <div
+                      // className=""
+                      key={index}
+                      className={` iconContainer ${
+                        openedState[index] && "menuIconActive"
+                      }`}
+                      onClick={() => {
+                        handleDisplay(index);
+                      }}
+                    >
+                      <div>{x.icon}</div>
+                      {openedState[index] && (
+                        <span className="containerIcons">
+                          {x?.children.map((icon, index) => (
+                            <div
+                              className="iconDiv"
+                              style={{ backgroundColor: `${icon.color}` }}
+                            >
+                              {icon.icon || icon.text}
+                            </div>
+                          ))}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
+                {/*---------------------------------------------------- SectionDescription */}
+                <div>
+                  <span className="text-muted text-italic">
+                    {dateToShortLocale(state?.date)}
+                  </span>
+                </div>
+                {/* {[1, 2].map((x, index) => (
                   <p className="pt-3" key={index}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Tempore itaque perferendis provident ipsa et temporibus
