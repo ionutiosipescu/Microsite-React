@@ -64,19 +64,19 @@ const InsightCase = () => {
       <div className="breadCrumbContainer px-4 pt-4">
         <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
       </div>
-
-      {loading ? (
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      ) : (
-        <PostsContainer>
-          {articles.map((post, index) => (
-            <PostCard post={post} locationName={locationName} key={index} />
-          ))}
-        </PostsContainer>
-      )}
-
+      <StyledContainer>
+        {loading ? (
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <PostsContainer>
+            {articles.map((post, index) => (
+              <PostCard post={post} locationName={locationName} key={index} />
+            ))}
+          </PostsContainer>
+        )}
+      </StyledContainer>
       <CarouselSection
         categoryCarousel={"Healthcare & Live Sciences News"}
         backgroundColor="#002B49"
