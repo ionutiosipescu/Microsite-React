@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useParams, useLocation } from "react-router-dom";
-import { BreadCrumb } from "../../components";
+import { BreadCrumb, Spinner } from "../../components";
 
 import { HeroSection, CarouselSection } from "../../components/cards";
 import {
@@ -24,6 +24,8 @@ import {
   NavbarDropdown,
 } from "../../components/navbarComponents";
 import { dateToShortLocale } from "../../utils";
+import { useEffect } from "react";
+import { fetchData } from "../../API";
 
 const PageContainer = styled.div`
   .textCategory {
@@ -147,8 +149,7 @@ const InsightCaseArticlePage = ({}) => {
   const { state } = useLocation();
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
-
-  const articleDescription = state.body;
+  const [carouselData, setCarouselData] = useState([]);
 
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
@@ -165,6 +166,9 @@ const InsightCaseArticlePage = ({}) => {
       setOpenedState(Array.from(leftSectionIcons, () => false));
     }
   };
+  useEffect(() => {
+    fetchData(setCarouselData);
+  }, []);
   return (
     <PageContainer>
       <HeroSection
@@ -217,19 +221,11 @@ const InsightCaseArticlePage = ({}) => {
                     {dateToShortLocale(state?.date)}
                   </span>
                 </div>
-                {/* {[1, 2].map((x, index) => (
-                  <p className="pt-3" key={index}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Tempore itaque perferendis provident ipsa et temporibus
-                    aspernatur architecto quaerat. Recusandae saepe perferendis
-                    quae temporibus iste excepturi eveniet debitis quidem
-                    placeat eos.
-                  </p>
-                ))} */}
+
                 <h4 className="pt-5 fw-bold">{state.title} </h4>
                 <div
                   className="pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{ __html: articleDescription }}
+                  dangerouslySetInnerHTML={{ __html: state.body }}
                 ></div>
 
                 <p className=""></p>
@@ -271,15 +267,19 @@ const InsightCaseArticlePage = ({}) => {
         </div>
       </div>
       <div>
-        <CarouselSection
-          categoryCarousel={"Healthcare & Live Sciences News"}
-          backgroundColor="#002B49"
-          arr={arr}
-          titleColor="#0085CA"
-          textColor="#fff"
-          textDate="#FFFFFF"
-          carouselDotBackground="#002b49"
-        />
+        {carouselData.length == 0 ? (
+          <Spinner />
+        ) : (
+          <CarouselSection
+            categoryCarousel={carouselData?.block_two?.title}
+            backgroundColor="#002B49"
+            arr={carouselData?.block_two?.data}
+            titleColor="#0085CA"
+            textColor="#fff"
+            textDate="#FFFFFF"
+            carouselDotBackground="#002b49"
+          />
+        )}
       </div>
     </PageContainer>
   );
