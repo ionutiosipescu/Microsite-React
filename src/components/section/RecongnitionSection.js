@@ -51,11 +51,15 @@ const RecongnitionSection = ({ arr, titleSection }) => {
           // dotListClass="react-multi-carousel-dot-list"
           showDots
         >
-          {arr.map((element, index) => (
+          {arr?.map((element, index) => (
             <div className="py-3 me-5" key={index}>
-              <p className="fst-italic">{element?.desciption}</p>
-              <span>{element?.author.toUpperCase()}</span>
-              <p className="">{element?.authorPosition}</p>
+              <p
+                className="fst-italic"
+                dangerouslySetInnerHTML={{ __html: element?.text }}
+              />
+
+              <span>{element?.title.toUpperCase()}</span>
+              <p className="">{element?.job_title}</p>
             </div>
           ))}
         </Carousel>
