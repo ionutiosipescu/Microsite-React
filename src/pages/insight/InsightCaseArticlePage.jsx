@@ -120,7 +120,7 @@ const InsightCaseArticlePage = ({}) => {
 						</div>
 						<div className="row">
 							<LeftSection/>
-							<div className=" col-9 col-sm-10 col-md-10 col-lg-11">
+							<div className=" col-12 col-sm-12 col-md-10 col-lg-11">
 								{/*---------------------------------------------------- SectionDescription */}
 								<div>
 									<span className="text-muted text-italic">

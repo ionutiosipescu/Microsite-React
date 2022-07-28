@@ -13,6 +13,7 @@ import {
 	LetterIcon,
 	// Envelope,
 } from '../../assets/icons'
+import { size } from "../../utils/breakpoints";
 
 const LeftSectionContainer = styled.div`
 .containerIcons {
@@ -20,12 +21,14 @@ const LeftSectionContainer = styled.div`
 		position: absolute;
 		/* flex-direction: column; */
 		/* top: -1rem; */
-		margin: 0px 0px 0px 330px;
+		margin: 139px 0px 0px 192px;
 		width: 16.375rem;
+        @media ${size.md} {
+        margin: 0px 0px 0px 330px;
+	}
 		.iconDiv {
 			height: 4.375rem;
 			width: 100%;
-
 			background-color: #0085ca;
 			justify-content: center;
 			align-items: center;
@@ -44,6 +47,10 @@ const LeftSectionContainer = styled.div`
 		}
 	}
     .leftSection {
+        display: flex;
+        @media ${size.md} {
+		flex-direction: column;
+	}
 		.iconContainer {
 			height: 4.375rem;
 			width: 4.375rem;
@@ -52,13 +59,26 @@ const LeftSectionContainer = styled.div`
 			justify-content: center;
 			cursor: pointer;
 		}
+		
 		img {
 			width: 32px;
 		}
+		/* .iconContainer img:hover {
+			.menuIconActive {
+                display: block;
+            }
+		} */
+	}
+    .leftSection div:not(:first-child) {
+        .containerIcons {
+            display: none;
+            @media ${size.md} {
+		    display: block;
+	}
+        }
 	}
     .menuIconActive {
 		background-color: #0085ca;
-		/* margin-right: 0px; */
 	}
 `
 
@@ -83,17 +103,19 @@ const LeftSection = () => {
 	}
 
     return(
-        <LeftSectionContainer className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
+        <LeftSectionContainer className="col-12 col-sm-12 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
 								<div className="leftSection pt-3">
 									{leftSectionIcons.map((x, index) => (
 										<div
 											// className=""
 											key={index}
-											className={` iconContainer ${
+											className={` iconContainer && iconDiv  ${
 												openedState[index] && 'menuIconActive'
 											}`}
-											onClick={() => {
+											onMouseOver={() => {
 												handleDisplay(index)
+											}}
+											onMouseLeave={() => {
 											}}
 										>
 											<div>{x.icon}</div>
@@ -153,3 +175,4 @@ const leftSectionIcons = [
 		children: [{ text: 'PDF VERSION', color: '#0085CA' }],
 	},
 ]
+
