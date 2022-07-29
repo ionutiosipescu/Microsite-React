@@ -1,5 +1,3 @@
-const iconsPath = "/icons/";
-
 import { ReactComponent as Search } from "./icons/search.svg";
 import { ReactComponent as LinkedIn } from "./icons/linkedin.svg";
 import { ReactComponent as YouTube } from "./icons/youtube.svg";
@@ -11,6 +9,8 @@ import { ReactComponent as ChevronRightWhite } from "./icons/chevronRightWhite.s
 import { ReactComponent as ChevronUpWhite } from "./icons/chevronUpWhite.svg";
 import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg";
 import { ReactComponent as Logo } from "./icons/logo.svg";
+
+const iconsPath = "/icons/";
 
 const iconPng = (className, name) => (
   <img className={className} src={iconsPath + name + ".png"} />
