@@ -20,10 +20,12 @@ const Digital = () => {
 
   // The order of the sub pages in the array is important since it is used with the index from above
   const subPages = [
+    <Insights />,
+
     <Overview />,
     <Capabilities />,
     <NewsRelease />,
-    <Insights />,
+    // <Insights />,
     <Professionals />,
     <Practice />,
   ];

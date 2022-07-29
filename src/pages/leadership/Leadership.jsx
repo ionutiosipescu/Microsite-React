@@ -24,11 +24,8 @@ import {
   getExpertiseFields,
   getCountries,
 } from "../../API";
-<<<<<<< HEAD
 import DOMPurify from "dompurify";
-=======
 import { useDocumentTitle } from "../../hook";
->>>>>>> main
 
 export const LeaadersContainer = styled.div`
   display: grid;
