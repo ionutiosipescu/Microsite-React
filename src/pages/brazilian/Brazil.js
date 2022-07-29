@@ -4,6 +4,7 @@ import {
   NavigationCell,
   NavigationNavbar,
 } from "../../components/navbarComponents/";
+import { useDocumentTitle } from "../../hook";
 import {
   Overview,
   Services,
@@ -34,7 +35,7 @@ const Brazil = () => {
   };
 
   // console.log(clickedNavbarCell)
-
+  useDocumentTitle("Brazil | Home | Alvarez & Marsal");
   return (
     <>
       <HeroSection

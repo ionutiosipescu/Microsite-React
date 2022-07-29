@@ -28,6 +28,8 @@ import {
 
 //utils
 import { sizem } from "../../utils/breakpoints";
+import YellowButton from "../../components/buttons/YellowButton";
+import { useDocumentTitle } from "../../hook";
 
 const DigitalInsighthPodcast = () => {
   const { state } = useLocation();
@@ -213,6 +215,8 @@ const DigitalInsighthPodcast = () => {
       setOpenedState(Array.from(leftSectionIcons, () => false));
     }
   };
+
+  useDocumentTitle(`${state?.title}`);
   return (
     <PageContainer>
       <HeroSection
@@ -352,7 +356,7 @@ const iconsArr = [
 const iconsArr1 = [
   {
     id: 1,
-    icon: <Facebook />,
+    icon: <FacebookStay />,
     text: "Facebook",
     link: "https://www.facebook.com/alvarezandmarsal",
   },

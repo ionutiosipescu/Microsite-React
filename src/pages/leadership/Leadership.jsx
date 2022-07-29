@@ -24,7 +24,11 @@ import {
   getExpertiseFields,
   getCountries,
 } from "../../API";
+<<<<<<< HEAD
 import DOMPurify from "dompurify";
+=======
+import { useDocumentTitle } from "../../hook";
+>>>>>>> main
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -64,6 +68,8 @@ const Leadership = () => {
   let el = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
   var clean = DOMPurify.sanitize(el);
 
+  // console.log(inputText)
+  useDocumentTitle("Leadership | Alvarez & Marsal");
   return (
     <>
       <HeroSection title={"helthcare & live sciences leaders"} />
