@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
-import styled from 'styled-components'
-import PostCard from '../../../components/cards/PostCard'
-import TranslateButton from '../../../components/buttons/TranslateButton'
-import { StyledContainer } from '../../../components/layout/Rows&Collumns/Rows&Collumns.style'
-import { getArticles } from '../../../API'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import styled from "styled-components";
+import PostCard from "../../../components/cards/PostCard";
+import TranslateButton from "../../../components/buttons/TranslateButton";
+import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";
+import { getArticles } from "../../../API";
 
 const PostsContainer = styled.div`
-	padding: 2rem;
-	margin: auto;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-`
+  padding: 2rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
 const News = () => {
-	const location = useLocation()
-	const LocationName = location?.pathname.split('/').slice(1, 3)
-	const [news, setNews] = useState([])
+  const location = useLocation();
+  const LocationName = location?.pathname.split("/").slice(1, 3);
+  const [news, setNews] = useState([]);
 
-	useEffect(() => {
-		getArticles(setNews, 'news', 10)
-	}, [])
+  useEffect(() => {
+    getArticles(setNews, "news", 10);
+  }, []);
 
-	console.log(news)
+  console.log(news);
 
-	return (
-		<StyledContainer>
-			<TranslateButton text1={'English'} text2={'Portuguese'} />
-			<PostsContainer>
-				{news.map((post) => (
-					<PostCard post={post} locationName={LocationName} />
-				))}
-			</PostsContainer>
-		</StyledContainer>
-	)
-}
+  return (
+    <StyledContainer>
+      <TranslateButton text1={"English"} text2={"Portuguese"} />
+      <PostsContainer>
+        {news.map((post) => (
+          <PostCard post={post} locationName={LocationName} />
+        ))}
+      </PostsContainer>
+    </StyledContainer>
+  );
+};
 
-export default News
+export default News;
 
 // de sters ? \/
 

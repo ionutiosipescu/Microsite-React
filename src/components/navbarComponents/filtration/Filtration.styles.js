@@ -1,204 +1,204 @@
-import styled from 'styled-components'
-import { size } from '../../../utils/breakpoints'
+import styled from "styled-components";
+import { size } from "../../../utils/breakpoints";
 
 export const Container = styled.nav`
-	display: column;
+  display: column;
 
-	background-color: var(--darkBlue);
-	color: white;
-	font-size: 1rem;
-	min-height: 70px;
+  background-color: var(--darkBlue);
+  color: white;
+  font-size: 1rem;
+  min-height: 70px;
 
-	a {
-		color: white;
-		text-decoration: none;
-	}
+  a {
+    color: white;
+    text-decoration: none;
+  }
 
-	& > form {
-		display: none;
+  & > form {
+    display: none;
 
-		@media ${size.lg} {
-			display: flex;
-		}
-	}
+    @media ${size.lg} {
+      display: flex;
+    }
+  }
 
-	& > ul {
-		flex-grow: 1;
+  & > ul {
+    flex-grow: 1;
 
-		margin-bottom: 0;
-		display: ${props => (props.toggle ? 'column' : 'none')};
+    margin-bottom: 0;
+    display: ${(props) => (props.toggle ? "column" : "none")};
 
-		display: column;
+    display: column;
 
-		@media ${size.lg} {
-			display: flex;
-			padding-left: 0;
+    @media ${size.lg} {
+      display: flex;
+      padding-left: 0;
 
-			justify-content: ${props =>
-				props.spread ? 'space-between' : 'flex-start'};
-		}
-	}
+      justify-content: ${(props) =>
+        props.spread ? "space-between" : "flex-start"};
+    }
+  }
 
-	@media ${size.lg} {
-		display: flex;
-	}
-`
+  @media ${size.lg} {
+    display: flex;
+  }
+`;
 
 export const Form = styled.form`
-	display: ${props => {
-		return props.visible ? 'none' : 'flex'
-	}};
+  display: ${(props) => {
+    return props.visible ? "none" : "flex";
+  }};
 
-	font-size: 1rem;
+  font-size: 1rem;
 
-	height: 70px;
+  height: 70px;
 
-	margin-left: auto;
+  margin-left: auto;
 
-	input {
-		display: ${props => (props.disappearOnMobile ? 'none' : 'initial')};
+  input {
+    display: ${(props) => (props.disappearOnMobile ? "none" : "initial")};
 
-		background-color: var(--searchBarBlue);
-		width: 100%;
-		padding: 1rem;
+    background-color: var(--searchBarBlue);
+    width: 100%;
+    padding: 1rem;
 
-		height: 100%;
-		color: white;
-		border: 0;
+    height: 100%;
+    color: white;
+    border: 0;
 
-		::placeholder {
-			color: white;
-		}
+    ::placeholder {
+      color: white;
+    }
 
-		@media ${size.lg} {
-			display: initial;
-		}
-	}
+    @media ${size.lg} {
+      display: initial;
+    }
+  }
 
-	button {
-		width: 70px;
-		border: 0;
-		background-color: var(--searchBarBlue);
-		transition: all 0.2s ease-in-out;
+  button {
+    width: 70px;
+    border: 0;
+    background-color: var(--searchBarBlue);
+    transition: all 0.2s ease-in-out;
 
-		img {
-			width: 20px;
-			color: white;
-		}
+    img {
+      width: 20px;
+      color: white;
+    }
 
-		:hover {
-			background-color: white;
-		}
-	}
-`
+    :hover {
+      background-color: white;
+    }
+  }
+`;
 
 export const StyledSearchBar2 = styled.form`
-	display: none;
-	align-items: center;
-	padding: 0.5rem 3rem;
-	flex: 2;
+  display: none;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  flex: 2;
 
-	input {
-		width: 100%;
-		height: 70%;
-		width: 100%;
-		border-radius: 5px;
-		padding: 1rem;
-	}
+  input {
+    width: 100%;
+    height: 70%;
+    width: 100%;
+    border-radius: 5px;
+    padding: 1rem;
+  }
 
-	@media ${size.lg} {
-		display: flex;
-	}
-`
+  @media ${size.lg} {
+    display: flex;
+  }
+`;
 
 export const MobileDropdown = styled.div`
-	display: flex;
+  display: flex;
 
-	div {
-		transition: all 0.2s ease-in-out;
-		display: flex;
-		align-items: center;
-		padding-left: 2rem;
-		min-height: 70px;
+  div {
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    min-height: 70px;
 
-		flex-grow: 1;
+    flex-grow: 1;
 
-		:hover {
-			cursor: pointer;
-			color: var(--orange2);
-		}
-	}
+    :hover {
+      cursor: pointer;
+      color: var(--orange2);
+    }
+  }
 
-	@media ${size.lg} {
-		display: none;
-	}
-`
+  @media ${size.lg} {
+    display: none;
+  }
+`;
 export const Cell = styled.li`
-	display: flex;
-	height: 100%;
-	align-items: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
 
-	padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
 
-	transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-	img {
-		padding-left: 0.5rem;
-		transition: all 0.2s ease-in-out;
-	}
+  img {
+    padding-left: 0.5rem;
+    transition: all 0.2s ease-in-out;
+  }
 
-	:hover {
-		background-color: var(--darkBlue1);
-		cursor: pointer;
-		color: var(--hover-blue);
+  :hover {
+    background-color: var(--darkBlue1);
+    cursor: pointer;
+    color: var(--hover-blue);
 
-		img {
-			transform: rotate(180deg);
-			padding-right: 0.5rem;
-			padding-left: 0;
-		}
+    img {
+      transform: rotate(180deg);
+      padding-right: 0.5rem;
+      padding-left: 0;
+    }
 
-		/* Without the css bellow if 'a' elem has a href, the color will not change. Anoying. Don't know a better way of fixing this*/
-		a {
-			transition: all 0.2s ease-in-out;
-			color: var(--hover-blue);
-		}
-	}
+    /* Without the css bellow if 'a' elem has a href, the color will not change. Anoying. Don't know a better way of fixing this*/
+    a {
+      transition: all 0.2s ease-in-out;
+      color: var(--hover-blue);
+    }
+  }
 
-	@media ${size.lg} {
-		padding: 0 2rem;
-	}
-`
+  @media ${size.lg} {
+    padding: 0 2rem;
+  }
+`;
 export const DropdownCell = styled(Cell)`
-	padding: 1rem 2rem;
-`
+  padding: 1rem 2rem;
+`;
 
 export const Dropdown = styled.ul`
-	display: ${props => (props.show ? 'initial' : 'none')};
+  display: ${(props) => (props.show ? "initial" : "none")};
 
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 
-	@media ${size.lg} {
-		display: ${props => (props.show ? 'initial' : 'none')};
+  @media ${size.lg} {
+    display: ${(props) => (props.show ? "initial" : "none")};
 
-		position: absolute;
-		z-index: 2;
-		background-color: var(--darkBlue1);
+    position: absolute;
+    z-index: 2;
+    background-color: var(--darkBlue1);
 
-		display: ${props => (props.show ? 'grid' : 'none')};
+    display: ${(props) => (props.show ? "grid" : "none")};
 
-		grid-template-columns: repeat(
-			${props => props.columns || 2},
-			minmax(200px, 1fr)
-		);
+    grid-template-columns: repeat(
+      ${(props) => props.columns || 2},
+      minmax(200px, 1fr)
+    );
 
-		div {
-			/* How the heck do i vertically align text? */
-			padding: 0.5rem 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
-`
+    div {
+      /* How the heck do i vertically align text? */
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+`;

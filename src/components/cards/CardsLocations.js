@@ -8,7 +8,6 @@ const Card = styled.div`
   background: var(--gray5);
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   width: 100%;
   align-items: flex-start;
   height: auto;
@@ -52,9 +51,6 @@ const Card = styled.div`
 `;
 
 const CareersInDigital = ({ cardCity, handleCardLocation }) => {
-  // const handleCardLocation = (coords) => {
-  //   console.log(coords);
-  // };
   return (
     <Card>
       <h3>{cardCity.title}</h3>

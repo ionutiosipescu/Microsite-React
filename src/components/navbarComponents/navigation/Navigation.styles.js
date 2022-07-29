@@ -1,81 +1,81 @@
-import styled from 'styled-components'
-import { size } from '../../../utils/breakpoints'
+import styled from "styled-components";
+import { size } from "../../../utils/breakpoints";
 
 export const Container = styled.nav`
-	display: column;
+  display: column;
 
-	background-color: var(--darkBlue);
-	color: white;
-	font-size: 1rem;
-	min-height: 70px;
+  background-color: var(--darkBlue);
+  color: white;
+  font-size: 1rem;
+  min-height: 70px;
 
-	a {
-		color: white;
-		text-decoration: none;
-	}
+  a {
+    color: white;
+    text-decoration: none;
+  }
 
-	& > ul {
-		flex-grow: 1;
-		padding-left: 0;
+  & > ul {
+    flex-grow: 1;
+    padding-left: 0;
 
-		margin-bottom: 0;
-		display: ${props => (props.toggle ? 'column' : 'none')};
+    margin-bottom: 0;
+    display: ${(props) => (props.toggle ? "column" : "none")};
 
-		display: column;
+    display: column;
 
-		@media ${size.lg} {
-			display: flex;
+    @media ${size.lg} {
+      display: flex;
 
-			justify-content: ${props =>
-				props.spread ? 'space-between' : 'flex-start'};
-		}
-	}
+      justify-content: ${(props) =>
+        props.spread ? "space-between" : "flex-start"};
+    }
+  }
 
-	@media ${size.lg} {
-		display: flex;
-	}
-`
+  @media ${size.lg} {
+    display: flex;
+  }
+`;
 
 export const MobileDropdown = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	transition: all 0.2s ease-in-out;
-	min-height: 70px;
+  transition: all 0.2s ease-in-out;
+  min-height: 70px;
 
-	flex-grow: 1;
+  flex-grow: 1;
 
-	:hover {
-		cursor: pointer;
-		color: white;
-	}
+  :hover {
+    cursor: pointer;
+    color: white;
+  }
 
-	@media ${size.lg} {
-		display: none;
-	}
-`
+  @media ${size.lg} {
+    display: none;
+  }
+`;
 
 export const Cell = styled.li`
-	display: flex;
-	height: 100%;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 
-	padding: 1rem 0;
+  padding: 1rem 0;
 
-	transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-	background: ${props => (props.highlight ? 'white' : 'none')};
-	color: ${props => (props.highlight ? 'black' : 'white')};
+  background: ${(props) => (props.highlight ? "white" : "none")};
+  color: ${(props) => (props.highlight ? "black" : "white")};
 
-	:hover {
-		background: white;
-		color: black;
-		cursor: pointer;
-	}
+  :hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+  }
 
-	@media ${size.lg} {
-		padding: 0 2rem;
-	}
-`
+  @media ${size.lg} {
+    padding: 0 2rem;
+  }
+`;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const NavigationCell = ({ children, href }) => {
-	return (
-		<>
-			<a href={href}>{children}</a>
-		</>
-	)
-}
+  return (
+    <>
+      <a href={href}>{children}</a>
+    </>
+  );
+};
 
-export default NavigationCell
+export default NavigationCell;
