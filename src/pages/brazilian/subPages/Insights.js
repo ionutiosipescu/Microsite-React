@@ -3,7 +3,7 @@ import CardInsights from "../../../components/cards/CardInsights";
 import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { getPodcasts } from "../../../API";
 import TranslateButton from "../../../components/buttons/TranslateButton";
-
+import { useDocumentTitle } from "../../../hook";
 const Insights = () => {
   // this is the Insights that will come from drupal
   // let drupal = [
@@ -34,7 +34,7 @@ const Insights = () => {
   useEffect(() => {
     getPodcasts(setPodcasts);
   }, []);
-
+  useDocumentTitle("Brazil | Insights | Alvarez & Marsal");
   return (
     <StyledContainer>
       <TranslateButton text1={"English"} text2={"Portuguese"} />

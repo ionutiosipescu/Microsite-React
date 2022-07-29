@@ -10,6 +10,7 @@ import {
   StyledCol1,
   StyledRow,
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
+import { useDocumentTitle } from "../../../hook";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -20,7 +21,7 @@ const Capabilities = () => {
     country: "japan",
     buttonText: "connect",
   };
-
+  useDocumentTitle("Digital | Capabilities | Alvarez & Marsal");
   return (
     <>
       <StyledRow>

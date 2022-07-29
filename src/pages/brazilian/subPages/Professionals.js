@@ -17,6 +17,7 @@ import {
   NavbarDropdown,
 } from "../../../components/navbarComponents";
 import FilterBy from "../../../components/FilterBy";
+import { useDocumentTitle } from "../../../hook";
 
 const Professionals = () => {
   //state of modal
@@ -44,7 +45,7 @@ const Professionals = () => {
       setOpenedState(Array.from(leadersList, () => false));
     }
   };
-
+  useDocumentTitle("Brazil | Leadership | Alvarez & Marsal");
   return (
     <>
       <StyledContainer>

@@ -24,6 +24,7 @@ import {
   getExpertiseFields,
   getCountries,
 } from "../../API";
+import { useDocumentTitle } from "../../hook";
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -60,7 +61,7 @@ const Leadership = () => {
   }, []);
 
   // console.log(inputText)
-
+  useDocumentTitle("Leadership | Alvarez & Marsal");
   return (
     <>
       <HeroSection title={"helthcare & live sciences leaders"} />

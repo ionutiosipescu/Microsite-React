@@ -14,6 +14,7 @@ import {
   StyledCol1,
   StyledRow,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
+import { useDocumentTitle } from "../../hook";
 
 const ExpertisePharma = () => {
   // Card content
@@ -24,18 +25,20 @@ const ExpertisePharma = () => {
     // country: 'japan',
     buttonText: "connect",
   };
-
+  useDocumentTitle(
+    "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
+  );
   return (
     <>
       <HeroSection
-        title={"pharma & medtech portfolio management"}
+        title={"Pharma & MedTech Portfolio Management"}
         pageTitle={"Expertise"}
       />
       <StyledRow>
         <StyledCol1>
           <BreadCrumb
             route={"Expertise"}
-            subRoute={"Pharma & MedTech portfolio management"}
+            subRoute={"Pharma & MedTech Portfolio Management"}
           />
           <p>
             Sit excepteur ullamco tempor excepteur fugiat amet culpa consectetur

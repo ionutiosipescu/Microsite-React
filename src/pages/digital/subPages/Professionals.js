@@ -7,6 +7,7 @@ import { FilterBy } from "../../../components";
 import { tags, leadersList, arr, links } from "../../../utils/data";
 import { ProfessionalsCardSmall } from "../../../components/cards";
 import styled from "styled-components";
+import { useDocumentTitle } from "../../../hook";
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -39,7 +40,7 @@ const Professionals = () => {
       setOpenedState(Array.from(leadersList, () => false));
     }
   };
-
+  useDocumentTitle("Digital | Leadership | Alvarez & Marsal");
   return (
     <>
       <div className="container p-5">
