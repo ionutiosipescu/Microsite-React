@@ -41,10 +41,11 @@ const Insights = () => {
 			{podcasts.map((podcast, index) => (
 				<CardInsights
 					key={index}
-					image={podcast.image}
-					type={podcast.type}
-					title={podcast.title}
-					teaserText={podcast.teaserText}
+					podcast={podcast}
+					// image={podcast.image}
+					// type={podcast.type}
+					// title={podcast.title}
+					// teaserText={podcast.teaserText}
 				/>
 			))}
 		</StyledContainer>
