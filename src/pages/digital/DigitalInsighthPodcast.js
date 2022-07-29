@@ -28,7 +28,6 @@ import {
 
 //utils
 import { sizem } from "../../utils/breakpoints";
-import YellowButton from "../../components/buttons/YellowButton";
 
 const DigitalInsighthPodcast = () => {
   const { state } = useLocation();

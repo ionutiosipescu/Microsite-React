@@ -19,15 +19,18 @@ export const getPodcasts = (setContent) => {
       data.date = new Date(
         item.attributes.revision_timestamp
       ).toLocaleDateString();
+      data.body = item.attributes.body.processed;
 
       data.image =
         imageLink + grabDataFromIncluded("field_teaser_image", res.data, index);
       data.type = grabDataFromIncluded("node_type", res.data, index);
+      // data.authors = grabDataFromIncluded("field_authors", res.data, index);
 
       data.id = item.id;
 
       arr.push(data);
     });
     setContent([...arr]);
+    console.log(arr);
   });
 };

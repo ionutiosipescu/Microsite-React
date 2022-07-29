@@ -24,6 +24,7 @@ import {
   getExpertiseFields,
   getCountries,
 } from "../../API";
+import DOMPurify from "dompurify";
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -43,6 +44,7 @@ const Leadership = () => {
 
   const handleDisplay = (index) => {
     console.log("this is the index", index);
+
     if (!openedState[index]) {
       let arr = Array.from(leadersList, () => false);
       arr[index] = true;
@@ -59,7 +61,8 @@ const Leadership = () => {
     getCountries();
   }, []);
 
-  // console.log(inputText)
+  let el = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
+  var clean = DOMPurify.sanitize(el);
 
   return (
     <>
@@ -96,6 +99,10 @@ const Leadership = () => {
 
       <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
       {arr[clickedNavbarCell]}
+      <div
+        className="pt-3 text-decoration-none"
+        dangerouslySetInnerHTML={{ __html: el }}
+      ></div>
 
       <div className="m-4">
         <LeaadersContainer>
