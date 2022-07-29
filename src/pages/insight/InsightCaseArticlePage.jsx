@@ -33,6 +33,7 @@ import {
 import { dateToShortLocale } from "../../utils";
 import { useEffect } from "react";
 import { fetchData } from "../../API";
+import LeftSection from "../../components/cards/LeftSection";
 
 const PageContainer = styled.div`
   .textCategory {
@@ -74,51 +75,6 @@ const PageContainer = styled.div`
     font-size: 1rem;
     color: #666666;
     line-height: 1rem;
-  }
-  .leftSection {
-    .iconContainer {
-      height: 4.375rem;
-      width: 4.375rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    img {
-      width: 32px;
-    }
-  }
-  .containerIcons {
-    display: flex;
-    position: absolute;
-    /* flex-direction: column; */
-    /* top: -1rem; */
-    margin: 0px 0px 0px 330px;
-    width: 16.375rem;
-    .iconDiv {
-      height: 4.375rem;
-      width: 100%;
-
-      background-color: #0085ca;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      font-size: 1.125rem;
-      text-transform: uppercase;
-      line-height: 4.375rem;
-      color: #fff;
-      /* margin-left: -20px; */
-      /* border: 2px solid red; */
-      cursor: pointer;
-      :hover {
-        cursor: pointer;
-        background-color: yellow;
-      }
-    }
-  }
-  .menuIconActive {
-    background-color: #0085ca;
-    /* margin-right: 0px; */
   }
 
   .link {
@@ -201,37 +157,7 @@ const InsightCaseArticlePage = ({}) => {
               <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
             </div>
             <div className="row">
-              {/*------------------------------------------------------------- LeftSectionIcons */}
-              <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
-                <div className="leftSection pt-3">
-                  {leftSectionIcons.map((x, index) => (
-                    <div
-                      // className=""
-                      key={index}
-                      className={` iconContainer ${
-                        openedState[index] && "menuIconActive"
-                      }`}
-                      onClick={() => {
-                        handleDisplay(index);
-                      }}
-                    >
-                      <div>{x.icon}</div>
-                      {openedState[index] && (
-                        <span className="containerIcons">
-                          {x?.children.map((icon, index) => (
-                            <div
-                              className="iconDiv"
-                              style={{ backgroundColor: `${icon.color}` }}
-                            >
-                              {icon.icon || icon.text}
-                            </div>
-                          ))}
-                        </span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <LeftSection/>
               {/*---------------------------------------------------- SectionDescription */}
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
                 <div>
