@@ -6,10 +6,14 @@ const NewsCell = styled.div`
 	border-bottom: 1px solid #e6e6e6;
 `
 
-const RelatedInsight_Table = () => {
+const RelatedInsight_Table = ({post}) => {
 	return (
 		<>
-			<h2 className="fw-bold">Related Insight</h2>
+		<NewsCell>
+			<h4>{post?.title}</h4>
+			<span className="text-muted"> {post?.date}</span>
+		</NewsCell>
+			{/* <h2 className="fw-bold">Related Insight</h2>
 			<Row>
 				<Col>
 					<NewsCell>
@@ -39,9 +43,10 @@ const RelatedInsight_Table = () => {
 						<p className="text-muted">15/5/2020</p>
 					</NewsCell>
 				</Col>
-			</Row>
+			</Row> */}
 		</>
 	)
 }
 
 export default RelatedInsight_Table
+
