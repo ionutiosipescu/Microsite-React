@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import CardsLocations from "../../../components/cards/CardsLocations";
 import SimpleMap from "../../../components/cards/SimpleMap";
 import TranslateButton from "../../../components/buttons/TranslateButton";
+import { useDocumentTitle } from "../../../hook";
 
 const Locations = () => {
   const [cardLocation, setCardLocation] = useState();
@@ -11,6 +12,7 @@ const Locations = () => {
     console.log(coords);
     setCardLocation(coords);
   };
+  useDocumentTitle("Brazil | Locations | Alvarez & Marsal");
   return (
     <>
       <Container className="p-3">

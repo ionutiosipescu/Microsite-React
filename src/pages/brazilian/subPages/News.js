@@ -5,6 +5,7 @@ import PostCard from "../../../components/cards/PostCard";
 import TranslateButton from "../../../components/buttons/TranslateButton";
 import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { getArticles } from "../../../API";
+import { useDocumentTitle } from "../../../hook";
 
 const PostsContainer = styled.div`
   padding: 2rem;
@@ -23,8 +24,8 @@ const News = () => {
     getArticles(setNews, "news", 10);
   }, []);
 
-  console.log(news);
-
+  // console.log(news);
+  useDocumentTitle("Brazil | News | Alvarez & Marsal");
   return (
     <StyledContainer>
       <TranslateButton text1={"English"} text2={"Portuguese"} />

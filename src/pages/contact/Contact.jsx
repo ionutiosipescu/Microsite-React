@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { HeroSection } from "../../components/cards";
 import YellowButton from "../../components/buttons/YellowButton";
+import { useDocumentTitle } from "../../hook";
 
 const heroSection = {
   title: " Contact Alvarez & Marsal",
@@ -124,6 +125,7 @@ const Contact = () => {
       });
     }
   };
+  useDocumentTitle("Contact | Alvarez & Marsal");
   return (
     <ContactSection>
       <HeroSection

@@ -10,6 +10,7 @@ import { BreadCrumb, FilterBy } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { getArticles } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
+import { useDocumentTitle } from "../../hook";
 
 const PostsContainer = styled.div`
   margin: auto;
@@ -32,7 +33,7 @@ const InsightLatest = () => {
   }, []);
 
   // console.log(postsContent)
-
+  useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
   return (
     <>
       <HeroSection

@@ -15,6 +15,7 @@ import {
 import BreadCrumb from "../../components/BreadCrumb";
 import Connor from "../../assets/images/ConnorWine";
 import { arr } from "../../utils/data";
+import { useDocumentTitle } from "../../hook/useDocumentTitle.js";
 
 const ExpertisePharma = () => {
   // Card content
@@ -25,18 +26,20 @@ const ExpertisePharma = () => {
     // country: 'japan',
     buttonText: "connect",
   };
-
+  useDocumentTitle(
+    "Expertise | Quality Efficiency Improvement | Alvarez & Marsal"
+  );
   return (
     <>
       <HeroSection
-        title={"quality efficiency improvment"}
+        title={"Quality Efficiency Improvement"}
         pageTitle={"Expertise"}
       />
       <StyledRow>
         <StyledCol1>
           <BreadCrumb
             route={"Expertise"}
-            subRoute={"Pharma & MedTech portfolio management"}
+            subRoute={"Quality Efficiency Improvement"}
           />
           <p>
             Sit excepteur ullamco tempor excepteur fugiat amet culpa consectetur

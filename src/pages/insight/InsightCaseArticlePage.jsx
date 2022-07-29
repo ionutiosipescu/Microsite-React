@@ -34,6 +34,7 @@ import { dateToShortLocale } from "../../utils";
 import { useEffect } from "react";
 import { fetchData } from "../../API";
 import LeftSection from "../../components/cards/LeftSection";
+import { useDocumentTitle } from "../../hook";
 
 const PageContainer = styled.div`
   .textCategory {
@@ -143,6 +144,7 @@ const InsightCaseArticlePage = ({}) => {
   useEffect(() => {
     fetchData(setCarouselData);
   }, []);
+  useDocumentTitle(`${state?.title}`);
   return (
     <PageContainer>
       <HeroSection
