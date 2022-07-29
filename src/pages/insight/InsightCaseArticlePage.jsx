@@ -405,7 +405,7 @@ const LinksList = ({ titleSection, linkIcons }) => {
 const iconsArr = [
   {
     id: 1,
-    icon: <Facebook />,
+    icon: <FacebookStay />,
     text: "Facebook",
     link: "https://www.facebook.com/alvarezandmarsal",
   },
