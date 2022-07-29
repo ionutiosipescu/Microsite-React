@@ -39,6 +39,18 @@ const DocumentIcon = ({ className }) => iconPng(className, "document");
 const ShareIcon = ({ className }) => iconPng(className, "share");
 const LetterIcon = ({ className }) => iconPng(className, "letter");
 
+const iconsStayPath = "/icons/stayConnected/";
+
+const iconStayPng = (className, name) => (
+  <img className={className} src={iconsStayPath + name + ".png"} />
+);
+
+const LinkedinStay = ({ className }) => iconStayPng(className, "in_0");
+const FacebookStay = ({ className }) => iconStayPng(className, "fb_0");
+const LetterStay = ({ className }) => iconStayPng(className, "newsletter_0");
+const TwitterStay = ({ className }) => iconStayPng(className, "twit_0");
+const YoutubeStay = ({ className }) => iconStayPng(className, "yt");
+
 export {
   Logo,
   ChevronUpWhite,
@@ -57,4 +69,9 @@ export {
   DocumentIcon,
   ShareIcon,
   LetterIcon,
+  LinkedinStay,
+  FacebookStay,
+  LetterStay,
+  TwitterStay,
+  YoutubeStay,
 };

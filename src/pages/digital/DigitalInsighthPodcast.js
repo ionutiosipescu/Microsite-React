@@ -18,6 +18,13 @@ import {
   ShareIcon,
   LetterIcon,
 } from "../../assets/icons";
+import {
+  LinkedinStay,
+  FacebookStay,
+  TwitterStay,
+  YoutubeStay,
+  LetterStay,
+} from "../../assets/icons";
 
 //utils
 import { sizem } from "../../utils/breakpoints";
@@ -104,10 +111,18 @@ const DigitalInsighthPodcast = () => {
       padding: 5px 10px;
     }
     .link {
+      text-decoration: none;
+      color: #000;
       :hover {
+        cursor: pointer;
         .image {
           cursor: pointer;
           background-color: var(--hover-blue);
+          img {
+            filter: grayscale(1) invert(1);
+          }
+          /* background-color: red; */
+          /* background-color: var(--hover-blue); */
         }
         .textLinks {
           cursor: pointer;
@@ -119,11 +134,15 @@ const DigitalInsighthPodcast = () => {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 45px;
-      height: 45px;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       background-color: var(--gray3);
+
       /* border: 2px solid red; */
+      img {
+        width: 20px;
+      }
     }
 
     .textLinks {
@@ -285,7 +304,7 @@ const DigitalInsighthPodcast = () => {
               titleSection={"Featured Profiles"}
               managers={managers}
             />
-            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
+            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr1} />
           </div>
         </div>
       </div>
@@ -329,6 +348,38 @@ const iconsArr = [
     id: 3,
     icon: <YouTube />,
     text: "YouTube",
+  },
+];
+const iconsArr1 = [
+  {
+    id: 1,
+    icon: <Facebook />,
+    text: "Facebook",
+    link: "https://www.facebook.com/alvarezandmarsal",
+  },
+  {
+    id: 2,
+    icon: <LinkedinStay />,
+    text: "Linkedin",
+    link: "www.linkedin.com/company/162399",
+  },
+  {
+    id: 3,
+    icon: <TwitterStay />,
+    text: "Twitter",
+    link: "https://twitter.com/alvarezmarsal",
+  },
+  {
+    id: 3,
+    icon: <YoutubeStay />,
+    text: "YouTube",
+    link: "https://www.youtube.com/user/AlvarezMarsal",
+  },
+  {
+    id: 4,
+    icon: <LetterStay />,
+    text: "Sign Up for A&M Newsletters",
+    link: "https://bulletins.alvarezandmarsal.com/",
   },
 ];
 
@@ -377,16 +428,19 @@ const LinksList = ({ titleSection, linkIcons }) => {
     <div className="linksContainer pt-5">
       <h3> {titleSection} </h3>
       <div className="links container-fluid  ">
-        {linkIcons.map((x, index) => (
-          <div
+        {linkIcons?.map((x, index) => (
+          <a
             className="link  py-2 d-flex justify-content-between "
             key={index}
+            href={x?.link}
+            target="_blank"
           >
+            {console.log(x)}
             <div className="image  col-md-2 col-lg-2 ">{x?.icon}</div>
             <div className=" col-md-9 col-lg-9 align-items-center d-flex px-sm-2 ">
               <span className="textLinks">Join A&M on {x?.text} </span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

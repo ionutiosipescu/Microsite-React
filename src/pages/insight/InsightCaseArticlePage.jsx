@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useParams, useLocation } from "react-router-dom";
 import { BreadCrumb, Spinner } from "../../components";
+import {
+  LinkedinStay,
+  FacebookStay,
+  TwitterStay,
+  YoutubeStay,
+  LetterStay,
+} from "../../assets/icons";
 
 import { HeroSection, CarouselSection } from "../../components/cards";
 import {
@@ -121,6 +128,11 @@ const PageContainer = styled.div`
       .image {
         cursor: pointer;
         background-color: var(--hover-blue);
+        img {
+          filter: grayscale(1) invert(1);
+        }
+        /* background-color: red; */
+        /* background-color: var(--hover-blue); */
       }
       .textLinks {
         cursor: pointer;
@@ -132,11 +144,15 @@ const PageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45px;
-    height: 45px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     background-color: var(--gray3);
+
     /* border: 2px solid red; */
+    img {
+      width: 20px;
+    }
   }
 
   .textLinks {
@@ -152,7 +168,7 @@ const InsightCaseArticlePage = ({}) => {
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
   const [carouselData, setCarouselData] = useState([]);
-  const [bgColor, setBgColor] = useState("#C620A7");
+
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
   );
@@ -467,25 +483,25 @@ const iconsArr = [
   },
   {
     id: 2,
-    icon: <LinkedIn />,
+    icon: <LinkedinStay />,
     text: "Linkedin",
     link: "www.linkedin.com/company/162399",
   },
   {
     id: 3,
-    icon: <Twitter />,
+    icon: <TwitterStay />,
     text: "Twitter",
     link: "https://twitter.com/alvarezmarsal",
   },
   {
     id: 3,
-    icon: <YouTube />,
+    icon: <YoutubeStay />,
     text: "YouTube",
     link: "https://www.youtube.com/user/AlvarezMarsal",
   },
   {
     id: 4,
-    // icon: <Envelope />,
+    icon: <LetterStay />,
     text: "Sign Up for A&M Newsletters",
     link: "https://bulletins.alvarezandmarsal.com/",
   },
