@@ -12,6 +12,7 @@ import {
   NavigationCell,
   NavigationNavbar,
 } from "../../components/navbarComponents/";
+import { useDocumentTitle } from "../../hook";
 
 const Digital = () => {
   // The index of the of the item clicked in the navbar
@@ -26,7 +27,7 @@ const Digital = () => {
     <Professionals />,
     <Practice />,
   ];
-
+  useDocumentTitle("Digital | Home | Alvarez & Marsal");
   return (
     <>
       <HeroSection
