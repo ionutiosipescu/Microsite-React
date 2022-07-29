@@ -5,7 +5,8 @@ const Button = styled.button`
   background: var(--orange1);
   color: white;
 
-  border: 1px solid #df8e25;
+  border: none;
+  transition: all 0.2s ease-in-out;
 
   text-transform: uppercase;
   padding: 15px 20px;
@@ -14,6 +15,10 @@ const Button = styled.button`
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
   display: ${(props) => props.display || "block"};
+
+  :hover {
+    background: var(--hover-blue);
+  }
 `;
 
 const YellowButton = ({

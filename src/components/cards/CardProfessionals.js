@@ -76,6 +76,7 @@ const ArrowContainer = styled.div`
   display: flex;
   margin-left: auto;
   cursor: pointer;
+  align-items: center;
 
   :hover {
     background: var(--hover-blue);
@@ -151,7 +152,7 @@ const CardProfessionals = ({
         )}
       </CardBody>
       <ArrowContainer>
-        <ChevronRightWhite width="50px" />
+        <ChevronRightWhite />
       </ArrowContainer>
     </Card>
   );
