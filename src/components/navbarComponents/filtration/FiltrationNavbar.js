@@ -23,17 +23,12 @@ const Navbar = ({
 
 	const handleSubmit = (e, userInput, openBigNavbar) => {
 		e.preventDefault()
-		console.log('this is userInput', userInput)
-		console.log(userInput)
-		console.log(openBigNavbar)
 
 		if (openBigNavbar && userInput === '') {
 			setVisible(!visible)
-		} else {
+		} else if (userInput !== '') {
 			filterByTags.push(userInput)
 			setFilterByTags([...filterByTags])
-
-			console.log('submit')
 		}
 	}
 

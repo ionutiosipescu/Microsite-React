@@ -11,13 +11,13 @@ export const StyledRow = styled.div`
 `
 
 export const StyledCol1 = styled.div`
-	flex: 1 0 65%;
+	flex: 1 0 70%;
 
 	padding: 2rem;
 `
 
 export const StyledCol2 = styled.div`
-	flex: 1 0 35%;
+	flex: 1 0 30%;
 `
 
 export const StyledContainer = styled.div`
