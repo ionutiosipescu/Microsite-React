@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { XIcon, LetterIcon } from "../assets/icons";
+import { XIcon } from "../assets/icons";
 
 const Container = styled.div`
   display: ${(props) => (props.arrLength ? "flex" : "none")};
@@ -16,16 +16,27 @@ const TagContainer = styled.div`
   gap: 0.5rem;
   background: white;
 
+  align-items: center;
+
   padding: 1rem;
   height: 100%;
   transition: all 0.2s ease-in-out;
   font-weight: bold;
   color: var(--gray4);
 
+  svg {
+    fill: var(--gray4);
+    transition: all 0.2s ease-in-out;
+  }
+
   :hover {
     cursor: pointer;
     background: var(--hover-blue);
     color: white;
+
+    svg {
+      fill: white;
+    }
   }
 `;
 
@@ -37,7 +48,7 @@ const Tag = ({ tag, setFilterByTags, filterByTags }) => {
   return (
     <TagContainer onClick={handleClick}>
       <span>{tag}</span>
-      <XIcon width={"20px"} />
+      <XIcon />
     </TagContainer>
   );
 };

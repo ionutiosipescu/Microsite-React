@@ -157,7 +157,7 @@ const InsightCaseArticlePage = ({}) => {
               <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
             </div>
             <div className="row">
-              <LeftSection/>
+              <LeftSection />
               {/*---------------------------------------------------- SectionDescription */}
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
                 <div>

@@ -142,9 +142,12 @@ export const Cell = styled.li`
 
   transition: all 0.2s ease-in-out;
 
-  img {
+  svg {
     padding-left: 0.5rem;
     transition: all 0.2s ease-in-out;
+    fill: white;
+    width: 20px;
+    height: 20px;
   }
 
   :hover {
@@ -152,7 +155,7 @@ export const Cell = styled.li`
     cursor: pointer;
     color: var(--hover-blue);
 
-    img {
+    svg {
       transform: rotate(180deg);
       padding-right: 0.5rem;
       padding-left: 0;

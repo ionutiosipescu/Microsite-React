@@ -36,7 +36,6 @@ const NavbarDropdown = ({ children, data }) => {
       <Dropdown show={showDropdown} columns={columns}>
         {data.map((link, index) => (
           <DropdownCell key={index} onClick={() => addTag(link)}>
-            {/* {!filter ? <a>{link.name}</a> : <a href={data.href}>{link.name}</a>} */}
             <a href={link.href}>{link.name}</a>
           </DropdownCell>
         ))}

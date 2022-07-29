@@ -1,36 +1,20 @@
 const iconsPath = "/icons/";
 
-const icon = (props, name, alt) => {
-  return (
-    <img
-      src={iconsPath + name + ".svg"}
-      alt={alt}
-      className={props?.className}
-      width={props?.width}
-      height={props?.height}
-    />
-  );
-};
+import { ReactComponent as Search } from "./icons/search.svg";
+import { ReactComponent as LinkedIn } from "./icons/linkedin.svg";
+import { ReactComponent as YouTube } from "./icons/youtube.svg";
+import { ReactComponent as Facebook } from "./icons/facebook.svg";
+import { ReactComponent as Twitter } from "./icons/twitter.svg";
+import { ReactComponent as XIcon } from "./icons/xIcon.svg";
+import { ReactComponent as ChevronRight } from "./icons/chevronRight.svg";
+import { ReactComponent as ChevronRightWhite } from "./icons/chevronRightWhite.svg";
+import { ReactComponent as ChevronUpWhite } from "./icons/chevronUpWhite.svg";
+import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg";
+import { ReactComponent as Logo } from "./icons/logo.svg";
 
 const iconPng = (className, name) => (
   <img className={className} src={iconsPath + name + ".png"} />
 );
-
-const Search = (props) => icon(props, "search", "search icon");
-const LinkedIn = (props) => icon(props, "linkedin", "linkedin icon");
-const YouTube = (props) => icon(props, "youtube", "youtube icon");
-const Facebook = (props) => icon(props, "facebook", "facebook icon");
-const Twitter = (props) => icon(props, "twitter", "twitter icon");
-const XIcon = (props) => icon(props, "xIcon", "cancel icon");
-const ChevronRight = (props) =>
-  icon(props, "chevronRight", "chevron right icon");
-const ChevronRightWhite = (props) =>
-  icon(props, "chevronRightWhite", "chevron right icon");
-const ChevronUpWhite = (props) =>
-  icon(props, "chevronUpWhite", "chevron up icon");
-const ChevronDownWhite = (props) =>
-  icon(props, "chevronDownWhite", "chevron down icon");
-const Logo = ({ className }) => icon(className, "logo", "logo");
 
 const ChevronRightBlue = ({ className }) => iconPng(className, "chevron");
 const IconTriangle = ({ className }) => iconPng(className, "iconTriangle");
