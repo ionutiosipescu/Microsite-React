@@ -16,6 +16,8 @@ import {
   getCarouselArticles,
 } from "../../API";
 
+import { useDocumentTitle } from "../../hook";
+
 const PostsContainer = styled.div`
   margin: auto;
   display: flex;
@@ -40,6 +42,8 @@ const InsightCase = () => {
     getCarouselArticles(setCarouelData);
     setLoading(false);
   }, []);
+
+  useDocumentTitle("Insights | Case Studies | Alvarez & Marsal");
 
   return (
     <>
