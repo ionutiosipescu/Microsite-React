@@ -96,7 +96,7 @@ const DetailedProfessionalsCard = ({
             </Dropdown>
           </Info>
         </CardBody>
-      </Card>{" "}
+      </Card>
     </>
   );
 };
