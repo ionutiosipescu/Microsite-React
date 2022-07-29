@@ -47,6 +47,9 @@ const LeftSectionContainer = styled.div`
 		}
 	}
     .leftSection {
+		position: -webkit-sticky !important;
+		position: sticky;
+		top: 0;
         display: flex;
         @media ${size.md} {
 		flex-direction: column;

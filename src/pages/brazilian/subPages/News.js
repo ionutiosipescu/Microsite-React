@@ -29,8 +29,8 @@ const News = () => {
 		<StyledContainer>
 			<TranslateButton text1={'English'} text2={'Portuguese'} />
 			<PostsContainer>
-				{news.map(post => (
-					<PostCard post={news} locationName={LocationName} />
+				{news.map((post) => (
+					<PostCard post={post} locationName={LocationName} />
 				))}
 			</PostsContainer>
 		</StyledContainer>
