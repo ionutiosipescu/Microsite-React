@@ -29,10 +29,10 @@ const LinksC = styled.div`
       transition: color 0.2s ease-out;
     }
   }
-  .Global {
+  .global {
     padding-bottom: 0;
   }
-  .Careers {
+  .careers {
     padding-top: 0;
   }
   @media ${size.sm} {
@@ -54,7 +54,7 @@ const Col = styled.div`
 `;
 const ColContainer = styled.div`
   display: flex;
-  .Contact {
+  .contact {
     width: 50%;
     padding-right: 1rem;
   }
@@ -63,7 +63,7 @@ const ColContainer = styled.div`
   }
   @media ${size.lg} {
     width: 70%;
-    .Contact {
+    .contact {
       width: 33%;
     }
   }
@@ -74,7 +74,7 @@ const ColBox = styled.div`
   @media ${size.lg} {
     width: 66%;
     display: flex;
-    .Careers {
+    .careers {
       padding-top: 30px;
     }
   }
@@ -102,22 +102,22 @@ const Footer = () => {
       <LinksC>
         <ColContainer>
           <ColBox>
-            <Col className="Global">
-              <p>Global Locations</p>
+            <Col className="global">
+              <p>global Locations</p>
               <p>Expertise</p>
               <p>Industries</p>
               <p>Insights</p>
               <p>Our People</p>
             </Col>
-            <Col className="Careers">
-              <p>Careers </p>
+            <Col className="careers">
+              <p>careers </p>
               <p>#AMon Social</p>
               <p>A&M on Covid-19</p>
               <p>About A&M</p>
             </Col>
           </ColBox>
-          <Col className="Contact">
-            <p>Contact</p>
+          <Col className="contact">
+            <p>contact</p>
             <p>Alumni</p>
             <p>A&M Capital</p>
             <p>A&M Capital Real Estate</p>
