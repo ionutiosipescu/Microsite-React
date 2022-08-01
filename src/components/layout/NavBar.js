@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import {
   Container,
   Nav,
@@ -12,6 +13,8 @@ import { routeNames } from "../../routes/routes";
 import { Search, XIcon, Logo } from "../../assets/icons";
 import styled from "styled-components";
 import { sizem } from "../../utils/breakpoints";
+
+import { expertiseData } from "../../utils/data";
 
 const CustomNavbar = styled(Navbar)`
   max-width: 1280px;
@@ -103,6 +106,7 @@ const NavbarSearchContainer = styled.div`
 `;
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [showSearchDiv, setShowSearchDiv] = useState(false);
 
   return (
@@ -168,15 +172,22 @@ const NavBar = () => {
                 title="Expertise"
                 id="navbarScrollingDropdown"
               >
-                <NavDropdown.Item
-                  href={routeNames.expertiseQuality}
-                  id="something"
-                >
-                  {"Quality Efficiency Improvement"}
-                </NavDropdown.Item>
-                <NavDropdown.Item href={routeNames.expertisePharma}>
-                  {"Pharma & MedTech Portfolio Management"}
-                </NavDropdown.Item>
+                {expertiseData?.map((expertise, index) => (
+                  <NavDropdown.Item
+                    onClick={() => {
+                      navigate(
+                        `/expertise/${expertise?.title?.toLowerCase()}`,
+                        {
+                          state: expertise,
+                        }
+                      );
+                    }}
+                    id="something"
+                    key={index}
+                  >
+                    {expertise.title}
+                  </NavDropdown.Item>
+                ))}
               </NavDropdown>
 
               {/* <Nav.Link href={routeNames.insight}>{"Insights"}</Nav.Link> */}

@@ -25,6 +25,7 @@ const LinksC = styled.div`
   .media {
     justify-content: space-between;
     svg:hover {
+      cursor: pointer;
       fill: var(--hover-blue);
       transition: color 0.2s ease-out;
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import QualityCard from "../cards/QualityCard";
-import { arrQualities } from "../../utils/data";
+import { expertiseData } from "../../utils/data";
 
 const QualitiesSectionContainer = styled.div`
   // height: 700px;
@@ -22,7 +22,7 @@ const QualitiesSection = () => {
   return (
     <QualitiesSectionContainer>
       <Qualities>
-        {arrQualities.map((quality, index) => (
+        {expertiseData.map((quality, index) => (
           <QualityCard quality={quality} key={index} />
         ))}
       </Qualities>

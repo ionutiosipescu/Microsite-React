@@ -1,4 +1,5 @@
 export { default as ExpertisePharma } from "./expertise/ExpertisePharma";
+export { default as ExpertisePage } from "./expertise/ExpertisePage";
 export { default as ExpertiseQuality } from "./expertise/ExpertiseQuality";
 export { default as Contact } from "./contact/Contact";
 export { default as Home } from "./home/Home";
