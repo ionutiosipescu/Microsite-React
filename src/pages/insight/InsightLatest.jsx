@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
+import {
+  ArticleCard,
+  HeroSection,
+  CarouselSection,
+} from "../../components/cards";
 import {
   FiltrationNavbar,
   NavbarDropdown,
@@ -8,7 +12,7 @@ import {
 
 import { BreadCrumb, FilterBy } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { getArticles } from "../../API";
+import { getArticles, getInsights } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
@@ -28,11 +32,15 @@ const InsightLatest = () => {
 
   // Getting the latest articles from server
   const [postsContent, setPostsContent] = useState([]);
+  const [insightsContent, setInsightsContent] = useState([]);
   useEffect(() => {
     getArticles(setPostsContent, "insights");
+
+    getInsights(setInsightsContent);
   }, []);
 
-  // console.log(postsContent)
+  console.log(insightsContent);
+
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
   return (
     <>
@@ -42,7 +50,7 @@ const InsightLatest = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={"search"}
+        searchBar2={{ placeholder: "enter search here" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
@@ -58,8 +66,11 @@ const InsightLatest = () => {
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />
 
         <PostsContainer>
-          {postsContent?.map((post, index) => (
-            <PostCard post={post} key={index} />
+          {/* {postsContent?.map((post, index) => (
+            <ArticleCard post={post} key={index} />
+          ))} */}
+          {insightsContent?.map((article, index) => (
+            <ArticleCard {...article} key={index} />
           ))}
         </PostsContainer>
       </StyledContainer>

@@ -63,7 +63,7 @@ const Professionals = () => {
         </p>
       </StyledContainer>
       <FiltrationNavbar
-        searchBar
+        searchBar={{ placeholder: "enter search here" }}
         filterByTags={filterByTags}
         setFilterByTags={setFilterByTags}
       >

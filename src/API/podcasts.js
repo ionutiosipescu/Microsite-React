@@ -24,8 +24,8 @@ export const getPodcasts = (setContent) => {
       console.log(res.data);
       console.log(index);
 
-      // data.image =
-      //   imageLink + grabDataFromIncluded("field_teaser_image", res.data, index);
+      data.image =
+        imageLink + grabDataFromIncluded("field_teaser_image", res.data, index);
       // data.type = grabDataFromIncluded("node_type", res.data, index);
       // data.authors = grabDataFromIncluded("field_authors", res.data, index);
 

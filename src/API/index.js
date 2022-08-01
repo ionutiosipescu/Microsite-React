@@ -7,3 +7,4 @@ export { getCarouselArticles } from "./articles";
 export { getCaseStudiesArticles } from "./articles";
 export { getPodcasts } from "./podcasts";
 export { fetchData, fetchRecentRecognition } from "./home";
+export { getInsights } from "./insights";

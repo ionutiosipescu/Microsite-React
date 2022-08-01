@@ -8,5 +8,5 @@ export { default as DetailedProfessionalsCard } from "./DetailedProfessionalsCar
 export { default as ProfessionalsCardSmall } from "./ProfessionalsCardSmall";
 export { default as CarQualityCardouselSection } from "./QualityCard";
 export { default as ServiceCard } from "./ServiceCard";
-export { default as PostCard } from "./PostCard";
+export { default as ArticleCard } from "./ArticleCard";
 export { default as CardOurServices } from "./CardOurServices";

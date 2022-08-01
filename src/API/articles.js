@@ -31,7 +31,7 @@ export const getArticles = async (setContent, articleType, amount) => {
   await Axios.get(link).then((res) => {
     const arr = [];
 
-    console.log(res.data.data);
+    // console.log(res.data.data);
 
     res.data.data.map((item) => {
       let data = {};

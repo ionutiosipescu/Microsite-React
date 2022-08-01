@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
+import {
+  ArticleCard,
+  HeroSection,
+  CarouselSection,
+} from "../../components/cards";
 import {
   FiltrationNavbar,
   NavbarDropdown,
@@ -54,7 +58,7 @@ const InsightCase = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={{ placeholder: "search" }}
+        searchBar2={{ placeholder: "enter search here" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
@@ -77,7 +81,11 @@ const InsightCase = () => {
         ) : (
           <PostsContainer>
             {articles.map((post, index) => (
-              <PostCard post={post} locationName={locationName} key={index} />
+              <ArticleCard
+                post={post}
+                locationName={locationName}
+                key={index}
+              />
             ))}
           </PostsContainer>
         )}
