@@ -25,6 +25,7 @@ import {
   getCountries,
   fetchData,
 } from "../../API";
+import DOMPurify from "dompurify";
 import { useDocumentTitle } from "../../hook";
 import { Spinner } from "../../components";
 
@@ -49,6 +50,7 @@ const Leadership = () => {
 
   const handleDisplay = (index) => {
     console.log("this is the index", index);
+
     if (!openedState[index]) {
       let arr = Array.from(leadersList, () => false);
       arr[index] = true;
@@ -65,6 +67,9 @@ const Leadership = () => {
     getCountries();
     fetchData(setCarouselData);
   }, []);
+
+  let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
+  var clean = DOMPurify.sanitize(dirty);
 
   // console.log(inputText)
   useDocumentTitle("Leadership | Alvarez & Marsal");
@@ -103,6 +108,14 @@ const Leadership = () => {
 
       <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
       {arr[clickedNavbarCell]}
+      <div
+        className="pt-3 text-decoration-none"
+        dangerouslySetInnerHTML={{ __html: dirty }}
+      ></div>
+      <div
+        className="pt-3 text-decoration-none"
+        dangerouslySetInnerHTML={{ __html: clean }}
+      ></div>
 
       <div className="m-4">
         <LeaadersContainer>

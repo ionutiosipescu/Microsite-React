@@ -17,6 +17,7 @@ import {
 } from "../../API";
 
 import { useDocumentTitle } from "../../hook";
+import { Placeholder } from "react-bootstrap";
 
 const PostsContainer = styled.div`
   margin: auto;
@@ -53,7 +54,7 @@ const InsightCase = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={"search"}
+        searchBar2={{ placeholder: "search" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
