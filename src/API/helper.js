@@ -3,15 +3,31 @@ const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 // Returns the correct value from the included array
 export const grabDataFromIncluded = (includedField, object, index) => {
   if (object.data[index].relationships[includedField].data) {
-    const categoryId = object.data[index].relationships[includedField].data.id;
+    let categoryId = object.data[index].relationships[includedField].data;
 
-    let value = object.included.find(
-      (item) => item.id === categoryId
-    ).attributes;
+    if (typeof categoryId === "string") {
+      // console.log(typeof categoryId);
 
-    value = getValue(includedField, value);
+      // console.log(categoryId);
 
-    return value;
+      let value = object.included.find(
+        (item) => item.id === categoryId
+      ).attributes;
+
+      value = getValue(includedField, value);
+
+      return value;
+    } else if (typeof categoryId === "object") {
+      const categoryIds = categoryId.map((item) => {
+        return item.id;
+      });
+
+      // const values = categoryIds.map((item) => {
+      //   const value = getValue(includedField, item);
+
+      //   return value;
+      // });
+    }
   }
   return null;
 };
@@ -40,5 +56,7 @@ const getValue = (includedField, value) => {
     return value.uri.url;
   } else if (["node_type"].includes(includedField)) {
     return value.name;
+  } else if (["field_authors"].includes(includedField)) {
+    console.log(value);
   }
 };

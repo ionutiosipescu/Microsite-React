@@ -60,7 +60,7 @@ export const Form = styled.form`
   }
 
   :hover {
-    fill: var(--darkBlue);
+    fill: var();
   }
 
   input {
