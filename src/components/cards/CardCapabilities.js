@@ -6,6 +6,7 @@ import YellowButton from "../buttons/YellowButton";
 
 // Style Card
 const ContainerCard = styled.div`
+
   #container {
     background: var(--gray1);
   }

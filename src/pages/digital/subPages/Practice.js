@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
@@ -8,8 +8,13 @@ import {
   StyledRow,
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import CardCapabilities from "../../../components/cards/CardCapabilities";
-import RelatedInsight_Table from "../../../components/tables/RelatedInsight-Table";
 import Heading_Paragraph from "../../../components/H&P/H&P";
+import { getArticles } from "../../../API";
+import styled from "styled-components";
+import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
+import { TableContainer } from "../../../components/tables/TableContainer";
+import { Table } from "../../../components/tables/Table";
+
 
 const Practice = () => {
   const cardContent = {
@@ -19,13 +24,33 @@ const Practice = () => {
     country: "japan",
     buttonText: "connect",
   };
+  const [insights, setInsights] = useState([]);
+
+  useEffect(() => {
+    getArticles(setInsights, "insights", 6);
+  }, []);
+
+
   return (
     <>
       <StyledRow>
         <StyledCol1>
           <Heading_Paragraph />
-          <RelatedInsight_Table />
           <CardCapabilities />
+              <TableContainer>
+                <h3>Related Insights</h3>
+                            <Table>
+                
+                          {insights.map((post) => {
+                return(
+                  <div>
+                    <RelatedInsigts_Table post={post}></RelatedInsigts_Table>
+                  </div>
+                );
+                          })}
+                            </Table>
+              </TableContainer>
+          
         </StyledCol1>
         <StyledCol2>
           <CardProfessionals {...cardContent} />
