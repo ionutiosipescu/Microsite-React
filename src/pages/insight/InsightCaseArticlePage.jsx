@@ -130,20 +130,22 @@ const InsightCaseArticlePage = ({}) => {
     Array.from(leftSectionIcons, () => false)
   );
 
-  const handleDisplay = (index) => {
-    setToggle(!toggle);
+  // const handleDisplay = (index) => {
+  //   setToggle(!toggle);
 
-    if (!openedState[index]) {
-      let arr = Array.from(leftSectionIcons, () => false);
-      arr[index] = true;
-      setOpenedState([...arr]);
-    } else {
-      setOpenedState(Array.from(leftSectionIcons, () => false));
-    }
-  };
+  //   if (!openedState[index]) {
+  //     let arr = Array.from(leftSectionIcons, () => false);
+  //     arr[index] = true;
+  //     setOpenedState([...arr]);
+  //   } else {
+  //     setOpenedState(Array.from(leftSectionIcons, () => false));
+  //   }
+  // };
+
   useEffect(() => {
     fetchData(setCarouselData);
   }, []);
+
   useDocumentTitle(`${state?.title}`);
   return (
     <PageContainer>
@@ -405,7 +407,7 @@ const LinksList = ({ titleSection, linkIcons }) => {
 const iconsArr = [
   {
     id: 1,
-    icon: <Facebook />,
+    icon: <FacebookStay />,
     text: "Facebook",
     link: "https://www.facebook.com/alvarezandmarsal",
   },

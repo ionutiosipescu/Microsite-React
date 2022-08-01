@@ -39,10 +39,11 @@ const LeftSectionContainer = styled.div`
       color: #fff;
       /* margin-left: -20px; */
       /* border: 2px solid red; */
-      cursor: pointer;
+      /* cursor: pointer; */
+      /* background-color: yellow; */
       :hover {
         cursor: pointer;
-        background-color: yellow;
+        background-color: var(--orange2) !important;
       }
     }
   }
@@ -60,7 +61,7 @@ const LeftSectionContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
+      /* cursor: pointer; */
     }
 
     img {
@@ -72,16 +73,26 @@ const LeftSectionContainer = styled.div`
             }
 		} */
   }
-  .leftSection div:not(:first-child) {
+  /* .leftSection div:not(:first-child) {
     .containerIcons {
       display: none;
       @media ${size.md} {
         display: block;
       }
     }
-  }
+  } */
   .menuIconActive {
     background-color: #0085ca;
+  }
+`;
+
+const IconContainer = styled.div`
+  .iconDiv {
+    background-color: red;
+    cursor: pointer;
+    :hover {
+      background-color: var(--orange3);
+    }
   }
 `;
 
@@ -113,21 +124,23 @@ const LeftSection = () => {
             className={`iconContainer ${
               openedState[index] && "menuIconActive"
             }`}
-            onMouseOver={() => {
-              handleDisplay(index);
-            }}
-            onMouseLeave={() => {}}
+            onClick={() => handleDisplay(index)}
+            // onMouseOver={() => {
+            //   handleDisplay(index);
+            // }}
+            // onMouseLeave={() => {}}
           >
             <div>{x.icon}</div>
             {openedState[index] && (
               <span className="containerIcons">
                 {x?.children.map((icon, index) => (
-                  <div
+                  <IconContainer
+                    // bgColor={}
+                    style={{ backgroundColor: icon?.color }}
                     className="iconDiv"
-                    style={{ backgroundColor: `${icon.color}` }}
                   >
                     {icon.icon || icon.text}
-                  </div>
+                  </IconContainer>
                 ))}
               </span>
             )}
