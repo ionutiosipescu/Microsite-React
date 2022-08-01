@@ -23,8 +23,10 @@ import {
   getCarouselArticles,
   getExpertiseFields,
   getCountries,
+  fetchData,
 } from "../../API";
 import { useDocumentTitle } from "../../hook";
+import { Spinner } from "../../components";
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -35,12 +37,15 @@ export const LeaadersContainer = styled.div`
 `;
 
 const Leadership = () => {
-  const [openedState, setOpenedState] = useState(
-    Array.from(leadersList, () => false)
-  );
   const [filterByTags, setFilterByTags] = useState(["sunshine", "sunshine"]);
   const [inputText, setInputText] = useState("");
   const [clickedNavbarCell, setClickedNavbarCell] = useState(null);
+  const [carouselData, setCarouselData] = useState([]);
+
+  //open the detail Section on specific leader
+  const [openedState, setOpenedState] = useState(
+    Array.from(leadersList, () => false)
+  );
 
   const handleDisplay = (index) => {
     console.log("this is the index", index);
@@ -58,6 +63,7 @@ const Leadership = () => {
   useEffect(() => {
     getExpertiseFields();
     getCountries();
+    fetchData(setCarouselData);
   }, []);
 
   // console.log(inputText)
@@ -114,16 +120,19 @@ const Leadership = () => {
           })}
         </LeaadersContainer>
       </div>
-
-      <CarouselSection
-        categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="#002B49"
-        arr={arr}
-        titleColor="#0085CA"
-        textColor="#fff"
-        textDate="#FFF"
-        carouselDotBackground="#002b49"
-      />
+      {carouselData.length === 0 ? (
+        <Spinner />
+      ) : (
+        <CarouselSection
+          categoryCarousel={carouselData?.block_two?.title}
+          backgroundColor="#002B49"
+          arr={carouselData?.block_two?.data}
+          titleColor="#0085CA"
+          textColor="#fff"
+          textDate="#FFF"
+          carouselDotBackground="#002b49"
+        />
+      )}
     </>
   );
 };

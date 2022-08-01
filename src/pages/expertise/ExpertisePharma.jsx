@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import {
   HeroSection,
@@ -15,8 +15,12 @@ import {
   StyledRow,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import { useDocumentTitle } from "../../hook";
+import { fetchData } from "../../API";
+import { Spinner } from "../../components";
 
 const ExpertisePharma = () => {
+  const [carouselData, setCarouselData] = useState([]);
+
   // Card content
   const cardContent = {
     imageSrc: Connor,
@@ -25,6 +29,10 @@ const ExpertisePharma = () => {
     // country: 'japan',
     buttonText: "connect",
   };
+  useEffect(() => {
+    fetchData(setCarouselData);
+  }, []);
+
   useDocumentTitle(
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
   );
@@ -81,15 +89,19 @@ const ExpertisePharma = () => {
           <CardProfessionals {...cardContent} />
         </StyledCol2>
       </StyledRow>
-      <CarouselSection
-        categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="#002B49"
-        arr={arr}
-        titleColor="#0085CA"
-        textColor="#fff"
-        textDate="#FFF"
-        carouselDotBackground="#002b49"
-      />
+      {carouselData.length === 0 ? (
+        <Spinner />
+      ) : (
+        <CarouselSection
+          categoryCarousel={carouselData?.block_two?.title}
+          backgroundColor="#002B49"
+          arr={carouselData?.block_two?.data}
+          titleColor="#0085CA"
+          textColor="#fff"
+          textDate="#FFF"
+          carouselDotBackground="#002b49"
+        />
+      )}
     </>
   );
 };
