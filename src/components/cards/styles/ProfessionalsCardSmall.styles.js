@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin-bottom: ${({ margin }) => margin + "px" || 0};
+  cursor: pointer;
 `;
 
 export const Card = styled.div`
