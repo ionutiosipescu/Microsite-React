@@ -12,11 +12,19 @@ import RelatedInsight_Table from "../../../components/tables/RelatedInsight-Tabl
 import Heading_Paragraph from "../../../components/H&P/H&P";
 import { getArticles } from "../../../API";
 import styled from "styled-components";
-import TestTable1 from "../../../components/cards/TestTable1";
-import TestTable2 from "../../../components/cards/TestTable2";
+import TestTable from "../../../components/cards/TestTable";
 
 const Table = styled.div`
- display: flex;
+ display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding-left: 0;
+ 
+`
+const TableContainer = styled.div`
+h3 {
+margin: 40px 0 ;
+}
 `
 // const Table1= styled.div`
 // padding: 20px 0;
@@ -35,7 +43,7 @@ const Practice = () => {
   const [insights, setInsights] = useState([]);
 
   useEffect(() => {
-    getArticles(setInsights, "insights", 2);
+    getArticles(setInsights, "insights", 6);
   }, []);
 
 
@@ -44,16 +52,18 @@ const Practice = () => {
       <StyledRow>
         <StyledCol1>
           <Heading_Paragraph />
-          <Table>  
-          {insights.map((post) => {
-            return(
-              <div>
-                <TestTable1 post={post}></TestTable1>
-                <TestTable2 post={post}></TestTable2>
-              </div>
-            );
-          })}
-          </Table>
+            <TableContainer>
+              <h3>Related Insights</h3>
+                        <Table>  
+                        {insights.map((post) => {
+              return(
+                <div>
+                  <TestTable post={post}></TestTable>
+                </div>
+              );
+                        })}
+                        </Table>
+            </TableContainer>
           <CardCapabilities />
         </StyledCol1>
         <StyledCol2>

@@ -6,7 +6,7 @@ const NewsCell = styled.div`
 	border-bottom: 1px solid #e6e6e6;
 `
 
-const TestTable1 = ({post}) => {
+const TestTable = ({post}) => {
 	return (
 		<>
 		<NewsCell>
@@ -18,5 +18,5 @@ const TestTable1 = ({post}) => {
 	)
 }
 
-export default TestTable1
+export default TestTable
 
