@@ -9,7 +9,7 @@ const Card = styled.div`
   display: flex;
   background: var(--darkBlue);
   width: 100%;
-  height: 200px;
+  height: 250px;
 `;
 
 const CardBody = styled.div`
@@ -40,7 +40,7 @@ const CardBody = styled.div`
 const ImageContainer = styled.div`
   background: gray;
   img {
-    width: 100px;
+    width: 190px;
     height: 100%;
     object-fit: cover;
   }
@@ -53,7 +53,7 @@ const ImageContainer = styled.div`
 
   @media ${size.md} {
     img {
-      width: 150px;
+      width: 190px;
     }
   }
 `;
@@ -90,15 +90,26 @@ const ArrowContainer = styled.div`
 const Name = styled.a`
   color: white;
   text-decoration: none;
-  font-size: 1.875rem;
+  font-size: 1.575rem;
   font-weight: bold;
-  line-height: 0.8;
+  line-height: 1.2;
   padding-bottom: 5px;
   cursor: pointer;
+
+  padding-top: 20px;
 
   :hover {
     color: var(--hover-blue);
   }
+`;
+const Position = styled.p`
+  color: var(--orange2);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+  padding: 20px 0px;
 `;
 
 const Info = styled.a`
@@ -112,15 +123,6 @@ const Info = styled.a`
   :hover {
     color: var(--hover-blue);
   }
-`;
-
-const Position = styled.p`
-  color: var(--orange2);
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: bold;
-  line-height: 1;
-  margin: 0;
 `;
 
 const CardProfessionals = ({

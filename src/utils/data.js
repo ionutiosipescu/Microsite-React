@@ -354,3 +354,57 @@ export const PostsArr = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
 ];
+const expertiseDescription =
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+export const expertiseData = [
+  {
+    id: 1,
+    title: "Quality Efficiency Improvement",
+    description: expertiseDescription,
+
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 2,
+    title: "Commercial Operations & Growth Enablement",
+    description: expertiseDescription,
+
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 3,
+    title: "Pharma & MedTech Portofolio Management",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 4,
+    title: "Supply Chain and Planning Excellence",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 5,
+    title: " CDMO operations and commercial improvements",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 6,
+    title: " Target Operating model design and Implementation",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 7,
+    title: "Cost out and Bottom Line improvement",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+  {
+    id: 8,
+    title: "Procurement and Category management",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+];

@@ -12,6 +12,7 @@ import {
   InsightCaseArticlePage,
   Digital,
   DigitalInsighthPodcast,
+  ExpertisePage,
 } from "../pages/";
 
 export const routeNames = {
@@ -23,8 +24,9 @@ export const routeNames = {
   insightCaseArticlePage: "/insights/case/:id",
 
   expertise: "/expertise",
-  expertiseQuality: "/expertise/quality",
-  expertisePharma: "/expertise/pharma",
+  expertisePage: "/expertise/:id",
+  // expertiseQuality: "/expertise/quality",
+  // expertisePharma: "/expertise/pharma",
 
   brazilian: "/brazilian",
   dashboard: "/dashboard",
@@ -40,20 +42,21 @@ export const routes = [
   },
 
   {
-    path: routeNames.expertiseQuality,
+    path: routeNames.expertisePage,
     exact: true,
-    element: <ExpertiseQuality />,
+    element: <ExpertisePage />,
   },
-  {
-    path: routeNames.expertiseQuality,
-    exact: true,
-    element: <ExpertiseQuality />,
-  },
-  {
-    path: routeNames.expertisePharma,
-    exact: true,
-    element: <ExpertisePharma />,
-  },
+  // {
+  //   path: routeNames.expertiseQuality,
+  //   exact: true,
+  //   element: <ExpertiseQuality />,
+  // },
+
+  // {
+  //   path: routeNames.expertisePharma,
+  //   exact: true,
+  //   element: <ExpertisePharma />,
+  // },
 
   {
     path: routeNames.insightLatest,
