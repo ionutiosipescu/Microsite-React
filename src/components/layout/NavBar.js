@@ -22,7 +22,7 @@ const CustomNavbar = styled(Navbar)`
       height: 40px;
     }
   }
-  #navbarScrollingDropdown,
+  #navbar-scrolling-dropdown,
   .web-title {
     color: rgba(0, 0, 0, 0.9);
     padding: 20px 12px !important;
@@ -43,7 +43,7 @@ const CustomNavbar = styled(Navbar)`
   .nav-item.show.dropdown a {
     background-color: #00254a;
   }
-  .containerIcon {
+  .container-icon {
     margin-top: 0px !important;
     width: 70px;
     height: 70px;
@@ -65,7 +65,7 @@ const NavbarSearchContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: #0085ca;
-  .inputClass {
+  .input-class {
     height: 40px;
     background-color: #0b72a7;
     border: none;
@@ -109,10 +109,10 @@ const NavBar = () => {
     <>
       {showSearchDiv && (
         <NavbarSearchContainer
-          className=" containerNavbarSearch
+          className=" container-navbar-search
 	  "
         >
-          {/* <input className="w-100 mx-5   inputClass" />
+          {/* <input className="w-100 mx-5   input-class" />
           <button className="me-5" /> */}
 
           <div class="form-group has-search">
@@ -129,7 +129,7 @@ const NavBar = () => {
           <div className="d-flex justify-content-around mx-3 align-items-center">
             <CustomNavbar.Toggle aria-controls="navbarScroll" />
             <CustomNavbar.Text
-              className={` d-lg-none align-items-center d-flex my-1  containerIcon ${
+              className={` d-lg-none align-items-center d-flex my-1  container-icon ${
                 showSearchDiv ? "active-link" : " inactive-link"
               } `}
             >
@@ -166,11 +166,11 @@ const NavBar = () => {
               <NavDropdown
                 className=""
                 title="Expertise"
-                id="navbarScrollingDropdown"
+                id="navbar-scrolling-dropdown"
               >
                 <NavDropdown.Item
                   href={routeNames.expertiseQuality}
-                  id="something"
+                  id="navbar-scrolling-item"
                 >
                   {"Quality Efficiency Improvement"}
                 </NavDropdown.Item>
@@ -183,7 +183,7 @@ const NavBar = () => {
               <NavDropdown
                 className=""
                 title="Insights"
-                id="navbarScrollingDropdown"
+                id="navbar-scrolling-dropdown"
               >
                 <NavDropdown.Item href={routeNames.insightLatest}>
                   {"Latest Insights"}
@@ -216,7 +216,7 @@ const NavBar = () => {
             </Nav>
             <Nav>
               <Nav.Link
-                className={`d-none d-lg-flex my-2 containerIcon ${
+                className={`d-none d-lg-flex my-2 container-icon ${
                   showSearchDiv ? "active-link" : " inactive-link"
                 } `}
                 href="#action2"
