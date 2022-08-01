@@ -8,30 +8,14 @@ import {
   StyledRow,
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import CardCapabilities from "../../../components/cards/CardCapabilities";
-import RelatedInsight_Table from "../../../components/tables/RelatedInsight-Table";
 import Heading_Paragraph from "../../../components/H&P/H&P";
 import { getArticles } from "../../../API";
 import styled from "styled-components";
-import TestTable from "../../../components/cards/TestTable";
+import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
+import { TableContainer } from "../../../components/tables/TableContainer";
+import { Table } from "../../../components/tables/Table";
 
-const Table = styled.div`
- display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    padding-left: 0;
- 
-`
-const TableContainer = styled.div`
-h3 {
-margin: 40px 0 ;
-}
-`
-// const Table1= styled.div`
-// padding: 20px 0;
-// `
-// const Table2= styled.div`
-// padding: 20px 0;
-// `
+
 const Practice = () => {
   const cardContent = {
     imageSrc: image,
@@ -52,19 +36,21 @@ const Practice = () => {
       <StyledRow>
         <StyledCol1>
           <Heading_Paragraph />
-            <TableContainer>
-              <h3>Related Insights</h3>
-                        <Table>  
-                        {insights.map((post) => {
-              return(
-                <div>
-                  <TestTable post={post}></TestTable>
-                </div>
-              );
-                        })}
-                        </Table>
-            </TableContainer>
           <CardCapabilities />
+              <TableContainer>
+                <h3>Related Insights</h3>
+                            <Table>
+                
+                          {insights.map((post) => {
+                return(
+                  <div>
+                    <RelatedInsigts_Table post={post}></RelatedInsigts_Table>
+                  </div>
+                );
+                          })}
+                            </Table>
+              </TableContainer>
+          
         </StyledCol1>
         <StyledCol2>
           <CardProfessionals {...cardContent} />

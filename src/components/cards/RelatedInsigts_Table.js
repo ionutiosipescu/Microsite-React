@@ -4,9 +4,13 @@ import styled from 'styled-components'
 
 const NewsCell = styled.div`
 	border-bottom: 1px solid #e6e6e6;
+	padding-bottom: 22px;
+	h4 {
+		margin-bottom: 22px;
+	}
 `
 
-const TestTable2 = ({post}) => {
+const RelatedInsigts_Table = ({post}) => {
 	return (
 		<>
 		<NewsCell>
@@ -18,5 +22,5 @@ const TestTable2 = ({post}) => {
 	)
 }
 
-export default TestTable2
+export default RelatedInsigts_Table
 
