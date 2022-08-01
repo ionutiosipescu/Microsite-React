@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import YellowButton from "../buttons/YellowButton";
 
 const ServicesCardContainer = styled.div`
-  .ceva:last-of-type {
+  .card-container:last-of-type {
     border-bottom: 0 !important;
   }
   .cardTitle {
@@ -29,7 +29,7 @@ const ServiceCard = ({ data }) => {
       <Row className="my-4 fw-bold   ">
         <h3 className="cardTitle">{data.title}</h3>
 
-        <Row className="border-bottom ceva">
+        <Row className="border-bottom card-container">
           <Col lg={8}>
             <p className="cardDescription">{data.description}</p>
           </Col>
