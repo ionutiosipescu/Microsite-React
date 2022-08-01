@@ -68,8 +68,8 @@ const Leadership = () => {
     fetchData(setCarouselData);
   }, []);
 
-  let el = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
-  var clean = DOMPurify.sanitize(el);
+  let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
+  var clean = DOMPurify.sanitize(dirty);
 
   // console.log(inputText)
   useDocumentTitle("Leadership | Alvarez & Marsal");
@@ -110,7 +110,11 @@ const Leadership = () => {
       {arr[clickedNavbarCell]}
       <div
         className="pt-3 text-decoration-none"
-        dangerouslySetInnerHTML={{ __html: el }}
+        dangerouslySetInnerHTML={{ __html: dirty }}
+      ></div>
+      <div
+        className="pt-3 text-decoration-none"
+        dangerouslySetInnerHTML={{ __html: clean }}
       ></div>
 
       <div className="m-4">
