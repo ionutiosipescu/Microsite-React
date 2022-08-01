@@ -18,9 +18,16 @@ export const XContainer = styled.a`
   height: 2rem;
   cursor: pointer;
 
-  img {
-    font-size: 2rem;
+  svg {
+    width: 2rem;
     height: 2rem;
+    fill: var(--gray4);
+  }
+
+  :hover {
+    svg {
+      fill: #fff;
+    }
   }
 `;
 

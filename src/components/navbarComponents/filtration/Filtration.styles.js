@@ -55,6 +55,14 @@ export const Form = styled.form`
 
   margin-left: auto;
 
+  svg {
+    fill: white;
+  }
+
+  :hover {
+    fill: var(--darkBlue);
+  }
+
   input {
     display: ${(props) => (props.disappearOnMobile ? "none" : "initial")};
 

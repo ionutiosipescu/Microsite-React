@@ -24,6 +24,10 @@ const LinksC = styled.div`
   flex-direction: column;
   .media {
     justify-content: space-between;
+    svg:hover {
+      fill: var(--hover-blue);
+      transition: color 0.2s ease-out;
+    }
   }
   .Global {
     padding-bottom: 0;
