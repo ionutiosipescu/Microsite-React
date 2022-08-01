@@ -64,14 +64,14 @@ const InsightCaseArticlePage = ({}) => {
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
                 <div>
                   <span className="text-muted text-italic">
-                    {dateToShortLocale(state?.date)}
+                    {dateToShortLocale(articleData?.date)}
                   </span>
                 </div>
 
-                <h4 className="pt-5 fw-bold">{state.title} </h4>
+                <h4 className="pt-5 fw-bold">{articleData.title} </h4>
                 <div
                   className="pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{ __html: state.body }}
+                  dangerouslySetInnerHTML={{ __html: articleData.content }}
                 ></div>
 
                 <p className=""></p>
@@ -102,7 +102,7 @@ const InsightCaseArticlePage = ({}) => {
             {/* -------------------------------------------------------Stay connnected */}
             <ListManagers
               titleSection={"Featured Profiles"}
-              managers={state.authorsData}
+              managers={articleData.authorsData}
             />
             <LinksList
               titleSection={"Stay Connected"}
