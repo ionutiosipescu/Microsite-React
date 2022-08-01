@@ -23,6 +23,27 @@ export const getArticle = async (setContent) => {
   });
 };
 
+export const getSingleArticle = (setArticleData, id) => {
+  // console.log("herro");
+  const link = baseApiUrl + "/node/article?&filter[id]=" + id;
+  Axios.get(link).then((res) => {
+    console.log(res.data.data[0]);
+    res = res.data.data[0];
+
+    let article = {};
+
+    article.content = res.attributes.body.value;
+
+    article.date = new Date(
+      res.attributes.revision_timestamp
+    ).toLocaleDateString();
+    article.title = res.attributes.title;
+    // setArticleData()
+    console.log(article);
+    return article;
+  });
+};
+
 export const getArticles = async (setContent, articleType, amount) => {
   const link = getLink(articleType, amount);
 

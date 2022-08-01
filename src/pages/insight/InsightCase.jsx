@@ -13,6 +13,7 @@ import {
 import { BreadCrumb, FilterBy } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
+import { ArticleContainers } from "./styles/inisghts.style";
 
 import {
   getCaseStudiesArticles,
@@ -21,14 +22,6 @@ import {
 } from "../../API";
 
 import { useDocumentTitle } from "../../hook";
-import { Placeholder } from "react-bootstrap";
-
-const PostsContainer = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
 
 const InsightCase = () => {
   const location = useLocation();
@@ -79,7 +72,7 @@ const InsightCase = () => {
             <span class="sr-only">Loading...</span>
           </div>
         ) : (
-          <PostsContainer>
+          <ArticleContainers>
             {articles.map((post, index) => (
               <ArticleCard
                 post={post}
@@ -87,7 +80,7 @@ const InsightCase = () => {
                 key={index}
               />
             ))}
-          </PostsContainer>
+          </ArticleContainers>
         )}
       </StyledContainer>
       <CarouselSection

@@ -1,10 +1,12 @@
-export { getExpertiseFields } from "./filterByFields";
-export { getCountries } from "./filterByFields";
-export { getArticle } from "./articles";
-export { getArticles } from "./articles";
+export { getCountries, getExpertiseFields } from "./filterByFields";
+export {
+  getCaseStudiesArticles,
+  getArticle,
+  getSingleArticle,
+  getArticles,
+  getCarouselArticles,
+} from "./articles";
 export { fetchHeroSectionDataHome } from "./heroSection";
-export { getCarouselArticles } from "./articles";
-export { getCaseStudiesArticles } from "./articles";
 export { getPodcasts } from "./podcasts";
 export { fetchData, fetchRecentRecognition } from "./home";
 export { getInsights } from "./insights";

@@ -17,7 +17,11 @@ const ArticleCard = ({ title, field_teaser_text, nid, uuid, date }) => {
 
   return (
     <div className="col-sm-12 col-md-11 col-lg-5 border-bottom h-100 py-3 ">
-      <CustomTitle onClick={() => navigate(`/insights/case/${title}`)}>
+      <CustomTitle
+        onClick={() =>
+          navigate(`/insights/case/${title} `, { articleId: uuid })
+        }
+      >
         {title}
       </CustomTitle>
       <span className="text-muted"> {date}</span>

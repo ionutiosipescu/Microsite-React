@@ -9,19 +9,12 @@ import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-
+import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { getArticles, getInsights } from "../../API";
+import { getArticles, getSingleArticle, getInsights } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
-
-const PostsContainer = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
 
 const InsightLatest = () => {
   const [filterByTags, setFilterByTags] = useState([
@@ -33,15 +26,19 @@ const InsightLatest = () => {
   // Getting the latest articles from server
   const [postsContent, setPostsContent] = useState([]);
   const [insightsContent, setInsightsContent] = useState([]);
+  const [articleData, setArticleData] = useState([]);
+
   useEffect(() => {
     getArticles(setPostsContent, "insights");
+    getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
 
     getInsights(setInsightsContent);
   }, []);
 
-  console.log(insightsContent);
+  console.log(articleData);
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+
   return (
     <>
       <HeroSection
@@ -65,14 +62,14 @@ const InsightLatest = () => {
       <StyledContainer>
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />
 
-        <PostsContainer>
+        <ArticleContainers>
           {/* {postsContent?.map((post, index) => (
             <ArticleCard post={post} key={index} />
           ))} */}
           {insightsContent?.map((article, index) => (
             <ArticleCard {...article} key={index} />
           ))}
-        </PostsContainer>
+        </ArticleContainers>
       </StyledContainer>
 
       <CarouselSection
