@@ -31,8 +31,8 @@ import { Spinner } from "../../components";
 export const LeaadersContainer = styled.div`
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
   position: relative;
 `;
 
