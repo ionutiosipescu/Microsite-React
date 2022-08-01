@@ -6,7 +6,7 @@ import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-import { BreadCrumb, FilterBy } from "../../components";
+import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 
@@ -14,6 +14,7 @@ import {
   getCaseStudiesArticles,
   fetchHeroSectionDataHome,
   getCarouselArticles,
+  fetchData,
 } from "../../API";
 
 import { useDocumentTitle } from "../../hook";
@@ -40,8 +41,9 @@ const InsightCase = () => {
     setLoading(true);
     fetchHeroSectionDataHome(setHeroSectionData);
     getCaseStudiesArticles(setArticles);
-    getCarouselArticles(setCarouelData);
+    // getCarouselArticles(setCarouelData);
     setLoading(false);
+    fetchData(setCarouelData);
   }, []);
 
   useDocumentTitle("Insights | Case Studies | Alvarez & Marsal");
@@ -82,15 +84,19 @@ const InsightCase = () => {
           </PostsContainer>
         )}
       </StyledContainer>
-      <CarouselSection
-        categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="#002B49"
-        arr={carouselData}
-        titleColor="#0085CA"
-        textColor="#fff"
-        textDate="#fff"
-        carouselDotBackground="#002b49"
-      />
+      {carouselData.length == 0 ? (
+        <Spinner />
+      ) : (
+        <CarouselSection
+          categoryCarousel={carouselData?.block_two?.title}
+          backgroundColor="#002B49"
+          arr={carouselData?.block_two?.data}
+          titleColor="#0085CA"
+          textColor="#fff"
+          textDate="#FFFFFF"
+          carouselDotBackground="#002b49"
+        />
+      )}
     </>
   );
 };

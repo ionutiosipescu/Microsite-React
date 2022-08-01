@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 //style to overload the carousel's indicators
-import "./CarouselSection.scss";
+// import "./CarouselSection.scss";
 import { dateFromSecondsToShortLocale } from "../../utils";
 
 const CarouselContainer = styled.div`
