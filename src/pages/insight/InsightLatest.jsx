@@ -6,9 +6,9 @@ import {
   NavbarDropdown,
 } from "../../components/navbarComponents";
 
-import { BreadCrumb, FilterBy } from "../../components";
+import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { getArticles } from "../../API";
+import { fetchData, getArticles } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
@@ -27,9 +27,11 @@ const InsightLatest = () => {
   ]);
 
   // Getting the latest articles from server
+  const [carouselData, setCarouselData] = useState([]);
   const [postsContent, setPostsContent] = useState([]);
   useEffect(() => {
     getArticles(setPostsContent, "insights");
+    fetchData(setCarouselData);
   }, []);
 
   // console.log(postsContent)
@@ -63,16 +65,19 @@ const InsightLatest = () => {
           ))}
         </PostsContainer>
       </StyledContainer>
-
-      <CarouselSection
-        categoryCarousel={"Healthcare & Live Sciences News"}
-        backgroundColor="#002B49"
-        arr={PostsArr}
-        titleColor="#0085CA"
-        textColor="#fff"
-        textDate="#fff"
-        carouselDotBackground="#002b49"
-      />
+      {carouselData.length == 0 ? (
+        <Spinner />
+      ) : (
+        <CarouselSection
+          categoryCarousel={carouselData?.block_two?.title}
+          backgroundColor="#002B49"
+          arr={carouselData?.block_two?.data}
+          titleColor="#0085CA"
+          textColor="#fff"
+          textDate="#FFFFFF"
+          carouselDotBackground="#002b49"
+        />
+      )}
     </>
   );
 };

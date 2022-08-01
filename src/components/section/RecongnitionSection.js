@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 //style to overload the carousel's indicators
-import "../cards/CarouselSection.scss";
+// import "../cards/CarouselSection.scss";
 
 const CarouselContainer = styled.div`
   // height: 100%;

@@ -10,3 +10,4 @@ export { default as CarQualityCardouselSection } from "./QualityCard";
 export { default as ServiceCard } from "./ServiceCard";
 export { default as PostCard } from "./PostCard";
 export { default as CardOurServices } from "./CardOurServices";
+export { default as CardSubscription } from "./CardSubscription";

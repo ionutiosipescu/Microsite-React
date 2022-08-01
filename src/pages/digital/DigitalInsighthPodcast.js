@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import styled from "styled-components";
 
 //costum
-import { HeroSection } from "../../components/cards";
+import { HeroSection, CardSubscription } from "../../components/cards";
 
 //icons
 import {
@@ -30,6 +30,7 @@ import {
 import { sizem } from "../../utils/breakpoints";
 import YellowButton from "../../components/buttons/YellowButton";
 import { useDocumentTitle } from "../../hook";
+import LeftSection from "../../components/cards/LeftSection";
 
 const DigitalInsighthPodcast = () => {
   const { state } = useLocation();
@@ -231,33 +232,8 @@ const DigitalInsighthPodcast = () => {
             <div className="row">
               <div className="col-2 col-sm-2 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
                 {/*------------------------------------------------------------- LeftSectionIcons */}
-                <div className="leftSection pt-3">
-                  {leftSectionIcons.map((x, index) => (
-                    <div
-                      // className=""
-                      key={index}
-                      className={` iconContainer ${
-                        openedState[index] && "menuIconActive"
-                      }`}
-                      onClick={() => {
-                        handleDisplay(index);
-                      }}
-                    >
-                      <div>{x.icon}</div>
-                      {openedState[index] && (
-                        <span className="containerIcons">
-                          {x?.children.map((icon, index) => (
-                            <div
-                              className="iconDiv"
-                              style={{ backgroundColor: `${icon.color}` }}
-                            >
-                              {icon.icon || icon.text}
-                            </div>
-                          ))}
-                        </span>
-                      )}
-                    </div>
-                  ))}
+                <div className="leftSection   d-flex justify-content-center">
+                  <LeftSection />
                 </div>
               </div>
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
@@ -392,22 +368,13 @@ const SubscribeSection = ({ titleSection, iconsArr }) => {
       <h4 className="fw-bold">{titleSection || ""} :</h4>
       <div className="d-flex w-100 pt-2 row ">
         {iconsArr.map((x) => (
-          <div className="card col-lg-3 col-md-6">
-            <div className="d-flex align-items-center  ">
-              {/* <LinkedIn width="32px" height="32px" /> */}
-              {x.icon}
-              <div className="px-3">
-                <span className="text-muted fs-6">Listen on</span>
-                <br />
-                <span className="  fs-4 lh-1">{x?.text}</span>
-              </div>
-            </div>
-          </div>
+          <CardSubscription info={x} />
         ))}
       </div>
     </>
   );
 };
+
 const ListManagers = ({ titleSection, managers }) => {
   return (
     <>
