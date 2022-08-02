@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
+import {
+  ArticleCard,
+  HeroSection,
+  CarouselSection,
+} from "../../components/cards";
 import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-
+import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { fetchData, getArticles } from "../../API";
+import {
+  getArticles,
+  getSingleArticle,
+  getInsights,
+  fetchData,
+} from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
-
-const PostsContainer = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
 
 const InsightLatest = () => {
   const [filterByTags, setFilterByTags] = useState([
@@ -29,13 +31,21 @@ const InsightLatest = () => {
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
   const [postsContent, setPostsContent] = useState([]);
+  const [insightsContent, setInsightsContent] = useState([]);
+  const [articleData, setArticleData] = useState([]);
+
   useEffect(() => {
     getArticles(setPostsContent, "insights");
     fetchData(setCarouselData);
+    getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
+
+    getInsights(setInsightsContent);
   }, []);
 
-  // console.log(postsContent)
+  console.log(articleData);
+
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+
   return (
     <>
       <HeroSection
@@ -44,7 +54,7 @@ const InsightLatest = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={"search"}
+        searchBar2={{ placeholder: "enter search here" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
@@ -59,11 +69,14 @@ const InsightLatest = () => {
       <StyledContainer>
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />
 
-        <PostsContainer>
-          {postsContent?.map((post, index) => (
-            <PostCard post={post} key={index} />
+        <ArticleContainers>
+          {/* {postsContent?.map((post, index) => (
+            <ArticleCard post={post} key={index} />
+          ))} */}
+          {insightsContent?.map((article, index) => (
+            <ArticleCard {...article} key={index} />
           ))}
-        </PostsContainer>
+        </ArticleContainers>
       </StyledContainer>
       {carouselData.length == 0 ? (
         <Spinner />

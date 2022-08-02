@@ -4,14 +4,14 @@ import { Row, Col } from "react-bootstrap";
 import YellowButton from "../buttons/YellowButton";
 
 const ServicesCardContainer = styled.div`
-  .ceva:last-of-type {
+  .card-container:last-of-type {
     border-bottom: 0 !important;
   }
-  .cardTitle {
+  .card-title {
     font-size: 18px;
     font-weight: bold;
   }
-  .cardDescription {
+  .card-description {
     font-size: 14px;
     font-weight: normal;
     padding-top: 10px;
@@ -27,11 +27,11 @@ const ServiceCard = ({ data }) => {
   return (
     <ServicesCardContainer>
       <Row className="my-4 fw-bold   ">
-        <h3 className="cardTitle">{data.title}</h3>
+        <h3 className="card-title">{data.title}</h3>
 
-        <Row className="border-bottom ceva">
+        <Row className="border-bottom card-container">
           <Col lg={8}>
-            <p className="cardDescription">{data.description}</p>
+            <p className="card-description">{data.description}</p>
           </Col>
 
           <Col lg={4} className="d-flex align-items-center">

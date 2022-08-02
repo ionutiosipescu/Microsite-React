@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import PostCard from "../../../components/cards/PostCard";
+import ArticleCard from "../../../components/cards/ArticleCard";
 import TranslateButton from "../../../components/buttons/TranslateButton";
 import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { getArticles } from "../../../API";
@@ -31,7 +31,7 @@ const News = () => {
       <TranslateButton text1={"English"} text2={"Portuguese"} />
       <PostsContainer>
         {news.map((post) => (
-          <PostCard post={post} locationName={LocationName} />
+          <ArticleCard post={post} locationName={LocationName} />
         ))}
       </PostsContainer>
     </StyledContainer>

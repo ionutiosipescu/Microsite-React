@@ -24,124 +24,29 @@ import {
   LetterIcon,
   // Envelope,
 } from "../../assets/icons";
-import { sizem } from "../../utils/breakpoints";
-import { Cell } from "../../components/navbarComponents/navigation/Navigation.styles";
-import {
-  FiltrationNavbar,
-  NavbarDropdown,
-} from "../../components/navbarComponents";
+
 import { dateToShortLocale } from "../../utils";
 import { useEffect } from "react";
-import { fetchData } from "../../API";
+import { fetchData, getSingleArticle } from "../../API";
 import LeftSection from "../../components/cards/LeftSection";
 import { useDocumentTitle } from "../../hook";
-
-const PageContainer = styled.div`
-  .textCategory {
-    color: #0085ca;
-  }
-
-  h6 img {
-    width: 13px;
-    color: #0085ca;
-    margin: 0px 10px;
-  }
-
-  @media ${sizem.mdm} {
-    .secondSection {
-      text-align: center;
-    }
-    .link {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center !important;
-    }
-  }
-  .nameAuthor {
-    text-transform: uppercase;
-    font-size: 1.25rem;
-    line-height: 1.25rem;
-    color: #000;
-  }
-  .positionAutho {
-    text-transform: uppercase;
-    font-size: 1rem;
-    color: #666666;
-    line-height: 1rem;
-  }
-
-  .link {
-    text-decoration: none;
-    color: #000;
-    :hover {
-      .image {
-        cursor: pointer;
-        background-color: var(--hover-blue);
-        img {
-          filter: grayscale(1) invert(1);
-        }
-        /* background-color: red; */
-        /* background-color: var(--hover-blue); */
-      }
-      .textLinks {
-        cursor: pointer;
-        color: var(--hover-blue);
-      }
-    }
-  }
-  .image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-color: var(--gray3);
-
-    /* border: 2px solid red; */
-    img {
-      width: 22px;
-      height: 22px;
-    }
-  }
-
-  .textLinks {
-    :hover {
-      cursor: pointer;
-      color: var(--hover-blue);
-    }
-  }
-`;
+import { PageContainer } from "./styles/InsightCaseArticlePage.style";
 
 const InsightCaseArticlePage = ({}) => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = useParams();
-  const [toggle, setToggle] = useState(false);
   const [carouselData, setCarouselData] = useState([]);
-
-  const [openedState, setOpenedState] = useState(
-    Array.from(leftSectionIcons, () => false)
-  );
-
-  // const handleDisplay = (index) => {
-  //   setToggle(!toggle);
-
-  //   if (!openedState[index]) {
-  //     let arr = Array.from(leftSectionIcons, () => false);
-  //     arr[index] = true;
-  //     setOpenedState([...arr]);
-  //   } else {
-  //     setOpenedState(Array.from(leftSectionIcons, () => false));
-  //   }
-  // };
+  const [articleData, setArticleData] = useState([]);
 
   useEffect(() => {
     fetchData(setCarouselData);
+    getSingleArticle(setArticleData, "65ed4aaf-bc68-4a66-9d7f-c27b39418cbf");
   }, []);
 
-  useDocumentTitle(`${state?.title}`);
+  console.log("this is single article", articleData);
+
+  // useDocumentTitle(`${state?.title}`);
   return (
     <PageContainer>
       <HeroSection
@@ -161,14 +66,14 @@ const InsightCaseArticlePage = ({}) => {
               <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
                 <div>
                   <span className="text-muted text-italic">
-                    {dateToShortLocale(state?.date)}
+                    {dateToShortLocale(articleData?.date)}
                   </span>
                 </div>
 
-                <h4 className="pt-5 fw-bold">{state?.title} </h4>
+                <h4 className="pt-5 fw-bold">{articleData.title} </h4>
                 <div
                   className="pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{ __html: state?.body }}
+                  dangerouslySetInnerHTML={{ __html: articleData.content }}
                 ></div>
 
                 <p className=""></p>
@@ -216,7 +121,7 @@ const InsightCaseArticlePage = ({}) => {
             {/* -------------------------------------------------------Stay connnected */}
             <ListManagers
               titleSection={"Featured Profiles"}
-              managers={state?.authorsData}
+              managers={articleData.authorsData}
             />
             <LinksList
               titleSection={"Stay Connected"}

@@ -1,10 +1,10 @@
 import Axios from "axios";
 
-const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
+const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 export const image_URL = "https://www.alvarezandmarsal.com/";
 
 export const fetchHeroSectionDataHome = async (setContent) => {
-  const link = `${baseApiUrl}/taxonomy_term/industries/c11b8f8f-9d3a-433a-949e-5518b9b24c25?include=field_image`;
+  const link = `${jsonApi}/taxonomy_term/industries/c11b8f8f-9d3a-433a-949e-5518b9b24c25?include=field_image`;
   let heroSectionData = {};
   await Axios.get(link)
     .then((res) => {
