@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { BreadCrumb, Spinner } from "../../components";
 import {
   LinkedinStay,
@@ -32,6 +33,7 @@ import { useDocumentTitle } from "../../hook";
 import { PageContainer } from "./styles/InsightCaseArticlePage.style";
 
 const InsightCaseArticlePage = ({}) => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = useParams();
   const [carouselData, setCarouselData] = useState([]);
@@ -78,7 +80,7 @@ const InsightCaseArticlePage = ({}) => {
 
                 {/*-------------------------------- imagesContainer */}
                 <div className="d-flex pt-4 ">
-                  {arrImages.map((image, index) => (
+                  {/* {arrImages?.map((image, index) => (
                     <div className="px-2" key={index}>
                       <img
                         src={image}
@@ -87,11 +89,28 @@ const InsightCaseArticlePage = ({}) => {
                         className="img-rounded"
                       />
                     </div>
-                  ))}
+                  ))} */}
+                  <object
+                    data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
+                    type="application/pdf"
+                    width="20%"
+                    height="10%"
+                  >
+                    <p>
+                      It appears you don't have a PDF plugin for this browser.
+                      No biggie... you can{" "}
+                    </p>
+                  </object>
                 </div>
                 <div className="pt-4 learnMore">
-                  <a href="#" className="text-info text-decoration-none">
-                    Learn mode now.
+                  <a
+                    href={"http://www.africau.edu/images/default/sample.pdf"}
+                    without
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-info text-decoration-none"
+                  >
+                    Learn more now.
                   </a>
                 </div>
               </div>
@@ -304,12 +323,6 @@ const LinksList = ({ titleSection, linkIcons }) => {
 
 const iconsArr = [
   {
-    id: 1,
-    icon: <FacebookStay />,
-    text: "Facebook",
-    link: "https://www.facebook.com/alvarezandmarsal",
-  },
-  {
     id: 2,
     icon: <LinkedinStay />,
     text: "Linkedin",
@@ -321,6 +334,13 @@ const iconsArr = [
     text: "Twitter",
     link: "https://twitter.com/alvarezmarsal",
   },
+  {
+    id: 1,
+    icon: <FacebookStay />,
+    text: "Facebook",
+    link: "https://www.facebook.com/alvarezandmarsal",
+  },
+
   {
     id: 3,
     icon: <YoutubeStay />,
