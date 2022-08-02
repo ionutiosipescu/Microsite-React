@@ -1,28 +1,33 @@
 import Axios from "axios";
-import { getLink } from "./helper";
+import { getLink, grabDataFromIncluded, grabAuthors } from "./helper";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 
 export const getSingleArticle = (setArticleData, id) => {
-  const link = `${jsonApi}/node/article?&include=field_authors.field_professional_title&filter[id]=${id}`;
-  console.log(link);
+  const link = `${jsonApi}/node/article?&include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`;
+  // console.log(link);
+  // &filter[id]46bb933f-03c1-4d7e-a1ec-b14a839c1dd7
 
   Axios.get(link).then((res) => {
-    console.log(res.data.data[0]);
-
-    const data = res.data.data[0];
+    // console.log(res.data.data[0]);
+    const data = res.data.data;
     const included = res.data.included;
 
     let article = {};
 
-    article.content = data.attributes.body.value;
+    article.content = data[0].attributes.body.value;
 
     article.date = new Date(
-      data.attributes.revision_timestamp
+      data[0].attributes.revision_timestamp
     ).toLocaleDateString();
-    article.title = data.attributes.title;
+    article.title = data[0].attributes.title;
 
-    // article.authors = included[0].attributes.title;
+    article.author = grabAuthors("field_authors", res.data, 0);
+
+    // console.log("this is included", included);
+
+    // article.authors = included.attributes.title;
+
     // article.professionalTitle = included[1].attributes.name;
 
     setArticleData(article);
