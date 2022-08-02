@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { PostCard, NewsCard } from "../../../components/cards";
+import { ArticleCard, NewsCard } from "../../../components/cards";
 import { getArticles } from "../../../API";
 import { useDocumentTitle } from "../../../hook";
 
@@ -25,7 +25,7 @@ const NewsRelease = () => {
   return (
     <PostsContainer>
       {news.map((post, index) => (
-        <PostCard post={post} key={index} />
+        <ArticleCard post={post} key={index} />
       ))}
     </PostsContainer>
   );

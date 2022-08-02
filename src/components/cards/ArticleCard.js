@@ -11,22 +11,23 @@ const CustomTitle = styled.h5`
   }
 `;
 
-const PostCard = ({ post }) => {
+const ArticleCard = ({ title, field_teaser_text, nid, uuid, date }) => {
   const navigate = useNavigate();
+  // console.log("this is article card", article);
 
   return (
     <div className="col-sm-12 col-md-11 col-lg-5 border-bottom h-100 py-3 ">
       <CustomTitle
         onClick={() =>
-          navigate(`/insights/case/${post.title}`, { state: post })
+          navigate(`/insights/case/${title} `, { articleId: uuid })
         }
       >
-        {post?.title}
+        {title}
       </CustomTitle>
-      <span className="text-muted"> {post?.date}</span>
-      <p className="py-2 fs-6">{post?.teaserText}</p>
+      <span className="text-muted"> {date}</span>
+      <p className="py-2 fs-6">{field_teaser_text}</p>
     </div>
   );
 };
 
-export default PostCard;
+export default ArticleCard;
