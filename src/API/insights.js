@@ -1,7 +1,8 @@
 import Axios from "axios";
+const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 
 export const getInsights = (setInsightsContent) => {
-  Axios.get("http://192.168.0.113:8080/api/v1/insight-filter").then((res) => {
+  Axios.get(`${baseApiUrl}/v1/insight-filter`).then((res) => {
     setInsightsContent(res.data);
   });
 };

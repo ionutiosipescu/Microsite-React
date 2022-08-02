@@ -2,7 +2,6 @@ import Axios from "axios";
 import { grabDataFromIncluded } from "./helper";
 
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
-const imageLink = process.env.REACT_APP_BASE_IMAGE_URL;
 
 export const getPodcasts = (setContent) => {
   const link =
