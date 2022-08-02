@@ -1,8 +1,9 @@
 import Axios from "axios";
-const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
+
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
 
 export const getInsights = (setInsightsContent) => {
-  Axios.get(`${baseApiUrl}/v1/insight-filter`).then((res) => {
+  Axios.get(`${customApi}/v1/insight-filter`).then((res) => {
     setInsightsContent(res.data);
   });
 };

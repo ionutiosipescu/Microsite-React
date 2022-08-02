@@ -1,7 +1,6 @@
 export { getCountries, getExpertiseFields } from "./filterByFields";
 export {
   getCaseStudiesArticles,
-  getArticle,
   getSingleArticle,
   getArticles,
   getCarouselArticles,

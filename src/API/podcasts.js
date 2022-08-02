@@ -1,12 +1,10 @@
 import Axios from "axios";
 import { grabDataFromIncluded } from "./helper";
 
-const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
+const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 
 export const getPodcasts = (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/podcast?include=field_teaser_image,node_type,field_authors&page[limit]=6&sort=-created";
+  const link = `${jsonApi}/node/podcast?include=field_teaser_image,node_type,field_authors&page[limit]=6&sort=-created`;
 
   Axios.get(link).then((res) => {
     const arr = [];

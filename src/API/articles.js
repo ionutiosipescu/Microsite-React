@@ -1,37 +1,17 @@
 import Axios from "axios";
 import { getLink } from "./helper";
-const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 
-export const getArticle = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created";
-
-  await Axios.get(link).then((res) => {
-    const arr = [];
-
-    res.data.data.map((item) => {
-      let data = {};
-      data.title = item.attributes.title;
-      data.teaserText = item.attributes.field_teaser_text;
-      data.date = item.attributes.created;
-      data.id = item.id;
-
-      arr.push(data);
-    });
-    setContent([...arr]);
-  });
-};
+const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 
 export const getSingleArticle = (setArticleData, id) => {
-  const link =
-    baseApiUrl +
-    "/node/article?&include=field_authors.field_professional_title&filter[id]=" +
-    id;
+  const link = `${jsonApi}/node/article?&include=field_authors.field_professional_title&filter[id]=${id}`;
+  console.log(link);
 
   Axios.get(link).then((res) => {
     console.log(res.data.data[0]);
+
     const data = res.data.data[0];
+    const included = res.data.included;
 
     let article = {};
 
@@ -42,12 +22,9 @@ export const getSingleArticle = (setArticleData, id) => {
     ).toLocaleDateString();
     article.title = data.attributes.title;
 
-    const included = res.data.included;
+    // article.authors = included[0].attributes.title;
+    // article.professionalTitle = included[1].attributes.name;
 
-    article.authors = included[0].attributes.title;
-    article.professionalTitle = included[1].attributes.name;
-
-    // return article;
     setArticleData(article);
   });
 };
@@ -55,12 +32,8 @@ export const getSingleArticle = (setArticleData, id) => {
 export const getArticles = async (setContent, articleType, amount) => {
   const link = getLink(articleType, amount);
 
-  // console.log(amount)
-
   await Axios.get(link).then((res) => {
     const arr = [];
-
-    // console.log(res.data.data);
 
     res.data.data.map((item) => {
       let data = {};
@@ -82,9 +55,7 @@ export const getArticles = async (setContent, articleType, amount) => {
 };
 
 export const getCarouselArticles = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created";
+  const link = `${jsonApi}/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created`;
   const arr = [];
   await Axios.get(link)
     .then((res) => {
@@ -110,9 +81,7 @@ export const getCarouselArticles = async (setContent) => {
 };
 
 export const getCaseStudiesArticles = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_authors,field_primary_industry,field_authors.field_professional_title&filter[field_primary_industry.name]=healthcare&page%5Blimit%5D=8&sort=-created";
+  const link = `${jsonApi}/node/article?include=field_authors,field_primary_industry,field_authors.field_professional_title&filter[field_primary_industry.name]=healthcare&page%5Blimit%5D=8&sort=-created`;
   let parsedArticles = [];
   let allAuthors = [];
 
