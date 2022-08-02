@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import {
   ChevronRight,
@@ -97,6 +98,7 @@ const IconContainer = styled.div`
 `;
 
 const LeftSection = () => {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
@@ -139,7 +141,16 @@ const LeftSection = () => {
                     style={{ backgroundColor: icon?.color }}
                     className="iconDiv"
                   >
-                    {icon.icon || icon.text}
+                    <span
+                      onClick={() => {
+                        if (icon?.link) {
+                          window.open(icon?.link, "_blank");
+                        }
+                        // alert(icon?.link);
+                      }}
+                    >
+                      {icon.icon || icon.text}
+                    </span>
                   </IconContainer>
                 ))}
               </span>
@@ -175,7 +186,13 @@ const leftSectionIcons = [
   {
     id: 1,
     icon: <DocumentIcon />,
-    children: [{ text: "Printable Version", color: "#0085CA" }],
+    children: [
+      {
+        text: "Printable Version",
+        color: "#0085CA",
+        link: "http://www.africau.edu/images/default/sample.pdf",
+      },
+    ],
   },
   {
     id: 2,
@@ -185,6 +202,12 @@ const leftSectionIcons = [
   {
     id: 3,
     icon: <PdfIcon />,
-    children: [{ text: "PDF VERSION", color: "#0085CA" }],
+    children: [
+      {
+        text: "PDF VERSION",
+        color: "#0085CA",
+        link: "http://www.africau.edu/images/default/sample.pdf",
+      },
+    ],
   },
 ];

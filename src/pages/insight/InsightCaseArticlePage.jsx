@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { BreadCrumb, Spinner } from "../../components";
 import {
   LinkedinStay,
@@ -45,13 +45,6 @@ const PageContainer = styled.div`
     width: 13px;
     color: #0085ca;
     margin: 0px 10px;
-  }
-  .link {
-    font-size: 14px;
-  }
-  .link img {
-    font-size: 12px;
-    border-radius: 50%;
   }
 
   @media ${sizem.mdm} {
@@ -108,7 +101,8 @@ const PageContainer = styled.div`
 
     /* border: 2px solid red; */
     img {
-      width: 20px;
+      width: 22px;
+      height: 22px;
     }
   }
 
@@ -121,6 +115,7 @@ const PageContainer = styled.div`
 `;
 
 const InsightCaseArticlePage = ({}) => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = useParams();
   const [toggle, setToggle] = useState(false);
@@ -170,17 +165,17 @@ const InsightCaseArticlePage = ({}) => {
                   </span>
                 </div>
 
-                <h4 className="pt-5 fw-bold">{state.title} </h4>
+                <h4 className="pt-5 fw-bold">{state?.title} </h4>
                 <div
                   className="pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{ __html: state.body }}
+                  dangerouslySetInnerHTML={{ __html: state?.body }}
                 ></div>
 
                 <p className=""></p>
 
                 {/*-------------------------------- imagesContainer */}
                 <div className="d-flex pt-4 ">
-                  {arrImages.map((image, index) => (
+                  {/* {arrImages?.map((image, index) => (
                     <div className="px-2" key={index}>
                       <img
                         src={image}
@@ -189,11 +184,28 @@ const InsightCaseArticlePage = ({}) => {
                         className="img-rounded"
                       />
                     </div>
-                  ))}
+                  ))} */}
+                  <object
+                    data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
+                    type="application/pdf"
+                    width="20%"
+                    height="10%"
+                  >
+                    <p>
+                      It appears you don't have a PDF plugin for this browser.
+                      No biggie... you can{" "}
+                    </p>
+                  </object>
                 </div>
                 <div className="pt-4 learnMore">
-                  <a href="#" className="text-info text-decoration-none">
-                    Learn mode now.
+                  <a
+                    href={"http://www.africau.edu/images/default/sample.pdf"}
+                    without
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-info text-decoration-none"
+                  >
+                    Learn more now.
                   </a>
                 </div>
               </div>
@@ -204,7 +216,7 @@ const InsightCaseArticlePage = ({}) => {
             {/* -------------------------------------------------------Stay connnected */}
             <ListManagers
               titleSection={"Featured Profiles"}
-              managers={state.authorsData}
+              managers={state?.authorsData}
             />
             <LinksList
               titleSection={"Stay Connected"}
@@ -406,12 +418,6 @@ const LinksList = ({ titleSection, linkIcons }) => {
 
 const iconsArr = [
   {
-    id: 1,
-    icon: <FacebookStay />,
-    text: "Facebook",
-    link: "https://www.facebook.com/alvarezandmarsal",
-  },
-  {
     id: 2,
     icon: <LinkedinStay />,
     text: "Linkedin",
@@ -423,6 +429,13 @@ const iconsArr = [
     text: "Twitter",
     link: "https://twitter.com/alvarezmarsal",
   },
+  {
+    id: 1,
+    icon: <FacebookStay />,
+    text: "Facebook",
+    link: "https://www.facebook.com/alvarezandmarsal",
+  },
+
   {
     id: 3,
     icon: <YoutubeStay />,
