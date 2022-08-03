@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
+import {
+  ArticleCard,
+  HeroSection,
+  CarouselSection,
+} from "../../components/cards";
 import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-
+import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { fetchData, getArticles } from "../../API";
+import { getInsights, fetchData } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
-
-const PostsContainer = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
 
 const InsightLatest = () => {
   const [filterByTags, setFilterByTags] = useState([
@@ -28,14 +24,15 @@ const InsightLatest = () => {
 
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
-  const [postsContent, setPostsContent] = useState([]);
+  const [insightsContent, setInsightsContent] = useState([]);
+
   useEffect(() => {
-    getArticles(setPostsContent, "insights");
     fetchData(setCarouselData);
+    getInsights(setInsightsContent);
   }, []);
 
-  // console.log(postsContent)
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+
   return (
     <>
       <HeroSection
@@ -44,7 +41,7 @@ const InsightLatest = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={"search"}
+        searchBar2={{ placeholder: "enter search here" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
@@ -59,11 +56,11 @@ const InsightLatest = () => {
       <StyledContainer>
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />
 
-        <PostsContainer>
-          {postsContent?.map((post, index) => (
-            <PostCard post={post} key={index} />
+        <ArticleContainers>
+          {insightsContent?.map((article, index) => (
+            <ArticleCard {...article} key={index} />
           ))}
-        </PostsContainer>
+        </ArticleContainers>
       </StyledContainer>
       {carouselData.length == 0 ? (
         <Spinner />

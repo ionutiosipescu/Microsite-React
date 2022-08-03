@@ -34,6 +34,8 @@ const Insights = () => {
   useEffect(() => {
     getPodcasts(setPodcasts);
   }, []);
+
+  console.log(podcasts);
   useDocumentTitle("Brazil | Insights | Alvarez & Marsal");
   return (
     <StyledContainer>

@@ -36,7 +36,6 @@ const Professionals = () => {
 
   //handle position of modal
   const handleDisplay = (index) => {
-    console.log("this is the index", index);
     if (!openedState[index]) {
       let arr = Array.from(leadersList, () => false);
       arr[index] = true;
@@ -63,7 +62,7 @@ const Professionals = () => {
         </p>
       </StyledContainer>
       <FiltrationNavbar
-        searchBar
+        searchBar={{ placeholder: "enter search here" }}
         filterByTags={filterByTags}
         setFilterByTags={setFilterByTags}
       >

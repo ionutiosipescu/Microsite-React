@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-import { PostCard, HeroSection, CarouselSection } from "../../components/cards";
+import {
+  ArticleCard,
+  HeroSection,
+  CarouselSection,
+} from "../../components/cards";
 import {
   FiltrationNavbar,
   NavbarDropdown,
@@ -9,6 +13,7 @@ import {
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
+import { ArticleContainers } from "./styles/inisghts.style";
 
 import {
   getCaseStudiesArticles,
@@ -18,14 +23,6 @@ import {
 } from "../../API";
 
 import { useDocumentTitle } from "../../hook";
-import { Placeholder } from "react-bootstrap";
-
-const PostsContainer = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
 
 const InsightCase = () => {
   const location = useLocation();
@@ -56,7 +53,7 @@ const InsightCase = () => {
       />
 
       <FiltrationNavbar
-        searchBar2={{ placeholder: "search" }}
+        searchBar2={{ placeholder: "enter search here" }}
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
@@ -77,11 +74,15 @@ const InsightCase = () => {
             <span class="sr-only">Loading...</span>
           </div>
         ) : (
-          <PostsContainer>
+          <ArticleContainers>
             {articles.map((post, index) => (
-              <PostCard post={post} locationName={locationName} key={index} />
+              <ArticleCard
+                post={post}
+                locationName={locationName}
+                key={index}
+              />
             ))}
-          </PostsContainer>
+          </ArticleContainers>
         )}
       </StyledContainer>
       {carouselData.length == 0 ? (

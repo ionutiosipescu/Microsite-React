@@ -1,37 +1,50 @@
 import Axios from "axios";
-import { getLink } from "./helper";
-const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
+import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
+import { dateToShortLocale } from "../utils";
 
-export const getArticle = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created";
+const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
 
-  await Axios.get(link).then((res) => {
-    const arr = [];
+export const getInsights = (setInsightsContent) => {
+  Axios.get(`${customApi}/v1/insight-filter`).then((res) => {
+    setInsightsContent(res.data);
+  });
+};
 
-    res.data.data.map((item) => {
-      let data = {};
-      data.title = item.attributes.title;
-      data.teaserText = item.attributes.field_teaser_text;
-      data.date = item.attributes.created;
-      data.id = item.id;
+export const getSingleArticle = (setArticleData, id) => {
+  const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`;
+  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`;
 
-      arr.push(data);
-    });
-    setContent([...arr]);
+  // console.log(link);
+  // &filter[id]46bb933f-03c1-4d7e-a1ec-b14a839c1dd7
+
+  Axios.get(link).then((res) => {
+    const data = res.data.data;
+
+    let article = {};
+
+    article.content = data[0].attributes.body.value;
+
+    article.date = new Date(
+      data[0].attributes.revision_timestamp
+    ).toLocaleDateString();
+
+    article.title = data[0].attributes.title;
+
+    // article.pdf =
+
+    article.authors = grabRelatedPeople("field_authors", res.data, 0);
+    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0);
+
+    setArticleData(article);
   });
 };
 
 export const getArticles = async (setContent, articleType, amount) => {
   const link = getLink(articleType, amount);
 
-  // console.log(amount)
-
   await Axios.get(link).then((res) => {
     const arr = [];
-
-    console.log(res.data.data);
 
     res.data.data.map((item) => {
       let data = {};
@@ -53,9 +66,7 @@ export const getArticles = async (setContent, articleType, amount) => {
 };
 
 export const getCarouselArticles = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created";
+  const link = `${jsonApi}/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare&page[limit]=6&sort=-created`;
   const arr = [];
   await Axios.get(link)
     .then((res) => {
@@ -81,9 +92,7 @@ export const getCarouselArticles = async (setContent) => {
 };
 
 export const getCaseStudiesArticles = async (setContent) => {
-  const link =
-    baseApiUrl +
-    "/node/article?include=field_authors,field_primary_industry,field_authors.field_professional_title&filter[field_primary_industry.name]=healthcare&page%5Blimit%5D=8&sort=-created";
+  const link = `${jsonApi}/node/article?include=field_authors,field_primary_industry,field_authors.field_professional_title&filter[field_primary_industry.name]=healthcare&page%5Blimit%5D=8&sort=-created`;
   let parsedArticles = [];
   let allAuthors = [];
 
