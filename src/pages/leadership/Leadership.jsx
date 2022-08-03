@@ -73,9 +73,13 @@ const Leadership = () => {
 
   // console.log(inputText)
   useDocumentTitle("Leadership | Alvarez & Marsal");
+
   return (
-    <>
-      <HeroSection title={"helthcare & live sciences leaders"} />
+    <LeadershipContainer>
+      <HeroSection
+        title={"helthcare & live sciences leaders"}
+        className="heroContainer"
+      />
 
       <FiltrationNavbar
         searchBar={{ placeholder: "enter search here", setInputText }}
@@ -146,8 +150,16 @@ const Leadership = () => {
           carouselDotBackground="#002b49"
         />
       )}
-    </>
+    </LeadershipContainer>
   );
 };
 
 export default Leadership;
+
+const LeadershipContainer = styled.div`
+  .heroContainer {
+    h1 {
+      width: 75%;
+    }
+  }
+`;
