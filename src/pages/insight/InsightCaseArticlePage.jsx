@@ -76,7 +76,7 @@ const InsightCaseArticlePage = ({}) => {
                     >
                       <p>
                         It appears you don't have a PDF plugin for this browser.
-                        No biggie... you can{" "}
+                        No biggie... you can
                       </p>
                     </object>
                   </div>
