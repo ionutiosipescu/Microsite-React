@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { sizem } from "../../../utils/breakpoints";
 
 export const PageContainer = styled.div`
+  width: 100%;
   .textCategory {
     color: #0085ca;
   }

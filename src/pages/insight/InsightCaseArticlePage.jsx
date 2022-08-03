@@ -30,9 +30,8 @@ const InsightCaseArticlePage = ({}) => {
     getSingleArticle(setArticleData, state);
   }, []);
 
-  console.log("this is single article", articleData);
+  useDocumentTitle(articleData?.title);
 
-  useDocumentTitle(`${articleData?.title}`);
   return (
     <PageContainer>
       <HeroSection
@@ -41,83 +40,87 @@ const InsightCaseArticlePage = ({}) => {
         pageTitle="Case Studies"
         backgroundUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-      <div className="container-fluid  bg-white  d-flex flex-direction-column">
-        <div className="row pt-5 ">
-          <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
-            <div className="p-2">
-              <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
-            </div>
-            <div className="row">
-              <LeftSection />
-              {/*---------------------------------------------------- SectionDescription */}
-              <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
-                <div>
-                  <span className="text-muted text-italic">
-                    {articleData?.date}
-                  </span>
-                </div>
-
-                <h4 className="pt-5 fw-bold">{articleData.title} </h4>
-                <div
-                  className="pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(articleData.content),
-                  }}
-                ></div>
-
-                {/*-------------------------------- imagesContainer */}
-                {articleData.pdf && (
-                  <div className="d-flex pt-4 ">
-                    <object
-                      data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
-                      type="application/pdf"
-                      width="20%"
-                      height="10%"
-                    >
-                      <p>
-                        It appears you don't have a PDF plugin for this browser.
-                        No biggie... you can{" "}
-                      </p>
-                    </object>
+      {articleData.length == 0 ? (
+        <Spinner />
+      ) : (
+        <div className="container  bg-white  d-flex flex-direction-column">
+          <div className="row pt-5 ">
+            <div className="col-8 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
+              <div className="p-3">
+                <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
+              </div>
+              <div className="row">
+                <LeftSection />
+                {/*---------------------------------------------------- SectionDescription */}
+                <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
+                  <div>
+                    <span className="text-muted text-italic">
+                      {articleData?.date}
+                    </span>
                   </div>
-                )}
 
-                <div className="pt-4 learnMore">
-                  <a
-                    href={"http://www.africau.edu/images/default/sample.pdf"}
-                    // without
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    className="text-info text-decoration-none"
-                  >
-                    Learn more now.
-                  </a>
+                  <h4 className="pt-5 fw-bold">{articleData?.title} </h4>
+                  <div
+                    className="pt-3 text-decoration-none"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(articleData?.content),
+                    }}
+                  ></div>
+
+                  {/*-------------------------------- imagesContainer */}
+                  {articleData.pdf && (
+                    <div className="d-flex pt-4 ">
+                      <object
+                        data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
+                        type="application/pdf"
+                        width="20%"
+                        height="10%"
+                      >
+                        <p>
+                          It appears you don't have a PDF plugin for this
+                          browser. No biggie... you can{" "}
+                        </p>
+                      </object>
+                    </div>
+                  )}
+
+                  <div className="pt-4 learnMore">
+                    <a
+                      href={"http://www.africau.edu/images/default/sample.pdf"}
+                      // without
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      className="text-info text-decoration-none"
+                    >
+                      Learn more now.
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/*--------------------------------------------- FEATURED PROFILES  */}
-          <div className="col-12 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
-            {articleData.authors && (
-              <FeaturedPeople
-                titleSection={"Authors"}
-                people={articleData.authors}
-              />
-            )}
+            {/*--------------------------------------------- FEATURED PROFILES  */}
+            <div className="col-7 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
+              {articleData.authors && (
+                <FeaturedPeople
+                  titleSection={"Authors"}
+                  people={articleData.authors}
+                />
+              )}
 
-            {articleData.experts && (
-              <FeaturedPeople
-                titleSection={"Featured Profiles"}
-                people={articleData.experts}
-              />
-            )}
+              {articleData.experts && (
+                <FeaturedPeople
+                  titleSection={"Featured Profiles"}
+                  people={articleData.experts}
+                />
+              )}
 
-            {/* -------------------------------------------------------Stay connnected */}
-            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
+              {/* -------------------------------------------------------Stay connnected */}
+              <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div>
         {carouselData.length == 0 ? (
           <Spinner />
@@ -140,7 +143,14 @@ const InsightCaseArticlePage = ({}) => {
 export default InsightCaseArticlePage;
 
 const FeaturedPeople = ({ titleSection, people }) => {
-  console.log(people);
+  var linkPeople = "https://www.alvarezandmarsal.com/our-people/";
+  people.map((person) => {
+    let arrayName = person.personName.toLowerCase().split(" ");
+
+    let link = linkPeople + arrayName[0] + "-" + arrayName[1];
+    person.link = link;
+  });
+
   return (
     <>
       <div>
@@ -149,7 +159,14 @@ const FeaturedPeople = ({ titleSection, people }) => {
       <div>
         {people?.map((person, index) => (
           <div className="manager d-flex flex-column py-3" key={index}>
-            <span className="nameAuthor">{person.personName}</span>
+            <a
+              className="nameAuthor text-decoration-none"
+              href={person.link}
+              // if open new page
+              target="_blank"
+            >
+              {person.personName}
+            </a>
             {person.professionalTitle.map((title, index) => (
               <div key={index}>{title}</div>
             ))}
