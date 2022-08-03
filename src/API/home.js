@@ -8,7 +8,7 @@ export const fetchData = (setContent) => {
 
   Axios.get(link)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setContent(res.data);
     })
     .catch((err) => console.log(err));

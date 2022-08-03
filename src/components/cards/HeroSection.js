@@ -48,10 +48,11 @@ const HeroSection = ({
   pageTitle,
   pageTitleCenter,
   transparent,
+  className,
 }) => {
   let navigate = useNavigate();
   return (
-    <Hero backgroundUrl={backgroundUrl}>
+    <Hero backgroundUrl={backgroundUrl} className={"something"}>
       <div>
         {pageTitle && <h4>{pageTitle}</h4>}
         {pageTitleCenter && <h4 className="text-center">{pageTitleCenter}</h4>}

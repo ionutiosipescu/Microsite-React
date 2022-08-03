@@ -5,66 +5,53 @@ const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 //   field_authors: "3b257a0e-704f-41fd-b13b-7637d87ada9a",
 // };
 
-export const grabDataFromIncluded = (includedField, object, index) => {
-  console.log("fuck");
-  // console.log(includedField, object, index);
-  console.log(object);
+//
+export const grabRelatedPeople = (includedField, object, index) => {
+  // console.table("this is object", object);
 
-  let fieldIds = grabIds(includedField, object, index);
+  const authorIds = grabIds(includedField, object, 0);
 
-  // let fieldValues = getFieldValues(fieldIds, object);
+  let authorData = authorIds.map((id) => {
+    const authorObject = object.included.find((author) => author.id === id);
 
-  // console.log("this is authorids", fieldValues);
-};
+    if (authorObject) {
+      const authorName = authorObject.attributes.title;
 
-export const grabAuthors = (includedField, object, index) => {
-  let fieldIds = grabIds(includedField, object, index);
+      const professionalTitleIds = grabSubId(
+        "field_professional_title",
+        authorObject
+      );
 
-  console.log("this is object", object);
+      const professionalTitle = professionalTitleIds.map((profId) => {
+        return object.included.find((item) => item.id === profId).attributes
+          .name;
+      });
 
-  // Ids = grabIds(includedField, object, index);
-  // let professionalTitlesIds = grabIds(fieldIds, object);
-
-  // console.log(fieldIds);
-  let i = fieldIds.map((id) => {
-    let name = object.included.find((item) => item.id === id).attributes.title;
-
-    return { name };
+      return { authorName, professionalTitle };
+    }
   });
-  console.log("this is i", i);
+
+  authorData = authorData.filter((item) => item !== undefined);
+
+  if (authorData.length === 0) {
+    return null;
+  }
+  // console.log("authorData", authorData);
+
+  return authorData;
 };
 
-// // Returns the correct value from the included array
-// export const grabDataFromIncluded = (includedField, object, index) => {
-//   if (object.data[index].relationships[includedField].data) {
-//     let categoryId = object.data[index].relationships[includedField].data;
+const grabIds = (includedField, object, index) => {
+  return object.data[index].relationships[includedField].data.map(
+    (id) => id.id
+  );
+};
 
-//     if (typeof categoryId === "string") {
-//       // console.log(typeof categoryId);
+const grabSubId = (fieldName, singleObject) => {
+  return singleObject.relationships[fieldName].data.map((item) => item.id);
 
-//       // console.log(categoryId);
-
-//       let value = object.included.find(
-//         (item) => item.id === categoryId
-//       ).attributes;
-
-//       value = getValue(includedField, value);
-
-//       return value;
-//     } else if (typeof categoryId === "object") {
-//       const categoryIds = categoryId.map((item) => {
-//         return item.id;
-//       });
-
-//       // const values = categoryIds.map((item) => {
-//       //   const value = getValue(includedField, item);
-
-//       //   return value;
-//       // });
-//     }
-//   }
-//   return null;
-// };
+  // return singleObject.relationships[fieldName].data.map((item) => item.id);
+};
 
 // get the link that should be called bysed on what is provided
 export const getLink = (articleType, amount) => {
@@ -82,35 +69,4 @@ export const getLink = (articleType, amount) => {
     default:
       return "default";
   }
-};
-
-// const getFieldValues = (fieldIds, object) => {
-//   const values = [];
-
-//   fieldIds.map((id) => {
-//     let i = object.included.find((item) => item.id === id);
-
-//     console.log(i);
-//   });
-
-//   return "fuck you";
-// };
-
-// returns a partial path to the desired value
-const getValue = (includedField, value) => {
-  if (["field_teaser_image"].includes(includedField)) {
-    return value.uri.url;
-  } else if (["node_type"].includes(includedField)) {
-    return value.name;
-  } else if (["field_authors"].includes(includedField)) {
-    console.log(value);
-  }
-};
-
-const grabIds = (includedField, object, index) => {
-  console.log("this is object", object);
-
-  return object.data[index].relationships[includedField].data.map(
-    (id) => id.id
-  );
 };

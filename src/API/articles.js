@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { getLink, grabDataFromIncluded, grabAuthors } from "./helper";
+import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 
@@ -11,7 +11,7 @@ export const getSingleArticle = (setArticleData, id) => {
   Axios.get(link).then((res) => {
     // console.log(res.data.data[0]);
     const data = res.data.data;
-    const included = res.data.included;
+    // const included = res.data.included;
 
     let article = {};
 
@@ -22,13 +22,9 @@ export const getSingleArticle = (setArticleData, id) => {
     ).toLocaleDateString();
     article.title = data[0].attributes.title;
 
-    article.author = grabAuthors("field_authors", res.data, 0);
+    article.authors = grabRelatedPeople("field_authors", res.data, 0);
 
-    // console.log("this is included", included);
-
-    // article.authors = included.attributes.title;
-
-    // article.professionalTitle = included[1].attributes.name;
+    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0);
 
     setArticleData(article);
   });

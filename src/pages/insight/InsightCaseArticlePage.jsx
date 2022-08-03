@@ -41,10 +41,11 @@ const InsightCaseArticlePage = ({}) => {
 
   useEffect(() => {
     fetchData(setCarouselData);
-    getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
+    // getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
+    getSingleArticle(setArticleData, "7d93dd97-dc6a-4844-b06b-fdf0ead0ead7");
   }, []);
 
-  // console.log("this is single article", articleData);
+  console.log("this is single article", articleData);
 
   // useDocumentTitle(`${state?.title}`);
   return (
@@ -105,7 +106,7 @@ const InsightCaseArticlePage = ({}) => {
                 <div className="pt-4 learnMore">
                   <a
                     href={"http://www.africau.edu/images/default/sample.pdf"}
-                    without
+                    // without
                     rel="noopener noreferrer"
                     target="_blank"
                     className="text-info text-decoration-none"
