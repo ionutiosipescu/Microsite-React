@@ -11,15 +11,15 @@ export const grabRelatedPeople = (includedField, object, index) => {
 
   const authorIds = grabIds(includedField, object, 0);
 
-  let authorData = authorIds.map((id) => {
-    const authorObject = object.included.find((author) => author.id === id);
+  let personData = authorIds.map((id) => {
+    const personObject = object.included.find((author) => author.id === id);
 
-    if (authorObject) {
-      const authorName = authorObject.attributes.title;
+    if (personObject) {
+      const personName = personObject.attributes.title;
 
       const professionalTitleIds = grabSubId(
         "field_professional_title",
-        authorObject
+        personObject
       );
 
       const professionalTitle = professionalTitleIds.map((profId) => {
@@ -27,18 +27,18 @@ export const grabRelatedPeople = (includedField, object, index) => {
           .name;
       });
 
-      return { authorName, professionalTitle };
+      return { personName, professionalTitle };
     }
   });
 
-  authorData = authorData.filter((item) => item !== undefined);
+  personData = personData.filter((item) => item !== undefined);
 
-  if (authorData.length === 0) {
+  if (personData.length === 0) {
     return null;
   }
   // console.log("authorData", authorData);
 
-  return authorData;
+  return personData;
 };
 
 const grabIds = (includedField, object, index) => {

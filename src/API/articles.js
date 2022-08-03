@@ -1,17 +1,25 @@
 import Axios from "axios";
 import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
+import { dateToShortLocale } from "../utils";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
+
+export const getInsights = (setInsightsContent) => {
+  Axios.get(`${customApi}/v1/insight-filter`).then((res) => {
+    setInsightsContent(res.data);
+  });
+};
 
 export const getSingleArticle = (setArticleData, id) => {
-  const link = `${jsonApi}/node/article?&include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`;
+  const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`;
+  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`;
+
   // console.log(link);
   // &filter[id]46bb933f-03c1-4d7e-a1ec-b14a839c1dd7
 
   Axios.get(link).then((res) => {
-    // console.log(res.data.data[0]);
     const data = res.data.data;
-    // const included = res.data.included;
 
     let article = {};
 
@@ -20,10 +28,12 @@ export const getSingleArticle = (setArticleData, id) => {
     article.date = new Date(
       data[0].attributes.revision_timestamp
     ).toLocaleDateString();
+
     article.title = data[0].attributes.title;
 
-    article.authors = grabRelatedPeople("field_authors", res.data, 0);
+    // article.pdf =
 
+    article.authors = grabRelatedPeople("field_authors", res.data, 0);
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0);
 
     setArticleData(article);
