@@ -4,12 +4,14 @@ import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
 import RecongnitionSection from "../../components/section/RecongnitionSection";
 import { Spinner } from "../../components";
+import { sizem } from "../../utils/breakpoints";
 
 import {
   fetchHeroSectionDataHome,
   fetchData,
   fetchRecentRecognition,
 } from "../../API";
+import styled from "styled-components";
 
 const Home = () => {
   const [heroSectionData, setHeroSectionData] = useState();
@@ -23,13 +25,25 @@ const Home = () => {
     fetchData(setCarouselData);
   }, []);
 
+  const HomeContainer = styled.div`
+    .heroContainer {
+      button {
+        border-radius: 3px;
+      }
+    }
+  `;
+
   return (
-    <div>
+    <HomeContainer>
+      {/* <div className="heroContainer"> */}
       <HeroSection
         title={heroSectionData?.title}
         backgroundUrl={heroSectionData?.backgroundUrl}
         buttonText="CONTACT US"
+        className="heroContainer"
       />
+      {/* </div> */}
+
       {carouselData.length === 0 ? (
         <Spinner />
       ) : (
@@ -59,7 +73,7 @@ const Home = () => {
           />
         </>
       )}
-    </div>
+    </HomeContainer>
   );
 };
 

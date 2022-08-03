@@ -51,7 +51,7 @@ const InsightCase = () => {
   return (
     <>
       <HeroSection
-        title={heroSectionData?.title}
+        title={"Case Studies"}
         backgroundUrl={heroSectionData?.backgroundUrl}
       />
 
