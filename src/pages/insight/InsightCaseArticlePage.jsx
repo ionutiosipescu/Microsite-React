@@ -421,7 +421,7 @@ const iconsArr = [
     id: 2,
     icon: <LinkedinStay />,
     text: "Linkedin",
-    link: "www.linkedin.com/company/162399",
+    link: "https://www.linkedin.com/company/162399",
   },
   {
     id: 3,
