@@ -11,13 +11,6 @@ export const PageContainer = styled.div`
     color: #0085ca;
     margin: 0px 10px;
   }
-  .link {
-    font-size: 14px;
-  }
-  .link img {
-    font-size: 12px;
-    border-radius: 50%;
-  }
 
   @media ${sizem.mdm} {
     .secondSection {
@@ -73,7 +66,8 @@ export const PageContainer = styled.div`
 
     /* border: 2px solid red; */
     img {
-      width: 20px;
+      width: 22px;
+      height: 22px;
     }
   }
 
