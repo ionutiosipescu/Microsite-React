@@ -23,7 +23,7 @@ const ArticleCard = ({ title, field_teaser_text, nid, uuid, created }) => {
       >
         {title}
       </CustomTitle>
-      <span className="text-muted"> {created}</span>
+      <span className="text-muted"> {dateToShortLocale(created)}</span>
       {/* <span className="text-muted"> {dateToShortLocale(created)}</span> */}
 
       <p className="py-2 fs-6">{field_teaser_text}</p>
