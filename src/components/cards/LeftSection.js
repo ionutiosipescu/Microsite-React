@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import printJS from "print-js";
 import {
   ChevronRight,
   ChevronRightBlue,
@@ -23,9 +24,9 @@ const LeftSectionContainer = styled.div`
     /* flex-direction: column; */
     /* top: -1rem; */
     margin: 139px 0px 0px 192px;
-    width: 16.375rem;
+    width: 14.375rem;
     @media ${size.md} {
-      margin: 0px 0px 0px 330px;
+      margin: 0px 0px 0px 298px;
     }
     .iconDiv {
       height: 4.375rem;
@@ -143,10 +144,13 @@ const LeftSection = () => {
                   >
                     <span
                       onClick={() => {
-                        if (icon?.link) {
+                        if (icon?.link && icon.text !== "Printable Version") {
                           window.open(icon?.link, "_blank");
-                        }
-                        // alert(icon?.link);
+                        } else if (icon.text === "Printable Version") {
+                          printJS(
+                            "http://www.africau.edu/images/default/sample.pdf"
+                          );
+                        } // alert(icon?.link);
                       }}
                     >
                       {icon.icon || icon.text}
