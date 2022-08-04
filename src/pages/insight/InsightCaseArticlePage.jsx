@@ -80,7 +80,7 @@ const InsightCaseArticlePage = () => {
                       >
                         <p>
                           It appears you don't have a PDF plugin for this
-                          browser. No biggie... you can{" "}
+                          browser. No biggie... you can
                         </p>
                       </object>
                     </div>
@@ -145,14 +145,6 @@ const InsightCaseArticlePage = () => {
 export default InsightCaseArticlePage;
 
 const FeaturedPeople = ({ titleSection, people }) => {
-  var linkPeople = "https://www.alvarezandmarsal.com/our-people/";
-  people.map((person) => {
-    let arrayName = person.personName.toLowerCase().split(" ");
-
-    let link = linkPeople + arrayName[0] + "-" + arrayName[1];
-    person.link = link;
-  });
-
   return (
     <>
       <div>
@@ -163,7 +155,7 @@ const FeaturedPeople = ({ titleSection, people }) => {
           <div className="manager d-flex flex-column py-3" key={index}>
             <a
               className="nameAuthor text-decoration-none"
-              href={person.link}
+              href={person.personalPageLink}
               // if open new page
               target="_blank"
             >

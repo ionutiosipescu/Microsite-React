@@ -1,4 +1,5 @@
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
+const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL;
 
 // Return a list of objects the name and job title of the people
 export const grabRelatedPeople = (includedField, object, index) => {
@@ -8,6 +9,7 @@ export const grabRelatedPeople = (includedField, object, index) => {
 
   let personData = authorIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
+    console.log(personObject);
 
     if (personObject) {
       const personName = personObject.attributes.title;
@@ -22,7 +24,9 @@ export const grabRelatedPeople = (includedField, object, index) => {
           .name;
       });
 
-      return { personName, professionalTitle };
+      const personalPageLink = mainWebsite + personObject.attributes.path.alias;
+
+      return { personName, professionalTitle, personalPageLink };
     }
   });
 
