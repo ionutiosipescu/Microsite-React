@@ -53,6 +53,10 @@ const grabSubId = (fieldName, singleObject) => {
   // return singleObject.relationships[fieldName].data.map((item) => item.id);
 };
 
+export const getLinkWithFilters = (link, selectedFilters) => {
+  return "fuck you";
+};
+
 // get the link that should be called bysed on what is provided
 export const getLink = (articleType, amount) => {
   if (amount == null) {

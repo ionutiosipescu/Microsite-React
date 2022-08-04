@@ -1,12 +1,26 @@
 import Axios from "axios";
-import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
+import {
+  getLink,
+  getLinkWithFilters,
+  grabDataFromIncluded,
+  grabRelatedPeople,
+} from "./helper";
 import { dateToShortLocale } from "../utils";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
-export const getInsights = (setInsightsContent) => {
-  Axios.get(`${customApi}/insight-filter`).then((res) => {
+export const getInsights = (setInsightsContent, selectedFilters) => {
+  let link = `${customApi}/insight-filter`;
+
+  // if (selectedFilters) {
+  //   console.log("let the fun begin");
+  //   link = getLinkWithFilters(link, selectedFilters);
+  // }
+
+  // console.log("this is the new link", link);
+
+  Axios.get(link).then((res) => {
     setInsightsContent(res.data);
   });
 };
@@ -131,6 +145,7 @@ export const getCaseStudiesArticles = async (setContent) => {
       });
     });
   });
+
   parsedArticles.map((article) => {
     article.authorsData.map((author) => {
       allAuthors.forEach((x) => {

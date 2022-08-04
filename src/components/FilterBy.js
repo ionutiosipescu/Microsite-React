@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { getInsights } from "../API/articles";
 import { XIcon } from "../assets/icons";
 
 const Container = styled.div`
   display: ${(props) => (props.arrLength ? "flex" : "none")};
+
   gap: 1rem;
   flex-wrap: wrap;
   min-height: 70px;
@@ -54,15 +56,6 @@ const Tag = ({ tag, setSelectedFilters, selectedFilters }) => {
 };
 
 const FilterBy = ({ selectedFilters, setSelectedFilters }) => {
-  useEffect(() => {
-    console.log("doing");
-
-    if (selectedFilters.length > 0) {
-      // setSelectedFilters([]);
-      console.log("empty");
-    }
-  }, [...selectedFilters]);
-
   return (
     <Container arrLength={selectedFilters.length !== 0}>
       {selectedFilters.map((tag, index) => (

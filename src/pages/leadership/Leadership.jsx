@@ -38,10 +38,7 @@ export const LeaadersContainer = styled.div`
 `;
 
 const Leadership = () => {
-  const [selectedFilters, setSelectedFilters] = useState([
-    "sunshine",
-    "sunshine",
-  ]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const [inputText, setInputText] = useState("");
   const [clickedNavbarCell, setClickedNavbarCell] = useState(null);
   const [carouselData, setCarouselData] = useState([]);
@@ -87,7 +84,7 @@ const Leadership = () => {
         }
       />
 
-      <FiltrationNavbar
+      {/* <FiltrationNavbar
         searchBar={{ placeholder: "enter search here", setInputText }}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
@@ -114,7 +111,7 @@ const Leadership = () => {
         <NavigationCell> First</NavigationCell>
         <NavigationCell> First1</NavigationCell>
         <NavigationCell> First2</NavigationCell>
-      </NavigationNavbar>
+      </NavigationNavbar> */}
 
       <FilterBy
         selectedFilters={selectedFilters}

@@ -10,13 +10,16 @@ import {
 } from "../../components/navbarComponents";
 import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
-import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { getInsightFilters, getInsights, fetchData } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
 const InsightLatest = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
+  let persistedFilters = JSON.parse(
+    sessionStorage.getItem("latestInsightsFilters")
+  );
+
+  const [selectedFilters, setSelectedFilters] = useState(persistedFilters);
 
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
@@ -29,9 +32,15 @@ const InsightLatest = () => {
     getInsightFilters(setFilters);
   }, []);
 
+  useEffect(() => {
+    sessionStorage.setItem(
+      "latestInsightsFilters",
+      JSON.stringify(selectedFilters)
+    );
+  }, [selectedFilters]);
+
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
 
-  console.log(selectedFilters);
   return (
     <>
       <HeroSection
@@ -42,7 +51,7 @@ const InsightLatest = () => {
         <Spinner />
       ) : (
         <FiltrationNavbar
-          searchBar2={{ placeholder: "enter search here" }}
+          searchBar2={{ placeholder: "Enter Author's Name" }}
           setSelectedFilters={setSelectedFilters}
           selectedFilters={selectedFilters}
         >
@@ -85,10 +94,13 @@ const InsightLatest = () => {
           </NavbarDropdown>
         </FiltrationNavbar>
       )}
-      <FilterBy
-        setSelectedFilters={setSelectedFilters}
-        selectedFilters={selectedFilters}
-      />
+      {selectedFilters && (
+        <FilterBy
+          setSelectedFilters={setSelectedFilters}
+          selectedFilters={selectedFilters}
+          setInsightsContent={setInsightsContent}
+        />
+      )}
 
       <StyledContainer>
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />

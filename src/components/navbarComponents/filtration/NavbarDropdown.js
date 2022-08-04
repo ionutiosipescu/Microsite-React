@@ -27,8 +27,6 @@ const NavbarDropdown = ({
   };
 
   const addFilter = (filter, filterType) => {
-    console.log(filter);
-
     typeof filter === "number"
       ? selectedFilters.push({ name: filter, filterType: filterType })
       : selectedFilters.push({ ...filter, filterType: filterType });
