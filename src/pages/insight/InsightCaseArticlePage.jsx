@@ -61,7 +61,7 @@ const InsightCaseArticlePage = ({}) => {
 
                   <h4 className="pt-5 fw-bold">{articleData?.title} </h4>
                   <div
-                    className="pt-3 text-decoration-none"
+                    className="container pt-3 text-decoration-none"
                     dangerouslySetInnerHTML={{
                       __html: DOMPurify.sanitize(articleData?.content),
                     }}
