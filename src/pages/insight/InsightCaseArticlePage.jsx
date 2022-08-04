@@ -18,10 +18,10 @@ import { useDocumentTitle } from "../../hook";
 import { PageContainer } from "./styles/InsightCaseArticlePage.style";
 import DOMPurify from "dompurify";
 
-const InsightCaseArticlePage = ({}) => {
+const InsightCaseArticlePage = () => {
   const { state } = useLocation();
   const [carouselData, setCarouselData] = useState([]);
-  const [articleData, setArticleData] = useState([]);
+  const [articleData, setArticleData] = useState(null);
 
   useEffect(() => {
     fetchData(setCarouselData);
@@ -32,6 +32,8 @@ const InsightCaseArticlePage = ({}) => {
 
   useDocumentTitle(articleData?.title);
 
+  console.log("this is articleData", articleData);
+
   return (
     <PageContainer>
       <HeroSection
@@ -40,26 +42,26 @@ const InsightCaseArticlePage = ({}) => {
         pageTitle="Case Studies"
         backgroundUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-      {articleData.length == 0 ? (
+      {!articleData ? (
         <Spinner />
       ) : (
         <div className="container  bg-white  d-flex flex-direction-column">
           <div className="row pt-5 ">
-            <div className="col-8 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
+            <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
               <div className="p-3">
                 <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
               </div>
               <div className="row">
                 <LeftSection />
                 {/*---------------------------------------------------- SectionDescription */}
-                <div className=" col-9 col-sm-10 col-md-10 col-lg-11">
+                <div className=" col-11 col-sm-10 col-md-10 col-lg-11">
                   <div>
-                    <span className="text-muted text-italic">
+                    <span className="text-muted text-italic ps-3">
                       {articleData?.date}
                     </span>
                   </div>
 
-                  <h4 className="pt-5 fw-bold">{articleData?.title} </h4>
+                  <h4 className="pt-5 ps-3 fw-bold">{articleData?.title} </h4>
                   <div
                     className="container pt-3 text-decoration-none"
                     dangerouslySetInnerHTML={{
@@ -84,7 +86,7 @@ const InsightCaseArticlePage = ({}) => {
                     </div>
                   )}
 
-                  <div className="pt-4 learnMore">
+                  <div className="pt-4 px-4 learnMore">
                     <a
                       href={"http://www.africau.edu/images/default/sample.pdf"}
                       // without
@@ -100,7 +102,7 @@ const InsightCaseArticlePage = ({}) => {
             </div>
 
             {/*--------------------------------------------- FEATURED PROFILES  */}
-            <div className="col-7 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
+            <div className="col-11 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
               {articleData.authors && (
                 <FeaturedPeople
                   titleSection={"Authors"}

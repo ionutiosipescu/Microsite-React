@@ -1,11 +1,6 @@
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
-// 3030696e-0490-483b-94f2-127d13fd3478
 
-// const drupalFieldsIds = {
-//   field_authors: "3b257a0e-704f-41fd-b13b-7637d87ada9a",
-// };
-
-//
+// Return a list of objects the name and job title of the people
 export const grabRelatedPeople = (includedField, object, index) => {
   // console.table("this is object", object);
 
@@ -22,8 +17,8 @@ export const grabRelatedPeople = (includedField, object, index) => {
         personObject
       );
 
-      const professionalTitle = professionalTitleIds.map((profId) => {
-        return object.included.find((item) => item.id === profId).attributes
+      const professionalTitle = professionalTitleIds.map((title) => {
+        return object.included.find((item) => item.id === title).attributes
           .name;
       });
 
@@ -41,6 +36,7 @@ export const grabRelatedPeople = (includedField, object, index) => {
   return personData;
 };
 
+// Get the id of the desired field
 const grabIds = (includedField, object, index) => {
   return object.data[index].relationships[includedField].data.map(
     (id) => id.id

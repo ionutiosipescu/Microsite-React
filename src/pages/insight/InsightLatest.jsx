@@ -33,6 +33,24 @@ const InsightLatest = () => {
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
 
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let date = new Date().getFullYear();
+  console.log(date);
+
   return (
     <>
       <HeroSection
@@ -45,11 +63,12 @@ const InsightLatest = () => {
         setFilterByTags={setFilterByTags}
         filterByTags={filterByTags}
       >
-        {filtrationNavbarData.map((item, index) => (
+        {/* {filtrationNavbarData.map((item, index) => (
           <NavbarDropdown data={item.tagNames} key={index}>
             {item.title}
           </NavbarDropdown>
-        ))}
+        ))} */}
+        <NavbarDropdown data={months}>{"months"}</NavbarDropdown>
       </FiltrationNavbar>
       <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
 

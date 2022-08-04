@@ -190,6 +190,17 @@ export const Dropdown = styled.ul`
   padding: 0;
   margin: 0;
 
+  /* :hover {
+    scale: 1.3;
+    background-color: red;
+    transition: all 3s ease-in-out;
+  } */
+
+  /* :hover {
+    scale: 1.3;
+    background: red;
+  } */
+
   @media ${size.lg} {
     display: ${(props) => (props.show ? "initial" : "none")};
 
@@ -198,6 +209,8 @@ export const Dropdown = styled.ul`
     background-color: var(--darkBlue1);
 
     display: ${(props) => (props.show ? "grid" : "none")};
+
+    transition: all 3s ease-in-out;
 
     grid-template-columns: repeat(
       ${(props) => props.columns || 2},
