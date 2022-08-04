@@ -18,10 +18,10 @@ import { useDocumentTitle } from "../../hook";
 import { PageContainer } from "./styles/InsightCaseArticlePage.style";
 import DOMPurify from "dompurify";
 
-const InsightCaseArticlePage = ({}) => {
+const InsightCaseArticlePage = () => {
   const { state } = useLocation();
   const [carouselData, setCarouselData] = useState([]);
-  const [articleData, setArticleData] = useState([]);
+  const [articleData, setArticleData] = useState(null);
 
   useEffect(() => {
     fetchData(setCarouselData);
@@ -32,6 +32,8 @@ const InsightCaseArticlePage = ({}) => {
 
   useDocumentTitle(articleData?.title);
 
+  console.log("this is articleData", articleData);
+
   return (
     <PageContainer>
       <HeroSection
@@ -40,7 +42,7 @@ const InsightCaseArticlePage = ({}) => {
         pageTitle="Case Studies"
         backgroundUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-      {articleData.length == 0 ? (
+      {!articleData ? (
         <Spinner />
       ) : (
         <div className="container  bg-white  d-flex flex-direction-column">
