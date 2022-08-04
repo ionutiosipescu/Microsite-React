@@ -25,7 +25,7 @@ const Professionals = () => {
     Array.from(leadersList, () => false)
   );
 
-  const [filterByTags, setFilterByTags] = useState([
+  const [selectedFilters, setSelectedFilters] = useState([
     "sunshine",
     "sunshine2",
     "sunshine3",
@@ -63,15 +63,18 @@ const Professionals = () => {
       </StyledContainer>
       <FiltrationNavbar
         searchBar={{ placeholder: "enter search here" }}
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={links}>Country</NavbarDropdown>
         <NavbarDropdown data={links}>DropDown</NavbarDropdown>
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>Something2</NavbarDropdown>
       </FiltrationNavbar>
-      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      <FilterBy
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
 
       <h3 className="m-3">Leaders</h3>
       <div className="m-4">

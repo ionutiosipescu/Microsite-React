@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import styled from "styled-components";
 import {
   ArticleCard,
   HeroSection,
@@ -32,15 +31,14 @@ const InsightCase = () => {
   const [carouselData, setCarouelData] = useState([]);
 
   const locationName = location?.pathname.split("/").slice(1, 3);
-  const [filterByTags, setFilterByTags] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   useEffect(() => {
     setLoading(true);
     fetchHeroSectionDataHome(setHeroSectionData);
     getCaseStudiesArticles(setArticles);
-    // getCarouselArticles(setCarouelData);
-    setLoading(false);
     fetchData(setCarouelData);
+    setLoading(false);
   }, []);
 
   useDocumentTitle("Insights | Case Studies | Alvarez & Marsal");
@@ -54,8 +52,8 @@ const InsightCase = () => {
 
       <FiltrationNavbar
         searchBar2={{ placeholder: "enter search here" }}
-        setFilterByTags={setFilterByTags}
-        filterByTags={filterByTags}
+        setSelectedFilters={setSelectedFilters}
+        selectedFilters={selectedFilters}
       >
         {filtrationNavbarData.map((item, index) => (
           <NavbarDropdown data={item.tagNames} key={index}>
@@ -64,11 +62,12 @@ const InsightCase = () => {
         ))}
       </FiltrationNavbar>
 
-      <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
-      <div className="breadCrumbContainer px-4 pt-4">
-        <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
-      </div>
+      <FilterBy
+        setSelectedFilters={setSelectedFilters}
+        selectedFilters={selectedFilters}
+      />
       <StyledContainer>
+        <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
         {loading ? (
           <div class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>

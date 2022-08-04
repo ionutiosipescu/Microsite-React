@@ -3,20 +3,16 @@ import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
 import { dateToShortLocale } from "../utils";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
-const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
 export const getInsights = (setInsightsContent) => {
-  Axios.get(`${customApi}/v1/insight-filter`).then((res) => {
+  Axios.get(`${customApi}/insight-filter`).then((res) => {
     setInsightsContent(res.data);
   });
 };
 
 export const getSingleArticle = (setArticleData, id) => {
   const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`;
-  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`;
-
-  // console.log(link);
-  // &filter[id]46bb933f-03c1-4d7e-a1ec-b14a839c1dd7
 
   Axios.get(link).then((res) => {
     const data = res.data.data;
@@ -52,9 +48,11 @@ export const getArticles = async (setContent, articleType, amount) => {
       data.title = item.attributes.title;
       data.teaserText = item.attributes.field_teaser_text;
       data.body = item.attributes.body.value;
+
       data.date = new Date(
         item.attributes.revision_timestamp
       ).toLocaleDateString();
+
       data.authorsData = item.relationships.field_authors?.data;
       data.id = item.id;
 

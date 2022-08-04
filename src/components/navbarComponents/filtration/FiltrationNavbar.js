@@ -10,15 +10,15 @@ const Navbar = ({
   searchBar,
   searchBar2,
   spread,
-  filterByTags,
-  setFilterByTags,
+  selectedFilters,
+  setSelectedFilters,
 }) => {
   const [visible, setVisible] = useState(false);
   const [toggle, setToggle] = useState(false);
 
   const values = {
-    filterByTags: filterByTags,
-    setFilterByTags: setFilterByTags,
+    selectedFilters: selectedFilters,
+    setSelectedFilters: setSelectedFilters,
   };
 
   const handleSubmit = (e, userInput, openBigNavbar) => {
@@ -27,8 +27,8 @@ const Navbar = ({
     if (openBigNavbar && userInput === "") {
       setVisible(!visible);
     } else if (userInput !== "") {
-      filterByTags.push(userInput);
-      setFilterByTags([...filterByTags]);
+      selectedFilters.push(userInput);
+      setSelectedFilters([...selectedFilters]);
     }
   };
 
@@ -46,8 +46,8 @@ const Navbar = ({
       <Container toggle={toggle} spread={spread}>
         <MobileDropdown
           as={"div"}
-          filterByTags={filterByTags}
-          setFilterByTags={setFilterByTags}
+          selectedFilters={selectedFilters}
+          setSelectedFilters={setSelectedFilters}
         >
           <div onClick={handleToggle}>{"Filter results by"}</div>
 

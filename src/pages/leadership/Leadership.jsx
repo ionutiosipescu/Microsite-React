@@ -38,7 +38,10 @@ export const LeaadersContainer = styled.div`
 `;
 
 const Leadership = () => {
-  const [filterByTags, setFilterByTags] = useState(["sunshine", "sunshine"]);
+  const [selectedFilters, setSelectedFilters] = useState([
+    "sunshine",
+    "sunshine",
+  ]);
   const [inputText, setInputText] = useState("");
   const [clickedNavbarCell, setClickedNavbarCell] = useState(null);
   const [carouselData, setCarouselData] = useState([]);
@@ -86,8 +89,8 @@ const Leadership = () => {
 
       <FiltrationNavbar
         searchBar={{ placeholder: "enter search here", setInputText }}
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>DropDown</NavbarDropdown>
@@ -98,8 +101,8 @@ const Leadership = () => {
       <FiltrationNavbar
         searchBar2={{ placeholder: "enter search here", setInputText }}
         spread
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>DropDown</NavbarDropdown>
@@ -113,7 +116,10 @@ const Leadership = () => {
         <NavigationCell> First2</NavigationCell>
       </NavigationNavbar>
 
-      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      <FilterBy
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
       {arr[clickedNavbarCell]}
       <div
         className="pt-3 text-decoration-none"

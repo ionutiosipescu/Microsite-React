@@ -25,14 +25,12 @@ const InsightCaseArticlePage = () => {
 
   useEffect(() => {
     fetchData(setCarouselData);
-    // getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
-    // getSingleArticle(setArticleData, "7d93dd97-dc6a-4844-b06b-fdf0ead0ead7");
     getSingleArticle(setArticleData, state);
   }, []);
 
   useDocumentTitle(articleData?.title);
 
-  console.log("this is articleData", articleData);
+  // console.log("this is articleData", articleData);
 
   return (
     <PageContainer>

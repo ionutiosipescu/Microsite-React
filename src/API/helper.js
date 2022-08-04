@@ -5,9 +5,9 @@ const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL;
 export const grabRelatedPeople = (includedField, object, index) => {
   // console.table("this is object", object);
 
-  const authorIds = grabIds(includedField, object, 0);
+  const peopleIds = grabIds(includedField, object, 0);
 
-  let personData = authorIds.map((id) => {
+  let personData = peopleIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
     console.log(personObject);
 

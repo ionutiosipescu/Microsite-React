@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { XIcon } from "../assets/icons";
 
@@ -40,28 +40,37 @@ const TagContainer = styled.div`
   }
 `;
 
-const Tag = ({ tag, setFilterByTags, filterByTags }) => {
+const Tag = ({ tag, setSelectedFilters, selectedFilters }) => {
   const handleClick = () => {
-    setFilterByTags(filterByTags.filter((item) => item !== tag));
+    setSelectedFilters(selectedFilters.filter((item) => item !== tag));
   };
 
   return (
     <TagContainer onClick={handleClick}>
-      <span>{tag}</span>
+      <span>{tag.name}</span>
       <XIcon />
     </TagContainer>
   );
 };
 
-const FilterBy = ({ filterByTags, setFilterByTags }) => {
+const FilterBy = ({ selectedFilters, setSelectedFilters }) => {
+  useEffect(() => {
+    console.log("doing");
+
+    if (selectedFilters.length > 0) {
+      // setSelectedFilters([]);
+      console.log("empty");
+    }
+  }, [...selectedFilters]);
+
   return (
-    <Container arrLength={filterByTags.length !== 0}>
-      {filterByTags.map((tag, index) => (
+    <Container arrLength={selectedFilters.length !== 0}>
+      {selectedFilters.map((tag, index) => (
         <Tag
           key={index}
           tag={tag}
-          setFilterByTags={setFilterByTags}
-          filterByTags={filterByTags}
+          setSelectedFilters={setSelectedFilters}
+          selectedFilters={selectedFilters}
         />
       ))}
     </Container>

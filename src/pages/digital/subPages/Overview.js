@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import YellowButton from "../../../components/buttons/YellowButton";
 // import { NewsCell as div } from "./subPages.style";
@@ -52,19 +52,17 @@ const Overview = () => {
           </p>
           <CardCapabilities />
           <TableContainer>
-                <h3>Related Insights</h3>
-                            <Table>
-                
-                          {insights.map((post) => {
-                return(
+            <h3>Related Insights</h3>
+            <Table>
+              {insights.map((post) => {
+                return (
                   <div>
                     <RelatedInsigts_Table post={post}></RelatedInsigts_Table>
                   </div>
                 );
-                          })}
-                            </Table>
-              </TableContainer>
-
+              })}
+            </Table>
+          </TableContainer>
         </StyledCol1>
         <StyledCol2>
           <CardProfessionals {...cardContent} />

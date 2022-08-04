@@ -11,66 +11,84 @@ import {
 import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
 import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { getInsights, fetchData } from "../../API";
+import { getInsightFilters, getInsights, fetchData } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
 const InsightLatest = () => {
-  const [filterByTags, setFilterByTags] = useState([
-    "sunshine",
-    "sunshine",
-    "sunshine2",
-  ]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
   const [insightsContent, setInsightsContent] = useState([]);
+  const [filters, setFilters] = useState(null);
 
   useEffect(() => {
     fetchData(setCarouselData);
     getInsights(setInsightsContent);
+    getInsightFilters(setFilters);
   }, []);
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  let date = new Date().getFullYear();
-  console.log(date);
-
+  console.log(selectedFilters);
   return (
     <>
       <HeroSection
         title=" Latest Studies"
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-
-      <FiltrationNavbar
-        searchBar2={{ placeholder: "enter search here" }}
-        setFilterByTags={setFilterByTags}
-        filterByTags={filterByTags}
-      >
-        {/* {filtrationNavbarData.map((item, index) => (
-          <NavbarDropdown data={item.tagNames} key={index}>
-            {item.title}
+      {!filters ? (
+        <Spinner />
+      ) : (
+        <FiltrationNavbar
+          searchBar2={{ placeholder: "enter search here" }}
+          setSelectedFilters={setSelectedFilters}
+          selectedFilters={selectedFilters}
+        >
+          <NavbarDropdown
+            filtersList={filters.expertise}
+            filterType={"expertise"}
+          >
+            {"Expertise"}
           </NavbarDropdown>
-        ))} */}
-        <NavbarDropdown data={months}>{"months"}</NavbarDropdown>
-      </FiltrationNavbar>
-      <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
+          <NavbarDropdown
+            filtersList={filters.industries}
+            filterType={"industries"}
+          >
+            {"Industry"}
+          </NavbarDropdown>
+          <NavbarDropdown
+            filtersList={filters.industries}
+            filterType={"country"}
+          >
+            {"Country"}
+          </NavbarDropdown>
+          <NavbarDropdown
+            filtersList={filters.created}
+            filterType={"years"}
+            filterByTime="years"
+          >
+            {"Year"}
+          </NavbarDropdown>
+          <NavbarDropdown
+            filtersList={filters.bulletin}
+            filterType={"bulletin"}
+          >
+            {"Bulletin Type"}
+          </NavbarDropdown>
+          <NavbarDropdown
+            filtersList={filters.industries}
+            filterType={"media?"}
+          >
+            {"Media Type"}
+          </NavbarDropdown>
+        </FiltrationNavbar>
+      )}
+      <FilterBy
+        setSelectedFilters={setSelectedFilters}
+        selectedFilters={selectedFilters}
+      />
 
       <StyledContainer>
         <BreadCrumb route={"Insights"} subRoute={"Latest Insights"} />

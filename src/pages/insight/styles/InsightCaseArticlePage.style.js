@@ -47,8 +47,6 @@ export const PageContainer = styled.div`
         img {
           filter: grayscale(1) invert(1);
         }
-        /* background-color: red; */
-        /* background-color: var(--hover-blue); */
       }
       .textLinks {
         cursor: pointer;
