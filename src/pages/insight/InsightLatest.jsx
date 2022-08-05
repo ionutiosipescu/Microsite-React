@@ -19,7 +19,9 @@ const InsightLatest = () => {
     sessionStorage.getItem("latestInsightsFilters")
   );
 
-  const [selectedFilters, setSelectedFilters] = useState(persistedFilters);
+  const [selectedFilters, setSelectedFilters] = useState(
+    persistedFilters || []
+  );
 
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
@@ -28,7 +30,7 @@ const InsightLatest = () => {
 
   useEffect(() => {
     fetchData(setCarouselData);
-    getInsights(setInsightsContent);
+    getInsights(setInsightsContent, selectedFilters);
     getInsightFilters(setFilters);
   }, []);
 
@@ -37,9 +39,11 @@ const InsightLatest = () => {
       "latestInsightsFilters",
       JSON.stringify(selectedFilters)
     );
+    getInsights(setInsightsContent, selectedFilters);
   }, [selectedFilters]);
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+  console.log("those are filters", selectedFilters);
 
   return (
     <>
@@ -61,36 +65,40 @@ const InsightLatest = () => {
           >
             {"Expertise"}
           </NavbarDropdown>
+
           <NavbarDropdown
             filtersList={filters.industries}
             filterType={"industries"}
           >
             {"Industry"}
           </NavbarDropdown>
-          <NavbarDropdown
-            filtersList={filters.industries}
-            filterType={"country"}
-          >
+
+          <NavbarDropdown filtersList={filters.region} filterType={"region"}>
             {"Country"}
           </NavbarDropdown>
-          <NavbarDropdown
-            filtersList={filters.created}
-            filterType={"years"}
-            filterByTime="years"
-          >
+
+          <NavbarDropdown filtersList={filters.created} filterType={"years"}>
             {"Year"}
           </NavbarDropdown>
+
           <NavbarDropdown
             filtersList={filters.bulletin}
             filterType={"bulletin"}
           >
             {"Bulletin Type"}
           </NavbarDropdown>
+          {/* 
           <NavbarDropdown
+            // filtersList={filters.industries}
+            // filterType={"media?"}
             filtersList={filters.industries}
-            filterType={"media?"}
+            filterType={"months"}
           >
             {"Media Type"}
+          </NavbarDropdown> */}
+
+          <NavbarDropdown filtersList={filters.created} filterType={"months"}>
+            {"Months"}
           </NavbarDropdown>
         </FiltrationNavbar>
       )}

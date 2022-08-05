@@ -3,12 +3,7 @@ import { ChevronUpWhite } from "../../../assets/icons";
 import { Cell, Dropdown, DropdownCell } from "./Filtration.styles";
 import { NavbarContext } from "./FiltrationNavbar";
 
-const NavbarDropdown = ({
-  children,
-  filtersList,
-  filterByTime,
-  filterType,
-}) => {
+const NavbarDropdown = ({ children, filtersList, filterType }) => {
   const { selectedFilters, setSelectedFilters } = useContext(NavbarContext);
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -27,10 +22,9 @@ const NavbarDropdown = ({
   };
 
   const addFilter = (filter, filterType) => {
-    typeof filter === "number"
+    ["years", "months"].includes(filterType)
       ? selectedFilters.push({ name: filter, filterType: filterType })
       : selectedFilters.push({ ...filter, filterType: filterType });
-    // selectedFilters.push({ ...filter, filterType: filterType });
 
     setSelectedFilters([...selectedFilters]);
   };

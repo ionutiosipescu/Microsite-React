@@ -44,6 +44,7 @@ const TagContainer = styled.div`
 
 const Tag = ({ tag, setSelectedFilters, selectedFilters }) => {
   const handleClick = () => {
+    console.log(tag);
     setSelectedFilters(selectedFilters.filter((item) => item !== tag));
   };
 
