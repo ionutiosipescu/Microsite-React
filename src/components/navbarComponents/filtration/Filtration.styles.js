@@ -181,7 +181,8 @@ export const Cell = styled.li`
   }
 `;
 export const DropdownCell = styled(Cell)`
-  padding: 1rem 2rem;
+  padding: 0.5rem 0 0.5rem 1rem;
+  max-width: 250px;
 `;
 
 export const Dropdown = styled.ul`
@@ -214,15 +215,7 @@ export const Dropdown = styled.ul`
 
     grid-template-columns: repeat(
       ${(props) => props.columns || 2},
-      minmax(200px, 1fr)
+      minmax(125px, 1fr)
     );
-
-    div {
-      /* How the heck do i vertically align text? */
-      padding: 0.5rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
   }
 `;

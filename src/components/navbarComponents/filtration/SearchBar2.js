@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyledSearchBar2 } from "./Filtration.styles";
 
-const SearchBar2 = ({ placeholder, handleSubmit }) => {
+const SearchBar2 = ({ placeholder, handleSubmit, filterType }) => {
   const [userInput, setUserInput] = useState("");
   const handleChange = (e) => {
     setUserInput(e.target.value);
@@ -11,7 +11,7 @@ const SearchBar2 = ({ placeholder, handleSubmit }) => {
     <StyledSearchBar2
       onSubmit={(e) => {
         setUserInput("");
-        handleSubmit(e, userInput);
+        handleSubmit(e, { value: userInput, filterType: filterType });
       }}
     >
       <input

@@ -44,12 +44,13 @@ const TagContainer = styled.div`
 
 const Tag = ({ tag, setSelectedFilters, selectedFilters }) => {
   const handleClick = () => {
+    console.log(tag);
     setSelectedFilters(selectedFilters.filter((item) => item !== tag));
   };
 
   return (
     <TagContainer onClick={handleClick}>
-      <span>{tag.name}</span>
+      <span>{tag.value}</span>
       <XIcon />
     </TagContainer>
   );

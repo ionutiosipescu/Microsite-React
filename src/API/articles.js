@@ -13,15 +13,14 @@ const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 export const getInsights = (setInsightsContent, selectedFilters) => {
   let link = `${customApi}/insight-filter`;
 
-  // if (selectedFilters) {
-  //   console.log("let the fun begin");
-  //   link = getLinkWithFilters(link, selectedFilters);
-  // }
+  if (selectedFilters && selectedFilters.length > 0) {
+    link = getLinkWithFilters(link, selectedFilters);
+  }
 
-  // console.log("this is the new link", link);
+  console.log("this is the new link", link);
 
   Axios.get(link).then((res) => {
-    setInsightsContent(res.data);
+    setInsightsContent([...res.data]);
   });
 };
 
