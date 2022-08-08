@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { ChevronUpWhite } from "../../../assets/icons";
 import { Cell, Dropdown, DropdownCell } from "./Filtration.styles";
 import { NavbarContext } from "./FiltrationNavbar";
+import { globalEventListener } from "../../../utils/globalEventListener";
 
 // Giving each month a id
 const monthIds = {
@@ -36,6 +37,7 @@ const NavbarDropdown = ({ children, filtersList, filterType }) => {
 
   const handleClick = () => {
     setShowDropdown(!showDropdown);
+    globalEventListener();
   };
 
   // Adding new filters to the filter array that is aslo shown on the screen
