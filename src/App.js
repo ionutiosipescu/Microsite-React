@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter,
   Route,
   Routes,
-  Switch,
-  useLocation,
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import Layout from "./components/layout";

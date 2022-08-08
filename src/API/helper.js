@@ -43,7 +43,7 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0);
-
+console.log(peopleIds)
   let personData = peopleIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
     console.log(personObject);

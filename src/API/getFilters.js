@@ -1,8 +1,7 @@
 import Axios from "axios";
-import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
-import { dateToShortLocale } from "../utils";
 
-const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
+
+// const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
 export const getInsightFilters = (setFilters) => {
