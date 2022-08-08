@@ -14,7 +14,9 @@ import styled from "styled-components";
 import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
 import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";
-
+import { CardInsights } from "../../../components/cards";
+import {  getSinglePodcast } from "../../../API";
+import DOMPurify from "dompurify";
 
 const Practice = () => {
   const cardContent = {
@@ -25,11 +27,16 @@ const Practice = () => {
     buttonText: "connect",
   };
   const [insights, setInsights] = useState([]);
+  const [podcast, setPodcast] = useState([]);
 
   useEffect(() => {
     getArticles(setInsights, "insights", 6);
   }, []);
 
+
+  useEffect(() => {
+    getSinglePodcast(setPodcast);
+  }, []);
 
   return (
     <>
@@ -50,7 +57,17 @@ const Practice = () => {
                           })}
                             </Table>
               </TableContainer>
-          
+
+
+              <h4 className="pt-5 ps-3 fw-bold">{podcast?.title} </h4>
+                  <div
+                    className="container pt-3 text-decoration-none"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(podcast?.content),
+                    }}
+                  ></div>
+      
+
         </StyledCol1>
         <StyledCol2>
           <CardProfessionals {...cardContent} />
