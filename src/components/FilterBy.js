@@ -50,7 +50,7 @@ const Tag = ({ tag, setSelectedFilters, selectedFilters }) => {
 
   return (
     <TagContainer onClick={handleClick}>
-      <span>{tag.name}</span>
+      <span>{tag.value}</span>
       <XIcon />
     </TagContainer>
   );

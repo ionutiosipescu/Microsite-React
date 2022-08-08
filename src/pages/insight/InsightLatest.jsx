@@ -43,7 +43,7 @@ const InsightLatest = () => {
   }, [selectedFilters]);
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
-  console.log("those are filters", selectedFilters);
+  // console.log("those are filters", selectedFilters);
 
   return (
     <>
@@ -55,7 +55,10 @@ const InsightLatest = () => {
         <Spinner />
       ) : (
         <FiltrationNavbar
-          searchBar2={{ placeholder: "Enter Author's Name" }}
+          searchBar2={{
+            placeholder: "Enter Author's Name",
+            filterType: "userInput",
+          }}
           setSelectedFilters={setSelectedFilters}
           selectedFilters={selectedFilters}
         >

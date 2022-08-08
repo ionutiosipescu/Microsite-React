@@ -1,57 +1,40 @@
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL;
 const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL;
 
-// Returns a filter syntax snippet to be included in the link
-const getFilterSyntax = (link, filter) => {
-  // All the filters that exist. Add more as needed.
-  const filterCases = {
-    // Repeting code. Not good
-    industries: `${filter.filterType}[]=${filter.id}`,
-    expertise: `${filter.filterType}[]=${filter.id}`,
-    bulletin: `${filter.filterType}[]=${filter.id}`,
-    region: `${filter.filterType}[]=${filter.id}`,
-
-    // The time is not really good. Need to think of something else
-    years: `created[min]=AA${filter.name}-01-01&created[max]=${filter.name}-12-31`,
-  };
-  // const categories = ["region", "industries", "expertise", "bulletin"];
-  // const time = ["years"];
-
-  return filterCases[filter.filterType];
-};
-
 // Creates a link with filters to be used on request to the API
 export const getLinkWithFilters = (link, selectedFilters) => {
   link += "?";
 
-  console.log("this is selectedFilters", selectedFilters);
-
-  // Bunch up together the time filters if they exists
+  // Create a single object for the time filter
   let timeFilter = {
     filterType: "time",
   };
 
+  console.log("this is selectedFilters", selectedFilters);
+
   const newFilterArr = [];
 
+  // Adding properties to the time filter object and pushiing everything to the newFilterArr
   selectedFilters.forEach((filter) => {
     if (filter.filterType === "years") {
-      timeFilter.years = filter.name;
+      timeFilter.years = filter.value;
+      timeFilter.yearsList = filter.yearsList;
     } else if (filter.filterType === "months") {
-      timeFilter.months = filter.name;
+      timeFilter.months = filter.id;
     } else if (filter.filterType === "days") {
-      timeFilter.days = filter.name;
+      timeFilter.days = filter.value;
     } else {
       newFilterArr.push(filter);
     }
   });
 
-  newFilterArr.push(timeFilter);
-  console.log("this is timeFilter", timeFilter);
+  if (Object.keys(timeFilter).length > 1) {
+    newFilterArr.push(timeFilter);
+  }
 
-  console.log("this is selectedFilters", selectedFilters);
-
+  // Construing up the link with the filters
   newFilterArr.forEach((filter) => {
-    link += getFilterSyntax(link, filter) + "&";
+    link += getFilterSyntax(filter) + "&";
   });
 
   return link;
@@ -94,13 +77,14 @@ export const grabRelatedPeople = (includedField, object, index) => {
   return personData;
 };
 
-// Get the id of the desired field
+// Get array of ids of of a specific field from relationships given the whole data object (res.data)
 const grabIds = (includedField, object, index) => {
   return object.data[index].relationships[includedField].data.map(
     (id) => id.id
   );
 };
 
+// Get the id of a specific field from relationships given a specific object (res.data.singleObject)
 const grabSubId = (fieldName, singleObject) => {
   return singleObject.relationships[fieldName].data.map((item) => item.id);
 
@@ -123,4 +107,45 @@ export const getLink = (articleType, amount) => {
     default:
       return "default";
   }
+};
+
+// Decides what syntax to return for the specific filter
+const getFilterSyntax = (filter) => {
+  // All the filters that exist. Add more as needed.
+  const filterCases = {
+    // Repeting code. Not good
+    industries: `${filter.filterType}[]=${filter.id}`,
+    expertise: `${filter.filterType}[]=${filter.id}`,
+    bulletin: `${filter.filterType}[]=${filter.id}`,
+    region: `${filter.filterType}[]=${filter.id}`,
+
+    userInput: `insight_search=${filter.value}`,
+
+    time: getTimeFilterSyntax(filter),
+  };
+
+  return filterCases[filter.filterType];
+};
+
+// The time filter is more complicated. It's a range of dates. Plus, we need to keep in mind if a month, year or month and year are selected.
+// I put some logic for the days filer just case we will need it for the future.
+const getTimeFilterSyntax = (filter) => {
+  const minYear = filter.years ? filter.years : 2014;
+  const maxYear = filter.years ? filter.years : new Date().getFullYear();
+  const minMonth = filter.months ? filter.months : 1;
+  const maxMonth = filter.months ? filter.months : 12;
+
+  const minDay = filter.days ? filter.days : 1;
+  const maxDay = filter.days ? filter.days : daysInMonth(maxMonth, maxYear);
+
+  return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`;
+};
+
+// Month in JavaScript is 0-indexed (January is 0, February is 1, etc),
+// but by using 0 as the day it will give us the last day of the prior
+// month. So passing in 1 as the month number will return the last day
+// of January, not February
+// Get how many days are in a specific month of the year
+const daysInMonth = (month, year) => {
+  return new Date(year, month, 0).getDate();
 };

@@ -21,13 +21,14 @@ const Navbar = ({
     setSelectedFilters: setSelectedFilters,
   };
 
-  const handleSubmit = (e, userInput, openBigNavbar) => {
+  // Handle submit from the search bar
+  const handleSubmit = (e, searchBarInput, openBigNavbar) => {
     e.preventDefault();
 
-    if (openBigNavbar && userInput === "") {
+    if (openBigNavbar && searchBarInput.value === "") {
       setVisible(!visible);
-    } else if (userInput !== "") {
-      selectedFilters.push(userInput);
+    } else if (searchBarInput.value !== "") {
+      selectedFilters.push(searchBarInput);
       setSelectedFilters([...selectedFilters]);
     }
   };
