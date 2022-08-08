@@ -3,12 +3,9 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import printJS from "print-js";
 import {
-  ChevronRight,
-  ChevronRightBlue,
   Facebook,
   LinkedIn,
   Twitter,
-  YouTube,
   DocumentIcon,
   PdfIcon,
   ShareIcon,

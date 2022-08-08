@@ -4,7 +4,6 @@ import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
 import RecongnitionSection from "../../components/section/RecongnitionSection";
 import { Spinner } from "../../components";
-import { sizem } from "../../utils/breakpoints";
 
 import {
   fetchHeroSectionDataHome,

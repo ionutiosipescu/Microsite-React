@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BreadCrumb, Spinner } from "../../components";
 import {
   LinkedinStay,

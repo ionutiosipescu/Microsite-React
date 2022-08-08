@@ -10,14 +10,13 @@ import {
   NavbarDropdown,
 } from "../../components/navbarComponents";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
-import { filtrationNavbarData, PostsArr } from "../../utils/data";
+import { filtrationNavbarData } from "../../utils/data";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { ArticleContainers } from "./styles/inisghts.style";
 
 import {
   getCaseStudiesArticles,
   fetchHeroSectionDataHome,
-  getCarouselArticles,
   fetchData,
 } from "../../API";
 

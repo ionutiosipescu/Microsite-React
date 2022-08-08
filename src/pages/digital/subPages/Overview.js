@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import YellowButton from "../../../components/buttons/YellowButton";
 // import { NewsCell as div } from "./subPages.style";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";

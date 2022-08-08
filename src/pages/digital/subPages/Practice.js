@@ -10,7 +10,6 @@ import {
 import CardCapabilities from "../../../components/cards/CardCapabilities";
 import Heading_Paragraph from "../../../components/H&P/H&P";
 import { getArticles } from "../../../API";
-import styled from "styled-components";
 import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
 import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";

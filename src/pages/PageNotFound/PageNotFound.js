@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { size } from "../../utils/breakpoints";
 import { Form } from "react-bootstrap";
 
 const Container = styled.div`
