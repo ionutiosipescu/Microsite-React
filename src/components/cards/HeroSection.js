@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import image from "../../assets/images/ConnorWine";
-import digital from "../../assets/images/digital";
 import HeroCardBrazilTransparent from "./HeroCardBrazilTransparent";
 import YellowButton from "../buttons/YellowButton";
 import { sizem } from "../../utils/breakpoints";

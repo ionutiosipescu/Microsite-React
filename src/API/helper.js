@@ -32,7 +32,7 @@ export const getLinkWithFilters = (link, selectedFilters) => {
     newFilterArr.push(timeFilter);
   }
 
-  // Construing up the link with the filters
+  // Constructing up the link with the filters
   newFilterArr.forEach((filter) => {
     link += getFilterSyntax(filter) + "&";
   });
@@ -43,7 +43,7 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0);
-
+console.log(peopleIds)
   let personData = peopleIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
     console.log(personObject);
@@ -72,7 +72,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
   if (personData.length === 0) {
     return null;
   }
-  // console.log("authorData", authorData);
 
   return personData;
 };
@@ -113,7 +112,7 @@ export const getLink = (articleType, amount) => {
 const getFilterSyntax = (filter) => {
   // All the filters that exist. Add more as needed.
   const filterCases = {
-    // Repeting code. Not good
+    // Repeating code. Not good
     industries: `${filter.filterType}[]=${filter.id}`,
     expertise: `${filter.filterType}[]=${filter.id}`,
     bulletin: `${filter.filterType}[]=${filter.id}`,

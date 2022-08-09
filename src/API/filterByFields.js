@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { getLink } from "./helper";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 

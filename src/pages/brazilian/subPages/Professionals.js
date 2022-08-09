@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { Row } from "react-bootstrap";
 
-//images
-import image from "../../../assets/images/ConnorWine";
 
 //data
-import { leadersList, links, arr } from "../../../utils/data";
+import { leadersList, links} from "../../../utils/data";
 
 // costum components
 import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { getInsights } from "../API/articles";
 import { XIcon } from "../assets/icons";
 
 const Container = styled.div`

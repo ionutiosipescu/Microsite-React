@@ -8,44 +8,38 @@ import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-import { ArticleContainers } from "./styles/inisghts.style";
 import { BreadCrumb, FilterBy, Spinner } from "../../components";
-import { getInsightFilters, getInsights, fetchData } from "../../API";
+import { filtrationNavbarData, PostsArr } from "../../utils/data";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
+import { ArticleContainers } from "./styles/inisghts.style";
+
+import {
+  getCaseStudiesArticles,
+  fetchHeroSectionDataHome,
+  fetchData,
+} from "../../API";
+
 import { useDocumentTitle } from "../../hook";
 
-const InsightLatest = () => {
-  let persistedFilters = JSON.parse(
-    sessionStorage.getItem("latestInsightsFilters")
-  );
+const InsightCase = () => {
+  const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const [heroSectionData, setHeroSectionData] = useState();
+  const [articles, setArticles] = useState([]);
+  const [carouselData, setCarouelData] = useState([]);
 
-  const [selectedFilters, setSelectedFilters] = useState(
-    persistedFilters || []
-  );
-
-  // Getting the latest articles from server
-  const [carouselData, setCarouselData] = useState([]);
-  const [insightsContent, setInsightsContent] = useState([]);
-  const [filters, setFilters] = useState(null);
+  const locationName = location?.pathname.split("/").slice(1, 3);
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   useEffect(() => {
-    fetchData(setCarouselData);
-    getInsights(setInsightsContent, selectedFilters);
-    getInsightFilters(setFilters);
+    setLoading(true);
+    fetchHeroSectionDataHome(setHeroSectionData);
+    getCaseStudiesArticles(setArticles);
+    fetchData(setCarouelData);
+    setLoading(false);
   }, []);
 
-  console.log("this is insight content", insightsContent);
-
-  useEffect(() => {
-    sessionStorage.setItem(
-      "latestInsightsFilters",
-      JSON.stringify(selectedFilters)
-    );
-    getInsights(setInsightsContent, selectedFilters);
-  }, [selectedFilters]);
-
-  useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
-  // console.log("those are filters", selectedFilters);
+  useDocumentTitle("Insights | Case Studies | Alvarez & Marsal");
 
   return (
     <>

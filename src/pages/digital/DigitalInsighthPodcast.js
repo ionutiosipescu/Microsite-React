@@ -7,8 +7,6 @@ import { HeroSection, CardSubscription } from "../../components/cards";
 
 //icons
 import {
-  ChevronRight,
-  ChevronRightBlue,
   Facebook,
   LinkedIn,
   Twitter,
@@ -28,7 +26,6 @@ import {
 
 //utils
 import { sizem } from "../../utils/breakpoints";
-import YellowButton from "../../components/buttons/YellowButton";
 import { useDocumentTitle } from "../../hook";
 import LeftSection from "../../components/cards/LeftSection";
 

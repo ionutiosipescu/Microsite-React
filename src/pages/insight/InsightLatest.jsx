@@ -19,6 +19,7 @@ const InsightLatest = () => {
     sessionStorage.getItem("latestInsightsFilters")
   );
 
+  // Filters that were selected by the user or taken from the session storage
   const [selectedFilters, setSelectedFilters] = useState(
     persistedFilters || []
   );
@@ -26,6 +27,8 @@ const InsightLatest = () => {
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([]);
   const [insightsContent, setInsightsContent] = useState([]);
+
+  // Fetched filters from the server
   const [filters, setFilters] = useState(null);
 
   useEffect(() => {

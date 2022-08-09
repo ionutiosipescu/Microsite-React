@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { Container, Row, Col } from "react-bootstrap";
 import {
   HeroSection,
   Services,
@@ -9,7 +8,6 @@ import {
 } from "../../components/cards";
 import BreadCrumb from "../../components/BreadCrumb";
 import Connor from "../../assets/images/ConnorWine";
-import { arr } from "../../utils/data";
 import {
   StyledCol2,
   StyledCol1,

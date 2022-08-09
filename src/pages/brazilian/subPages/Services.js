@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Row, Col, Container } from "react-bootstrap";
+import {  Row, Col } from "react-bootstrap";
 import image from "../../../assets/images/ConnorWine";
 import TranslateButton from "../../../components/buttons/TranslateButton";
 

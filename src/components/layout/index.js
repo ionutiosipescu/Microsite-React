@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
-import { size } from "../../utils/breakpoints";
 
 const Page = styled.div`
   margin: 0 auto;

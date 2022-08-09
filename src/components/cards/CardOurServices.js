@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { size } from "../../utils/breakpoints";
 import { Container, Row, Col } from "react-bootstrap";
 import YellowButton from "../buttons/YellowButton";
 

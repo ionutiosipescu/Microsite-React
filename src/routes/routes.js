@@ -1,10 +1,7 @@
 import {
-  ExpertisePharma,
   Contact,
   Dashboard,
-  ExpertiseQuality,
   Home,
-  Insight,
   Leadership,
   Brazil,
   InsightCase,
