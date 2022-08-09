@@ -1,9 +1,5 @@
 import Axios from "axios";
-import {
-  getLink,
-  getLinkWithFilters,
-  grabRelatedPeople,
-} from "./helper";
+import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
 const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
@@ -25,7 +21,6 @@ export const getInsights = (setInsightsContent, selectedFilters) => {
 export const getSingleArticle = (setArticleData, id) => {
   const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`;
 
-  console.log(id)
   Axios.get(link).then((res) => {
     const data = res.data.data;
 
@@ -34,7 +29,7 @@ export const getSingleArticle = (setArticleData, id) => {
     article.content = data[0].attributes.body.value;
 
     article.date = new Date(
-      data[0].attributes.revision_timestamp
+      data[0].attributes.changed || data[0].attributes.created
     ).toLocaleDateString();
 
     article.title = data[0].attributes.title;
@@ -50,31 +45,29 @@ export const getSingleArticle = (setArticleData, id) => {
 
 export const getSinglePodcast = (setPodcastData, id) => {
   // const link = `${jsonApi}/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=${id}`;
-const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=2249cb18-f903-4c2f-a610-e7d50cd5681c`
+  const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=2249cb18-f903-4c2f-a610-e7d50cd5681c`;
 
   Axios.get(link).then((res) => {
-    console.log(res)
+    console.log(res);
     const data = res.data.data;
 
     let podcast = {};
-    
+
     podcast.content = data[0].attributes.body.value;
-    
+
     podcast.title = data[0].attributes.title;
-    
+
     podcast.date = new Date(
       data[0].attributes.revision_timestamp
-      ).toLocaleDateString();
-      
-      
-      podcast.authors = grabRelatedPeople("field_authors", res.data, 0);
+    ).toLocaleDateString();
 
-      console.log(podcast.authors)
-      
+    podcast.authors = grabRelatedPeople("field_authors", res.data, 0);
+
+    console.log(podcast.authors);
+
     setPodcastData(podcast);
   });
 };
-
 
 export const getArticles = async (setContent, articleType, amount) => {
   const link = getLink(articleType, amount);
