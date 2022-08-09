@@ -83,7 +83,7 @@ const InsightCase = () => {
           </ArticleContainers>
         )}
       </StyledContainer>
-      {carouselData.length == 0 ? (
+      {carouselData.length === 0 ? (
         <Spinner />
       ) : (
         <CarouselSection

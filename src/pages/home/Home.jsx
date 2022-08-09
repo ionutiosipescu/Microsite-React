@@ -15,8 +15,7 @@ import styled from "styled-components";
 const Home = () => {
   const [heroSectionData, setHeroSectionData] = useState();
   const [carouselData, setCarouselData] = useState([]);
-  const [recentRecognition, setRecentRecognition] = useState([]);
-  //   const [carouselData2, setCarouselData2] = useState([]);
+  const [ setRecentRecognition] = useState([]);
 
   useEffect(() => {
     fetchHeroSectionDataHome(setHeroSectionData);

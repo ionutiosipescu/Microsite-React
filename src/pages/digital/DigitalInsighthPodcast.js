@@ -202,17 +202,17 @@ const DigitalInsighthPodcast = () => {
     Array.from(leftSectionIcons, () => false)
   );
 
-  const handleDisplay = (index) => {
-    setToggle(!toggle);
+  // const handleDisplay = (index) => {
+  //   setToggle(!toggle);
 
-    if (!openedState[index]) {
-      let arr = Array.from(leftSectionIcons, () => false);
-      arr[index] = true;
-      setOpenedState([...arr]);
-    } else {
-      setOpenedState(Array.from(leftSectionIcons, () => false));
-    }
-  };
+  //   if (!openedState[index]) {
+  //     let arr = Array.from(leftSectionIcons, () => false);
+  //     arr[index] = true;
+  //     setOpenedState([...arr]);
+  //   } else {
+  //     setOpenedState(Array.from(leftSectionIcons, () => false));
+  //   }
+  // };
 
   useDocumentTitle(`${state?.title}`);
   return (
