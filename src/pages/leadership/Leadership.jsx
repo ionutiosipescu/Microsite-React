@@ -31,7 +31,7 @@ import { Spinner } from "../../components";
 // import { fetchHLSLeaders, fetchLeadersPage } from "../../API/leaders";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHLSLeaders } from "../../store/actions/leaders";
+import { fetchHLSLeaders, fetchHLSPersons } from "../../store/actions/leaders";
 
 export const LeaadersContainer = styled.div`
   display: grid;
@@ -44,6 +44,7 @@ const Leadership = () => {
   const dispatch = useDispatch();
 
   const leaders = useSelector((state) => state.leaders.filteredLeaders);
+  const persons = useSelector((state) => state.leaders.industryPersons);
   const cities = useSelector((state) => state.leaders.cities);
   const expertises = useSelector((state) => state.leaders.expertises);
   const location = useSelector((state) => state.leaders.location);
@@ -61,6 +62,9 @@ const Leadership = () => {
   const [openedState, setOpenedState] = useState(
     Array.from(leaders ?? [], () => false)
   );
+  // const [openedState, setOpenedState] = useState(
+  //   Array.from(leaders ?? [], () => false)
+  // );
   // const [openedState, setOpenedState] = useState();
   // Array.from(leaders, () => false)
 
@@ -86,6 +90,7 @@ const Leadership = () => {
 
   useEffect(() => {
     dispatch(fetchHLSLeaders());
+    dispatch(fetchHLSPersons());
   }, []);
 
   let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
@@ -121,6 +126,21 @@ const Leadership = () => {
         <div className="m-4">
           <LeaadersContainer>
             {leaders?.map((cardInfo, index) => {
+              return (
+                <ProfessionalsCardSmall
+                  key={index}
+                  cardInfo={cardInfo}
+                  index={index}
+                  openedState={openedState}
+                  handleDisplay={handleDisplay}
+                  showDetails={openedState[index]}
+                />
+              );
+            })}
+          </LeaadersContainer>
+          <h1 className="p-4"> Leaders</h1>
+          <LeaadersContainer>
+            {persons?.map((cardInfo, index) => {
               return (
                 <ProfessionalsCardSmall
                   key={index}

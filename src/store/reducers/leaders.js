@@ -2,10 +2,12 @@ import {
   GET_ALL_LEADERS,
   GET_FILTER_TAGS,
   FILTER_LEADERS,
+  GET_ALL_PERSONS,
 } from "../actions/leaders";
 
 const initialState = {
   leaders: [],
+  industryPersons: [],
   cities: [],
   expertises: [],
   location: [],
@@ -22,6 +24,11 @@ export default (state = initialState, { type, payload }) => {
         expertises: payload.expertises,
         location: payload.location,
         filteredLeaders: payload.leaders,
+      };
+    case GET_ALL_PERSONS:
+      return {
+        ...state,
+        industryPersons: payload,
       };
     case GET_FILTER_TAGS: {
       return {

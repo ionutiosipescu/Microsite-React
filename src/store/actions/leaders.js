@@ -2,10 +2,59 @@ import Axios from "axios";
 export const GET_ALL_LEADERS = "GET_ALL_LEADERS";
 export const GET_FILTER_TAGS = "GET_FILTER_TAGS";
 export const FILTER_LEADERS = "FILTER_LEADERS";
+export const GET_ALL_PERSONS = "GET_ALL_PERSONS";
+
+export const fetchHLSPersons = () => {
+  return async (dispatch) => {
+    const link =
+      "https://akamai.alvarezandmarsal.com/jsonapi/node/profile?include=field_professional_title,field_image_background,field_image,field_expertise,field_city,field_region&filter[field_industry.id]=c11b8f8f-9d3a-433a-949e-5518b9b24c25";
+    await Axios.get(link)
+      .then((data) => {
+        let obj = {};
+        // console.log(data);
+        console.log(data.data.data);
+        const dataIncluded = data?.data.included;
+
+        // let profiles = data.data.included?.filter(
+        //   (x) => x.type == "node--profile"
+        // );
+        // let expertises = getIdAndNamebyTaxonomyType(
+        //   dataIncluded,
+        //   "taxonomy_term--expertise"
+        // );
+        // let global_locations = getIdAndNamebyTaxonomyType(
+        //   dataIncluded,
+        //   "taxonomy_term--global_locations"
+        // );
+        // data.data.included?.filter(
+        //   (x) => x.type == "taxonomy_term--global_locations"
+        // );
+        // let cities = getIdAndNamebyTaxonomyType(
+        //   dataIncluded,
+        //   "taxonomy_term--cities"
+        // );
+
+        // var cities = dataIncluded.filter(function (el) {
+        //   return el.type == "taxonomy_term--cities";
+        // });
+        const leaders = getInformationOfLeaders(dataIncluded, data?.data.data);
+
+        console.log(leaders);
+        // console.log(obj);
+        dispatch({
+          type: GET_ALL_PERSONS,
+          payload: leaders,
+        });
+        // return obj;
+        // setContent(obj);
+      })
+      .catch((err) => console.log(err));
+  };
+};
 
 export const fetchHLSLeaders = () => {
   return async (dispatch) => {
-    // const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_professional_title,
+    // // const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_professional_title,
     // field_image_background,
     // field_image,
     // field_expertise,
@@ -213,6 +262,30 @@ export const filterLeaders = (filterByTags) => {
             foundendLeader?.expertise.id == filterByTags[1].id
           ) {
             myArrayFiltered.push(foundendLeader);
+          }
+        }
+      });
+    } else if (filterByTags.length == 3) {
+      leaders?.forEach((leader) => {
+        if (
+          leader?.country.id == filterByTags[0].id ||
+          leader?.city.id == filterByTags[0].id ||
+          leader?.expertise.id == filterByTags[0].id
+        ) {
+          let foundendLeader = leader;
+          if (
+            foundendLeader?.country.id == filterByTags[1].id ||
+            foundendLeader?.city.id == filterByTags[1].id ||
+            foundendLeader?.expertise.id == filterByTags[1].id
+          ) {
+            let foundLeader1 = foundendLeader;
+            if (
+              foundLeader1?.country.id == filterByTags[2].id ||
+              foundLeader1?.city.id == filterByTags[2].id ||
+              foundLeader1?.expertise.id == filterByTags[2].id
+            ) {
+              myArrayFiltered.push(foundLeader1);
+            }
           }
         }
       });
