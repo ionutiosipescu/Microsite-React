@@ -5,6 +5,7 @@ export {
   getArticles,
   getCarouselArticles,
   getInsights,
+  getSinglePodcast
 } from "./articles";
 export { fetchHeroSectionDataHome } from "./heroSection";
 export { getPodcasts } from "./podcasts";
