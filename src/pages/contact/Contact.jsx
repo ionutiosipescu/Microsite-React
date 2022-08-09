@@ -295,7 +295,7 @@ const ContactSection = styled.div`
   }
   .form__label {
     display: block;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: normal;
     // padding-bottom: 0.5rem;
     color: #002b49;
@@ -304,9 +304,9 @@ const ContactSection = styled.div`
   }
   .form__input {
     width: 100%;
-
+    background #fff;
     line-height: 2;
-    padding: 0px 10px;
+    padding: 0px 7px;
     height: 2em;
     border: none;
     outline: none;
@@ -319,6 +319,7 @@ const ContactSection = styled.div`
     margin: auto;
     justify-content: center;
     height: 150px;
+    padding-bottom: 20px;
   }
   .form__optional {
     font-family: "Roboto", sans-serif;
@@ -331,24 +332,58 @@ const ContactSection = styled.div`
   .buttonContainer {
     width: 80%;
     margin: auto;
-    padding-top: 50px;
+    padding-top: 90px;
   }
+  .checker {
+      padding-top: 20px;
+    }
   @media only screen and (max-width: 900px) {
     .form__item {
       font-size: 14px;
+    }
+    .checker {
+      padding-top: 20px;
+    }
+    .buttonContainer {
+      padding-top: 70px;
     }
   }
   @media only screen and (max-width: 630px) {
     .form__item {
       font-size: 12px;
     }
+    .buttonContainer {
+      padding-top: 50px;
+    }
   }
-  @media only screen and (max-width: 460px) {
+  @media only screen and (max-width: 468px) {
     .buttonContainer {
       padding-top: 85px;
     }
+    .form__label {
+      font-size: 14px;
+    }
+    .form__textareadiv {
+      padding: 10px 0px;
+    }
+    .checker {
+      padding-top: 20px;
+    }
+    .buttonContainer {
+      padding-top: 160px;
+    }
+   // padding-bottom: 0.5rem;
+   
+
   }
   @media only screen and (max-width: 360px) {
+    .form__label {
+   
+    font-size: 14px;
+   
+    // padding-bottom: 0.5rem;
+    
+  }
     .form__textareadiv {
       padding: 10px 0px;
     }
@@ -356,7 +391,7 @@ const ContactSection = styled.div`
       padding-top: 10px;
     }
     .buttonContainer {
-      padding-top: 110px;
+      padding-top: 160px;
     }
   }
 `;

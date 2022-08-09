@@ -12,18 +12,22 @@ import {
   fetchRecentRecognition,
 } from "../../API";
 import styled from "styled-components";
+import { fetchHLSLeaders } from "../../API/leaders";
 
 const Home = () => {
   const [heroSectionData, setHeroSectionData] = useState();
   const [carouselData, setCarouselData] = useState([]);
   const [recentRecognition, setRecentRecognition] = useState([]);
+  const [dataObj, setDataObj] = useState();
   //   const [carouselData2, setCarouselData2] = useState([]);
 
   useEffect(() => {
     fetchHeroSectionDataHome(setHeroSectionData);
     fetchRecentRecognition(setRecentRecognition);
     fetchData(setCarouselData);
+    fetchHLSLeaders(setDataObj);
   }, []);
+  console.log(dataObj);
 
   const HomeContainer = styled.div`
     .heroContainer {

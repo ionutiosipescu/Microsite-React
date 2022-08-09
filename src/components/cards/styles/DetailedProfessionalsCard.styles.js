@@ -56,6 +56,7 @@ export const ImageContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: right;
   }
 
   button {
@@ -105,6 +106,10 @@ export const InfoCard = styled.div`
   border-bottom: 1px solid black;
   padding: 0.5rem 0;
 
+  a {
+    text-decoration: none;
+    color: #000;
+  }
   p {
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -135,11 +140,17 @@ export const ContactInfo = styled.div`
   }
 `;
 
-export const PersonalInfo = ({ title, content }) => {
+export const PersonalInfo = ({ title, content, onClick }) => {
   return (
     <InfoCard>
       <p>{title}</p>
-      <div>{content}</div>
+      {title === "email" ? (
+        <a href={content?.uri}>
+          <span>{content.title} </span>
+        </a>
+      ) : (
+        <div onClick={() => onClick()}>{content}</div>
+      )}
     </InfoCard>
   );
 };

@@ -47,7 +47,7 @@ const Tag = ({ tag, setFilterByTags, filterByTags }) => {
 
   return (
     <TagContainer onClick={handleClick}>
-      <span>{tag}</span>
+      <span>{tag?.name}</span>
       <XIcon />
     </TagContainer>
   );
@@ -55,8 +55,8 @@ const Tag = ({ tag, setFilterByTags, filterByTags }) => {
 
 const FilterBy = ({ filterByTags, setFilterByTags }) => {
   return (
-    <Container arrLength={filterByTags.length !== 0}>
-      {filterByTags.map((tag, index) => (
+    <Container arrLength={filterByTags?.length !== 0}>
+      {filterByTags?.map((tag, index) => (
         <Tag
           key={index}
           tag={tag}
