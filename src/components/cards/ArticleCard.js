@@ -13,6 +13,10 @@ const CustomTitle = styled.h5`
 `;
 
 const ArticleCard = ({ title, field_teaser_text, nid, uuid, created }) => {
+  var parser = new DOMParser();
+  var htmlDoc = parser.parseFromString(field_teaser_text, "text/html");
+  console.log(htmlDoc);
+
   const navigate = useNavigate();
   // console.log("this is article card", article);
 
@@ -26,7 +30,7 @@ const ArticleCard = ({ title, field_teaser_text, nid, uuid, created }) => {
       <span className="text-muted"> {dateToShortLocale(created)}</span>
       {/* <span className="text-muted"> {dateToShortLocale(created)}</span> */}
 
-      <p className="py-2 fs-6">{field_teaser_text}</p>
+      <p className="py-2 fs-6">{htmlDoc.lastElementChild.innerText}</p>
     </div>
   );
 };

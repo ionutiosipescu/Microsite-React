@@ -56,7 +56,7 @@ const Professionals = () => {
           incididunt duis nulla magna eiusmod est nulla eiusmod elit laborum do.
         </p>
       </div>
-      <FiltrationNavbar
+      {/* <FiltrationNavbar
         searchBar={{ placeholder: "enter search here" }}
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
@@ -65,7 +65,7 @@ const Professionals = () => {
         <NavbarDropdown data={links}>DropDown</NavbarDropdown>
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>Something2</NavbarDropdown>
-      </FiltrationNavbar>
+      </FiltrationNavbar> */}
       <FilterBy
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
