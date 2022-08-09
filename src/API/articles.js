@@ -24,6 +24,7 @@ export const getSingleArticle = (setArticleData, id) => {
   Axios.get(link).then((res) => {
     const data = res.data.data;
 
+    console.log(data[0]);
     let article = {};
 
     article.content = data[0].attributes.body.value;

@@ -10,8 +10,6 @@ export const getLinkWithFilters = (link, selectedFilters) => {
     filterType: "time",
   };
 
-  console.log("this is selectedFilters", selectedFilters);
-
   const newFilterArr = [];
 
   // Adding properties to the time filter object and pushiing everything to the newFilterArr
@@ -43,10 +41,8 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0);
-console.log(peopleIds)
   let personData = peopleIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
-    console.log(personObject);
 
     if (personObject) {
       const personName = personObject.attributes.title;

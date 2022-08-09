@@ -18,7 +18,8 @@ export const routeNames = {
   contact: "/contact",
   insightLatest: "/insights/latest",
   insightCase: "/insights/case",
-  insightCaseArticlePage: "/insights/case/:id",
+
+  insightCaseArticlePage: "/insights/:id",
 
   expertise: "/expertise",
   expertisePage: "/expertise/:id",

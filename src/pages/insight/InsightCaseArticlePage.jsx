@@ -25,12 +25,13 @@ const InsightCaseArticlePage = () => {
 
   useEffect(() => {
     fetchData(setCarouselData);
-    getSingleArticle(setArticleData, state);
+    getSingleArticle(setArticleData, state.uuid);
   }, []);
 
   useDocumentTitle(articleData?.title);
 
   // console.log("this is articleData", articleData);
+  console.log("this is state", state);
 
   return (
     <PageContainer>
@@ -47,10 +48,10 @@ const InsightCaseArticlePage = () => {
           <div className="row pt-5 ">
             <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
               <div className="p-3">
-                <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
+                <BreadCrumb route={"Insights"} subRoute={"Article"} />
               </div>
               <div className="row">
-                <LeftSection />
+                <LeftSection nid={state.nid} />
                 {/*---------------------------------------------------- SectionDescription */}
                 <div className=" col-11 col-sm-10 col-md-10 col-lg-11">
                   <div>

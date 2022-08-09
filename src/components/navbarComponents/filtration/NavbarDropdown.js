@@ -2,7 +2,6 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import { ChevronUpWhite } from "../../../assets/icons";
 import { Cell, Dropdown, DropdownCell } from "./Filtration.styles";
 import { NavbarContext } from "./FiltrationNavbar";
-import { globalEventListener } from "../../../utils/globalEventListener";
 
 // Giving each month a id
 const monthIds = {
@@ -37,23 +36,6 @@ const NavbarDropdown = ({ children, filtersList, filterType }) => {
 
   const handleClick = () => {
     setShowDropdown(!showDropdown);
-    // globalEventListener();
-
-    // const closeDropdown = (e) => {
-    //   console.log("current ref", dropdownRef.current);
-    //   console.log("this is e", e.target);
-    //   console.log(e.target === dropdownRef.current);
-
-    //   if (e.target !== dropdownRef.current) {
-    //     setShowDropdown(false);
-    //   }
-    // };
-    // if (showDropdown) {
-    //   document.body.addEventListener("click", closeDropdown);
-    // }
-    // return () => {
-    //   document.body.removeEventListener("click", closeDropdown);
-    // };
   };
 
   // Adding new filters to the filter array that is aslo shown on the screen
@@ -86,6 +68,8 @@ const NavbarDropdown = ({ children, filtersList, filterType }) => {
   };
 
   // Closes the dropdown if the user clicks outside of it
+  // I am not sure if there is a memory leak with this implementation. Probably not
+  // since this is what others were using
   useEffect(() => {
     const closeDropdown = (e) => {
       if (!dropdownRef.current.contains(e.target)) {

@@ -13,13 +13,22 @@ const CustomTitle = styled.h5`
   }
 `;
 
-const ArticleCard = ({ title, field_teaser_text, nid, uuid, created }) => {
+const ArticleCard = ({
+  title,
+  field_teaser_text,
+  uuid,
+  created,
+  view_node,
+  nid,
+}) => {
   const navigate = useNavigate();
 
   return (
     <div className="col-sm-12 col-md-11 col-lg-5 border-bottom h-100 py-3 ">
       <CustomTitle
-        onClick={() => navigate(`/insights/case/${uuid}`, { state: uuid })}
+        onClick={() =>
+          navigate(`${view_node}`, { state: { uuid: uuid, nid: nid } })
+        }
         dangerouslySetInnerHTML={{
           __html: DOMPurify.sanitize(title),
         }}
