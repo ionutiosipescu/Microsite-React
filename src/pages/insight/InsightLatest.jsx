@@ -37,6 +37,8 @@ const InsightLatest = () => {
     getInsightFilters(setFilters);
   }, []);
 
+  console.log("this is insight content", insightsContent);
+
   useEffect(() => {
     sessionStorage.setItem(
       "latestInsightsFilters",

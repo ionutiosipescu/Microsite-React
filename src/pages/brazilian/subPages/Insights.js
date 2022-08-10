@@ -29,6 +29,7 @@ const Insights = () => {
   // 			'laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea. laboris. Laboris ea eu ut dolor commodo commodo voluptate aute ea.',
   // 	},
   // ]
+
   const [podcasts, setPodcasts] = useState([]);
 
   useEffect(() => {

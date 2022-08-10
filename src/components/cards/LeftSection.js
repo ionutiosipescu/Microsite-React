@@ -95,12 +95,15 @@ const IconContainer = styled.div`
   }
 `;
 
-const LeftSection = () => {
+const LeftSection = ({ nid }) => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
   );
+  console.log(nid);
+
+  const mainWebsiteLink = process.env.REACT_APP_MAIN_WEBSITE_URL;
 
   const handleDisplay = (index) => {
     setToggle(!toggle);
@@ -152,6 +155,14 @@ const LeftSection = () => {
                     >
                       {icon.icon || icon.text}
                     </span>
+                    {/* <a
+                      // 54761
+                      href={`${mainWebsiteLink}/printpdf/54761`}
+                      // href={`${mainWebsiteLink}/printpdf/${nid}`}
+                      target="__blank"
+                    >
+                      {icon.icon || icon.text}
+                    </a> */}
                   </IconContainer>
                 ))}
               </span>

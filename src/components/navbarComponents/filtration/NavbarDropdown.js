@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { ChevronUpWhite } from "../../../assets/icons";
 import { Cell, Dropdown, DropdownCell } from "./Filtration.styles";
 import { NavbarContext } from "./FiltrationNavbar";
@@ -21,8 +21,8 @@ const monthIds = {
 
 const NavbarDropdown = ({ children, filtersList, filterType }) => {
   const { selectedFilters, setSelectedFilters } = useContext(NavbarContext);
-
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef();
 
   // Determines how many columns to show in the dropdown
   let columns;
@@ -67,9 +67,26 @@ const NavbarDropdown = ({ children, filtersList, filterType }) => {
     setSelectedFilters([...filteredArr]);
   };
 
+  // Closes the dropdown if the user clicks outside of it
+  // I am not sure if there is a memory leak with this implementation. Probably not
+  // since this is what others were using
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (!dropdownRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeDropdown);
+
+    return () => {
+      document.body.removeEventListener("click", closeDropdown);
+    };
+  }, []);
+
   return (
-    <div onClick={handleClick}>
-      <Cell as={"div"}>
+    <div ref={dropdownRef}>
+      <Cell as={"div"} onClick={handleClick}>
         {children}
         <ChevronUpWhite />
       </Cell>
