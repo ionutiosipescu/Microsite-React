@@ -14,7 +14,7 @@ import { getArticles } from "../../../API";
 import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
 import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";
-import { CardInsights } from "../../../components/cards";
+import { ArticlePreviewCard, CardInsights } from "../../../components/cards";
 import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
@@ -44,6 +44,7 @@ const Practice = () => {
         <ButtonWithAnimation text={"some text"} />
       </div>
       <ButtonWithAnimation black />
+      {/* <ArticlePreviewCard /> */}
 
       {/* <StyledRow>
         <StyledCol1>
