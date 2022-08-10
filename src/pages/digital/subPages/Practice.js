@@ -40,7 +40,7 @@ const Practice = () => {
 
   return (
     <>
-      <ButtonWithAnimation />
+      <ButtonWithAnimation text={"some text"} />
       <ButtonWithAnimation black />
 
       {/* <StyledRow>

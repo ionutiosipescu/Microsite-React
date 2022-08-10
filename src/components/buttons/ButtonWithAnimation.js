@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./styles/ButtonWithAnimation.style";
 import { ChevronRight } from "../../assets/icons";
 
-const ButtonWithAnimation = ({ buttonText, black }) => {
+const ButtonWithAnimation = ({ text, black }) => {
   console.log(S);
 
   return (
@@ -11,7 +11,7 @@ const ButtonWithAnimation = ({ buttonText, black }) => {
         <ChevronRight />
       </S.ChevronContainer>
       <S.TextContainer black={black}>
-        <div>{buttonText || "Read More"}</div>
+        <div>{text || "Read More"}</div>
       </S.TextContainer>
     </S.Container>
   );
