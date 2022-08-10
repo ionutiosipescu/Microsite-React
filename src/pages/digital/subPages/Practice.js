@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from "react";
-import CardProfessionals from "../../../components/cards/CardProfessionals";
-import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
 import {
   StyledCol2,
@@ -15,7 +13,7 @@ import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";
 import {  getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
-
+import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
 const Practice = () => {
   const cardContent = {
     imageSrc: image,
@@ -68,9 +66,7 @@ const Practice = () => {
 
         </StyledCol1>
         <StyledCol2>
-          <CardProfessionals {...cardContent} />
-          <CardProfessionals {...cardContent} />
-          <CareersInDigital />
+        <CardProfessionalsNews {...cardContent} />
         </StyledCol2>
       </StyledRow>
     </>

@@ -46,26 +46,27 @@ export const grabRelatedPeople = (includedField, object, index) => {
 console.log(peopleIds)
   let personData = peopleIds.map((id) => {
     const personObject = object.included.find((author) => author.id === id);
-    console.log(personObject);
-
+    
     if (personObject) {
       const personName = personObject.attributes.title;
-
+      
+      
       const professionalTitleIds = grabSubId(
         "field_professional_title",
         personObject
-      );
-
-      const professionalTitle = professionalTitleIds.map((title) => {
-        return object.included.find((item) => item.id === title).attributes
+        );
+        
+        const professionalTitle = professionalTitleIds.map((title) => {
+          return object.included.find((item) => item.id === title).attributes
           .name;
-      });
-
-      const personalPageLink = mainWebsite + personObject.attributes.path.alias;
-
-      return { personName, professionalTitle, personalPageLink };
-    }
-  });
+        });
+        
+        const personalPageLink = mainWebsite + personObject.attributes.path.alias;
+      
+        return { personName, professionalTitle, personalPageLink };
+      }
+    });
+    
 
   personData = personData.filter((item) => item !== undefined);
 
@@ -74,7 +75,9 @@ console.log(peopleIds)
   }
 
   return personData;
+  
 };
+
 
 // Get array of ids of of a specific field from relationships given the whole data object (res.data)
 const grabIds = (includedField, object, index) => {
@@ -85,12 +88,11 @@ const grabIds = (includedField, object, index) => {
 
 // Get the id of a specific field from relationships given a specific object (res.data.singleObject)
 const grabSubId = (fieldName, singleObject) => {
-  console.log(singleObject);
-  console.log(fieldName);
   return singleObject.relationships[fieldName].data.map((item) => item.id);
   
   // return singleObject.relationships[fieldName].data.map((item) => item.id);
 };
+
 
 // get the link that should be called bysed on what is provided
 export const getLink = (articleType, amount) => {
@@ -99,6 +101,7 @@ export const getLink = (articleType, amount) => {
   } else {
     amount = `&page[limit]=${amount}`;
   }
+  
 
   switch (articleType.toLowerCase()) {
     case "news":
