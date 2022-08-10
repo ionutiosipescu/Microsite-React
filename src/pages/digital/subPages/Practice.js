@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import CardProfessionals from "../../../components/cards/CardProfessionals";
 import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
@@ -7,6 +7,7 @@ import {
   StyledCol1,
   StyledRow,
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
+
 import CardCapabilities from "../../../components/cards/CardCapabilities";
 import Heading_Paragraph from "../../../components/H&P/H&P";
 import { getArticles } from "../../../API";
@@ -14,8 +15,9 @@ import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table
 import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";
 import { CardInsights } from "../../../components/cards";
-import {  getSinglePodcast } from "../../../API";
+import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
+import { ButtonWithAnimation } from "../../../components/buttons";
 
 const Practice = () => {
   const cardContent = {
@@ -32,14 +34,16 @@ const Practice = () => {
     getArticles(setInsights, "insights", 6);
   }, []);
 
-
   useEffect(() => {
     getSinglePodcast(setPodcast);
   }, []);
 
   return (
     <>
-      <StyledRow>
+      <ButtonWithAnimation />
+      <ButtonWithAnimation black />
+
+      {/* <StyledRow>
         <StyledCol1>
           <Heading_Paragraph />
           <CardCapabilities />
@@ -73,7 +77,7 @@ const Practice = () => {
           <CardProfessionals {...cardContent} />
           <CareersInDigital />
         </StyledCol2>
-      </StyledRow>
+      </StyledRow> */}
     </>
   );
 };
