@@ -81,8 +81,10 @@ const grabIds = (includedField, object, index) => {
 
 // Get the id of a specific field from relationships given a specific object (res.data.singleObject)
 const grabSubId = (fieldName, singleObject) => {
+  console.log(singleObject);
+  console.log(fieldName);
   return singleObject.relationships[fieldName].data.map((item) => item.id);
-
+  
   // return singleObject.relationships[fieldName].data.map((item) => item.id);
 };
 
