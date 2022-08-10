@@ -40,6 +40,8 @@ export const getSingleArticle = (setArticleData, id) => {
     article.authors = grabRelatedPeople("field_authors", res.data, 0);
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0);
 
+    console.log(res.data);
+
     setArticleData(article);
   });
 };

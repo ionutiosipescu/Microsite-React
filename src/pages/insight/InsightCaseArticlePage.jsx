@@ -24,8 +24,10 @@ const InsightCaseArticlePage = () => {
   const [articleData, setArticleData] = useState(null);
 
   useEffect(() => {
+    // window.scrollTo(0, 0);
     fetchData(setCarouselData);
     getSingleArticle(setArticleData, state.uuid);
+    // window.scrollTo(0, 0);
   }, []);
 
   useDocumentTitle(articleData?.title);
@@ -36,8 +38,8 @@ const InsightCaseArticlePage = () => {
   return articleData ? (
     <PageContainer>
       <HeroSection
-        title={articleData.title}
-        // title={"Need smaller title"}
+        // title={articleData.title}
+        title={"Need smaller title"}
         pageTitle="Case Studies"
         backgroundUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
