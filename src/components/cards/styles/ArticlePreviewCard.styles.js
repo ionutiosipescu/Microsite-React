@@ -4,7 +4,7 @@ export const Card = styled.div`
   max-width: 350px;
   /* padding: 1rem; */
   border-bottom: 1px solid var(--gray3);
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 `;
 
 export const Category = styled.div`

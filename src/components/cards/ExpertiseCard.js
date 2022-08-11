@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: inline-block;
-  margin: 1rem 0;
+  margin-bottom: 2rem;
+
   border-bottom: 1px solid var(--hover-blue);
   color: var(--darkBlue2);
   padding-bottom: 1rem;

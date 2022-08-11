@@ -22,7 +22,7 @@ import {
 import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
-import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsConainer";
+import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
 
 const Practice = () => {
   const cardContent = {
