@@ -20,6 +20,8 @@ import {
 } from "../../store/actions/hls/hlsHome";
 import IndustrySection from "../../components/section/IndustrySection";
 
+const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25";
+
 const Home = () => {
   const dispatch = useDispatch();
   const heroData = useSelector((state) => state.hlsHero.heroSection);
@@ -27,8 +29,8 @@ const Home = () => {
   console.log(industries);
 
   useEffect(() => {
-    dispatch(fetchHLSHeroSection());
-    dispatch(fetchHLSIndustries());
+    dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
+    dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
     // fetchHeroSectionDataHome(setHeroSectionData);
     // fetchRecentRecognition(setRecentRecognition);
     // fetchData(setCarouselData);
@@ -50,7 +52,7 @@ const Home = () => {
         backgroundUrl={heroData?.backgroundUrl}
         description={heroData?.description}
         buttonText="CONTACT US"
-        className="heroContainer"
+        className=""
       />
       <IndustrySection industries={industries} />
     </HomeContainer>

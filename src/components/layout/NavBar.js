@@ -17,24 +17,40 @@ import { sizem } from "../../utils/breakpoints";
 import { expertiseData } from "../../utils/data";
 
 const CustomNavbar = styled(Navbar)`
-  max-width: 1280px;
-  width: 100%;
+  /* max-width: 1280px; */
+  /* width: 100%; */
+  /* background-color: #0085ca; */
+  /* color: var(--white); */
   .logo {
-    img {
-      width: 45px;
-      height: 40px;
+    svg {
+      width: 50px;
+      height: 50px;
     }
+  }
+  #navbarScroll > div.me-auto.my-2.my-lg-0.fw-bold.f.navbar-nav > a {
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-family: "Helvetica Neue LT Std", sans-serif;
+    font-weight: 300;
+    font-style: medium;
   }
   #navbar-scrolling-dropdown,
   .web-title {
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--white);
     padding: 20px 12px !important;
+    font-size: 12px;
+    font-family: "Helvetica Neue LT Std", sans-serif;
+    font-weight: 300;
+    font-style: medium;
+    letter-spacing: 1px;
   }
   .nav-item.show.dropdown {
     background-color: #00254a;
   }
   .nav-item.show.dropdown a {
     color: white !important;
+    color: var(--white);
   }
   .nav-item.show.dropdown div {
     background-color: #00254a;
@@ -57,6 +73,7 @@ const CustomNavbar = styled(Navbar)`
   }
   .active-link {
     background-color: #0085ca;
+    color: var(--white);
   }
   .inactive-link {
     background-color: transparent;
@@ -163,10 +180,6 @@ const NavBar = () => {
 
           <CustomNavbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0 fw-bold f">
-              <Nav.Link className="active web-title" href={routeNames.home}>
-                {"HLS Home"}
-              </Nav.Link>
-
               <NavDropdown
                 className=""
                 title="Expertise"
@@ -189,11 +202,14 @@ const NavBar = () => {
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
+              <Nav.Link className="active web-title" href={routeNames.home}>
+                {"Industries"}
+              </Nav.Link>
 
               {/* <Nav.Link href={routeNames.insight}>{"Insights"}</Nav.Link> */}
               <NavDropdown
                 className=""
-                title="Insights"
+                title="HEALTH & LIFE INSIGHTS"
                 id="navbar-scrolling-dropdown"
               >
                 <NavDropdown.Item href={routeNames.insightLatest}>
@@ -207,10 +223,10 @@ const NavBar = () => {
                 className="active web-title"
                 href={routeNames.leadership}
               >
-                {"Leadership"}
+                {"HEALTH & LIFE PROFESSIONALS"}
               </Nav.Link>
               <Nav.Link className="active web-title " href={routeNames.contact}>
-                {"Contact"}
+                {"LOCATIONS"}
               </Nav.Link>
               <Nav.Link
                 className="active web-title text-danger d-none  d-lg-block"

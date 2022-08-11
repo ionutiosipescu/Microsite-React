@@ -4,14 +4,12 @@ export const GET_HERO_SECTION_DATA = "GET_HERO_SECTION_DATA";
 export const GET_INDUSTRIES = "GET_INDUSTRIES";
 // export const GET_OVERVIEW_SECTION_DATA = "GET_OVERVIEW_DATA";
 
-export const fetchHLSHeroSection = () => {
+export const fetchHLSHeroSection = (industryId) => {
   return async (dispatch) => {
-    const link =
-      "http://192.168.0.113:8080/jsonapi/taxonomy_term/industries/c11b8f8f-9d3a-433a-949e-5518b9b24c25";
     const liveLink = "https://www.alvarezandmarsal.com/";
     const liveLinkImage =
       "https://www.alvarezandmarsal.com/sites/default/files/";
-    const data = await fetchIndustry("c11b8f8f-9d3a-433a-949e-5518b9b24c25");
+    const data = await fetchIndustry(industryId);
     const attributes = data?.data.attributes;
     const included = data?.included;
     const imageBg = getImageFromInclude(included, "file--file");
@@ -28,10 +26,9 @@ export const fetchHLSHeroSection = () => {
   };
 };
 
-export const fetchHLSIndustries = () => {
+export const fetchHLSIndustries = (industryId) => {
   return async (dispatch) => {
-    const link =
-      "http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=c11b8f8f-9d3a-433a-949e-5518b9b24c25";
+    const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
     await Axios.get(link)
       .then((data) => {
         var parsedIndustriesArray = [];
