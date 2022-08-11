@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import HeroSection from "../../components/cards/HeroSection";
 import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
@@ -13,27 +14,31 @@ import {
 } from "../../API";
 import styled from "styled-components";
 import { fetchHLSLeaders } from "../../API/leaders";
+import {
+  fetchHLSHeroSection,
+  fetchHLSIndustries,
+} from "../../store/actions/hls/hlsHome";
+import IndustrySection from "../../components/section/IndustrySection";
 
 const Home = () => {
-  const [heroSectionData, setHeroSectionData] = useState();
-  const [carouselData, setCarouselData] = useState([]);
-  const [recentRecognition, setRecentRecognition] = useState([]);
-  const [dataObj, setDataObj] = useState();
-  //   const [carouselData2, setCarouselData2] = useState([]);
+  const dispatch = useDispatch();
+  const heroData = useSelector((state) => state.hlsHero.heroSection);
+  const industries = useSelector((state) => state.hlsHero.industries);
+  console.log(industries);
 
   useEffect(() => {
-    fetchHeroSectionDataHome(setHeroSectionData);
-    fetchRecentRecognition(setRecentRecognition);
-    fetchData(setCarouselData);
-    fetchHLSLeaders(setDataObj);
+    dispatch(fetchHLSHeroSection());
+    dispatch(fetchHLSIndustries());
+    // fetchHeroSectionDataHome(setHeroSectionData);
+    // fetchRecentRecognition(setRecentRecognition);
+    // fetchData(setCarouselData);
+    // fetchHLSLeaders(setDataObj);
   }, []);
-  console.log(dataObj);
 
   const HomeContainer = styled.div`
     .heroContainer {
-      button {
-        border-radius: 3px;
-      }
+      margin: 0;
+      padding: 0;
     }
   `;
 
@@ -41,42 +46,13 @@ const Home = () => {
     <HomeContainer>
       {/* <div className="heroContainer"> */}
       <HeroSection
-        title={heroSectionData?.title}
-        backgroundUrl={heroSectionData?.backgroundUrl}
+        title={heroData?.title}
+        backgroundUrl={heroData?.backgroundUrl}
+        description={heroData?.description}
         buttonText="CONTACT US"
         className="heroContainer"
       />
-      {/* </div> */}
-
-      {carouselData.length === 0 ? (
-        <Spinner />
-      ) : (
-        <>
-          <CarouselSection
-            categoryCarousel={carouselData?.block_one?.title}
-            backgroundColor="white"
-            arr={carouselData?.block_one?.data}
-            titleColor="#0085CA"
-            textColor="#000"
-            textDate="#949494"
-            carouselDotBackground="white"
-          />
-          <QualitiesSection />
-          <RecongnitionSection
-            arr={carouselData?.quotes}
-            titleSection="Recent Recongnition"
-          />
-          <CarouselSection
-            categoryCarousel={carouselData?.block_two?.title}
-            backgroundColor="#002B49"
-            arr={carouselData?.block_two?.data}
-            titleColor="#0085CA"
-            textColor="#fff"
-            textDate="#FFF"
-            carouselDotBackground="#002b49"
-          />
-        </>
-      )}
+      <IndustrySection industries={industries} />
     </HomeContainer>
   );
 };

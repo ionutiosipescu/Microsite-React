@@ -4,14 +4,15 @@ export const GET_FILTER_TAGS = "GET_FILTER_TAGS";
 export const FILTER_LEADERS = "FILTER_LEADERS";
 export const GET_ALL_PERSONS = "GET_ALL_PERSONS";
 
-export const fetchHLSPersons = () => {
+export const fetchBrazilPersons = () => {
   return async (dispatch) => {
     const link =
-      "https://akamai.alvarezandmarsal.com/jsonapi/node/profile?include=field_professional_title,field_image_background,field_image,field_expertise,field_city,field_region&filter[field_industry.id]=c11b8f8f-9d3a-433a-949e-5518b9b24c25";
+      "http://192.168.0.113:8080/jsonapi/node/profile?include=field_professional_title,field_image_background,field_image,field_expertise,field_city&filter[field_region.id]=22b1e094-5617-463a-9f66-5b7237553a05";
     await Axios.get(link)
       .then((data) => {
         const dataIncluded = data?.data.included;
         const leaders = getInformationOfLeaders(dataIncluded, data?.data.data);
+
         dispatch({
           type: GET_ALL_PERSONS,
           payload: leaders,
@@ -21,7 +22,7 @@ export const fetchHLSPersons = () => {
   };
 };
 
-export const fetchHLSLeaders = () => {
+export const fetchBrazilLeaders = () => {
   return async (dispatch) => {
     // // const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_professional_title,
     // field_image_background,
@@ -29,10 +30,11 @@ export const fetchHLSLeaders = () => {
     // field_expertise,
     // field_city,
     // field_region`;
-    const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_featured_expert.field_professional_title,
+    const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/global_locations/22b1e094-5617-463a-9f66-5b7237553a05?include=field_featured_expert.field_professional_title,
     field_featured_expert.field_image_background,
     field_featured_expert.field_image,
     field_featured_expert.field_expertise,
+    field_featured_expert.field_industry,
     field_featured_expert.field_city,
     field_featured_expert.field_region`;
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries/${industryId}?include=field_featured_expert.field_professional_title,
@@ -45,7 +47,6 @@ export const fetchHLSLeaders = () => {
     await Axios.get(link)
       .then((data) => {
         let obj = {};
-        // console.log(data);
 
         const dataIncluded = data?.data.included;
 
@@ -56,10 +57,7 @@ export const fetchHLSLeaders = () => {
           dataIncluded,
           "taxonomy_term--expertise"
         );
-        let global_locations = getIdAndNamebyTaxonomyType(
-          dataIncluded,
-          "taxonomy_term--global_locations"
-        );
+
         data.data.included?.filter(
           (x) => x.type == "taxonomy_term--global_locations"
         );
@@ -67,18 +65,19 @@ export const fetchHLSLeaders = () => {
           dataIncluded,
           "taxonomy_term--cities"
         );
+        let industries = getIdAndNamebyTaxonomyType(
+          dataIncluded,
+          "taxonomy_term--industries"
+        );
 
-        // var cities = dataIncluded.filter(function (el) {
-        //   return el.type == "taxonomy_term--cities";
-        // });
         const leaders = getInformationOfLeaders(dataIncluded, profiles);
         obj = {
           leaders: leaders,
           cities: cities,
           expertises: expertises,
-          location: global_locations,
+          industries: industries,
         };
-
+        // console.log(obj);
         // console.log(obj);
         dispatch({
           type: GET_ALL_LEADERS,
@@ -113,13 +112,19 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
     let professionId =
       profile?.relationships?.field_professional_title?.data[0]?.id;
     let locationId = profile?.relationships?.field_region?.data[0]?.id;
+
     let firstName = profile.attributes.field_first_name;
     let lastName = profile.attributes.field_last_name;
-    let country = dataIncluded?.find((x) => x.id == locationId);
+    let country = dataIncluded?.find((x) => x?.id == locationId);
+
+    // console.log(country);
     let imageURL =
       dataIncluded?.find((x) => x.id == imageId)?.attributes.uri.url ||
       dataIncluded?.find((x) => x.id == imageId1)?.attributes.uri.url;
 
+    //some leaders can have 2 relations with 2 regions
+    let locationId1 = profile?.relationships?.field_region?.data[1]?.id;
+    let country1 = dataIncluded?.find((x) => x?.id == locationId1) ?? {};
     let person = {
       id: profile.id,
       firstName: firstName,
@@ -150,9 +155,14 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
       // profile?.relationships?.field_professional_title?.data?.id,
 
       country: {
-        id: country.id,
+        id: country?.id,
         name: country?.attributes?.name,
-        type: country.type,
+        type: country?.type,
+      },
+      country1: {
+        id: country1?.id,
+        name: country1?.attributes?.name,
+        type: country1?.type,
       },
       image: liveAM + imageURL,
       // image:
@@ -166,8 +176,7 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
       linkLocation:
         linkLocation +
         country?.attributes?.name.split(" ").join("-").toLowerCase(),
-      linkOurPeople:
-        linkOurPeople + firstName.toLowerCase() + "-" + lastName.toLowerCase(),
+      linkOurPeople: liveAM + profile.attributes.path.alias,
       city: profile?.relationships?.field_city?.data[0],
       // city: profile?.relationships?.field_city?.data[0],
       expertise: profile?.relationships?.field_expertise?.data[0],

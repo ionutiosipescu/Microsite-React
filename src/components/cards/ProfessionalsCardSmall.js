@@ -14,6 +14,7 @@ const ProfessionalsCardSmall = ({
   index,
   handleDisplay,
   showDetails,
+  className,
 }) => {
   const [margin, setMargin] = useState(0);
 
@@ -24,7 +25,7 @@ const ProfessionalsCardSmall = ({
   }, [showDetails]);
 
   return (
-    <Container margin={margin}>
+    <Container margin={margin} className="">
       <Card onClick={() => handleDisplay(index)}>
         <ImageContainer>
           <img src={cardInfo?.image} alt="portrait"></img>

@@ -8,6 +8,7 @@ const Page = styled.div`
   margin: 0 auto;
   background-color: white;
   max-width: 1280px;
+
   width: 100%;
 `;
 const Container = styled.div`

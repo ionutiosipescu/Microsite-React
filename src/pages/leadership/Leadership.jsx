@@ -34,10 +34,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchHLSLeaders, fetchHLSPersons } from "../../store/actions/leaders";
 
 export const LeaadersContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  /* display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  gap: 0.5rem;
   position: relative;
 `;
 const Leadership = () => {
@@ -62,21 +65,22 @@ const Leadership = () => {
   const [openedState, setOpenedState] = useState(
     Array.from(leaders ?? [], () => false)
   );
+  const [openedStatePersons, setOpenedStatePersons] = useState(
+    Array.from(persons ?? [], () => false)
+  );
   // const [openedState, setOpenedState] = useState(
   //   Array.from(leaders ?? [], () => false)
   // );
   // const [openedState, setOpenedState] = useState();
   // Array.from(leaders, () => false)
 
-  const handleDisplay = (index) => {
-    if (leaders) {
-      if (!openedState[index]) {
-        let arr = Array.from(leaders, () => false);
-        arr[index] = true;
-        setOpenedState([...arr]);
-      } else {
-        setOpenedState(Array.from(leaders, () => false));
-      }
+  const handleDisplay2 = (index, array, state, setState) => {
+    if (!state[index]) {
+      let arr = Array.from(array, () => false);
+      arr[index] = true;
+      setState([...arr]);
+    } else {
+      setState(Array.from(array, () => false));
     }
   };
 
@@ -120,7 +124,7 @@ const Leadership = () => {
 
       <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
       <h1 className="p-4"> Leaders</h1>
-      {leaders?.length === 10 ? (
+      {leaders?.length === 0 ? (
         <Spinner />
       ) : (
         <div className="m-4">
@@ -128,11 +132,19 @@ const Leadership = () => {
             {leaders?.map((cardInfo, index) => {
               return (
                 <ProfessionalsCardSmall
+                  className=""
                   key={index}
                   cardInfo={cardInfo}
                   index={index}
                   openedState={openedState}
-                  handleDisplay={handleDisplay}
+                  handleDisplay={() =>
+                    handleDisplay2(
+                      index,
+                      leadersList,
+                      openedState,
+                      setOpenedState
+                    )
+                  }
                   showDetails={openedState[index]}
                 />
               );
@@ -147,8 +159,15 @@ const Leadership = () => {
                   cardInfo={cardInfo}
                   index={index}
                   openedState={openedState}
-                  handleDisplay={handleDisplay}
-                  showDetails={openedState[index]}
+                  handleDisplay={() =>
+                    handleDisplay2(
+                      index,
+                      persons,
+                      openedStatePersons,
+                      setOpenedStatePersons
+                    )
+                  }
+                  showDetails={openedStatePersons[index]}
                 />
               );
             })}

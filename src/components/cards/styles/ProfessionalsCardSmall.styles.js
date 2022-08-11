@@ -10,6 +10,8 @@ export const Card = styled.div`
   display: flex;
   background: #002b49;
   min-height: 200px;
+  max-height: 200px;
+  max-width: 300px;
   margin-bottom: 2rem;
 `;
 
