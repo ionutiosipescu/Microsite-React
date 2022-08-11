@@ -14,10 +14,15 @@ import { getArticles } from "../../../API";
 import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table";
 import { TableContainer } from "../../../components/tables/TableContainer";
 import { Table } from "../../../components/tables/Table";
-import { ArticlePreviewCard, CardInsights } from "../../../components/cards";
+import {
+  ArticlePreviewCard,
+  CardInsights,
+  ExpertiseCard,
+} from "../../../components/cards";
 import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
+import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsConainer";
 
 const Practice = () => {
   const cardContent = {
@@ -30,22 +35,43 @@ const Practice = () => {
   const [insights, setInsights] = useState([]);
   const [podcast, setPodcast] = useState([]);
 
-  useEffect(() => {
-    getArticles(setInsights, "insights", 6);
-  }, []);
+  // useEffect(() => {
+  //   getArticles(setInsights, "insights", 6);
+  // }, []);
 
-  useEffect(() => {
-    getSinglePodcast(setPodcast);
-  }, []);
+  // useEffect(() => {
+  //   getSinglePodcast(setPodcast);
+  // }, []);
+  const content =
+    "Lorem  Consequat anim eiusmod reprehenderit ut in eiusmod ea ipsum ex. Elit anim amet quis excepteur sint voluptate cillum minim incididunt veniam sint. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing.";
 
   return (
     <>
-      <div>
+      <div className="p-3">
         <ButtonWithAnimation text={"some text"} />
-      </div>
-      <ButtonWithAnimation black />
-      {/* <ArticlePreviewCard /> */}
+        <ButtonWithAnimation black />
 
+        <h1>Those are expertises</h1>
+        <UnalignedItemsConainer columnsNumber={3}>
+          <ExpertiseCard content={content} />
+          <ExpertiseCard />
+          <ExpertiseCard />
+          <ExpertiseCard />
+          <ExpertiseCard content={content} />
+          <ExpertiseCard />
+          <ExpertiseCard />
+          <ExpertiseCard />
+        </UnalignedItemsConainer>
+        <h1>Those are Articles</h1>
+        <UnalignedItemsConainer>
+          <ArticlePreviewCard content={content} />
+          <ArticlePreviewCard />
+          <ArticlePreviewCard />
+          <ArticlePreviewCard />
+          <ArticlePreviewCard content={content} />
+          <ArticlePreviewCard />
+        </UnalignedItemsConainer>
+      </div>
       {/* <StyledRow>
         <StyledCol1>
           <Heading_Paragraph />

@@ -12,3 +12,4 @@ export { default as ArticleCard } from "./ArticleCard";
 export { default as CardOurServices } from "./CardOurServices";
 export { default as CardSubscription } from "./CardSubscription";
 export { default as ArticlePreviewCard } from "./ArticlePreviewCard";
+export { default as ExpertiseCard } from "./ExpertiseCard";
