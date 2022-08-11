@@ -9,6 +9,8 @@ import { ReactComponent as ChevronRightWhite } from "./icons/chevronRightWhite.s
 import { ReactComponent as ChevronUpWhite } from "./icons/chevronUpWhite.svg";
 import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg";
 import { ReactComponent as Logo } from "./icons/logo.svg";
+import { ReactComponent as LogoFooter } from "./icons/logo_footer.svg";
+import { ReactComponent as ArrowRight } from "./icons/arrowright.svg";
 
 const iconsPath = "/icons/";
 
@@ -22,13 +24,17 @@ const PdfIcon = ({ className }) => iconPng(className, "pdf");
 const DocumentIcon = ({ className }) => iconPng(className, "document");
 const ShareIcon = ({ className }) => iconPng(className, "share");
 const LetterIcon = ({ className }) => iconPng(className, "letter");
+const FooterFacebookIcon = ({ className }) => iconPng(className, "icon_fb@2x");
+const FooterLinkedinIcon = ({ className }) => iconPng(className, "icon_li@2x");
+const FooterTwitterIcon = ({ className }) => iconPng(className, "icon_t@2x");
+const FooterYoutTubeIcon = ({ className }) => iconPng(className, "icon_yt@2x");
 
 const iconsStayPath = "/icons/stayConnected/";
 
 const iconStayPng = (className, name) => (
   <img className={className} src={iconsStayPath + name + ".png"} />
-);
-
+  );
+  
 const LinkedinStay = ({ className }) => iconStayPng(className, "in_0");
 const FacebookStay = ({ className }) => iconStayPng(className, "fb_0");
 const LetterStay = ({ className }) => iconStayPng(className, "newsletter_0");
@@ -48,6 +54,8 @@ export {
   Facebook,
   Twitter,
   YouTube,
+  LogoFooter,
+  ArrowRight,
   IconTriangle,
   PdfIcon,
   DocumentIcon,
@@ -58,4 +66,8 @@ export {
   LetterStay,
   TwitterStay,
   YoutubeStay,
+  FooterFacebookIcon,
+  FooterLinkedinIcon,
+  FooterTwitterIcon,
+  FooterYoutTubeIcon
 };
