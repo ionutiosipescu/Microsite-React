@@ -4,6 +4,7 @@ import { size } from "../../../utils/breakpoints";
 export const StyledRow = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem;
 
   @media ${size.lg} {
     flex-direction: row;

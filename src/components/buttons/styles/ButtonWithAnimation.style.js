@@ -52,6 +52,7 @@ export const TextContainer = styled.span`
   align-items: center;
   padding: 0.75rem 2rem;
   position: relative;
+  text-transform: uppercase;
 
   div {
     z-index: 2;

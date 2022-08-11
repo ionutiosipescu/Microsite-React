@@ -4,7 +4,7 @@ import {
   NavbarDropdown,
 } from "../../../components/navbarComponents";
 import { FilterBy } from "../../../components";
-import {  leadersList, links } from "../../../utils/data";
+import { leadersList, links } from "../../../utils/data";
 import { ProfessionalsCardSmall } from "../../../components/cards";
 import styled from "styled-components";
 import { useDocumentTitle } from "../../../hook";
