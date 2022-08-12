@@ -3,6 +3,7 @@ import Connor from "../../assets/images/ConnorWine";
 import styled from "styled-components";
 import { size } from "../../utils/breakpoints";
 import { ChevronRightWhite } from "../../assets/icons";
+import { ButtonWithAnimation } from "../buttons";
 
 const Card = styled.div`
   display: flex;
@@ -15,24 +16,28 @@ const CardBody = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  .button-animation {
+    display: none;
+  }
   button {
     transition: background-color 0.2s ease-out;
   }
 
-  /* button:hover {
-    background-color: var(--hover-blue);
-    border-color: var(--hover-blue);
-  } */
-
+  
   @media ${size.lg} {
     button {
       display: block;
     }
+   
+
   }
 
   @media ${size.lg} {
     flex-direction: column;
+    .button-animation {
+  padding: 0 0 20px 20px;
+  display: block;
+}
   }
 `;
 
@@ -137,6 +142,8 @@ const Info = styled.a`
     font-size: 0.813rem;
   }
 `;
+const ButtonAni = styled.div`
+`
 
 const CardProfessionalsNew = ({
   name,
@@ -156,6 +163,9 @@ const CardProfessionalsNew = ({
           <Position>{position || "wine connoisseur"}</Position>
           <Info>{country} </Info>
         </Content>
+        <div className="button-animation">
+          <ButtonWithAnimation/>
+          </div>
       </CardBody>
       <ArrowContainer>
         <ChevronRightWhite />
@@ -165,3 +175,4 @@ const CardProfessionalsNew = ({
 };
 
 export default CardProfessionalsNew;
+
