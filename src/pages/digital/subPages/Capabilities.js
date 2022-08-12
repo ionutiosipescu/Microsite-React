@@ -12,7 +12,8 @@ import {
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import { useDocumentTitle } from "../../../hook";
 import CardProfessionalsNew from "../../../components/cards/CardProfessionalsNew";
-import ContactandSubscribeCard from "../../../components/cards/ContactandSubscribeCard";
+import ContactSubscribeCard from "../../../components/cards/ContactSubscribeCard";
+import SocialsCard from "../../../components/cards/SocialsCard";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -71,7 +72,8 @@ const Capabilities = () => {
         <StyledCol2>
           <CardProfessionalsNew {...cardContent} />
           <CardProfessionalsNew {...cardContent} />
-          <ContactandSubscribeCard/>
+          <ContactSubscribeCard/>
+          <SocialsCard/>
         </StyledCol2>
       </StyledRow>
     </>

@@ -11,6 +11,9 @@ import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg
 import { ReactComponent as Logo } from "./icons/logo.svg";
 import { ReactComponent as LogoFooter } from "./icons/logo_footer.svg";
 import { ReactComponent as ArrowRight } from "./icons/arrowright.svg";
+import { ReactComponent as Mail } from "./icons/mail.svg";
+import { ReactComponent as Pdf } from "./icons/pdf.svg";
+import { ReactComponent as Share } from "./icons/share.svg";
 
 const iconsPath = "/icons/";
 
@@ -25,8 +28,10 @@ const DocumentIcon = ({ className }) => iconPng(className, "document");
 const ShareIcon = ({ className }) => iconPng(className, "share");
 const LetterIcon = ({ className }) => iconPng(className, "letter");
 const FooterFacebookIcon = ({ className }) => iconPng(className, "icon_fb@2x");
+const FacebookIcon = ({ className }) => iconPng(className, "facebook");
 const FooterLinkedinIcon = ({ className }) => iconPng(className, "icon_li@2x");
 const FooterTwitterIcon = ({ className }) => iconPng(className, "icon_t@2x");
+const TwitterIcon = ({ className }) => iconPng(className, "twitter");
 const FooterYoutTubeIcon = ({ className }) => iconPng(className, "icon_yt@2x");
 
 const iconsStayPath = "/icons/stayConnected/";
@@ -56,6 +61,9 @@ export {
   YouTube,
   LogoFooter,
   ArrowRight,
+  Mail,
+  Pdf,
+  Share,
   IconTriangle,
   PdfIcon,
   DocumentIcon,
@@ -69,5 +77,7 @@ export {
   FooterFacebookIcon,
   FooterLinkedinIcon,
   FooterTwitterIcon,
-  FooterYoutTubeIcon
+  FooterYoutTubeIcon,
+  TwitterIcon,
+  FacebookIcon
 };

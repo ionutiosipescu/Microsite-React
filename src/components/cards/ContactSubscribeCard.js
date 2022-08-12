@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { size } from "../../utils/breakpoints";
 import { ButtonWithAnimation } from "../buttons";
 
 const Card = styled.div`
@@ -16,9 +15,7 @@ margin: 20px 0;
 }
 `
 
-const ContactandSubscribeCard = ({
-    black
-}) => {
+const ContactSubscribeCard = () => {
     return (
         <Card>
             <div class="buttons">
@@ -33,4 +30,4 @@ const ContactandSubscribeCard = ({
     )
 }
 
-export default ContactandSubscribeCard;
+export default ContactSubscribeCard;
