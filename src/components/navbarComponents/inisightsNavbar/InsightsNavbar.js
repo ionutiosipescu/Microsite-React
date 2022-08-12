@@ -1,5 +1,7 @@
 import React from "react"
-import * as S from "./InsightsNavbar.styles"
+import * as S from "./styles/InsightsNavbar.styles"
+import Cell from "./Cell"
+import Dropdown from "./Dropdown"
 
 const InsightsNavbar = ({ title }) => {
   return (
@@ -12,9 +14,24 @@ const InsightsNavbar = ({ title }) => {
         </span>
       </S.TitleSection>
       <S.Navbar>
-        <span>
-          <a href="#">All Insight</a>
-        </span>
+        <Cell text="Home" href="#" />
+        <Cell href="#" />
+        <Cell text="Home" />
+        <Cell text="Home" />
+        <Cell text="Home" href="#" />
+        <Cell href="#" />
+        <Cell text="Home" />
+        <Cell text="Home" />
+        <Cell text="Home" href="#" />
+        <Cell href="#" />
+        <Cell text="Home" />
+        <Cell text="Home" />
+      </S.Navbar>
+      <S.Navbar>
+        <Dropdown />
+        <Dropdown />
+        <Dropdown />
+        <Dropdown />
       </S.Navbar>
     </S.Container>
   )
