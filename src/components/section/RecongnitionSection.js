@@ -22,6 +22,8 @@ const CarouselContainer = styled.div`
   }
   .articlesContainer {
     display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
   }
 `;
 
@@ -32,7 +34,10 @@ const RecongnitionSection = ({ arr, titleSection }) => {
         <h3>{titleSection || "Recent Recognition:"}</h3>
         <div className="articlesContainer">
           {[1, 2]?.map((element, index) => (
-            <div className="py-3 me-5" key={index}>
+            <div
+              className="py-3 me-5 col-11 col-sm-11 col-md-5 col-lg-5"
+              key={index}
+            >
               {/* <p
                 className="fst-italic"
                 dangerouslySetInnerHTML={{ __html: element?.text }}

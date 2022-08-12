@@ -57,7 +57,7 @@ const IndustrySection = ({ industries }) => {
           {industries.map((industry) => (
             <div className="industry col-lg-5 col-md-10 col-sm-10 col-10">
               <div className="body">
-                <h2> {industry.name}</h2>
+                <h2 onClick={() => alert("click")}> {industry.name}</h2>
                 <p>{industry.description}</p>
               </div>
 

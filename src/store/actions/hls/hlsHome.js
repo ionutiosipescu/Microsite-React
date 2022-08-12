@@ -48,9 +48,6 @@ export const fetchHLSIndustries = (industryId) => {
           };
           parsedIndustriesArray.push(industryObj);
         }
-        // industries.forEach(([key, value]) => {
-        //   console.log(value);
-        //   // const attributes = industry?.attributes;
 
         dispatch({
           type: GET_INDUSTRIES,
