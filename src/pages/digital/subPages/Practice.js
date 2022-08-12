@@ -21,25 +21,19 @@ import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
 import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
+import Axios from "axios";
 import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
 const Practice = () => {
-  const cardContent = {
-    imageSrc: image,
-    name: "Connor Colquhoun",
-    position: "wine connoisseur",
-    country: "japan",
-    buttonText: "connect",
-  };
-  const [insights, setInsights] = useState([]);
-  const [podcast, setPodcast] = useState([]);
+  const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls";
+
+  console.log(link);
 
   useEffect(() => {
-    getArticles(setInsights, "insights", 6);
+    Axios.get(link).then((res) => {
+      console.log(res.data);
+    });
   }, []);
 
-  // useEffect(() => {
-  //   getSinglePodcast(setPodcast);
-  // }, []);
   const content =
     "Lorem  Consequat anim eiusmod reprehenderit ut in eiusmod ea ipsum ex. Elit anim amet quis excepteur sint voluptate cillum minim incididunt veniam sint. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing.";
 
