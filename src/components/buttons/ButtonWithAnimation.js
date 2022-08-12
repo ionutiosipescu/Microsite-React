@@ -2,9 +2,9 @@ import React from "react";
 import * as S from "./styles/ButtonWithAnimation.style";
 import { ChevronRight } from "../../assets/icons";
 
-const ButtonWithAnimation = ({ text, black }) => {
+const ButtonWithAnimation = ({ text, black, link }) => {
   return (
-    <S.Container>
+    <S.Container href={link || "#"}>
       <S.ChevronContainer black={black}>
         <ChevronRight />
       </S.ChevronContainer>

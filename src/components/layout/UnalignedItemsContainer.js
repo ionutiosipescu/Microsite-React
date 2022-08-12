@@ -9,6 +9,10 @@ const Container = styled.div`
   & > div {
     display: flex;
     flex-direction: column;
+
+    & > :last-child {
+      border-bottom: none;
+    }
   }
 `;
 

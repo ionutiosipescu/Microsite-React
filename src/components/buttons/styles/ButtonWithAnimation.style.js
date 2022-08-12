@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.a`
   display: inline-flex;
   cursor: pointer;
+  text-decoration: none;
 
   span {
     transition: all 0.5s ease-out;
