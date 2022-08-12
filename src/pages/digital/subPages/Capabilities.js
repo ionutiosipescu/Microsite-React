@@ -12,6 +12,7 @@ import {
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import { useDocumentTitle } from "../../../hook";
 import CardProfessionalsNew from "../../../components/cards/CardProfessionalsNew";
+import ContactandSubscribeCard from "../../../components/cards/ContactandSubscribeCard";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -70,7 +71,7 @@ const Capabilities = () => {
         <StyledCol2>
           <CardProfessionalsNew {...cardContent} />
           <CardProfessionalsNew {...cardContent} />
-          <CareersInDigital />
+          <ContactandSubscribeCard/>
         </StyledCol2>
       </StyledRow>
     </>
