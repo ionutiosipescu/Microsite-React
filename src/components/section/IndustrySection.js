@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
+import { sizem } from "../../utils/breakpoints";
 
 const IndustrySectionContainer = styled.div`
   padding: 20px;
@@ -17,6 +18,13 @@ const IndustrySectionContainer = styled.div`
     h2 {
       padding-top: 20px;
       padding-left: 55px;
+    }
+    @media ${sizem.smm} {
+      width: 100%;
+      h2 {
+        padding-top: 20px;
+        padding-left: 30px;
+      }
     }
   }
 

@@ -9,6 +9,7 @@ import { ReactComponent as ChevronRightWhite } from "./icons/chevronRightWhite.s
 import { ReactComponent as ChevronUpWhite } from "./icons/chevronUpWhite.svg";
 import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg";
 import { ReactComponent as Logo } from "./icons/logo.svg";
+import { ReactComponent as AlvarezMarsal } from "./icons/AlvarezMarsal.svg";
 
 const iconsPath = "/icons/";
 
@@ -37,6 +38,7 @@ const YoutubeStay = ({ className }) => iconStayPng(className, "yt");
 
 export {
   Logo,
+  AlvarezMarsal,
   ChevronUpWhite,
   ChevronDownWhite,
   Search,

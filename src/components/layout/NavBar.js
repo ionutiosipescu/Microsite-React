@@ -10,7 +10,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { routeNames } from "../../routes/routes";
-import { Search, XIcon, Logo } from "../../assets/icons";
+import { Search, XIcon, Logo, AlvarezMarsal } from "../../assets/icons";
 import styled from "styled-components";
 import { sizem } from "../../utils/breakpoints";
 
@@ -21,6 +21,7 @@ const CustomNavbar = styled(Navbar)`
   /* width: 100%; */
   /* background-color: #0085ca; */
   /* color: var(--white); */
+
   .logo {
     svg {
       width: 50px;
@@ -34,6 +35,7 @@ const CustomNavbar = styled(Navbar)`
     font-family: "Helvetica Neue LT Std", sans-serif;
     font-weight: 300;
     font-style: medium;
+    text-transform: uppercase;
   }
   #navbar-scrolling-dropdown,
   .web-title {
@@ -44,6 +46,7 @@ const CustomNavbar = styled(Navbar)`
     font-weight: 300;
     font-style: medium;
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
   .nav-item.show.dropdown {
     background-color: #00254a;
@@ -77,6 +80,28 @@ const CustomNavbar = styled(Navbar)`
   }
   .inactive-link {
     background-color: transparent;
+  }
+  .rightIconsContainer {
+    /* border: 2px solid yellow; */
+    /* background-color: white; */
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+    /* font-size: 18px; */
+    .searchIcon {
+      padding-top: 5px;
+      width: inherit;
+    }
+    #AlvarezAndMarsal {
+      /* width: 130px; */
+      width: 8rem;
+    }
+    svg {
+      fill: white;
+    }
   }
 `;
 const NavbarSearchContainer = styled.div`
@@ -228,18 +253,18 @@ const NavBar = () => {
               <Nav.Link className="active web-title " href={routeNames.contact}>
                 {"LOCATIONS"}
               </Nav.Link>
-              <Nav.Link
+              {/* <Nav.Link
                 className="active web-title text-danger d-none  d-lg-block"
                 href={routeNames.brazilian}
               >
                 {"Brazilian MicroSite"}
-              </Nav.Link>
-              <Nav.Link
+              </Nav.Link> */}
+              {/* <Nav.Link
                 className="active web-title text-danger d-none  d-lg-block"
                 href={routeNames.digital}
               >
                 {"Digital MicroSite"}
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
             <Nav>
               <Nav.Link
@@ -255,16 +280,21 @@ const NavBar = () => {
                       setShowSearchDiv(false);
                     }}
                   >
-                    {console.log(showSearchDiv)}
                     <XIcon />
                   </div>
                 ) : (
-                  <div
-                    onClick={() => {
-                      setShowSearchDiv(true);
-                    }}
-                  >
-                    <Search />
+                  <div>
+                    <div className="rightIconsContainer">
+                      <AlvarezMarsal id="AlvarezAndMarsal" />
+                      <div className="d-flex justify-content-end">
+                        <Search
+                          className="searchIcon"
+                          onClick={() => {
+                            setShowSearchDiv(true);
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
                 )}
               </Nav.Link>

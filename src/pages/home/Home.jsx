@@ -27,6 +27,7 @@ const Home = () => {
   const heroData = useSelector((state) => state.hlsHero.heroSection);
   const industries = useSelector((state) => state.hlsHero.industries);
   console.log(industries);
+  const [carouselData, setCarouselData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
@@ -51,12 +52,20 @@ const Home = () => {
         title={heroData?.title}
         backgroundUrl={heroData?.backgroundUrl}
         description={heroData?.description}
-        buttonText="CONTACT US"
+        buttonText="talk to us to learn more "
         className=""
+        // route={route}
+        // date={"May 17 2022"}
+        height={450}
       />
       <IndustrySection industries={industries} />
+      <RecongnitionSection arr={carouselData} />
     </HomeContainer>
   );
 };
 
 export default Home;
+const route = {
+  route: "HEALTH & LIFE INSIGHTS /",
+  subRoute: " HEALTH & LIFE CASE STUDIES",
+};

@@ -7,22 +7,23 @@ import NavBar from "../layout/NavBar";
 
 const Hero = styled.div`
   position: relative;
-  height: 450px;
+  height: ${(props) => props.height + "px" || ""};
   width: 100%;
   background: url(${(props) => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
-  text-transform: uppercase;
 
   .contentContainer {
     height: inherit;
     padding-left: 6%;
     padding-right: 5%;
+
     .contentWithoutNavbar {
       height: inherit;
       display: flex;
       flex-direction: column;
+      padding-top: 2rem;
     }
     .buttonContainer {
       margin: auto 0px;
@@ -31,7 +32,6 @@ const Hero = styled.div`
       }
     }
     h1 {
-      padding-top: 2rem;
       color: #fff;
       text-shadow: 10px 10px 10px #00000029;
       font-family: "Helvetica Neue LT Std", sans-serif;
@@ -40,6 +40,11 @@ const Hero = styled.div`
       letter-spacing: 0.5px;
       font-size: 3rem;
       line-height: 3rem;
+      text-transform: uppercase;
+      @media ${sizem.smm} {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+      }
     }
     p {
       font-family: "Helvetica Neue LT Std", sans-serif;
@@ -50,9 +55,19 @@ const Hero = styled.div`
       color: #fff;
       @media ${sizem.smm} {
         width: 90%;
+        font-size: 0.9rem;
+        line-height: 1rem;
       }
     }
   }
+  .routeSpan {
+  }
+`;
+
+const TitleRoute = styled.span`
+  font-size: 1.5rem;
+  text-transform: "uppercase";
+  color: ${(props) => props.color || "#fff"};
 `;
 
 const HeroSection = ({
@@ -60,36 +75,58 @@ const HeroSection = ({
   description,
   backgroundUrl,
   buttonText,
-  pageTitle,
-  pageTitleCenter,
-  transparent,
+  pageCategory,
+  pageCategoryCenter,
   className,
+  route,
+  date,
+  height,
   heroBrazilianText,
+  transparent,
 }) => {
   let navigate = useNavigate();
   return (
-    <Hero backgroundUrl={backgroundUrl} className={className}>
+    <Hero backgroundUrl={backgroundUrl} className={className} height={height}>
       <div className="contentContainer">
         <NavBar />
         <div className="contentWithoutNavbar">
-          {pageTitle && <h4>{pageTitle}</h4>}
-          {pageTitleCenter && (
-            <h4 className="text-center">{pageTitleCenter}</h4>
+          {pageCategory && (
+            <TitleRoute color={"var(--yellowCategory) "}>
+              {pageCategory}
+            </TitleRoute>
+          )}
+          {route && (
+            <>
+              <span>
+                <TitleRoute color={"var(--hover-blue) "}>
+                  {route.route}
+                </TitleRoute>
+
+                <TitleRoute color={"var(--yellowCategory) "}>
+                  {route.subRoute}
+                </TitleRoute>
+              </span>
+            </>
+          )}
+          {pageCategoryCenter && (
+            <h4 className="text-center">{pageCategoryCenter}</h4>
+          )}
+          {date && <h4 className="text-white">{date}</h4>}
+          <h1>{title}</h1>
+          {description && (
+            <div
+              className=" pt-3 text-decoration-none"
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            ></div>
           )}
 
-          <h1>{title}</h1>
-          <div
-            className=" pt-3 text-decoration-none"
-            dangerouslySetInnerHTML={{
-              __html: description,
-            }}
-          ></div>
-
-          <div className="buttonContainer">
-            <ButtonWithAnimation
-              text={"talk to us to learn more".toUpperCase()}
-            />
-          </div>
+          {buttonText && (
+            <div className="buttonContainer">
+              <ButtonWithAnimation text={buttonText.toUpperCase()} />
+            </div>
+          )}
         </div>
       </div>
     </Hero>
