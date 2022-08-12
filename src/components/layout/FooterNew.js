@@ -7,13 +7,13 @@ import { size } from "../../utils/breakpoints";
 
 const FooterContainer = styled.div`
 background-color: var(--darkBlue) !important;
- max-width: 1280px;
+ max-width: 80rem;
  height: auto;
     width: 100%;
   .logo {
     img {
-      width: 45px;
-      height: 40px;
+      width: 2.813rem;
+      height: 2.5rem;
     }
   }
 
@@ -22,13 +22,13 @@ background-color: var(--darkBlue) !important;
 const ContentContainer = styled.div`
 height: 100%;
 width: 100%;
-padding: 50px 70px 50px;
-font-size: 12px;
+padding: 3.125rem 4.375rem;
+font-size: 0.75rem;
 `
 const SectionsContainer = styled.div`
 position: relative;
 height: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 3.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,14 +50,14 @@ p {
         width: 50%;
     }
     .global, .contact {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
     .privacy {
         opacity: 0.8;
     }
 }
 .logo-container, .list-info-container {
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 @media ${size.md} {
@@ -75,7 +75,7 @@ p {
     display: flex;
   }
   .privacy {
-        padding-left: 100px;
+        padding-left: 6.25rem;
     }
 }
 `
@@ -85,7 +85,7 @@ const ColContainer = styled.div`
 display: flex;
 .logo {
     svg {
-        height: 55px;
+        height: 3.438rem;
         width: auto;
     }
 }
@@ -106,9 +106,9 @@ const ColBox = styled.div`
         margin: 0;
     }
     span {
-        margin-left: 3px;
+        margin-left: 0.188rem;
         svg {
-            height: 11px;
+            height: 0.688rem;
             width: auto;
         }
     }
@@ -117,7 +117,7 @@ input {
     color: #fff;
     background: transparent;
     border: 0;
-    height: 20px;
+    height: 1.25rem;
     border-bottom: 1px solid #fff;
     text-align: center;
     ::placeholder {
@@ -126,13 +126,13 @@ input {
     }
     .icons-container {
         img {
-            height: 25px;
+            height: 1.563rem;
             width: auto;
         }
         display: flex;
         justify-content: end;
         gap: 1rem;
-        margin-bottom: 48px;
+        margin-bottom: 3rem;
     }
     @media ${size.md} {
         .bulletin-signup {
@@ -149,9 +149,11 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 border-top: 1px solid #fff;
-padding-top: 20px;
+padding-top: 1.25rem;
 flex-direction: column;
-
+@media ${size.md} {
+    flex-direction: row;
+    }
 `
 const CopyrightSection = styled.div`
 
