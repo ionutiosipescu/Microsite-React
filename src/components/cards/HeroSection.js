@@ -85,8 +85,15 @@ const HeroSection = ({
   transparent,
 }) => {
   let navigate = useNavigate();
+  console.log(backgroundUrl);
+  const backgr =
+    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
   return (
-    <Hero backgroundUrl={backgroundUrl} className={className} height={height}>
+    <Hero
+      backgroundUrl={backgroundUrl ?? backgr}
+      className={className}
+      height={height}
+    >
       <div className="contentContainer">
         <NavBar />
         <div className="contentWithoutNavbar">
@@ -114,12 +121,12 @@ const HeroSection = ({
           {date && <h4 className="text-white">{date}</h4>}
           <h1>{title}</h1>
           {description && (
-            <div
+            <p
               className=" pt-3 text-decoration-none"
               dangerouslySetInnerHTML={{
                 __html: description,
               }}
-            ></div>
+            ></p>
           )}
 
           {buttonText && (

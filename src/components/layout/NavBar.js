@@ -253,18 +253,18 @@ const NavBar = () => {
               <Nav.Link className="active web-title " href={routeNames.contact}>
                 {"LOCATIONS"}
               </Nav.Link>
-              {/* <Nav.Link
+              <Nav.Link
                 className="active web-title text-danger d-none  d-lg-block"
                 href={routeNames.brazilian}
               >
                 {"Brazilian MicroSite"}
-              </Nav.Link> */}
-              {/* <Nav.Link
+              </Nav.Link>
+              <Nav.Link
                 className="active web-title text-danger d-none  d-lg-block"
                 href={routeNames.digital}
               >
                 {"Digital MicroSite"}
-              </Nav.Link> */}
+              </Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link

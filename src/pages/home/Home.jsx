@@ -26,12 +26,14 @@ const Home = () => {
   const dispatch = useDispatch();
   const heroData = useSelector((state) => state.hlsHero.heroSection);
   const industries = useSelector((state) => state.hlsHero.industries);
-  console.log(industries);
+  // console.log(industries);
   const [carouselData, setCarouselData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
     dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
+
+    // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
     // fetchHeroSectionDataHome(setHeroSectionData);
     // fetchRecentRecognition(setRecentRecognition);
     // fetchData(setCarouselData);
