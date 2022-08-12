@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CardProfessionals from "../../../components/cards/CardProfessionals";
-import CareersInDigital from "../../../components/cards/CareersInDigital";
 import image from "../../../assets/images/ConnorWine";
 import {
   StyledCol2,
@@ -23,7 +21,7 @@ import { getSinglePodcast } from "../../../API";
 import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
 import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
-
+import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
 const Practice = () => {
   const cardContent = {
     imageSrc: image,
@@ -35,9 +33,9 @@ const Practice = () => {
   const [insights, setInsights] = useState([]);
   const [podcast, setPodcast] = useState([]);
 
-  // useEffect(() => {
-  //   getArticles(setInsights, "insights", 6);
-  // }, []);
+  useEffect(() => {
+    getArticles(setInsights, "insights", 6);
+  }, []);
 
   // useEffect(() => {
   //   getSinglePodcast(setPodcast);
@@ -102,9 +100,7 @@ const Practice = () => {
 
         </StyledCol1>
         <StyledCol2>
-          <CardProfessionals {...cardContent} />
-          <CardProfessionals {...cardContent} />
-          <CareersInDigital />
+        <CardProfessionalsNews {...cardContent} />
         </StyledCol2>
       </StyledRow> */}
     </>
