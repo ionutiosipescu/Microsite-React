@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import HeroSection from "../../components/cards/HeroSection";
 import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
@@ -11,23 +12,38 @@ import {
   fetchRecentRecognition,
 } from "../../API";
 import styled from "styled-components";
+import { fetchHLSLeaders } from "../../API/leaders";
+import {
+  fetchHLSHeroSection,
+  fetchHLSIndustries,
+} from "../../store/actions/hls/hlsHome";
+import IndustrySection from "../../components/section/IndustrySection";
+
+const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25";
 
 const Home = () => {
-  const [heroSectionData, setHeroSectionData] = useState();
+  const dispatch = useDispatch();
+  const heroData = useSelector((state) => state.hlsHero.heroSection);
+  const industries = useSelector((state) => state.hlsHero.industries);
+  // console.log(industries);
   const [carouselData, setCarouselData] = useState([]);
   const [ setRecentRecognition] = useState([]);
 
   useEffect(() => {
-    fetchHeroSectionDataHome(setHeroSectionData);
-    fetchRecentRecognition(setRecentRecognition);
-    fetchData(setCarouselData);
+    dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
+    dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
+
+    // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
+    // fetchHeroSectionDataHome(setHeroSectionData);
+    // fetchRecentRecognition(setRecentRecognition);
+    // fetchData(setCarouselData);
+    // fetchHLSLeaders(setDataObj);
   }, []);
 
   const HomeContainer = styled.div`
     .heroContainer {
-      button {
-        border-radius: 3px;
-      }
+      margin: 0;
+      padding: 0;
     }
   `;
 
@@ -35,44 +51,23 @@ const Home = () => {
     <HomeContainer>
       {/* <div className="heroContainer"> */}
       <HeroSection
-        title={heroSectionData?.title}
-        backgroundUrl={heroSectionData?.backgroundUrl}
-        buttonText="CONTACT US"
-        className="heroContainer"
+        title={heroData?.title}
+        backgroundUrl={heroData?.backgroundUrl}
+        description={heroData?.description}
+        buttonText="talk to us to learn more "
+        className=""
+        // route={route}
+        // date={"May 17 2022"}
+        height={450}
       />
-      {/* </div> */}
-
-      {carouselData.length === 0 ? (
-        <Spinner />
-      ) : (
-        <>
-          <CarouselSection
-            categoryCarousel={carouselData?.block_one?.title}
-            backgroundColor="white"
-            arr={carouselData?.block_one?.data}
-            titleColor="#0085CA"
-            textColor="#000"
-            textDate="#949494"
-            carouselDotBackground="white"
-          />
-          <QualitiesSection />
-          <RecongnitionSection
-            arr={carouselData?.quotes}
-            titleSection="Recent Recongnition"
-          />
-          <CarouselSection
-            categoryCarousel={carouselData?.block_two?.title}
-            backgroundColor="#002B49"
-            arr={carouselData?.block_two?.data}
-            titleColor="#0085CA"
-            textColor="#fff"
-            textDate="#FFF"
-            carouselDotBackground="#002b49"
-          />
-        </>
-      )}
+      <IndustrySection industries={industries} />
+      <RecongnitionSection arr={carouselData} />
     </HomeContainer>
   );
 };
 
 export default Home;
+const route = {
+  route: "HEALTH & LIFE INSIGHTS /",
+  subRoute: " HEALTH & LIFE CASE STUDIES",
+};

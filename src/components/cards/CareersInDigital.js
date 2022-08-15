@@ -41,14 +41,11 @@ const Card = styled.div`
   }
 `;
 
-const CareersInDigital = () => {
+const CareersInDigital = ({ textCareers }) => {
   return (
     <Card>
-      <span>Careers in digital</span>
-      <p>
-        Mollit non voluptate ipsum cillum. Cillum mollit deserunt nulla sunt et
-        enim voluptate. Labore reprehenderit et in aliquip laborum pariatur.
-      </p>
+      <span>CAREERS IN BRAZIL</span>
+      <p>{textCareers}</p>
       <YellowButton
         text="SEARCH AND APPLY"
         width={"auto"}

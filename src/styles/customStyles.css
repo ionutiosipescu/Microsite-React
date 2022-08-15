@@ -14,12 +14,14 @@
 
   --hover-blue: #0085ca;
   --searchBarBlue: #003e6a;
-
+  --yellowCategory: #fac40b;
   --orange1: #df8e25;
   --orange2: #cf7f00;
   --orange3: #be7a22;
 
-  --black1: #292929;
+  /* --darkBlueHome: #c27028; */
+  --darkBlueHome: #00244a;
+  --white: #fff;
 }
 
 * {

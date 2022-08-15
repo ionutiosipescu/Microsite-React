@@ -9,7 +9,7 @@ const Card = styled.div`
   right: 0;
   top: 0;
   height: 100%;
-  width: 420px;
+  width: 100%;
   @media ${size.lg} {
     display: block;
   }
@@ -19,6 +19,7 @@ const CardBody = styled.div`
   .card-container {
     position: relative;
     height: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +27,7 @@ const CardBody = styled.div`
     text-align: left;
     padding: 42px;
     background-color: rgba(6, 25, 49, 0.6);
+    /* z-index: -1; */
   }
   /* .card-container::before {
     content: "";
@@ -52,21 +54,18 @@ const CardBody = styled.div`
   }
 `;
 
-const HeroCardBrazilTransparent = ({ display }) => {
+const HeroCardBrazilTransparent = ({ display, heroBrazilianText }) => {
   return (
     <Card display={display}>
       <CardBody>
         <div className="card-container">
-          <p>
-            Serving our Brazil Customers solve their operational, financial and
-            regulatory challenges and provide turnaround management
-          </p>
-          <YellowButton
+          <p>{heroBrazilianText}</p>
+          {/* <YellowButton
             text="CONTACT US"
             width={"auto"}
             height={"50px"}
             radius={"3px"}
-          />
+          /> */}
         </div>
       </CardBody>
     </Card>

@@ -66,6 +66,10 @@ const NavbarDropdown = ({ children, filtersList, filterType }) => {
 
     setSelectedFilters([...filteredArr]);
   };
+  useEffect(() => {
+    dispatch(addFilterTags(filterByTags));
+    dispatch(filterLeaders(filterByTags));
+  }, [filterByTags]);
 
   // Closes the dropdown if the user clicks outside of it
   // I am not sure if there is a memory leak with this implementation. Probably not
