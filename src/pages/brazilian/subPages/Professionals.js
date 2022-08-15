@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Row } from "react-bootstrap";
+import React, { useState } from "react";
 
-//images
 
 //data
 import { leadersList, links} from "../../../utils/data";
@@ -18,46 +15,33 @@ import {
 } from "../../../components/navbarComponents";
 import FilterBy from "../../../components/FilterBy";
 import { useDocumentTitle } from "../../../hook";
-import {
-  fetchBrazilLeaders,
-  fetchBrazilPersons,
-} from "../../../store/actions/brazilian/brazilLeaders";
-import { Spinner } from "../../../components";
 
 const Professionals = () => {
-  const dispatch = useDispatch();
-  const leaders = useSelector((state) => state?.brazilLeaders?.filteredLeaders);
-  const persons = useSelector((state) => state?.brazilLeaders?.industryPersons);
-  const cities = useSelector((state) => state.brazilLeaders.cities);
-  const expertises = useSelector((state) => state.brazilLeaders.expertises);
-  const industries = useSelector((state) => state.brazilLeaders.industries);
-  console.log(persons);
-  useEffect(() => {
-    dispatch(fetchBrazilLeaders());
-    dispatch(fetchBrazilPersons());
-  }, []);
   //state of modal
   const [openedState, setOpenedState] = useState(
-    Array.from(leadersList ?? [], () => false)
-  );
-  const [openedStatePersons, setOpenedStatePersons] = useState(
-    Array.from(persons ?? [], () => false)
+    Array.from(leadersList, () => false)
   );
 
-  const [filterByTags, setFilterByTags] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState([
+    "sunshine",
+    "sunshine2",
+    "sunshine3",
+    "sunshine4",
+    "sunshine",
+    "sunshine2",
+  ]);
+
   //handle position of modal
-  const handleDisplay2 = (index, array, state, setState) => {
-    if (!state[index]) {
-      let arr = Array.from(array, () => false);
+  const handleDisplay = (index) => {
+    if (!openedState[index]) {
+      let arr = Array.from(leadersList, () => false);
       arr[index] = true;
-      setState([...arr]);
+      setOpenedState([...arr]);
     } else {
-      setState(Array.from(array, () => false));
+      setOpenedState(Array.from(leadersList, () => false));
     }
   };
-
   useDocumentTitle("Brazil | Leadership | Alvarez & Marsal");
-
   return (
     <>
       <StyledContainer>
@@ -79,11 +63,10 @@ const Professionals = () => {
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
       >
-        <NavbarDropdown data={expertises}>Exprertise</NavbarDropdown>
-        <NavbarDropdown data={industries}>Industry</NavbarDropdown>
-
-        <NavbarDropdown data={cities}>City</NavbarDropdown>
-        {/* <NavbarDropdown data={links}>Something2</NavbarDropdown> */}
+        <NavbarDropdown data={links}>Country</NavbarDropdown>
+        <NavbarDropdown data={links}>DropDown</NavbarDropdown>
+        <NavbarDropdown data={links}>Something</NavbarDropdown>
+        <NavbarDropdown data={links}>Something2</NavbarDropdown>
       </FiltrationNavbar>
       <FilterBy
         selectedFilters={selectedFilters}
@@ -91,59 +74,22 @@ const Professionals = () => {
       />
 
       <h3 className="m-3">Leaders</h3>
-      {leaders?.length === 0 || persons === 0 ? (
-        <Spinner />
-      ) : (
-        <>
-          <div className="m-4">
-            <LeaadersContainer>
-              {leaders?.map((cardInfo, index) => {
-                return (
-                  <ProfessionalsCardSmall
-                    key={index}
-                    cardInfo={cardInfo}
-                    index={index}
-                    openedState={openedState}
-                    handleDisplay={() =>
-                      handleDisplay2(
-                        index,
-                        leadersList,
-                        openedState,
-                        setOpenedState
-                      )
-                    }
-                    showDetails={openedState[index]}
-                  />
-                );
-              })}
-            </LeaadersContainer>
-          </div>
-          <h3 className="m-3">Leaders</h3>
-          <div className="m-4">
-            <LeaadersContainer>
-              {persons?.map((cardInfo, index) => {
-                return (
-                  <ProfessionalsCardSmall
-                    key={index}
-                    cardInfo={cardInfo}
-                    index={index}
-                    openedState={openedStatePersons}
-                    handleDisplay={() =>
-                      handleDisplay2(
-                        index,
-                        persons,
-                        openedStatePersons,
-                        setOpenedStatePersons
-                      )
-                    }
-                    showDetails={openedStatePersons[index]}
-                  />
-                );
-              })}
-            </LeaadersContainer>
-          </div>
-        </>
-      )}
+      <div className="m-4">
+        <LeaadersContainer>
+          {leadersList.map((cardInfo, index) => {
+            return (
+              <ProfessionalsCardSmall
+                key={index}
+                cardInfo={cardInfo}
+                index={index}
+                openedState={openedState}
+                handleDisplay={handleDisplay}
+                showDetails={openedState[index]}
+              />
+            );
+          })}
+        </LeaadersContainer>
+      </div>
     </>
   );
 };
