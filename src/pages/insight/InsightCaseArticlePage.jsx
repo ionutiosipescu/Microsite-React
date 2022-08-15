@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BreadCrumb, Spinner } from "../../components";
 import {
   LinkedinStay,
@@ -24,17 +24,18 @@ const InsightCaseArticlePage = () => {
   const [articleData, setArticleData] = useState(null);
 
   useEffect(() => {
+    // window.scrollTo(0, 0);
     fetchData(setCarouselData);
-    // getSingleArticle(setArticleData, "3030696e-0490-483b-94f2-127d13fd3478");
-    // getSingleArticle(setArticleData, "7d93dd97-dc6a-4844-b06b-fdf0ead0ead7");
-    getSingleArticle(setArticleData, state);
+    getSingleArticle(setArticleData, state.uuid);
+    // window.scrollTo(0, 0);
   }, []);
 
   useDocumentTitle(articleData?.title);
 
-  console.log("this is articleData", articleData);
+  // console.log("this is articleData", articleData);
+  console.log("this is state", state);
 
-  return (
+  return articleData ? (
     <PageContainer>
       <HeroSection
         // title={articleData.title}
@@ -42,117 +43,105 @@ const InsightCaseArticlePage = () => {
         pageTitle="Case Studies"
         backgroundUrl="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-      {!articleData ? (
-        <Spinner />
-      ) : (
-        <div className="container  bg-white  d-flex flex-direction-column">
-          <div className="row pt-5 ">
-            <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
-              <div className="p-3">
-                <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
-              </div>
-              <div className="row">
-                <LeftSection />
-                {/*---------------------------------------------------- SectionDescription */}
-                <div className=" col-11 col-sm-10 col-md-10 col-lg-11">
-                  <div>
-                    <span className="text-muted text-italic ps-3">
-                      {articleData?.date}
-                    </span>
-                  </div>
 
-                  <h4 className="pt-5 ps-3 fw-bold">{articleData?.title} </h4>
-                  <div
-                    className="container pt-3 text-decoration-none"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(articleData?.content),
-                    }}
-                  ></div>
+      <div className="container  bg-white  d-flex flex-direction-column">
+        <div className="row pt-5 ">
+          <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
+            <div className="p-3">
+              <BreadCrumb route={"Insights"} subRoute={"Article"} />
+            </div>
+            <div className="row">
+              <LeftSection nid={state.nid} />
+              {/*---------------------------------------------------- SectionDescription */}
+              <div className=" col-11 col-sm-10 col-md-10 col-lg-11">
+                <div>
+                  <span className="text-muted text-italic ps-3">
+                    {articleData?.date}
+                  </span>
+                </div>
 
-                  {/*-------------------------------- imagesContainer */}
-                  {articleData.pdf && (
-                    <div className="d-flex pt-4 ">
-                      <object
-                        data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
-                        type="application/pdf"
-                        width="20%"
-                        height="10%"
-                      >
-                        <p>
-                          It appears you don't have a PDF plugin for this
-                          browser. No biggie... you can{" "}
-                        </p>
-                      </object>
-                    </div>
-                  )}
+                <h4 className="pt-5 ps-3 fw-bold">{articleData?.title} </h4>
+                <div
+                  className="container pt-3 text-decoration-none"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(articleData?.content),
+                  }}
+                ></div>
 
-                  <div className="pt-4 px-4 learnMore">
-                    <a
-                      href={"http://www.africau.edu/images/default/sample.pdf"}
-                      // without
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      className="text-info text-decoration-none"
+                {/*-------------------------------- imagesContainer */}
+                {articleData.pdf && (
+                  <div className="d-flex pt-4 ">
+                    <object
+                      data="http://www.africau.edu/images/default/sample.pdf#zoom=FitH"
+                      type="application/pdf"
+                      width="20%"
+                      height="10%"
                     >
-                      Learn more now.
-                    </a>
+                      <p>
+                        It appears you don't have a PDF plugin for this browser.
+                        No biggie... you can
+                      </p>
+                    </object>
                   </div>
+                )}
+
+                <div className="pt-4 px-4 learnMore">
+                  <a
+                    href={"http://www.africau.edu/images/default/sample.pdf"}
+                    // without
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="text-info text-decoration-none"
+                  >
+                    Learn more now.
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/*--------------------------------------------- FEATURED PROFILES  */}
-            <div className="col-11 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
-              {articleData.authors && (
-                <FeaturedPeople
-                  titleSection={"Authors"}
-                  people={articleData.authors}
-                />
-              )}
+          {/*--------------------------------------------- FEATURED PROFILES  */}
+          <div className="col-11 col-sm-12 col-md-3 col-lg-3 border-2 pt-5 secondSection ">
+            {articleData.authors && (
+              <FeaturedPeople
+                titleSection={"Authors"}
+                people={articleData.authors}
+              />
+            )}
 
-              {articleData.experts && (
-                <FeaturedPeople
-                  titleSection={"Featured Profiles"}
-                  people={articleData.experts}
-                />
-              )}
+            {articleData.experts && (
+              <FeaturedPeople
+                titleSection={"Featured Profiles"}
+                people={articleData.experts}
+              />
+            )}
 
-              {/* -------------------------------------------------------Stay connnected */}
-              <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
-            </div>
+            {/* -------------------------------------------------------Stay connnected */}
+            <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
           </div>
         </div>
-      )}
+      </div>
+
       <div>
-        {carouselData.length == 0 ? (
-          <Spinner />
-        ) : (
-          <CarouselSection
-            categoryCarousel={carouselData?.block_two?.title}
-            backgroundColor="#002B49"
-            arr={carouselData?.block_two?.data}
-            titleColor="#0085CA"
-            textColor="#fff"
-            textDate="#FFFFFF"
-            carouselDotBackground="#002b49"
-          />
-        )}
+        <CarouselSection
+          categoryCarousel={carouselData?.block_two?.title}
+          backgroundColor="#002B49"
+          arr={carouselData?.block_two?.data}
+          titleColor="#0085CA"
+          textColor="#fff"
+          textDate="#FFFFFF"
+          carouselDotBackground="#002b49"
+        />
       </div>
     </PageContainer>
+  ) : (
+    <Spinner />
   );
 };
 
 export default InsightCaseArticlePage;
 
 const FeaturedPeople = ({ titleSection, people }) => {
-  var linkPeople = "https://www.alvarezandmarsal.com/our-people/";
-  people.map((person) => {
-    let arrayName = person.personName.toLowerCase().split(" ");
-
-    let link = linkPeople + arrayName[0] + "-" + arrayName[1];
-    person.link = link;
-  });
-
   return (
     <>
       <div>
@@ -163,7 +152,7 @@ const FeaturedPeople = ({ titleSection, people }) => {
           <div className="manager d-flex flex-column py-3" key={index}>
             <a
               className="nameAuthor text-decoration-none"
-              href={person.link}
+              href={person.personalPageLink}
               // if open new page
               target="_blank"
             >

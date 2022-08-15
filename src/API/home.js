@@ -1,9 +1,9 @@
 import Axios from "axios";
 
-const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
 export const fetchData = (setContent) => {
-  const link = `${customApi}/v1/hls`;
+  const link = `${customApi}/hls`;
   // const link = "https://akamai.alvarezandmarsal.com/api/v1/hls/quotes";
 
   Axios.get(link)
@@ -15,7 +15,7 @@ export const fetchData = (setContent) => {
 };
 
 export const fetchRecentRecognition = (setContent) => {
-  const link = `${customApi}/v1/hls/quotes`;
+  const link = `${customApi}/hls/quotes`;
   Axios.get(link)
     .then((res) => {
       console.log(res?.data?.data);

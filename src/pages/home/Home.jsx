@@ -5,7 +5,6 @@ import CarouselSection from "../../components/cards/CarouselSection";
 import QualitiesSection from "../../components/section/QualitiesSection";
 import RecongnitionSection from "../../components/section/RecongnitionSection";
 import { Spinner } from "../../components";
-import { sizem } from "../../utils/breakpoints";
 
 import {
   fetchHeroSectionDataHome,
@@ -28,6 +27,7 @@ const Home = () => {
   const industries = useSelector((state) => state.hlsHero.industries);
   // console.log(industries);
   const [carouselData, setCarouselData] = useState([]);
+  const [ setRecentRecognition] = useState([]);
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));

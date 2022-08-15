@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Row } from "react-bootstrap";
 import image from "../../../assets/images/ConnorWine";
 import TranslateButton from "../../../components/buttons/TranslateButton";
-import { Axios } from "axios";
 import {
   CardOurServices,
   CardProfessionals,

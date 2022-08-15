@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "./NavBar";
-import Footer from "./Footer";
-import { size } from "../../utils/breakpoints";
-
+import FooterNew from "./FooterNew";
 const Page = styled.div`
   margin: 0 auto;
   background-color: white;
@@ -20,7 +18,7 @@ const Layout = (props) => {
     <Container>
       <Page>
         <div {...props}>{props.children}</div>
-        <Footer className="my-2" />
+        <FooterNew className="my-2" />
       </Page>
     </Container>
   );

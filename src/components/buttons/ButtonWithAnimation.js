@@ -3,8 +3,6 @@ import * as S from "./styles/ButtonWithAnimation.style";
 import { ChevronRight } from "../../assets/icons";
 
 const ButtonWithAnimation = ({ text, black }) => {
-  // console.log(S);
-
   return (
     <S.Container>
       <S.ChevronContainer black={black}>

@@ -4,7 +4,7 @@ import {
   NavbarDropdown,
 } from "../../../components/navbarComponents";
 import { FilterBy } from "../../../components";
-import { tags, leadersList, arr, links } from "../../../utils/data";
+import { leadersList, links } from "../../../utils/data";
 import { ProfessionalsCardSmall } from "../../../components/cards";
 import styled from "styled-components";
 import { useDocumentTitle } from "../../../hook";
@@ -22,7 +22,7 @@ const Professionals = () => {
     Array.from(leadersList, () => false)
   );
 
-  const [filterByTags, setFilterByTags] = useState([
+  const [selectedFilters, setSelectedFilters] = useState([
     "sunshine",
     "sunshine",
     "sunshine2",
@@ -56,17 +56,20 @@ const Professionals = () => {
           incididunt duis nulla magna eiusmod est nulla eiusmod elit laborum do.
         </p>
       </div>
-      <FiltrationNavbar
+      {/* <FiltrationNavbar
         searchBar={{ placeholder: "enter search here" }}
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>DropDown</NavbarDropdown>
         <NavbarDropdown data={links}>Something</NavbarDropdown>
         <NavbarDropdown data={links}>Something2</NavbarDropdown>
-      </FiltrationNavbar>
-      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      </FiltrationNavbar> */}
+      <FilterBy
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
       <h3 className="m-3">Leaders</h3>
 
       {/* <CardProfessionals /> */}

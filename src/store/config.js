@@ -1,6 +1,5 @@
-/**
- * Main store function
- */
+// No idea what's happening here. I just coppy pasted stuff
+
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";

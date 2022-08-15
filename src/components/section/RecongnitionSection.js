@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import digital from "../../assets/images/digital";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { arr } from "../../utils/data";

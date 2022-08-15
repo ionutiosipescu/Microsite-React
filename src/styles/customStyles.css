@@ -1,12 +1,16 @@
 :root {
+  --white: #fff;
+
   --gray1: #eae6e6;
   --gray2: #cfcdcd;
   --gray3: #bfbfbf;
   --gray4: #666;
   --gray5: #eeeeee;
+  --mutedDate: #808080;
 
   --darkBlue: #002b49;
   --darkBlue1: #061931;
+  --darkBlue2: #00244a;
 
   --hover-blue: #0085ca;
   --searchBarBlue: #003e6a;
@@ -27,7 +31,9 @@
   outline: 0;
   font-family: Helvetica Neue LT Std, Arial, sans-serif;
 }
-
+html,body {
+  height:100%;
+}
 ul {
   list-style: none;
   margin: 0;

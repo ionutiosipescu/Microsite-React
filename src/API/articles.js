@@ -1,32 +1,36 @@
 import Axios from "axios";
-import { getLink, grabDataFromIncluded, grabRelatedPeople } from "./helper";
-import { dateToShortLocale } from "../utils";
+import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper";
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi";
-const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
-export const getInsights = (setInsightsContent) => {
-  Axios.get(`${customApi}/v1/insight-filter`).then((res) => {
-    setInsightsContent(res.data);
+export const getInsights = (setInsightsContent, selectedFilters) => {
+  let link = `${customApi}/insight-filter`;
+
+  if (selectedFilters && selectedFilters.length > 0) {
+    link = getLinkWithFilters(link, selectedFilters);
+  }
+
+  console.log("this is the new link", link);
+
+  Axios.get(link).then((res) => {
+    setInsightsContent([...res.data]);
   });
 };
 
 export const getSingleArticle = (setArticleData, id) => {
   const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`;
-  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`;
-
-  // console.log(link);
-  // &filter[id]46bb933f-03c1-4d7e-a1ec-b14a839c1dd7
 
   Axios.get(link).then((res) => {
     const data = res.data.data;
 
+    console.log(data[0]);
     let article = {};
 
     article.content = data[0].attributes.body.value;
 
     article.date = new Date(
-      data[0].attributes.revision_timestamp
+      data[0].attributes.changed || data[0].attributes.created
     ).toLocaleDateString();
 
     article.title = data[0].attributes.title;
@@ -36,7 +40,32 @@ export const getSingleArticle = (setArticleData, id) => {
     article.authors = grabRelatedPeople("field_authors", res.data, 0);
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0);
 
+    console.log(res.data);
+
     setArticleData(article);
+  });
+};
+
+export const getSinglePodcast = (setPodcastData, id) => {
+  // const link = `${jsonApi}/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=${id}`;
+  const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=2249cb18-f903-4c2f-a610-e7d50cd5681c`;
+
+  Axios.get(link).then((res) => {
+    const data = res.data.data;
+
+    let podcast = {};
+
+    podcast.content = data[0].attributes.body.value;
+
+    podcast.title = data[0].attributes.title;
+
+    podcast.date = new Date(
+      data[0].attributes.revision_timestamp
+    ).toLocaleDateString();
+
+    podcast.authors = grabRelatedPeople("field_authors", res.data, 0);
+
+    setPodcastData(podcast);
   });
 };
 
@@ -52,9 +81,11 @@ export const getArticles = async (setContent, articleType, amount) => {
       data.title = item.attributes.title;
       data.teaserText = item.attributes.field_teaser_text;
       data.body = item.attributes.body.value;
+
       data.date = new Date(
         item.attributes.revision_timestamp
       ).toLocaleDateString();
+
       data.authorsData = item.relationships.field_authors?.data;
       data.id = item.id;
 
@@ -133,6 +164,7 @@ export const getCaseStudiesArticles = async (setContent) => {
       });
     });
   });
+
   parsedArticles.map((article) => {
     article.authorsData.map((author) => {
       allAuthors.forEach((x) => {

@@ -1,9 +1,9 @@
 import Axios from "axios";
 
-const customApi = process.env.REACT_APP_BASE_API_URL + "/api";
+const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1";
 
 export const fetchExpertiseProfessional = (setContent) => {
-  const link = `${customApi}/v1/hls`;
+  const link = `${customApi}/hls`;
   //   const link = "https://akamai.alvarezandmarsal.com/api/v1/hls/quotes";
 
   Axios.get(link)

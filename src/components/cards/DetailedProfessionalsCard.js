@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import {
   XIcon,
-  Twitter,
   IconTriangle,
-  ChevronRightBlue,
 } from "../../assets/icons";
 import YellowButton from "../buttons/YellowButton";
 import Connor from "../../assets/images/ConnorWine";

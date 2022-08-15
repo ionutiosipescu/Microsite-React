@@ -5,22 +5,11 @@ import {
   CarouselSection,
 } from "../../components/cards";
 import styled from "styled-components";
-import { tags, leadersList, arr, links } from "../../utils/data";
-import {
-  FiltrationNavbar,
-  NavbarCell,
-  NavbarDropdown,
-  SearchBar,
-  NavigationCell,
-  NavigationNavbar,
-} from "../../components/navbarComponents";
-import BreadCrumb from "../../components/BreadCrumb";
+import { leadersList } from "../../utils/data";
+
 import FilterBy from "../../components/FilterBy";
 import YellowButton from "../../components/buttons/YellowButton";
 import {
-  getCaseStudiesArticles,
-  fetchHeroSectionDataHome,
-  getCarouselArticles,
   getExpertiseFields,
   getCountries,
   fetchData,
@@ -112,10 +101,10 @@ const Leadership = () => {
         }
       />
 
-      <FiltrationNavbar
+      {/* <FiltrationNavbar
         searchBar={{ placeholder: "enter search here", setInputText }}
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={expertises}>Expertise</NavbarDropdown>
         <NavbarDropdown data={location}>Country</NavbarDropdown>

@@ -7,8 +7,6 @@ import { HeroSection, CardSubscription } from "../../components/cards";
 
 //icons
 import {
-  ChevronRight,
-  ChevronRightBlue,
   Facebook,
   LinkedIn,
   Twitter,
@@ -28,7 +26,6 @@ import {
 
 //utils
 import { sizem } from "../../utils/breakpoints";
-import YellowButton from "../../components/buttons/YellowButton";
 import { useDocumentTitle } from "../../hook";
 import LeftSection from "../../components/cards/LeftSection";
 
@@ -205,17 +202,17 @@ const DigitalInsighthPodcast = () => {
     Array.from(leftSectionIcons, () => false)
   );
 
-  const handleDisplay = (index) => {
-    setToggle(!toggle);
+  // const handleDisplay = (index) => {
+  //   setToggle(!toggle);
 
-    if (!openedState[index]) {
-      let arr = Array.from(leftSectionIcons, () => false);
-      arr[index] = true;
-      setOpenedState([...arr]);
-    } else {
-      setOpenedState(Array.from(leftSectionIcons, () => false));
-    }
-  };
+  //   if (!openedState[index]) {
+  //     let arr = Array.from(leftSectionIcons, () => false);
+  //     arr[index] = true;
+  //     setOpenedState([...arr]);
+  //   } else {
+  //     setOpenedState(Array.from(leftSectionIcons, () => false));
+  //   }
+  // };
 
   useDocumentTitle(`${state?.title}`);
   return (

@@ -5,7 +5,7 @@ import { Row } from "react-bootstrap";
 //images
 
 //data
-import { leadersList, links, arr } from "../../../utils/data";
+import { leadersList, links} from "../../../utils/data";
 
 // costum components
 import { StyledContainer } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style";
@@ -76,8 +76,8 @@ const Professionals = () => {
       </StyledContainer>
       <FiltrationNavbar
         searchBar={{ placeholder: "enter search here" }}
-        filterByTags={filterByTags}
-        setFilterByTags={setFilterByTags}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
       >
         <NavbarDropdown data={expertises}>Exprertise</NavbarDropdown>
         <NavbarDropdown data={industries}>Industry</NavbarDropdown>
@@ -85,7 +85,10 @@ const Professionals = () => {
         <NavbarDropdown data={cities}>City</NavbarDropdown>
         {/* <NavbarDropdown data={links}>Something2</NavbarDropdown> */}
       </FiltrationNavbar>
-      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} />
+      <FilterBy
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
 
       <h3 className="m-3">Leaders</h3>
       {leaders?.length === 0 || persons === 0 ? (

@@ -15,7 +15,7 @@ export const Container = styled.div`
       :after {
         width: 100%;
         opacity: 1;
-        transition: 1000ms;
+        transition: 500ms;
         -webkit-transition: 500ms;
       }
     }

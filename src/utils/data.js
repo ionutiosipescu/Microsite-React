@@ -1,4 +1,3 @@
-import { LinkedIn } from "../assets/icons";
 import Connor from "../assets/images/ConnorWine";
 
 export const arrQualities = [

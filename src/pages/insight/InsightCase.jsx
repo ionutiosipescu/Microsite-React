@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router";
-import styled from "styled-components";
 import {
   ArticleCard,
   HeroSection,
@@ -10,82 +8,126 @@ import {
   FiltrationNavbar,
   NavbarDropdown,
 } from "../../components/navbarComponents";
-import { BreadCrumb, FilterBy, Spinner } from "../../components";
-import { filtrationNavbarData, PostsArr } from "../../utils/data";
-import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { ArticleContainers } from "./styles/inisghts.style";
-
-import {
-  getCaseStudiesArticles,
-  fetchHeroSectionDataHome,
-  getCarouselArticles,
-  fetchData,
-} from "../../API";
-
+import { BreadCrumb, FilterBy, Spinner } from "../../components";
+import { getInsightFilters, getInsights, fetchData } from "../../API";
+import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
-const InsightCase = () => {
-  const location = useLocation();
-  const [loading, setLoading] = useState(false);
-  const [heroSectionData, setHeroSectionData] = useState();
-  const [articles, setArticles] = useState([]);
-  const [carouselData, setCarouelData] = useState([]);
+const InsightLatest = () => {
+  let persistedFilters = JSON.parse(
+    sessionStorage.getItem("latestInsightsFilters")
+  );
 
-  const locationName = location?.pathname.split("/").slice(1, 3);
-  const [filterByTags, setFilterByTags] = useState([]);
+  // Filters that were selected by the user or taken from the session storage
+  const [selectedFilters, setSelectedFilters] = useState(
+    persistedFilters || []
+  );
+
+  // Getting the latest articles from server
+  const [carouselData, setCarouselData] = useState([]);
+  const [insightsContent, setInsightsContent] = useState([]);
+
+  // Fetched filters from the server
+  const [filters, setFilters] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    fetchHeroSectionDataHome(setHeroSectionData);
-    getCaseStudiesArticles(setArticles);
-    // getCarouselArticles(setCarouelData);
-    setLoading(false);
-    fetchData(setCarouelData);
+    fetchData(setCarouselData);
+    getInsights(setInsightsContent, selectedFilters);
+    getInsightFilters(setFilters);
   }, []);
 
-  useDocumentTitle("Insights | Case Studies | Alvarez & Marsal");
+  console.log("this is insight content", insightsContent);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "latestInsightsFilters",
+      JSON.stringify(selectedFilters)
+    );
+    getInsights(setInsightsContent, selectedFilters);
+  }, [selectedFilters]);
+
+  useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+  // console.log("those are filters", selectedFilters);
 
   return (
     <>
       <HeroSection
-        title={"Case Studies"}
-        backgroundUrl={heroSectionData?.backgroundUrl}
+        title=" Latest Studies"
+        backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
-
-      <FiltrationNavbar
-        searchBar2={{ placeholder: "enter search here" }}
-        setFilterByTags={setFilterByTags}
-        filterByTags={filterByTags}
-      >
-        {filtrationNavbarData.map((item, index) => (
-          <NavbarDropdown data={item.tagNames} key={index}>
-            {item.title}
+      {!filters ? (
+        <Spinner />
+      ) : (
+        <FiltrationNavbar
+          searchBar2={{
+            placeholder: "Enter Author's Name",
+            filterType: "userInput",
+          }}
+          setSelectedFilters={setSelectedFilters}
+          selectedFilters={selectedFilters}
+        >
+          <NavbarDropdown
+            filtersList={filters.expertise}
+            filterType={"expertise"}
+          >
+            {"Expertise"}
           </NavbarDropdown>
-        ))}
-      </FiltrationNavbar>
 
-      <FilterBy setFilterByTags={setFilterByTags} filterByTags={filterByTags} />
-      <div className="breadCrumbContainer px-4 pt-4">
-        <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
-      </div>
+          <NavbarDropdown
+            filtersList={filters.industries}
+            filterType={"industries"}
+          >
+            {"Industry"}
+          </NavbarDropdown>
+
+          <NavbarDropdown filtersList={filters.region} filterType={"region"}>
+            {"Country"}
+          </NavbarDropdown>
+
+          <NavbarDropdown filtersList={filters.created} filterType={"years"}>
+            {"Year"}
+          </NavbarDropdown>
+
+          <NavbarDropdown
+            filtersList={filters.bulletin}
+            filterType={"bulletin"}
+          >
+            {"Bulletin Type"}
+          </NavbarDropdown>
+          {/* 
+          <NavbarDropdown
+            // filtersList={filters.industries}
+            // filterType={"media?"}
+            filtersList={filters.industries}
+            filterType={"months"}
+          >
+            {"Media Type"}
+          </NavbarDropdown> */}
+
+          <NavbarDropdown filtersList={filters.created} filterType={"months"}>
+            {"Months"}
+          </NavbarDropdown>
+        </FiltrationNavbar>
+      )}
+      {selectedFilters && (
+        <FilterBy
+          setSelectedFilters={setSelectedFilters}
+          selectedFilters={selectedFilters}
+          setInsightsContent={setInsightsContent}
+        />
+      )}
+
       <StyledContainer>
-        {loading ? (
-          <div class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        ) : (
-          <ArticleContainers>
-            {articles.map((post, index) => (
-              <ArticleCard
-                post={post}
-                locationName={locationName}
-                key={index}
-              />
-            ))}
-          </ArticleContainers>
-        )}
+        <BreadCrumb route={"Insights"} subRoute={"Case Studies"} />
+
+        <ArticleContainers>
+          {insightsContent?.map((article, index) => (
+            <ArticleCard {...article} key={index} />
+          ))}
+        </ArticleContainers>
       </StyledContainer>
-      {carouselData.length == 0 ? (
+      {carouselData.length === 0 ? (
         <Spinner />
       ) : (
         <CarouselSection
@@ -102,4 +144,4 @@ const InsightCase = () => {
   );
 };
 
-export default InsightCase;
+export default InsightLatest;
