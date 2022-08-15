@@ -29,7 +29,7 @@ export const getCountries = () => {
     (res) => {
       const arr = [];
 
-      // console.log(res.data);
+      console.log(res.data);
 
       res.data.data.map((item) => {
         // console.log(item.relationships.field_featured_expert.data)
@@ -39,7 +39,7 @@ export const getCountries = () => {
         }
         // arr.push(item.attributes.name)
       });
-      // console.log(arr);
+      console.log(arr);
       // console.log(arr.length)
     }
   );

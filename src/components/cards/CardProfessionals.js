@@ -4,7 +4,6 @@ import styled from "styled-components";
 import YellowButton from "../buttons/YellowButton";
 import { size } from "../../utils/breakpoints";
 import { ChevronRightWhite } from "../../assets/icons";
-import { Navigate } from "react-router";
 
 const Card = styled.div`
   display: flex;
@@ -40,23 +39,21 @@ const CardBody = styled.div`
 
 const ImageContainer = styled.div`
   background: gray;
-  /* flex: 1; */
-
   img {
-    width: 170px;
+    width: 190px;
     height: 100%;
     object-fit: cover;
-    object-position: right;
-    @media ${size.sm} {
-      img {
-        width: 125px;
-      }
-    }
+  }
 
-    @media ${size.md} {
-      img {
-        width: 170px;
-      }
+  @media ${size.sm} {
+    img {
+      width: 125px;
+    }
+  }
+
+  @media ${size.md} {
+    img {
+      width: 190px;
     }
   }
 `;
@@ -112,7 +109,7 @@ const Position = styled.p`
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
-  padding: 10px 0px;
+  padding: 20px 0px;
 `;
 
 const Info = styled.a`
@@ -120,7 +117,7 @@ const Info = styled.a`
   text-decoration: none;
   font-size: 1.25rem;
   font-weight: bold;
-  line-height: 1.25;
+  line-height: 1;
   cursor: pointer;
 
   :hover {
@@ -133,18 +130,12 @@ const CardProfessionals = ({
   imageSrc,
   position,
   country,
-  country1,
   buttonText,
-  link,
 }) => {
   return (
-    <Card style={{}}>
+    <Card>
       <ImageContainer>
-        <img
-          src={imageSrc}
-          alt="portrait"
-          // style={{ width: "00px", height: "200px" }}
-        ></img>
+        <img src={imageSrc || Connor} alt="portrait"></img>
       </ImageContainer>
 
       <CardBody>
@@ -152,7 +143,6 @@ const CardProfessionals = ({
           <Name>{name || "Connor Colquhoun"}</Name>
           <Position>{position || "wine connoisseur"}</Position>
           <Info>{country} </Info>
-          <Info>{country1} </Info>
         </Content>
         {buttonText && (
           <YellowButton
@@ -160,9 +150,6 @@ const CardProfessionals = ({
             radius={"0"}
             height={"50px"}
             display={"none"}
-            onClick={() => {
-              window.open(link, "_blank");
-            }}
           />
         )}
       </CardBody>

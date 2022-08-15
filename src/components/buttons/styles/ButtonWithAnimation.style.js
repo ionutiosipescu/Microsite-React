@@ -52,9 +52,8 @@ export const TextContainer = styled.span`
   align-items: center;
   padding: 0.75rem 2rem;
   position: relative;
-  font-family: "Helvetica Neue LT Std", sans-serif;
-  font-weight: 300;
-  letter-spacing: 2px;
+  text-transform: uppercase;
+
   div {
     z-index: 2;
   }

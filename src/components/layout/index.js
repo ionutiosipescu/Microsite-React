@@ -5,8 +5,7 @@ import FooterNew from "./FooterNew";
 const Page = styled.div`
   margin: 0 auto;
   background-color: white;
-  max-width: 100%;
-  width: 100%;
+  max-width: 1280px;
   width: 100%;
 `;
 const Container = styled.div`
@@ -17,6 +16,7 @@ const Layout = (props) => {
   return (
     <Container>
       <Page>
+        <Navbar />
         <div {...props}>{props.children}</div>
         <FooterNew className="my-2" />
       </Page>

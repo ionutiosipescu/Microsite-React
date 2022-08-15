@@ -20,7 +20,7 @@ import {
   Content,
   DescriptionDesktop,
 } from "./styles/DetailedProfessionalsCard.styles";
-import DOMPurify from "dompurify";
+
 const DetailedProfessionalsCard = ({
   content,
   handleDisplay,
@@ -30,7 +30,6 @@ const DetailedProfessionalsCard = ({
 }) => {
   const [display, setDisplay] = useState("none");
   const [borderBottom, setBorderBottom] = useState(true);
-  const [smallLeaderDescription, setSmallLeaderDescription] = useState(true);
   const detailedCard = useRef(null);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const DetailedProfessionalsCard = ({
 
     setBorderBottom(!borderBottom);
   };
-  // console.log(content);
+
   return (
     <>
       <ImageTriangleContainer>
@@ -64,76 +63,34 @@ const DetailedProfessionalsCard = ({
         <CardBody>
           <Header>
             <ImageContainer>
-              <img src={content?.image}></img>
-              <YellowButton
-                text="Connect"
-                radius={"0"}
-                onClick={() => {
-                  window.open(content.linkOurPeople, "_blank");
-                }}
-              />
+              <img src={Connor}></img>
+              <YellowButton text="Connect" radius={"0"} />
             </ImageContainer>
             <Content>
               <h4>{content?.name}</h4>
               <p className="text-muted">{content?.position}</p>
               <DescriptionDesktop>
-                {smallLeaderDescription ? (
-                  <p>{content?.smallDescription}</p>
-                ) : (
-                  <div
-                    className="container pt-3 text-decoration-none"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(content?.allDescription),
-                    }}
-                  ></div>
-                )}
+                <p>{content?.description}</p>
               </DescriptionDesktop>
-              <a
-                className="fw-bold text-reset"
-                // onClick={() =>
-                //   setSmallLeaderDescription(!smallLeaderDescription)
-                // }
-                target="_blank"
-                href={content?.linkOurPeople}
-              >
-                Read More
-              </a>
+              <a className="fw-bold text-reset">Read More</a>
             </Content>
           </Header>
 
           <Info>
             <ContainerMobile>
-              <YellowButton
-                text={"connect"}
-                width={"100%"}
-                onClick={() => {
-                  window.location.replace(content.linkOurPeople);
-                }}
-              />
-              <div>{content?.smallDescription}</div>
+              <YellowButton text={"connect"} width={"100%"} />
+              <div>{content?.description}</div>
             </ContainerMobile>
 
             <ContactInfo onClick={handleClick} borderBottom={borderBottom}>
               {"contact info"}
             </ContactInfo>
             <Dropdown display={display}>
-              <PersonalInfo
-                title="location"
-                content={content?.country.name}
-                onClick={() => {
-                  window.open(content?.linkLocation, "_blank");
-                }}
-              />
-              <PersonalInfo title="email" content={content?.email} />
+              <PersonalInfo title="locaton" content={content?.country} />
+              <PersonalInfo title="email" content={content?.mail} />
               <PersonalInfo title="telephone" content={content?.phone} />
-              <PersonalInfo title="twitter" content={content?.twitter.title} />
-              <PersonalInfo
-                title="connect on"
-                content={content?.linkedin.title}
-                onClick={() => {
-                  window.open(content?.linkedin.uri, "_blank");
-                }}
-              />
+              <PersonalInfo title="twitter" content={content?.twitter} />
+              <PersonalInfo title="connect on" content={content?.LinkedIn} />
             </Dropdown>
           </Info>
         </CardBody>
