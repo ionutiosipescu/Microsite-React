@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "./NavBar";
-import FooterNew from "./FooterNew";
+import Footer from "./Footer";
+import { size } from "../../utils/breakpoints";
+
 const Page = styled.div`
   margin: 0 auto;
   background-color: white;
@@ -13,6 +15,13 @@ const Container = styled.div`
 `;
 
 const Layout = (props) => {
+  const dispatch = useDispatch();
+  //   const location = useLocation();
+  useEffect(() => {
+    dispatch(fetchHLSIndustries());
+    dispatch(fetchHlsExpertises());
+  }, [dispatch]);
+
   return (
     <Container>
       <Page>

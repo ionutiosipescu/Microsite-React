@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  XIcon,
-  IconTriangle,
-} from "../../assets/icons";
+import { XIcon, IconTriangle } from "../../assets/icons";
 import YellowButton from "../buttons/YellowButton";
 import Connor from "../../assets/images/ConnorWine";
 import {
@@ -20,7 +17,7 @@ import {
   Content,
   DescriptionDesktop,
 } from "./styles/DetailedProfessionalsCard.styles";
-
+import DOMPurify from "dompurify";
 const DetailedProfessionalsCard = ({
   content,
   handleDisplay,

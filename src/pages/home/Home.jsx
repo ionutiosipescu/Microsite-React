@@ -15,12 +15,17 @@ import styled from "styled-components";
 const Home = () => {
   const [heroSectionData, setHeroSectionData] = useState();
   const [carouselData, setCarouselData] = useState([]);
-  const [ setRecentRecognition] = useState([]);
+  const [setRecentRecognition] = useState([]);
 
   useEffect(() => {
-    fetchHeroSectionDataHome(setHeroSectionData);
-    fetchRecentRecognition(setRecentRecognition);
-    fetchData(setCarouselData);
+    dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
+    dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
+
+    // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
+    // fetchHeroSectionDataHome(setHeroSectionData);
+    // fetchRecentRecognition(setRecentRecognition);
+    // fetchData(setCarouselData);
+    // fetchHLSLeaders(setDataObj);
   }, []);
 
   const HomeContainer = styled.div`

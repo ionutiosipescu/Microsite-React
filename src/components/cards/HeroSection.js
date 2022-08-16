@@ -17,54 +17,55 @@ const Hero = styled.div`
 
   text-transform: uppercase;
 
-  /* align title to center  , but if title it's long looks bad ________________________________________ */
-  display: flex;
-  align-items: center;
-  /* padding: 0px 15%; */
-  padding-left: 10%;
-  padding-right: 10%;
-  h1 {
-    color: white;
-
-    text-shadow: 10px 10px 10px #00000029;
-    /* font-size: 100px; */
-
-    margin: 0;
-    font-family: "arial-narrow-8", sans-serif;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 100px;
-    line-height: 100px;
-    @media ${sizem.xlm} {
-      font-size: 85px;
-      line-height: 85px;
+    .contentWithoutNavbar {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2rem;
     }
-    @media ${sizem.lgm} {
-      font-size: 85px;
-      line-height: 85px;
+    .buttonContainer {
+      margin: auto 0px;
+      @media ${sizem.smm} {
+        margin: 0px 0px;
+      }
     }
-    @media ${sizem.mdm_m} {
-      font-size: 70px;
-      line-height: 75px;
+    h1 {
+      color: #fff;
+      text-shadow: 10px 10px 10px #00000029;
+      font-family: "Helvetica Neue LT Std", sans-serif;
+      font-style: medium;
+      margin: 0;
+      letter-spacing: 0.5px;
+      font-size: 3rem;
+      line-height: 3rem;
+      text-transform: uppercase;
+      @media ${sizem.smm} {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+      }
     }
-
-    @media ${sizem.mdm} {
-      font-size: 70px;
-      line-height: 70px;
-    }
-    @media ${sizem.smm} {
-      font-size: 50px;
-      line-height: 50px;
+    p {
+      font-family: "Helvetica Neue LT Std", sans-serif;
+      font-style: medium;
+      width: 65%;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: #fff;
+      @media ${sizem.smm} {
+        width: 90%;
+        font-size: 0.9rem;
+        line-height: 1rem;
+      }
     }
   }
-  h4 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: var(--orange2);
-    margin: 0;
+  .routeSpan {
   }
+`;
+
+const TitleRoute = styled.span`
+  font-size: 1.5rem;
+  text-transform: "uppercase";
+  color: ${(props) => props.color || "#fff"};
 `;
 
 const HeroSection = ({
@@ -77,11 +78,29 @@ const HeroSection = ({
   className,
 }) => {
   let navigate = useNavigate();
+  console.log(backgroundUrl);
+  const backgr =
+    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
   return (
-    <Hero backgroundUrl={backgroundUrl} className={className}>
-      <div>
-        {pageTitle && <h4>{pageTitle}</h4>}
-        {pageTitleCenter && <h4 className="text-center">{pageTitleCenter}</h4>}
+    <Hero
+      backgroundUrl={backgroundUrl ?? backgr}
+      className={className}
+      height={height}
+    >
+      <div className="contentContainer">
+        <NavBar />
+        <div className="contentWithoutNavbar">
+          {pageCategory && (
+            <TitleRoute color={"var(--yellowCategory) "}>
+              {pageCategory}
+            </TitleRoute>
+          )}
+          {route && (
+            <>
+              <span>
+                <TitleRoute color={"var(--hover-blue) "}>
+                  {route.route}
+                </TitleRoute>
 
         <h1>{title}</h1>
         {buttonText && (
