@@ -14,6 +14,7 @@ import { useDocumentTitle } from "../../../hook";
 import CardProfessionalsNew from "../../../components/cards/CardProfessionalsNew";
 import ContactSubscribeCard from "../../../components/cards/ContactSubscribeCard";
 import SocialsCard from "../../../components/cards/SocialsCard";
+import CardProfessionalSmall from "../../../components/cards/CardProfessionalsSmall";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -71,6 +72,7 @@ const Capabilities = () => {
         </StyledCol1>
         <StyledCol2>
           <CardProfessionalsNew {...cardContent} />
+          <CardProfessionalSmall {...cardContent}/>
           <ContactSubscribeCard/>
           <SocialsCard/>
         </StyledCol2>
