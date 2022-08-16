@@ -38,3 +38,7 @@ const InsightsNavbar = ({ title }) => {
 }
 
 export default InsightsNavbar
+
+const handleClick = e => {
+  //do something
+}
