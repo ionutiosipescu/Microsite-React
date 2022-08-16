@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { BreadCrumb, Spinner } from "../../components";
+import React, { useState } from "react"
+import { useLocation } from "react-router-dom"
+import { BreadCrumb, Spinner } from "../../components"
 import {
   LinkedinStay,
   FacebookStay,
   TwitterStay,
   YoutubeStay,
   LetterStay,
-} from "../../assets/icons";
+} from "../../assets/icons"
 
-import { HeroSection, CarouselSection } from "../../components/cards";
+import { HeroSection, CarouselSection } from "../../components/cards"
 
-import { useEffect } from "react";
-import { fetchData, getSingleArticle } from "../../API";
-import LeftSection from "../../components/cards/LeftSection";
-import { useDocumentTitle } from "../../hook";
-import { PageContainer } from "./styles/InsightCaseArticlePage.style";
-import DOMPurify from "dompurify";
+import { useEffect } from "react"
+import { fetchData, getSingleArticle } from "../../API"
+import LeftSection from "../../components/cards/LeftSection"
+import { useDocumentTitle } from "../../hook"
+import { PageContainer } from "./styles/SingleInsgightPage"
+import DOMPurify from "dompurify"
 
 const InsightCaseArticlePage = () => {
-  const { state } = useLocation();
-  const [carouselData, setCarouselData] = useState([]);
-  const [articleData, setArticleData] = useState(null);
+  const { state } = useLocation()
+  const [carouselData, setCarouselData] = useState([])
+  const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
     // window.scrollTo(0, 0);
-    fetchData(setCarouselData);
-    getSingleArticle(setArticleData, state.uuid);
+    fetchData(setCarouselData)
+    getSingleArticle(setArticleData, state.uuid)
     // window.scrollTo(0, 0);
-  }, []);
+  }, [])
 
-  useDocumentTitle(articleData?.title);
+  useDocumentTitle(articleData?.title)
 
   // console.log("this is articleData", articleData);
-  console.log("this is state", state);
+  console.log("this is state", state)
 
   return articleData ? (
     <PageContainer>
@@ -136,10 +136,10 @@ const InsightCaseArticlePage = () => {
     </PageContainer>
   ) : (
     <Spinner />
-  );
-};
+  )
+}
 
-export default InsightCaseArticlePage;
+export default InsightCaseArticlePage
 
 const FeaturedPeople = ({ titleSection, people }) => {
   return (
@@ -165,8 +165,8 @@ const FeaturedPeople = ({ titleSection, people }) => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
 const LinksList = ({ titleSection, linkIcons }) => {
   return (
@@ -188,8 +188,8 @@ const LinksList = ({ titleSection, linkIcons }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const iconsArr = [
   {
@@ -223,4 +223,4 @@ const iconsArr = [
     text: "Sign Up for A&M Newsletters",
     link: "https://bulletins.alvarezandmarsal.com/",
   },
-];
+]

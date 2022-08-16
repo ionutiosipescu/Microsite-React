@@ -1,14 +1,13 @@
-export { default as ExpertisePharma } from "./expertise/ExpertisePharma";
-export { default as ExpertisePage } from "./expertise/ExpertisePage";
-export { default as ExpertiseQuality } from "./expertise/ExpertiseQuality";
-export { default as Contact } from "./contact/Contact";
-export { default as Home } from "./home/Home";
-export { default as Leadership } from "./leadership/Leadership";
-export { default as Brazil } from "./brazilian/Brazil";
-export { default as Dashboard } from "./dashboard/Dashboard";
-// export { default as InsightCase } from "./insight/InsightCase";
-export { default as Insights } from "./insight/Insight";
-export { default as InsightCaseArticlePage } from "./insight/InsightCaseArticlePage";
-export { default as Digital } from "./digital/Digital";
-export { default as DigitalInsighthPodcast } from "./digital/DigitalInsighthPodcast";
-export { default as IndustryPage } from "./IndustryPage/IndustryPage";
+export { default as ExpertisePharma } from "./expertise/ExpertisePharma"
+export { default as ExpertisePage } from "./expertise/ExpertisePage"
+export { default as ExpertiseQuality } from "./expertise/ExpertiseQuality"
+export { default as Contact } from "./contact/Contact"
+export { default as Home } from "./home/Home"
+export { default as Leadership } from "./leadership/Leadership"
+export { default as Brazil } from "./brazilian/Brazil"
+export { default as Dashboard } from "./dashboard/Dashboard"
+export { default as Insights } from "./insightsPage/Insights"
+export { default as InsightCaseArticlePage } from "./insightsPage/SingleInsgightPage"
+export { default as Digital } from "./digital/Digital"
+export { default as DigitalInsighthPodcast } from "./digital/DigitalInsighthPodcast"
+export { default as IndustryPage } from "./IndustryPage/IndustryPage"
