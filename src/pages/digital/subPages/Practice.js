@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from "react"
-import image from "../../../assets/images/ConnorWine"
-import {
-  StyledCol2,
-  StyledCol1,
-  StyledRow,
-} from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
-
-import CardCapabilities from "../../../components/cards/CardCapabilities"
-import Heading_Paragraph from "../../../components/H&P/H&P"
-import { getArticles } from "../../../API"
-import RelatedInsigts_Table from "../../../components/cards/RelatedInsigts_Table"
-import { TableContainer } from "../../../components/tables/TableContainer"
-import { Table } from "../../../components/tables/Table"
 import {
   ArticlePreviewCard,
-  CardInsights,
-  ExpertiseCard,
+  ExpertiseCard
 } from "../../../components/cards"
-import { getSinglePodcast } from "../../../API"
-import DOMPurify from "dompurify"
 import { ButtonWithAnimation } from "../../../components/buttons"
 import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer"
-import Axios from "axios"
-import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew"
 import { InsightsNavbar } from "../../../components/navbarComponents"
-import { getSinglePodcast } from "../../../API";
-import DOMPurify from "dompurify";
-import { ButtonWithAnimation } from "../../../components/buttons";
-import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
-import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
 import CardPodcast from "../../../components/cards/CardPodcast";
 
 
