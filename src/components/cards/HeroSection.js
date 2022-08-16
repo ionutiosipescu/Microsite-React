@@ -91,6 +91,7 @@ const HeroSection = ({
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
   return (
+    <>
     <Hero
       backgroundUrl={backgroundUrl ?? backgr}
       className={className}
@@ -143,6 +144,7 @@ const HeroSection = ({
         )}
       </div>
     </Hero>
+    </>
   )
 }
 

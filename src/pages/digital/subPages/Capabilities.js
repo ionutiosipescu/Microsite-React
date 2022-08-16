@@ -1,7 +1,7 @@
 import React from "react";
 import {
   CareersInDigital,
-  CardProfessionals,
+ 
 } from "../../../components/cards/";
 import image from "../../../assets/images/ConnorWine";
 import IFrame from "../../../components/IFrame";
@@ -11,6 +11,10 @@ import {
   StyledRow,
 } from "../../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
 import { useDocumentTitle } from "../../../hook";
+import CardProfessionalsNew from "../../../components/cards/CardProfessionalsNew";
+import ContactSubscribeCard from "../../../components/cards/ContactSubscribeCard";
+import SocialsCard from "../../../components/cards/SocialsCard";
+import CardProfessionalSmall from "../../../components/cards/CardProfessionalsSmall";
 
 const Capabilities = () => {
   // Card overview content from backend
@@ -67,9 +71,10 @@ const Capabilities = () => {
           </p>
         </StyledCol1>
         <StyledCol2>
-          <CardProfessionals {...cardContent} />
-          <CardProfessionals {...cardContent} />
-          <CareersInDigital />
+          <CardProfessionalsNew {...cardContent} />
+          <CardProfessionalSmall {...cardContent}/>
+          <ContactSubscribeCard/>
+          <SocialsCard/>
         </StyledCol2>
       </StyledRow>
     </>
