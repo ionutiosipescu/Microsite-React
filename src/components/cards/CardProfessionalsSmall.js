@@ -3,62 +3,31 @@ import Connor from "../../assets/images/ConnorWine";
 import styled from "styled-components";
 import { size } from "../../utils/breakpoints";
 import { ChevronRightWhite } from "../../assets/icons";
-import { ButtonWithAnimation } from "../buttons";
 
 const Card = styled.div`
   display: flex;
-  background: var(--darkBlue);
+  background: var(--gray6);
   width: 100%;
-  height: 250px;
+  height: auto;
+  margin: 20px 0;
 `;
 
 const CardBody = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  .button-animation {
-    display: none;
-  }
   button {
     transition: background-color 0.2s ease-out;
   }
 
-  
-  @media ${size.lg} {
-    button {
-      display: block;
-    }
-   
-
-  }
-
-  @media ${size.lg} {
-    flex-direction: column;
-    .button-animation {
-  padding: 0 0 20px 20px;
-  display: block;
-}
-  }
 `;
 
 const ImageContainer = styled.div`
   background: gray;
   img {
-    width: 190px;
-    height: 100%;
+    width: 64px;
+    height: 130px;
     object-fit: cover;
-  }
-
-  @media ${size.sm} {
-    img {
-      width: 125px;
-    }
-  }
-
-  @media ${size.md} {
-    img {
-      width: 9.313rem;
-    }
   }
 `;
 
@@ -83,6 +52,7 @@ const ArrowContainer = styled.div`
   margin-left: auto;
   cursor: pointer;
   align-items: center;
+  background: var(--darkBlue2);
 
   :hover {
     background: var(--hover-blue);
@@ -94,7 +64,7 @@ const ArrowContainer = styled.div`
 `;
 
 const Name = styled.a`
-  color: white;
+  color: var(--darkBlue2);
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
@@ -105,10 +75,10 @@ const Name = styled.a`
   padding-top: 20px;
   
   :hover {
-    color: #ffffff;
+    color: var(--darkBlue2);
   }
   @media ${size.lg} {
-    font-size: 0.875rem;
+    font-size: 20px;
   }
 `;
 const Position = styled.p`
@@ -145,7 +115,7 @@ const Info = styled.a`
 const ButtonAni = styled.div`
 `
 
-const CardProfessionalsNew = ({
+const CardProfessionalSmall = ({
   name,
   imageSrc,
   position,
@@ -163,9 +133,6 @@ const CardProfessionalsNew = ({
           <Position>{position || "wine connoisseur"}</Position>
           <Info>{country} </Info>
         </Content>
-        <div className="button-animation">
-          <ButtonWithAnimation/>
-          </div>
       </CardBody>
       <ArrowContainer>
         <ChevronRightWhite />
@@ -174,5 +141,5 @@ const CardProfessionalsNew = ({
   );
 };
 
-export default CardProfessionalsNew;
+export default CardProfessionalSmall;
 

@@ -24,6 +24,15 @@ import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsCon
 import Axios from "axios"
 import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew"
 import { InsightsNavbar } from "../../../components/navbarComponents"
+import { getSinglePodcast } from "../../../API";
+import DOMPurify from "dompurify";
+import { ButtonWithAnimation } from "../../../components/buttons";
+import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
+import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
+import CardPodcast from "../../../components/cards/CardPodcast";
+
+
+
 const Practice = () => {
   const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls"
 
@@ -71,6 +80,7 @@ const Practice = () => {
           <ArticlePreviewCard />
           <ArticlePreviewCard content={content} />
           <ArticlePreviewCard />
+          <CardPodcast/>
         </UnalignedItemsConainer>
       </div>
       {/* <StyledRow>
