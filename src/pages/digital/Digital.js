@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import HeroSection from "../../components/cards/HeroSection";
+import React, { useState } from "react"
+import HeroSection from "../../components/cards/HeroSection"
 import {
   Overview,
   Insights,
@@ -7,16 +7,16 @@ import {
   NewsRelease,
   Capabilities,
   Practice,
-} from "./subPages";
+} from "./subPages"
 import {
   NavigationCell,
   NavigationNavbar,
-} from "../../components/navbarComponents/";
-import { useDocumentTitle } from "../../hook";
+} from "../../components/navbarComponents/"
+import { useDocumentTitle } from "../../hook"
 
 const Digital = () => {
   // The index of the of the item clicked in the navbar
-  const [clickedNavbarCell, setClickedNavbarCell] = useState(0);
+  const [clickedNavbarCell, setClickedNavbarCell] = useState(0)
 
   // The order of the sub pages in the array is important since it is used with the index from above
   const subPages = [
@@ -27,8 +27,8 @@ const Digital = () => {
     <NewsRelease />,
     <Insights />,
     <Professionals />,
-  ];
-  useDocumentTitle("Digital | Home | Alvarez & Marsal");
+  ]
+  useDocumentTitle("Digital | Home | Alvarez & Marsal")
   return (
     <>
       <HeroSection
@@ -40,17 +40,17 @@ const Digital = () => {
       />
 
       <NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
+        <NavigationCell> Practice</NavigationCell>
         <NavigationCell>Overview</NavigationCell>
         <NavigationCell> Capabilities</NavigationCell>
         <NavigationCell> {"News"}</NavigationCell>
         <NavigationCell> Insights</NavigationCell>
         <NavigationCell> Professionals</NavigationCell>
-        <NavigationCell> Practice</NavigationCell>
       </NavigationNavbar>
 
       {subPages[clickedNavbarCell]}
     </>
-  );
-};
+  )
+}
 
-export default Digital;
+export default Digital

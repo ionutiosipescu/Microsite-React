@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const Container = styled.div`
   display: grid;
@@ -9,44 +9,48 @@ const Container = styled.div`
   & > div {
     display: flex;
     flex-direction: column;
+
+    & > :last-child {
+      border-bottom: none;
+    }
   }
-`;
+`
 
 const UnalignedItemsConainer = ({ children, columnsNumber }) => {
   if (!columnsNumber) {
-    columnsNumber = 3;
+    columnsNumber = 3
   }
 
   // Create empty arrays equal to columnsNumber
-  let arrays = [];
+  let arrays = []
   for (let i = 0; i < columnsNumber; i++) {
-    arrays.push([]);
+    arrays.push([])
   }
 
   // Fancy funtion to split the the array(children) into arrays of length columnsNumber
   arrays = arrays.map((arr, parentIndex) => {
     while (children[parentIndex]) {
-      arr.push(children[parentIndex]);
-      parentIndex = parentIndex + columnsNumber;
+      arr.push(children[parentIndex])
+      parentIndex = parentIndex + columnsNumber
     }
-    return arr;
-  });
+    return arr
+  })
 
-  console.log(arrays);
+  // console.log(arrays);
 
   return (
     <Container>
       {arrays.map((arr, index) => {
         return (
           <div key={index}>
-            {arr.map((child) => {
-              return child;
+            {arr.map(child => {
+              return child
             })}
           </div>
-        );
+        )
       })}
     </Container>
-  );
-};
+  )
+}
 
-export default UnalignedItemsConainer;
+export default UnalignedItemsConainer

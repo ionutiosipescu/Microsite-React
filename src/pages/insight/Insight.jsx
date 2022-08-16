@@ -1,60 +1,57 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
   ArticleCard,
   HeroSection,
   CarouselSection,
-} from "../../components/cards";
+} from "../../components/cards"
 import {
   FiltrationNavbar,
   NavbarDropdown,
-} from "../../components/navbarComponents";
-import { ArticleContainers } from "./styles/inisghts.style";
-import { BreadCrumb, FilterBy, Spinner } from "../../components";
-import { getInsightFilters, getInsights, fetchData } from "../../API";
-import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
-import { useDocumentTitle } from "../../hook";
+} from "../../components/navbarComponents"
+import { ArticleContainers } from "./styles/inisghts.style"
+import { BreadCrumb, FilterBy, Spinner } from "../../components"
+import { getInsightFilters, getInsights, fetchData } from "../../API"
+import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+import { useDocumentTitle } from "../../hook"
 
-const Insight = () => {
+const InsightLatest = () => {
   let persistedFilters = JSON.parse(
     sessionStorage.getItem("latestInsightsFilters")
-  );
+  )
 
   // Filters that were selected by the user or taken from the session storage
-  const [selectedFilters, setSelectedFilters] = useState(
-    persistedFilters || []
-  );
+  const [selectedFilters, setSelectedFilters] = useState(persistedFilters || [])
 
   // Getting the latest articles from server
-  const [carouselData, setCarouselData] = useState([]);
-  const [insightsContent, setInsightsContent] = useState([]);
+  const [carouselData, setCarouselData] = useState([])
+  const [insightsContent, setInsightsContent] = useState([])
 
   // Fetched filters from the server
-  const [filters, setFilters] = useState(null);
+  const [filters, setFilters] = useState(null)
 
   useEffect(() => {
-    fetchData(setCarouselData);
-    getInsights(setInsightsContent, selectedFilters);
-    getInsightFilters(setFilters);
-  }, []);
+    fetchData(setCarouselData)
+    getInsights(setInsightsContent, selectedFilters)
+    getInsightFilters(setFilters)
+  }, [])
 
-  console.log("this is insight content", insightsContent);
+  console.log("this is insight content", insightsContent)
 
   useEffect(() => {
     sessionStorage.setItem(
       "latestInsightsFilters",
       JSON.stringify(selectedFilters)
-    );
-    getInsights(setInsightsContent, selectedFilters);
-  }, [selectedFilters]);
+    )
+    getInsights(setInsightsContent, selectedFilters)
+  }, [selectedFilters])
 
-  useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal");
+  useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
   // console.log("those are filters", selectedFilters);
 
   return (
     <>
       <HeroSection
         title=" Latest Studies"
-        height={300}
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
       {!filters ? (
@@ -142,7 +139,7 @@ const Insight = () => {
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Insight;
+export default InsightLatest
