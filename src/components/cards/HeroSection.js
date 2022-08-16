@@ -1,15 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { sizem } from "../../utils/breakpoints";
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
-import NavBar from "../layout/NavBar";
+import React from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { sizem } from "../../utils/breakpoints"
+import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
+import NavBar from "../layout/NavBar"
+import { InsightsNavbar } from "../navbarComponents"
 
 const Hero = styled.div`
   position: relative;
-  height: ${(props) => props.height + "px" || ""};
+  height: ${props => props.height + "px" || ""};
   width: 100%;
-  background: url(${(props) => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
+  background: url(${props => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
@@ -62,13 +63,13 @@ const Hero = styled.div`
   }
   .routeSpan {
   }
-`;
+`
 
 const TitleRoute = styled.span`
   font-size: 1.5rem;
   text-transform: "uppercase";
-  color: ${(props) => props.color || "#fff"};
-`;
+  color: ${props => props.color || "#fff"};
+`
 
 const HeroSection = ({
   title,
@@ -84,10 +85,12 @@ const HeroSection = ({
   heroBrazilianText,
   transparent,
 }) => {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
+  let location = useLocation()
+
   // console.log(backgroundUrl);
   const backgr =
-    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
+    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
   return (
     <Hero
       backgroundUrl={backgroundUrl ?? backgr}
@@ -96,48 +99,52 @@ const HeroSection = ({
     >
       <div className="contentContainer">
         <NavBar />
-        <div className="contentWithoutNavbar">
-          {pageCategory && (
-            <TitleRoute color={"var(--yellowCategory) "}>
-              {pageCategory?.toUpperCase()}
-            </TitleRoute>
-          )}
-          {route && (
-            <>
-              <span>
-                <TitleRoute color={"var(--hover-blue) "}>
-                  {route.route}
-                </TitleRoute>
+        {location.pathname == "/insights" ? (
+          <InsightsNavbar />
+        ) : (
+          <div className="contentWithoutNavbar">
+            {pageCategory && (
+              <TitleRoute color={"var(--yellowCategory) "}>
+                {pageCategory?.toUpperCase()}
+              </TitleRoute>
+            )}
+            {route && (
+              <>
+                <span>
+                  <TitleRoute color={"var(--hover-blue) "}>
+                    {route.route}
+                  </TitleRoute>
 
-                <TitleRoute color={"var(--yellowCategory) "}>
-                  {route.subRoute}
-                </TitleRoute>
-              </span>
-            </>
-          )}
-          {pageCategoryCenter && (
-            <h4 className="text-center">{pageCategoryCenter}</h4>
-          )}
-          {date && <h4 className="text-white">{date}</h4>}
-          <h1>{title}</h1>
-          {description && (
-            <p
-              className=" pt-3 text-decoration-none"
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}
-            ></p>
-          )}
+                  <TitleRoute color={"var(--yellowCategory) "}>
+                    {route.subRoute}
+                  </TitleRoute>
+                </span>
+              </>
+            )}
+            {pageCategoryCenter && (
+              <h4 className="text-center">{pageCategoryCenter}</h4>
+            )}
+            {date && <h4 className="text-white">{date}</h4>}
+            <h1>{title}</h1>
+            {description && (
+              <p
+                className=" pt-3 text-decoration-none"
+                dangerouslySetInnerHTML={{
+                  __html: description,
+                }}
+              ></p>
+            )}
 
-          {buttonText && (
-            <div className="buttonContainer">
-              <ButtonWithAnimation text={buttonText.toUpperCase()} />
-            </div>
-          )}
-        </div>
+            {buttonText && (
+              <div className="buttonContainer">
+                <ButtonWithAnimation text={buttonText.toUpperCase()} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </Hero>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
