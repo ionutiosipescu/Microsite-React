@@ -37,7 +37,7 @@ export const CardBody = styled.div`
 export const Content = styled.div`
   padding: 20px;
   text-transform: uppercase;
-  color: var(--orange2);
+  color: var(--hover-blue);
   font-weight: bold;
   height: 100%;
   width: 150px;

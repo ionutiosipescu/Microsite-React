@@ -31,14 +31,14 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
-    dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
+    // dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
 
     // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
     // fetchHeroSectionDataHome(setHeroSectionData);
     // fetchRecentRecognition(setRecentRecognition);
     // fetchData(setCarouselData);
     // fetchHLSLeaders(setDataObj);
-  }, []);
+  }, [dispatch]);
 
   const HomeContainer = styled.div`
     .heroContainer {

@@ -3,6 +3,10 @@ import Axios from "axios";
 
 export const GET_HERO_SECTION_DATA = "GET_HERO_SECTION_DATA";
 export const GET_INDUSTRIES = "GET_INDUSTRIES";
+export const GET_EXPERTISES = "GET_EXPERTISES";
+
+export const GET_INDUSTRY = "GET_INDUSTRY";
+export const GET_EXPERTISE = "GET_EXPERTISE";
 // export const GET_OVERVIEW_SECTION_DATA = "GET_OVERVIEW_DATA";
 
 const link = "https://akamai.alvarezandmarsal.com/api/v1/hls";
@@ -36,7 +40,6 @@ export const fetchHLSIndustries = (industryId) => {
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
     await Axios.get(link)
       .then((data) => {
-        console.log(data);
         var parsedIndustriesArray = [];
         const industries = data?.data.healthcare_industries;
         // console.log(industries);
@@ -62,6 +65,143 @@ export const fetchHLSIndustries = (industryId) => {
     //   type: GET_HERO_SECTION_DATA,
     //   payload: industries,
     // });
+  };
+};
+export const fetchIndustry = (industryId) => {
+  return async (dispatch) => {
+    console.log(industryId);
+    Axios.get(link)
+
+      .then((data) => {
+        const industries = data.data.healthcare_industries;
+        // console.log(data.data);
+        var industry = {};
+        // for (const [key, value] of Object.entries(industries)) {
+        //   if (key == industryId) {
+        //     industry = value;
+        //   }
+        // }
+        for (const [key, value] of Object.entries(industries)) {
+          if (key == industryId) {
+            industry = value;
+          }
+        }
+        // console.log(industry);
+        var experts = [];
+        var expertises = [];
+        industry?.featured_expert.map((expert) => {
+          for (const [key, value] of Object.entries(
+            data?.data.expertise_parent_expert_profile
+          )) {
+            if (key == expert) {
+              experts.push(value);
+            }
+          }
+        });
+        industry?.expertise.map((expert) => {
+          for (const [key, value] of Object.entries(
+            data?.data.expertise_parent_children
+          )) {
+            if (key == expert) {
+              expertises.push(value);
+            }
+          }
+        });
+        // console.log(expertises);
+        industry.expertises = expertises;
+        industry.experts = experts;
+
+        dispatch({
+          type: GET_INDUSTRY,
+          payload: industry,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const fetchHlsExpertises = () => {
+  return async (dispatch) => {
+    Axios.get(link)
+      .then((data) => {
+        const expertises = data?.data.expertise_parent_children;
+        let expertisesArr = [];
+        for (const [key, value] of Object.entries(expertises)) {
+          let expertise = {
+            id: value.id,
+            name: value.name,
+            description: value.teaser_text,
+          };
+          expertisesArr.push(expertise);
+        }
+        dispatch({
+          type: GET_EXPERTISES,
+          payload: expertisesArr,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const fetchExpertise = (expertiseId) => {
+  return async (dispatch) => {
+    Axios.get(link)
+      .then((data) => {
+        const expertises = data?.data.expertise_parent_children;
+        let experts = [];
+        let articles = [];
+        let expertise = {};
+        let expertiseIndustries = [];
+        for (const [key, value] of Object.entries(expertises)) {
+          if (key == expertiseId) {
+            expertise = value;
+          }
+        }
+        expertise?.featured_expert.map((expert) => {
+          for (const [key, value] of Object.entries(
+            data?.data.expertise_parent_expert_profile
+          )) {
+            if (key == expert) {
+              experts.push(value);
+            }
+          }
+        });
+        expertise?.articles.map((expert) => {
+          for (const [key, value] of Object.entries(
+            data?.data.expertise_parent_articles
+          )) {
+            if (key == expert) {
+              articles.push(value);
+            }
+          }
+        });
+
+        const industries = data.data.healthcare_industries;
+        for (const [key, value] of Object.entries(industries)) {
+          value.expertise.map((expertiseID) => {
+            if (expertiseId == expertiseID) {
+              // console.log(value);
+              expertiseIndustries.push(value);
+            }
+          });
+        }
+        expertise.articles = articles;
+        expertise.experts = experts;
+        expertise.industries = expertiseIndustries;
+
+        // console.log(expertise);
+        dispatch({
+          type: GET_EXPERTISE,
+          payload: expertise,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 };
 // export const fetchBrazilianOverview = () => {
@@ -97,6 +237,7 @@ const getImageFromInclude = (dataIncluded, type) => {
 
   return newArr;
 };
+// export const fetchIndustr
 
 // const fetchIndustry = async (industryId) => {
 //   const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries/${industryId}?include=field_image`;

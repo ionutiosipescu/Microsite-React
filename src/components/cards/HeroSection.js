@@ -85,7 +85,7 @@ const HeroSection = ({
   transparent,
 }) => {
   let navigate = useNavigate();
-  console.log(backgroundUrl);
+  // console.log(backgroundUrl);
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
   return (
@@ -99,7 +99,7 @@ const HeroSection = ({
         <div className="contentWithoutNavbar">
           {pageCategory && (
             <TitleRoute color={"var(--yellowCategory) "}>
-              {pageCategory}
+              {pageCategory?.toUpperCase()}
             </TitleRoute>
           )}
           {route && (

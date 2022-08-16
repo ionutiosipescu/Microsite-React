@@ -33,11 +33,13 @@ const ProfessionalsCardSmall = ({
 
         <CardBody>
           <Content>
-            <h5>{cardInfo?.name}</h5>
+            <h5>{cardInfo?.name || cardInfo?.title}</h5>
             {/* <h5>{cardInfo?.firstName}</h5>
             <h5>{cardInfo?.lastName}</h5> */}
-            <div className="pt-2">
-              <div>{cardInfo?.position}</div>
+
+            <div className="cardContent">
+              {cardInfo?.global_location}
+              <div>{cardInfo?.positio || cardInfo.profession_title}</div>
               {/* <div>{cardInfo?.country} </div> */}
             </div>
           </Content>

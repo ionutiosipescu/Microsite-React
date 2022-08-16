@@ -23,6 +23,7 @@ import {
   DescriptionDesktop,
 } from "./styles/DetailedProfessionalsCard.styles";
 import DOMPurify from "dompurify";
+
 const DetailedProfessionalsCard = ({
   content,
   handleDisplay,
@@ -50,7 +51,7 @@ const DetailedProfessionalsCard = ({
 
     setBorderBottom(!borderBottom);
   };
-  // console.log(content);
+
   return (
     <>
       <ImageTriangleContainer>

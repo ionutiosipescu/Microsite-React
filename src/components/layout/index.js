@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "./NavBar";
 import Footer from "./Footer";
 import { size } from "../../utils/breakpoints";
+import { useDispatch } from "react-redux";
+
+import {
+  fetchHLSIndustries,
+  fetchHlsExpertises,
+} from "../../store/actions/hls/hlsHome";
 
 const Page = styled.div`
   margin: 0 auto;
@@ -16,6 +22,13 @@ const Container = styled.div`
 `;
 
 const Layout = (props) => {
+  const dispatch = useDispatch();
+  //   const location = useLocation();
+  useEffect(() => {
+    dispatch(fetchHLSIndustries());
+    dispatch(fetchHlsExpertises());
+  }, [dispatch]);
+
   return (
     <Container>
       <Page>

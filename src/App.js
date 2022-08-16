@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import {
   BrowserRouter,
   Route,
@@ -13,8 +14,6 @@ import store from "./store/config";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const App = () => {
-  //   const location = useLocation();
-
   return (
     <Provider store={store}>
       <BrowserRouter>

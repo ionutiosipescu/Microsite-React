@@ -13,6 +13,7 @@ import {
   Digital,
   DigitalInsighthPodcast,
   ExpertisePage,
+  IndustryPage,
 } from "../pages/";
 
 export const routeNames = {
@@ -25,6 +26,7 @@ export const routeNames = {
 
   expertise: "/expertise",
   expertisePage: "/expertise/:id",
+  industryPage: "/industry/:id",
   // expertiseQuality: "/expertise/quality",
   // expertisePharma: "/expertise/pharma",
 
@@ -45,6 +47,11 @@ export const routes = [
     path: routeNames.expertisePage,
     exact: true,
     element: <ExpertisePage />,
+  },
+  {
+    path: routeNames.industryPage,
+    exact: true,
+    element: <IndustryPage />,
   },
   // {
   //   path: routeNames.expertiseQuality,

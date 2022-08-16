@@ -11,3 +11,4 @@ export { default as InsightLatest } from "./insight/InsightLatest";
 export { default as InsightCaseArticlePage } from "./insight/InsightCaseArticlePage";
 export { default as Digital } from "./digital/Digital";
 export { default as DigitalInsighthPodcast } from "./digital/DigitalInsighthPodcast";
+export { default as IndustryPage } from "./IndustryPage/IndustryPage";
