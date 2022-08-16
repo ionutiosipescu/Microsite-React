@@ -1,13 +1,19 @@
 import React from "react"
 // import ChevronUpWhite from "../../../assets/icons/"
-import { ChevronDownWhite } from "../../../assets/icons"
+import { ChevronDownWhite, ChevronUpWhite } from "../../../assets/icons"
 import * as S from "./styles/Cell.styles"
 
-const CellWithChevron = ({ text, handleClick, onlyMobile }) => {
+const CellWithChevron = ({ text, handleClick, onlyMobile, dropdownOpened }) => {
   return (
-    <S.NavbarCell onClick={() => handleClick()} onlyMobile={onlyMobile}>
+    <S.NavbarCell
+      onClick={() => handleClick()}
+      onlyMobile={onlyMobile}
+      dropdownOpened={dropdownOpened}
+    >
       {text || "No text"}
-      <ChevronDownWhite />
+      {/* <ChevronDownWhite /> */}
+
+      {dropdownOpened ? <ChevronUpWhite /> : <ChevronDownWhite />}
     </S.NavbarCell>
   )
 }

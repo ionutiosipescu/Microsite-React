@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
-import { sizem } from "../../utils/breakpoints";
+import React from "react"
+import styled from "styled-components"
+import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
+import { sizem } from "../../utils/breakpoints"
 
 const IndustrySectionContainer = styled.div`
   padding: 20px;
@@ -10,11 +10,13 @@ const IndustrySectionContainer = styled.div`
   display: flex;
   justify-content: center;
   font-family: "Helvetica Neue LT Std", sans-serif;
+
   .grayContainer {
     width: 90%;
     height: 90%;
     background-color: #f2f2f2;
     padding-bottom: 20px;
+
     h2 {
       padding-top: 20px;
       padding-left: 55px;
@@ -46,7 +48,7 @@ const IndustrySectionContainer = styled.div`
       font-size: 1rem;
     }
   }
-`;
+`
 
 const IndustrySection = ({ industries }) => {
   return (
@@ -72,7 +74,7 @@ const IndustrySection = ({ industries }) => {
         </div>
       </div>
     </IndustrySectionContainer>
-  );
-};
+  )
+}
 
-export default IndustrySection;
+export default IndustrySection

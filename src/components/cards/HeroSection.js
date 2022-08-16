@@ -1,15 +1,15 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { sizem } from "../../utils/breakpoints";
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
-import NavBar from "../layout/NavBar";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { sizem } from "../../utils/breakpoints"
+import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
+import NavBar from "../layout/NavBar"
 
 const Hero = styled.div`
   position: relative;
-  height: ${(props) => props.height + "px" || ""};
+  height: ${props => props.height + "px" || ""};
   width: 100%;
-  background: url(${(props) => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
+  background: url(${props => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
@@ -62,13 +62,13 @@ const Hero = styled.div`
   }
   .routeSpan {
   }
-`;
+`
 
 const TitleRoute = styled.span`
   font-size: 1.5rem;
   text-transform: "uppercase";
-  color: ${(props) => props.color || "#fff"};
-`;
+  color: ${props => props.color || "#fff"};
+`
 
 const HeroSection = ({
   title,
@@ -84,10 +84,10 @@ const HeroSection = ({
   heroBrazilianText,
   transparent,
 }) => {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
   // console.log(backgroundUrl);
   const backgr =
-    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
+    "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
   return (
     <Hero
       backgroundUrl={backgroundUrl ?? backgr}
@@ -131,13 +131,13 @@ const HeroSection = ({
 
           {buttonText && (
             <div className="buttonContainer">
-              <ButtonWithAnimation text={buttonText.toUpperCase()} />
+              <ButtonWithAnimation text={buttonText} />
             </div>
           )}
         </div>
       </div>
     </Hero>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection

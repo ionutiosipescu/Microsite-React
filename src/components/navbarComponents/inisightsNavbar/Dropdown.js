@@ -52,7 +52,11 @@ const Dropdown = ({ text }) => {
 
   return (
     <div ref={dropdownRef}>
-      <CellWithChevron text={text} handleClick={handleClick} />
+      <CellWithChevron
+        text={text}
+        handleClick={handleClick}
+        dropdownOpened={isOpen}
+      />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
         <li onClick={e => addFilter(e)}>sunshine</li>
         <li onClick={e => addFilter(e)}>sunshine</li>

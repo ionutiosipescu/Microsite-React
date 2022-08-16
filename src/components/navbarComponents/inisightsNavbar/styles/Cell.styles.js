@@ -22,6 +22,8 @@ export const NavbarCell = styled.div`
   }
 
   svg {
+    /* {dropdownOpened} */
+
     transition: all 0.2s ease-in-out;
 
     padding-left: 0.5rem;
@@ -32,9 +34,10 @@ export const NavbarCell = styled.div`
   :hover {
     color: var(--selectedFilter);
     svg {
-      transform: rotate(180deg);
+      fill: var(--selectedFilter);
+      /* transform: rotate(180deg);
       padding-right: 0.5rem;
-      padding-left: 0;
+      padding-left: 0; */
     }
   }
 
