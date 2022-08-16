@@ -22,6 +22,10 @@ import DOMPurify from "dompurify";
 import { ButtonWithAnimation } from "../../../components/buttons";
 import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer";
 import CardProfessionalsNews from "../../../components/cards/CardProfessionalsNew";
+import CardPodcast from "../../../components/cards/CardPodcast";
+
+
+
 const Practice = () => {
   const cardContent = {
     imageSrc: image,
@@ -68,6 +72,7 @@ const Practice = () => {
           <ArticlePreviewCard />
           <ArticlePreviewCard content={content} />
           <ArticlePreviewCard />
+          <CardPodcast/>
         </UnalignedItemsConainer>
       </div>
       {/* <StyledRow>

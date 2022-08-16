@@ -34,6 +34,11 @@ const FooterLinkedinIcon = ({ className }) => iconPng(className, "icon_li@2x");
 const FooterTwitterIcon = ({ className }) => iconPng(className, "icon_t@2x");
 const TwitterIcon = ({ className }) => iconPng(className, "twitter");
 const FooterYoutTubeIcon = ({ className }) => iconPng(className, "icon_yt@2x");
+const Slack = ({ className }) => iconPng(className, "slack");
+const Spotify = ({ className }) => iconPng(className, "spotify");
+const Antena = ({ className }) => iconPng(className, "antena");
+const AmazonMusic = ({ className }) => iconPng(className, "amazonmusic");
+const View = ({ className }) => iconPng(className, "view");
 
 const iconsStayPath = "/icons/stayConnected/";
 
@@ -81,5 +86,10 @@ export {
   FooterTwitterIcon,
   FooterYoutTubeIcon,
   TwitterIcon,
-  FacebookIcon
+  FacebookIcon,
+  Slack,
+  Spotify,
+  Antena,
+  AmazonMusic,
+  View
 };
