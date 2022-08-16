@@ -1,9 +1,10 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { sizem } from "../../utils/breakpoints";
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
-import NavBar from "../layout/NavBar";
+import React from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import styled from "styled-components"
+import { sizem } from "../../utils/breakpoints"
+import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
+import NavBar from "../layout/NavBar"
+import { InsightsNavbar } from "../navbarComponents"
 
 const Hero = styled.div`
   position: relative;
@@ -84,7 +85,8 @@ const HeroSection = ({
   heroBrazilianText,
   transparent,
 }) => {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
+  const location = useLocation()
   // console.log(backgroundUrl);
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
@@ -132,12 +134,13 @@ const HeroSection = ({
               ></p>
             )}
 
-          {buttonText && (
-            <div className="buttonContainer">
-              <ButtonWithAnimation text={buttonText.toUpperCase()} />
-            </div>
-          )}
-        </div>
+            {buttonText && (
+              <div className="buttonContainer">
+                <ButtonWithAnimation text={buttonText.toUpperCase()} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </Hero>
   )
