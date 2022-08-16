@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { TwitterIcon, FacebookIcon, Pdf, Mail, Share } from "../../assets/icons";
+import { TwitterIcon, FacebookIcon, Pdf, Mail, Share, BlueRectangle, FooterLinkedinIcon, LinkedIn } from "../../assets/icons";
 
 
 const Card = styled.div`
@@ -16,6 +16,18 @@ img {
             height: 2.8rem;
             width: auto;            
         }
+.linkedin {
+height: 32px;
+width: auto;
+}
+.blue-box {
+    height: 2.8rem;
+    width: 2.8rem; 
+    background-color: var(--hover-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 `
 
 
@@ -24,6 +36,9 @@ const SocialsCard = () => {
         <Card>
             <Share/>
             <FacebookIcon/> 
+            <div className="blue-box">
+            <FooterLinkedinIcon className="linkedin"/>
+            </div>
             <TwitterIcon/>
             <Mail/>
             <Pdf/>

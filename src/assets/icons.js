@@ -14,6 +14,7 @@ import { ReactComponent as ArrowRight } from "./icons/arrowright.svg";
 import { ReactComponent as Mail } from "./icons/mail.svg";
 import { ReactComponent as Pdf } from "./icons/pdf.svg";
 import { ReactComponent as Share } from "./icons/share.svg";
+import { ReactComponent as BlueRectangle } from "./icons/BlueRectangle.svg";
 
 const iconsPath = "/icons/";
 
@@ -64,6 +65,7 @@ export {
   Mail,
   Pdf,
   Share,
+  BlueRectangle,
   IconTriangle,
   PdfIcon,
   DocumentIcon,

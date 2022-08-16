@@ -71,7 +71,6 @@ const Capabilities = () => {
         </StyledCol1>
         <StyledCol2>
           <CardProfessionalsNew {...cardContent} />
-          <CardProfessionalsNew {...cardContent} />
           <ContactSubscribeCard/>
           <SocialsCard/>
         </StyledCol2>
