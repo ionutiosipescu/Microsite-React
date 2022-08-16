@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router";
-import { CardProfessionals, HeroSection } from "../../components/cards";
-import { fetchIndustry } from "../../store/actions/hls/hlsHome";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useLocation } from "react-router"
+import { CardProfessionals, HeroSection } from "../../components/cards"
+import { fetchIndustry } from "../../store/actions/hls/hlsHome"
 
-import { ProfessionalsCardSmall } from "../../components/cards";
+import { ProfessionalsCardSmall } from "../../components/cards"
 
-import styled from "styled-components";
+import styled from "styled-components"
 
 const IndustryPage = () => {
-  const { state } = useLocation();
-  const dispatch = useDispatch();
+  const { state } = useLocation()
+  const dispatch = useDispatch()
 
-  const industry = useSelector((state) => state.hlsHero.industry);
+  const industry = useSelector(state => state.hlsHero.industry)
 
-  console.log(industry);
-  // console.log(state);
+  console.log(industry)
+  console.log(state)
   useEffect(() => {
-    dispatch(fetchIndustry(state));
-  }, [dispatch, state]);
+    dispatch(fetchIndustry(state))
+  }, [dispatch, state])
 
   return (
     <>
@@ -53,10 +53,10 @@ const IndustryPage = () => {
         </div>
       </IndustryContainer>
     </>
-  );
-};
+  )
+}
 
-export default IndustryPage;
+export default IndustryPage
 
 const IndustryContainer = styled.div`
   width: 90%;
@@ -67,7 +67,7 @@ const IndustryContainer = styled.div`
   .descriptionContainer {
     border-bottom: 3px solid var(--hover-blue);
   }
-`;
+`
 const ExpertiseContainer = styled.div`
   padding-top: 10px;
-`;
+`

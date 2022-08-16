@@ -1,28 +1,23 @@
 :root {
-  --white: #fff;
-
   --gray1: #eae6e6;
   --gray2: #cfcdcd;
   --gray3: #bfbfbf;
   --gray4: #666;
   --gray5: #eeeeee;
-  --mutedDate: #808080;
 
   --darkBlue: #002b49;
   --darkBlue1: #061931;
-  --darkBlue2: #00244a;
 
   --hover-blue: #0085ca;
   --searchBarBlue: #003e6a;
-  --filtersBlue: #78d1ff;
-
-  --selectedFilter: #fac40b;
-
+  --yellowCategory: #fac40b;
   --orange1: #df8e25;
   --orange2: #cf7f00;
   --orange3: #be7a22;
 
-  --black1: #292929;
+  /* --darkBlueHome: #c27028; */
+  --darkBlueHome: #00244a;
+  --white: #fff;
 }
 
 * {
@@ -32,10 +27,7 @@
   outline: 0;
   font-family: Helvetica Neue LT Std, Arial, sans-serif;
 }
-html,
-body {
-  height: 100%;
-}
+
 ul {
   list-style: none;
   margin: 0;
