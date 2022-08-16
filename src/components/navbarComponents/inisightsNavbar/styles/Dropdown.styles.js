@@ -22,7 +22,7 @@ export const DropdownContainer = styled.ul`
     text-transform: initial;
 
     :hover {
-      color: var(--selectedFilter);
+      color: var(--yellowCategory);
     }
 
     /* border: 2px solid yellow; */

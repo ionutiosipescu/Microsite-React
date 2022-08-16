@@ -20,11 +20,11 @@ export const FilterCell = styled.div`
   }
 
   :hover {
-    color: var(--selectedFilter);
-    border: 1px solid var(--selectedFilter);
+    color: var(--yellowCategory);
+    border: 1px solid var(--yellowCategory);
 
     svg {
-      fill: var(--selectedFilter);
+      fill: var(--yellowCategory);
     }
   }
 `
