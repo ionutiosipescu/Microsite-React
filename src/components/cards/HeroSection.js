@@ -1,23 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import HeroCardBrazilTransparent from "./HeroCardBrazilTransparent";
+import YellowButton from "../buttons/YellowButton";
 import { sizem } from "../../utils/breakpoints";
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
-import NavBar from "../layout/NavBar";
 
 const Hero = styled.div`
   position: relative;
-  height: ${(props) => props.height + "px" || ""};
+  height: 400px;
   width: 100%;
-  background: url(${(props) => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
-  background-repeat: no-repeat;
+  /* padding: 2rem; */
+  /* margin: 2rem; */
+  /* padding: 3rem; */
   background-size: cover;
-  background-blend-mode: multiply;
+  background-image: url(${(props) => props.backgroundUrl || ""});
 
-  .contentContainer {
-    height: inherit;
-    padding-left: 6%;
-    padding-right: 5%;
+  text-transform: uppercase;
 
     .contentWithoutNavbar {
       height: inherit;
@@ -62,7 +60,7 @@ const Hero = styled.div`
   }
   .routeSpan {
   }
-`;
+`
 
 const TitleRoute = styled.span`
   font-size: 1.5rem;
@@ -72,20 +70,15 @@ const TitleRoute = styled.span`
 
 const HeroSection = ({
   title,
-  description,
   backgroundUrl,
   buttonText,
-  pageCategory,
-  pageCategoryCenter,
-  className,
-  route,
-  date,
-  height,
-  heroBrazilianText,
+  pageTitle,
+  pageTitleCenter,
   transparent,
+  className,
 }) => {
   let navigate = useNavigate();
-  // console.log(backgroundUrl);
+  console.log(backgroundUrl);
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
   return (
@@ -99,7 +92,7 @@ const HeroSection = ({
         <div className="contentWithoutNavbar">
           {pageCategory && (
             <TitleRoute color={"var(--yellowCategory) "}>
-              {pageCategory?.toUpperCase()}
+              {pageCategory}
             </TitleRoute>
           )}
           {route && (
@@ -108,71 +101,23 @@ const HeroSection = ({
                 <TitleRoute color={"var(--hover-blue) "}>
                   {route.route}
                 </TitleRoute>
-
-                <TitleRoute color={"var(--yellowCategory) "}>
-                  {route.subRoute}
-                </TitleRoute>
               </span>
-            </>
-          )}
-          {pageCategoryCenter && (
-            <h4 className="text-center">{pageCategoryCenter}</h4>
-          )}
-          {date && <h4 className="text-white">{date}</h4>}
-          <h1>{title}</h1>
-          {description && (
-            <p
-              className=" pt-3 text-decoration-none"
-              dangerouslySetInnerHTML={{
-                __html: description,
+              
+        <h1>{title}</h1>
+        {buttonText && (
+          <div className="pt-2">
+            <YellowButton
+              text={buttonText}
+              onClick={() => {
+                navigate("/contact");
               }}
-            ></p>
-          )}
-
-          {buttonText && (
-            <div className="buttonContainer">
-              <ButtonWithAnimation text={buttonText.toUpperCase()} />
-            </div>
-          )}
-        </div>
+            />
+          </div>
+        )}
+        {transparent && <HeroCardBrazilTransparent />}
       </div>
     </Hero>
   );
 };
 
 export default HeroSection;
-/* @media ${sizem.xlm} {
-      h1 {
-        font-size: 40px;
-        line-height: 50px;
-      }
-    }
-    @media ${sizem.lgm} {
-      h1 {
-        font-size: 40px;
-        line-height: 50px;
-      }
-    }
-    @media ${sizem.mdm_m} {
-      h1 {
-        font-size: 48px;
-        line-height: 50px;
-      }
-    }
-
-    @media ${sizem.mdm} {
-      h1 {
-        font-size: 35px;
-        line-height: 35px;
-      }
-    }
-    @media ${sizem.smm} {
-      h1 {
-        font-size: 24px;
-        line-height: 30px;
-      }
-      p {
-        font-size: 14px;
-        line-height: 15px;
-      }
-    } */
