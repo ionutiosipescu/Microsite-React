@@ -27,7 +27,7 @@ const Layout = (props) => {
   useEffect(() => {
     dispatch(fetchHLSIndustries());
     dispatch(fetchHlsExpertises());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Container>

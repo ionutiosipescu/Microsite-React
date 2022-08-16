@@ -24,21 +24,21 @@ const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const heroData = useSelector((state) => state.hlsHero?.heroSection);
-  const industries = useSelector((state) => state.hlsHero?.industries);
+  const heroData = useSelector((state) => state?.hlsHero?.heroSection);
+  const industries = useSelector((state) => state?.hlsHero?.industries);
   // console.log(industries);
   const [carouselData, setCarouselData] = useState([]);
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
-    // dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
+    dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID));
 
     // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
     // fetchHeroSectionDataHome(setHeroSectionData);
     // fetchRecentRecognition(setRecentRecognition);
     // fetchData(setCarouselData);
     // fetchHLSLeaders(setDataObj);
-  }, [dispatch]);
+  }, []);
 
   const HomeContainer = styled.div`
     .heroContainer {
@@ -46,7 +46,7 @@ const Home = () => {
       padding: 0;
     }
   `;
-
+  console.log(industries);
   return (
     <HomeContainer>
       {/* <div className="heroContainer"> */}

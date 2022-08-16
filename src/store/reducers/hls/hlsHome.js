@@ -25,6 +25,7 @@ export default (state = initialState, { type, payload }) => {
       };
     }
     case GET_INDUSTRIES: {
+      console.log(payload);
       return {
         ...state,
         industries: payload,

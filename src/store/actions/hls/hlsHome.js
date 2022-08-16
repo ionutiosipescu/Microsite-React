@@ -16,7 +16,6 @@ export const fetchHLSHeroSection = (industryId) => {
     const liveLink = "https://www.alvarezandmarsal.com/";
     Axios.get(link)
       .then((data) => {
-        console.log(data);
         const industry = data?.data.expertise_parent;
         const obj = {
           id: industry.id,
@@ -37,6 +36,7 @@ export const fetchHLSHeroSection = (industryId) => {
 
 export const fetchHLSIndustries = (industryId) => {
   return async (dispatch) => {
+    console.log("fetchHLSIndustries");
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
     await Axios.get(link)
       .then((data) => {

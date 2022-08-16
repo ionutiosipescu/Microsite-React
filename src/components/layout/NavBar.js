@@ -117,8 +117,10 @@ const NavBar = () => {
                 ))}
               </NavDropdown>
 
-              {/* <Nav.Link href={routeNames.insight}>{"Insights"}</Nav.Link> */}
-              <NavDropdown
+              <Nav.Link className="active web-title" href={routeNames.insights}>
+                {"HEALTH & LIFE INSIGHTS"}
+              </Nav.Link>
+              {/* <NavDropdown
                 className=""
                 title="HEALTH & LIFE INSIGHTS"
                 id="navbar-scrolling-dropdown"
@@ -129,7 +131,7 @@ const NavBar = () => {
                 <NavDropdown.Item href={routeNames.insightCase}>
                   {"Case Studies"}
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
               <Nav.Link
                 className="active web-title"
                 href={routeNames.leadership}

@@ -14,7 +14,7 @@ import { getInsightFilters, getInsights, fetchData } from "../../API";
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style";
 import { useDocumentTitle } from "../../hook";
 
-const InsightLatest = () => {
+const Insight = () => {
   let persistedFilters = JSON.parse(
     sessionStorage.getItem("latestInsightsFilters")
   );
@@ -54,6 +54,7 @@ const InsightLatest = () => {
     <>
       <HeroSection
         title=" Latest Studies"
+        height={300}
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
       {!filters ? (
@@ -144,4 +145,4 @@ const InsightLatest = () => {
   );
 };
 
-export default InsightLatest;
+export default Insight;

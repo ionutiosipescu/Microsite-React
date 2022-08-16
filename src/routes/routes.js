@@ -5,7 +5,7 @@ import {
   Leadership,
   Brazil,
   InsightCase,
-  InsightLatest,
+  Insights,
   InsightCaseArticlePage,
   Digital,
   DigitalInsighthPodcast,
@@ -17,8 +17,8 @@ export const routeNames = {
   home: "/",
   leadership: "/leadership",
   contact: "/contact",
-  insightLatest: "/insights/latest",
-  insightCase: "/insights/case",
+  insights: "/insights",
+  // insightCase: "/insights/case",
 
   insightCaseArticlePage: "/insights/:id",
 
@@ -64,15 +64,15 @@ export const routes = [
   // },
 
   {
-    path: routeNames.insightLatest,
+    path: routeNames.insights,
     exact: true,
-    element: <InsightLatest />,
+    element: <Insights />,
   },
-  {
-    path: routeNames.insightCase,
-    exact: true,
-    element: <InsightCase />,
-  },
+  // {
+  //   path: routeNames.insightCase,
+  //   exact: true,
+  //   element: <InsightCase />,
+  // },
   {
     path: routeNames.insightCaseArticlePage,
     exact: true,
