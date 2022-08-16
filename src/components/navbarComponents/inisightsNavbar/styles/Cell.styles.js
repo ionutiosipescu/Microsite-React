@@ -17,7 +17,7 @@ export const NavbarCell = styled.div`
     text-decoration: none;
     color: var(--filtersBlue);
     :hover {
-      color: var(--selectedFilter);
+      color: var(--yellowCategory);
     }
   }
 
@@ -32,9 +32,9 @@ export const NavbarCell = styled.div`
   }
 
   :hover {
-    color: var(--selectedFilter);
+    color: var(--yellowCategory);
     svg {
-      fill: var(--selectedFilter);
+      fill: var(--yellowCategory);
       /* transform: rotate(180deg);
       padding-right: 0.5rem;
       padding-left: 0; */
