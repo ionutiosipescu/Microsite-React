@@ -10,7 +10,6 @@ export const GET_EXPERTISE = "GET_EXPERTISE"
 // export const GET_OVERVIEW_SECTION_DATA = "GET_OVERVIEW_DATA";
 
 const link = "https://akamai.alvarezandmarsal.com/api/v1/hls"
-
 export const fetchHLSHeroSection = industryId => {
   return async dispatch => {
     // const link = "https://akamai.alvarezandmarsal.com/api/v1/hls";
@@ -92,7 +91,7 @@ export const fetchIndustry = industryId => {
         var expertises = []
         industry?.featured_expert.map(expert => {
           for (const [key, value] of Object.entries(
-            data?.data.expertise_parent_expert_profile
+            data?.data?.expertise_parent_expert_profile
           )) {
             if (key == expert) {
               experts.push(value)
@@ -101,7 +100,7 @@ export const fetchIndustry = industryId => {
         })
         industry?.expertise.map(expert => {
           for (const [key, value] of Object.entries(
-            data?.data.expertise_parent_children
+            data?.data?.expertise_parent_children
           )) {
             if (key == expert) {
               expertises.push(value)
