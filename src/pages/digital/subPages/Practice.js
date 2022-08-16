@@ -29,11 +29,11 @@ const Practice = () => {
 
   console.log(link)
 
-  useEffect(() => {
-    Axios.get(link).then((res) => {
-      console.log(res.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   Axios.get(link).then(res => {
+  //     // console.log(res.data)
+  //   })
+  // }, [])
 
   const content =
     "Lorem  Consequat anim eiusmod reprehenderit ut in eiusmod ea ipsum ex. Elit anim amet quis excepteur sint voluptate cillum minim incididunt veniam sint. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing."
@@ -43,7 +43,6 @@ const Practice = () => {
       <div
         style={{
           background: "black",
-          height: "500px",
           width: "100%",
         }}
       >

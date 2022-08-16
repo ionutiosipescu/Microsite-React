@@ -5,4 +5,5 @@ export { default as SearchBar } from "./filtration/SearchBar"
 
 export { default as NavigationCell } from "./navigation/NavigationCell"
 export { default as NavigationNavbar } from "./navigation/NavigationNavbar"
+
 export { default as InsightsNavbar } from "./inisightsNavbar/InsightsNavbar"

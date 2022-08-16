@@ -3,9 +3,9 @@ import React from "react"
 import { ChevronDownWhite } from "../../../assets/icons"
 import * as S from "./styles/Cell.styles"
 
-const CellWithChevron = ({ text, handleClick }) => {
+const CellWithChevron = ({ text, handleClick, onlyMobile }) => {
   return (
-    <S.NavbarCell onClick={() => handleClick()}>
+    <S.NavbarCell onClick={() => handleClick()} onlyMobile={onlyMobile}>
       {text || "No text"}
       <ChevronDownWhite />
     </S.NavbarCell>

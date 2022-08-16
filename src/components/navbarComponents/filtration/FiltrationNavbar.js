@@ -1,9 +1,9 @@
-import React, { useState, createContext } from "react";
-import { SearchBar } from "../index";
-import { Container, MobileDropdown } from "./Filtration.styles";
-import SearchBar2 from "./SearchBar2";
+import React, { useState, createContext } from "react"
+import { SearchBar } from "../index"
+import { Container, MobileDropdown } from "./Filtration.styles"
+import SearchBar2 from "./SearchBar2"
 
-export const NavbarContext = createContext(null);
+export const NavbarContext = createContext(null)
 
 const Navbar = ({
   children,
@@ -13,29 +13,29 @@ const Navbar = ({
   selectedFilters,
   setSelectedFilters,
 }) => {
-  const [visible, setVisible] = useState(false);
-  const [toggle, setToggle] = useState(false);
+  const [visible, setVisible] = useState(false)
+  const [toggle, setToggle] = useState(false)
 
   const values = {
     selectedFilters: selectedFilters,
     setSelectedFilters: setSelectedFilters,
-  };
+  }
 
   // Handle submit from the search bar
   const handleSubmit = (e, searchBarInput, openBigNavbar) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (openBigNavbar && searchBarInput.value === "") {
-      setVisible(!visible);
+      setVisible(!visible)
     } else if (searchBarInput.value !== "") {
-      selectedFilters.push(searchBarInput);
-      setSelectedFilters([...selectedFilters]);
+      selectedFilters.push(searchBarInput)
+      setSelectedFilters([...selectedFilters])
     }
-  };
+  }
 
   const handleToggle = () => {
-    setToggle(!toggle);
-  };
+    setToggle(!toggle)
+  }
 
   return (
     <>
@@ -79,7 +79,7 @@ const Navbar = ({
         )}
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

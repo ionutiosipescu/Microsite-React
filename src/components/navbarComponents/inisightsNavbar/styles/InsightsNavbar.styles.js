@@ -1,12 +1,30 @@
 import styled from "styled-components"
+import { size } from "../../../../utils/breakpoints"
+import { NavbarCell } from "./Cell.styles"
 
 export const Container = styled.div`
   color: var(--white);
+  padding: 1rem;
 `
 
 export const TitleSection = styled.div`
-  display: inline-flex;
-  h1 {
+  @media ${size.md} {
+    display: inline-flex;
+  }
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+
+  svg {
+    position: relative;
+    right: 1.5rem;
+  }
+
+  @media ${size.md} {
+    margin: 0 0 0 2rem;
   }
 `
 
@@ -16,22 +34,27 @@ export const Input = styled.input`
   border-bottom: 2px solid #fff;
   color: #fff;
   font-weight: bold;
+
+  /* border: 2px solid red; */
 `
 
 export const Navbar = styled.div`
-  text-transform: uppercase;
-  border: 2px solid red;
-  display: flex;
+  display: ${({ showNavbar }) => (showNavbar ? "initial" : "none")};
 
-  /* padding: 1rem 0; */
+  /* border: 2px solid red; */
 
-  /* span {
-    border: 2px solid green;
-    height: 100%;
+  margin: 1rem 0;
+
+  @media ${size.md} {
+    display: flex;
+    gap: 1.5rem;
   }
+`
 
-  a {
-    text-decoration: none;
-    color: var(--white);
-  } */
+export const MoblieCell = styled(NavbarCell)`
+  border: 2px solid red;
+
+  @media ${size.md} {
+    display: none;
+  }
 `
