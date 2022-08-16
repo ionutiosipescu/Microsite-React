@@ -54,14 +54,14 @@ const IndustrySection = ({ industries }) => {
       <div className="grayContainer">
         <h2 className="">Industries: </h2>
         <div className="infoContainer ">
-          {industries.map((industry, index) => (
+          {industries?.map((industry, index) => (
             <div
               className="industry col-lg-5 col-md-10 col-sm-10 col-10"
               key={index}
             >
               <div className="body">
-                <h2 onClick={() => alert("click")}> {industry.name}</h2>
-                <p>{industry.description}</p>
+                <h2 onClick={() => alert("click")}> {industry?.name}</h2>
+                <p>{industry?.description}</p>
               </div>
 
               <div className="buttonContainer">

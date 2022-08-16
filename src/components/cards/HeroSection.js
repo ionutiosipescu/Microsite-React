@@ -1,21 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import HeroCardBrazilTransparent from "./HeroCardBrazilTransparent";
-import YellowButton from "../buttons/YellowButton";
 import { sizem } from "../../utils/breakpoints";
+import ButtonWithAnimation from "../buttons/ButtonWithAnimation";
+import NavBar from "../layout/NavBar";
 
 const Hero = styled.div`
   position: relative;
-  height: 400px;
+  height: ${(props) => props.height + "px" || ""};
   width: 100%;
-  /* padding: 2rem; */
-  /* margin: 2rem; */
-  /* padding: 3rem; */
+  background: url(${(props) => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
+  background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(${(props) => props.backgroundUrl || ""});
+  background-blend-mode: multiply;
 
-  text-transform: uppercase;
+  .contentContainer {
+    height: inherit;
+    padding-left: 6%;
+    padding-right: 5%;
 
     .contentWithoutNavbar {
       height: inherit;
@@ -70,15 +72,20 @@ const TitleRoute = styled.span`
 
 const HeroSection = ({
   title,
+  description,
   backgroundUrl,
   buttonText,
-  pageTitle,
-  pageTitleCenter,
-  transparent,
+  pageCategory,
+  pageCategoryCenter,
   className,
+  route,
+  date,
+  height,
+  heroBrazilianText,
+  transparent,
 }) => {
   let navigate = useNavigate();
-  console.log(backgroundUrl);
+  // console.log(backgroundUrl);
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg";
   return (
@@ -92,7 +99,7 @@ const HeroSection = ({
         <div className="contentWithoutNavbar">
           {pageCategory && (
             <TitleRoute color={"var(--yellowCategory) "}>
-              {pageCategory}
+              {pageCategory?.toUpperCase()}
             </TitleRoute>
           )}
           {route && (
@@ -102,18 +109,32 @@ const HeroSection = ({
                   {route.route}
                 </TitleRoute>
 
-        <h1>{title}</h1>
-        {buttonText && (
-          <div className="pt-2">
-            <YellowButton
-              text={buttonText}
-              onClick={() => {
-                navigate("/contact");
+                <TitleRoute color={"var(--yellowCategory) "}>
+                  {route.subRoute}
+                </TitleRoute>
+              </span>
+            </>
+          )}
+          {pageCategoryCenter && (
+            <h4 className="text-center">{pageCategoryCenter}</h4>
+          )}
+          {date && <h4 className="text-white">{date}</h4>}
+          <h1>{title}</h1>
+          {description && (
+            <p
+              className=" pt-3 text-decoration-none"
+              dangerouslySetInnerHTML={{
+                __html: description,
               }}
-            />
-          </div>
-        )}
-        {transparent && <HeroCardBrazilTransparent />}
+            ></p>
+          )}
+
+          {buttonText && (
+            <div className="buttonContainer">
+              <ButtonWithAnimation text={buttonText.toUpperCase()} />
+            </div>
+          )}
+        </div>
       </div>
     </Hero>
   );

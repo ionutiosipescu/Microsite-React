@@ -11,7 +11,7 @@ import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg
 import { ReactComponent as Logo } from "./icons/logo.svg";
 import { ReactComponent as LogoFooter } from "./icons/logo_footer.svg";
 import { ReactComponent as ArrowRight } from "./icons/arrowright.svg";
-
+import { ReactComponent as AlvarezMarsal } from "./icons/AlvarezMarsal.svg";
 const iconsPath = "/icons/";
 
 const iconPng = (className, name) => (
@@ -33,8 +33,8 @@ const iconsStayPath = "/icons/stayConnected/";
 
 const iconStayPng = (className, name) => (
   <img className={className} src={iconsStayPath + name + ".png"} />
-  );
-  
+);
+
 const LinkedinStay = ({ className }) => iconStayPng(className, "in_0");
 const FacebookStay = ({ className }) => iconStayPng(className, "fb_0");
 const LetterStay = ({ className }) => iconStayPng(className, "newsletter_0");
@@ -43,6 +43,7 @@ const YoutubeStay = ({ className }) => iconStayPng(className, "yt");
 
 export {
   Logo,
+  AlvarezMarsal,
   ChevronUpWhite,
   ChevronDownWhite,
   Search,
@@ -69,5 +70,5 @@ export {
   FooterFacebookIcon,
   FooterLinkedinIcon,
   FooterTwitterIcon,
-  FooterYoutTubeIcon
+  FooterYoutTubeIcon,
 };
