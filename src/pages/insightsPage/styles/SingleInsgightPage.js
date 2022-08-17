@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { sizem } from "../../../utils/breakpoints";
+import styled from "styled-components"
+import { sizem } from "../../../utils/breakpoints"
 
 export const PageContainer = styled.div`
   width: 100%;
@@ -76,4 +76,4 @@ export const PageContainer = styled.div`
       color: var(--hover-blue);
     }
   }
-`;
+`

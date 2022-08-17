@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
-import { routeNames } from "../../routes/routes";
-import { Search, XIcon, Logo, AlvarezMarsal } from "../../assets/icons";
-import styled from "styled-components";
-import { sizem } from "../../utils/breakpoints";
-
-import { expertiseData } from "../../utils/data";
-
-import { fetchHLSIndustries } from "../../store/actions/hls/hlsHome";
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router"
+import { useSelector } from "react-redux"
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
+import { routeNames } from "../../routes/routes"
+import { Search, XIcon, Logo, AlvarezMarsal } from "../../assets/icons"
+import styled from "styled-components"
+import { sizem } from "../../utils/breakpoints"
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const [showSearchDiv, setShowSearchDiv] = useState(false);
+  const navigate = useNavigate()
+  const [showSearchDiv, setShowSearchDiv] = useState(false)
 
-  const industries = useSelector((state) => state.hlsHero?.industries);
-  const expertises = useSelector((state) => state.hlsHero?.expertises);
+  const industries = useSelector(state => state.hlsHero?.industries)
+  const expertises = useSelector(state => state.hlsHero?.expertises)
 
   return (
     <>
@@ -53,7 +41,7 @@ const NavBar = () => {
                 <div
                   className="  d-flex  align-items-center mx-2 "
                   onClick={() => {
-                    setShowSearchDiv(false);
+                    setShowSearchDiv(false)
                   }}
                 >
                   {/* {console.log(showSearchDiv)} */}
@@ -63,7 +51,7 @@ const NavBar = () => {
                 <div
                   className="  d-flex  align-items-center mx-2 "
                   onClick={() => {
-                    setShowSearchDiv(true);
+                    setShowSearchDiv(true)
                   }}
                 >
                   <Search />
@@ -84,7 +72,7 @@ const NavBar = () => {
                     onClick={() => {
                       navigate(`/expertise/${expertise?.name?.toLowerCase()}`, {
                         state: expertise.id,
-                      });
+                      })
                     }}
                     id="something"
                     key={index}
@@ -106,7 +94,7 @@ const NavBar = () => {
                     onClick={() => {
                       navigate(`/industry/${industry?.name?.toLowerCase()}`, {
                         state: industry.id,
-                      });
+                      })
                     }}
                     id="something"
                     key={index}
@@ -120,18 +108,7 @@ const NavBar = () => {
               <Nav.Link className="active web-title" href={routeNames.insights}>
                 {"HEALTH & LIFE INSIGHTS"}
               </Nav.Link>
-              {/* <NavDropdown
-                className=""
-                title="HEALTH & LIFE INSIGHTS"
-                id="navbar-scrolling-dropdown"
-              >
-                <NavDropdown.Item href={routeNames.insightLatest}>
-                  {"Latest Insights"}
-                </NavDropdown.Item>
-                <NavDropdown.Item href={routeNames.insightCase}>
-                  {"Case Studies"}
-                </NavDropdown.Item>
-              </NavDropdown> */}
+
               <Nav.Link
                 className="active web-title"
                 href={routeNames.leadership}
@@ -141,18 +118,7 @@ const NavBar = () => {
               <Nav.Link className="active web-title " href={routeNames.contact}>
                 {"LOCATIONS"}
               </Nav.Link>
-              <Nav.Link
-                className="active web-title text-danger d-none  d-lg-block"
-                href={routeNames.brazilian}
-              >
-                {"Brazilian MicroSite"}
-              </Nav.Link>
-              <Nav.Link
-                className="active web-title text-danger d-none  d-lg-block"
-                href={routeNames.digital}
-              >
-                {"Digital MicroSite"}
-              </Nav.Link>
+              <Nav.Link href={"practice"}></Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link
@@ -165,7 +131,7 @@ const NavBar = () => {
                   <div
                     className="  d-flex  align-items-center  "
                     onClick={() => {
-                      setShowSearchDiv(false);
+                      setShowSearchDiv(false)
                     }}
                   >
                     <XIcon />
@@ -178,7 +144,7 @@ const NavBar = () => {
                         <Search
                           className="searchIcon"
                           onClick={() => {
-                            setShowSearchDiv(true);
+                            setShowSearchDiv(true)
                           }}
                         />
                       </div>
@@ -191,17 +157,12 @@ const NavBar = () => {
         </Container>
       </CustomNavbar>
     </>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
 
 const CustomNavbar = styled(Navbar)`
-  /* max-width: 1280px; */
-  /* width: 100%; */
-  /* background-color: #0085ca; */
-  /* color: var(--white); */
-
   .logo {
     svg {
       width: 50px;
@@ -283,7 +244,7 @@ const CustomNavbar = styled(Navbar)`
       fill: white;
     }
   }
-`;
+`
 const NavbarSearchContainer = styled.div`
   height: 80px;
   width: 100%;
@@ -325,4 +286,4 @@ const NavbarSearchContainer = styled.div`
       right: 60px;
     }
   }
-`;
+`

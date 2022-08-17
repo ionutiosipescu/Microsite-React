@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react"
-import {
-  ArticlePreviewCard,
-  ExpertiseCard
-} from "../../../components/cards"
+import { ArticlePreviewCard, ExpertiseCard } from "../../../components/cards"
 import { ButtonWithAnimation } from "../../../components/buttons"
 import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer"
 import { InsightsNavbar } from "../../../components/navbarComponents"
-import CardPodcast from "../../../components/cards/CardPodcast";
-
-
+import CardPodcast from "../../../components/cards/CardPodcast"
 
 const Practice = () => {
   const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls"
 
   console.log(link)
-
-  // useEffect(() => {
-  //   Axios.get(link).then(res => {
-  //     // console.log(res.data)
-  //   })
-  // }, [])
 
   const content =
     "Lorem  Consequat anim eiusmod reprehenderit ut in eiusmod ea ipsum ex. Elit anim amet quis excepteur sint voluptate cillum minim incididunt veniam sint. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing."
@@ -57,42 +46,9 @@ const Practice = () => {
           <ArticlePreviewCard />
           <ArticlePreviewCard content={content} />
           <ArticlePreviewCard />
-          <CardPodcast/>
+          <CardPodcast />
         </UnalignedItemsConainer>
       </div>
-      {/* <StyledRow>
-        <StyledCol1>
-          <Heading_Paragraph />
-          <CardCapabilities />
-              <TableContainer>
-                <h3>Related Insights</h3>
-                            <Table>
-                
-                          {insights.map((post) => {
-                return(
-                  <div>
-                    <RelatedInsigts_Table post={post}></RelatedInsigts_Table>
-                  </div>
-                );
-                          })}
-                            </Table>
-              </TableContainer>
-
-
-              <h4 className="pt-5 ps-3 fw-bold">{podcast?.title} </h4>
-                  <div
-                    className="container pt-3 text-decoration-none"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(podcast?.content),
-                    }}
-                  ></div>
-      
-
-        </StyledCol1>
-        <StyledCol2>
-        <CardProfessionalsNews {...cardContent} />
-        </StyledCol2>
-      </StyledRow> */}
     </>
   )
 }

@@ -24,16 +24,11 @@ const InsightCaseArticlePage = () => {
   const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
     fetchData(setCarouselData)
     getSingleArticle(setArticleData, state.uuid)
-    // window.scrollTo(0, 0);
   }, [])
 
   useDocumentTitle(articleData?.title)
-
-  // console.log("this is articleData", articleData);
-  console.log("this is state", state)
 
   return articleData ? (
     <PageContainer>

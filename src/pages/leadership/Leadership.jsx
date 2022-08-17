@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { HeroSection, ProfessionalsCardSmall } from "../../components/cards"
 import styled from "styled-components"
-import { tags, leadersList, arr, links } from "../../utils/data"
+import { leadersList } from "../../utils/data"
 
-import YellowButton from "../../components/buttons/YellowButton"
-import DOMPurify from "dompurify"
 import { useDocumentTitle } from "../../hook"
 import { Spinner } from "../../components"
 
@@ -17,7 +15,6 @@ export const LeaadersContainer = styled.div`
 
   gap: 0.5rem;
 `
-
 const Leadership = () => {
   const dispatch = useDispatch()
 
@@ -41,20 +38,14 @@ const Leadership = () => {
     }
   }
 
-  let arr = [<YellowButton />, <ProfessionalsCardSmall />]
-
   useEffect(() => {
     dispatch(fetchHLSLeaders())
     dispatch(fetchHLSPersons())
   }, [])
 
-  let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `
-  let clean = DOMPurify.sanitize(dirty)
-
   useDocumentTitle("Leadership | Alvarez & Marsal")
-  // console.log(leaders);
   return (
-    <LeadershipContainer>
+    <>
       <HeroSection
         title={"helthcare & live sciences leaders"}
         className="heroContainer"
@@ -90,7 +81,7 @@ const Leadership = () => {
               )
             })}
           </LeaadersContainer>
-          <h1 className="p-4"> Leaders</h1>
+          <h1 className="pb-4"> Leaders</h1>
           <LeaadersContainer>
             {persons?.map((cardInfo, index) => {
               return (
@@ -114,16 +105,8 @@ const Leadership = () => {
           </LeaadersContainer>
         </div>
       )}
-    </LeadershipContainer>
+    </>
   )
 }
 
 export default Leadership
-
-const LeadershipContainer = styled.div`
-  .heroContainer {
-    h1 {
-      width: 75%;
-    }
-  }
-`

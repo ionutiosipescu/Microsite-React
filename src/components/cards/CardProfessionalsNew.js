@@ -1,16 +1,16 @@
-import React from "react";
-import Connor from "../../assets/images/ConnorWine";
-import styled from "styled-components";
-import { size } from "../../utils/breakpoints";
-import { ChevronRightWhite } from "../../assets/icons";
-import { ButtonWithAnimation } from "../buttons";
+import React from "react"
+import Connor from "../../assets/images/ConnorWine"
+import styled from "styled-components"
+import { size } from "../../utils/breakpoints"
+import { ChevronRightWhite } from "../../assets/icons"
+import { ButtonWithAnimation } from "../buttons"
 
 const Card = styled.div`
   display: flex;
   background: var(--darkBlue);
   width: 100%;
   height: 250px;
-`;
+`
 
 const CardBody = styled.div`
   display: flex;
@@ -23,23 +23,20 @@ const CardBody = styled.div`
     transition: background-color 0.2s ease-out;
   }
 
-  
   @media ${size.lg} {
     button {
       display: block;
     }
-   
-
   }
 
   @media ${size.lg} {
     flex-direction: column;
     .button-animation {
-  padding: 0 0 20px 20px;
-  display: block;
-}
+      padding: 0 0 20px 20px;
+      display: block;
+    }
   }
-`;
+`
 
 const ImageContainer = styled.div`
   background: gray;
@@ -60,7 +57,7 @@ const ImageContainer = styled.div`
       width: 9.313rem;
     }
   }
-`;
+`
 
 const Content = styled.div`
   padding: 20px;
@@ -74,9 +71,8 @@ const Content = styled.div`
   @media ${size.lg} {
     padding: 0 20px;
     justify-content: start;
-
   }
-`;
+`
 
 const ArrowContainer = styled.div`
   display: flex;
@@ -91,7 +87,7 @@ const ArrowContainer = styled.div`
   @media ${size.lg} {
     display: none;
   }
-`;
+`
 
 const Name = styled.a`
   color: white;
@@ -99,18 +95,18 @@ const Name = styled.a`
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.2;
- 
+
   cursor: pointer;
 
   padding-top: 20px;
-  
+
   :hover {
     color: #ffffff;
   }
   @media ${size.lg} {
     font-size: 0.875rem;
   }
-`;
+`
 const Position = styled.p`
   color: var(--hover-blue);
   text-decoration: none;
@@ -124,7 +120,7 @@ const Position = styled.p`
     font-size: 0.813rem;
     padding: 2px 0;
   }
-`;
+`
 
 const Info = styled.a`
   color: var(--hover-blue);
@@ -141,16 +137,10 @@ const Info = styled.a`
   @media ${size.lg} {
     font-size: 0.813rem;
   }
-`;
-const ButtonAni = styled.div`
 `
+const ButtonAni = styled.div``
 
-const CardProfessionalsNew = ({
-  name,
-  imageSrc,
-  position,
-  country,
-}) => {
+const CardProfessionalsNew = ({ name, imageSrc, position, country }) => {
   return (
     <Card>
       <ImageContainer>
@@ -164,15 +154,14 @@ const CardProfessionalsNew = ({
           <Info>{country} </Info>
         </Content>
         <div className="button-animation">
-          <ButtonWithAnimation/>
-          </div>
+          <ButtonWithAnimation />
+        </div>
       </CardBody>
       <ArrowContainer>
         <ChevronRightWhite />
       </ArrowContainer>
     </Card>
-  );
-};
+  )
+}
 
-export default CardProfessionalsNew;
-
+export default CardProfessionalsNew

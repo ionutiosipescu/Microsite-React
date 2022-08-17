@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const SpinnerContainer = styled.div`
   height: 200px;
-`;
+`
 
 const Spinner = () => {
   return (
@@ -12,7 +12,7 @@ const Spinner = () => {
         <span className="visually-hidden">Loading...</span>
       </div>
     </SpinnerContainer>
-  );
-};
+  )
+}
 
-export default Spinner;
+export default Spinner

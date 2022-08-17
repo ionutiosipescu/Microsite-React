@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import styled from "styled-components";
-import printJS from "print-js";
+import React, { useState } from "react"
+import styled from "styled-components"
+import printJS from "print-js"
 import {
   Facebook,
   LinkedIn,
@@ -10,16 +9,13 @@ import {
   PdfIcon,
   ShareIcon,
   LetterIcon,
-  // Envelope,
-} from "../../assets/icons";
-import { size } from "../../utils/breakpoints";
+} from "../../assets/icons"
+import { size } from "../../utils/breakpoints"
 
 const LeftSectionContainer = styled.div`
   .containerIcons {
     display: flex;
     position: absolute;
-    /* flex-direction: column; */
-    /* top: -1rem; */
     margin: 139px 0px 0px 192px;
     width: 14.375rem;
     @media ${size.md} {
@@ -36,10 +32,6 @@ const LeftSectionContainer = styled.div`
       text-transform: uppercase;
       line-height: 4.375rem;
       color: #fff;
-      /* margin-left: -20px; */
-      /* border: 2px solid red; */
-      /* cursor: pointer; */
-      /* background-color: yellow; */
       :hover {
         cursor: pointer;
         background-color: var(--orange2) !important;
@@ -60,30 +52,17 @@ const LeftSectionContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      /* cursor: pointer; */
     }
 
     img {
       width: 32px;
     }
-    /* .iconContainer img:hover {
-			.menuIconActive {
-                display: block;
-            }
-		} */
   }
-  /* .leftSection div:not(:first-child) {
-    .containerIcons {
-      display: none;
-      @media ${size.md} {
-        display: block;
-      }
-    }
-  } */
+
   .menuIconActive {
     background-color: #0085ca;
   }
-`;
+`
 
 const IconContainer = styled.div`
   .iconDiv {
@@ -93,76 +72,61 @@ const IconContainer = styled.div`
       background-color: var(--orange3);
     }
   }
-`;
+`
 
 const LeftSection = ({ nid }) => {
-  const navigate = useNavigate();
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false)
   const [openedState, setOpenedState] = useState(
     Array.from(leftSectionIcons, () => false)
-  );
-  console.log(nid);
+  )
+  console.log(nid)
 
-  const mainWebsiteLink = process.env.REACT_APP_MAIN_WEBSITE_URL;
+  const mainWebsiteLink = process.env.REACT_APP_MAIN_WEBSITE_URL
 
-  const handleDisplay = (index) => {
-    setToggle(!toggle);
+  const handleDisplay = index => {
+    setToggle(!toggle)
 
     if (!openedState[index]) {
-      let arr = Array.from(leftSectionIcons, () => false);
-      arr[index] = true;
-      setOpenedState([...arr]);
+      let arr = Array.from(leftSectionIcons, () => false)
+      arr[index] = true
+      setOpenedState([...arr])
     } else {
-      setOpenedState(Array.from(leftSectionIcons, () => false));
+      setOpenedState(Array.from(leftSectionIcons, () => false))
     }
-  };
+  }
 
   return (
     <LeftSectionContainer className="col-12 col-sm-12 col-md-2 col-lg-1  d-flex pt-5 justify-content-center  ">
       <div className="leftSection pt-3">
         {leftSectionIcons.map((x, index) => (
           <div
-            // className=""
             key={index}
             className={`iconContainer ${
               openedState[index] && "menuIconActive"
             }`}
             onClick={() => handleDisplay(index)}
-            // onMouseOver={() => {
-            //   handleDisplay(index);
-            // }}
-            // onMouseLeave={() => {}}
           >
             <div>{x.icon}</div>
             {openedState[index] && (
               <span className="containerIcons">
                 {x?.children.map((icon, index) => (
                   <IconContainer
-                    // bgColor={}
                     style={{ backgroundColor: icon?.color }}
                     className="iconDiv"
                   >
                     <span
                       onClick={() => {
                         if (icon?.link && icon.text !== "Printable Version") {
-                          window.open(icon?.link, "_blank");
+                          window.open(icon?.link, "_blank")
                         } else if (icon.text === "Printable Version") {
                           printJS(
                             "http://www.africau.edu/images/default/sample.pdf"
-                          );
-                        } // alert(icon?.link);
+                          )
+                        }
                       }}
                     >
                       {icon.icon || icon.text}
                     </span>
-                    {/* <a
-                      // 54761
-                      href={`${mainWebsiteLink}/printpdf/54761`}
-                      // href={`${mainWebsiteLink}/printpdf/${nid}`}
-                      target="__blank"
-                    >
-                      {icon.icon || icon.text}
-                    </a> */}
                   </IconContainer>
                 ))}
               </span>
@@ -171,10 +135,10 @@ const LeftSection = ({ nid }) => {
         ))}
       </div>
     </LeftSectionContainer>
-  );
-};
+  )
+}
 
-export default LeftSection;
+export default LeftSection
 
 const leftSectionIcons = [
   {
@@ -222,4 +186,4 @@ const leftSectionIcons = [
       },
     ],
   },
-];
+]

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { ArticleCard, HeroSection } from "../../components/cards"
 
-import { ArticleContainers } from "./styles/inisghts.style"
 import { getInsightFilters, getInsights, fetchData } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
@@ -52,9 +51,6 @@ const Insights = () => {
             <ArticleCard {...article} key={index} />
           ))}
         </UnalignedItemsConainer>
-        {/* {insightsContent?.map((article, index) => (
-          <ArticleCard {...article} key={index} />
-        ))} */}
       </StyledContainer>
     </>
   )

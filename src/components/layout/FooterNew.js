@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Col from "react-bootstrap/esm/Col";
+import React from "react"
+import styled from "styled-components"
+import Col from "react-bootstrap/esm/Col"
 import {
   FooterFacebookIcon,
   FooterLinkedinIcon,
@@ -8,8 +8,8 @@ import {
   FooterYoutTubeIcon,
   LogoFooter,
   ArrowRight,
-} from "../../assets/icons";
-import { size } from "../../utils/breakpoints";
+} from "../../assets/icons"
+import { size } from "../../utils/breakpoints"
 
 const FooterContainer = styled.div`
   background-color: var(--darkBlue) !important;
@@ -22,13 +22,13 @@ const FooterContainer = styled.div`
       height: 2.5rem;
     }
   }
-`;
+`
 const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
   padding: 3.125rem 4.375rem;
   font-size: 0.75rem;
-`;
+`
 const SectionsContainer = styled.div`
   position: relative;
   height: 100%;
@@ -87,7 +87,7 @@ const SectionsContainer = styled.div`
       padding-left: 6.25rem;
     }
   }
-`;
+`
 const ColContainer = styled.div`
   display: flex;
   .logo {
@@ -103,7 +103,7 @@ const ColContainer = styled.div`
       flex-direction: column;
     }
   }
-`;
+`
 const ColBox = styled.div`
   .bulletin-signup {
     display: flex;
@@ -152,7 +152,7 @@ const ColBox = styled.div`
       margin-bottom: 0;
     }
   }
-`;
+`
 const BottomContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -164,13 +164,13 @@ const BottomContainer = styled.div`
   @media ${size.md} {
     flex-direction: row;
   }
-`;
+`
 const CopyrightSection = styled.div`
   color: #fff;
-`;
+`
 const BrandSection = styled.div`
   color: #fff;
-`;
+`
 
 const FooterNew = () => {
   return (
@@ -254,7 +254,7 @@ const FooterNew = () => {
         </ContentContainer>
       </FooterContainer>
     </>
-  );
-};
+  )
+}
 
-export default FooterNew;
+export default FooterNew

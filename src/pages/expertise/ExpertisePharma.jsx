@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {
   HeroSection,
   Services,
   CardProfessionals,
-  CarouselSection,
-} from "../../components/cards";
-import BreadCrumb from "../../components/BreadCrumb";
-import Connor from "../../assets/images/ConnorWine";
+} from "../../components/cards"
+import BreadCrumb from "../../components/BreadCrumb"
+import Connor from "../../assets/images/ConnorWine"
 import {
   StyledCol2,
   StyledCol1,
   StyledRow,
-} from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js";
-import { useDocumentTitle } from "../../hook";
-import { fetchData } from "../../API";
-import { Spinner } from "../../components";
+} from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
+import { useDocumentTitle } from "../../hook"
+import { fetchData } from "../../API"
+import { Spinner } from "../../components"
 
 const ExpertisePharma = () => {
-  const [carouselData, setCarouselData] = useState([]);
-
   // Card content
   const cardContent = {
     imageSrc: Connor,
@@ -26,14 +23,11 @@ const ExpertisePharma = () => {
     position: "wine connoisseur",
     // country: 'japan',
     buttonText: "connect",
-  };
-  useEffect(() => {
-    fetchData(setCarouselData);
-  }, []);
+  }
 
   useDocumentTitle(
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
-  );
+  )
   return (
     <>
       <HeroSection
@@ -87,21 +81,8 @@ const ExpertisePharma = () => {
           <CardProfessionals {...cardContent} />
         </StyledCol2>
       </StyledRow>
-      {carouselData.length === 0 ? (
-        <Spinner />
-      ) : (
-        <CarouselSection
-          categoryCarousel={carouselData?.block_two?.title}
-          backgroundColor="#002B49"
-          arr={carouselData?.block_two?.data}
-          titleColor="#0085CA"
-          textColor="#fff"
-          textDate="#FFF"
-          carouselDotBackground="#002b49"
-        />
-      )}
     </>
-  );
-};
+  )
+}
 
-export default ExpertisePharma;
+export default ExpertisePharma

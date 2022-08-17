@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Form } from "react-bootstrap";
+import React from "react"
+import styled from "styled-components"
+import { Form } from "react-bootstrap"
 
 const Container = styled.div`
   height: 100vh;
@@ -20,7 +20,7 @@ const Container = styled.div`
     background-color: #666;
     background-color: transparent;
   }
-`;
+`
 const Col = styled.div`
   text-align: center;
   h2 {
@@ -40,7 +40,7 @@ const Col = styled.div`
     line-height: 1.625rem;
     text-align: center;
   }
-`;
+`
 
 const PageNotFound = () => {
   return (
@@ -60,7 +60,7 @@ const PageNotFound = () => {
         </Form>
       </Col>
     </Container>
-  );
-};
+  )
+}
 
-export default PageNotFound;
+export default PageNotFound

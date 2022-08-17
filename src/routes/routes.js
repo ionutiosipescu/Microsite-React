@@ -1,38 +1,23 @@
 import {
-  Contact,
-  Dashboard,
   Home,
   Leadership,
-  Brazil,
-  InsightCase,
   Insights,
-  InsightCaseArticlePage,
-  Digital,
-  DigitalInsighthPodcast,
+  SingleInsgightPage,
   ExpertisePage,
   IndustryPage,
-} from "../pages/";
+} from "../pages/"
 
 export const routeNames = {
   home: "/",
   leadership: "/leadership",
-  contact: "/contact",
-  insights: "/insights",
-  // insightCase: "/insights/case",
 
+  insights: "/insights",
   insightCaseArticlePage: "/insights/:id",
 
   expertise: "/expertise",
   expertisePage: "/expertise/:id",
   industryPage: "/industry/:id",
-  // expertiseQuality: "/expertise/quality",
-  // expertisePharma: "/expertise/pharma",
-
-  brazilian: "/brazilian",
-  dashboard: "/dashboard",
-  digital: "/digital",
-  digitalInsighthPodcast: "/digital/insights/:id",
-};
+}
 
 export const routes = [
   {
@@ -51,63 +36,23 @@ export const routes = [
     exact: true,
     element: <IndustryPage />,
   },
-  // {
-  //   path: routeNames.expertiseQuality,
-  //   exact: true,
-  //   element: <ExpertiseQuality />,
-  // },
-
-  // {
-  //   path: routeNames.expertisePharma,
-  //   exact: true,
-  //   element: <ExpertisePharma />,
-  // },
 
   {
     path: routeNames.insights,
     exact: true,
     element: <Insights />,
   },
-  // {
-  //   path: routeNames.insightCase,
-  //   exact: true,
-  //   element: <InsightCase />,
-  // },
+
   {
     path: routeNames.insightCaseArticlePage,
     exact: true,
-    element: <InsightCaseArticlePage />,
+    element: <SingleInsgightPage />,
   },
   {
     path: routeNames.leadership,
     exact: true,
     element: <Leadership />,
   },
-  {
-    path: routeNames.contact,
-    exact: true,
-    element: <Contact />,
-  },
-  {
-    path: routeNames.brazilian,
-    exact: true,
-    element: <Brazil />,
-  },
-  {
-    path: routeNames.dashboard,
-    exact: true,
-    element: <Dashboard />,
-  },
-  {
-    path: routeNames.digital,
-    exact: true,
-    element: <Digital />,
-  },
-  {
-    path: routeNames.digitalInsighthPodcast,
-    exact: true,
-    element: <DigitalInsighthPodcast />,
-  },
-];
+]
 
-export default routes;
+export default routes
