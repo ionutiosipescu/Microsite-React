@@ -1,7 +1,15 @@
 import React from "react"
 import * as S from "./styles/ArticlePreviewCard.styles.js"
 
-const ArticlePreviewCard = ({ category, title, date, content }) => {
+const ArticlePreviewCard = ({
+  cardArticle,
+  category,
+  title,
+  date,
+  content,
+  onClick,
+  border,
+}) => {
   return (
     <S.Card className="col-12 col-lg-4">
       <S.Category>{cardArticle?.category || "category"}</S.Category>

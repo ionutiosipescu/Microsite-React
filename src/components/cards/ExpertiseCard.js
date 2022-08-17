@@ -31,7 +31,7 @@ const ExpertiseCard = ({ title, content, buttonText, border }) => {
     <Container className="col-12 col-lg-4">
       <div className="">
         <h3>{title || "Title"}</h3>
-        <p>{content.substr(0, 200) || "content"}</p>
+        <p>{content?.substr(0, 200) || "content"}</p>
         {/* <p>{content || "content"}</p> */}
 
         <ButtonWithAnimation text={buttonText || "Read more"} />
