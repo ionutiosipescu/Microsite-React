@@ -109,7 +109,7 @@ const NavBar = () => {
               >
                 {"HEALTH & LIFE PROFESSIONALS"}
               </Nav.Link>
-              <Nav.Link className="active web-title " href={routeNames.contact}>
+              <Nav.Link className="active web-title " href={routeNames.location}>
                 {"LOCATIONS"}
               </Nav.Link>
               <Nav.Link

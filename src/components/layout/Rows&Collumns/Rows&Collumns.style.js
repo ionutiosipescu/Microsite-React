@@ -23,3 +23,13 @@ export const StyledCol2 = styled.div`
 export const StyledContainer = styled.div`
   padding: 2rem;
 `
+export const StyledContainerLocation = styled.div`
+  max-width: 1600px;
+    margin: 0 auto;
+    padding: 50px 10px;
+`
+export const ContainerLocation = styled.div`
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3,1fr);
+`
