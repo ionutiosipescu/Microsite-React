@@ -4,15 +4,32 @@ import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper"
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
 const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1"
 
-export const getInsights = (setInsightsContent, selectedFilters) => {
-  let link = `${customApi}/insight-filter`
+// export const getInsights = (setInsightsContent, selectedFilters) => {
+//   let link = `${customApi}/insight-filter`
 
-  if (selectedFilters && selectedFilters.length > 0) {
-    link = getLinkWithFilters(link, selectedFilters)
-  }
+//   if (selectedFilters && selectedFilters.length > 0) {
+//     link = getLinkWithFilters(link, selectedFilters)
+//   }
+
+//   Axios.get(link).then(res => {
+//     setInsightsContent([...res.data])
+//   })
+// }
+
+export const getInsights = (setInsightsContent, selectedFilters) => {
+  let link = `${customApi}/hls`
+
+  // if (selectedFilters && selectedFilters.length > 0) {
+  //   link = getLinkWithFilters(link, selectedFilters)
+  // }
 
   Axios.get(link).then(res => {
-    setInsightsContent([...res.data])
+    // console.log(res.data.block_two.data)
+    // setInsightsContent([...res.data.block_two])
+    setInsightsContent({
+      businessInsights: res.data.block_two,
+      caseStudies: res.data.block_one,
+    })
   })
 }
 
@@ -21,6 +38,7 @@ export const getSingleArticle = (setArticleData, id) => {
 
   Axios.get(link).then(res => {
     const data = res.data.data
+    console.log(res.data)
 
     let article = {}
 

@@ -5,7 +5,6 @@ import { InsightsNavbarContext } from "./InsightsNavbar"
 
 const FiltersContainer = () => {
   const { dropdownHeight, selectedFilters } = useContext(InsightsNavbarContext)
-  console.log(selectedFilters)
 
   return (
     <S.FiltersContainer dropdownHeight={dropdownHeight}>

@@ -42,7 +42,6 @@ const UnalignedItemsConainer = ({ children, columnsNumber }) => {
         return (
           <div key={index}>
             {arr.map(child => {
-              console.log("this is child", child)
               return child
             })}
           </div>

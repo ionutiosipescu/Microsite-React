@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { ArticlePreviewCard, HeroSection } from "../../components/cards"
-
+import {
+  ArticlePreviewCard,
+  HeroSection,
+  PodcastCard,
+} from "../../components/cards"
+import { InsightsContainer } from "./styles/inisghts.style"
 import { getInsightFilters, getInsights, fetchData } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
@@ -17,7 +21,7 @@ const Insights = () => {
 
   // Getting the latest articles from server
   const [carouselData, setCarouselData] = useState([])
-  const [insightsContent, setInsightsContent] = useState([])
+  const [insightsContent, setInsightsContent] = useState(null)
 
   // Fetched filters from the server
   const [filters, setFilters] = useState(null)
@@ -27,6 +31,7 @@ const Insights = () => {
     getInsights(setInsightsContent, selectedFilters)
     getInsightFilters(setFilters)
   }, [])
+  console.log(insightsContent)
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -46,11 +51,36 @@ const Insights = () => {
       />
 
       <StyledContainer>
-        <UnalignedItemsConainer columnsNumber={3}>
-          {insightsContent?.map((article, index) => (
-            <ArticlePreviewCard {...article} key={index} />
-          ))}
-        </UnalignedItemsConainer>
+        {insightsContent && (
+          <InsightsContainer>
+            <div>
+              {/* {insightsContent.map((article, index) => (
+              <ArticlePreviewCard {...article} key={index} />
+            ))} */}
+              {insightsContent.businessInsights.data.map((article, index) => (
+                <ArticlePreviewCard
+                  {...article}
+                  key={index}
+                  category={insightsContent.businessInsights.title}
+                />
+              ))}
+            </div>
+            <div>
+              {insightsContent.caseStudies.data.map((article, index) => (
+                <ArticlePreviewCard
+                  {...article}
+                  key={index}
+                  category={insightsContent.caseStudies.title}
+                />
+              ))}
+            </div>
+            <div>
+              <PodcastCard />
+              <PodcastCard />
+              <PodcastCard />
+            </div>
+          </InsightsContainer>
+        )}
       </StyledContainer>
     </>
   )

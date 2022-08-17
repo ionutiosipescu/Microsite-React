@@ -72,7 +72,6 @@ const IndustrySection = ({ industries }) => {
                     })
                   }
                 >
-                  {" "}
                   {industry?.name}
                 </h2>
                 <p>{industry?.description}</p>
