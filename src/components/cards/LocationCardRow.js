@@ -22,8 +22,6 @@ const LocationCardRow = () => {
             <div className="coutry">Australia</div>
             <ContainerLocation>
                 <LocationCard/>
-                <LocationCard/>
-                <LocationCard/>
             </ContainerLocation>
         </Card>
         </>
