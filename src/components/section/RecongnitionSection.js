@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import digital from "../../assets/images/digital";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { arr } from "../../utils/data";
+import React from "react"
+import styled from "styled-components"
+import digital from "../../assets/images/digital"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import { arr } from "../../utils/data"
 //style to overload the carousel's indicators
 // import "../cards/CarouselSection.scss";
 
@@ -14,7 +14,7 @@ const CarouselContainer = styled.div`
   display: flex;
   justify-content: center;
   .contentContainer {
-    width: 88%;
+    width: 100%;
     h3 {
       font-family: "Helvetica Neue LT Std", sans-serif;
       font-weight: 600;
@@ -23,9 +23,10 @@ const CarouselContainer = styled.div`
   .articlesContainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     /* flex-direction: column; */
   }
-`;
+`
 
 const RecongnitionSection = ({ arr, titleSection }) => {
   return (
@@ -35,7 +36,7 @@ const RecongnitionSection = ({ arr, titleSection }) => {
         <div className="articlesContainer">
           {[1, 2]?.map((element, index) => (
             <div
-              className="py-3 me-5 col-11 col-sm-11 col-md-5 col-lg-5"
+              className="py-3 px-2 col-11 col-sm-11 col-md-5 col-lg-6 f"
               key={index}
             >
               {/* <p
@@ -43,7 +44,7 @@ const RecongnitionSection = ({ arr, titleSection }) => {
                 dangerouslySetInnerHTML={{ __html: element?.text }}
               /> */}
 
-              <p>
+              <p className="fst-italic">
                 “Digital has the power to transform operations, propel 
                 commercial improvements and to be the catalyst for care model
                 innovations. David’s in-depth industry sector and digital
@@ -65,7 +66,7 @@ const RecongnitionSection = ({ arr, titleSection }) => {
         </div>
       </div>
     </CarouselContainer>
-  );
-};
+  )
+}
 
-export default RecongnitionSection;
+export default RecongnitionSection

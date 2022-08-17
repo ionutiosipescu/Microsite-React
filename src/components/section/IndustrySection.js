@@ -5,7 +5,6 @@ import { sizem } from "../../utils/breakpoints"
 import { useNavigate } from "react-router"
 
 const IndustrySectionContainer = styled.div`
-  padding: 20px;
   width: 100%;
   background-color: white;
   display: flex;
@@ -13,14 +12,14 @@ const IndustrySectionContainer = styled.div`
   font-family: "Helvetica Neue LT Std", sans-serif;
 
   .grayContainer {
-    width: 90%;
+    width: 100%;
     height: 90%;
     background-color: #f2f2f2;
     padding-bottom: 20px;
 
     h2 {
-      padding-top: 20px;
-      padding-left: 55px;
+      /* padding-top: 20px; */
+      padding: 20px 40px;
     }
     @media ${sizem.smm} {
       width: 100%;
@@ -35,9 +34,11 @@ const IndustrySectionContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    /* margin: auto; */
+    /* padding: 0px 40px; */
   }
   .industry {
-    padding-top: 40px;
+    padding-top: 30px;
     h2 {
       color: var(--darkBlueHome);
       font-size: 1.5em;
@@ -46,7 +47,7 @@ const IndustrySectionContainer = styled.div`
     }
     p {
       color: var(--darkBlueHome);
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 `

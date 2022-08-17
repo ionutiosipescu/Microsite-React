@@ -1,0 +1,56 @@
+import React from "react"
+import styled from "styled-components"
+import {
+  Twitter,
+  Facebook,
+  Pdf,
+  Mail,
+  Share,
+  BlueRectangle,
+  FooterLinkedinIcon,
+  LinkedIn,
+} from "../../assets/icons"
+
+const Card = styled.div`
+  background-color: var(--graySections);
+  width: auto;
+  height: auto;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    height: 2.8rem;
+    width: auto;
+  }
+  .linkedin {
+    height: 32px;
+    width: auto;
+  }
+  .blue-box {
+    height: 2.8rem;
+    width: 2.8rem;
+    background-color: var(--hover-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`
+
+const SocialsCard = () => {
+  return (
+    <Card>
+      <Share />
+      <Facebook />
+      <div className="blue-box">
+        <FooterLinkedinIcon className="linkedin" />
+      </div>
+      <Twitter />
+      <Mail />
+      <Pdf />
+    </Card>
+  )
+}
+
+export default SocialsCard

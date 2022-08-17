@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { size } from "../../../utils/breakpoints";
+import styled from "styled-components"
+import { size } from "../../../utils/breakpoints"
 
 export const StyledRow = styled.div`
   display: flex;
@@ -9,18 +9,19 @@ export const StyledRow = styled.div`
   @media ${size.lg} {
     flex-direction: row;
   }
-`;
+`
 
 export const StyledCol1 = styled.div`
   flex: 1 0 68%;
 
   padding: 2rem;
-`;
+`
 
 export const StyledCol2 = styled.div`
   flex: 1 0 30%;
-`;
+`
 
 export const StyledContainer = styled.div`
-  padding: 2rem;
-`;
+  /* padding: 3rem; */
+  padding: 3rem 5rem;
+`

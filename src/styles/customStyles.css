@@ -4,6 +4,7 @@
   --gray3: #bfbfbf;
   --gray4: #666;
   --gray5: #eeeeee;
+  --graySections: #f2f2f2;
 
   --darkBlue: #002b49;
   --darkBlue1: #061931;
@@ -18,6 +19,8 @@
   /* --darkBlueHome: #c27028; */
   --darkBlueHome: #00244a;
   --white: #fff;
+  --mutedDate: #808080;
+  --black1: #292929;
 }
 
 * {

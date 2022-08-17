@@ -1,4 +1,4 @@
-import Connor from "../assets/images/ConnorWine";
+import Connor from "../assets/images/ConnorWine"
 
 export const arrQualities = [
   {
@@ -59,7 +59,7 @@ export const arrQualities = [
     sectionDescription:
       "It is a long established fact that a reader will be distracted by the readable content of a",
   },
-];
+]
 
 export const arr2 = [
   {
@@ -90,7 +90,7 @@ export const arr2 = [
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
-];
+]
 
 export const arr = [
   {
@@ -121,7 +121,7 @@ export const arr = [
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
-];
+]
 
 export const leadersList = [
   {
@@ -208,7 +208,7 @@ export const leadersList = [
     description:
       "Occaecat officia esse ut laborum est Lorem laborum ad nisi consectetur. Reprehenderit nostrud irure incididunt nulla magna in aute .",
   },
-];
+]
 
 export const links = [
   {
@@ -238,7 +238,7 @@ export const links = [
   {
     name: "sublink",
   },
-];
+]
 
 export const filtrationNavbarData = [
   {
@@ -268,7 +268,7 @@ export const filtrationNavbarData = [
     title: "Media Type",
     tagNames: [{ name: "/expretise" }, { name: "/expretise" }],
   },
-];
+]
 
 export const PostsArr = [
   {
@@ -352,14 +352,16 @@ export const PostsArr = [
     desciption:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a",
   },
-];
+]
 const expertiseDescription =
-  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+
 export const expertiseData = [
   {
     id: 1,
     title: "Quality Efficiency Improvement",
-    description: expertiseDescription,
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
 
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
@@ -406,4 +408,10 @@ export const expertiseData = [
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
-];
+  {
+    id: 9,
+    title: "Procurement and Category management",
+    description: expertiseDescription,
+    icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
+  },
+]
