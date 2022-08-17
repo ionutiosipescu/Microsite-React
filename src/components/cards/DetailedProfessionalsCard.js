@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
-import {
-  XIcon,
-  Twitter,
-  IconTriangle,
-  ChevronRightBlue,
-} from "../../assets/icons"
-import YellowButton from "../buttons/YellowButton"
+import { XIcon, IconTriangle } from "../../assets/icons"
+
+import { ButtonWithAnimation } from "../buttons"
 import Connor from "../../assets/images/ConnorWine"
 import {
   Card,
@@ -50,7 +46,6 @@ const DetailedProfessionalsCard = ({
 
     setBorderBottom(!borderBottom)
   }
-  // console.log(content);
   return (
     <>
       <ImageTriangleContainer>
@@ -67,7 +62,7 @@ const DetailedProfessionalsCard = ({
           <Header>
             <ImageContainer>
               <img src={content?.image}></img>
-              <YellowButton
+              <ButtonWithAnimation
                 text="Connect"
                 radius={"0"}
                 onClick={() => {
@@ -105,7 +100,7 @@ const DetailedProfessionalsCard = ({
 
           <Info>
             <ContainerMobile>
-              <YellowButton
+              <ButtonWithAnimation
                 text={"connect"}
                 width={"100%"}
                 onClick={() => {

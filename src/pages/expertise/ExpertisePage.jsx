@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import {
   HeroSection,
-  Services,
-  CardProfessionals,
+  ServiceCard,
+  ProfessionalCard,
 } from "../../components/cards"
 import {
   StyledCol2,
@@ -11,7 +11,6 @@ import {
   StyledRow,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 import { useDocumentTitle } from "../../hook"
-import { fetchData } from "../../API"
 import styled from "styled-components"
 import { fetchExpertise } from "../../store/actions/hls/hlsHome"
 import { useDispatch, useSelector } from "react-redux"
@@ -40,7 +39,6 @@ const ExpertisePage = () => {
   const expertise = useSelector(state => state.hlsHero.expertise)
 
   useEffect(() => {
-    fetchData(setCarouselData)
     dispatch(fetchExpertise(state))
   }, [state])
 
@@ -66,7 +64,7 @@ const ExpertisePage = () => {
 
           <h3 className="text-primary fw-bold">Our Services</h3>
           {[1, 2, 3].map(() => (
-            <Services
+            <ServiceCard
               title="Strategic Transformation"
               conntent={
                 "ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim "
@@ -91,7 +89,7 @@ const ExpertisePage = () => {
               position: expert?.profession_title,
               country: expert?.global_location,
             }
-            return <CardProfessionals {...cardContent} />
+            return <ProfessionalCard {...cardContent} />
           })}
         </StyledCol2>
       </StyledRow>

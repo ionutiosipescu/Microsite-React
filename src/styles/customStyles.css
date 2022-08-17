@@ -1,28 +1,25 @@
 :root {
   --gray1: #eae6e6;
-  --gray2: #cfcdcd;
   --gray3: #bfbfbf;
   --gray4: #666;
-  --gray5: #eeeeee;
   --mutedDate: #808080;
 
   --darkBlue: #002b49;
-  --darkBlue1: #061931;
 
   --filtersBlue: #78d1ff;
   --hover-blue: #0085ca;
-  --searchBarBlue: #003e6a;
 
   --black1: #292929;
 
   --yellowCategory: #fac40b;
-  --orange1: #df8e25;
   --orange2: #cf7f00;
   --orange3: #be7a22;
 
-  /* --darkBlueHome: #c27028; */
   --darkBlueHome: #00244a;
   --white: #fff;
+
+  /* Delete this later */
+  --orange1: #df8e25;
 }
 
 * {

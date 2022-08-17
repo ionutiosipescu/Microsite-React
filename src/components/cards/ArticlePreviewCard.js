@@ -1,5 +1,5 @@
-import React from "react";
-import * as S from "./styles/ArticlePreviewCard.styles.js";
+import React from "react"
+import * as S from "./styles/ArticlePreviewCard.styles.js"
 
 const ArticlePreviewCard = ({ category, title, date, content }) => {
   return (
@@ -9,7 +9,7 @@ const ArticlePreviewCard = ({ category, title, date, content }) => {
       <S.Date>{date || "Date"}</S.Date>
       <S.Content>{content || "Content"}</S.Content>
     </S.Card>
-  );
-};
+  )
+}
 
-export default ArticlePreviewCard;
+export default ArticlePreviewCard

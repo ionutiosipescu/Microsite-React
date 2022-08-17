@@ -1,6 +1,6 @@
-import React from "react";
-import { ButtonWithAnimation } from "../buttons";
-import styled from "styled-components";
+import React from "react"
+import { ButtonWithAnimation } from "../buttons"
+import styled from "styled-components"
 
 const Container = styled.div`
   display: inline-block;
@@ -13,7 +13,7 @@ const Container = styled.div`
   h3 {
     font-weight: bold;
   }
-`;
+`
 
 const ExpertiseCard = ({ title, content, buttonText }) => {
   return (
@@ -22,7 +22,7 @@ const ExpertiseCard = ({ title, content, buttonText }) => {
       <p>{content || "content"}</p>
       <ButtonWithAnimation text={buttonText || "Read more"} />
     </Container>
-  );
-};
+  )
+}
 
-export default ExpertiseCard;
+export default ExpertiseCard

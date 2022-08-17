@@ -9,12 +9,11 @@ import {
   Content,
 } from "./styles/ProfessionalsCardSmall.styles"
 
-const ProfessionalsCardSmall = ({
+const ProfessionalsCardSmallOld = ({
   cardInfo,
   index,
   handleDisplay,
   showDetails,
-  className,
 }) => {
   const [margin, setMargin] = useState(0)
 
@@ -34,11 +33,8 @@ const ProfessionalsCardSmall = ({
         <CardBody>
           <Content>
             <h5>{cardInfo?.name}</h5>
-            {/* <h5>{cardInfo?.firstName}</h5>
-            <h5>{cardInfo?.lastName}</h5> */}
             <div className="pt-2">
               <div>{cardInfo?.position}</div>
-              {/* <div>{cardInfo?.country} </div> */}
             </div>
           </Content>
         </CardBody>
@@ -56,4 +52,4 @@ const ProfessionalsCardSmall = ({
   )
 }
 
-export default ProfessionalsCardSmall
+export default ProfessionalsCardSmallOld

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { ArticlePreviewCard, ExpertiseCard } from "../../../components/cards"
-import { ButtonWithAnimation } from "../../../components/buttons"
-import UnalignedItemsConainer from "../../../components/layout/UnalignedItemsContainer"
-import { InsightsNavbar } from "../../../components/navbarComponents"
-import CardPodcast from "../../../components/cards/CardPodcast"
+import {
+  PodcastCard,
+  ArticlePreviewCard,
+  ExpertiseCard,
+  HeroSection,
+} from "../../components/cards"
+import { ButtonWithAnimation } from "../../components/buttons"
+import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
 
 const Practice = () => {
   const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls"
@@ -15,14 +18,7 @@ const Practice = () => {
 
   return (
     <>
-      <div
-        style={{
-          background: "black",
-          width: "100%",
-        }}
-      >
-        <InsightsNavbar />
-      </div>
+      <HeroSection height={300} pageCategory="Expertise" title={"f"} />
       <div className="p-3">
         <ButtonWithAnimation text={"some text"} />
         <ButtonWithAnimation black />
@@ -46,7 +42,7 @@ const Practice = () => {
           <ArticlePreviewCard />
           <ArticlePreviewCard content={content} />
           <ArticlePreviewCard />
-          <CardPodcast />
+          <PodcastCard />
         </UnalignedItemsConainer>
       </div>
     </>

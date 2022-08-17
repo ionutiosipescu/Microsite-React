@@ -1,6 +1,6 @@
-import React from "react";
-import * as S from "./styles/ButtonWithAnimation.style";
-import { ChevronRight } from "../../assets/icons";
+import React from "react"
+import * as S from "./styles/ButtonWithAnimation.style"
+import { ChevronRight } from "../../assets/icons"
 
 const ButtonWithAnimation = ({ text, black, link }) => {
   return (
@@ -12,7 +12,7 @@ const ButtonWithAnimation = ({ text, black, link }) => {
         <div>{text || "Read More"}</div>
       </S.TextContainer>
     </S.Container>
-  );
-};
+  )
+}
 
-export default ButtonWithAnimation;
+export default ButtonWithAnimation

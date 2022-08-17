@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { HeroSection, ProfessionalsCardSmall } from "../../components/cards"
+import { HeroSection, ProfessionalsCardSmallOld } from "../../components/cards"
 import styled from "styled-components"
 import { leadersList } from "../../utils/data"
 
@@ -62,7 +62,7 @@ const Leadership = () => {
           <LeaadersContainer>
             {leaders?.map((cardInfo, index) => {
               return (
-                <ProfessionalsCardSmall
+                <ProfessionalsCardSmallOld
                   className="col-lg-4"
                   key={index}
                   cardInfo={cardInfo}
@@ -85,7 +85,7 @@ const Leadership = () => {
           <LeaadersContainer>
             {persons?.map((cardInfo, index) => {
               return (
-                <ProfessionalsCardSmall
+                <ProfessionalsCardSmallOld
                   key={index}
                   cardInfo={cardInfo}
                   index={index}

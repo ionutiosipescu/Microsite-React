@@ -172,7 +172,7 @@ const BrandSection = styled.div`
   color: #fff;
 `
 
-const FooterNew = () => {
+const Footer = () => {
   return (
     <>
       <FooterContainer className="bg-light fluid">
@@ -257,4 +257,4 @@ const FooterNew = () => {
   )
 }
 
-export default FooterNew
+export default Footer

@@ -1,8 +1,8 @@
-import React from "react";
-import Connor from "../../assets/images/ConnorWine";
-import styled from "styled-components";
-import { size } from "../../utils/breakpoints";
-import { ChevronRightWhite } from "../../assets/icons";
+import React from "react"
+import Connor from "../../assets/images/ConnorWine"
+import styled from "styled-components"
+import { size } from "../../utils/breakpoints"
+import { ChevronRightWhite } from "../../assets/icons"
 
 const Card = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Card = styled.div`
   width: 100%;
   height: auto;
   margin: 20px 0;
-`;
+`
 
 const CardBody = styled.div`
   display: flex;
@@ -19,8 +19,7 @@ const CardBody = styled.div`
   button {
     transition: background-color 0.2s ease-out;
   }
-
-`;
+`
 
 const ImageContainer = styled.div`
   background: gray;
@@ -29,7 +28,7 @@ const ImageContainer = styled.div`
     height: 130px;
     object-fit: cover;
   }
-`;
+`
 
 const Content = styled.div`
   padding: 20px;
@@ -43,9 +42,8 @@ const Content = styled.div`
   @media ${size.lg} {
     padding: 0 20px;
     justify-content: start;
-
   }
-`;
+`
 
 const ArrowContainer = styled.div`
   display: flex;
@@ -61,7 +59,7 @@ const ArrowContainer = styled.div`
   @media ${size.lg} {
     display: none;
   }
-`;
+`
 
 const Name = styled.a`
   color: var(--darkBlue2);
@@ -69,18 +67,18 @@ const Name = styled.a`
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.2;
- 
+
   cursor: pointer;
 
   padding-top: 20px;
-  
+
   :hover {
     color: var(--darkBlue2);
   }
   @media ${size.lg} {
     font-size: 20px;
   }
-`;
+`
 const Position = styled.p`
   color: var(--hover-blue);
   text-decoration: none;
@@ -94,7 +92,7 @@ const Position = styled.p`
     font-size: 0.813rem;
     padding: 2px 0;
   }
-`;
+`
 
 const Info = styled.a`
   color: var(--hover-blue);
@@ -111,16 +109,10 @@ const Info = styled.a`
   @media ${size.lg} {
     font-size: 0.813rem;
   }
-`;
-const ButtonAni = styled.div`
 `
+const ButtonAni = styled.div``
 
-const CardProfessionalSmall = ({
-  name,
-  imageSrc,
-  position,
-  country,
-}) => {
+const ProfessionalCardSmall = ({ name, imageSrc, position, country }) => {
   return (
     <Card>
       <ImageContainer>
@@ -138,8 +130,7 @@ const CardProfessionalSmall = ({
         <ChevronRightWhite />
       </ArrowContainer>
     </Card>
-  );
-};
+  )
+}
 
-export default CardProfessionalSmall;
-
+export default ProfessionalCardSmall

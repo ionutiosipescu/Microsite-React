@@ -138,7 +138,6 @@ const Info = styled.a`
     font-size: 0.813rem;
   }
 `
-const ButtonAni = styled.div``
 
 const CardProfessionalsNew = ({ name, imageSrc, position, country }) => {
   return (

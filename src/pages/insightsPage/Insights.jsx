@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { ArticleCard, HeroSection } from "../../components/cards"
+import { ArticlePreviewCard, HeroSection } from "../../components/cards"
 
 import { getInsightFilters, getInsights, fetchData } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
@@ -48,7 +48,7 @@ const Insights = () => {
       <StyledContainer>
         <UnalignedItemsConainer columnsNumber={3}>
           {insightsContent?.map((article, index) => (
-            <ArticleCard {...article} key={index} />
+            <ArticlePreviewCard {...article} key={index} />
           ))}
         </UnalignedItemsConainer>
       </StyledContainer>

@@ -36,7 +36,6 @@ const NavBar = () => {
                 showSearchDiv ? "active-link" : " inactive-link"
               } `}
             >
-              {" "}
               {showSearchDiv ? (
                 <div
                   className="  d-flex  align-items-center mx-2 "
@@ -44,7 +43,6 @@ const NavBar = () => {
                     setShowSearchDiv(false)
                   }}
                 >
-                  {/* {console.log(showSearchDiv)} */}
                   <XIcon />
                 </div>
               ) : (
@@ -81,9 +79,6 @@ const NavBar = () => {
                   </NavDropdown.Item>
                 ))}
               </NavDropdown>
-              {/* <Nav.Link className="active web-title" href={routeNames.home}>
-                {""}
-              </Nav.Link> */}
               <NavDropdown
                 className=""
                 title="Industries"
@@ -99,7 +94,6 @@ const NavBar = () => {
                     id="something"
                     key={index}
                   >
-                    {/* {console.log(industry)} */}
                     {industry?.name}
                   </NavDropdown.Item>
                 ))}
@@ -118,8 +112,14 @@ const NavBar = () => {
               <Nav.Link className="active web-title " href={routeNames.contact}>
                 {"LOCATIONS"}
               </Nav.Link>
-              <Nav.Link href={"practice"}></Nav.Link>
+              <Nav.Link
+                href={routeNames.practice}
+                className="active web-title "
+              >
+                {"Practice"}
+              </Nav.Link>
             </Nav>
+
             <Nav>
               <Nav.Link
                 className={`d-none d-lg-flex my-2 container-icon ${

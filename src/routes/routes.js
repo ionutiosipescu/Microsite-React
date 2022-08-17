@@ -5,6 +5,7 @@ import {
   SingleInsgightPage,
   ExpertisePage,
   IndustryPage,
+  Practice,
 } from "../pages/"
 
 export const routeNames = {
@@ -17,6 +18,8 @@ export const routeNames = {
   expertise: "/expertise",
   expertisePage: "/expertise/:id",
   industryPage: "/industry/:id",
+
+  practice: "/practice",
 }
 
 export const routes = [
@@ -52,6 +55,11 @@ export const routes = [
     path: routeNames.leadership,
     exact: true,
     element: <Leadership />,
+  },
+  {
+    path: routeNames.practice,
+    exact: true,
+    element: <Practice />,
   },
 ]
 

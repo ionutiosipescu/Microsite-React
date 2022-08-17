@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
 import { useDispatch } from "react-redux"
-import FooterNew from "./FooterNew"
+import Footer from "./Footer"
 import {
   fetchHLSIndustries,
   fetchHlsExpertises,
@@ -29,7 +29,7 @@ const Layout = props => {
     <Container>
       <Page>
         <div {...props}>{props.children}</div>
-        <FooterNew className="my-2" />
+        <Footer className="my-2" />
       </Page>
     </Container>
   )

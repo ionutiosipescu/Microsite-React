@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react"
 import {
   HeroSection,
-  Services,
-  CardProfessionals,
+  ServiceCard,
+  ProfessionalCard,
 } from "../../components/cards"
-import BreadCrumb from "../../components/BreadCrumb"
 import Connor from "../../assets/images/ConnorWine"
 import {
   StyledCol2,
@@ -12,7 +11,6 @@ import {
   StyledRow,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 import { useDocumentTitle } from "../../hook"
-import { fetchData } from "../../API"
 import { Spinner } from "../../components"
 
 const ExpertisePharma = () => {
@@ -36,10 +34,6 @@ const ExpertisePharma = () => {
       />
       <StyledRow>
         <StyledCol1>
-          <BreadCrumb
-            route={"Expertise"}
-            subRoute={"Pharma & MedTech Portfolio Management"}
-          />
           <p>
             Sit excepteur ullamco tempor excepteur fugiat amet culpa consectetur
             ea ut fugiat. Laborum irure non qui nulla minim anim reprehenderit
@@ -51,25 +45,25 @@ const ExpertisePharma = () => {
           </p>
 
           <h3 className="text-primary fw-bold">Our Services</h3>
-          <Services
+          <ServiceCard
             title="Strategic Transformation"
             conntent={
               "ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim "
             }
           />
-          <Services
+          <ServiceCard
             title="Strategic Transformation"
             conntent={
               "ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim "
             }
           />
-          <Services
+          <ServiceCard
             title="Strategic Transformation"
             conntent={
               "ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim "
             }
           />
-          <Services
+          <ServiceCard
             title="Strategic Transformation"
             conntent={
               "ea ut fugiat. Laborum irure non qui nulla minim anim ea ut fugiat. Laborum irure non qui nulla minim anim "
@@ -77,8 +71,8 @@ const ExpertisePharma = () => {
           />
         </StyledCol1>
         <StyledCol2>
-          <CardProfessionals {...cardContent} />
-          <CardProfessionals {...cardContent} />
+          <ProfessionalCard {...cardContent} />
+          <ProfessionalCard {...cardContent} />
         </StyledCol2>
       </StyledRow>
     </>

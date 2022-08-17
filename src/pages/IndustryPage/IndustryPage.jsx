@@ -4,7 +4,7 @@ import { useLocation } from "react-router"
 import { HeroSection } from "../../components/cards"
 import { fetchIndustry } from "../../store/actions/hls/hlsHome"
 
-import { ProfessionalsCardSmall } from "../../components/cards"
+import { ProfessionalsCardSmallOld } from "../../components/cards"
 
 import styled from "styled-components"
 
@@ -43,21 +43,17 @@ const IndustryPage = () => {
           </div>
 
           <div className="expertsContainer col-lg-3 border">
-            {industry?.experts?.map(
-              (expert, index) => {
-                let cardInfo = {
-                  id: expert?.id,
-                  image: expert?.image,
-                  name: expert?.title,
-                  position: expert?.profession_title,
-                }
-                return (
-                  <ProfessionalsCardSmall cardInfo={cardInfo} key={index} />
-                )
+            {industry?.experts?.map((expert, index) => {
+              let cardInfo = {
+                id: expert?.id,
+                image: expert?.image,
+                name: expert?.title,
+                position: expert?.profession_title,
               }
-
-              // <CardProfessionals />
-            )}
+              return (
+                <ProfessionalsCardSmallOld cardInfo={cardInfo} key={index} />
+              )
+            })}
           </div>
         </div>
       </IndustryContainer>
@@ -69,7 +65,6 @@ export default IndustryPage
 
 const IndustryContainer = styled.div`
   width: 90%;
-  /* height: 200px; */
   border: 2px solid red;
   margin: auto;
   padding-top: 40px;

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useLocation } from "react-router-dom"
-import { BreadCrumb, Spinner } from "../../components"
+import { Spinner } from "../../components"
 import {
   LinkedinStay,
   FacebookStay,
@@ -9,22 +9,20 @@ import {
   LetterStay,
 } from "../../assets/icons"
 
-import { HeroSection, CarouselSection } from "../../components/cards"
+import { HeroSection } from "../../components/cards"
 
 import { useEffect } from "react"
-import { fetchData, getSingleArticle } from "../../API"
-import LeftSection from "../../components/cards/LeftSection"
+import { getSingleArticle } from "../../API"
+import LeftSection from "../../components/section/LeftSection"
 import { useDocumentTitle } from "../../hook"
 import { PageContainer } from "./styles/SingleInsgightPage"
 import DOMPurify from "dompurify"
 
 const InsightCaseArticlePage = () => {
   const { state } = useLocation()
-  const [carouselData, setCarouselData] = useState([])
   const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
-    fetchData(setCarouselData)
     getSingleArticle(setArticleData, state.uuid)
   }, [])
 
@@ -42,9 +40,7 @@ const InsightCaseArticlePage = () => {
       <div className="container  bg-white  d-flex flex-direction-column">
         <div className="row pt-5 ">
           <div className="col-12 col-sm-12 col-md-9 col-lg-9 border-end border-2  py-5">
-            <div className="p-3">
-              <BreadCrumb route={"Insights"} subRoute={"Article"} />
-            </div>
+            <div className="p-3"></div>
             <div className="row">
               <LeftSection nid={state.nid} />
               {/*---------------------------------------------------- SectionDescription */}
@@ -115,18 +111,6 @@ const InsightCaseArticlePage = () => {
             <LinksList titleSection={"Stay Connected"} linkIcons={iconsArr} />
           </div>
         </div>
-      </div>
-
-      <div>
-        <CarouselSection
-          categoryCarousel={carouselData?.block_two?.title}
-          backgroundColor="#002B49"
-          arr={carouselData?.block_two?.data}
-          titleColor="#0085CA"
-          textColor="#fff"
-          textDate="#FFFFFF"
-          carouselDotBackground="#002b49"
-        />
       </div>
     </PageContainer>
   ) : (
