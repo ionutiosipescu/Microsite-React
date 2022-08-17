@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
-import connor from "../../assets/images/ConnorWine";
-import DetailedProfessionalsCard from "./DetailedProfessionalsCard";
+import React, { useEffect, useState } from "react"
+import connor from "../../assets/images/ConnorWine"
+import DetailedProfessionalsCard from "./DetailedProfessionalsCard"
 import {
   Container,
   Card,
   ImageContainer,
   CardBody,
   Content,
-} from "./styles/ProfessionalsCardSmall.styles";
+} from "./styles/ProfessionalsCardSmall.styles"
 
 const ProfessionalsCardSmall = ({
   cardInfo,
   index,
   handleDisplay,
   showDetails,
+  className,
 }) => {
-  const [margin, setMargin] = useState(0);
+  const [margin, setMargin] = useState(0)
 
   useEffect(() => {
     if (!showDetails) {
-      setMargin(0);
+      setMargin(0)
     }
-  }, [showDetails]);
-
+  }, [showDetails])
+  console.log(cardInfo)
   return (
-    <Container margin={margin}>
+    <Container margin={margin} className="">
       <Card onClick={() => handleDisplay(index)}>
         <ImageContainer>
-          <img src={cardInfo?.image || connor} alt="portrait"></img>
+          <img src={cardInfo?.image} alt="portrait"></img>
         </ImageContainer>
 
         <CardBody>
@@ -52,7 +53,7 @@ const ProfessionalsCardSmall = ({
         />
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default ProfessionalsCardSmall;
+export default ProfessionalsCardSmall

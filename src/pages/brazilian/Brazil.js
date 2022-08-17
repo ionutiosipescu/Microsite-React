@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import HeroSection from "../../components/cards/HeroSection";
+import React, { useEffect, useState } from "react"
+import HeroSection from "../../components/cards/HeroSection"
 import {
   NavigationCell,
   NavigationNavbar,
-} from "../../components/navbarComponents/";
-import { useDocumentTitle } from "../../hook";
+} from "../../components/navbarComponents/"
+import { useDocumentTitle } from "../../hook"
 import {
   Overview,
   Services,
@@ -12,11 +12,19 @@ import {
   Insights,
   Professionals,
   Locations,
-} from "./subPages";
+} from "./subPages"
+
+import { useDispatch, useSelector } from "react-redux"
+import { fetchBrazilianHeroSection } from "../../store/actions/brazilian/brazilianOverview"
 
 const Brazil = () => {
+  const dispatch = useDispatch()
+  const heroSectionData = useSelector(
+    state => state?.brazilianOverview?.heroSection
+  )
+
   // The index of the of the item clicked in the navbar
-  const [clickedNavbarCell, setClickedNavbarCell] = useState(0);
+  const [clickedNavbarCell, setClickedNavbarCell] = useState(0)
 
   // The order of the sub pages in the array is important since it is used with the index from above
   const subPages = [
@@ -26,22 +34,26 @@ const Brazil = () => {
     <Insights />,
     <Professionals />,
     <Locations />,
-  ];
+  ]
 
-  const heroSectionData = {
-    title: "Brazil",
-    backgroundUrl:
-      "https://www.alvarezandmarsal.com/sites/default/files/styles/wide_3_2_desktop/public/countrypage_brazil.jpg?itok=XVXwKdCi",
-  };
-
+  // const heroSectionData = {
+  //   title: "Brazil",
+  //   backgroundUrl:
+  //     "https://www.alvarezandmarsal.com/sites/default/files/styles/wide_3_2_desktop/public/countrypage_brazil.jpg?itok=XVXwKdCi",
+  // };
+  useEffect(() => {
+    dispatch(fetchBrazilianHeroSection())
+  }, [])
   // console.log(clickedNavbarCell)
-  useDocumentTitle("Brazil | Home | Alvarez & Marsal");
+  useDocumentTitle("Brazil | Home | Alvarez & Marsal")
   return (
     <>
       <HeroSection
-        title={heroSectionData.title}
-        backgroundUrl={heroSectionData.backgroundUrl}
+        title={heroSectionData?.title}
+        backgroundUrl={heroSectionData?.backgroundUrl}
         transparent
+        heroBrazilianText={heroSectionData?.rightSectionText}
+        // height={300}
       />
 
       <NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
@@ -55,7 +67,7 @@ const Brazil = () => {
 
       {subPages[clickedNavbarCell]}
     </>
-  );
-};
+  )
+}
 
-export default Brazil;
+export default Brazil

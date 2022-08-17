@@ -98,15 +98,15 @@ export const fetchIndustry = industryId => {
             }
           }
         })
-        industry?.expertise.map(expert => {
-          for (const [key, value] of Object.entries(
-            data?.data?.expertise_parent_children
-          )) {
-            if (key == expert) {
-              expertises.push(value)
-            }
-          }
-        })
+        // industry?.expertise.map(expert => {
+        //   for (const [key, value] of Object.entries(
+        //     data?.data?.expertise_parent_children
+        //   )) {
+        //     if (key == expert) {
+        //       expertises.push(value)
+        //     }
+        //   }
+        // })
         // console.log(expertises);
         industry.expertises = expertises
         industry.experts = experts
