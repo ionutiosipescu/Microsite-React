@@ -36,7 +36,7 @@ export const fetchHLSHeroSection = industryId => {
 
 export const fetchHLSIndustries = industryId => {
   return async dispatch => {
-    console.log("fetchHLSIndustries")
+    // console.log("fetchHLSIndustries")
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
     await Axios.get(link)
       .then(data => {
@@ -69,7 +69,7 @@ export const fetchHLSIndustries = industryId => {
 }
 export const fetchIndustry = industryId => {
   return async dispatch => {
-    console.log(industryId)
+    // console.log(industryId)
     Axios.get(link)
 
       .then(data => {

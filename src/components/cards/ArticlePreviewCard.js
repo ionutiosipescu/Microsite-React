@@ -2,6 +2,7 @@ import React from "react"
 import * as S from "./styles/ArticlePreviewCard.styles.js"
 
 const ArticlePreviewCard = ({ category, title, date, content }) => {
+  // console.log(props)
   return (
     <S.Card>
       <S.Category>{category || "category"}</S.Category>

@@ -30,7 +30,7 @@ const Home = () => {
       padding: 0;
     }
   `
-  console.log(industries)
+  // console.log(industries)
   return (
     <HomeContainer>
       <HeroSection
@@ -38,7 +38,6 @@ const Home = () => {
         backgroundUrl={heroData?.backgroundUrl}
         description={heroData?.description}
         buttonText="talk to us to learn more "
-        className=""
         height={450}
       />
       <IndustrySection industries={industries} />

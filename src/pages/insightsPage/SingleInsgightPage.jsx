@@ -19,7 +19,8 @@ import { PageContainer } from "./styles/SingleInsgightPage"
 import DOMPurify from "dompurify"
 
 const InsightCaseArticlePage = () => {
-  const { state } = useLocation()
+  // const { state } = useLocation()
+  const state = "25a8b324-1b62-4071-9794-34105bfd2ade"
   const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const InsightCaseArticlePage = () => {
   }, [])
 
   useDocumentTitle(articleData?.title)
-
+  // http://localhost:3000/insights/25a8b324-1b62-4071-9794-34105bfd2ade
   return articleData ? (
     <PageContainer>
       <HeroSection
