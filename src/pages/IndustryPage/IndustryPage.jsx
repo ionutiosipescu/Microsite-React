@@ -44,9 +44,18 @@ const IndustryPage = () => {
 
           <div className="expertsContainer col-lg-3 border">
             {industry?.experts?.map(
-              (expert, index) => (
-                <ProfessionalsCardSmall cardInfo={expert} key={index} />
-              )
+              (expert, index) => {
+                let cardInfo = {
+                  id: expert?.id,
+                  image: expert?.image,
+                  name: expert?.title,
+                  position: expert?.profession_title,
+                }
+                return (
+                  <ProfessionalsCardSmall cardInfo={cardInfo} key={index} />
+                )
+              }
+
               // <CardProfessionals />
             )}
           </div>

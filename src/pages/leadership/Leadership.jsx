@@ -1,68 +1,107 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
   HeroSection,
   ProfessionalsCardSmall,
   CarouselSection,
-} from "../../components/cards";
-import styled from "styled-components";
-import { leadersList } from "../../utils/data";
-
-import FilterBy from "../../components/FilterBy";
-import YellowButton from "../../components/buttons/YellowButton";
+} from "../../components/cards"
+import styled from "styled-components"
+import { tags, leadersList, arr, links } from "../../utils/data"
 import {
+  FiltrationNavbar,
+  NavbarCell,
+  NavbarDropdown,
+  SearchBar,
+  NavigationCell,
+  NavigationNavbar,
+} from "../../components/navbarComponents"
+import BreadCrumb from "../../components/BreadCrumb"
+import FilterBy from "../../components/FilterBy"
+import YellowButton from "../../components/buttons/YellowButton"
+import {
+  getCaseStudiesArticles,
+  fetchHeroSectionDataHome,
+  getCarouselArticles,
   getExpertiseFields,
   getCountries,
   fetchData,
-} from "../../API";
-import DOMPurify from "dompurify";
-import { useDocumentTitle } from "../../hook";
-import { Spinner } from "../../components";
+} from "../../API"
+import DOMPurify from "dompurify"
+import { useDocumentTitle } from "../../hook"
+import { Spinner } from "../../components"
+// import { fetchHLSLeaders, fetchLeadersPage } from "../../API/leaders";
+
+import { useDispatch, useSelector } from "react-redux"
+import { fetchHLSLeaders, fetchHLSPersons } from "../../store/actions/leaders"
 
 export const LeaadersContainer = styled.div`
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  position: relative;
-`;
+  /* display: grid;
 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  gap: 0.5rem;
+  /* position: relative; */
+`
 const Leadership = () => {
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [inputText, setInputText] = useState("");
-  const [clickedNavbarCell, setClickedNavbarCell] = useState(null);
-  const [carouselData, setCarouselData] = useState([]);
+  const dispatch = useDispatch()
+
+  const leaders = useSelector(state => state.leaders.filteredLeaders)
+  const persons = useSelector(state => state.leaders.industryPersons)
+  const cities = useSelector(state => state.leaders.cities)
+  const expertises = useSelector(state => state.leaders.expertises)
+  const location = useSelector(state => state.leaders.location)
+
+  const [filterByTags, setFilterByTags] = useState([])
+  const [inputText, setInputText] = useState("")
+  const [clickedNavbarCell, setClickedNavbarCell] = useState(null)
+  const [carouselData, setCarouselData] = useState([])
+  // const [leaders, setLeaders] = useState([]);
+  // const [cities, setCities] = useState([]);
+  // const [dataObj, setDataObj] = useState();
 
   //open the detail Section on specific leader
+
   const [openedState, setOpenedState] = useState(
-    Array.from(leadersList, () => false)
-  );
+    Array.from(leaders ?? [], () => false)
+  )
+  const [openedStatePersons, setOpenedStatePersons] = useState(
+    Array.from(persons ?? [], () => false)
+  )
+  // const [openedState, setOpenedState] = useState(
+  //   Array.from(leaders ?? [], () => false)
+  // );
+  // const [openedState, setOpenedState] = useState();
+  // Array.from(leaders, () => false)
 
-  const handleDisplay = (index) => {
-    console.log("this is the index", index);
-
-    if (!openedState[index]) {
-      let arr = Array.from(leadersList, () => false);
-      arr[index] = true;
-      setOpenedState([...arr]);
+  const handleDisplay2 = (index, array, state, setState) => {
+    if (!state[index]) {
+      let arr = Array.from(array, () => false)
+      arr[index] = true
+      setState([...arr])
     } else {
-      setOpenedState(Array.from(leadersList, () => false));
+      setState(Array.from(array, () => false))
     }
-  };
+  }
 
-  let arr = [<YellowButton />, <ProfessionalsCardSmall />];
+  let arr = [<YellowButton />, <ProfessionalsCardSmall />]
 
   useEffect(() => {
-    getExpertiseFields();
-    getCountries();
-    fetchData(setCarouselData);
-  }, []);
+    getExpertiseFields()
+    getCountries()
+    fetchData(setCarouselData)
+  }, [])
 
-  let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `;
-  let clean = DOMPurify.sanitize(dirty);
+  useEffect(() => {
+    dispatch(fetchHLSLeaders())
+    dispatch(fetchHLSPersons())
+  }, [])
 
-  // console.log(inputText)
-  useDocumentTitle("Leadership | Alvarez & Marsal");
+  let dirty = `<h1><a href="#" onClick="alert(${openedState});">Click Me</a>  </h1>   `
+  let clean = DOMPurify.sanitize(dirty)
 
+  useDocumentTitle("Leadership | Alvarez & Marsal")
+  // console.log(leaders);
   return (
     <LeadershipContainer>
       <HeroSection
@@ -75,63 +114,67 @@ const Leadership = () => {
 
       {/* <FiltrationNavbar
         searchBar={{ placeholder: "enter search here", setInputText }}
-        selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
+        filterByTags={filterByTags}
+        setFilterByTags={setFilterByTags}
       >
-        <NavbarDropdown data={links}>Something</NavbarDropdown>
-        <NavbarDropdown data={links}>DropDown</NavbarDropdown>
-        <NavbarDropdown data={links}>Something</NavbarDropdown>
-        <NavbarDropdown data={links}>Something2</NavbarDropdown>
+        <NavbarDropdown data={expertises}>Expertise</NavbarDropdown>
+        <NavbarDropdown data={location}>Country</NavbarDropdown>
+        <NavbarDropdown data={cities}>City</NavbarDropdown>
       </FiltrationNavbar>
 
-      <FiltrationNavbar
-        searchBar2={{ placeholder: "enter search here", setInputText }}
-        spread
-        selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
-      >
-        <NavbarDropdown data={links}>Something</NavbarDropdown>
-        <NavbarDropdown data={links}>DropDown</NavbarDropdown>
-        <NavbarDropdown data={links}>Something</NavbarDropdown>
-        <NavbarDropdown data={links}>Something2</NavbarDropdown>
-      </FiltrationNavbar>
+      <FilterBy filterByTags={filterByTags} setFilterByTags={setFilterByTags} /> */}
+      <h1 className="p-4"> Leaders</h1>
+      {leaders?.length === 0 ? (
+        <Spinner />
+      ) : (
+        <div className="m-4">
+          <LeaadersContainer>
+            {leaders?.map((cardInfo, index) => {
+              return (
+                <ProfessionalsCardSmall
+                  className="col-lg-4"
+                  key={index}
+                  cardInfo={cardInfo}
+                  index={index}
+                  openedState={openedState}
+                  handleDisplay={() =>
+                    handleDisplay2(
+                      index,
+                      leadersList,
+                      openedState,
+                      setOpenedState
+                    )
+                  }
+                  showDetails={openedState[index]}
+                />
+              )
+            })}
+          </LeaadersContainer>
+          <h1 className="p-4"> Leaders</h1>
+          <LeaadersContainer>
+            {persons?.map((cardInfo, index) => {
+              return (
+                <ProfessionalsCardSmall
+                  key={index}
+                  cardInfo={cardInfo}
+                  index={index}
+                  openedState={openedState}
+                  handleDisplay={() =>
+                    handleDisplay2(
+                      index,
+                      persons,
+                      openedStatePersons,
+                      setOpenedStatePersons
+                    )
+                  }
+                  showDetails={openedStatePersons[index]}
+                />
+              )
+            })}
+          </LeaadersContainer>
+        </div>
+      )}
 
-      <NavigationNavbar setClickedNavbarCell={setClickedNavbarCell}>
-        <NavigationCell> First</NavigationCell>
-        <NavigationCell> First1</NavigationCell>
-        <NavigationCell> First2</NavigationCell>
-      </NavigationNavbar> */}
-
-      <FilterBy
-        selectedFilters={selectedFilters}
-        setSelectedFilters={setSelectedFilters}
-      />
-      {arr[clickedNavbarCell]}
-      <div
-        className="pt-3 text-decoration-none"
-        dangerouslySetInnerHTML={{ __html: dirty }}
-      ></div>
-      <div
-        className="pt-3 text-decoration-none"
-        dangerouslySetInnerHTML={{ __html: clean }}
-      ></div>
-
-      <div className="m-4">
-        <LeaadersContainer>
-          {leadersList.map((cardInfo, index) => {
-            return (
-              <ProfessionalsCardSmall
-                key={index}
-                cardInfo={cardInfo}
-                index={index}
-                openedState={openedState}
-                handleDisplay={handleDisplay}
-                showDetails={openedState[index]}
-              />
-            );
-          })}
-        </LeaadersContainer>
-      </div>
       {carouselData.length === 0 ? (
         <Spinner />
       ) : (
@@ -146,10 +189,10 @@ const Leadership = () => {
         />
       )}
     </LeadershipContainer>
-  );
-};
+  )
+}
 
-export default Leadership;
+export default Leadership
 
 const LeadershipContainer = styled.div`
   .heroContainer {
@@ -157,4 +200,94 @@ const LeadershipContainer = styled.div`
       width: 75%;
     }
   }
-`;
+`
+
+// console.log(dataObj);
+// useEffect(() => {
+//   function1();
+// }, [dataObj]);
+
+// const function1 = () => {
+//   setCities(dataObj?.cities);
+//   setLeaders(dataObj?.leaders);
+// };
+// useEffect(() => {
+//   filterLeaders();
+//   console.log(filterByTags?.length);
+// }, [filterByTags]);
+
+// const filterLeaders = () => {
+//   // leaders.filter((leader) => leader.city.name == filterByTags[0]);
+
+//   var myArrayFiltered = [];
+//   if (filterByTags.length == 1) {
+//     leaders?.forEach((leader) => {
+//       filterByTags.forEach((filter) => {
+//         if (
+//           leader?.country.id == filter.id ||
+//           leader?.city.id == filter.id ||
+//           leader?.expertise.id == filter.id
+//         ) {
+//           myArrayFiltered.push(leader);
+//         }
+//       });
+//     });
+//     // myArrayFiltered = leaders?.filter((leader) => {
+//     //   return filterByTags.some((filter) => {
+//     //     return (
+//     //       leader?.country.id == filter.id ||
+//     //       leader?.city.id == filter.id ||
+//     //       leader?.expertise.id == filter.id
+//     //     );
+//     //   });
+//     // });
+
+//     // let uniq = [...new Set(myArrayFiltered)];
+//     let uniq = [...new Set(myArrayFiltered)];
+//     setDataObj({ ...dataObj, leaders: uniq });
+//   } else if (filterByTags.length == 2) {
+//     // console.log("2nd if");
+//     // console.log(leaders);
+//     // console.log(filterByTags);
+
+//     leaders?.map((leader) => {
+//       filterByTags.forEach((filter) => {
+//         var cityMatch = false;
+//         var countryMatch = false;
+//         if (
+//           filter?.type == "taxonomy_term--cities" &&
+//           filter.id == leader?.city.id
+//         ) {
+//           myArrayFiltered.push(leader);
+//         }
+//         // if (
+//         //   filter?.type == "taxonomy_term--global_locations" &&
+//         //   filter?.id == leader?.country.id
+//         // ) {
+//         //   myArrayFiltered.push(leader);
+//         // }
+//         // const cityMatch =
+//         //   filter.type == "taxonomy_term--cities" &&
+//         //   filter.id == leader.city.id;
+//         // const countryMatch =
+//         //   "taxonomy_term--global_locations" &&
+//         //   filter?.id == leader?.country.id;
+//         // const expertiseMatch =
+//         //   "taxonomy_term--expertise" && filter?.id == leader?.expertise.id;
+
+//         // console.log(filter.id, leader?.city.id);
+//         // console.log(filter.id, leader?.country.id);
+//         // console.log(cityMatch || (countryMatch && expertiseMatch));
+//         // console.log(countryMatch || (cityMatch && expertiseMatch));
+//       });
+//     });
+//     console.log(myArrayFiltered);
+//     let uniq = [...new Set(myArrayFiltered)];
+//     setDataObj({ ...dataObj, leaders: uniq });
+//   } else if (filterByTags.length == 0) {
+//     fetchHLSLeaders(setDataObj);
+//   }
+// };
+
+// console.log(dataObj);
+// console.log(filterByTags);

@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import { sizem } from "../../utils/breakpoints"
+import { useNavigate } from "react-router"
 
 const IndustrySectionContainer = styled.div`
   padding: 20px;
@@ -51,6 +52,7 @@ const IndustrySectionContainer = styled.div`
 `
 
 const IndustrySection = ({ industries }) => {
+  const navigate = useNavigate()
   return (
     <IndustrySectionContainer className="">
       <div className="grayContainer">
@@ -62,7 +64,16 @@ const IndustrySection = ({ industries }) => {
               key={index}
             >
               <div className="body">
-                <h2 onClick={() => alert("click")}> {industry?.name}</h2>
+                <h2
+                  onClick={() =>
+                    navigate(`/industry/${industry.name.toLowerCase()}`, {
+                      state: industry.id,
+                    })
+                  }
+                >
+                  {" "}
+                  {industry?.name}
+                </h2>
                 <p>{industry?.description}</p>
               </div>
 
