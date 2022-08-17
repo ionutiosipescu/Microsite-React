@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import HeroSection from "../../components/cards/HeroSection"
-import CarouselSection from "../../components/cards/CarouselSection"
-import QualitiesSection from "../../components/section/QualitiesSection"
+
 import RecongnitionSection from "../../components/section/RecongnitionSection"
 import ExpertiseSection from "../../components/section/ExpertiseSection"
+import ArticlesSection from "../../components/section/ArticlesSection"
 import { Spinner } from "../../components"
 import { sizem } from "../../utils/breakpoints"
 
-import {
-  fetchHeroSectionDataHome,
-  fetchData,
-  fetchRecentRecognition,
-} from "../../API"
 import styled from "styled-components"
-import { fetchHLSLeaders } from "../../API/leaders"
+
 import {
   fetchHLSHeroSection,
   fetchHLSIndustries,
 } from "../../store/actions/hls/hlsHome"
 import IndustrySection from "../../components/section/IndustrySection"
+
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 // import fake data
@@ -70,6 +66,11 @@ const Home = () => {
         <IndustrySection industries={industries} />
         <RecongnitionSection arr={carouselData} />
       </StyledContainer>
+      <ArticlesContainer>
+        <StyledContainer>
+          <ArticlesSection />
+        </StyledContainer>
+      </ArticlesContainer>
     </HomeContainer>
   )
 }
@@ -79,3 +80,9 @@ const route = {
   route: "HEALTH & LIFE INSIGHTS /",
   subRoute: " HEALTH & LIFE CASE STUDIES",
 }
+const ArticlesContainer = styled.div`
+  width: 100%;
+  background-color: var(--graySections);
+  color: var(--darkBlueHome);
+  /* background-color: #f2f2f2; */
+`
