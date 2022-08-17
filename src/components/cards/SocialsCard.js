@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import {
-  TwitterIcon,
-  FacebookIcon,
+  Twitter,
+  Facebook,
   Pdf,
   Mail,
   Share,
@@ -12,7 +12,7 @@ import {
 } from "../../assets/icons"
 
 const Card = styled.div`
-  background-color: var(--gray6);
+  background-color: var(--graySections);
   width: auto;
   height: auto;
   padding: 20px;
@@ -42,11 +42,11 @@ const SocialsCard = () => {
   return (
     <Card>
       <Share />
-      <FacebookIcon />
+      <Facebook />
       <div className="blue-box">
         <FooterLinkedinIcon className="linkedin" />
       </div>
-      <TwitterIcon />
+      <Twitter />
       <Mail />
       <Pdf />
     </Card>

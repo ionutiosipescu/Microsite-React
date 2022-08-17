@@ -1,4 +1,3 @@
-// If it is a svg just import like it's done bellow
 import { ReactComponent as Search } from "./icons/search.svg"
 import { ReactComponent as LinkedIn } from "./icons/linkedin.svg"
 import { ReactComponent as YouTube } from "./icons/youtube.svg"
@@ -12,11 +11,12 @@ import { ReactComponent as ChevronDownWhite } from "./icons/chevronDownWhite.svg
 import { ReactComponent as Logo } from "./icons/logo.svg"
 import { ReactComponent as LogoFooter } from "./icons/logo_footer.svg"
 import { ReactComponent as ArrowRight } from "./icons/arrowright.svg"
+import { ReactComponent as AlvarezMarsal } from "./icons/AlvarezMarsal.svg"
 import { ReactComponent as Mail } from "./icons/mail.svg"
 import { ReactComponent as Pdf } from "./icons/pdf.svg"
 import { ReactComponent as Share } from "./icons/share.svg"
 import { ReactComponent as BlueRectangle } from "./icons/BlueRectangle.svg"
-import { ReactComponent as AlvarezMarsal } from "./icons/AlvarezMarsal.svg"
+
 const iconsPath = "/icons/"
 
 const iconPng = (className, name) => (
@@ -28,18 +28,19 @@ const IconTriangle = ({ className }) => iconPng(className, "iconTriangle")
 const PdfIcon = ({ className }) => iconPng(className, "pdf")
 const DocumentIcon = ({ className }) => iconPng(className, "document")
 const ShareIcon = ({ className }) => iconPng(className, "share")
-const LetterIcon = ({ className }) => iconPng(className, "letter")
-const FooterFacebookIcon = ({ className }) => iconPng(className, "icon_fb@2x")
 const FacebookIcon = ({ className }) => iconPng(className, "facebook")
-const FooterLinkedinIcon = ({ className }) => iconPng(className, "icon_li@2x")
-const FooterTwitterIcon = ({ className }) => iconPng(className, "icon_t@2x")
-const TwitterIcon = ({ className }) => iconPng(className, "twitter")
-const FooterYoutTubeIcon = ({ className }) => iconPng(className, "icon_yt@2x")
 const Slack = ({ className }) => iconPng(className, "slack")
 const Spotify = ({ className }) => iconPng(className, "spotify")
 const Antena = ({ className }) => iconPng(className, "antena")
 const AmazonMusic = ({ className }) => iconPng(className, "amazonmusic")
 const View = ({ className }) => iconPng(className, "view")
+
+const TwitterIcon = ({ className }) => iconPng(className, "twitter")
+const LetterIcon = ({ className }) => iconPng(className, "letter")
+const FooterFacebookIcon = ({ className }) => iconPng(className, "icon_fb@2x")
+const FooterLinkedinIcon = ({ className }) => iconPng(className, "icon_li@2x")
+const FooterTwitterIcon = ({ className }) => iconPng(className, "icon_t@2x")
+const FooterYoutTubeIcon = ({ className }) => iconPng(className, "icon_yt@2x")
 
 const iconsStayPath = "/icons/stayConnected/"
 

@@ -9,7 +9,7 @@ const Card = styled.div`
   display: flex;
   background: var(--darkBlue);
   width: 100%;
-  height: 250px;
+  height: 200px;
 `
 
 const CardBody = styled.div`
@@ -17,10 +17,12 @@ const CardBody = styled.div`
   flex-direction: row;
   justify-content: space-between;
   .button-animation {
-    display: none;
+    display: block;
   }
   button {
     transition: background-color 0.2s ease-out;
+
+    font-size: 0.5rem;
   }
 
   @media ${size.lg} {
@@ -139,7 +141,13 @@ const Info = styled.a`
   }
 `
 
-const CardProfessionalsNew = ({ name, imageSrc, position, country }) => {
+const ProfessionalCard = ({
+  name,
+  imageSrc,
+  position,
+  country,
+  buttonText,
+}) => {
   return (
     <Card>
       <ImageContainer>
@@ -153,7 +161,7 @@ const CardProfessionalsNew = ({ name, imageSrc, position, country }) => {
           <Info>{country} </Info>
         </Content>
         <div className="button-animation">
-          <ButtonWithAnimation />
+          <ButtonWithAnimation text={buttonText} />
         </div>
       </CardBody>
       <ArrowContainer>
@@ -163,4 +171,4 @@ const CardProfessionalsNew = ({ name, imageSrc, position, country }) => {
   )
 }
 
-export default CardProfessionalsNew
+export default ProfessionalCard

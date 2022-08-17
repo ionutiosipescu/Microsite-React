@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Container = styled.a`
   display: inline-flex;
@@ -28,7 +28,7 @@ export const Container = styled.a`
       color: var(--white);
     }
   }
-`;
+`
 
 export const ChevronContainer = styled.span`
   background-color: ${({ black }) =>
@@ -42,16 +42,16 @@ export const ChevronContainer = styled.span`
     height: 20px;
     fill: white;
   }
-`;
+`
 
 export const TextContainer = styled.span`
   color: ${({ black }) => (black ? "var(--black1)" : "var(--hover-blue)")};
   transition: all 0.5s ease-out;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bolder;
   display: flex;
   align-items: center;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
   position: relative;
   text-transform: uppercase;
 
@@ -69,4 +69,4 @@ export const TextContainer = styled.span`
     background-color: var(--hover-blue);
     opacity: 0;
   }
-`;
+`

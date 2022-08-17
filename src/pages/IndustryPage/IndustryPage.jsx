@@ -1,12 +1,22 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router"
-import { HeroSection } from "../../components/cards"
+import {
+  ArticlePreviewCard,
+  CardProfessionals,
+  HeroSection,
+  SocialsCard,
+} from "../../components/cards"
 import { fetchIndustry } from "../../store/actions/hls/hlsHome"
 
-import { ProfessionalsCardSmallOld } from "../../components/cards"
+import { ProfessionalCard, ContactSubscribeCard } from "../../components/cards"
 
 import styled from "styled-components"
+import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+import ExpertiseSection from "../../components/section/ExpertiseSection"
+import { expertiseData } from "../../utils/data"
+import ArticlesSection from "../../components/section/ArticlesSection"
+// import CardProfessionalsNew from "../../components/cards/CardProfessionalsNew"
 
 const IndustryPage = () => {
   const { state } = useLocation()
@@ -27,36 +37,44 @@ const IndustryPage = () => {
         pageCategory={"Industry"}
         title={industry?.name}
       />
+      <StyledContainer>
+        <IndustryContainer>
+          <div className=" d-flex ">
+            <div className=" col-lg-8 ">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: industry?.description ?? industry?.teaser_text,
+                }}
+                className="descriptionContainer"
+              />
+              <ExpertiseContainer>
+                <ExpertiseSection expertises={expertiseData} />
+              </ExpertiseContainer>
+            </div>
 
-      <IndustryContainer>
-        <div className="row d-flex justify-content-between">
-          <div className=" col-lg-9 border">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: industry?.description ?? industry?.teaser_text,
-              }}
-              className="descriptionContainer"
-            />
-            <ExpertiseContainer>
-              <h2>Expertise</h2>
-            </ExpertiseContainer>
+            <div className="expertsContainer col-lg-4 ">
+              {industry?.experts?.map((expert, index) => {
+                return (
+                  <ProfessionalCard
+                    name={expert.name}
+                    imageSrc={expert?.image}
+                    position={expert?.profession_title}
+                    country={expert?.global_location}
+                    buttonText={"connect".toUpperCase()}
+                  />
+                )
+              })}
+              <SocialsCard />
+              <ContactSubscribeCard />
+            </div>
           </div>
-
-          <div className="expertsContainer col-lg-3 border">
-            {industry?.experts?.map((expert, index) => {
-              let cardInfo = {
-                id: expert?.id,
-                image: expert?.image,
-                name: expert?.title,
-                position: expert?.profession_title,
-              }
-              return (
-                <ProfessionalsCardSmallOld cardInfo={cardInfo} key={index} />
-              )
-            })}
-          </div>
-        </div>
-      </IndustryContainer>
+        </IndustryContainer>
+      </StyledContainer>
+      <ArticlesContainer>
+        <StyledContainer>
+          <ArticlesSection />
+        </StyledContainer>
+      </ArticlesContainer>
     </>
   )
 }
@@ -64,14 +82,28 @@ const IndustryPage = () => {
 export default IndustryPage
 
 const IndustryContainer = styled.div`
-  width: 90%;
-  border: 2px solid red;
+  width: 100%;
+  /* height: 200px; */
+  /* border: 2px solid red; */
   margin: auto;
   padding-top: 40px;
+  .expertsContainer {
+    margin-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .descriptionContainer {
+    padding-bottom: 1rem;
     border-bottom: 3px solid var(--hover-blue);
   }
 `
 const ExpertiseContainer = styled.div`
-  padding-top: 10px;
+  padding-top: 2rem;
+  /* padding:0 1rem; */
+`
+const ArticlesContainer = styled.div`
+  width: 100%;
+  background-color: var(--graySections);
+  color: var(--darkBlueHome);
+  /* background-color: #f2f2f2; */
 `
