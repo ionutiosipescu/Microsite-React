@@ -26,11 +26,11 @@ const BorderBottom = styled.div`
   border-bottom: 1px solid var(--hover-blue);
 `
 
-const ExpertiseCard = ({ title, content, buttonText, border }) => {
+const ExpertiseCard = ({ name, content, buttonText, border, onClick }) => {
   return (
     <Container className="">
       <div className="">
-        <h3>{title || "Title"}</h3>
+        <h3 onClick={() => onClick()}>{name || "Title"}</h3>
         <p>{content?.substr(0, 200) || "content"}</p>
         {/* <p>{content || "content"}</p> */}
 

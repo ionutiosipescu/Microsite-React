@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Card = styled.div`
   /* max-width: 32%; */
   /* padding: 1rem; */
-
+  border-bottom: 2px solid var(--gray1);
   margin-bottom: 2rem;
   color: var(--darkBlueHome);
 `
@@ -30,6 +30,7 @@ export const Content = styled.p`
   color: var(--darkBlue2);
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--gray1);
 `
-export const BorderBottom = styled.div``
+export const BorderBottom = styled.div`
+  border-bottom: 2px solid ${props => props.color || ""};
+`

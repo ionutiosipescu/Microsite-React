@@ -6,6 +6,7 @@ import { routeNames } from "../../routes/routes"
 import { Search, XIcon, Logo, AlvarezMarsal } from "../../assets/icons"
 import styled from "styled-components"
 import { sizem } from "../../utils/breakpoints"
+import { expertiseData } from "../../utils/data"
 
 const NavBar = () => {
   const navigate = useNavigate()
@@ -65,7 +66,8 @@ const NavBar = () => {
                 title="Expertise"
                 id="navbar-scrolling-dropdown"
               >
-                {expertises?.map((expertise, index) => (
+                {/* {expertises?.map((expertise, index) => ( */}
+                {expertiseData?.map((expertise, index) => (
                   <NavDropdown.Item
                     onClick={() => {
                       navigate(`/expertise/${expertise?.name?.toLowerCase()}`, {
@@ -109,7 +111,10 @@ const NavBar = () => {
               >
                 {"HEALTH & LIFE PROFESSIONALS"}
               </Nav.Link>
-              <Nav.Link className="active web-title " href={routeNames.location}>
+              <Nav.Link
+                className="active web-title "
+                href={routeNames.location}
+              >
                 {"LOCATIONS"}
               </Nav.Link>
               <Nav.Link

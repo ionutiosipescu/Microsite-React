@@ -359,7 +359,7 @@ const expertiseDescription =
 export const expertiseData = [
   {
     id: 1,
-    title: "Quality Efficiency Improvement",
+    name: "Quality Efficiency Improvement",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
 
@@ -367,50 +367,50 @@ export const expertiseData = [
   },
   {
     id: 2,
-    title: "Commercial Operations & Growth Enablement",
+    name: "Commercial Operations & Growth Enablement",
     description: expertiseDescription,
 
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 3,
-    title: "Pharma & MedTech Portofolio Management",
+    name: "Pharma & MedTech Portofolio Management",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 4,
-    title: "Supply Chain and Planning Excellence",
+    name: "Supply Chain and Planning Excellence",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 5,
-    title: " CDMO operations and commercial improvements",
+    name: " CDMO operations and commercial improvements",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 6,
-    title: " Target Operating model design and Implementation",
+    name: " Target Operating model design and Implementation",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 7,
-    title: "Cost out and Bottom Line improvement",
+    name: "Cost out and Bottom Line improvement",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 8,
-    title: "Procurement and Category management",
+    name: "Procurement and Category management",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
   {
     id: 9,
-    title: "Procurement and Category management",
+    name: "Procurement and Category management",
     description: expertiseDescription,
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
