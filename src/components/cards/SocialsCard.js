@@ -1,14 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import {
-  Twitter,
-  Facebook,
+  FooterTwitterIcon,
+  FooterFacebookIcon,
   Pdf,
   Mail,
   Share,
-  BlueRectangle,
   FooterLinkedinIcon,
-  LinkedIn,
 } from "../../assets/icons"
 
 const Card = styled.div`
@@ -24,7 +22,7 @@ const Card = styled.div`
     height: 2.8rem;
     width: auto;
   }
-  .linkedin {
+  .icon {
     height: 32px;
     width: auto;
   }
@@ -42,11 +40,15 @@ const SocialsCard = () => {
   return (
     <Card>
       <Share />
-      <Facebook />
       <div className="blue-box">
-        <FooterLinkedinIcon className="linkedin" />
+        <FooterFacebookIcon className="icon" />
       </div>
-      <Twitter />
+      <div className="blue-box">
+        <FooterLinkedinIcon className="icon" />
+      </div>
+      <div class="blue-box">
+        <FooterTwitterIcon className="icon" />
+      </div>
       <Mail />
       <Pdf />
     </Card>
