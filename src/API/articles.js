@@ -2,56 +2,53 @@ import Axios from "axios"
 import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper"
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
-const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1"
+const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-// export const getInsights = (setInsightsContent, selectedFilters) => {
-//   let link = `${customApi}/insight-filter`
-
-//   if (selectedFilters && selectedFilters.length > 0) {
-//     link = getLinkWithFilters(link, selectedFilters)
-//   }
-
-//   Axios.get(link).then(res => {
-//     setInsightsContent([...res.data])
-//   })
-// }
-
-export const getInsights = (setInsightsContent, selectedFilters) => {
+export const getInsights = (setInsightsContent, selectedFilters, type) => {
   let link = `${customApi}/hls`
 
-  // if (selectedFilters && selectedFilters.length > 0) {
-  //   link = getLinkWithFilters(link, selectedFilters)
-  // }
+  console.log(type)
 
   Axios.get(link).then(res => {
-    // console.log(res.data.block_two.data)
-    // setInsightsContent([...res.data.block_two])
-    setInsightsContent({
-      businessInsights: res.data.block_two,
-      caseStudies: res.data.block_one,
-    })
+    if (type === "all") {
+      setInsightsContent({
+        businessInsights: res.data.block_two,
+        caseStudies: res.data.block_one,
+        podcasts: res.data.block_three,
+      })
+    } else {
+      setInsightsContent({
+        content: res.data.block_one,
+      })
+    }
   })
 }
 
 export const getSingleArticle = (setArticleData, id) => {
-  const link = `${jsonApi}/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf&filter[id]=${id}`
+  // Good one?
+  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`
 
+  const link = `${jsonApi}/node/article/${id}`
+
+  // const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`
+
+  // console.log(link)
   Axios.get(link).then(res => {
     const data = res.data.data
-    console.log(res.data)
 
     let article = {}
 
-    article.content = data[0].attributes.body.value
+    article.content = data.attributes.body.value
 
     article.date = new Date(
-      data[0].attributes.changed || data[0].attributes.created
+      data.attributes.changed || data.attributes.created
     ).toLocaleDateString()
 
-    article.title = data[0].attributes.title
-
-    article.authors = grabRelatedPeople("field_authors", res.data, 0)
-    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+    article.title = data.attributes.title
+    // console.log(article)
+    //
+    // article.authors = grabRelatedPeople("field_authors", res.data, 0)
+    // article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
 
     setArticleData(article)
   })

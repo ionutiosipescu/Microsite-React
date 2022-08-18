@@ -1,20 +1,18 @@
 import React, { useContext } from "react"
 import { XIcon } from "../../../assets/icons"
 import * as S from "./styles/FilterCell.styles"
-import { InsightsNavbarContext } from "./InsightsNavbar"
+import { useDispatch } from "react-redux"
+import { removeFilter } from "../../../store/actions/filters"
 
 const FilterCell = ({ text }) => {
-  const { setSelectedFilters, selectedFilters } = useContext(
-    InsightsNavbarContext
-  )
+  const dispatch = useDispatch()
 
-  const removeFilter = e => {
-    const newSelectedFilters = selectedFilters.filter(filter => filter !== text)
-    setSelectedFilters(newSelectedFilters)
+  const remove = e => {
+    dispatch(removeFilter(text))
   }
 
   return (
-    <S.FilterCell onClick={e => removeFilter(e)}>
+    <S.FilterCell onClick={e => remove(e)}>
       {text || "FilterCell"} <XIcon />
     </S.FilterCell>
   )

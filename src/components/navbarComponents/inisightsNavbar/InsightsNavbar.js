@@ -38,10 +38,13 @@ const InsightsNavbar = () => {
         </S.InputContainer>
       </S.TitleSection>
       <S.Navbar showNavbar={true}>
-        <Cell text={"all insights"} href="#" />
-        <Cell text={"A&m news & release"} href="#" />
-        <Cell text={"succes stories"} href="#" />
-        <Cell text={"business & industry inisights"} href="#" />
+        <Cell text={"all insights"} href="#" type={"all"} />
+        <Cell
+          text={"business & industry inisights"}
+          type={"industryInsights"}
+        />
+        <Cell text={"health & life case studies"} type={"caseStudies"} />
+        <Cell text={"health & life podcasts"} href="#" type={"podcasts"} />
       </S.Navbar>
       <InsightsNavbarContext.Provider value={values}>
         <CellWithChevron

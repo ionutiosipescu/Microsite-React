@@ -21,7 +21,11 @@ export const StyledCol2 = styled.div`
 `
 
 export const StyledContainer = styled.div`
-  padding: 3rem 5rem;
+  padding: 2rem;
+
+  @media ${size.lg} {
+    padding: 3rem 4rem;
+  }
 `
 export const StyledContainerLocation = styled.div`
   max-width: 1600px;
