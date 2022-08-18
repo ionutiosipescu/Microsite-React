@@ -31,5 +31,10 @@ export const StyledContainerLocation = styled.div`
 export const ContainerLocation = styled.div`
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1fr);
+  justify-items: center;
+  @media ${size.lg} {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: unset;
+  }
 `
