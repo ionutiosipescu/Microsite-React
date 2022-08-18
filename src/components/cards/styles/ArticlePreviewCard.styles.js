@@ -29,8 +29,7 @@ export const Date = styled.div`
 export const Content = styled.p`
   color: var(--darkBlue2);
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gray1);
 `
-export const BorderBottom = styled.div`
-  padding-top: 1rem;
-  border-bottom: 2px solid var(--gray2);
-`
+export const BorderBottom = styled.div``

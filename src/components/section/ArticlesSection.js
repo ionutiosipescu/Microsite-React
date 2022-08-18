@@ -4,6 +4,7 @@ import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import { sizem } from "../../utils/breakpoints"
 
 import { ArticlePreviewCard } from "../cards"
+import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
 
 const ArticlesSectionContainer = styled.div`
   width: 100%;
@@ -12,18 +13,14 @@ const ArticlesSectionContainer = styled.div`
   flex-wrap: wrap;
   /* justify-content: space-between; */
   font-family: "Helvetica Neue LT Std", sans-serif;
+  color: var(--darkBlueHome);
 `
 const arr = [1, 2, 3, 4, 5, 5, 5]
 const ArticleSection = ({ articles }) => {
   articles ? (articles = articles) : (articles = arr)
   return (
-    <ArticlesSectionContainer className="row">
+    <UnalignedItemsConainer columnsNumber={3}>
       {articles.map((i, index) => {
-        let lastRowElements = arr.length % 3
-        if (lastRowElements == 0) {
-          lastRowElements = 3
-        }
-        let borderIndex = arr.length - index > lastRowElements
         let cardInfo = {
           id: i,
           category: "HEALTHCARE & LIFE SCIENCES INSIGHTS",
@@ -36,12 +33,11 @@ const ArticleSection = ({ articles }) => {
         return (
           <ArticlePreviewCard
             cardArticle={cardInfo}
-            border={borderIndex}
             onClick={() => alert("click")}
           />
         )
       })}
-    </ArticlesSectionContainer>
+    </UnalignedItemsConainer>
   )
 }
 

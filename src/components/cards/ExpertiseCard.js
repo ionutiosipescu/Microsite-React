@@ -28,7 +28,7 @@ const BorderBottom = styled.div`
 
 const ExpertiseCard = ({ title, content, buttonText, border }) => {
   return (
-    <Container className="col-12 col-lg-4">
+    <Container className="">
       <div className="">
         <h3>{title || "Title"}</h3>
         <p>{content?.substr(0, 200) || "content"}</p>
