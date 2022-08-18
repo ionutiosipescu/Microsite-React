@@ -50,7 +50,7 @@ const ExpertiseSectionContainer = styled.div`
 
 const ExpertiseSection = ({ expertises }) => {
   const navigate = useNavigate()
-  console.log(expertises)
+  // console.log(expertises)
   return (
     <ExpertiseSectionContainer className="">
       <div className="grayContainer">
@@ -66,11 +66,16 @@ const ExpertiseSection = ({ expertises }) => {
             // console.log(borderIndex)
             return (
               <ExpertiseCard
-                title={expertise.title}
+                name={expertise.name}
                 content={expertise.description}
                 index={index}
                 border={borderIndex}
                 className="expertise"
+                onClick={() =>
+                  navigate(`/expertise/${expertise?.name.toLowerCase()}`, {
+                    state: expertise.id,
+                  })
+                }
               />
             )
           })}
