@@ -27,7 +27,7 @@ const Leadership = () => {
   const [openedStatePersons, setOpenedStatePersons] = useState(
     Array.from(persons ?? [], () => false)
   )
-
+  console.log(persons)
   const handleDisplay2 = (index, array, state, setState) => {
     if (!state[index]) {
       let arr = Array.from(array, () => false)
@@ -52,6 +52,7 @@ const Leadership = () => {
         backgroundUrl={
           "https://images.unsplash.com/photo-1581610186406-5f6e9f9edbc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
         }
+        height={350}
       />
 
       <h1 className="p-4"> Leaders</h1>

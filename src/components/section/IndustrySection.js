@@ -3,6 +3,7 @@ import styled from "styled-components"
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import { sizem } from "../../utils/breakpoints"
 import { useNavigate } from "react-router"
+import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
 
 const IndustrySectionContainer = styled.div`
   width: 100%;
@@ -30,15 +31,10 @@ const IndustrySectionContainer = styled.div`
     }
   }
 
-  .infoContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* margin: auto; */
-    /* padding: 0px 40px; */
-  }
   .industry {
-    padding-top: 30px;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     h2 {
       color: var(--darkBlueHome);
       font-size: 1.5em;
@@ -58,12 +54,9 @@ const IndustrySection = ({ industries }) => {
     <IndustrySectionContainer className="">
       <div className="grayContainer">
         <h2 className="">Industries: </h2>
-        <div className="infoContainer ">
+        <UnalignedItemsConainer columnsNumber={2}>
           {industries?.map((industry, index) => (
-            <div
-              className="industry col-lg-5 col-md-10 col-sm-10 col-10"
-              key={index}
-            >
+            <div className="industry " key={index}>
               <div className="body">
                 <h2
                   onClick={() =>
@@ -83,7 +76,7 @@ const IndustrySection = ({ industries }) => {
               </div>
             </div>
           ))}
-        </div>
+        </UnalignedItemsConainer>
       </div>
     </IndustrySectionContainer>
   )

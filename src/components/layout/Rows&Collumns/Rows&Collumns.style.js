@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { size } from "../../../utils/breakpoints"
+import { size, sizem } from "../../../utils/breakpoints"
 
 export const StyledRow = styled.div`
   display: flex;
@@ -22,7 +22,21 @@ export const StyledCol2 = styled.div`
 
 export const StyledContainer = styled.div`
   padding: 3rem 5rem;
+  @media ${sizem.mdm} {
+    padding: 2rem 2rem;
+  }
 `
+export const ContainerContent = styled.div`
+  padding: 3rem 5rem;
+  @media ${sizem.mdm} {
+    padding: 2rem 4rem;
+  }
+`
+export const FullWidthContainer = styled.div`
+  width: 100%;
+  background-color: ${props => props.bgColor || "red"};
+`
+
 export const StyledContainerLocation = styled.div`
   max-width: 1600px;
   margin: 0 auto;
