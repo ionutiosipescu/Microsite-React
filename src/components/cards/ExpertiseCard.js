@@ -10,7 +10,7 @@ const Container = styled.div`
 
   color: var(--darkBlue2);
   padding-bottom: 1rem;
-  padding-right: 50px;
+  padding-right: 20px;
   h3 {
     color: var(--darkBlueHome);
     font-size: 1.5rem;

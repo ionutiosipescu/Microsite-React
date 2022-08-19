@@ -9,9 +9,9 @@ export const Container = styled.div`
 export const Card = styled.div`
   display: flex;
   background: #002b49;
-  min-height: 200px;
-  max-height: 200px;
-  max-width: 300px;
+  min-height: 180px;
+  max-height: 180px;
+  max-width: 350px;
   margin-bottom: 2rem;
 `
 
@@ -40,24 +40,10 @@ export const Content = styled.div`
   color: var(--orange2);
   font-weight: bold;
   height: 100%;
-  width: 150px;
+  width: 200px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
-  h5 {
-    padding: 0;
-    margin: 0;
-    color: white;
-
-    font-weight: bold;
-    line-height: 1.2;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-  }
-
-  div {
-    font-size: 1rem;
-  }
+  align-items: center;
+  justify-content: center;
 `

@@ -10,7 +10,7 @@ const Hero = styled.div`
   position: relative;
   height: ${props => props.height + "px" || ""};
   width: 100%;
-  background: url(${props => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.5);
+  background: url(${props => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.7);
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;

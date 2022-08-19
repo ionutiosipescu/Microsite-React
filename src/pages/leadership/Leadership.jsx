@@ -7,9 +7,20 @@ import { useDocumentTitle } from "../../hook"
 import { Spinner } from "../../components"
 
 import { useDispatch, useSelector } from "react-redux"
-import { fetchHLSLeaders, fetchHLSPersons } from "../../store/actions/leaders"
+import {
+  fetchHLSLeaders,
+  fetchHLSPersons,
+  filterHLSPersons,
+} from "../../store/actions/leaders"
+import { InsightsNavbar } from "../../components/navbarComponents"
+import * as S from "../../components/navbarComponents/leadershipNavbar/styles/InsightsNavbar.styles"
 
+import Dropdown from "../../components/navbarComponents/leadershipNavbar/Dropdown"
+import { InsightsNavbarContext } from "../../components/navbarComponents/leadershipNavbar/InsightsNavbar"
+import CellWithChevron from "../../components/navbarComponents/leadershipNavbar/CellWithChevron"
+import FiltersContainer from "../../components/navbarComponents/leadershipNavbar/FiltersContainer"
 export const LeaadersContainer = styled.div`
+  padding-top: 30px;
   display: flex;
   flex-wrap: wrap;
 
@@ -19,7 +30,14 @@ const Leadership = () => {
   const dispatch = useDispatch()
 
   const leaders = useSelector(state => state.leaders.filteredLeaders)
-  const persons = useSelector(state => state.leaders.industryPersons)
+  const persons = useSelector(state => state.leaders?.industryPersons)
+  const expertises = useSelector(state => state?.leaders?.expertises)
+  const industries = useSelector(state => state?.leaders?.industries)
+  const location = useSelector(state => state?.leaders?.location)
+  const cities = useSelector(state => state?.leaders?.cities)
+  const filtersPersons = useSelector(state => state?.leaders?.filtersPersons)
+
+  const navbarFilters = useSelector(state => state.leaders.navbarFilters)
 
   const [openedState, setOpenedState] = useState(
     Array.from(leaders ?? [], () => false)
@@ -27,7 +45,7 @@ const Leadership = () => {
   const [openedStatePersons, setOpenedStatePersons] = useState(
     Array.from(persons ?? [], () => false)
   )
-  console.log(persons)
+  // console.log(persons)
   const handleDisplay2 = (index, array, state, setState) => {
     if (!state[index]) {
       let arr = Array.from(array, () => false)
@@ -43,23 +61,64 @@ const Leadership = () => {
     dispatch(fetchHLSPersons())
   }, [])
 
+  useEffect(() => {
+    dispatch(filterHLSPersons())
+  }, [navbarFilters])
+
   useDocumentTitle("Leadership | Alvarez & Marsal")
+
+  const handleClick = () => {
+    setShowNavbar(!showNavbar)
+  }
+
+  const [dropdownHeight, setDropdownHeight] = useState(null)
+  const [selectedFilters, setSelectedFilters] = useState([])
+  const [showNavbar, setShowNavbar] = useState(false)
+
+  const values = {
+    dropdownHeight: dropdownHeight,
+    setDropdownHeight: setDropdownHeight,
+    setSelectedFilters: setSelectedFilters,
+    selectedFilters: selectedFilters,
+  }
   return (
     <>
       <HeroSection
-        title={"helthcare & live sciences leaders"}
+        title={"HEALTH & LIFE PROFESSIONALS"}
+        description={
+          "Wherever you are, we have industry leaders to solve your problems."
+        }
         className="heroContainer"
         backgroundUrl={
-          "https://images.unsplash.com/photo-1581610186406-5f6e9f9edbc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          "https://akamai.alvarezandmarsal.com/themes/custom/am/images/bg/our-people-heading-bg.jpg"
         }
-        height={350}
+        height={300}
       />
 
       <h1 className="p-4"> Leaders</h1>
       {leaders?.length === 0 ? (
         <Spinner />
       ) : (
-        <div className="m-4">
+        <div className="my-2 mx-4">
+          <InsightsNavbarContext.Provider value={values}>
+            <CellWithChevron
+              text={"Filter by"}
+              handleClick={handleClick}
+              onlyMobile
+            />
+            <S.Navbar showNavbar={showNavbar}>
+              {/* {filtersPersons?.map(term => {
+                console.log(term)
+              })} */}
+              {filtersPersons?.map(term => (
+                <Dropdown text={term} iconColor={"var(--hover-blue)"} />
+              ))}
+            </S.Navbar>
+            <FiltersContainer
+              filtercolor={"var(--hover-blue)"}
+              marginTop="6rem"
+            />
+          </InsightsNavbarContext.Provider>
           <LeaadersContainer>
             {leaders?.map((cardInfo, index) => {
               return (
@@ -82,7 +141,7 @@ const Leadership = () => {
               )
             })}
           </LeaadersContainer>
-          <h1 className="pb-4"> Leaders</h1>
+          {/* <h1 className="pb-4"> Leaders</h1> */}
           <LeaadersContainer>
             {persons?.map((cardInfo, index) => {
               return (

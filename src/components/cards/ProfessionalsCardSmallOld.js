@@ -8,7 +8,8 @@ import {
   CardBody,
   Content,
 } from "./styles/ProfessionalsCardSmall.styles"
-
+import styled from "styled-components"
+import { size } from "../../utils/breakpoints"
 const ProfessionalsCardSmallOld = ({
   cardInfo,
   index,
@@ -22,7 +23,7 @@ const ProfessionalsCardSmallOld = ({
       setMargin(0)
     }
   }, [showDetails])
-  console.log(cardInfo)
+  // console.log(cardInfo)
   return (
     <Container margin={margin} className="">
       <Card onClick={() => handleDisplay(index)}>
@@ -32,10 +33,9 @@ const ProfessionalsCardSmallOld = ({
 
         <CardBody>
           <Content>
-            <h5>{cardInfo?.name}</h5>
-            <div className="pt-2">
-              <div>{cardInfo?.position}</div>
-            </div>
+            <Name>{cardInfo?.name}</Name>
+            <Position>{cardInfo?.position ?? "Senior Director"}</Position>
+            <Info>{cardInfo?.country.name}</Info>
           </Content>
         </CardBody>
       </Card>
@@ -53,3 +53,53 @@ const ProfessionalsCardSmallOld = ({
 }
 
 export default ProfessionalsCardSmallOld
+
+const Name = styled.a`
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  padding-top: 20px;
+
+  :hover {
+    color: #ffffff;
+  }
+  @media ${size.lg} {
+    font-size: 0.875rem;
+  }
+`
+const Position = styled.p`
+  color: var(--hover-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.4;
+  margin: 0;
+  padding: 8px 0;
+
+  @media ${size.lg} {
+    font-size: 0.813rem;
+    padding: 2px 0;
+  }
+`
+
+const Info = styled.a`
+  color: var(--hover-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1, 4;
+  cursor: pointer;
+
+  :hover {
+    color: var(--hover-blue);
+  }
+
+  @media ${size.lg} {
+    font-size: 0.813rem;
+  }
+`
