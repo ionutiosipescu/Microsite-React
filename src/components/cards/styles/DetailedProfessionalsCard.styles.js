@@ -2,14 +2,17 @@ import { size } from "../../../utils/breakpoints";
 import styled from "styled-components";
 
 export const Card = styled.div`
-  background: #00000029;
+  background: var(--darkBlueHome);
   position: absolute;
   z-index: 1;
   right: 0;
   left: 0;
-  width: 100%;
   min-height: 400px;
   padding: 4rem 2rem;
+  width: 1532px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
 `;
 export const XContainer = styled.a`
   display: inline-block;
@@ -81,9 +84,16 @@ export const ImageTriangleContainer = styled.div`
 
 export const Content = styled.div`
   flex: 2;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   h4 {
     font-weight: bold;
+    color: #fff;
+  }
+  h6 {
+    font-weight: bold;
+    color: var(--hover-blue);
   }
 
   & :nth-child(2) {
@@ -93,6 +103,9 @@ export const Content = styled.div`
 
   a {
     font-weight: bold;
+  }
+  p {
+    color: #fff;
   }
 `;
 

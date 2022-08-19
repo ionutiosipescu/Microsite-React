@@ -45,6 +45,8 @@ const DetailedProfessionalsCard = ({
     }
 
     setBorderBottom(!borderBottom)
+
+    console.log(content)
   }
   return (
     <>
@@ -62,30 +64,41 @@ const DetailedProfessionalsCard = ({
           <Header>
             <ImageContainer>
               <img src={content?.image}></img>
-              <ButtonWithAnimation
+              {/* <ButtonWithAnimation
                 text="Connect"
                 radius={"0"}
                 onClick={() => {
                   window.open(content.linkOurPeople, "_blank")
                 }}
-              />
+              /> */}
             </ImageContainer>
             <Content>
-              <h4>{content?.name}</h4>
-              <p className="text-muted">{content?.position}</p>
-              <DescriptionDesktop>
-                {smallLeaderDescription ? (
-                  <p>{content?.smallDescription}</p>
-                ) : (
-                  <div
-                    className="container pt-3 text-decoration-none"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(content?.allDescription),
-                    }}
-                  ></div>
-                )}
-              </DescriptionDesktop>
-              <a
+              <div>
+                <h4>{content?.name}</h4>
+                <h6>Managing director</h6>
+                <p className="text-muted">{content?.position}</p>
+                
+                <DescriptionDesktop>
+                  {smallLeaderDescription ? (
+                    <p>{content?.smallDescription}</p>
+                  ) : (
+                    <div
+                      className="container pt-3 text-decoration-none"
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(content?.allDescription),
+                      }}
+                    ></div>
+                  )}
+                </DescriptionDesktop>
+              </div>
+              <ButtonWithAnimation
+                text={"connect"}
+                width={"100%"}
+                onClick={() => {
+                  window.location.replace(content.linkOurPeople)
+                }}
+              />
+              {/* <a
                 className="fw-bold text-reset"
                 // onClick={() =>
                 //   setSmallLeaderDescription(!smallLeaderDescription)
@@ -94,19 +107,12 @@ const DetailedProfessionalsCard = ({
                 href={content?.linkOurPeople}
               >
                 Read More
-              </a>
+              </a> */}
             </Content>
           </Header>
 
           <Info>
             <ContainerMobile>
-              <ButtonWithAnimation
-                text={"connect"}
-                width={"100%"}
-                onClick={() => {
-                  window.location.replace(content.linkOurPeople)
-                }}
-              />
               <div>{content?.smallDescription}</div>
             </ContainerMobile>
 
