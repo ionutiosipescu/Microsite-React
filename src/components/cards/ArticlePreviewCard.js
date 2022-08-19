@@ -16,7 +16,7 @@ const ArticlePreviewCard = ({ cardArticle: articleInfo, category }) => {
     <S.Card>
       <S.Category>{articleInfo?.category || category || "category"}</S.Category>
       <S.Title onClick={handleClick}>
-        {/* {articleInfo?.title.substr(0, 30) || "Title"} */}
+        {/* {articleInfo?.title.substr(0  , 30) || "Title"} */}
         {articleInfo?.title || "Title"}
       </S.Title>
       <S.Date>{articleInfo?.updated || "Date"}</S.Date>

@@ -1,45 +1,35 @@
 import React, { useRef, useEffect, useContext, useState } from "react"
 import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
-import { InsightsNavbarContext } from "./InsightsNavbar"
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
 
 const Dropdown = ({ text }) => {
   const dropdownRef = useRef()
-  const dropdownHeightRef = useRef(null)
-  const {
-    dropdownHeight,
-    setDropdownHeight,
-    setSelectedFilters,
-    selectedFilters,
-  } = useContext(InsightsNavbarContext)
-
   const dispatch = useDispatch()
+  const dropdownHeightRef = useRef(null)
 
   const [isOpen, setIsOpen] = useState(false)
+  const [margin, setMargin] = useState(0)
+
+  useEffect(() => {
+    if (isOpen && dropdownHeightRef.current.clientHeight > 80) {
+      setMargin(dropdownHeightRef.current.clientHeight)
+    } else {
+      setMargin(0)
+    }
+  }, [isOpen])
 
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
 
-  const closeDropdown = e => {
-    // setDropdownHeight(0)
-    if (!dropdownRef.current.contains(e.target)) {
-      console.log("doing")
-      setIsOpen(false)
-      setDropdownHeight(0)
-    }
-  }
-
-  // Old method for listtening to clicks outside of the dropdown
+  // Listtening to clicks outside of the dropdown
   useEffect(() => {
     const closeDropdown = e => {
       if (!dropdownRef.current.contains(e.target) && isOpen) {
         console.log("doing")
         setIsOpen(false)
-
-        // setDropdownHeight(0)
       }
     }
 
@@ -55,7 +45,7 @@ const Dropdown = ({ text }) => {
   }
 
   return (
-    <div ref={dropdownRef}>
+    <S.Container ref={dropdownRef} margin={margin}>
       <CellWithChevron
         text={text}
         handleClick={handleClick}
@@ -70,7 +60,7 @@ const Dropdown = ({ text }) => {
         <li onClick={e => addFilterToRedux(e)}>sunshine6</li>
         <li onClick={e => addFilterToRedux(e)}>sunshine7</li>
       </S.DropdownContainer>
-    </div>
+    </S.Container>
   )
 }
 
