@@ -1,7 +1,7 @@
-import { size } from "../../../utils/breakpoints";
-import styled from "styled-components";
-import { CountryPage } from "../../../assets/icons";
-import { ButtonWithAnimation } from "../../buttons";
+import { size } from "../../../utils/breakpoints"
+import styled from "styled-components"
+import { CountryPage } from "../../../assets/icons"
+import { ButtonWithAnimation } from "../../buttons"
 
 export const Card = styled.div`
   background-image: url(https://akamai.alvarezandmarsal.com/sites/default/files/countrypage_us.jpg);
@@ -26,7 +26,7 @@ export const Card = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,36,74,0.9);
+    background-color: rgba(0, 36, 74, 0.9);
   }
   .xicon {
     position: absolute;
@@ -39,25 +39,24 @@ export const Card = styled.div`
     background-size: 32px 32px;
     margin-right: 15px !important;
   }
-  
-`;
+`
 export const XContainer = styled.a`
-   display: inline-block;
+  display: inline-block;
   margin: 0 0 0 auto;
   width: 2rem;
   height: 2rem;
-  cursor: pointer; 
+  cursor: pointer;
 
-   svg {
+  svg {
     width: 2rem;
     height: 2rem;
     fill: var(--hover-blue);
-  } 
+  }
   :hover {
     svg {
       fill: #fff;
     }
-  } 
+  }
   /* .x-icon {
     position: absolute;
     right: 0;
@@ -69,7 +68,7 @@ export const XContainer = styled.a`
     background-size: 32px 32px;
     margin-right: 15px !important;
   } */
-`;
+`
 
 export const CardBody = styled.div`
   gap: 2rem;
@@ -83,14 +82,14 @@ export const CardBody = styled.div`
     padding: 20px;
     height: 100%;
   }
-`;
+`
 
 export const Header = styled.div`
-margin-right: 30px;
-`;
+  margin-right: 30px;
+`
 
 export const ImageContainer = styled.div`
-height: 100%;
+  height: 100%;
   /* background: darkgray;
 
   flex: 1;
@@ -117,35 +116,36 @@ height: 100%;
     max-width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: right;
     width: 296px;
     aspect-ratio: auto 296 / 434;
   }
-`;
+`
 export const ImageTriangleContainer = styled.div`
- margin-left: 191px;
-    position: absolute;
-    content: "";
-    left: 0;
-    top: -14px;
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 14px solid #00244A;
-`;
+  margin-left: 191px;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: -14px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 14px solid #00244a;
+`
 
 export const Content = styled.div`
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-right: 30px;
-    /* justify-content: space-between; */
-    h4 {
-      font-size: 30px;
-      color: white;
-      text-transform: uppercase;
-      font-weight: 900;
-      line-height: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  /* justify-content: space-between; */
+  h4 {
+    font-size: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1;
   }
   h6 {
     font-size: 18px;
@@ -158,10 +158,10 @@ export const Content = styled.div`
     color: #fff;
     margin: 20px 0;
   }
-#button-leaders {
-  margin-top: auto;
-  margin-bottom: 20px;
-}
+  #button-leaders {
+    margin-top: auto;
+    margin-bottom: 20px;
+  }
   /* flex: 2;
   display: flex;
   flex-direction: column;
@@ -186,14 +186,14 @@ export const Content = styled.div`
   p {
     color: #fff;
   } */
-`;
+`
 
 export const Info = styled.div`
   /* flex: 1; */
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-`;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+`
 
 export const InfoCard = styled.div`
   font-weight: bold;
@@ -205,36 +205,35 @@ export const InfoCard = styled.div`
     text-transform: uppercase;
     margin: 0;
   }
-`;
+`
 
 export const Dropdown = styled.div`
-    font-size: 20px;
-    color: #6BBEEC;
-    text-transform: uppercase;
-    display: grid;
-    gap: 20px;
-    margin: auto 0;
-  display: ${(props) => props.display};
+  font-size: 20px;
+  color: #6bbeec;
+  text-transform: uppercase;
+  display: grid;
+  gap: 20px;
+  margin: auto 0;
+  display: ${props => props.display};
 
   @media ${size.lg} {
     display: initial;
   }
-`;
+`
 
 export const ContactInfo = styled.div`
   margin: 1rem 0;
   padding: 1rem 0;
 
   border-top: 1px solid black;
-  border-bottom: ${(props) =>
-    props.borderBottom ? "1px solid black" : "none"};
+  border-bottom: ${props => (props.borderBottom ? "1px solid black" : "none")};
 
   text-align: center;
 
   @media ${size.lg} {
     display: none;
   }
-`;
+`
 
 export const PersonalInfo = ({ title, content }) => {
   return (
@@ -242,8 +241,8 @@ export const PersonalInfo = ({ title, content }) => {
       <p>{title}</p>
       <div>{content}</div>
     </InfoCard>
-  );
-};
+  )
+}
 
 export const DescriptionDesktop = styled.div`
   display: none;
@@ -251,7 +250,7 @@ export const DescriptionDesktop = styled.div`
   @media ${size.sm} {
     display: initial;
   }
-`;
+`
 
 export const ContainerMobile = styled.div`
   margin: 2rem 0;
@@ -263,4 +262,4 @@ export const ContainerMobile = styled.div`
   @media ${size.sm} {
     display: none;
   }
-`;
+`
