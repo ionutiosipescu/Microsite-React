@@ -1,5 +1,10 @@
 import Axios from "axios"
-import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper"
+import {
+  months,
+  getLink,
+  getLinkWithFilters,
+  grabRelatedPeople,
+} from "./helper"
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
@@ -42,7 +47,11 @@ export const getSingleArticle = (setArticleData, id) => {
 
     article.date = new Date(
       data.attributes.changed || data.attributes.created
-    ).toLocaleDateString()
+    ).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
 
     article.title = data.attributes.title
     // console.log(article)

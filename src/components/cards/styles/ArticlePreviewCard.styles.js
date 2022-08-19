@@ -4,6 +4,7 @@ export const Card = styled.div`
   /* max-width: 32%; */
   /* padding: 1rem; */
 
+  width: 100%;
   margin-bottom: 2rem;
   color: var(--darkBlueHome);
 `
@@ -19,6 +20,7 @@ export const Title = styled.h2`
   color: var(--darkBlue2);
   margin-bottom: 0;
   font-size: 30px;
+  cursor: pointer;
 `
 
 export const Date = styled.div`

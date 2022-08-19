@@ -22,6 +22,7 @@ import { size } from "../../../utils/breakpoints"
 //     display: flex;
 //   }
 // `
+
 export const InsightsContainer = styled.div`
   /* display: grid; */
   /* grid-template-columns: 1fr 1fr 1fr;

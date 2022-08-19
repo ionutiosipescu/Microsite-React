@@ -19,6 +19,7 @@ const CardBody = styled.div`
   .button-animation {
     display: block;
   }
+
   button {
     transition: background-color 0.2s ease-out;
 

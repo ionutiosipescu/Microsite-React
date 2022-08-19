@@ -21,10 +21,14 @@ export const StyledCol2 = styled.div`
 `
 
 export const StyledContainer = styled.div`
-  padding: 2rem;
+  padding: 1rem;
+
+  @media ${size.md} {
+    padding: 3rem 4rem;
+  }
 
   @media ${size.lg} {
-    padding: 3rem 4rem;
+    padding: 3rem 5rem;
   }
 `
 export const StyledContainerLocation = styled.div`

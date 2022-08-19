@@ -8,10 +8,17 @@ export const Container = styled.div`
   }
 `
 
-export const Article = styled.div``
+export const Article = styled.div`
+  /* flex: 0 0 50%; */
+`
 
 export const RightSection = styled.div`
+  h3 {
+    font-size: 1.875rem;
+    color: var(--darkBlueHome);
+    letter-spacing: 0;
+  }
   @media ${size.lg} {
-    width: 40%;
+    width: 80%;
   }
 `
