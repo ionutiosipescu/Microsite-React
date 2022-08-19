@@ -415,3 +415,38 @@ export const expertiseData = [
     icon: "https://cdn-icons-png.flaticon.com/512/4149/4149656.png",
   },
 ]
+export const objecttest = [
+  {
+      id: 123456789,
+      section: "HealthCare & LifeScience",
+      page: "Location",
+      locations: [
+          {
+             id: 1233,
+             country: "Spain",
+             cities: [
+              {
+                  id: 2453,
+                  city: "Madrid",
+                  contact_field: [
+                      {
+                         phone: <span>Tel: +61 3 9101 8550</span> 
+                      }
+                  ],
+                  contact_field_addres: [
+                      {
+                          addres: [
+                              <span>Level 30</span>,
+                              <span>35 Collins Street</span>,
+                              <span>VIC3000</span>,
+                              <span>Australia</span>,
+                          ]
+                          
+                      }
+                  ],
+              }
+             ] 
+          }
+      ]
+  },
+]

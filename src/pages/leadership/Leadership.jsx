@@ -9,6 +9,8 @@ import { Spinner } from "../../components"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchHLSLeaders, fetchHLSPersons } from "../../store/actions/leaders"
 
+import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+
 export const LeaadersContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -55,57 +57,59 @@ const Leadership = () => {
         height={350}
       />
 
-      <h1 className="p-4"> Leaders</h1>
-      {leaders?.length === 0 ? (
-        <Spinner />
-      ) : (
-        <div className="m-4">
-          <LeaadersContainer>
-            {leaders?.map((cardInfo, index) => {
-              return (
-                <ProfessionalsCardSmallOld
-                  className="col-lg-4"
-                  key={index}
-                  cardInfo={cardInfo}
-                  index={index}
-                  openedState={openedState}
-                  handleDisplay={() =>
-                    handleDisplay2(
-                      index,
-                      leadersList,
-                      openedState,
-                      setOpenedState
-                    )
-                  }
-                  showDetails={openedState[index]}
-                />
-              )
-            })}
-          </LeaadersContainer>
-          <h1 className="pb-4"> Leaders</h1>
-          <LeaadersContainer>
-            {persons?.map((cardInfo, index) => {
-              return (
-                <ProfessionalsCardSmallOld
-                  key={index}
-                  cardInfo={cardInfo}
-                  index={index}
-                  openedState={openedState}
-                  handleDisplay={() =>
-                    handleDisplay2(
-                      index,
-                      persons,
-                      openedStatePersons,
-                      setOpenedStatePersons
-                    )
-                  }
-                  showDetails={openedStatePersons[index]}
-                />
-              )
-            })}
-          </LeaadersContainer>
-        </div>
-      )}
+      <StyledContainerLocation>
+        <h1 className="p-4"> Leaders</h1>
+        {leaders?.length === 0 ? (
+          <Spinner />
+        ) : (
+          <div className="m-4">
+            <LeaadersContainer>
+              {leaders?.map((cardInfo, index) => {
+                return (
+                  <ProfessionalsCardSmallOld
+                    className="col-lg-4"
+                    key={index}
+                    cardInfo={cardInfo}
+                    index={index}
+                    openedState={openedState}
+                    handleDisplay={() =>
+                      handleDisplay2(
+                        index,
+                        leadersList,
+                        openedState,
+                        setOpenedState
+                      )
+                    }
+                    showDetails={openedState[index]}
+                  />
+                )
+              })}
+            </LeaadersContainer>
+            <h1 className="pb-4"> Leaders</h1>
+            <LeaadersContainer>
+              {persons?.map((cardInfo, index) => {
+                return (
+                  <ProfessionalsCardSmallOld
+                    key={index}
+                    cardInfo={cardInfo}
+                    index={index}
+                    openedState={openedState}
+                    handleDisplay={() =>
+                      handleDisplay2(
+                        index,
+                        persons,
+                        openedStatePersons,
+                        setOpenedStatePersons
+                      )
+                    }
+                    showDetails={openedStatePersons[index]}
+                  />
+                )
+              })}
+            </LeaadersContainer>
+          </div>
+        )}
+      </StyledContainerLocation>
     </>
   )
 }
