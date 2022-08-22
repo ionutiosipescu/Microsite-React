@@ -27,7 +27,7 @@ const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
   padding: 3.125rem 4.375rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 `
 const SectionsContainer = styled.div`
   position: relative;
@@ -65,6 +65,15 @@ const SectionsContainer = styled.div`
   .list-info-container {
     margin-bottom: 1.875rem;
   }
+.list-info-container, .contact {
+  font-weight: 500;
+}
+.privacy {
+  font-weight: 300;
+}
+.bulletin-signup {
+  font-weight: 700;
+}
   /* MEDIA */
   @media ${size.md} {
     margin-bottom: 0;
@@ -134,7 +143,7 @@ const ColBox = styled.div`
   }
   .icons-container {
     img {
-      height: 1.563rem;
+      height: 2.063rem;
       width: auto;
     }
     display: flex;
