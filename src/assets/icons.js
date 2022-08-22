@@ -34,6 +34,7 @@ const Spotify = ({ className }) => iconPng(className, "spotify")
 const Antena = ({ className }) => iconPng(className, "antena")
 const AmazonMusic = ({ className }) => iconPng(className, "amazonmusic")
 const View = ({ className }) => iconPng(className, "view")
+const CountryPage = ({ className }) => iconPng(className, "countrypage")
 
 const TwitterIcon = ({ className }) => iconPng(className, "twitter")
 const LetterIcon = ({ className }) => iconPng(className, "letter")
@@ -95,4 +96,5 @@ export {
   Antena,
   AmazonMusic,
   View,
+  CountryPage
 }

@@ -23,7 +23,7 @@ const DetailedProfessionalsCard = ({
   content,
   handleDisplay,
   index,
-  setMargin,
+  setPadding,
   showDetails,
 }) => {
   const [display, setDisplay] = useState("none")
@@ -33,7 +33,7 @@ const DetailedProfessionalsCard = ({
 
   useEffect(() => {
     if (showDetails) {
-      setMargin(detailedCard.current.clientHeight)
+      setPadding(detailedCard.current.clientHeight)
     }
   })
 
@@ -45,14 +45,16 @@ const DetailedProfessionalsCard = ({
     }
 
     setBorderBottom(!borderBottom)
+
+    console.log(content)
   }
   return (
     <>
-      <ImageTriangleContainer>
-        <IconTriangle className="imgTriangle" />
-      </ImageTriangleContainer>
       <Card ref={detailedCard}>
-        <div className="d-flex">
+        <ImageTriangleContainer>
+          {/* <IconTriangle className="imgTriangle" /> */}
+        </ImageTriangleContainer>
+        <div className="d-flex xicon">
           <XContainer onClick={() => handleDisplay(index)}>
             <XIcon className={"x-icon"} />
           </XContainer>
@@ -62,17 +64,21 @@ const DetailedProfessionalsCard = ({
           <Header>
             <ImageContainer>
               <img src={content?.image}></img>
-              <ButtonWithAnimation
+              {/* <ButtonWithAnimation
                 text="Connect"
                 radius={"0"}
                 onClick={() => {
                   window.open(content.linkOurPeople, "_blank")
                 }}
-              />
+              /> */}
             </ImageContainer>
-            <Content>
+          </Header>
+          <Content>
+            <div>
               <h4>{content?.name}</h4>
+              <h6>Managing director</h6>
               <p className="text-muted">{content?.position}</p>
+
               <DescriptionDesktop>
                 {smallLeaderDescription ? (
                   <p>{content?.smallDescription}</p>
@@ -85,7 +91,17 @@ const DetailedProfessionalsCard = ({
                   ></div>
                 )}
               </DescriptionDesktop>
-              <a
+            </div>
+            <div id="button-leaders">
+              <ButtonWithAnimation
+                text={"connect"}
+                width={"100%"}
+                onClick={() => {
+                  window.location.replace(content.linkOurPeople)
+                }}
+              />
+            </div>
+            {/* <a
                 className="fw-bold text-reset"
                 // onClick={() =>
                 //   setSmallLeaderDescription(!smallLeaderDescription)
@@ -94,19 +110,10 @@ const DetailedProfessionalsCard = ({
                 href={content?.linkOurPeople}
               >
                 Read More
-              </a>
-            </Content>
-          </Header>
-
+              </a> */}
+          </Content>
           <Info>
             <ContainerMobile>
-              <ButtonWithAnimation
-                text={"connect"}
-                width={"100%"}
-                onClick={() => {
-                  window.location.replace(content.linkOurPeople)
-                }}
-              />
               <div>{content?.smallDescription}</div>
             </ContainerMobile>
 
@@ -115,22 +122,22 @@ const DetailedProfessionalsCard = ({
             </ContactInfo>
             <Dropdown display={display}>
               <PersonalInfo
-                title="location"
                 content={content?.country?.name}
                 onClick={() => {
                   window.open(content?.linkLocation, "_blank")
                 }}
               />
-              <PersonalInfo title="email" content={content?.email?.title} />
-              <PersonalInfo title="telephone" content={content?.phone} />
-              <PersonalInfo title="twitter" content={content?.twitter.title} />
-              <PersonalInfo
-                title="connect on"
+              <PersonalInfo content={content?.email?.title} />
+              <PersonalInfo content={content?.phone} />
+              <PersonalInfo content={content?.twitter.title} />
+              <PersonalInfo content={content?.email?.title} />
+              {/* <PersonalInfo
+                
                 content={content?.linkedin?.title}
                 onClick={() => {
                   window.open(content?.linkedin.uri, "_blank")
                 }}
-              />
+              /> */}
             </Dropdown>
           </Info>
         </CardBody>

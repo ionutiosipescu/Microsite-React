@@ -16,16 +16,16 @@ const ProfessionalsCardSmallOld = ({
   handleDisplay,
   showDetails,
 }) => {
-  const [margin, setMargin] = useState(0)
+  const [padding, setPadding] = useState(0)
 
   useEffect(() => {
     if (!showDetails) {
-      setMargin(0)
+      setPadding(0)
     }
   }, [showDetails])
   // console.log(cardInfo)
   return (
-    <Container margin={margin} className="">
+    <Container padding={padding} className="">
       <Card onClick={() => handleDisplay(index)}>
         <ImageContainer>
           <img src={cardInfo?.image} alt="portrait"></img>
@@ -44,7 +44,7 @@ const ProfessionalsCardSmallOld = ({
           content={cardInfo}
           index={index}
           handleDisplay={handleDisplay}
-          setMargin={setMargin}
+          setPadding={setPadding}
           showDetails={showDetails}
         />
       )}
