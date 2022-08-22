@@ -18,7 +18,7 @@ export const DropdownContainer = styled.ul`
     padding-right: 1rem;
     color: var(--filtersBlue);
     transition: all 0.2s ease-in-out;
-    font-size: 20px;
+    font-size: 1.2rem;
     text-transform: initial;
 
     :hover {

@@ -17,7 +17,7 @@ const CellWithChevron = ({
       dropdownOpened={dropdownOpened}
       iconColor={iconColor}
     >
-      {text || "No text"}
+      <span>{text}</span>
       {/* <ChevronDownWhite /> */}
 
       {dropdownOpened ? <ChevronUpWhite /> : <ChevronDownWhite />}

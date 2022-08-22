@@ -11,7 +11,7 @@ export const Card = styled.div`
   background: #002b49;
   min-height: 180px;
   max-height: 180px;
-  max-width: 350px;
+  max-width: 300px;
   margin-bottom: 2rem;
 `
 
@@ -35,15 +35,15 @@ export const CardBody = styled.div`
 `
 
 export const Content = styled.div`
-  padding: 20px;
+  padding: 20px 10px;
   text-transform: uppercase;
   color: var(--orange2);
   font-weight: bold;
   height: 100%;
-  width: 200px;
+  width: 180px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 `

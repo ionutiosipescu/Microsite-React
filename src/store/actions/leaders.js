@@ -149,8 +149,8 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
     let professionId =
       profile?.relationships?.field_professional_title?.data[0]?.id
     let locationId = profile?.relationships?.field_region?.data[0]?.id
-    let firstName = profile.attributes.field_first_name
-    let lastName = profile.attributes.field_last_name
+    let firstName = profile.attributes?.field_first_name
+    let lastName = profile.attributes?.field_last_name
     let country = dataIncluded?.find(x => x.id == locationId)
     let imageURL =
       dataIncluded?.find(x => x.id == imageId)?.attributes.uri.url ||
@@ -161,33 +161,33 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
       firstName: firstName,
       lastName: lastName,
       name:
-        profile.attributes.field_first_name +
+        profile.attributes?.field_first_name +
         " " +
-        profile.attributes.field_last_name,
+        profile.attributes?.field_last_name,
 
-      phone: profile.attributes.field_telephone,
-      smallDescription: profile.attributes.field_intro_text,
-      allDescription: profile.attributes.body.value,
+      phone: profile.attributes?.field_telephone,
+      smallDescription: profile.attributes?.field_intro_text,
+      allDescription: profile.attributes.body?.value,
       email: {
-        uri: profile.attributes.field_mail.uri,
-        title: profile.attributes.field_mail.title,
+        uri: profile.attributes.field_mail?.uri,
+        title: profile.attributes.field_mail?.title,
       },
       twitter: {
-        uri: profile.attributes.field_twitter.uri,
-        title: profile.attributes.field_twitter.title,
+        uri: profile.attributes.field_twitter?.uri,
+        title: profile.attributes.field_twitter?.title,
       },
       linkedin: {
-        uri: profile.attributes.field_linkedin.uri,
-        title: profile.attributes.field_linkedin.title,
+        uri: profile.attributes.field_linkedin?.uri,
+        title: profile.attributes.field_linkedin?.title,
       },
-      position: dataIncluded?.find(x => x.id == professionId)?.attributes.name,
+      position: dataIncluded?.find(x => x.id == professionId)?.attributes?.name,
 
       // profile?.relationships?.field_professional_title?.data?.id,
 
       country: {
-        id: country.id,
+        id: country?.id,
         name: country?.attributes?.name,
-        type: country.type,
+        type: country?.type,
       },
       image: liveAM + imageURL,
       // image:
@@ -227,14 +227,114 @@ const getIdAndNamebyTaxonomyType = (dataIncluded, type) => {
   return newArr
 }
 
-export const addFilterTags = tag => {
+export const filterHLSPersons = () => {
+  return async (dispatch, getState) => {
+    const filters = getState().leaders.navbarFilters
+    //if no filters fetch all persons for EMEA HEALTCARE
+    if (filters.length === 0) {
+      await fetchHLSPersons()
+    } else {
+      let filterByIndustry = ""
+      let filterByExpertise = ""
+      let filterByCountry = ""
+      let filterByCity = ""
+
+      //prepare filters from filter navbar ,to pass in url
+      filters?.forEach(filter => {
+        if (filter?.type == "taxonomy_term--industries") {
+          filterByIndustry = `&filter[field_industry.id]=${filter.id}`
+        } else if (filter?.type == "taxonomy_term--global_locations") {
+          filterByCountry = `&filter[field_region.id]=${filter.id}`
+        } else if (filter?.type == "taxonomy_term--cities") {
+          filterByCity = `&filter[field_city.id]=${filter.id}`
+        } else if (filter?.type == "taxonomy_term--expertise") {
+          filterByExpertise = `&filter[field_expertise.id]=${filter.id}`
+        }
+      })
+
+      const emeaIndustryId = "c11b8f8f-9d3a-433a-949e-5518b9b24c25"
+
+      const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/profile?include=field_professional_title,field_image_background,field_image,field_expertise,field_city,field_region,field_industry${filterByIndustry}${filterByExpertise}${filterByCountry}${filterByCity}`
+
+      await Axios.get(link)
+        .then(data => {
+          // console.log(data)
+          const dataIncluded = data?.data?.included
+          const profiles = getInformationOfLeaders(
+            dataIncluded,
+            data?.data?.data
+          )
+          let obj = {}
+          let expertises = getIdAndNamebyTaxonomyType(
+            dataIncluded,
+            "taxonomy_term--expertise"
+          )
+          let locations = getIdAndNamebyTaxonomyType(
+            dataIncluded,
+            "taxonomy_term--global_locations"
+          )
+          data.data.included?.filter(
+            x => x.type == "taxonomy_term--global_locations"
+          )
+          let cities = getIdAndNamebyTaxonomyType(
+            dataIncluded,
+            "taxonomy_term--cities"
+          )
+          let industries = getIdAndNamebyTaxonomyType(
+            dataIncluded,
+            "taxonomy_term--industries"
+          )
+          console.log(profiles)
+          obj = {
+            profiles: profiles,
+            cities: cities,
+            expertises: expertises,
+            location: locations,
+            industries: industries,
+            filters: [
+              { values: expertises, name: "EXPERTISES" },
+              { values: industries, name: "industries" },
+              { values: locations, name: "locations" },
+              { values: cities, name: "cities" },
+            ],
+          }
+          dispatch({
+            type: GET_ALL_PERSONS,
+            payload: obj,
+          })
+        })
+        .catch(err => console.log(err))
+    }
+  }
+}
+
+export const addNavbarFilters = filter => {
   return dispatch => {
+    dispatch({
+      type: ADD_NAVBAR_FILTERS,
+      payload: filter,
+    })
+  }
+}
+
+export const filterNavbar = filter => {
+  return dispatch => {
+    dispatch({
+      type: FILTER_NAVBAR_FILTERS,
+      payload: filter,
+    })
+  }
+}
+export const addFilterTags = tag => {
+  return (dispatch, getState) => {
     dispatch({
       type: GET_FILTER_TAGS,
       payload: tag,
     })
   }
 }
+
+///--___________________________________________________uselesss
 
 export const filterLeaders = filterByTags => {
   return (dispatch, getState) => {
@@ -301,114 +401,6 @@ export const filterLeaders = filterByTags => {
     dispatch({
       type: FILTER_LEADERS,
       payload: myArrayFiltered,
-    })
-  }
-}
-
-export const filterHLSPersons = () => {
-  return async (dispatch, getState) => {
-    const filters = getState().leaders.navbarFilters
-
-    if (filters.length === 0) {
-      await fetchHLSPersons()
-      console.log("here")
-    } else {
-    }
-    console.log(filters)
-    let countryId = ""
-    let industryId = ""
-    let cityId = ""
-    let expertiseId = ""
-    filters?.forEach(filter => {
-      if (filter?.type == "taxonomy_term--industries") {
-        industryId = filter.id
-      } else if (filter?.type == "taxonomy_term--global_locations") {
-        countryId = filter.id
-      } else if (filter?.type == "taxonomy_term--cities") {
-        cityId = filter.id
-      } else if (filter?.type == "taxonomy_term--expertise") {
-        expertiseId = filter.id
-      }
-    })
-
-    const emeaIndustryId = "c11b8f8f-9d3a-433a-949e-5518b9b24c25"
-
-    // const filterByIndustry = `&filter[field_industry.id]=${
-    //   industryId == "" ? emeaIndustryId : industryId
-    // }`
-    const filterByIndustry =
-      industryId !== "" ? `&filter[field_industry.id]=${industryId}` : ""
-
-    const filterByExpertise =
-      expertiseId !== "" ? `&filter[field_expertise.id]=${expertiseId}` : ""
-    const filterByCountry =
-      countryId !== "" ? `&filter[field_region.id]=${countryId}` : ""
-    const filterByCity = cityId !== "" ? `&filter[field_city.id]=${cityId}` : ""
-
-    const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/profile?include=field_professional_title,field_image_background,field_image,field_expertise,field_city,field_region,field_industry${filterByIndustry}${filterByExpertise}${filterByCountry}${filterByCity}`
-
-    await Axios.get(link)
-      .then(data => {
-        const dataIncluded = data?.data?.included
-        const profiles = getInformationOfLeaders(dataIncluded, data?.data?.data)
-        let obj = {}
-        let expertises = getIdAndNamebyTaxonomyType(
-          dataIncluded,
-          "taxonomy_term--expertise"
-        )
-        let locations = getIdAndNamebyTaxonomyType(
-          dataIncluded,
-          "taxonomy_term--global_locations"
-        )
-        data.data.included?.filter(
-          x => x.type == "taxonomy_term--global_locations"
-        )
-        let cities = getIdAndNamebyTaxonomyType(
-          dataIncluded,
-          "taxonomy_term--cities"
-        )
-        let industries = getIdAndNamebyTaxonomyType(
-          dataIncluded,
-          "taxonomy_term--industries"
-        )
-        console.log(profiles)
-        obj = {
-          profiles: profiles,
-          cities: cities,
-          expertises: expertises,
-          location: locations,
-          industries: industries,
-          filters: [
-            { values: expertises, name: "EXPERTISES" },
-            { values: industries, name: "industries" },
-            { values: locations, name: "locations" },
-            { values: cities, name: "cities" },
-          ],
-        }
-        dispatch({
-          type: GET_ALL_PERSONS,
-          payload: obj,
-        })
-      })
-      .catch(err => console.log(err))
-  }
-}
-
-export const addNavbarFilters = filter => {
-  return dispatch => {
-    dispatch({
-      type: ADD_NAVBAR_FILTERS,
-      payload: filter,
-    })
-  }
-}
-
-export const filterNavbar = filter => {
-  console.log(filter)
-  return dispatch => {
-    dispatch({
-      type: FILTER_NAVBAR_FILTERS,
-      payload: filter,
     })
   }
 }

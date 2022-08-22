@@ -19,6 +19,7 @@ import Dropdown from "../../components/navbarComponents/leadershipNavbar/Dropdow
 import { InsightsNavbarContext } from "../../components/navbarComponents/leadershipNavbar/InsightsNavbar"
 import CellWithChevron from "../../components/navbarComponents/leadershipNavbar/CellWithChevron"
 import FiltersContainer from "../../components/navbarComponents/leadershipNavbar/FiltersContainer"
+import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 export const LeaadersContainer = styled.div`
   padding-top: 30px;
   display: flex;
@@ -84,7 +85,7 @@ const Leadership = () => {
     selectedFilters: selectedFilters,
   }
   return (
-    <>
+    <StyledContainer>
       <HeroSection
         title={"HEALTH & LIFE PROFESSIONALS"}
         description={
@@ -112,8 +113,12 @@ const Leadership = () => {
               {/* {filtersPersons?.map(term => {
                 console.log(term)
               })} */}
-              {filtersPersons?.map(term => (
-                <Dropdown text={term} iconColor={"var(--hover-blue)"} />
+              {filtersPersons?.map((term, index) => (
+                <Dropdown
+                  text={term}
+                  iconColor={"var(--hover-blue)"}
+                  key={index}
+                />
               ))}
             </S.Navbar>
             <FiltersContainer
@@ -167,7 +172,7 @@ const Leadership = () => {
           </LeaadersContainer>
         </div>
       )}
-    </>
+    </StyledContainer>
   )
 }
 

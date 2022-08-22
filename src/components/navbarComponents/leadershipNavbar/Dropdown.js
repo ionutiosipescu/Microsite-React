@@ -31,7 +31,6 @@ const Dropdown = ({ text, iconColor }) => {
   const closeDropdown = e => {
     // setDropdownHeight(0)
     if (!dropdownRef.current.contains(e.target)) {
-      console.log("doing")
       setIsOpen(false)
       setDropdownHeight(0)
     }
@@ -41,7 +40,6 @@ const Dropdown = ({ text, iconColor }) => {
   useEffect(() => {
     const closeDropdown = e => {
       if (!dropdownRef.current.contains(e.target) && isOpen) {
-        console.log("doing")
         setIsOpen(false)
       }
     }
@@ -55,11 +53,10 @@ const Dropdown = ({ text, iconColor }) => {
 
   const addFilter = filts => {
     if (navbarFilters?.length > 0) {
-      navbarFilters.forEach(filter => {
-        if (filter?.type !== filts.type) {
-          dispatch(addNavbarFilters(filts))
-        }
-      })
+      const found = navbarFilters.find(filter => filter.type === filts.type)
+      if (!found) {
+        dispatch(addNavbarFilters(filts))
+      }
     } else {
       dispatch(addNavbarFilters(filts))
     }
@@ -74,8 +71,10 @@ const Dropdown = ({ text, iconColor }) => {
         iconColor={iconColor}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
-        {text?.values?.map(filts => (
-          <li onClick={() => addFilter(filts)}>{filts?.name}</li>
+        {text?.values?.map((filts, index) => (
+          <li key={index} onClick={() => addFilter(filts)}>
+            <span>{filts?.name}</span>
+          </li>
         ))}
       </S.DropdownContainer>
     </div>

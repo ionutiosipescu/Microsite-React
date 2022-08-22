@@ -21,6 +21,9 @@ export const NavbarCell = styled.div`
       color: var(--yellowCategory);
     }
   }
+  span {
+    font-size: 1.1rem;
+  }
 
   svg {
     /* {dropdownOpened} */

@@ -9,7 +9,7 @@ const FiltersContainer = ({ filtercolor, marginTop }) => {
   const { dropdownHeight, selectedFilters } = useContext(InsightsNavbarContext)
   // console.log(selectedFilters)
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
-
+  console.log(navbarFilters)
   return (
     <S.FiltersContainer dropdownHeight={dropdownHeight} marginTop={marginTop}>
       {navbarFilters?.map((filter, index) => (
