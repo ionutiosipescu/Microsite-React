@@ -1,16 +1,28 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import * as S from "./styles/InsightsNavbar.styles"
 import Cell from "./Cell"
 import Dropdown from "./Dropdown"
 import FiltersContainer from "./FiltersContainer"
 import { Search } from "../../../assets/icons"
 import CellWithChevron from "./CellWithChevron"
+import { getInsightFilters } from "../../../API/getFilters"
 
 const InsightsNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(false)
+  const [filters, setFilters] = useState(null)
 
   const handleClick = () => {
     setShowNavbar(!showNavbar)
+  }
+
+  useEffect(() => {
+    getInsightFilters(setFilters)
+  }, [])
+
+  console.log(filters)
+
+  if (!filters) {
+    return null
   }
 
   return (
@@ -37,10 +49,11 @@ const InsightsNavbar = () => {
         onlyMobile
       />
       <S.Navbar showNavbar={showNavbar}>
-        <Dropdown text={"expertise"} />
-        <Dropdown text={"industry"} />
-        <Dropdown text={"location"} />
-        <Dropdown text={"date"} />
+        <Dropdown text={"expertise"} filters={filters.expertise} />
+        <Dropdown text={"industry"} filters={filters.industries} />
+        <Dropdown text={"location"} filters={filters.region} />
+
+        <Dropdown text={"date"} filters={filters.created} />
       </S.Navbar>
       <FiltersContainer />
     </S.Container>

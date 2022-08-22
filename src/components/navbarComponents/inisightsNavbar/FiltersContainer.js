@@ -9,7 +9,7 @@ const FiltersContainer = () => {
   return (
     <S.FiltersContainer>
       {filters.map((filter, index) => (
-        <FilterCell key={index} text={filter} />
+        <FilterCell key={index} filter={filter} />
       ))}
     </S.FiltersContainer>
   )

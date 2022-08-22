@@ -18,7 +18,6 @@ export const removeFilter = filter => {
 }
 
 export const changeInsightsType = type => {
-  // console.log(type)
   return {
     type: CHANGE_INSIGHTS_TYPE,
     payload: type,

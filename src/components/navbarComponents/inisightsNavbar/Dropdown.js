@@ -4,7 +4,7 @@ import * as S from "./styles/Dropdown.styles"
 import { useDispatch } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
 
-const Dropdown = ({ text }) => {
+const Dropdown = ({ text, filters }) => {
   const dropdownRef = useRef()
   const dispatch = useDispatch()
   const dropdownHeightRef = useRef(null)
@@ -28,7 +28,6 @@ const Dropdown = ({ text }) => {
   useEffect(() => {
     const closeDropdown = e => {
       if (!dropdownRef.current.contains(e.target) && isOpen) {
-        console.log("doing")
         setIsOpen(false)
       }
     }
@@ -40,8 +39,8 @@ const Dropdown = ({ text }) => {
     }
   }, [isOpen])
 
-  const addFilterToRedux = e => {
-    dispatch(addFilter(e.target.innerText))
+  const addFilterToRedux = filter => {
+    dispatch(addFilter(filter))
   }
 
   return (
@@ -52,15 +51,39 @@ const Dropdown = ({ text }) => {
         dropdownOpened={isOpen}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
-        <li onClick={e => addFilterToRedux(e)}>sunshine1</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine2</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine3</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine4</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine5</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine6</li>
-        <li onClick={e => addFilterToRedux(e)}>sunshine7</li>
+        {filters.years ? (
+          <TimeDropdown filters={filters} addFilterToRedux={addFilterToRedux} />
+        ) : (
+          <NormalDropdown
+            filters={filters}
+            addFilterToRedux={addFilterToRedux}
+          />
+        )}
       </S.DropdownContainer>
     </S.Container>
+  )
+}
+
+const NormalDropdown = ({ filters, addFilterToRedux }) => {
+  return filters.map((filter, index) => (
+    <li onClick={() => addFilterToRedux(filter)} key={index}>
+      {filter.name}
+    </li>
+  ))
+}
+
+const TimeDropdown = ({ filters, addFilterToRedux }) => {
+  console.log("This is filters", filters)
+
+  console.log(filters.keys)
+  return (
+    <>
+      <div>
+        {/* <div>{filters.period}</div> */}
+        <div>fuck</div>
+        <div>fuck</div>
+      </div>
+    </>
   )
 }
 
