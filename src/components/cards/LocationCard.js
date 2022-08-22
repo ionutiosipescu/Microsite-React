@@ -1,16 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { ButtonWithAnimation } from "../buttons";
+import { size } from "../../utils/breakpoints";
 
 const Card = styled.div`
     border-bottom: 1px solid #C4C4C4;
     padding-bottom: 40px;
-.name {
+.city {
+    text-align: center;
     font-weight: 700;
     font-size: 30px;
     line-height: 1;
     color: #00244A;
     margin-bottom: 30px;
+    @media ${size.lg} {
+        text-align: unset;
+    }
 }
 .contact-field {
     font-size: 20px;
@@ -22,25 +27,24 @@ const Card = styled.div`
 }
 `
 
-const LocationCard = () => {
+const LocationCard = (datadeeper) => {
     return(
         <>
         <Card>
-            <div className="name">Melbourne</div>
+            <div className="city">{datadeeper.datadeeper.cities[0].city}</div>
             <div className="phone contact-field">
-                <span>Tel: </span>
-                <span>+61 3 9101 8550</span>
+                <span>{datadeeper.datadeeper.cities[0].contact_field[0].phone.props.children}</span>
+                
             </div>
             <div className="contact-field">
                 <p className="adress">
-                    <span>Level 30</span>
+                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[0].props.children}</span>
                     <br/>
-                    <span>35 Collins Street</span>
+                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[1].props.children}</span>
                     <br/>
-                    <span>VIC</span>
-                    <span>3000</span>
+                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[2].props.children}</span>
                     <br/>
-                    <span>Australia</span>
+                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[3].props.children}</span>
                 </p>
             </div>
             <ButtonWithAnimation/>
