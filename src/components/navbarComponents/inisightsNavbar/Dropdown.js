@@ -4,7 +4,7 @@ import * as S from "./styles/Dropdown.styles"
 import { useDispatch } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
 
-const Dropdown = ({ text, filters }) => {
+const Dropdown = ({ text, filters, category }) => {
   const dropdownRef = useRef()
   const dispatch = useDispatch()
   const dropdownHeightRef = useRef(null)
@@ -51,12 +51,17 @@ const Dropdown = ({ text, filters }) => {
         dropdownOpened={isOpen}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
-        {filters.years ? (
-          <TimeDropdown filters={filters} addFilterToRedux={addFilterToRedux} />
+        {category === "created" ? (
+          <TimeDropdown
+            filters={filters}
+            addFilterToRedux={addFilterToRedux}
+            category={category}
+          />
         ) : (
           <NormalDropdown
             filters={filters}
             addFilterToRedux={addFilterToRedux}
+            category={category}
           />
         )}
       </S.DropdownContainer>
@@ -64,24 +69,75 @@ const Dropdown = ({ text, filters }) => {
   )
 }
 
-const NormalDropdown = ({ filters, addFilterToRedux }) => {
+const NormalDropdown = ({ filters, category, addFilterToRedux }) => {
   return filters.map((filter, index) => (
-    <li onClick={() => addFilterToRedux(filter)} key={index}>
+    <li
+      onClick={() =>
+        addFilterToRedux({
+          id: filter.id,
+          name: filter.name,
+          category: category,
+        })
+      }
+      key={index}
+    >
       {filter.name}
     </li>
   ))
 }
 
-const TimeDropdown = ({ filters, addFilterToRedux }) => {
-  console.log("This is filters", filters)
-
-  console.log(filters.keys)
+const TimeDropdown = ({ filters, addFilterToRedux, category }) => {
   return (
     <>
       <div>
-        {/* <div>{filters.period}</div> */}
-        <div>fuck</div>
-        <div>fuck</div>
+        <S.FlexContainer>
+          {Object.entries(filters.period).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
+        <S.FlexContainer>
+          {Object.entries(filters.years).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
+        <S.FlexContainer>
+          {Object.entries(filters.months).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
       </div>
     </>
   )

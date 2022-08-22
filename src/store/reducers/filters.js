@@ -30,20 +30,22 @@ const filters = (state = initialState, { type, payload }) => {
 }
 
 const addFilter = (state, payload) => {
+  const newArr = state.filters.filter(
+    filter => filter.category !== payload.category
+  )
+
+  newArr.push(payload)
+
   return {
     ...state,
-    filters: [...state.filters].includes(payload)
-      ? state.filters
-      : [...state.filters, payload],
+    filters: newArr,
   }
 }
 
 const removeFilter = (state, payload) => {
   return {
     ...state,
-    filters: [...state.filters].filter(
-      filter => filter.id !== payload.id && filter.name !== payload.name
-    ),
+    filters: state.filters.filter(filter => filter.name !== payload.name),
   }
 }
 

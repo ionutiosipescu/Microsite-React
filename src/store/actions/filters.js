@@ -3,11 +3,7 @@ export const REMOVE_FILTER = "REMOVE_FILTER"
 export const CHANGE_INSIGHTS_TYPE = "CHANGE_INSIGHTS_TYPE"
 
 export const addFilter = filter => {
-  // console.log(filter)
-  return {
-    type: ADD_FILTER,
-    payload: filter,
-  }
+  return { type: ADD_FILTER, payload: filter }
 }
 
 export const removeFilter = filter => {

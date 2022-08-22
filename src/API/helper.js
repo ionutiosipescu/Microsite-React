@@ -74,9 +74,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
 
 // Get array of ids of of a specific field from relationships given the whole data object (res.data)
 const grabIds = (includedField, object, index) => {
-  console.log(`This is object`, object)
-  // console.log(`This is `)
-
   return object.data.relationships[includedField].data.map(id => id.id)
 }
 

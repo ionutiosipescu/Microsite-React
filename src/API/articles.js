@@ -9,13 +9,15 @@ import {
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-export const getInsights = (setInsightsContent, selectedFilters, type) => {
+export const getInsights = (
+  setInsightsContent,
+  selectedFilters,
+  InsightType
+) => {
   let link = `${customApi}/hls`
 
-  console.log(type)
-
   Axios.get(link).then(res => {
-    if (type === "all") {
+    if (InsightType === "all") {
       setInsightsContent({
         businessInsights: res.data.block_two,
         caseStudies: res.data.block_one,

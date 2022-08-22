@@ -6,20 +6,35 @@ import FiltersContainer from "./FiltersContainer"
 import { Search } from "../../../assets/icons"
 import CellWithChevron from "./CellWithChevron"
 import { getInsightFilters } from "../../../API/getFilters"
+import { useDispatch } from "react-redux"
+import { addFilter } from "../../../store/actions/filters"
 
 const InsightsNavbar = () => {
   const [showNavbar, setShowNavbar] = useState(false)
   const [filters, setFilters] = useState(null)
+  const dispatch = useDispatch()
 
   const handleClick = () => {
     setShowNavbar(!showNavbar)
   }
 
+  const handleSubmit = e => {
+    console.log(e.target[0].value)
+    e.preventDefault()
+
+    dispatch(
+      addFilter({
+        name: e.target[0].value,
+        category: "userInput",
+      })
+    )
+
+    e.target[0].value = ""
+  }
+
   useEffect(() => {
     getInsightFilters(setFilters)
   }, [])
-
-  console.log(filters)
 
   if (!filters) {
     return null
@@ -30,8 +45,10 @@ const InsightsNavbar = () => {
       <S.TitleSection>
         <h1>{"Helathcare & life Sciences Insights"}</h1>
         <S.InputContainer>
-          <S.Input placeholder="SEARCH"></S.Input>
-          <Search />
+          <form onSubmit={e => handleSubmit(e)}>
+            <S.Input placeholder="SEARCH"></S.Input>
+            <Search />
+          </form>
         </S.InputContainer>
       </S.TitleSection>
       <S.Navbar showNavbar={true}>
@@ -49,11 +66,28 @@ const InsightsNavbar = () => {
         onlyMobile
       />
       <S.Navbar showNavbar={showNavbar}>
-        <Dropdown text={"expertise"} filters={filters.expertise} />
-        <Dropdown text={"industry"} filters={filters.industries} />
-        <Dropdown text={"location"} filters={filters.region} />
+        <Dropdown
+          text={"expertise"}
+          category={"expertise"}
+          filters={filters.expertise}
+        />
+        <Dropdown
+          text={"industry"}
+          category={"industries"}
+          filters={filters.industries}
+        />
 
-        <Dropdown text={"date"} filters={filters.created} />
+        <Dropdown
+          text={"location"}
+          category={"region"}
+          filters={filters.region}
+        />
+
+        <Dropdown
+          text={"date"}
+          filters={filters.created}
+          category={"created"}
+        />
       </S.Navbar>
       <FiltersContainer />
     </S.Container>

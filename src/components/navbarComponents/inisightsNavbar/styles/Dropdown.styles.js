@@ -34,3 +34,7 @@ export const DropdownContainer = styled.ul`
 export const Container = styled.div`
   margin-bottom: ${({ margin }) => (margin ? `${margin}px` : "80px")};
 `
+
+export const FlexContainer = styled.div`
+  display: flex;
+`

@@ -5,7 +5,6 @@ import { useSelector } from "react-redux"
 
 const FiltersContainer = () => {
   const { filters } = useSelector(state => state.filters)
-
   return (
     <S.FiltersContainer>
       {filters.map((filter, index) => (
