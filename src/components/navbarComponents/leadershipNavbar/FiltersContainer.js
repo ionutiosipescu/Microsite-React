@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+
 import FilterCell from "./FilterCell"
 import * as S from "./styles/FiltersContainer.styles"
 import { InsightsNavbarContext } from "./InsightsNavbar"
@@ -8,6 +9,7 @@ const FiltersContainer = ({ filtercolor, marginTop }) => {
   const { dropdownHeight, selectedFilters } = useContext(InsightsNavbarContext)
   // console.log(selectedFilters)
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
+
   return (
     <S.FiltersContainer dropdownHeight={dropdownHeight} marginTop={marginTop}>
       {navbarFilters?.map((filter, index) => (

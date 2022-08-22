@@ -310,7 +310,8 @@ export const filterHLSPersons = () => {
     const filters = getState().leaders.navbarFilters
 
     if (filters.length === 0) {
-      fetchHLSPersons()
+      await fetchHLSPersons()
+      console.log("here")
     } else {
     }
     console.log(filters)

@@ -62,8 +62,10 @@ const Leadership = () => {
   }, [])
 
   useEffect(() => {
-    dispatch(filterHLSPersons())
-  }, [navbarFilters])
+    if (navbarFilters.length > 0) {
+      dispatch(filterHLSPersons())
+    }
+  }, [navbarFilters.length])
 
   useDocumentTitle("Leadership | Alvarez & Marsal")
 
