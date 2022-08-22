@@ -27,9 +27,9 @@ export const StyledContainer = styled.div`
   }
 `
 export const ContainerContent = styled.div`
-  padding: 3rem 5rem;
-  @media ${sizem.mdm} {
-    padding: 2rem 4rem;
+  padding: 0;
+  @media ${sizem.md} {
+    padding: 0;
   }
 `
 export const FullWidthContainer = styled.div`

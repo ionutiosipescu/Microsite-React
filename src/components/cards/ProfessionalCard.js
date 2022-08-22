@@ -10,6 +10,7 @@ const Card = styled.div`
   background: var(--darkBlue);
   width: 100%;
   height: 200px;
+  margin-bottom: 10px;
 `
 
 const CardBody = styled.div`
@@ -17,7 +18,7 @@ const CardBody = styled.div`
   flex-direction: row;
   justify-content: space-between;
   .button-animation {
-    display: block;
+    display: none;
   }
   button {
     transition: background-color 0.2s ease-out;
@@ -43,7 +44,7 @@ const CardBody = styled.div`
 const ImageContainer = styled.div`
   background: gray;
   img {
-    width: 190px;
+    width: 120px;
     height: 100%;
     object-fit: cover;
   }
