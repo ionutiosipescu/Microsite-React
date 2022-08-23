@@ -34,8 +34,8 @@ export const getInsights = (
 export const getSingleArticle = (setArticleData, id) => {
   // Good one?
   // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`
-
-  const link = `${jsonApi}/node/article/${id}`
+  const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
+  // console.log("This is link", link)
 
   // const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`
 
@@ -44,6 +44,8 @@ export const getSingleArticle = (setArticleData, id) => {
     const data = res.data.data
 
     let article = {}
+
+    // console.log("This is data", data)
 
     article.content = data.attributes.body.value
 
@@ -56,10 +58,10 @@ export const getSingleArticle = (setArticleData, id) => {
     })
 
     article.title = data.attributes.title
-    // console.log(article)
-    //
-    // article.authors = grabRelatedPeople("field_authors", res.data, 0)
-    // article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+    article.authors = grabRelatedPeople("field_authors", res.data, 0)
+    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+
+    console.log("This is article", article)
 
     setArticleData(article)
   })
@@ -88,7 +90,6 @@ export const getSinglePodcast = (setPodcastData, id) => {
   })
 }
 
-
 // in progress data simluation ...
 // export const getSingleLocation = (objecttest) => {
 //   const data ={objecttest}
@@ -96,7 +97,6 @@ export const getSinglePodcast = (setPodcastData, id) => {
 //   console.log(objecttest)
 //   let location = {}
 
-//   location.country = data.data[0].locations[0].country  
+//   location.country = data.data[0].locations[0].country
 //   location.key = data.data[0].key
 // }
-

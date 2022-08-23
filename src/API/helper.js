@@ -41,25 +41,58 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0)
+
+  // console.log("This is ids", peopleIds)
+
   let personData = peopleIds.map(id => {
     const personObject = object.included.find(author => author.id === id)
 
     if (personObject) {
       const personName = personObject.attributes.title
 
-      const professionalTitleIds = grabSubId(
+      const professionalTitleIds = grabSubIds(
         "field_professional_title",
         personObject
       )
-      console.log(professionalTitleIds)
+
+      const citiesIds = grabSubIds("field_city", personObject)
+
+      const imageUrlIds = grabSubIds("field_image_background", personObject)
+
+      // console.log("This is imageUrl", imageUrlId)
+      // console.log(professionalTitleIds)
 
       const professionalTitle = professionalTitleIds.map(title => {
         return object.included.find(item => item.id === title).attributes.name
       })
 
+      const cityNames = citiesIds.map(title => {
+        return object.included.find(item => item.id === title).attributes.name
+      })
+
+      // This one is bad
+      // const imageUrl = imageUrlIds.map(title => {
+      //   return object.included.find(item => item.id === title).attributes
+      // })[0].image_style_uri[5].article_image_small__576x322_
+      const imageUrl = imageUrlIds
+        .map(title => {
+          return object.included.find(item => item.id === title).attributes
+        })[0]
+        .image_style_uri.filter(
+          item => item.people_thumbnail_desktop__296x434_ !== undefined
+        )[0].people_thumbnail_desktop__296x434_
+
+      // console.log("This is imageUrl", imageUrl)
+
       const personalPageLink = mainWebsite + personObject.attributes.path.alias
 
-      return { personName, professionalTitle, personalPageLink }
+      return {
+        personName,
+        professionalTitle,
+        personalPageLink,
+        imageUrl,
+        cityNames,
+      }
     }
   })
 
@@ -73,15 +106,15 @@ export const grabRelatedPeople = (includedField, object, index) => {
 }
 
 // Get array of ids of of a specific field from relationships given the whole data object (res.data)
-const grabIds = (includedField, object, index) => {
+const grabIds = (includedField, object) => {
   return object.data.relationships[includedField].data.map(id => id.id)
 }
 
 // Get the id of a specific field from relationships given a specific object (res.data.singleObject)
-const grabSubId = (fieldName, singleObject) => {
-  return singleObject.relationships[fieldName].data.map(item => item.id)
+const grabSubIds = (fieldName, singleObject) => {
+  const data = singleObject.relationships[fieldName].data
 
-  // return singleObject.relationships[fieldName].data.map((item) => item.id);
+  return data.id ? [data.id] : data.map(item => item.id)
 }
 
 // get the link that should be called bysed on what is provided

@@ -59,17 +59,30 @@ const SingleInsgightPage = () => {
                 }}
               ></S.Article>
               <S.RightSection>
-                <h3>FEATURED PROFILES</h3>
-                <FeaturedProfileCard />
-                <FeaturedProfileCard />
-                <FeaturedProfileCard />
+                <>
+                  <h3>AUTHORS</h3>
+
+                  {articleData.authors &&
+                    articleData.authors.map((author, index) => (
+                      <FeaturedProfileCard {...author} key={index} />
+                    ))}
+                </>
+
+                <>
+                  <h3>FEATURED PROFILES</h3>
+
+                  {articleData.experts &&
+                    articleData.experts.map((expert, index) => (
+                      <FeaturedProfileCard {...expert} key={index} />
+                    ))}
+                </>
                 <ContactSubscribeCard />
                 <SocialsCard />
               </S.RightSection>
             </S.Container>
-            <div onClick={SavePdf} className="btn-primary">
+            {/* <div onClick={SavePdf} className="btn-primary">
               Get the Pdf
-            </div>
+            </div> */}
           </StyledContainer>
         </>
       ) : (
