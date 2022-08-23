@@ -14,7 +14,7 @@ const Container = styled.div`
 
   @media ${size.lg} {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(${props => props.columnsNumber}, 1fr);
 
     gap: 4rem;
   }
@@ -41,7 +41,7 @@ const UnalignedItemsConainer = ({ children, columnsNumber }) => {
   })
 
   return (
-    <Container>
+    <Container columnsNumber={columnsNumber}>
       {arrays.map((arr, index) => {
         return (
           <div key={index}>
