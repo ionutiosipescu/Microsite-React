@@ -4,6 +4,8 @@ import {
   GET_INDUSTRY,
   GET_EXPERTISES,
   GET_EXPERTISE,
+  GET_INSIGHTS_ARTICLES,
+  GET_RECENT_RECOGNITION,
 } from "../../actions/hls/hlsHome"
 
 const initialState = {
@@ -12,6 +14,8 @@ const initialState = {
   expertises: [],
   industry: {},
   expertise: {},
+  insightsArticles: [],
+  recentRecognition: [],
   // overviewSection: {},
 }
 
@@ -47,6 +51,18 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         expertise: payload,
+      }
+    }
+    case GET_INSIGHTS_ARTICLES: {
+      return {
+        ...state,
+        insightsArticles: payload,
+      }
+    }
+    case GET_RECENT_RECOGNITION: {
+      return {
+        ...state,
+        recentRecognition: payload,
       }
     }
     // case GET_OVERVIEW_SECTION_DATA: {

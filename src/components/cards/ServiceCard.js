@@ -3,13 +3,12 @@ import styled from "styled-components"
 
 const Card = styled.div`
   border-bottom: 1px solid gray;
-  margin: 1.5rem 0;
 
   h4 {
     font-weight: bold;
   }
   p {
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
   }
 `
 

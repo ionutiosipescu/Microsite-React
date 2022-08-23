@@ -16,6 +16,7 @@ import { ReactComponent as Mail } from "./icons/mail.svg"
 import { ReactComponent as Pdf } from "./icons/pdf.svg"
 import { ReactComponent as Share } from "./icons/share.svg"
 import { ReactComponent as BlueRectangle } from "./icons/BlueRectangle.svg"
+import { ReactComponent as TriangleSVG } from "./icons/TriangleSVG.svg"
 
 const iconsPath = "/icons/"
 
@@ -56,6 +57,7 @@ const TwitterStay = ({ className }) => iconStayPng(className, "twit_0")
 const YoutubeStay = ({ className }) => iconStayPng(className, "yt")
 
 export {
+  TriangleSVG,
   Logo,
   AlvarezMarsal,
   ChevronUpWhite,
@@ -96,5 +98,5 @@ export {
   Antena,
   AmazonMusic,
   View,
-  CountryPage
+  CountryPage,
 }

@@ -122,16 +122,15 @@ export const ImageContainer = styled.div`
   }
 `
 export const ImageTriangleContainer = styled.div`
-  margin-left: 191px;
-  position: absolute;
-  content: "";
-  left: 0;
-  top: -14px;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 14px solid #00244a;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding-left: 40%;
+  padding-top: 15px;
+  svg {
+    fill: #00244a;
+  }
+  /* border-bottom: 14px solid #00244a; */
 `
 
 export const Content = styled.div`
@@ -200,6 +199,10 @@ export const InfoCard = styled.div`
   /* border-bottom: 1px solid black; */
   padding: 0.5rem 0;
 
+  a {
+    text-decoration: none;
+    color: #6bbeec;
+  }
   p {
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -235,11 +238,18 @@ export const ContactInfo = styled.div`
   }
 `
 
-export const PersonalInfo = ({ title, content }) => {
+export const PersonalInfo = ({ title, content, onClick }) => {
   return (
     <InfoCard>
-      <p>{title}</p>
-      <div>{content}</div>
+      {title === "email" ? (
+        <a href={content?.uri}>
+          <span>{content.title} </span>
+        </a>
+      ) : (
+        <div onClick={() => onClick()}>
+          <span>{content}</span>
+        </div>
+      )}
     </InfoCard>
   )
 }

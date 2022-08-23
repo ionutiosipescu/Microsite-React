@@ -11,15 +11,15 @@ import { sizem } from "../../utils/breakpoints"
 import styled from "styled-components"
 
 import {
+  fetchHlsExpertises,
   fetchHLSHeroSection,
   fetchHLSIndustries,
+  fetchInsightsArticles,
+  fetchRecentRecognition,
 } from "../../store/actions/hls/hlsHome"
 import IndustrySection from "../../components/section/IndustrySection"
 
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
-
-// import fake data
-import { expertiseData } from "../../utils/data"
 
 const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25"
 
@@ -27,18 +27,19 @@ const Home = () => {
   const dispatch = useDispatch()
   const heroData = useSelector(state => state?.hlsHero?.heroSection)
   const industries = useSelector(state => state?.hlsHero?.industries)
-  // console.log(industries);
-  const [carouselData, setCarouselData] = useState([])
+  const expertises = useSelector(state => state?.hlsHero?.expertises)
+  const insightsArticles = useSelector(
+    state => state?.hlsHero?.insightsArticles
+  )
+  const recentRecognition = useSelector(
+    state => state?.hlsHero?.recentRecognition
+  )
 
   useEffect(() => {
     dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID))
     dispatch(fetchHLSIndustries(ECMEA_HEALTCARE_ID))
-
-    // dispatch(fetchHLSHeroSection(ECMEA_HEALTCARE_ID));
-    // fetchHeroSectionDataHome(setHeroSectionData);
-    // fetchRecentRecognition(setRecentRecognition);
-    // fetchData(setCarouselData);
-    // fetchHLSLeaders(setDataObj);
+    dispatch(fetchInsightsArticles())
+    dispatch(fetchRecentRecognition())
   }, [])
 
   const HomeContainer = styled.div`
@@ -47,7 +48,7 @@ const Home = () => {
       padding: 0;
     }
   `
-  console.log(industries)
+
   return (
     <HomeContainer>
       <HeroSection
@@ -58,24 +59,24 @@ const Home = () => {
         height={450}
       />
       <StyledContainer>
-        <ExpertiseSection expertises={expertiseData} />
+        <ExpertiseSection expertises={expertises} />
         <IndustrySection industries={industries} />
-        <RecongnitionSection arr={carouselData} />
+        <RecongnitionSection
+          arr={recentRecognition}
+          titleSection="Recent Recognition"
+        />
       </StyledContainer>
       <ArticlesContainer>
         <StyledContainer>
-          <ArticlesSection />
+          <ArticlesSection articles={insightsArticles.data} />
         </StyledContainer>
-      </ArticlesContainer>
+      </ArticlesContainer>{" "}
     </HomeContainer>
   )
 }
 
 export default Home
-const route = {
-  route: "HEALTH & LIFE INSIGHTS /",
-  subRoute: " HEALTH & LIFE CASE STUDIES",
-}
+
 const ArticlesContainer = styled.div`
   width: 100%;
   background-color: var(--graySections);

@@ -7,6 +7,8 @@ export const GET_EXPERTISES = "GET_EXPERTISES"
 
 export const GET_INDUSTRY = "GET_INDUSTRY"
 export const GET_EXPERTISE = "GET_EXPERTISE"
+export const GET_INSIGHTS_ARTICLES = "GET_INSIGHTS_ARTICLES"
+export const GET_RECENT_RECOGNITION = "GET_RECENT_RECOGNITION"
 // export const GET_OVERVIEW_SECTION_DATA = "GET_OVERVIEW_DATA";
 
 const link = "https://akamai.alvarezandmarsal.com/api/v1/hls"
@@ -197,6 +199,38 @@ export const fetchExpertise = expertiseId => {
         dispatch({
           type: GET_EXPERTISE,
           payload: expertise,
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
+
+export const fetchInsightsArticles = () => {
+  return async dispatch => {
+    await Axios.get(link)
+      .then(data => {
+        // console.log(data.data)
+        dispatch({
+          type: GET_INSIGHTS_ARTICLES,
+          payload: data?.data.block_two,
+        })
+      })
+
+      .catch(err => {
+        console.log(err)
+      })
+  }
+}
+
+export const fetchRecentRecognition = () => {
+  return async dispatch => {
+    await Axios.get(link)
+      .then(data => {
+        dispatch({
+          type: GET_RECENT_RECOGNITION,
+          payload: data?.data.quotes,
         })
       })
       .catch(err => {

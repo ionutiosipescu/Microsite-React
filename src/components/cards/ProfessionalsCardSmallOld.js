@@ -34,7 +34,7 @@ const ProfessionalsCardSmallOld = ({
         <CardBody>
           <Content>
             <Name>{cardInfo?.name}</Name>
-            <Position>{cardInfo?.position ?? "Senior Director"}</Position>
+            <Position>{cardInfo?.position}</Position>
             <Info>{cardInfo?.country.name}</Info>
           </Content>
         </CardBody>

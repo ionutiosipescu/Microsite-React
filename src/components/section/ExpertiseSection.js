@@ -56,7 +56,7 @@ const ExpertiseSection = ({ expertises }) => {
       <div className="grayContainer">
         <h2 className="">Expertise: </h2>
 
-        <UnalignedItemsConainer>
+        <UnalignedItemsConainer columnsNumber={3}>
           {expertises?.map((expertise, index) => {
             let lastRowElements = expertises.length % 3
             if (lastRowElements == 0) {
@@ -66,6 +66,7 @@ const ExpertiseSection = ({ expertises }) => {
             // console.log(borderIndex)
             return (
               <ExpertiseCard
+                key={index}
                 name={expertise.name}
                 content={expertise.description}
                 index={index}

@@ -19,7 +19,10 @@ import Dropdown from "../../components/navbarComponents/leadershipNavbar/Dropdow
 import { InsightsNavbarContext } from "../../components/navbarComponents/leadershipNavbar/InsightsNavbar"
 import CellWithChevron from "../../components/navbarComponents/leadershipNavbar/CellWithChevron"
 import FiltersContainer from "../../components/navbarComponents/leadershipNavbar/FiltersContainer"
-import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+import {
+  StyledContainer,
+  FullWidthContainer,
+} from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
@@ -88,7 +91,7 @@ const Leadership = () => {
     selectedFilters: selectedFilters,
   }
   return (
-    <StyledContainer>
+    <FullWidthContainer bgColor="white">
       <HeroSection
         title={"HEALTH & LIFE PROFESSIONALS"}
         description={
@@ -129,107 +132,62 @@ const Leadership = () => {
               marginTop="6rem"
             />
           </InsightsNavbarContext.Provider>
-          <LeaadersContainer>
-            {leaders?.map((cardInfo, index) => {
-              return (
-                <ProfessionalsCardSmallOld
-                  className="col-lg-4"
-                  key={index}
-                  cardInfo={cardInfo}
-                  index={index}
-                  openedState={openedState}
-                  handleDisplay={() =>
-                    handleDisplay2(
-                      index,
-                      leadersList,
-                      openedState,
-                      setOpenedState
+          <StyledContainerLocation>
+            <h1 className="p-4"> Leaders</h1>
+            {leaders?.length === 0 ? (
+              <Spinner />
+            ) : (
+              <div className="m-4">
+                <LeaadersContainer>
+                  {leaders?.map((cardInfo, index) => {
+                    return (
+                      <ProfessionalsCardSmallOld
+                        className="col-lg-4"
+                        key={index}
+                        cardInfo={cardInfo}
+                        index={index}
+                        openedState={openedState}
+                        handleDisplay={() =>
+                          handleDisplay2(
+                            index,
+                            leadersList,
+                            openedState,
+                            setOpenedState
+                          )
+                        }
+                        showDetails={openedState[index]}
+                      />
                     )
-                  }
-                  showDetails={openedState[index]}
-                />
-              )
-            })}
-          </LeaadersContainer>
-          {/* <h1 className="pb-4"> Leaders</h1> */}
-          <LeaadersContainer>
-            {persons?.map((cardInfo, index) => {
-              return (
-                <ProfessionalsCardSmallOld
-                  key={index}
-                  cardInfo={cardInfo}
-                  index={index}
-                  openedState={openedState}
-                  handleDisplay={() =>
-                    handleDisplay2(
-                      index,
-                      persons,
-                      openedStatePersons,
-                      setOpenedStatePersons
+                  })}
+                </LeaadersContainer>
+                <h1 className="pb-4"> Leaders</h1>
+                <LeaadersContainer>
+                  {persons?.map((cardInfo, index) => {
+                    return (
+                      <ProfessionalsCardSmallOld
+                        key={index}
+                        cardInfo={cardInfo}
+                        index={index}
+                        openedState={openedState}
+                        handleDisplay={() =>
+                          handleDisplay2(
+                            index,
+                            persons,
+                            openedStatePersons,
+                            setOpenedStatePersons
+                          )
+                        }
+                        showDetails={openedStatePersons[index]}
+                      />
                     )
-                  }
-                  showDetails={openedStatePersons[index]}
-                />
-              )
-            })}
-          </LeaadersContainer>
+                  })}
+                </LeaadersContainer>
+              </div>
+            )}
+          </StyledContainerLocation>
         </div>
       )}
-
-      <StyledContainerLocation>
-        <h1 className="p-4"> Leaders</h1>
-        {leaders?.length === 0 ? (
-          <Spinner />
-        ) : (
-          <div className="m-4">
-            <LeaadersContainer>
-              {leaders?.map((cardInfo, index) => {
-                return (
-                  <ProfessionalsCardSmallOld
-                    className="col-lg-4"
-                    key={index}
-                    cardInfo={cardInfo}
-                    index={index}
-                    openedState={openedState}
-                    handleDisplay={() =>
-                      handleDisplay2(
-                        index,
-                        leadersList,
-                        openedState,
-                        setOpenedState
-                      )
-                    }
-                    showDetails={openedState[index]}
-                  />
-                )
-              })}
-            </LeaadersContainer>
-            <h1 className="pb-4"> Leaders</h1>
-            <LeaadersContainer>
-              {persons?.map((cardInfo, index) => {
-                return (
-                  <ProfessionalsCardSmallOld
-                    key={index}
-                    cardInfo={cardInfo}
-                    index={index}
-                    openedState={openedState}
-                    handleDisplay={() =>
-                      handleDisplay2(
-                        index,
-                        persons,
-                        openedStatePersons,
-                        setOpenedStatePersons
-                      )
-                    }
-                    showDetails={openedStatePersons[index]}
-                  />
-                )
-              })}
-            </LeaadersContainer>
-          </div>
-        )}
-      </StyledContainerLocation>
-    </StyledContainer>
+    </FullWidthContainer>
   )
 }
 

@@ -142,6 +142,7 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
   // console.log(profiles);
 
   let parsedProfiles = []
+  console.log(profiles)
   profiles?.map(profile => {
     let imageId = profile?.relationships?.field_image_background?.data?.id
     let imageId1 = profile?.relationships?.field_image?.data?.id
