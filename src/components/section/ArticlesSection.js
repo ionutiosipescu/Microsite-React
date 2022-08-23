@@ -17,6 +17,7 @@ const ArticlesSectionContainer = styled.div`
   color: var(--darkBlueHome);
 `
 const ArticleSection = ({ articles }) => {
+  console.log(articles)
   return (
     <UnalignedItemsConainer columnsNumber={3}>
       {articles?.map((article, index) => {
@@ -25,7 +26,7 @@ const ArticleSection = ({ articles }) => {
           category: articles?.title ?? "HEALTHCARE & LIFE SCIENCES INSIGHTS",
           title: article?.title,
           date: dateFromSecondsToShortLocale(article?.created),
-          content: article?.text_teaser,
+          text_teaser: article?.text_teaser,
         }
         return (
           <ArticlePreviewCard

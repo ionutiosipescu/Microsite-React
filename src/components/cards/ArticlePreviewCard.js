@@ -19,7 +19,7 @@ const ArticlePreviewCard = ({ cardArticle: articleInfo, category }) => {
         {/* {articleInfo?.title.substr(0  , 30) || "Title"} */}
         {articleInfo?.title || "Title"}
       </S.Title>
-      <S.Date>{articleInfo?.updated || "Date"}</S.Date>
+      <S.Date>{articleInfo?.date || "Date"}</S.Date>
       <S.Content>{articleInfo?.text_teaser || "Content"}</S.Content>
     </S.Card>
   )
