@@ -25,7 +25,7 @@ const ArticleSection = ({ articles }) => {
           id: article?.id,
           category: articles?.title ?? "HEALTHCARE & LIFE SCIENCES INSIGHTS",
           title: article?.title,
-          date: dateFromSecondsToShortLocale(article?.created),
+          updated: dateFromSecondsToShortLocale(article?.updated),
           text_teaser: article?.text_teaser,
         }
         return (
