@@ -27,6 +27,7 @@ const ArticleSection = ({ articles }) => {
           title: article?.title,
           updated: dateFromSecondsToShortLocale(article?.updated),
           text_teaser: article?.text_teaser,
+          uuid: article?.uuid,
         }
         return (
           <ArticlePreviewCard

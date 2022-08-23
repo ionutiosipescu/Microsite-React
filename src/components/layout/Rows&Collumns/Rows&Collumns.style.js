@@ -36,6 +36,9 @@ export const ContainerContent = styled.div`
   @media ${sizem.mdm} {
     padding: 2rem 4rem;
   }
+  @media ${sizem.smm} {
+    padding: 0rem 2rem;
+  }
 `
 export const FullWidthContainer = styled.div`
   width: 100%;
@@ -46,6 +49,9 @@ export const StyledContainerLocation = styled.div`
   max-width: 1600px;
   margin: 0 auto;
   padding: 50px 10px;
+  @media ${sizem.smm} {
+    padding: 0px;
+  }
 `
 export const ContainerLocation = styled.div`
   display: grid;
