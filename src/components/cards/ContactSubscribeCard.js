@@ -18,15 +18,12 @@ const Card = styled.div`
 const ContactSubscribeCard = () => {
   return (
     <Card>
-      <div class="buttons">
-        <div class="button1">
+      <div className="buttons">
+        <div className="button1">
           <ButtonWithAnimation text={"CONTACT US TODAY"} />
         </div>
-        <div class="button2">
-          <ButtonWithAnimation
-            text={"SUBSCRIBE TO OUR BULLETIN"}
-            black={"black"}
-          />
+        <div className="button2">
+          <ButtonWithAnimation text={"SUBSCRIBE TO OUR BULLETIN"} black />
         </div>
       </div>
     </Card>

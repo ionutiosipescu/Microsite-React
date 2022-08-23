@@ -144,7 +144,7 @@ export const fetchHlsExpertises = () => {
         })
       })
       .catch(err => {
-        console.log(err)
+        // console.log(err)
       })
   }
 }

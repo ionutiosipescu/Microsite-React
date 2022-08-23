@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Card = styled.div`
   /* max-width: 32%; */
   /* padding: 1rem; */
-  border-bottom: 2px solid var(--gray1);
+
   margin-bottom: 2rem;
   color: var(--darkBlueHome);
 `
@@ -19,6 +19,7 @@ export const Title = styled.h2`
   color: var(--darkBlue2);
   margin-bottom: 0;
   font-size: 30px;
+  cursor: pointer;
 `
 
 export const Date = styled.div`

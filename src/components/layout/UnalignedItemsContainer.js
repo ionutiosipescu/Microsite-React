@@ -1,11 +1,8 @@
 import React from "react"
 import styled from "styled-components"
+import { size } from "../../utils/breakpoints"
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 4rem;
-
   & > div {
     display: flex;
     flex-direction: column;
@@ -13,6 +10,13 @@ const Container = styled.div`
     & > :last-child {
       border-bottom: none;
     }
+  }
+
+  @media ${size.lg} {
+    display: grid;
+    grid-template-columns: repeat(${props => props.columnsNumber}, 1fr);
+
+    gap: 4rem;
   }
 `
 
@@ -39,8 +43,8 @@ const UnalignedItemsConainer = ({ children, columnsNumber }) => {
   }
 
   return (
-    <Container>
-      {arrays?.map((arr, index) => {
+    <Container columnsNumber={columnsNumber}>
+      {arrays.map((arr, index) => {
         return (
           <div key={index}>
             {arr?.map(child => {

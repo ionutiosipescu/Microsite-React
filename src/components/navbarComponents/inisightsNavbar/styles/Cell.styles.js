@@ -12,13 +12,13 @@ export const NavbarCell = styled.div`
   margin: 0.5rem 0;
   font-size: 1.5rem;
 
-  a {
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-    color: var(--filtersBlue);
-    :hover {
-      color: var(--yellowCategory);
-    }
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  color: ${({ selected }) =>
+    selected ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+
+  :hover {
+    color: var(--yellowCategory);
   }
 
   svg {

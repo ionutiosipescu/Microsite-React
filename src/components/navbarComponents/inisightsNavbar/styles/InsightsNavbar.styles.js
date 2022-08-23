@@ -41,8 +41,7 @@ export const Input = styled.input`
 export const Navbar = styled.div`
   display: ${({ showNavbar }) => (showNavbar ? "initial" : "none")};
 
-  /* border: 2px solid red; */
-
+  letter-spacing: 0px;
   margin: 1rem 0;
 
   @media ${size.md} {

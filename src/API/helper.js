@@ -51,6 +51,7 @@ export const grabRelatedPeople = (includedField, object, index) => {
         "field_professional_title",
         personObject
       )
+      console.log(professionalTitleIds)
 
       const professionalTitle = professionalTitleIds.map(title => {
         return object.included.find(item => item.id === title).attributes.name
@@ -73,7 +74,7 @@ export const grabRelatedPeople = (includedField, object, index) => {
 
 // Get array of ids of of a specific field from relationships given the whole data object (res.data)
 const grabIds = (includedField, object, index) => {
-  return object.data[index].relationships[includedField].data.map(id => id.id)
+  return object.data.relationships[includedField].data.map(id => id.id)
 }
 
 // Get the id of a specific field from relationships given a specific object (res.data.singleObject)
