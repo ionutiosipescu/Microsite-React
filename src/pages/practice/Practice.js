@@ -7,6 +7,7 @@ import {
 } from "../../components/cards"
 import { ButtonWithAnimation } from "../../components/buttons"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import styled from "styled-components"
 
 const Practice = () => {
   const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls"
@@ -16,37 +17,52 @@ const Practice = () => {
   const content =
     "Lorem  Consequat anim eiusmod reprehenderit ut in eiusmod ea ipsum ex. Elit anim amet quis excepteur sint voluptate cillum minim incididunt veniam sint. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing."
 
+  const content2 =
+    "Lorem  Consequat. Esse pariatur magna adipisicing amet do sint amet reprehenderit adipisicing."
+
+  const content3 =
+    "Lorem  Consequat.Consequat. Esse pariatur magna adipisicing amet do sint amet Esse pariatur magna adipisicing amet do sint amet reprehenderit Consequat. Esse pariatur magna adipisicing amet do sint ametConsequat. Esse pariatur magna adipisicing amet do sint amet adipisicing."
+
   return (
     <>
       <HeroSection height={300} pageCategory="Expertise" title={"f"} />
-      <div className="p-3">
-        <ButtonWithAnimation text={"some text"} />
-        <ButtonWithAnimation black />
+      <UnalignedItemsConainer columnsNumber={4}>
+        <Item>{content}</Item>
+        <Item>{content2}</Item>
+        <Item>{content3}</Item>
+        <Item>{content}</Item>
+        <Item>{content2}</Item>
+        <Item>{content3}</Item>
+        <Item>{content}</Item>
+        <Item>{content2}</Item>
+        <Item>{content3}</Item>
+      </UnalignedItemsConainer>
 
-        <h1>Those are expertises</h1>
-        <UnalignedItemsConainer columnsNumber={3}>
-          <ExpertiseCard content={content} />
-          <ExpertiseCard />
-          <ExpertiseCard />
-          <ExpertiseCard />
-          <ExpertiseCard content={content} />
-          <ExpertiseCard />
-          <ExpertiseCard />
-          <ExpertiseCard />
-        </UnalignedItemsConainer>
-        <h1>Those are Articles</h1>
-        <UnalignedItemsConainer>
-          <ArticlePreviewCard content={content} />
-          <ArticlePreviewCard />
-          <ArticlePreviewCard />
-          <ArticlePreviewCard />
-          <ArticlePreviewCard content={content} />
-          <ArticlePreviewCard />
-          <PodcastCard />
-        </UnalignedItemsConainer>
-      </div>
+      {/* <Container>
+        <div>Something</div>
+        <div>Something</div>
+        <div>Something</div>
+      </Container> */}
     </>
   )
 }
 
 export default Practice
+
+const Container = styled.div`
+  width: 200px;
+  background: gray;
+
+  div {
+    border-bottom: 2px solid black;
+  }
+
+  & > :last-child {
+    border-bottom: none;
+  }
+`
+
+const Item = styled.div`
+  border: 2px solid red;
+  margin: 1rem;
+`

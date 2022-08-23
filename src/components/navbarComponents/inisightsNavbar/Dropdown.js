@@ -1,41 +1,34 @@
 import React, { useRef, useEffect, useContext, useState } from "react"
 import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
-import { InsightsNavbarContext } from "./InsightsNavbar"
+import { useDispatch } from "react-redux"
+import { addFilter } from "../../../store/actions/filters"
 
-const Dropdown = ({ text }) => {
+const Dropdown = ({ text, filters, category }) => {
   const dropdownRef = useRef()
+  const dispatch = useDispatch()
   const dropdownHeightRef = useRef(null)
-  const {
-    dropdownHeight,
-    setDropdownHeight,
-    setSelectedFilters,
-    selectedFilters,
-  } = useContext(InsightsNavbarContext)
 
   const [isOpen, setIsOpen] = useState(false)
+  const [margin, setMargin] = useState(0)
+
+  useEffect(() => {
+    if (isOpen && dropdownHeightRef.current.clientHeight > 80) {
+      setMargin(dropdownHeightRef.current.clientHeight)
+    } else {
+      setMargin(0)
+    }
+  }, [isOpen])
 
   const handleClick = () => {
     setIsOpen(!isOpen)
   }
 
-  const closeDropdown = e => {
-    // setDropdownHeight(0)
-    if (!dropdownRef.current.contains(e.target)) {
-      console.log("doing")
-      setIsOpen(false)
-      setDropdownHeight(0)
-    }
-  }
-
-  // Old method for listtening to clicks outside of the dropdown
+  // Listtening to clicks outside of the dropdown
   useEffect(() => {
     const closeDropdown = e => {
       if (!dropdownRef.current.contains(e.target) && isOpen) {
-        console.log("doing")
         setIsOpen(false)
-
-        // setDropdownHeight(0)
       }
     }
 
@@ -46,27 +39,107 @@ const Dropdown = ({ text }) => {
     }
   }, [isOpen])
 
-  const addFilter = e => {
-    setSelectedFilters([...selectedFilters, e.target.innerText])
+  const addFilterToRedux = filter => {
+    dispatch(addFilter(filter))
   }
 
   return (
-    <div ref={dropdownRef}>
+    <S.Container ref={dropdownRef} margin={margin}>
       <CellWithChevron
         text={text}
         handleClick={handleClick}
         dropdownOpened={isOpen}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
-        <li onClick={e => addFilter(e)}>sunshine</li>
+        {category === "created" ? (
+          <TimeDropdown
+            filters={filters}
+            addFilterToRedux={addFilterToRedux}
+            category={category}
+          />
+        ) : (
+          <NormalDropdown
+            filters={filters}
+            addFilterToRedux={addFilterToRedux}
+            category={category}
+          />
+        )}
       </S.DropdownContainer>
-    </div>
+    </S.Container>
+  )
+}
+
+const NormalDropdown = ({ filters, category, addFilterToRedux }) => {
+  return filters.map((filter, index) => (
+    <li
+      onClick={() =>
+        addFilterToRedux({
+          id: filter.id,
+          name: filter.name,
+          category: category,
+        })
+      }
+      key={index}
+    >
+      {filter.name}
+    </li>
+  ))
+}
+
+const TimeDropdown = ({ filters, addFilterToRedux, category }) => {
+  return (
+    <>
+      <div>
+        <S.FlexContainer>
+          {Object.entries(filters.period).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
+        <S.FlexContainer>
+          {Object.entries(filters.years).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
+        <S.FlexContainer>
+          {Object.entries(filters.months).map((filter, index) => (
+            <li
+              onClick={() =>
+                addFilterToRedux({
+                  name: filter[1],
+                  value: filter[0],
+                  category: category,
+                })
+              }
+              key={index}
+            >
+              {filter[1]}
+            </li>
+          ))}
+        </S.FlexContainer>
+      </div>
+    </>
   )
 }
 

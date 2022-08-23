@@ -22,13 +22,17 @@ import { size } from "../../../utils/breakpoints"
 //     display: flex;
 //   }
 // `
+
 export const InsightsContainer = styled.div`
-  display: grid;
+  /* display: grid; */
   /* grid-template-columns: 1fr 1fr 1fr;
   display: initial; */
 
   @media ${size.lg} {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4rem;
+    /* grid-template-columns: repeat(auto-fit, minmax(33%, 1fr)); */
+    /* display: flex; */
   }
 `

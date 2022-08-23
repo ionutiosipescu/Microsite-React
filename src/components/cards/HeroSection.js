@@ -87,9 +87,10 @@ const HeroSection = ({
 }) => {
   let navigate = useNavigate()
   const location = useLocation()
-  // console.log(backgroundUrl);
+
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
+
   return (
     <>
       <Hero
@@ -99,7 +100,7 @@ const HeroSection = ({
       >
         <div className="contentContainer">
           <NavBar />
-          {location.pathname == "/insights" ? (
+          {location.pathname === "/insights" ? (
             <InsightsNavbar />
           ) : (
             <div className="contentWithoutNavbar">
@@ -112,9 +113,8 @@ const HeroSection = ({
                 <>
                   <span>
                     <TitleRoute color={"var(--hover-blue) "}>
-                      {route.route}
+                      {route.route + " / "}
                     </TitleRoute>
-
                     <TitleRoute color={"var(--yellowCategory) "}>
                       {route.subRoute}
                     </TitleRoute>
