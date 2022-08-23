@@ -113,10 +113,10 @@ const HeroSection = ({
                 <>
                   <span>
                     <TitleRoute color={"var(--hover-blue) "}>
-                      {route.route + " / "}
+                      {route.route?.toUpperCase() + " / "}
                     </TitleRoute>
                     <TitleRoute color={"var(--yellowCategory) "}>
-                      {route.subRoute}
+                      {route.subRoute?.toUpperCase()}
                     </TitleRoute>
                   </span>
                 </>
