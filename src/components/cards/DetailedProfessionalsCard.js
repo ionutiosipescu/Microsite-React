@@ -19,6 +19,8 @@ import {
   DescriptionDesktop,
 } from "./styles/DetailedProfessionalsCard.styles"
 import DOMPurify from "dompurify"
+
+import { TriangleSVG } from "../../assets/icons"
 const DetailedProfessionalsCard = ({
   content,
   handleDisplay,
@@ -50,10 +52,10 @@ const DetailedProfessionalsCard = ({
   }
   return (
     <>
+      <ImageTriangleContainer>
+        <TriangleSVG />
+      </ImageTriangleContainer>
       <Card ref={detailedCard}>
-        <ImageTriangleContainer>
-          {/* <IconTriangle className="imgTriangle" /> */}
-        </ImageTriangleContainer>
         <div className="d-flex xicon">
           <XContainer onClick={() => handleDisplay(index)}>
             <XIcon className={"x-icon"} />
@@ -72,11 +74,12 @@ const DetailedProfessionalsCard = ({
                 }}
               /> */}
             </ImageContainer>
+            {console.log(content)}
           </Header>
           <Content>
             <div>
               <h4>{content?.name}</h4>
-              <h6>Managing director</h6>
+              <h6>{content?.position}</h6>
               <p className="text-muted">{content?.position}</p>
 
               <DescriptionDesktop>
@@ -96,6 +99,7 @@ const DetailedProfessionalsCard = ({
               <ButtonWithAnimation
                 text={"connect"}
                 width={"100%"}
+                link={content.linkOurPeople}
                 onClick={() => {
                   window.location.replace(content.linkOurPeople)
                 }}
@@ -122,15 +126,24 @@ const DetailedProfessionalsCard = ({
             </ContactInfo>
             <Dropdown display={display}>
               <PersonalInfo
-                content={content?.country?.name}
+                title="location"
+                content={content?.country.name}
                 onClick={() => {
                   window.open(content?.linkLocation, "_blank")
                 }}
               />
-              <PersonalInfo content={content?.email?.title} />
-              <PersonalInfo content={content?.phone} />
-              <PersonalInfo content={content?.twitter.title} />
-              <PersonalInfo content={content?.email?.title} />
+
+              <PersonalInfo title="email" content={content?.email} />
+              <PersonalInfo title="telephone" content={content?.phone} />
+              <PersonalInfo title="twitter" content={content?.twitter.title} />
+              <PersonalInfo
+                title="connect on"
+                content={content?.linkedin.title}
+                onClick={() => {
+                  window.open(content?.linkedin.uri, "_blank")
+                }}
+              />
+
               {/* <PersonalInfo
                 
                 content={content?.linkedin?.title}

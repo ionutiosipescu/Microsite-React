@@ -10,15 +10,29 @@ import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
 
 const CarouselContainer = styled.div`
   // height: 100%;
-  padding-top: 20px;
+  padding-top: 30px;
   width: 100%;
   display: flex;
   justify-content: center;
   .contentContainer {
     width: 100%;
+    font-family: "Helvetica Neue LT Std", sans-serif;
     h3 {
       font-family: "Helvetica Neue LT Std", sans-serif;
       font-weight: 600;
+    }
+    .positionAuthor {
+      padding-top: -2px;
+      font-size: 1.1rem;
+    }
+    .authorName {
+      margin-bottom: 0px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .articleDescription {
+      font-style: italic;
+      font-size: 1.1rem;
     }
   }
   .articlesContainer {
@@ -30,32 +44,24 @@ const CarouselContainer = styled.div`
 `
 
 const RecongnitionSection = ({ arr, titleSection }) => {
+  const articles = arr?.slice(0, 2)
   return (
     <CarouselContainer>
       <div className="contentContainer">
         <h3>{titleSection || "Recent Recognition:"}</h3>
         {/* <div className="articlesContainer"> */}
         <UnalignedItemsConainer columnsNumber={2}>
-          {[1, 2]?.map((element, index) => (
+          {articles?.map((element, index) => (
             <div className="" key={index}>
-              {/* <p
-                className="fst-italic"
+              <p
+                className=" articleDescription"
                 dangerouslySetInnerHTML={{ __html: element?.text }}
-              /> */}
+              />
 
-              <p className="fst-italic">
-                “Digital has the power to transform operations, propel 
-                commercial improvements and to be the catalyst for care model
-                innovations. David’s in-depth industry sector and digital
-                background dovetails with A&M’s operator bench strength and
-                leadership, action, results credo. He will add value to
-                healthcare and life sciences clients that want to make digital
-                work across their organizations and seek transformative results
-                from laser-focused digital initiatives.”
+              <p className="authorName">
+                {element?.title ?? "RAYMOND BERGLUND"}
               </p>
-
-              <p className="">{element?.job_title ?? "RAYMOND BERGLUND"}</p>
-              <p className="">
+              <p className="positionAuthor">
                 {element?.job_title ??
                   `Managing Director with
                 A&M’s Healthcare & Life Sciences`}

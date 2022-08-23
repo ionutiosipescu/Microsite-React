@@ -66,12 +66,12 @@ const NavBar = () => {
                 title="Expertise"
                 id="navbar-scrolling-dropdown"
               >
-                {/* {expertises?.map((expertise, index) => ( */}
-                {expertiseData?.map((expertise, index) => (
+                {/* {expertiseData?.map((expertise, index) => ( */}
+                {expertises?.map((expertise, index) => (
                   <NavDropdown.Item
                     onClick={() => {
                       navigate(`/expertise/${expertise?.name?.toLowerCase()}`, {
-                        state: expertise.id,
+                        state: expertise?.id,
                       })
                     }}
                     id="something"
