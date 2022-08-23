@@ -87,3 +87,16 @@ export const getSinglePodcast = (setPodcastData, id) => {
     setPodcastData(podcast)
   })
 }
+
+
+// in progress data simluation ...
+// export const getSingleLocation = (objecttest) => {
+//   const data ={objecttest}
+
+//   console.log(objecttest)
+//   let location = {}
+
+//   location.country = data.data[0].locations[0].country  
+//   location.key = data.data[0].key
+// }
+

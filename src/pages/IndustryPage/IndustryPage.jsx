@@ -21,6 +21,7 @@ import { expertiseData } from "../../utils/data"
 import ArticlesSection from "../../components/section/ArticlesSection"
 // import CardProfessionalsNew from "../../components/cards/CardProfessionalsNew"
 import { sizem } from "../../utils/breakpoints"
+import { size } from "../../utils/breakpoints"
 
 const IndustryPage = () => {
   const { state } = useLocation()
@@ -44,7 +45,7 @@ const IndustryPage = () => {
       <ContainerContent>
         <IndustryContainer>
           <div className=" d-lg-flex  ">
-            <div className=" col-11 col-lg-8 ">
+            <div className=" col-12 col-lg-8 px-4 px-lg-0 container-left">
               <div
                 dangerouslySetInnerHTML={{
                   __html: industry?.description ?? industry?.teaser_text,
@@ -56,10 +57,10 @@ const IndustryPage = () => {
               </ExpertiseContainer>
             </div>
 
-            <div className="expertsContainer col-11 col-lg-4 ">
+            <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5 container-right">
               {industry?.experts?.map((expert, index) => {
                 return (
-                  <ProfessionalCard
+                  <ProfessionalCard id="professional-card-industries"
                     name={expert.name}
                     imageSrc={expert?.image}
                     position={expert?.profession_title}
@@ -69,14 +70,14 @@ const IndustryPage = () => {
                 )
               })}
               <div className="w-100">
-                <SocialsCard />
+                <SocialsCard className="socials-card-industries"/>
                 <ContactSubscribeCard />
               </div>
             </div>
           </div>
         </IndustryContainer>
       </ContainerContent>
-      <FullWidthContainer bgColor={"var(--graySections)"}>
+      <FullWidthContainer bgColor={"var(--graySections)"} className="px-4 py-3 px-md-4">
         <ContainerContent>
           <ArticlesSection />
         </ContainerContent>
@@ -92,10 +93,38 @@ const IndustryContainer = styled.div`
   /* height: 200px; */
   /* border: 2px solid red; */
   margin: auto;
-  padding-top: 40px;
+ padding: 40px 0 0 ;
+  @media ${size.lg} {
+    padding-left: 30px ;
+    padding-right: 30px ;
+  }
+  @media ${size.xl} {
+    padding-left: 100px ;
+    padding-right: 100px ;
+  }
+  @media ${size.xxl} {
+    padding-left: 120px ;
+    padding-right: 120px ;
+  }
+  @media screen and (min-width: 1800px) {
+    .container-left{
+      width: 75%;
+    }
+    .container-right{
+      width: 25%;
+    }
+  }
+  @media screen and (min-width: 2350px) {
+    .container-left{
+      width: 83.33333333%;
+    }
+    .container-right{
+      width: 16.66666667%;
+    }
+  }
   .expertsContainer {
-    margin-left: 5rem;
-    padding-right: 5rem;
+    margin-left: 0;
+    padding-right: 0;
     @media ${sizem.mdm} {
       padding: 0;
       margin: 0;
@@ -106,6 +135,7 @@ const IndustryContainer = styled.div`
     padding-bottom: 1rem;
     border-bottom: 3px solid var(--hover-blue);
   }
+
 `
 const ExpertiseContainer = styled.div`
   padding-top: 2rem;

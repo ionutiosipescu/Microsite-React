@@ -10,6 +10,7 @@ const Card = styled.div`
   background: var(--darkBlue);
   width: 100%;
   height: 200px;
+  margin-bottom: 10px;
 `
 
 const CardBody = styled.div`
@@ -17,12 +18,11 @@ const CardBody = styled.div`
   flex-direction: row;
   justify-content: space-between;
   .button-animation {
-    display: block;
+    display: none;
   }
 
   button {
     transition: background-color 0.2s ease-out;
-
     font-size: 0.5rem;
   }
 
@@ -34,17 +34,17 @@ const CardBody = styled.div`
 
   @media ${size.lg} {
     flex-direction: column;
-    .button-animation {
-      padding: 0 0 20px 20px;
-      display: block;
-    }
+      .button-animation {
+        padding: 0 0 20px 20px;
+        display: block;
+      }
   }
 `
 
 const ImageContainer = styled.div`
   background: gray;
   img {
-    width: 190px;
+    width: 120px;
     height: 100%;
     object-fit: cover;
   }
@@ -66,7 +66,6 @@ const Content = styled.div`
   padding: 20px;
   text-transform: uppercase;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +81,6 @@ const ArrowContainer = styled.div`
   margin-left: auto;
   cursor: pointer;
   align-items: center;
-
   :hover {
     background: var(--hover-blue);
   }
@@ -98,14 +96,12 @@ const Name = styled.a`
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.2;
-
   cursor: pointer;
-
   padding-top: 20px;
-
   :hover {
     color: #ffffff;
   }
+
   @media ${size.lg} {
     font-size: 0.875rem;
   }
@@ -132,10 +128,9 @@ const Info = styled.a`
   font-weight: bold;
   line-height: 1;
   cursor: pointer;
-
-  :hover {
-    color: var(--hover-blue);
-  }
+    :hover {
+      color: var(--hover-blue);
+    }
 
   @media ${size.lg} {
     font-size: 0.813rem;
