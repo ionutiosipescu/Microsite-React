@@ -45,7 +45,7 @@ const IndustryPage = () => {
       <ContainerContent>
         <IndustryContainer>
           <div className=" d-lg-flex  ">
-            <div className=" col-12 col-lg-8  px-4 px-lg-0">
+            <div className=" col-12 col-lg-8 px-4 px-lg-0 container-left">
               <div
                 dangerouslySetInnerHTML={{
                   __html: industry?.description ?? industry?.teaser_text,
@@ -57,7 +57,7 @@ const IndustryPage = () => {
               </ExpertiseContainer>
             </div>
 
-            <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5">
+            <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5 container-right">
               {industry?.experts?.map((expert, index) => {
                 return (
                   <ProfessionalCard id="professional-card-industries"
@@ -106,7 +106,22 @@ const IndustryContainer = styled.div`
     padding-left: 120px ;
     padding-right: 120px ;
   }
-
+  @media screen and (min-width: 1800px) {
+    .container-left{
+      width: 75%;
+    }
+    .container-right{
+      width: 25%;
+    }
+  }
+  @media screen and (min-width: 2350px) {
+    .container-left{
+      width: 83.33333333%;
+    }
+    .container-right{
+      width: 16.66666667%;
+    }
+  }
   .expertsContainer {
     margin-left: 0;
     padding-right: 0;
