@@ -37,64 +37,64 @@ const SectionsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .bulletin-container {
-    justify-content: center;
-  }
+    .bulletin-container {
+      justify-content: center;
+    }
 
-  p {
-    color: #fff;
-  }
-  .list-info-container {
-    line-height: 1.6;
     p {
-      margin: 0;
+      color: #fff;
     }
-    .global-careers-box,
-    .contact-privacy-box {
-      width: 50%;
+    .list-info-container {
+      line-height: 1.6;
+      p {
+        margin: 0;
+      }
+      .global-careers-box,
+      .contact-privacy-box {
+        width: 50%;
+      }
+      .global,
+      .contact {
+        margin-bottom: 1.25rem;
+      }
+      .privacy {
+        opacity: 0.8;
+      }
     }
-    .global,
-    .contact {
-      margin-bottom: 1.25rem;
+    .logo-container,
+    .list-info-container {
+      margin-bottom: 1.875rem;
+    }
+    .list-info-container, .contact {
+      font-weight: 500;
     }
     .privacy {
-      opacity: 0.8;
+      font-weight: 300;
     }
-  }
-  .logo-container,
-  .list-info-container {
-    margin-bottom: 1.875rem;
-  }
-.list-info-container, .contact {
-  font-weight: 500;
-}
-.privacy {
-  font-weight: 300;
-}
-.bulletin-signup {
-  font-weight: 700;
-}
+    .bulletin-signup {
+      font-weight: 700;
+    }
   /* MEDIA */
   @media ${size.md} {
     margin-bottom: 0;
     align-items: unset;
     flex-direction: row;
     justify-content: space-between;
-    .logo-container,
-    .list-info-container,
-    .bulletin-container,
-    .contact,
-    .global {
-      margin-bottom: 0 !important;
-    }
+      .logo-container,
+      .list-info-container,
+      .bulletin-container,
+      .contact,
+      .global {
+        margin-bottom: 0 !important;
+      }
 
-    .global-careers-box,
-    .contact-privacy-box {
-      display: flex;
-    }
-    .privacy {
-      padding-left: 6.25rem;
-    }
+      .global-careers-box,
+      .contact-privacy-box {
+        display: flex;
+      }
+      .privacy {
+        padding-left: 6.25rem;
+      }
   }
 `
 const ColContainer = styled.div`

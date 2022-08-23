@@ -8,17 +8,17 @@ const Card = styled.div`
   height: auto;
   padding: 20px;
   margin: 20px 0;
-  .buttons {
-    .button1 {
-      padding-bottom: 20px;
+    .buttons-container {
+      .button1 {
+        padding-bottom: 20px;
+      }
     }
-  }
 `
 
 const ContactSubscribeCard = () => {
   return (
     <Card>
-      <div class="buttons">
+      <div class="buttons-container">
         <div class="button1">
           <ButtonWithAnimation text={"CONTACT US TODAY"} />
         </div>
