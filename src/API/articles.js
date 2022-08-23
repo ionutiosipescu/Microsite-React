@@ -1,5 +1,6 @@
 import Axios from "axios"
 import { getLink, getLinkWithFilters, grabRelatedPeople } from "./helper"
+import { objecttest } from "../utils/data"
 
 const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
 const customApi = process.env.REACT_APP_BASE_API_URL + "/api/v1"
@@ -79,3 +80,16 @@ export const getSinglePodcast = (setPodcastData, id) => {
     setPodcastData(podcast)
   })
 }
+
+
+// in progress data simluation ...
+// export const getSingleLocation = (objecttest) => {
+//   const data ={objecttest}
+
+//   console.log(objecttest)
+//   let location = {}
+
+//   location.country = data.data[0].locations[0].country  
+//   location.key = data.data[0].key
+// }
+
