@@ -103,90 +103,87 @@ const Leadership = () => {
         }
         height={360}
       />
-
-      <h1 className="p-4"> Leaders</h1>
-      {leaders?.length === 0 ? (
-        <Spinner />
-      ) : (
-        <div className="my-2 mx-4">
-          <InsightsNavbarContext.Provider value={values}>
-            <CellWithChevron
-              text={"Filter by"}
-              handleClick={handleClick}
-              onlyMobile
-            />
-            <S.Navbar showNavbar={showNavbar}>
-              {/* {filtersPersons?.map(term => {
+      <StyledContainerLocation className="my-2 mx-4">
+        <h1 className=""> Leaders</h1>
+        {leaders?.length === 0 || persons.length === 0 ? (
+          <Spinner />
+        ) : (
+          <div>
+            <InsightsNavbarContext.Provider value={values}>
+              <CellWithChevron
+                text={"Filter by"}
+                handleClick={handleClick}
+                onlyMobile
+              />
+              <S.Navbar showNavbar={showNavbar}>
+                {/* {filtersPersons?.map(term => {
                 console.log(term)
               })} */}
-              {filtersPersons?.map((term, index) => (
-                <Dropdown
-                  text={term}
-                  iconColor={"var(--hover-blue)"}
-                  key={index}
-                />
-              ))}
-            </S.Navbar>
-            <FiltersContainer
-              filtercolor={"var(--hover-blue)"}
-              marginTop="6rem"
-            />
-          </InsightsNavbarContext.Provider>
-          <StyledContainerLocation>
-            <h1 className="p-4"> Leaders</h1>
-            {leaders?.length === 0 ? (
-              <Spinner />
-            ) : (
-              <div className="m-4">
-                <LeaadersContainer>
-                  {leaders?.map((cardInfo, index) => {
-                    return (
-                      <ProfessionalsCardSmallOld
-                        className="col-lg-4"
-                        key={index}
-                        cardInfo={cardInfo}
-                        index={index}
-                        openedState={openedState}
-                        handleDisplay={() =>
-                          handleDisplay2(
-                            index,
-                            leadersList,
-                            openedState,
-                            setOpenedState
-                          )
-                        }
-                        showDetails={openedState[index]}
-                      />
-                    )
-                  })}
-                </LeaadersContainer>
-                <h1 className="pb-4"> Leaders</h1>
-                <LeaadersContainer>
-                  {persons?.map((cardInfo, index) => {
-                    return (
-                      <ProfessionalsCardSmallOld
-                        key={index}
-                        cardInfo={cardInfo}
-                        index={index}
-                        openedState={openedState}
-                        handleDisplay={() =>
-                          handleDisplay2(
-                            index,
-                            persons,
-                            openedStatePersons,
-                            setOpenedStatePersons
-                          )
-                        }
-                        showDetails={openedStatePersons[index]}
-                      />
-                    )
-                  })}
-                </LeaadersContainer>
-              </div>
-            )}
-          </StyledContainerLocation>
-        </div>
-      )}
+                {filtersPersons?.map((term, index) => (
+                  <Dropdown
+                    text={term}
+                    iconColor={"var(--hover-blue)"}
+                    key={index}
+                  />
+                ))}
+              </S.Navbar>
+              <FiltersContainer
+                filtercolor={"var(--hover-blue)"}
+                marginTop="6rem"
+              />
+            </InsightsNavbarContext.Provider>
+
+            <h1 className=""> Leaders</h1>
+
+            <div className="">
+              <LeaadersContainer>
+                {leaders?.map((cardInfo, index) => {
+                  return (
+                    <ProfessionalsCardSmallOld
+                      className="col-lg-4"
+                      key={index}
+                      cardInfo={cardInfo}
+                      index={index}
+                      openedState={openedState}
+                      handleDisplay={() =>
+                        handleDisplay2(
+                          index,
+                          leadersList,
+                          openedState,
+                          setOpenedState
+                        )
+                      }
+                      showDetails={openedState[index]}
+                    />
+                  )
+                })}
+              </LeaadersContainer>
+              <h1 className="pb-4"> Leaders</h1>
+              <LeaadersContainer>
+                {persons?.map((cardInfo, index) => {
+                  return (
+                    <ProfessionalsCardSmallOld
+                      key={index}
+                      cardInfo={cardInfo}
+                      index={index}
+                      openedState={openedState}
+                      handleDisplay={() =>
+                        handleDisplay2(
+                          index,
+                          persons,
+                          openedStatePersons,
+                          setOpenedStatePersons
+                        )
+                      }
+                      showDetails={openedStatePersons[index]}
+                    />
+                  )
+                })}
+              </LeaadersContainer>
+            </div>
+          </div>
+        )}
+      </StyledContainerLocation>
     </FullWidthContainer>
   )
 }
