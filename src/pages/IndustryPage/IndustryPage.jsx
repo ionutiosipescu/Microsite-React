@@ -36,9 +36,9 @@ const IndustryPage = () => {
   }, [dispatch, state])
 
   return (
-    <>
+    <IndustryContainer>
       <HeroSection
-        height={250}
+        height={360}
         pageCategory={"Industry"}
         title={industry?.name}
       />
@@ -75,14 +75,14 @@ const IndustryPage = () => {
               </div>
             </div>
           </div>
-        </IndustryContainer>
+        </div>
       </ContainerContent>
       <FullWidthContainer bgColor={"var(--graySections)"} className="px-4 py-3 px-md-4">
         <ContainerContent>
           <ArticlesSection />
         </ContainerContent>
       </FullWidthContainer>
-    </>
+    </IndustryContainer>
   )
 }
 

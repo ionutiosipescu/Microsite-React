@@ -80,7 +80,7 @@ const DetailedProfessionalsCard = ({
             <div>
               <h4>{content?.name}</h4>
               <h6>{content?.position}</h6>
-              <p className="text-muted">{content?.position}</p>
+              {/* <p className="text-muted">{content?.position}</p> */}
 
               <DescriptionDesktop>
                 {smallLeaderDescription ? (

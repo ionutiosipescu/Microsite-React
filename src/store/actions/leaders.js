@@ -59,12 +59,6 @@ export const fetchHLSPersons = () => {
 
 export const fetchHLSLeaders = () => {
   return async dispatch => {
-    // // const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_professional_title,
-    // field_image_background,
-    // field_image,
-    // field_expertise,
-    // field_city,
-    // field_region`;
     const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries/ca12f9a8-bfed-4fc1-9a04-5cc560a91fff?include=field_featured_expert.field_professional_title,
     field_featured_expert.field_image_background,
     field_featured_expert.field_image,

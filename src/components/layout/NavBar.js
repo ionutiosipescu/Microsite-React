@@ -8,7 +8,7 @@ import styled from "styled-components"
 import { sizem } from "../../utils/breakpoints"
 import { expertiseData } from "../../utils/data"
 
-const NavBar = () => {
+const NavBar = ({ setNavbarActive, navbarActive }) => {
   const navigate = useNavigate()
   const [showSearchDiv, setShowSearchDiv] = useState(false)
 
@@ -31,7 +31,12 @@ const NavBar = () => {
             <Logo style={{ width: "40px" }} />
           </CustomNavbar.Brand>
           <div className="d-flex justify-content-around mx-3 align-items-center">
-            <CustomNavbar.Toggle aria-controls="navbarScroll" />
+            <CustomNavbar.Toggle
+              aria-controls="navbarScroll"
+              onClick={() => {
+                setNavbarActive(!navbarActive)
+              }}
+            />
             <CustomNavbar.Text
               className={` d-lg-none align-items-center d-flex my-1  container-icon ${
                 showSearchDiv ? "active-link" : " inactive-link"
@@ -183,6 +188,15 @@ const CustomNavbar = styled(Navbar)`
     font-style: medium;
     text-transform: uppercase;
   }
+  #navbarScroll {
+    /* border: 2px solid yellow; */
+    /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); */
+  }
+  .navbar-toggler {
+    /* border: 2px solid red; */
+    filter: grayscale(1) invert(1);
+  }
+
   #navbar-scrolling-dropdown,
   .web-title {
     color: var(--white);
