@@ -101,7 +101,7 @@ const Leadership = () => {
         backgroundUrl={
           "https://akamai.alvarezandmarsal.com/themes/custom/am/images/bg/our-people-heading-bg.jpg"
         }
-        height={300}
+        height={360}
       />
 
       <h1 className="p-4"> Leaders</h1>

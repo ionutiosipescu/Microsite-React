@@ -59,7 +59,7 @@ const ExpertisePage = () => {
   return (
     <ExpertisePageContainer>
       <HeroSection
-        height={300}
+        height={360}
         pageCategory="Expertise"
         title={expertise?.name}
       />

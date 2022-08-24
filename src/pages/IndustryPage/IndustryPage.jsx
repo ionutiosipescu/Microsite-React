@@ -35,53 +35,51 @@ const IndustryPage = () => {
   }, [dispatch, state])
 
   return (
-    <>
+    <IndustryContainer>
       <HeroSection
-        height={250}
+        height={360}
         pageCategory={"Industry"}
         title={industry?.name}
       />
       <ContainerContent>
-        <IndustryContainer>
-          <div className=" d-lg-flex  ">
-            <div className=" col-11 col-lg-8 ">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: industry?.description ?? industry?.teaser_text,
-                }}
-                className="descriptionContainer"
-              />
-              <ExpertiseContainer>
-                <ExpertiseSection expertises={expertiseData} />
-              </ExpertiseContainer>
-            </div>
+        <div className=" d-lg-flex  ">
+          <div className=" col-11 col-lg-8 ">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: industry?.description ?? industry?.teaser_text,
+              }}
+              className="descriptionContainer"
+            />
+            <ExpertiseContainer>
+              <ExpertiseSection expertises={expertiseData} />
+            </ExpertiseContainer>
+          </div>
 
-            <div className="expertsContainer col-11 col-lg-4 ">
-              {industry?.experts?.map((expert, index) => {
-                return (
-                  <ProfessionalCard
-                    name={expert.name}
-                    imageSrc={expert?.image}
-                    position={expert?.profession_title}
-                    country={expert?.global_location}
-                    buttonText={"connect".toUpperCase()}
-                  />
-                )
-              })}
-              <div className="w-100">
-                <SocialsCard />
-                <ContactSubscribeCard />
-              </div>
+          <div className="expertsContainer col-11 col-lg-4 ">
+            {industry?.experts?.map((expert, index) => {
+              return (
+                <ProfessionalCard
+                  name={expert.name}
+                  imageSrc={expert?.image}
+                  position={expert?.profession_title}
+                  country={expert?.global_location}
+                  buttonText={"connect".toUpperCase()}
+                />
+              )
+            })}
+            <div className="w-100">
+              <SocialsCard />
+              <ContactSubscribeCard />
             </div>
           </div>
-        </IndustryContainer>
+        </div>
       </ContainerContent>
       <FullWidthContainer bgColor={"var(--graySections)"}>
         <ContainerContent>
           <ArticlesSection />
         </ContainerContent>
       </FullWidthContainer>
-    </>
+    </IndustryContainer>
   )
 }
 

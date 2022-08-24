@@ -42,6 +42,7 @@ const SingleInsgightPage = () => {
       {articleData ? (
         <>
           <HeroSection
+            height={360}
             title={articleData.title || "No title"}
             backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
             date={articleData.date || "No date"}

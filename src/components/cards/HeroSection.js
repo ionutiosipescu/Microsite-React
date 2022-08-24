@@ -1,4 +1,5 @@
 import React from "react"
+import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { sizem } from "../../utils/breakpoints"
@@ -19,6 +20,11 @@ const Hero = styled.div`
     height: inherit;
     padding-left: 6%;
     padding-right: 5%;
+    nav {
+      /* border: 2px solid red; */
+      z-index: 100;
+      /* position: absolute; */
+    }
 
     .contentWithoutNavbar {
       height: inherit;
@@ -28,6 +34,9 @@ const Hero = styled.div`
     }
     .buttonContainer {
       margin: auto 0px;
+      @media ${sizem.mdm} {
+        margin: 0px 0px;
+      }
       @media ${sizem.smm} {
         margin: 0px 0px;
       }
@@ -87,6 +96,7 @@ const HeroSection = ({
 }) => {
   let navigate = useNavigate()
   const location = useLocation()
+  const [navbarActive, setNavbarActive] = useState(true)
 
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
@@ -99,48 +109,55 @@ const HeroSection = ({
         height={height}
       >
         <div className="contentContainer">
-          <NavBar />
+          <NavBar
+            setNavbarActive={setNavbarActive}
+            navbarActive={navbarActive}
+          />
           {location.pathname === "/insights" ? (
             <InsightsNavbar />
           ) : (
-            <div className="contentWithoutNavbar">
-              {pageCategory && (
-                <TitleRoute color={"var(--yellowCategory) "}>
-                  {pageCategory?.toUpperCase()}
-                </TitleRoute>
-              )}
-              {route && (
-                <>
-                  <span>
-                    <TitleRoute color={"var(--hover-blue) "}>
-                      {route.route?.toUpperCase() + " / "}
-                    </TitleRoute>
+            <>
+              {navbarActive && (
+                <div className="contentWithoutNavbar">
+                  {pageCategory && (
                     <TitleRoute color={"var(--yellowCategory) "}>
-                      {route.subRoute?.toUpperCase()}
+                      {pageCategory?.toUpperCase()}
                     </TitleRoute>
-                  </span>
-                </>
-              )}
-              {pageCategoryCenter && (
-                <h4 className="text-center">{pageCategoryCenter}</h4>
-              )}
-              {date && <h4 className="text-white">{date}</h4>}
-              <h1>{title}</h1>
-              {description && (
-                <p
-                  className=" pt-3 text-decoration-none"
-                  dangerouslySetInnerHTML={{
-                    __html: description,
-                  }}
-                ></p>
-              )}
+                  )}
+                  {route && (
+                    <>
+                      <span>
+                        <TitleRoute color={"var(--hover-blue) "}>
+                          {route.route?.toUpperCase() + " / "}
+                        </TitleRoute>
+                        <TitleRoute color={"var(--yellowCategory) "}>
+                          {route.subRoute?.toUpperCase()}
+                        </TitleRoute>
+                      </span>
+                    </>
+                  )}
+                  {pageCategoryCenter && (
+                    <h4 className="text-center">{pageCategoryCenter}</h4>
+                  )}
+                  {date && <h4 className="text-white">{date}</h4>}
+                  <h1>{title}</h1>
+                  {description && (
+                    <p
+                      className=" pt-3 text-decoration-none"
+                      dangerouslySetInnerHTML={{
+                        __html: description,
+                      }}
+                    ></p>
+                  )}
 
-              {buttonText && (
-                <div className="buttonContainer">
-                  <ButtonWithAnimation text={buttonText.toUpperCase()} />
+                  {buttonText && (
+                    <div className="buttonContainer">
+                      <ButtonWithAnimation text={buttonText.toUpperCase()} />
+                    </div>
+                  )}
                 </div>
               )}
-            </div>
+            </>
           )}
         </div>
       </Hero>
