@@ -36,7 +36,7 @@ const IndustryPage = () => {
   }, [dispatch, state])
 
   return (
-    <IndustryContainer>
+    <>
       <HeroSection
         height={360}
         pageCategory={"Industry"}
@@ -60,7 +60,8 @@ const IndustryPage = () => {
             <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5 container-right">
               {industry?.experts?.map((expert, index) => {
                 return (
-                  <ProfessionalCard id="professional-card-industries"
+                  <ProfessionalCard
+                    id="professional-card-industries"
                     name={expert.name}
                     imageSrc={expert?.image}
                     position={expert?.profession_title}
@@ -70,19 +71,22 @@ const IndustryPage = () => {
                 )
               })}
               <div className="w-100">
-                <SocialsCard className="socials-card-industries"/>
+                <SocialsCard className="socials-card-industries" />
                 <ContactSubscribeCard />
               </div>
             </div>
           </div>
-        </div>
+        </IndustryContainer>
       </ContainerContent>
-      <FullWidthContainer bgColor={"var(--graySections)"} className="px-4 py-3 px-md-4">
+      <FullWidthContainer
+        bgColor={"var(--graySections)"}
+        className="px-4 py-3 px-md-4"
+      >
         <ContainerContent>
           <ArticlesSection />
         </ContainerContent>
       </FullWidthContainer>
-    </IndustryContainer>
+    </>
   )
 }
 
@@ -93,32 +97,32 @@ const IndustryContainer = styled.div`
   /* height: 200px; */
   /* border: 2px solid red; */
   margin: auto;
- padding: 40px 0 0 ;
+  padding: 40px 0 0;
   @media ${size.lg} {
-    padding-left: 30px ;
-    padding-right: 30px ;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   @media ${size.xl} {
-    padding-left: 100px ;
-    padding-right: 100px ;
+    padding-left: 100px;
+    padding-right: 100px;
   }
   @media ${size.xxl} {
-    padding-left: 120px ;
-    padding-right: 120px ;
+    padding-left: 120px;
+    padding-right: 120px;
   }
   @media screen and (min-width: 1800px) {
-    .container-left{
+    .container-left {
       width: 75%;
     }
-    .container-right{
+    .container-right {
       width: 25%;
     }
   }
   @media screen and (min-width: 2350px) {
-    .container-left{
+    .container-left {
       width: 83.33333333%;
     }
-    .container-right{
+    .container-right {
       width: 16.66666667%;
     }
   }
@@ -135,7 +139,6 @@ const IndustryContainer = styled.div`
     padding-bottom: 1rem;
     border-bottom: 3px solid var(--hover-blue);
   }
-
 `
 const ExpertiseContainer = styled.div`
   padding-top: 2rem;
