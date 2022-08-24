@@ -27,8 +27,6 @@ const SingleInsgightPage = () => {
 
   useDocumentTitle(articleData?.title)
 
-  // console.log("This is articleData", articleData)
-
   const SavePdf = () => {
     // doc.text(article?.current.textContent, 10, 10)
     // doc.save("a4.pdf")

@@ -9,70 +9,53 @@ import {
 const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-// export const getInsights = (
-//   setInsightsContent,
-//   selectedFilters,
-//   insightType
-// ) => {
-//   // Health & Life Case Studies
-//   // https://akamai.alvarezandmarsal.com/jsonapi/node/article?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category&sort=-created
-//   const categories = {
-//     industryInsights:
-//       "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
-//   }
-
-//   let link = `${jsonApi}/node/article${categories[insightType]}&sort=-created`
-//   console.log("This is link", link)
-
-//   Axios.get(link).then(res => {
-//     console.log("This is res.data", res.data)
-
-//     const articles = res.data.data.map(article => {
-//       const id = article.id
-//       const title = article.attributes.title
-//       const teaserText = article.attributes.field_teaser_text
-//       const alias = article.attributes.path.alias.split("/")[2]
-//       const date = article.attributes.changed || article.attributes.created
-//       return { id, title, teaserText, alias, date }
-//     })
-
-//     setInsightsContent(articles)
-//     console.log("This is articles", articles)
-//     console.log("This is date", articles[0].date)
-//     console.log("This is alias", articles[0].alias)
-//   })
-// }
-
-export const getInsights = async (selectedFilters, insightType) => {
-  // Health & Life Case Studies
-  // https://akamai.alvarezandmarsal.com/jsonapi/node/article?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category&sort=-created
+export const getInsights = (
+  setInsightsContent,
+  selectedFilters,
+  insightType
+) => {
   const categories = {
     industryInsights:
       "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+    caseStudies:
+      "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
+    healthPodcasts:
+      "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
   }
 
-  let link = `${jsonApi}/node/article${categories[insightType]}&sort=-created`
-  console.log("This is link", link)
+  const categoryPretty = {
+    industryInsights: "business & industry inisights",
+    caseStudies: "health & life case studies",
+    healthPodcasts: "health & life podcasts",
+  }
 
-  const res = await Axios.get(link)
+  console.log("This is selectedFilters", selectedFilters)
 
-  console.log("This is res.data", res.data)
+  let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=5&sort=-created`
 
-  const articles = res.data.data.map(article => {
-    const id = article.id
-    const title = article.attributes.title
-    const teaserText = article.attributes.field_teaser_text
-    const alias = article.attributes.path.alias.split("/")[2]
-    const date = article.attributes.changed || article.attributes.created
-    return { id, title, teaserText, alias, date }
+  Axios.get(link).then(res => {
+    const articles = res.data.data.map(article => {
+      const id = article.id
+      const title = article.attributes.title
+      const teaserText = article.attributes.field_teaser_text
+      const alias = article.attributes.path.alias.split("/")[2]
+      const date = article.attributes.changed || article.attributes.created
+
+      return {
+        id,
+        title,
+        teaserText,
+        alias,
+        date,
+        category: categoryPretty[insightType],
+      }
+    })
+
+    setInsightsContent(articles)
+    // console.log("This is articles", articles)
+    // console.log("This is date", articles[0].date)
+    // console.log("This is alias", articles[0].alias)
   })
-
-  console.log("This is articles", articles)
-  return articles
-
-  // setInsightsContent(articles)
-  // console.log("This is date", articles[0].date)
-  // console.log("This is alias", articles[0].alias)
 }
 
 export const getSingleArticle = (setArticleData, id) => {

@@ -36,8 +36,6 @@ const InsightsNavbar = () => {
     getInsightFilters(setFilters)
   }, [])
 
-  console.log("This is filters", filters)
-
   if (!filters) {
     return null
   }
@@ -60,7 +58,11 @@ const InsightsNavbar = () => {
           type={"industryInsights"}
         />
         <Cell text={"health & life case studies"} type={"caseStudies"} />
-        <Cell text={"health & life podcasts"} href="#" type={"podcasts"} />
+        <Cell
+          text={"health & life podcasts"}
+          href="#"
+          type={"healthPodcasts"}
+        />
       </S.Navbar>
       <CellWithChevron
         text={"Filter by"}

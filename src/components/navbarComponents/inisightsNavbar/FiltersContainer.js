@@ -5,6 +5,15 @@ import { useSelector } from "react-redux"
 
 const FiltersContainer = () => {
   const { filters } = useSelector(state => state.filters)
+
+  // let persistedFilters = JSON.parse(
+  //   sessionStorage.getItem("latestInsightsFilters")
+  // )
+  // sessionStorage.setItem(
+  //   "latestInsightsFilters",
+  //   JSON.stringify(selectedFilters)
+  // )
+
   return (
     <S.FiltersContainer>
       {filters.map((filter, index) => (

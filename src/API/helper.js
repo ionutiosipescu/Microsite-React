@@ -117,24 +117,6 @@ const grabSubIds = (fieldName, singleObject) => {
   return data.id ? [data.id] : data.map(item => item.id)
 }
 
-// get the link that should be called bysed on what is provided
-export const getLink = (articleType, amount) => {
-  if (amount == null) {
-    amount = "&page[limit]=6"
-  } else {
-    amount = `&page[limit]=${amount}`
-  }
-
-  switch (articleType.toLowerCase()) {
-    case "news":
-      return `${baseApiUrl}/node/article?include=field_category&filter[field_category.id]=9fe2a194-380a-4c67-886d-93f945c30a5f${amount}&sort=-created`
-    case "insights":
-      return `${baseApiUrl}/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare${amount}&sort=-created${amount}`
-    default:
-      return "default"
-  }
-}
-
 // Decides what syntax to return for the specific filter
 const getFilterSyntax = filter => {
   // All the filters that exist. Add more as needed.
