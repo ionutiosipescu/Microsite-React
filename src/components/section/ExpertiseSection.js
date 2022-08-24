@@ -67,8 +67,8 @@ const ExpertiseSection = ({ expertises }) => {
             return (
               <ExpertiseCard
                 key={index}
-                name={expertise.name}
-                content={expertise.description}
+                name={expertise?.name}
+                content={expertise?.description}
                 index={index}
                 border={borderIndex}
                 className="expertise"
