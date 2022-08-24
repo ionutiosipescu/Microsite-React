@@ -44,7 +44,7 @@ const LocationPage = () => {
   return (
     <>
       <HeroSection
-        height={300}
+        height={360}
         title={"HEALTCARE & LIFE SCIENCES LOCATIONS"}
         description={
           "Cross border, no problem. Our global team of senior professionals are ready to execute your business solutions."

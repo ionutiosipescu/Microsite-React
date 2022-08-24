@@ -54,8 +54,8 @@ const ExpertisePage = () => {
   useDocumentTitle(
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
   )
-  console.log(state)
-  console.log(expertise)
+  // console.log(state)
+  // console.log(expertise)
   return (
     <ExpertisePageContainer>
       <HeroSection
