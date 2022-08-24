@@ -36,7 +36,7 @@ export const fetchHLSHeroSection = industryId => {
   }
 }
 
-export const fetchHLSIndustries = industryId => {
+export const fetchHLSIndustries = () => {
   return async dispatch => {
     // console.log("fetchHLSIndustries")
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
@@ -50,6 +50,7 @@ export const fetchHLSIndustries = industryId => {
             id: value.id,
             name: value.name,
             description: value.teaser_text,
+            uuid: value.uuid,
           }
           parsedIndustriesArray.push(industryObj)
         }
@@ -72,23 +73,16 @@ export const fetchHLSIndustries = industryId => {
 export const fetchIndustry = industryId => {
   return async dispatch => {
     // console.log(industryId)
+    let industry = {}
     Axios.get(link)
-
       .then(data => {
         const industries = data.data.healthcare_industries
-        // console.log(data.data);
-        var industry = {}
-        // for (const [key, value] of Object.entries(industries)) {
-        //   if (key == industryId) {
-        //     industry = value;
-        //   }
-        // }
         for (const [key, value] of Object.entries(industries)) {
           if (key == industryId) {
             industry = value
           }
         }
-        // console.log(industry);
+        console.log(industry)
         var experts = []
         var expertises = []
         industry?.featured_expert.map(expert => {
@@ -100,15 +94,17 @@ export const fetchIndustry = industryId => {
             }
           }
         })
-        // industry?.expertise.map(expert => {
-        //   for (const [key, value] of Object.entries(
-        //     data?.data?.expertise_parent_children
-        //   )) {
-        //     if (key == expert) {
-        //       expertises.push(value)
-        //     }
-        //   }
-        // })
+        industry?.expertise.map(expert => {
+          for (const [key, value] of Object.entries(
+            data?.data?.expertise_parent_children
+          )) {
+            if (key == expert) {
+              expertises.push(value)
+            }
+          }
+        })
+
+        // awaitfetchIndustryArticles
         // console.log(expertises);
         industry.expertises = expertises
         industry.experts = experts
@@ -121,7 +117,34 @@ export const fetchIndustry = industryId => {
       .catch(err => {
         console.log(err)
       })
+    let industryID = ""
+    const res = await Axios.get(
+      `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
+    )
+    industryID = res?.data?.data[0].id
+    console.log(industryID)
+    // await Axios.gey()
   }
+}
+const getIndustryId_byDrupalTid = async industryId => {
+  console.log(industryId)
+  let industryID = ""
+  const res = await Axios.get(
+    `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
+  )
+  // await Axios.get(
+  //   `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
+  // )
+  //   .then(data => {
+  //     industryID = data?.data?.data[0].id
+  //     // console.log()
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // console.log()
+  industryID = res?.data?.data[0].id
+  return industryID
 }
 
 export const fetchHlsExpertises = () => {

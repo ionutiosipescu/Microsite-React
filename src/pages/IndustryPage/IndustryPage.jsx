@@ -53,7 +53,7 @@ const IndustryPage = () => {
                 className="descriptionContainer"
               />
               <ExpertiseContainer>
-                <ExpertiseSection expertises={expertiseData} />
+                <ExpertiseSection expertises={industry?.expertises} />
               </ExpertiseContainer>
             </div>
 
@@ -61,6 +61,7 @@ const IndustryPage = () => {
               {industry?.experts?.map((expert, index) => {
                 return (
                   <ProfessionalCard
+                    key={index}
                     id="professional-card-industries"
                     name={expert.name}
                     imageSrc={expert?.image}
@@ -82,9 +83,9 @@ const IndustryPage = () => {
         bgColor={"var(--graySections)"}
         className="px-4 py-3 px-md-4"
       >
-        <ContainerContent>
+        {/* <ContainerContent>
           <ArticlesSection />
-        </ContainerContent>
+        </ContainerContent> */}
       </FullWidthContainer>
     </>
   )

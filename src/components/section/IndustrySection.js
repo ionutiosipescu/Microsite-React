@@ -40,6 +40,9 @@ const IndustrySectionContainer = styled.div`
       font-size: 1.5em;
       font-weight: bold;
       padding: 0;
+      :hover {
+        cursor: pointer;
+      }
     }
     p {
       color: var(--darkBlueHome);

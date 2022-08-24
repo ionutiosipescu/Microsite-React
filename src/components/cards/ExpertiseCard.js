@@ -1,7 +1,7 @@
 import React from "react"
 import { ButtonWithAnimation } from "../buttons"
 import styled from "styled-components"
-
+import DOMPurify from "dompurify"
 const Container = styled.div`
   /* display: inline-block; */
   margin-bottom: 2rem;
@@ -15,6 +15,9 @@ const Container = styled.div`
     color: var(--darkBlueHome);
     font-size: 1.5rem;
     font-weight: bold;
+    :hover {
+      cursor: pointer;
+    }
   }
   p {
     color: var(--darkBlueHome);
@@ -31,7 +34,13 @@ const ExpertiseCard = ({ name, content, buttonText, border, onClick }) => {
     <Container className="">
       <div className="">
         <h3 onClick={() => onClick()}>{name || "Title"}</h3>
-        <p>{content?.substr(0, 200) || "content"}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(content?.substr(0, 200)),
+          }}
+        >
+          {/* {content?.substr(0, 200) || "content"} */}
+        </p>
         {/* <p>{content || "content"}</p> */}
 
         <ButtonWithAnimation text={buttonText || "Read more"} />
