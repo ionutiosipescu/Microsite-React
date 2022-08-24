@@ -34,7 +34,6 @@ const Content = styled.div`
   padding: 20px;
   text-transform: uppercase;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,7 +50,6 @@ const ArrowContainer = styled.div`
   cursor: pointer;
   align-items: center;
   background: var(--darkBlue2);
-
   :hover {
     background: var(--hover-blue);
   }
@@ -67,9 +65,7 @@ const Name = styled.a`
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.2;
-
   cursor: pointer;
-
   padding-top: 20px;
 
   :hover {
@@ -101,7 +97,6 @@ const Info = styled.a`
   font-weight: bold;
   line-height: 1;
   cursor: pointer;
-
   :hover {
     color: var(--hover-blue);
   }

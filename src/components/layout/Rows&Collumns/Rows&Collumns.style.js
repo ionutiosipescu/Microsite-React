@@ -12,7 +12,6 @@ export const StyledRow = styled.div`
 
 export const StyledCol1 = styled.div`
   flex: 1 0 68%;
-
   padding: 2rem;
 `
 
@@ -21,23 +20,21 @@ export const StyledCol2 = styled.div`
 `
 
 export const StyledContainer = styled.div`
-  padding: 1rem;
+  padding: 3rem 5rem;
 
-  @media ${size.md} {
-    padding: 3rem 4rem;
-  }
-
-  @media ${size.lg} {
-    padding: 3rem 5rem;
+  @media ${sizem.mdm} {
+    padding: 2rem 2rem;
   }
 `
+
 export const ContainerContent = styled.div`
-  padding: 3rem 5rem;
-  @media ${sizem.mdm} {
-    padding: 2rem 4rem;
+  padding: 0;
+  
+  @media ${sizem.md} {
+    padding: 0;
   }
   @media ${sizem.smm} {
-    padding: 0rem 2rem;
+    padding: 0;
   }
 `
 export const FullWidthContainer = styled.div`
@@ -58,6 +55,7 @@ export const ContainerLocation = styled.div`
   gap: 30px;
   grid-template-columns: repeat(1fr);
   justify-items: center;
+
   @media ${size.lg} {
     grid-template-columns: repeat(3, 1fr);
     justify-items: unset;

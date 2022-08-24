@@ -47,7 +47,7 @@ export const ChevronContainer = styled.span`
 export const TextContainer = styled.span`
   color: ${({ black }) => (black ? "var(--black1)" : "var(--hover-blue)")};
   transition: all 0.5s ease-out;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bolder;
   display: flex;
   align-items: center;
