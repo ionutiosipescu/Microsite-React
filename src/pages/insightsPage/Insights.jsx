@@ -15,10 +15,24 @@ const Insights = () => {
   let persistedFilters = JSON.parse(
     sessionStorage.getItem("latestInsightsFilters")
   )
+
   const { currentInsightType } = useSelector(state => state.filters)
 
   // Filters that were selected by the user or taken from the session storage
   const [selectedFilters, setSelectedFilters] = useState(persistedFilters || [])
+
+  const industryInsights = getInsights(
+    selectedFilters,
+    // currentInsightType
+    "industryInsights"
+  )
+  const caseStudies = "f"
+
+  const articles = {
+    industryInsights: industryInsights,
+  }
+
+  console.log("This is insights", industryInsights)
 
   // Latest articles from server
   const [insightsContent, setInsightsContent] = useState(null)
@@ -26,10 +40,12 @@ const Insights = () => {
   // Fetched filters from the server
   const [filters, setFilters] = useState(null)
 
+  // console.log("This is currentInsightType", currentInsightType)
+
   // Component Mount. Get Insights and Filters from the server
   useEffect(() => {
     // getInsights(setInsightsContent, selectedFilters, currentInsightType)
-    getInsightFilters(setFilters)
+    getInsightFilters(setFilters, currentInsightType)
   }, [])
 
   // Filters were Selected by the user. Get new Insights from the server
@@ -38,12 +54,12 @@ const Insights = () => {
       "latestInsightsFilters",
       JSON.stringify(selectedFilters)
     )
-    getInsights(setInsightsContent, selectedFilters, currentInsightType)
+    // getInsights(setInsightsContent, selectedFilters, currentInsightType)
   }, [selectedFilters])
 
   // Inisghts type was changed. Get new Insights from the server
   useEffect(() => {
-    getInsights(setInsightsContent, selectedFilters, currentInsightType)
+    // getInsights(setInsightsContent, selectedFilters, currentInsightType)
   }, [currentInsightType])
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
@@ -57,9 +73,9 @@ const Insights = () => {
 
       {insightsContent && (
         <StyledContainer>
-          {insightsContent.content ? (
+          {articles[currentInsightType] ? (
             <UnalignedItemsConainer>
-              {insightsContent.content.data.map((item, index) => {
+              {articles[currentInsightType].map((item, index) => {
                 return (
                   <ArticlePreviewCard
                     key={index}

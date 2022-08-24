@@ -6,29 +6,73 @@ import {
   grabRelatedPeople,
 } from "./helper"
 
-const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
+const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-export const getInsights = (
-  setInsightsContent,
-  selectedFilters,
-  InsightType
-) => {
-  let link = `${customApi}/hls`
+// export const getInsights = (
+//   setInsightsContent,
+//   selectedFilters,
+//   insightType
+// ) => {
+//   // Health & Life Case Studies
+//   // https://akamai.alvarezandmarsal.com/jsonapi/node/article?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category&sort=-created
+//   const categories = {
+//     industryInsights:
+//       "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+//   }
 
-  Axios.get(link).then(res => {
-    if (InsightType === "all") {
-      setInsightsContent({
-        businessInsights: res.data.block_two,
-        caseStudies: res.data.block_one,
-        podcasts: res.data.block_three,
-      })
-    } else {
-      setInsightsContent({
-        content: res.data.block_one,
-      })
-    }
+//   let link = `${jsonApi}/node/article${categories[insightType]}&sort=-created`
+//   console.log("This is link", link)
+
+//   Axios.get(link).then(res => {
+//     console.log("This is res.data", res.data)
+
+//     const articles = res.data.data.map(article => {
+//       const id = article.id
+//       const title = article.attributes.title
+//       const teaserText = article.attributes.field_teaser_text
+//       const alias = article.attributes.path.alias.split("/")[2]
+//       const date = article.attributes.changed || article.attributes.created
+//       return { id, title, teaserText, alias, date }
+//     })
+
+//     setInsightsContent(articles)
+//     console.log("This is articles", articles)
+//     console.log("This is date", articles[0].date)
+//     console.log("This is alias", articles[0].alias)
+//   })
+// }
+
+export const getInsights = async (selectedFilters, insightType) => {
+  // Health & Life Case Studies
+  // https://akamai.alvarezandmarsal.com/jsonapi/node/article?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category&sort=-created
+  const categories = {
+    industryInsights:
+      "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+  }
+
+  let link = `${jsonApi}/node/article${categories[insightType]}&sort=-created`
+  console.log("This is link", link)
+
+  const res = await Axios.get(link)
+
+  console.log("This is res.data", res.data)
+
+  const articles = res.data.data.map(article => {
+    const id = article.id
+    const title = article.attributes.title
+    const teaserText = article.attributes.field_teaser_text
+    const alias = article.attributes.path.alias.split("/")[2]
+    const date = article.attributes.changed || article.attributes.created
+    return { id, title, teaserText, alias, date }
   })
+
+  console.log("This is articles", articles)
+  return articles
+
+  // setInsightsContent(articles)
+  // console.log("This is date", articles[0].date)
+  // console.log("This is alias", articles[0].alias)
 }
 
 export const getSingleArticle = (setArticleData, id) => {

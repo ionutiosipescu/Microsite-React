@@ -36,6 +36,8 @@ const InsightsNavbar = () => {
     getInsightFilters(setFilters)
   }, [])
 
+  console.log("This is filters", filters)
+
   if (!filters) {
     return null
   }

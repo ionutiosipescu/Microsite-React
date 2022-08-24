@@ -19,8 +19,6 @@ const SingleInsgightPage = () => {
   // const doc = new jsPDF()
   const article = useRef(null)
 
-  // console.log("This is article", article?.current.textContent)
-
   const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
