@@ -6,7 +6,7 @@ const FeaturedProfileCard = ({
   personName: name,
   professionalTitle: position,
   cityNames,
-
+  personalPageLink,
   imageUrl,
 }) => {
   return (
@@ -15,7 +15,9 @@ const FeaturedProfileCard = ({
         <img src={imageUrl || Connor} alt="featured expert" />
       </S.ImageContainer>
       <S.Content>
-        <h4>{name || "peter urbanowicz"}</h4>
+        <a href={personalPageLink}>
+          <h4>{name || "peter urbanowicz"}</h4>
+        </a>
         <div>{position || "managing director"}</div>
         {cityNames.map((city, index) => (
           <div key={index}>{city}</div>

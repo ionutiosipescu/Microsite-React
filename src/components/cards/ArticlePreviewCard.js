@@ -22,6 +22,10 @@ const ArticlePreviewCard = ({ articleInfo }) => {
       <S.Date>{articleInfo.date || "Date"}</S.Date>
       <S.Content>
         {articleInfo.teaserText || articleInfo.text_teaser || "Content"}
+        {/* {articleInfo?.teaserText.substr(0, 250) ||
+          articleInfo?.text_teaser.substr(0, 250) ||
+          "Content"}
+        ... */}
       </S.Content>
     </S.Card>
   )

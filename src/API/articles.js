@@ -29,8 +29,6 @@ export const getInsights = (
     healthPodcasts: "health & life podcasts",
   }
 
-  console.log("This is selectedFilters", selectedFilters)
-
   let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
 
   link = getLinkWithFilters(link, selectedFilters)
@@ -42,7 +40,14 @@ export const getInsights = (
       const title = article.attributes.title
       const teaserText = article.attributes.field_teaser_text
       const alias = article.attributes.path.alias.split("/")[2]
-      const date = article.attributes.changed || article.attributes.created
+      const date = new Date(
+        article.attributes.changed || article.attributes.created
+      ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+      // const date = article.attributes.changed || article.attributes.created
 
       return {
         id,
@@ -55,9 +60,62 @@ export const getInsights = (
     })
 
     setInsightsContent(articles)
-    // console.log("This is articles", articles)
-    // console.log("This is date", articles[0].date)
-    // console.log("This is alias", articles[0].alias)
+  })
+}
+
+export const getPodcasts = (
+  setInsightsContent,
+  selectedFilters,
+  insightType
+) => {
+  //   const categories = {
+  //     industryInsights:
+  //   "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+  //   caseStudies:
+  //   "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
+  //   healthPodcasts:
+  //   "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
+  // }
+
+  const categoryPretty = {
+    industryInsights: "business & industry inisights",
+    caseStudies: "health & life case studies",
+    healthPodcasts: "health & life podcasts",
+  }
+
+  let link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+  // console.log("This is selectedFilters", selectedFilters)
+
+  // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  link = getLinkWithFilters(link, selectedFilters)
+  // console.log("This is link", link)
+
+  Axios.get(link).then(res => {
+    const articles = res.data.data.map(podcast => {
+      const id = podcast.id
+      const title = podcast.attributes.title
+      const teaserText = podcast.attributes.field_teaser_text
+      const alias = podcast.attributes.path.alias.split("/")[2]
+      const date = new Date(
+        podcast.attributes.changed || podcast.attributes.created
+      ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+
+      return {
+        id,
+        title,
+        teaserText,
+        alias,
+        date,
+        category: categoryPretty[insightType],
+      }
+    })
+
+    setInsightsContent(articles)
   })
 }
 
@@ -119,14 +177,3 @@ export const getSinglePodcast = (setPodcastData, id) => {
     setPodcastData(podcast)
   })
 }
-
-// in progress data simluation ...
-// export const getSingleLocation = (objecttest) => {
-//   const data ={objecttest}
-
-//   console.log(objecttest)
-//   let location = {}
-
-//   location.country = data.data[0].locations[0].country
-//   location.key = data.data[0].key
-// }

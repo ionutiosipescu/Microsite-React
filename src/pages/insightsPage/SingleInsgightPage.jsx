@@ -33,6 +33,8 @@ const SingleInsgightPage = () => {
     console.log("Print?")
   }
 
+  console.log("This is articleData", articleData)
+
   return (
     <>
       {articleData ? (
@@ -56,23 +58,26 @@ const SingleInsgightPage = () => {
                 }}
               ></S.Article>
               <S.RightSection>
-                <>
-                  <h3>AUTHORS</h3>
+                {articleData.authors && (
+                  <>
+                    <h3>AUTHORS</h3>
+                    {articleData.authors &&
+                      articleData.authors.map((author, index) => (
+                        <FeaturedProfileCard {...author} key={index} />
+                      ))}
+                  </>
+                )}
 
-                  {articleData.authors &&
-                    articleData.authors.map((author, index) => (
-                      <FeaturedProfileCard {...author} key={index} />
-                    ))}
-                </>
+                {articleData.experts && (
+                  <>
+                    <h3>FEATURED PROFILES</h3>
 
-                <>
-                  <h3>FEATURED PROFILES</h3>
-
-                  {articleData.experts &&
-                    articleData.experts.map((expert, index) => (
-                      <FeaturedProfileCard {...expert} key={index} />
-                    ))}
-                </>
+                    {articleData.experts &&
+                      articleData.experts.map((expert, index) => (
+                        <FeaturedProfileCard {...expert} key={index} />
+                      ))}
+                  </>
+                )}
                 <ContactSubscribeCard />
                 <SocialsCard />
               </S.RightSection>

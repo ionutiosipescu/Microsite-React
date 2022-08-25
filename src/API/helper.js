@@ -136,7 +136,7 @@ const getFilterSyntax = filter => {
   const filterCases = {
     // Repeating code. Not good
     industries: `filter[field_industry.id]=${filter.uuid}`,
-    expertise: `filter[field_field_expertise.id]=${filter.uuid}`,
+    expertise: `filter[field_expertise.id]=${filter.uuid}`,
     bulletin: `filter[field_.id]=${filter.uuid}`,
 
     // This one is bad

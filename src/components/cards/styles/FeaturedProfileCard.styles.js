@@ -33,6 +33,10 @@ export const Content = styled.div`
   min-height: 100px;
   padding: 0.5rem;
 
+  a {
+    text-decoration: none;
+  }
+
   h4 {
     font-size: 1.5rem;
     margin-bottom: 0;

@@ -5,7 +5,7 @@ import {
   PodcastCard,
 } from "../../components/cards"
 import { InsightsContainer } from "./styles/inisghts.style"
-import { getInsightFilters, getInsights, fetchData } from "../../API"
+import { getPodcasts, getInsights } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
@@ -42,7 +42,7 @@ const Insights = () => {
 
     getInsights(setIndustryInsights, filters, "industryInsights")
     getInsights(setCaseStudies, filters, "caseStudies")
-    // getInsights(setHealthPodcasts, selectedFilters, "healthPodcasts")
+    getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
 
     // getInsightFilters(setFilters, currentInsightType)
   }, [])
@@ -51,7 +51,7 @@ const Insights = () => {
   useEffect(() => {
     getInsights(setIndustryInsights, filters, "industryInsights")
     getInsights(setCaseStudies, filters, "caseStudies")
-    getInsights(setHealthPodcasts, filters, "healthPodcasts")
+    getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
   }, [filters])
 
   // Inisghts type was changed. Get new Insights from the server
@@ -61,20 +61,26 @@ const Insights = () => {
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
 
+  console.log("This is articles", articles)
+
   return (
     <>
       <HeroSection
         title=" Latest Studies"
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        // height={360}
       />
 
-      {/* {articles.all && ( */}
-      {articles.industryInsights && articles.caseStudies ? (
+      {articles.industryInsights &&
+      articles.caseStudies &&
+      articles.healthPodcasts ? (
         <StyledContainer>
           {currentInsightType !== "all" ? (
             <UnalignedItemsConainer>
               {articles[currentInsightType].map((item, index) => {
+                console.log(currentInsightType)
+                if (currentInsightType === "healthPodcasts") {
+                  return <PodcastCard {...item} key={index} />
+                }
                 return <ArticlePreviewCard key={index} articleInfo={item} />
               })}
             </UnalignedItemsConainer>
@@ -91,9 +97,12 @@ const Insights = () => {
                 ))}
               </div>
               <div>
-                <PodcastCard />
-                <PodcastCard />
-                <PodcastCard />
+                {articles.healthPodcasts.map((podcast, index) => (
+                  <PodcastCard {...podcast} key={index} />
+                ))}
+
+                {/* <PodcastCard />
+                <PodcastCard /> */}
               </div>
             </InsightsContainer>
           )}
