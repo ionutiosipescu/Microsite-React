@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { sizem } from "../../../../utils/breakpoints"
 export const FilterCell = styled.div`
   display: flex;
   align-items: center;
@@ -28,5 +28,18 @@ export const FilterCell = styled.div`
     svg {
       fill: var(--yellowCategory);
     }
+  }
+  @media ${sizem.smm} {
+    /* border: 2px solid red; */
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    span {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* display: block; */
   }
 `

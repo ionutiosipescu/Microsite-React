@@ -64,10 +64,8 @@ const Dropdown = ({ text, iconColor }) => {
     }
   }
   // console.log(filtersPersons)
-  navbarFilters.forEach(el => {
-    console.log(el)
-  })
-  const handleColor = () => {
+
+  const handleColorDrop = () => {
     let color = ""
     navbarFilters?.forEach(el => {
       if (el?.category === text?.name) {
@@ -76,8 +74,9 @@ const Dropdown = ({ text, iconColor }) => {
     })
     return color
   }
-  const colorDrop = handleColor()
-  // console.log()
+
+  const colorDrop = handleColorDrop()
+
   return (
     <div ref={dropdownRef}>
       <CellWithChevron
@@ -89,14 +88,7 @@ const Dropdown = ({ text, iconColor }) => {
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
         {text?.values?.map((filts, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              addFilter(filts)
-            }}
-          >
-            <span style={{ color: colorDrop }}>{filts?.name}</span>
-          </li>
+          <TextNavbarFilter key={index} addFilter={addFilter} filts={filts} />
         ))}
       </S.DropdownContainer>
     </div>
@@ -104,3 +96,26 @@ const Dropdown = ({ text, iconColor }) => {
 }
 
 export default Dropdown
+
+const TextNavbarFilter = ({ addFilter, filts }) => {
+  const navbarFilters = useSelector(state => state.leaders.navbarFilters)
+  const handleColorList = () => {
+    let color = ""
+    navbarFilters?.forEach(el => {
+      if (el?.name === filts?.name) {
+        color = "var(--yellowCategory)"
+      }
+    })
+    return color
+  }
+  const textColor = handleColorList()
+  return (
+    <li
+      onClick={() => {
+        addFilter(filts)
+      }}
+    >
+      <span style={{ color: textColor }}>{filts?.name}</span>
+    </li>
+  )
+}

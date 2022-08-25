@@ -65,7 +65,7 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
           </div>
 
           <CustomNavbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0 fw-bold f">
+            <Nav className="me-auto my-2 my-lg-0 fw-bold f navbarHLS">
               <NavDropdown
                 className=""
                 title="Expertise"
@@ -187,6 +187,11 @@ const CustomNavbar = styled(Navbar)`
     font-weight: 300;
     font-style: medium;
     text-transform: uppercase;
+    @media ${sizem.smm} {
+      /* color: red !important; */
+      font-size: 12px;
+      margin-left: -20px;
+    }
   }
   #navbarScroll {
     /* border: 2px solid yellow; */
@@ -207,13 +212,28 @@ const CustomNavbar = styled(Navbar)`
     font-style: medium;
     letter-spacing: 1px;
     text-transform: uppercase;
+    @media ${sizem.smm} {
+      /* color: red !important; */
+      font-size: 12px;
+      margin-left: -20px;
+    }
   }
   .nav-item.show.dropdown {
     background-color: #00254a;
+    @media ${sizem.smm} {
+      /* color: red !important; */
+      font-size: 12px;
+      /* margin-left: -20px; */
+    }
   }
   .nav-item.show.dropdown a {
     color: white !important;
     color: var(--white);
+    @media ${sizem.smm} {
+      /* color: red !important; */
+      font-size: 12px;
+      margin-left: -20px;
+    }
   }
   .nav-item.show.dropdown div {
     background-color: #00254a;
