@@ -47,7 +47,7 @@ export const StyledContainerLocation = styled.div`
   margin: 0 auto;
   padding: 50px 10px;
   @media ${sizem.smm} {
-    padding: 0px;
+    padding: 0 10px;
   }
 `
 export const ContainerLocation = styled.div`
