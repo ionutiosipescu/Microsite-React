@@ -10,41 +10,54 @@ import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Coll
 import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import { Spinner } from "../../components"
 
 const Insights = () => {
-  let persistedFilters = JSON.parse(
-    sessionStorage.getItem("latestInsightsFilters")
-  )
-  const { currentInsightType } = useSelector(state => state.filters)
+  const { currentInsightType, filters } = useSelector(state => state.filters)
 
   // Filters that were selected by the user or taken from the session storage
-  const [selectedFilters, setSelectedFilters] = useState(persistedFilters || [])
+  // const [filters, setSelectedFilters] = useState(persistedFilters || [])
 
-  // Latest articles from server
-  const [insightsContent, setInsightsContent] = useState(null)
+  // Articles with field catergory = Business & Industry Insights, id: b7d6df12-5304-4aaf-ab3d-265acd0fb33c
+  const [industryInsights, setIndustryInsights] = useState(null)
 
-  // Fetched filters from the server
-  const [filters, setFilters] = useState(null)
+  // Articles with field catergory = Health & Life Case Studies, id: f1d36195-6097-4860-ad51-3e7146dba239
+  const [caseStudies, setCaseStudies] = useState(null)
 
-  // Component Mount. Get Insights and Filters from the server
+  // Articles with field catergory = Health & Life Podcast, id: f488f6ff-6a3d-4637-b45c-5ed578cf85f6
+  const [healthPodcasts, setHealthPodcasts] = useState(null)
+
+  const articles = {
+    all: true,
+    industryInsights: industryInsights,
+    caseStudies: caseStudies,
+    healthPodcasts: healthPodcasts,
+  }
+
+  // Component Mount. Get Insights from the server
   useEffect(() => {
-    // getInsights(setInsightsContent, selectedFilters, currentInsightType)
-    getInsightFilters(setFilters)
+    // getInsights(setIndustryInsights, selectedFilters, currentInsightType)
+    // getInsights(setCaseStudies, selectedFilters, currentInsightType)
+    // getInsights(setHealthPodcasts, selectedFilters, currentInsightType)
+
+    getInsights(setIndustryInsights, filters, "industryInsights")
+    getInsights(setCaseStudies, filters, "caseStudies")
+    // getInsights(setHealthPodcasts, selectedFilters, "healthPodcasts")
+
+    // getInsightFilters(setFilters, currentInsightType)
   }, [])
 
   // Filters were Selected by the user. Get new Insights from the server
   useEffect(() => {
-    sessionStorage.setItem(
-      "latestInsightsFilters",
-      JSON.stringify(selectedFilters)
-    )
-    getInsights(setInsightsContent, selectedFilters, currentInsightType)
-  }, [selectedFilters])
+    getInsights(setIndustryInsights, filters, "industryInsights")
+    getInsights(setCaseStudies, filters, "caseStudies")
+    getInsights(setHealthPodcasts, filters, "healthPodcasts")
+  }, [filters])
 
   // Inisghts type was changed. Get new Insights from the server
-  useEffect(() => {
-    getInsights(setInsightsContent, selectedFilters, currentInsightType)
-  }, [currentInsightType])
+  // useEffect(() => {
+  //   getInsights(setIndustryInsights, selectedFilters, currentInsightType)
+  // }, [currentInsightType])
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
 
@@ -56,40 +69,25 @@ const Insights = () => {
         height={360}
       />
 
-      {insightsContent && (
+      {/* {articles.all && ( */}
+      {articles.industryInsights && articles.caseStudies ? (
         <StyledContainer>
-          {insightsContent.content ? (
+          {currentInsightType !== "all" ? (
             <UnalignedItemsConainer>
-              {insightsContent.content.data.map((item, index) => {
-                return (
-                  <ArticlePreviewCard
-                    key={index}
-                    cardArticle={item}
-                    category={insightsContent.content.title}
-                  />
-                )
+              {articles[currentInsightType].map((item, index) => {
+                return <ArticlePreviewCard key={index} articleInfo={item} />
               })}
             </UnalignedItemsConainer>
           ) : (
             <InsightsContainer>
               <div>
-                {insightsContent.businessInsights.data.map((article, index) => (
-                  <ArticlePreviewCard
-                    // {...article}
-                    cardArticle={article}
-                    key={index}
-                    category={insightsContent.businessInsights.title}
-                  />
+                {articles.industryInsights.map((article, index) => (
+                  <ArticlePreviewCard articleInfo={article} key={index} />
                 ))}
               </div>
               <div>
-                {insightsContent.caseStudies.data.map((article, index) => (
-                  <ArticlePreviewCard
-                    // {...article}
-                    cardArticle={article}
-                    key={index}
-                    category={insightsContent.caseStudies.title}
-                  />
+                {articles.caseStudies.map((article, index) => (
+                  <ArticlePreviewCard articleInfo={article} key={index} />
                 ))}
               </div>
               <div>
@@ -100,6 +98,8 @@ const Insights = () => {
             </InsightsContainer>
           )}
         </StyledContainer>
+      ) : (
+        <Spinner />
       )}
     </>
   )

@@ -6,36 +6,66 @@ import {
   grabRelatedPeople,
 } from "./helper"
 
-const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
+const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
 export const getInsights = (
   setInsightsContent,
   selectedFilters,
-  InsightType
+  insightType
 ) => {
-  let link = `${customApi}/hls`
+  const categories = {
+    industryInsights:
+      "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+    caseStudies:
+      "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
+    healthPodcasts:
+      "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
+  }
+
+  const categoryPretty = {
+    industryInsights: "business & industry inisights",
+    caseStudies: "health & life case studies",
+    healthPodcasts: "health & life podcasts",
+  }
+
+  console.log("This is selectedFilters", selectedFilters)
+
+  let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  link = getLinkWithFilters(link, selectedFilters)
+  console.log("This is link", link)
 
   Axios.get(link).then(res => {
-    if (InsightType === "all") {
-      setInsightsContent({
-        businessInsights: res.data.block_two,
-        caseStudies: res.data.block_one,
-        podcasts: res.data.block_three,
-      })
-    } else {
-      setInsightsContent({
-        content: res.data.block_one,
-      })
-    }
+    const articles = res.data.data.map(article => {
+      const id = article.id
+      const title = article.attributes.title
+      const teaserText = article.attributes.field_teaser_text
+      const alias = article.attributes.path.alias.split("/")[2]
+      const date = article.attributes.changed || article.attributes.created
+
+      return {
+        id,
+        title,
+        teaserText,
+        alias,
+        date,
+        category: categoryPretty[insightType],
+      }
+    })
+
+    setInsightsContent(articles)
+    // console.log("This is articles", articles)
+    // console.log("This is date", articles[0].date)
+    // console.log("This is alias", articles[0].alias)
   })
 }
 
 export const getSingleArticle = (setArticleData, id) => {
   // Good one?
   // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`
-
-  const link = `${jsonApi}/node/article/${id}`
+  const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
+  // console.log("This is link", link)
 
   // const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`
 
@@ -44,6 +74,8 @@ export const getSingleArticle = (setArticleData, id) => {
     const data = res.data.data
 
     let article = {}
+
+    // console.log("This is data", data)
 
     article.content = data.attributes.body.value
 
@@ -56,10 +88,10 @@ export const getSingleArticle = (setArticleData, id) => {
     })
 
     article.title = data.attributes.title
-    // console.log(article)
-    //
-    // article.authors = grabRelatedPeople("field_authors", res.data, 0)
-    // article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+    article.authors = grabRelatedPeople("field_authors", res.data, 0)
+    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+
+    console.log("This is article", article)
 
     setArticleData(article)
   })
@@ -88,7 +120,6 @@ export const getSinglePodcast = (setPodcastData, id) => {
   })
 }
 
-
 // in progress data simluation ...
 // export const getSingleLocation = (objecttest) => {
 //   const data ={objecttest}
@@ -96,7 +127,6 @@ export const getSinglePodcast = (setPodcastData, id) => {
 //   console.log(objecttest)
 //   let location = {}
 
-//   location.country = data.data[0].locations[0].country  
+//   location.country = data.data[0].locations[0].country
 //   location.key = data.data[0].key
 // }
-

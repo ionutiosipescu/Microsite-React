@@ -3,7 +3,7 @@ const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL
 
 // Creates a link with filters to be used on request to the API
 export const getLinkWithFilters = (link, selectedFilters) => {
-  link += "?"
+  link += "&"
 
   // Create a single object for the time filter
   let timeFilter = {
@@ -41,25 +41,58 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0)
+
+  // console.log("This is ids", peopleIds)
+
   let personData = peopleIds.map(id => {
     const personObject = object.included.find(author => author.id === id)
 
     if (personObject) {
       const personName = personObject.attributes.title
 
-      const professionalTitleIds = grabSubId(
+      const professionalTitleIds = grabSubIds(
         "field_professional_title",
         personObject
       )
-      console.log(professionalTitleIds)
+
+      const citiesIds = grabSubIds("field_city", personObject)
+
+      const imageUrlIds = grabSubIds("field_image_background", personObject)
+
+      // console.log("This is imageUrl", imageUrlId)
+      // console.log(professionalTitleIds)
 
       const professionalTitle = professionalTitleIds.map(title => {
         return object.included.find(item => item.id === title).attributes.name
       })
 
+      const cityNames = citiesIds.map(title => {
+        return object.included.find(item => item.id === title).attributes.name
+      })
+
+      // This one is bad
+      // const imageUrl = imageUrlIds.map(title => {
+      //   return object.included.find(item => item.id === title).attributes
+      // })[0].image_style_uri[5].article_image_small__576x322_
+      const imageUrl = imageUrlIds
+        .map(title => {
+          return object.included.find(item => item.id === title).attributes
+        })[0]
+        .image_style_uri.filter(
+          item => item.people_thumbnail_desktop__296x434_ !== undefined
+        )[0].people_thumbnail_desktop__296x434_
+
+      // console.log("This is imageUrl", imageUrl)
+
       const personalPageLink = mainWebsite + personObject.attributes.path.alias
 
-      return { personName, professionalTitle, personalPageLink }
+      return {
+        personName,
+        professionalTitle,
+        personalPageLink,
+        imageUrl,
+        cityNames,
+      }
     }
   })
 
@@ -73,51 +106,51 @@ export const grabRelatedPeople = (includedField, object, index) => {
 }
 
 // Get array of ids of of a specific field from relationships given the whole data object (res.data)
-const grabIds = (includedField, object, index) => {
+const grabIds = (includedField, object) => {
   return object.data.relationships[includedField].data.map(id => id.id)
 }
 
 // Get the id of a specific field from relationships given a specific object (res.data.singleObject)
-const grabSubId = (fieldName, singleObject) => {
-  return singleObject.relationships[fieldName].data.map(item => item.id)
+const grabSubIds = (fieldName, singleObject) => {
+  const data = singleObject.relationships[fieldName].data
 
-  // return singleObject.relationships[fieldName].data.map((item) => item.id);
-}
-
-// get the link that should be called bysed on what is provided
-export const getLink = (articleType, amount) => {
-  if (amount == null) {
-    amount = "&page[limit]=6"
-  } else {
-    amount = `&page[limit]=${amount}`
-  }
-
-  switch (articleType.toLowerCase()) {
-    case "news":
-      return `${baseApiUrl}/node/article?include=field_category&filter[field_category.id]=9fe2a194-380a-4c67-886d-93f945c30a5f${amount}&sort=-created`
-    case "insights":
-      return `${baseApiUrl}/node/article?include=field_primary_industry&filter[field_primary_industry.name]=healthcare${amount}&sort=-created${amount}`
-    default:
-      return "default"
-  }
+  return data.id ? [data.id] : data.map(item => item.id)
 }
 
 // Decides what syntax to return for the specific filter
 const getFilterSyntax = filter => {
   // All the filters that exist. Add more as needed.
+  // const filterCases = {
+  //   // Repeating code. Not good
+  //   industries: `${filter.filterType}[]=${filter.id}`,
+  //   expertise: `${filter.filterType}[]=${filter.id}`,
+  //   bulletin: `${filter.filterType}[]=${filter.id}`,
+  //   region: `${filter.filterType}[]=${filter.id}`,
+
+  //   userInput: `insight_search=${filter.value}`,
+
+  //   time: getTimeFilterSyntax(filter),
+  // }
+
+  console.log(filter)
   const filterCases = {
     // Repeating code. Not good
-    industries: `${filter.filterType}[]=${filter.id}`,
-    expertise: `${filter.filterType}[]=${filter.id}`,
-    bulletin: `${filter.filterType}[]=${filter.id}`,
-    region: `${filter.filterType}[]=${filter.id}`,
+    industries: `filter[field_industry.id]=${filter.uuid}`,
+    expertise: `filter[field_field_expertise.id]=${filter.uuid}`,
+    bulletin: `filter[field_.id]=${filter.uuid}`,
 
-    userInput: `insight_search=${filter.value}`,
+    // This one is bad
+    region: `filter[field_region.name]=${filter.name}`,
 
-    time: getTimeFilterSyntax(filter),
+    // userInput: `insight_search=${filter.value}`,
+
+    // time: getTimeFilterSyntax(filter),
+    created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
+      filter.value.split(":")[1]
+    }`,
   }
 
-  return filterCases[filter.filterType]
+  return filterCases[filter.category]
 }
 
 // The time filter is more complicated. It's a range of dates. Plus, we need to keep in mind if a month, year or month and year are selected.
@@ -131,7 +164,7 @@ const getTimeFilterSyntax = filter => {
   const minDay = filter.days ? filter.days : 1
   const maxDay = filter.days ? filter.days : daysInMonth(maxMonth, maxYear)
 
-  return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`
+  // return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`
 }
 
 // Month in JavaScript is 0-indexed (January is 0, February is 1, etc),

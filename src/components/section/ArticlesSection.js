@@ -32,7 +32,7 @@ const ArticleSection = ({ articles }) => {
         return (
           <ArticlePreviewCard
             key={index}
-            cardArticle={cardInfo}
+            articleInfo={cardInfo}
             onClick={() => alert("click")}
           />
         )

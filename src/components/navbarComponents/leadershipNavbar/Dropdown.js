@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports"
 import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
 import { InsightsNavbarContext } from "./InsightsNavbar"
-import {
-  addNavbarFilters,
-  filterHLSPersons,
-} from "../../../store/actions/leaders"
+import { addNavbarFilters } from "../../../store/actions/leaders"
 
 const Dropdown = ({ text, iconColor }) => {
   const dispatch = useDispatch()
@@ -15,12 +12,7 @@ const Dropdown = ({ text, iconColor }) => {
 
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
 
-  const {
-    dropdownHeight,
-    setDropdownHeight,
-    setSelectedFilters,
-    selectedFilters,
-  } = useContext(InsightsNavbarContext)
+  const { setDropdownHeight } = useContext(InsightsNavbarContext)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -28,15 +20,7 @@ const Dropdown = ({ text, iconColor }) => {
     setIsOpen(!isOpen)
   }
 
-  const closeDropdown = e => {
-    // setDropdownHeight(0)
-    if (!dropdownRef.current.contains(e.target)) {
-      setIsOpen(false)
-      setDropdownHeight(0)
-    }
-  }
-
-  // Old method for listtening to clicks outside of the dropdown
+  // method for listtening to clicks outside of the dropdown
   useEffect(() => {
     const closeDropdown = e => {
       if (!dropdownRef.current.contains(e.target) && isOpen) {
@@ -51,14 +35,14 @@ const Dropdown = ({ text, iconColor }) => {
     }
   }, [isOpen])
 
-  const addFilter = filts => {
+  const addFilter = filter => {
     if (navbarFilters?.length > 0) {
-      const found = navbarFilters.find(filter => filter.type === filts.type)
+      const found = navbarFilters.find(f => f.type === filter.type)
       if (!found) {
-        dispatch(addNavbarFilters(filts))
+        dispatch(addNavbarFilters(filter))
       }
     } else {
-      dispatch(addNavbarFilters(filts))
+      dispatch(addNavbarFilters(filter))
     }
   }
 

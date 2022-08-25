@@ -77,6 +77,7 @@ const NormalDropdown = ({ filters, category, addFilterToRedux }) => {
           id: filter.id,
           name: filter.name,
           category: category,
+          uuid: filter.uuid,
         })
       }
       key={index}
