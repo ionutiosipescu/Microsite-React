@@ -15,11 +15,13 @@ export const Card = styled.div`
   min-height: 430px;
   /* padding: 4rem 2rem; */
   width: 100%;
-  max-width: 1600px;
+  max-width: 1580px;
   margin-left: auto;
   margin-right: auto;
   /* padding-left: 32px; */
   margin-top: 15px;
+  margin-bottom: 15px;
+  
   :after {
     position: absolute;
     content: "";
