@@ -92,6 +92,7 @@ const TimeDropdown = ({ filters, addFilterToRedux, category }) => {
     <>
       <div>
         <S.FlexContainer>
+          {/* This shit is bad. Need to move it to the api folder and to data cleaning there */}
           {Object.entries(filters.period).map((filter, index) => (
             <li
               onClick={() =>

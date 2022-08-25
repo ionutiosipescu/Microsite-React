@@ -22,8 +22,6 @@ export const NavbarCell = styled.div`
   }
 
   svg {
-    /* {dropdownOpened} */
-
     transition: all 0.2s ease-in-out;
 
     padding-left: 0.5rem;
