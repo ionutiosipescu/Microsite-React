@@ -31,7 +31,10 @@ export const getInsights = (
 
   console.log("This is selectedFilters", selectedFilters)
 
-  let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=5&sort=-created`
+  let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  link = getLinkWithFilters(link, selectedFilters)
+  console.log("This is link", link)
 
   Axios.get(link).then(res => {
     const articles = res.data.data.map(article => {

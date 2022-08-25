@@ -20,7 +20,9 @@ const ArticlePreviewCard = ({ articleInfo }) => {
         {articleInfo.title || "Title"}
       </S.Title>
       <S.Date>{articleInfo.date || "Date"}</S.Date>
-      <S.Content>{articleInfo.teaserText || "Content"}</S.Content>
+      <S.Content>
+        {articleInfo.teaserText || articleInfo.text_teaser || "Content"}
+      </S.Content>
     </S.Card>
   )
 }

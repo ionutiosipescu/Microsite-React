@@ -3,7 +3,7 @@ const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL
 
 // Creates a link with filters to be used on request to the API
 export const getLinkWithFilters = (link, selectedFilters) => {
-  link += "?"
+  link += "&"
 
   // Create a single object for the time filter
   let timeFilter = {
@@ -120,19 +120,37 @@ const grabSubIds = (fieldName, singleObject) => {
 // Decides what syntax to return for the specific filter
 const getFilterSyntax = filter => {
   // All the filters that exist. Add more as needed.
+  // const filterCases = {
+  //   // Repeating code. Not good
+  //   industries: `${filter.filterType}[]=${filter.id}`,
+  //   expertise: `${filter.filterType}[]=${filter.id}`,
+  //   bulletin: `${filter.filterType}[]=${filter.id}`,
+  //   region: `${filter.filterType}[]=${filter.id}`,
+
+  //   userInput: `insight_search=${filter.value}`,
+
+  //   time: getTimeFilterSyntax(filter),
+  // }
+
+  console.log(filter)
   const filterCases = {
     // Repeating code. Not good
-    industries: `${filter.filterType}[]=${filter.id}`,
-    expertise: `${filter.filterType}[]=${filter.id}`,
-    bulletin: `${filter.filterType}[]=${filter.id}`,
-    region: `${filter.filterType}[]=${filter.id}`,
+    industries: `filter[field_industry.id]=${filter.uuid}`,
+    expertise: `filter[field_field_expertise.id]=${filter.uuid}`,
+    bulletin: `filter[field_.id]=${filter.uuid}`,
 
-    userInput: `insight_search=${filter.value}`,
+    // This one is bad
+    region: `filter[field_region.name]=${filter.name}`,
 
-    time: getTimeFilterSyntax(filter),
+    // userInput: `insight_search=${filter.value}`,
+
+    // time: getTimeFilterSyntax(filter),
+    created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
+      filter.value.split(":")[1]
+    }`,
   }
 
-  return filterCases[filter.filterType]
+  return filterCases[filter.category]
 }
 
 // The time filter is more complicated. It's a range of dates. Plus, we need to keep in mind if a month, year or month and year are selected.
@@ -146,7 +164,7 @@ const getTimeFilterSyntax = filter => {
   const minDay = filter.days ? filter.days : 1
   const maxDay = filter.days ? filter.days : daysInMonth(maxMonth, maxYear)
 
-  return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`
+  // return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`
 }
 
 // Month in JavaScript is 0-indexed (January is 0, February is 1, etc),

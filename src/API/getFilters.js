@@ -15,12 +15,13 @@ export const getInsightFilters = setFilters => {
     Axios.get(hlsLink).then(res => {
       const expertises = Object.values(res.data.expertise_parent_children).map(
         filter => {
-          return { uuid: filter.uuid, name: filter.name }
+          return { id: filter.id, uuid: filter.uuid, name: filter.name }
         }
       )
       const industries = Object.values(res.data.healthcare_industries).map(
         filter => {
-          return { uuid: filter.uuid, name: filter.name }
+          // console.log("This is filter", filter)
+          return { id: filter.id, uuid: filter.uuid, name: filter.name }
         }
       )
 
