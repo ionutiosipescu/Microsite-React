@@ -25,14 +25,8 @@ import {
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+import { LeaadersContainer } from "./style/Leadership.style"
 
-export const LeaadersContainer = styled.div`
-  padding-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 0.5rem;
-`
 const Leadership = () => {
   const dispatch = useDispatch()
 
@@ -103,7 +97,7 @@ const Leadership = () => {
         }
         height={360}
       />
-      <StyledContainerLocation className="my-2 mx-4">
+      <StyledContainerLocation className="my-2">
         <h1 className=""> Leaders</h1>
         {leaders?.length === 0 || persons.length === 0 ? (
           <Spinner />

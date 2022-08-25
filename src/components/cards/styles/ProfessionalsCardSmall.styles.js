@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  padding-bottom: ${({ padding }) => padding + 30 + "px" || 0};
+  padding-bottom: ${({ padding }) => padding + "px" || 0};
   /* padding-bottom: 490px !important; */
   cursor: pointer;
   /* max-height: 300px; */
@@ -12,13 +12,13 @@ export const Card = styled.div`
   background: #002b49;
   min-height: 180px;
   max-height: 180px;
-  max-width: 300px;
+  /* max-width: 300px; */
   /* margin-bottom: 2rem; */
 `
 
 export const ImageContainer = styled.div`
   background: gray;
-  flex: 2;
+  flex: 1;
 
   img {
     width: 100%;
