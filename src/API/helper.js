@@ -145,9 +145,9 @@ const getFilterSyntax = filter => {
     // userInput: `insight_search=${filter.value}`,
 
     // time: getTimeFilterSyntax(filter),
-    created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
-      filter.value.split(":")[1]
-    }`,
+    // created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
+    //   filter.value.split(":")[1]
+    // }`,
   }
 
   return filterCases[filter.category]
