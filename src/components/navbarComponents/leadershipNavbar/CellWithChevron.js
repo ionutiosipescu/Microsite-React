@@ -9,15 +9,16 @@ const CellWithChevron = ({
   onlyMobile,
   dropdownOpened,
   iconColor,
+  color,
 }) => {
   return (
     <S.NavbarCell
       onClick={() => handleClick()}
       onlyMobile={onlyMobile}
       dropdownOpened={dropdownOpened}
-      iconColor={iconColor}
+      iconColor={color ? color : iconColor}
     >
-      <span>{text}</span>
+      <span style={{ color: color }}>{text}</span>
       {/* <ChevronDownWhite /> */}
 
       {dropdownOpened ? <ChevronUpWhite /> : <ChevronDownWhite />}

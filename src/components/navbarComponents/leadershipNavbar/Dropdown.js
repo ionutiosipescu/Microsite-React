@@ -14,6 +14,7 @@ const Dropdown = ({ text, iconColor }) => {
   const dropdownHeightRef = useRef(null)
 
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
+  const filtersPersons = useSelector(state => state.leaders.filtersPersons)
 
   const {
     dropdownHeight,
@@ -52,6 +53,7 @@ const Dropdown = ({ text, iconColor }) => {
   }, [isOpen])
 
   const addFilter = filts => {
+    filts.category = text.name
     if (navbarFilters?.length > 0) {
       const found = navbarFilters.find(filter => filter.type === filts.type)
       if (!found) {
@@ -61,7 +63,21 @@ const Dropdown = ({ text, iconColor }) => {
       dispatch(addNavbarFilters(filts))
     }
   }
-
+  // console.log(filtersPersons)
+  navbarFilters.forEach(el => {
+    console.log(el)
+  })
+  const handleColor = () => {
+    let color = ""
+    navbarFilters?.forEach(el => {
+      if (el?.category === text?.name) {
+        color = "var(--yellowCategory)"
+      }
+    })
+    return color
+  }
+  const colorDrop = handleColor()
+  // console.log()
   return (
     <div ref={dropdownRef}>
       <CellWithChevron
@@ -69,11 +85,17 @@ const Dropdown = ({ text, iconColor }) => {
         handleClick={handleClick}
         dropdownOpened={isOpen}
         iconColor={iconColor}
+        color={colorDrop}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
         {text?.values?.map((filts, index) => (
-          <li key={index} onClick={() => addFilter(filts)}>
-            <span>{filts?.name}</span>
+          <li
+            key={index}
+            onClick={() => {
+              addFilter(filts)
+            }}
+          >
+            <span style={{ color: colorDrop }}>{filts?.name}</span>
           </li>
         ))}
       </S.DropdownContainer>
