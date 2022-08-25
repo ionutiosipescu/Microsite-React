@@ -55,7 +55,7 @@ const DetailedProfessionalsCard = ({
       <ImageTriangleContainer>
         <TriangleSVG />
       </ImageTriangleContainer>
-      <Card ref={detailedCard}>
+      <Card ref={detailedCard} display={display}>
         <div className="d-flex xicon">
           <XContainer onClick={() => handleDisplay(index)}>
             <XIcon className={"x-icon"} />
@@ -118,7 +118,12 @@ const DetailedProfessionalsCard = ({
           </Content>
           <Info>
             <ContainerMobile>
-              <div>{content?.smallDescription}</div>
+              <div>
+                {window.innerWidth < "1000px"
+                  ? content?.smallDescription
+                  : content?.smallDescription.substr(0, 300)}
+                {/* {content?.smallDescription} */}
+              </div>
             </ContainerMobile>
 
             <ContactInfo onClick={handleClick} borderBottom={borderBottom}>

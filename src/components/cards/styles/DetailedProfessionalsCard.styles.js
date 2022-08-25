@@ -1,4 +1,4 @@
-import { size } from "../../../utils/breakpoints"
+import { size, sizem } from "../../../utils/breakpoints"
 import styled from "styled-components"
 import { CountryPage } from "../../../assets/icons"
 import { ButtonWithAnimation } from "../../buttons"
@@ -14,7 +14,7 @@ export const Card = styled.div`
   height: -webkit-fill-available;
   min-height: 430px;
   /* padding: 4rem 2rem; */
-  width: 1532px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   /* padding-left: 32px; */
@@ -38,6 +38,10 @@ export const Card = styled.div`
     cursor: pointer;
     background-size: 32px 32px;
     margin-right: 15px !important;
+  }
+  @media ${sizem.smm} {
+    padding: 5px;
+    height: ${props => (props.display !== "none" ? "90%" : "65%")};
   }
 `
 export const XContainer = styled.a`
@@ -90,6 +94,14 @@ export const Header = styled.div`
 
 export const ImageContainer = styled.div`
   height: 100%;
+  @media ${sizem.smm} {
+    margin: 2px;
+    height: 200px;
+    width: 150px;
+    /* border: 2px solid red; */
+    z-index: 1000;
+    position: absolute;
+  }
   /* background: darkgray;
 
   flex: 1;
@@ -138,6 +150,15 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 30px;
+  @media ${sizem.smm} {
+    /* margin-top: -100px; */
+    /* border: 2px solid #fff; */
+    position: relative;
+    z-index: 1000;
+    font-size: 18px;
+    padding-top: 60px;
+    margin-right: 20px;
+  }
   /* justify-content: space-between; */
   h4 {
     font-size: 30px;
@@ -145,12 +166,22 @@ export const Content = styled.div`
     text-transform: uppercase;
     font-weight: 900;
     line-height: 1;
+    @media ${sizem.smm} {
+      /* margin-top: -100px; */
+      text-align: right;
+      font-size: 16px;
+    }
   }
   h6 {
     font-size: 18px;
     line-height: 1;
     color: var(--hover-blue);
     text-transform: uppercase;
+    @media ${sizem.smm} {
+      /* margin-top: -100px; */
+      text-align: right;
+      font-size: 16px;
+    }
   }
   p {
     font-size: 18px;
@@ -160,7 +191,13 @@ export const Content = styled.div`
   #button-leaders {
     margin-top: auto;
     margin-bottom: 20px;
+    @media ${sizem.smm} {
+      /* margin-top: -100px; */
+      display: none;
+      /* margin-bottom: 40px; */
+    }
   }
+
   /* flex: 2;
   display: flex;
   flex-direction: column;
@@ -192,6 +229,13 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
+  @media ${sizem.smm} {
+    margin-top: 20px;
+    /* border: 2px solid yellow; */
+    position: relative;
+    z-index: 1000;
+    color: #fff;
+  }
 `
 
 export const InfoCard = styled.div`
@@ -222,14 +266,20 @@ export const Dropdown = styled.div`
   @media ${size.lg} {
     display: initial;
   }
+  @media ${sizem.smm} {
+    padding: 0px 10px;
+    gap: 0px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 `
 
 export const ContactInfo = styled.div`
   margin: 1rem 0;
   padding: 1rem 0;
 
-  border-top: 1px solid black;
-  border-bottom: ${props => (props.borderBottom ? "1px solid black" : "none")};
+  border-top: 1px solid #fff;
+  border-bottom: ${props => (props.borderBottom ? "1px solid #fff" : "none")};
 
   text-align: center;
 
@@ -267,6 +317,14 @@ export const ContainerMobile = styled.div`
 
   button {
     margin-bottom: 2rem;
+  }
+  @media ${sizem.smm} {
+    /* margin-top: -100px; */
+    padding-top: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    /* padding: 50px 10px; */
+    /* height: 1; */
   }
 
   @media ${size.sm} {

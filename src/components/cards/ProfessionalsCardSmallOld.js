@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import connor from "../../assets/images/ConnorWine"
 import DetailedProfessionalsCard from "./DetailedProfessionalsCard"
+// import DetailedProfessionalsCard from "./oldCarddetails"
 import {
   Container,
   Card,
