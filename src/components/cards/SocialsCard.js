@@ -22,14 +22,17 @@ const Card = styled.div`
   .box {
     cursor: pointer;
   }
+
   img {
     height: 2.8rem;
     width: auto;
   }
+
   .icon {
     height: 32px;
     width: auto;
   }
+
   .blue-box {
     height: 2.8rem;
     width: 2.8rem;

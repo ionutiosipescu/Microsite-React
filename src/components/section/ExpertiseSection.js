@@ -70,7 +70,6 @@ const ExpertiseSection = ({ expertises }) => {
                 name={expertise?.name}
                 content={expertise?.description}
                 index={index}
-                border={borderIndex}
                 className="expertise"
                 onClick={() =>
                   navigate(`/expertise/${expertise?.name.toLowerCase()}`, {
