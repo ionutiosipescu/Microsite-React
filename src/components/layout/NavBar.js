@@ -219,10 +219,13 @@ const CustomNavbar = styled(Navbar)`
     }
   }
   .nav-item.show.dropdown {
-    background-color: #00254a;
+    /* background-color: #00254a; */
+    /* background-color: red; */
+
     @media ${sizem.smm} {
       /* color: red !important; */
       font-size: 12px;
+      /* padding-top: 0px; */
       /* margin-left: -20px; */
     }
   }
@@ -241,6 +244,7 @@ const CustomNavbar = styled(Navbar)`
     margin-top: 0;
     padding-bottom: 0.5rem;
     border: 0;
+    padding-top: 0px;
   }
   .nav-item.show.dropdown a {
     background-color: #00254a;
