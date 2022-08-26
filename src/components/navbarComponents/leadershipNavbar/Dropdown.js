@@ -12,8 +12,6 @@ const Dropdown = ({ text, iconColor }) => {
 
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
 
-  const { setDropdownHeight } = useContext(InsightsNavbarContext)
-
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {

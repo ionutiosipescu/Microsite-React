@@ -122,12 +122,12 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
               >
                 {"LOCATIONS"}
               </Nav.Link>
-              <Nav.Link
+              {/* <Nav.Link
                 href={routeNames.practice}
                 className="active web-title "
               >
                 {"Practice"}
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
 
             <Nav>

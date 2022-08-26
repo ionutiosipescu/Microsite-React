@@ -152,7 +152,10 @@ const HeroSection = ({
 
                   {buttonText && (
                     <div className="buttonContainer">
-                      <ButtonWithAnimation text={buttonText.toUpperCase()} />
+                      <ButtonWithAnimation
+                        text={buttonText.toUpperCase()}
+                        href={"https://contact.alvarezandmarsal.com"}
+                      />
                     </div>
                   )}
                 </div>

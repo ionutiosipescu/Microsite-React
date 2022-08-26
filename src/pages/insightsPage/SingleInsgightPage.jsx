@@ -12,11 +12,9 @@ import { Spinner } from "../../components"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import * as S from "./styles/SingleInsgightPage.styles"
 import DOMPurify from "dompurify"
-// import { jsPDF } from "jspdf"
 
 const SingleInsgightPage = () => {
   const { state } = useLocation()
-  // const doc = new jsPDF()
   const article = useRef(null)
 
   const [articleData, setArticleData] = useState(null)
@@ -26,14 +24,6 @@ const SingleInsgightPage = () => {
   }, [])
 
   useDocumentTitle(articleData?.title)
-
-  const SavePdf = () => {
-    // doc.text(article?.current.textContent, 10, 10)
-    // doc.save("a4.pdf")
-    console.log("Print?")
-  }
-
-  console.log("This is articleData", articleData)
 
   return (
     <>

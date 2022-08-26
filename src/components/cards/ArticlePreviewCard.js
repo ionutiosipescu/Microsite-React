@@ -8,7 +8,7 @@ const ArticlePreviewCard = ({ articleInfo }) => {
 
   const handleClick = () => {
     navigate(`${routeNames.insights}/${articleInfo.alias}`, {
-      state: articleInfo.id,
+      state: articleInfo.uuid,
     })
   }
 

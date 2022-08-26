@@ -8,22 +8,22 @@ export const NavbarCell = styled.div`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   color: var(--filtersBlue);
+
   text-transform: uppercase;
   margin: 0.5rem 0;
   font-size: 1.5rem;
 
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  color: ${({ selected }) =>
-    selected ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+
+  color: ${({ selected, highlight }) =>
+    selected || highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
 
   :hover {
     color: var(--yellowCategory);
   }
 
   svg {
-    /* {dropdownOpened} */
-
     transition: all 0.2s ease-in-out;
 
     padding-left: 0.5rem;

@@ -62,8 +62,7 @@ const ExpertiseSection = ({ expertises }) => {
             if (lastRowElements == 0) {
               lastRowElements = 3
             }
-            let borderIndex = expertises.length - index > lastRowElements
-            // console.log(borderIndex)
+            console.log(expertise)
             return (
               <ExpertiseCard
                 key={index}
