@@ -46,6 +46,10 @@ const Leadership = () => {
   const [openedStatePersons, setOpenedStatePersons] = useState(
     Array.from(persons ?? [], () => false)
   )
+
+  const [filterDropdownActive, setFiltersDropdownActive] = useState(
+    Array.from(filtersPersons ?? [], () => false)
+  )
   // console.log(persons)
   const handleDisplay2 = (index, array, state, setState) => {
     if (!state[index]) {

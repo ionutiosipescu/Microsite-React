@@ -11,6 +11,7 @@ const Dropdown = ({ text, iconColor }) => {
   const dropdownHeightRef = useRef(null)
 
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
+  const filtersPersons = useSelector(state => state.leaders.filtersPersons)
 
   const { setDropdownHeight } = useContext(InsightsNavbarContext)
 
@@ -35,7 +36,8 @@ const Dropdown = ({ text, iconColor }) => {
     }
   }, [isOpen])
 
-  const addFilter = filter => {
+  const addFilter = filts => {
+    filts.category = text.name
     if (navbarFilters?.length > 0) {
       const found = navbarFilters.find(f => f.type === filter.type)
       if (!found) {
@@ -45,6 +47,32 @@ const Dropdown = ({ text, iconColor }) => {
       dispatch(addNavbarFilters(filter))
     }
   }
+  // console.log(filtersPersons)
+
+  const handleColorDrop = () => {
+    let color = ""
+    navbarFilters?.forEach(el => {
+      if (el?.category === text?.name) {
+        color = "var(--yellowCategory)"
+      }
+    })
+    return color
+  }
+  // console.log(filtersPersons)
+
+  const handleColorDrop = () => {
+    let color = ""
+    navbarFilters?.forEach(el => {
+      if (el?.category === text?.name) {
+        color = "var(--yellowCategory)"
+      }
+    })
+    return color
+  }
+
+  const colorDrop = handleColorDrop()
+
+  const colorDrop = handleColorDrop()
 
   return (
     <div ref={dropdownRef}>
@@ -53,12 +81,11 @@ const Dropdown = ({ text, iconColor }) => {
         handleClick={handleClick}
         dropdownOpened={isOpen}
         iconColor={iconColor}
+        color={colorDrop}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
         {text?.values?.map((filts, index) => (
-          <li key={index} onClick={() => addFilter(filts)}>
-            <span>{filts?.name}</span>
-          </li>
+          <TextNavbarFilter key={index} addFilter={addFilter} filts={filts} />
         ))}
       </S.DropdownContainer>
     </div>
@@ -66,3 +93,26 @@ const Dropdown = ({ text, iconColor }) => {
 }
 
 export default Dropdown
+
+const TextNavbarFilter = ({ addFilter, filts }) => {
+  const navbarFilters = useSelector(state => state.leaders.navbarFilters)
+  const handleColorList = () => {
+    let color = ""
+    navbarFilters?.forEach(el => {
+      if (el?.name === filts?.name) {
+        color = "var(--yellowCategory)"
+      }
+    })
+    return color
+  }
+  const textColor = handleColorList()
+  return (
+    <li
+      onClick={() => {
+        addFilter(filts)
+      }}
+    >
+      <span style={{ color: textColor }}>{filts?.name}</span>
+    </li>
+  )
+}

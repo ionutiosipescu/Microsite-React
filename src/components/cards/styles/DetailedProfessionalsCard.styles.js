@@ -12,6 +12,8 @@ export const Card = styled.div`
   right: 0;
   left: 0;
   height: -webkit-fill-available;
+  /* height: 100%; */
+
   min-height: 430px;
   /* padding: 4rem 2rem; */
   width: 100%;
@@ -20,6 +22,7 @@ export const Card = styled.div`
   margin-right: auto;
   /* padding-left: 32px; */
   margin-top: 15px;
+
   :after {
     position: absolute;
     content: "";
@@ -40,9 +43,12 @@ export const Card = styled.div`
     background-size: 32px 32px;
     margin-right: 15px !important;
   }
+  @media ${sizem.mdm_m} {
+    height: ${props => (props.display !== "none" ? "750px" : "550px")};
+  }
   @media ${sizem.smm} {
     padding: 5px;
-    height: ${props => (props.display !== "none" ? "90%" : "65%")};
+    height: ${props => (props.display !== "none" ? "700px" : "550px")};
   }
 `
 export const XContainer = styled.a`
@@ -62,17 +68,6 @@ export const XContainer = styled.a`
       fill: #fff;
     }
   }
-  /* .x-icon {
-    position: absolute;
-    right: 0;
-    z-index: 3;
-    top: 15px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background-size: 32px 32px;
-    margin-right: 15px !important;
-  } */
 `
 
 export const CardBody = styled.div`
@@ -95,36 +90,26 @@ export const Header = styled.div`
 
 export const ImageContainer = styled.div`
   height: 100%;
-  @media ${sizem.smm} {
+  @media ${sizem.mdm_m} {
+    /* border: 2px solid yellow; */
+    position: relative;
+    z-index: 100;
+    float: left;
+
     margin: 2px;
+    height: 200px;
+    width: 150px;
+  }
+  @media ${sizem.smm} {
+    margin: 20px 0px;
+    padding: 20px 0px;
     height: 200px;
     width: 150px;
     /* border: 2px solid red; */
     z-index: 1000;
     position: absolute;
   }
-  /* background: darkgray;
 
-  flex: 1;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  button {
-    position: relative;
-    width: 80%;
-    margin: 0 10%;
-    bottom: 5rem;
-
-    display: none;
-
-    @media ${size.sm} {
-      display: initial;
-    }
-  } */
   img {
     max-width: 100%;
     height: 100%;
@@ -132,6 +117,13 @@ export const ImageContainer = styled.div`
     object-position: right;
     width: 296px;
     aspect-ratio: auto 296 / 434;
+    @media ${sizem.mdm_m} {
+      margin-top: 10px;
+    }
+    @media ${sizem.smm} {
+      /* padding: 20px; */
+      /* margin-top: 100px; */
+    }
   }
 `
 export const ImageTriangleContainer = styled.div`
@@ -151,6 +143,18 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 30px;
+  @media ${sizem.mdm_m} {
+    /* border: 2px solid red; */
+    position: relative;
+    z-index: 100;
+    margin: 5px 10px;
+    padding: 5px 10px;
+
+    /* margin: 2px; */
+    /* height: 200px;
+    width: 150px; */
+  }
+
   @media ${sizem.smm} {
     /* margin-top: -100px; */
     /* border: 2px solid #fff; */
@@ -167,6 +171,9 @@ export const Content = styled.div`
     text-transform: uppercase;
     font-weight: 900;
     line-height: 1;
+    @media ${sizem.mdm_m} {
+      text-align: center;
+    }
     @media ${sizem.smm} {
       /* margin-top: -100px; */
       text-align: right;
@@ -178,6 +185,9 @@ export const Content = styled.div`
     line-height: 1;
     color: var(--hover-blue);
     text-transform: uppercase;
+    @media ${sizem.mdm_m} {
+      text-align: center;
+    }
     @media ${sizem.smm} {
       /* margin-top: -100px; */
       text-align: right;
@@ -192,6 +202,9 @@ export const Content = styled.div`
   #button-leaders {
     margin-top: auto;
     margin-bottom: 20px;
+    @media ${sizem.mdm_m} {
+      display: none;
+    }
     @media ${sizem.smm} {
       /* margin-top: -100px; */
       display: none;
@@ -230,6 +243,20 @@ export const Info = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
+  @media ${sizem.mdm_m} {
+    /* / text-align: center; */
+    /* border: 2px solid green; */
+    position: relative;
+    z-index: 100;
+    /* width: 50%; */
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* margin: 0px 10px; */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+  }
   @media ${sizem.smm} {
     margin-top: 20px;
     /* border: 2px solid yellow; */
@@ -266,6 +293,9 @@ export const Dropdown = styled.div`
 
   @media ${size.lg} {
     display: initial;
+  }
+  @media ${sizem.mdm_m} {
+    text-align: center;
   }
   @media ${sizem.smm} {
     padding: 0px 10px;

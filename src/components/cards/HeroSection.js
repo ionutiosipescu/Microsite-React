@@ -15,6 +15,9 @@ const Hero = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
+  @media ${sizem.mdm_m} {
+    height: 500px;
+  }
 
   .contentContainer {
     height: inherit;
