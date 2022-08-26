@@ -132,7 +132,6 @@ const getFilterSyntax = filter => {
   //   time: getTimeFilterSyntax(filter),
   // }
 
-  console.log(filter)
   const filterCases = {
     // Repeating code. Not good
     industries: `filter[field_industry.id]=${filter.uuid}`,
