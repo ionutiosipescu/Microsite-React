@@ -20,15 +20,20 @@ const Card = styled.div`
 }
 `
 
-const LocationCardRow = (data) => {
+const LocationCardRow = ({location}) => {
+    const {
+        country,
+    } = location
+
+    console.log(location)
     return(
         <>
         <Card>
-            <div className="coutry">{data.data[0].locations[0].country}</div>
+            <div className="coutry">{country}</div>
             <ContainerLocation>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
+                <LocationCard location={location}/>
+                <LocationCard location={location}/>
+                <LocationCard location={location}/>
             </ContainerLocation>
         </Card>
         </>

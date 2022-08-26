@@ -177,3 +177,90 @@ export const getSinglePodcast = (setPodcastData, id) => {
     setPodcastData(podcast)
   })
 }
+
+// export const getSingleLocation = (setLocation) => {
+//   const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag&filter%5Bfield_countries_tag.id%5D=4b03a3f5-b7c1-4d73-b792-248c37e92e7c`
+
+//   Axios.get(link).then(res =>  {
+//     let data = res.data.data
+
+//     let included = res.data.included
+ 
+//     let location = {}
+
+//     location.country = included[0].attributes.name
+//     location.city = data[0].attributes.name
+//     location.phone = data[0].attributes.field_contact_phone
+//     location.fax = data[0].attributes.field_fax_number
+//     location.address_line1 = data[0].attributes.field_address.address_line1
+//     location.address_line2 = data[0].attributes.field_address.address_line2
+//     location.postal = data[0].attributes.field_address.postal_code
+//     location.area = data[0].attributes.field_address.administrative_area
+//     location.id = data[0].relationships.field_countries_tag.data[0].id
+//     location.idd = included[0].id
+// // console.log(location)
+// setLocation(location)
+//   })
+
+// }
+
+export const getLocations = () => {
+  const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag`
+
+  Axios.get(link).then(res => {
+
+    let data = res.data.data
+    let included = res.data.included
+
+    let dataFiltered = data.map(element => {
+      const city = element.attributes.name
+      const phone = element.attributes.field_contact_phone
+      const fax = element.attributes.field_fax_number
+      const address_line1 = element.attributes.field_address.address_line1
+      const address_line2 = element.attributes.field_address.address_line2
+      const postal = element.attributes.field_address.postal_code
+      const area = element.attributes.field_address.administrative_area
+      const id = element.relationships.field_countries_tag.data[0].id
+      
+      return{
+        city,
+        phone,
+        fax,
+        address_line1,
+        address_line2,
+        postal,
+        area,
+        id,
+      }
+    })
+
+    let includedFiltered = included.map(element => {
+    const country = element.attributes.name
+    const idd = element.id
+      return{
+        country,
+        idd,
+      }
+    })
+
+
+    let combinedArrays = []
+
+    combinedArrays.cities = dataFiltered
+    combinedArrays.countries = includedFiltered
+
+    for(let key of combinedArrays.countries){
+      // let cities = combinedArrays.cities
+      console.log(key.idd)
+      // for(let element in combinedArrays.cities){
+        // console.log(element.id)
+      // }
+    }
+
+    // console.log(combinedArrays)
+
+  })
+  
+}
+
+getLocations()
