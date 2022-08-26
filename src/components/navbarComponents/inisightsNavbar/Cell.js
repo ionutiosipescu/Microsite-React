@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React from "react"
 import * as S from "./styles/Cell.styles"
 import { useSelector, useDispatch } from "react-redux"
 import { changeInsightsType } from "../../../store/actions/filters"
@@ -12,7 +12,7 @@ const Cell = ({ text, type }) => {
   }
 
   return (
-    <S.NavbarCell selected={currentInsightType === type} onClick={handleClick}>
+    <S.NavbarCell highlight={currentInsightType === type} onClick={handleClick}>
       {text || "No text"}
     </S.NavbarCell>
   )

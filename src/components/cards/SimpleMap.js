@@ -15,6 +15,7 @@ export default function SimpleMap({ cardLocation }) {
     },
     zoom: 6,
   };
+  
   console.log(cardLocation);
 
   return (
