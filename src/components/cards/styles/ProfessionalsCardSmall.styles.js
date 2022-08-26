@@ -3,7 +3,7 @@ import { size } from "../../../utils/breakpoints"
 import { sizem } from "../../../utils/breakpoints"
 
 export const Container = styled.div`
-  padding-bottom: ${({ padding }) => padding + "px" || 0};
+  padding-bottom: ${({ padding }) => padding +  "px" || 0};
   /* padding-bottom: 490px !important; */
   cursor: pointer;
   /* max-height: 300px; */

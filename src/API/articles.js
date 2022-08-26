@@ -32,11 +32,10 @@ export const getInsights = (
   let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
 
   link = getLinkWithFilters(link, selectedFilters)
-  console.log("This is link", link)
 
   Axios.get(link).then(res => {
     const articles = res.data.data.map(article => {
-      const id = article.id
+      const uuid = article.id
       const title = article.attributes.title
       const teaserText = article.attributes.field_teaser_text
       const alias = article.attributes.path.alias.split("/")[2]
@@ -50,7 +49,7 @@ export const getInsights = (
       // const date = article.attributes.changed || article.attributes.created
 
       return {
-        id,
+        uuid,
         title,
         teaserText,
         alias,
@@ -93,7 +92,7 @@ export const getPodcasts = (
 
   Axios.get(link).then(res => {
     const articles = res.data.data.map(podcast => {
-      const id = podcast.id
+      const uuid = podcast.id
       const title = podcast.attributes.title
       const teaserText = podcast.attributes.field_teaser_text
       const alias = podcast.attributes.path.alias.split("/")[2]
@@ -106,7 +105,7 @@ export const getPodcasts = (
       })
 
       return {
-        id,
+        uuid,
         title,
         teaserText,
         alias,
@@ -120,20 +119,12 @@ export const getPodcasts = (
 }
 
 export const getSingleArticle = (setArticleData, id) => {
-  // Good one?
-  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`
   const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
-  // console.log("This is link", link)
 
-  // const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`
-
-  // console.log(link)
   Axios.get(link).then(res => {
     const data = res.data.data
 
     let article = {}
-
-    // console.log("This is data", data)
 
     article.content = data.attributes.body.value
 
@@ -148,8 +139,6 @@ export const getSingleArticle = (setArticleData, id) => {
     article.title = data.attributes.title
     article.authors = grabRelatedPeople("field_authors", res.data, 0)
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
-
-    console.log("This is article", article)
 
     setArticleData(article)
   })

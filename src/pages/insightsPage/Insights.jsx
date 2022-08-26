@@ -15,9 +15,6 @@ import { Spinner } from "../../components"
 const Insights = () => {
   const { currentInsightType, filters } = useSelector(state => state.filters)
 
-  // Filters that were selected by the user or taken from the session storage
-  // const [filters, setSelectedFilters] = useState(persistedFilters || [])
-
   // Articles with field catergory = Business & Industry Insights, id: b7d6df12-5304-4aaf-ab3d-265acd0fb33c
   const [industryInsights, setIndustryInsights] = useState(null)
 
@@ -36,15 +33,9 @@ const Insights = () => {
 
   // Component Mount. Get Insights from the server
   useEffect(() => {
-    // getInsights(setIndustryInsights, selectedFilters, currentInsightType)
-    // getInsights(setCaseStudies, selectedFilters, currentInsightType)
-    // getInsights(setHealthPodcasts, selectedFilters, currentInsightType)
-
     getInsights(setIndustryInsights, filters, "industryInsights")
     getInsights(setCaseStudies, filters, "caseStudies")
     getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
-
-    // getInsightFilters(setFilters, currentInsightType)
   }, [])
 
   // Filters were Selected by the user. Get new Insights from the server
@@ -54,14 +45,7 @@ const Insights = () => {
     getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
   }, [filters])
 
-  // Inisghts type was changed. Get new Insights from the server
-  // useEffect(() => {
-  //   getInsights(setIndustryInsights, selectedFilters, currentInsightType)
-  // }, [currentInsightType])
-
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
-
-  console.log("This is articles", articles)
 
   return (
     <>
@@ -77,7 +61,6 @@ const Insights = () => {
           {currentInsightType !== "all" ? (
             <UnalignedItemsConainer>
               {articles[currentInsightType].map((item, index) => {
-                console.log(currentInsightType)
                 if (currentInsightType === "healthPodcasts") {
                   return <PodcastCard {...item} key={index} />
                 }
@@ -100,9 +83,6 @@ const Insights = () => {
                 {articles.healthPodcasts.map((podcast, index) => (
                   <PodcastCard {...podcast} key={index} />
                 ))}
-
-                {/* <PodcastCard />
-                <PodcastCard /> */}
               </div>
             </InsightsContainer>
           )}

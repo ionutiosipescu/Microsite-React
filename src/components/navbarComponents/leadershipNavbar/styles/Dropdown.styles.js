@@ -3,20 +3,15 @@ import { size } from "../../../../utils/breakpoints"
 
 export const DropdownContainer = styled.ul`
   display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
-  /* display: flex; */
   flex-wrap: wrap;
   width: 100%;
   padding: 0.5rem 0;
   cursor: pointer;
   flex-direction: column;
 
-  /* border: 1px solid white; */
-
   li {
-    /* border-right: 1px solid var(--hover-blue); */
-
     padding-right: 1rem;
-    color: var(--filtersBlue);
+    color: var(--hover-blue);
     transition: all 0.2s ease-in-out;
     font-size: 1.2rem;
     text-transform: initial;
@@ -24,8 +19,6 @@ export const DropdownContainer = styled.ul`
     :hover {
       color: var(--yellowCategory);
     }
-
-    /* border: 2px solid yellow; */
   }
 
   @media ${size.md} {

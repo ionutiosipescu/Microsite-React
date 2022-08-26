@@ -9,18 +9,6 @@ export const DropdownContainer = styled.ul`
   cursor: pointer;
   flex-direction: column;
 
-  li {
-    padding-right: 1rem;
-    color: var(--filtersBlue);
-    transition: all 0.2s ease-in-out;
-    font-size: 20px;
-    text-transform: initial;
-
-    :hover {
-      color: var(--yellowCategory);
-    }
-  }
-
   @media ${size.md} {
     position: absolute;
     flex-direction: row;
@@ -39,4 +27,18 @@ export const Container = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
+`
+
+export const DropdownItem = styled.li`
+  padding-right: 1rem;
+  color: ${({ highlight }) =>
+    highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+
+  transition: all 0.2s ease-in-out;
+  font-size: 20px;
+  text-transform: initial;
+
+  :hover {
+    color: var(--yellowCategory);
+  }
 `

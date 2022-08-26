@@ -156,7 +156,7 @@ const Leadership = () => {
                   )
                 })}
               </LeaadersContainer>
-              <h1 className="pb-4"> Leaders</h1>
+              <h1 className=" mt-4"> Leaders</h1>
               <LeaadersContainer>
                 {persons?.map((cardInfo, index) => {
                   return (

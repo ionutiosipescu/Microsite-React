@@ -7,7 +7,7 @@ export const NavbarCell = styled.div`
   height: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  color: var(--filtersBlue);
+  color: var(--hover-blue);
   text-transform: uppercase;
   margin: 0.5rem 0;
   font-size: 1.5rem;
@@ -15,7 +15,7 @@ export const NavbarCell = styled.div`
   a {
     transition: all 0.2s ease-in-out;
     text-decoration: none;
-    color: var(--filtersBlue);
+    color: var(--hover-blue);
 
     :hover {
       color: var(--yellowCategory);

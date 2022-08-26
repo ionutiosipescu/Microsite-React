@@ -12,9 +12,8 @@ const ArticleSection = ({ articles }) => {
   return (
     <UnalignedItemsConainer columnsNumber={3}>
       {articles?.map((article, index) => {
-        console.log("This is article", article)
         let cardInfo = {
-          id: article?.id,
+          id: article?.uuid,
           category: articles?.title ?? "HEALTHCARE & LIFE SCIENCES INSIGHTS",
           title: article?.title,
           updated: dateFromSecondsToShortLocale(article?.updated),
