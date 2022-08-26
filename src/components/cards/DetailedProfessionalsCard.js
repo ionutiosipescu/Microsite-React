@@ -66,13 +66,6 @@ const DetailedProfessionalsCard = ({
           <Header>
             <ImageContainer>
               <img src={content?.image}></img>
-              {/* <ButtonWithAnimation
-                text="Connect"
-                radius={"0"}
-                onClick={() => {
-                  window.open(content.linkOurPeople, "_blank")
-                }}
-              /> */}
             </ImageContainer>
             {console.log(content)}
           </Header>
@@ -80,8 +73,6 @@ const DetailedProfessionalsCard = ({
             <div>
               <h4>{content?.name}</h4>
               <h6>{content?.position}</h6>
-              {/* <p className="text-muted">{content?.position}</p> */}
-
               <DescriptionDesktop>
                 {smallLeaderDescription ? (
                   <p>{content?.smallDescription}</p>
@@ -105,16 +96,6 @@ const DetailedProfessionalsCard = ({
                 }}
               />
             </div>
-            {/* <a
-                className="fw-bold text-reset"
-                // onClick={() =>
-                //   setSmallLeaderDescription(!smallLeaderDescription)
-                // }
-                target="_blank"
-                href={content?.linkOurPeople}
-              >
-                Read More
-              </a> */}
           </Content>
           <Info>
             <ContainerMobile>
@@ -148,14 +129,6 @@ const DetailedProfessionalsCard = ({
                   window.open(content?.linkedin.uri, "_blank")
                 }}
               />
-
-              {/* <PersonalInfo
-                
-                content={content?.linkedin?.title}
-                onClick={() => {
-                  window.open(content?.linkedin.uri, "_blank")
-                }}
-              /> */}
             </Dropdown>
           </Info>
         </CardBody>

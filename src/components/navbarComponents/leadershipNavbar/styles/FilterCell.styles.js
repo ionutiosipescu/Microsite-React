@@ -29,6 +29,19 @@ export const FilterCell = styled.div`
       fill: var(--yellowCategory);
     }
   }
+  @media ${sizem.mdm_m} {
+    /* border: 2px solid red; */
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    span {
+      width: 98%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* display: block; */
+  }
   @media ${sizem.smm} {
     /* border: 2px solid red; */
 

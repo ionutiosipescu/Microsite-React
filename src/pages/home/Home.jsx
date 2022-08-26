@@ -22,6 +22,12 @@ import IndustrySection from "../../components/section/IndustrySection"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25"
+const HomeContainer = styled.div`
+  .heroContainer {
+    margin: 0;
+    padding: 0;
+  }
+`
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -41,13 +47,6 @@ const Home = () => {
     dispatch(fetchInsightsArticles())
     dispatch(fetchRecentRecognition())
   }, [])
-
-  const HomeContainer = styled.div`
-    .heroContainer {
-      margin: 0;
-      padding: 0;
-    }
-  `
 
   return (
     <HomeContainer>
