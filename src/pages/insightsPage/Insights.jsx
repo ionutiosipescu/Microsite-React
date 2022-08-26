@@ -11,6 +11,7 @@ import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 const Insights = () => {
   const { currentInsightType, filters } = useSelector(state => state.filters)
@@ -30,20 +31,20 @@ const Insights = () => {
     caseStudies: caseStudies,
     healthPodcasts: healthPodcasts,
   }
+  console.log("Seetting new shit i n the articles obj")
 
-  // Component Mount. Get Insights from the server
+  // Get articles/podcasts from the server
   useEffect(() => {
-    getInsights(setIndustryInsights, filters, "industryInsights")
-    getInsights(setCaseStudies, filters, "caseStudies")
-    getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
-  }, [])
-
-  // Filters were Selected by the user. Get new Insights from the server
-  useEffect(() => {
-    getInsights(setIndustryInsights, filters, "industryInsights")
-    getInsights(setCaseStudies, filters, "caseStudies")
-    getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
-  }, [filters])
+    if (currentInsightType === "all") {
+      getInsights(setIndustryInsights, filters, "industryInsights")
+      getInsights(setCaseStudies, filters, "caseStudies")
+      getPodcasts(setHealthPodcasts, filters, "healthPodcasts")
+    } else if (currentInsightType === "healthPodcasts") {
+      getPodcasts(setHealthPodcasts, filters, currentInsightType)
+    } else {
+      getInsights(setCaseStudies, filters, currentInsightType)
+    }
+  }, [filters, currentInsightType])
 
   useDocumentTitle("Insights | Latest Insights | Alvarez & Marsal")
 
@@ -60,12 +61,22 @@ const Insights = () => {
         <StyledContainer>
           {currentInsightType !== "all" ? (
             <UnalignedItemsConainer>
+              {/* <InfiniteScroll
+                dataLength={articles[currentInsightType].length}
+                next={getInsights(
+                  setIndustryInsights,
+                  filters,
+                  "industryInsights"
+                )}
+                hasMore={true}
+              > */}
               {articles[currentInsightType].map((item, index) => {
                 if (currentInsightType === "healthPodcasts") {
                   return <PodcastCard {...item} key={index} />
                 }
                 return <ArticlePreviewCard key={index} articleInfo={item} />
               })}
+              {/* </InfiniteScroll> */}
             </UnalignedItemsConainer>
           ) : (
             <InsightsContainer>

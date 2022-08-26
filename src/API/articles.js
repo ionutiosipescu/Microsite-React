@@ -29,6 +29,8 @@ export const getInsights = (
     healthPodcasts: "health & life podcasts",
   }
 
+  console.log("Doing gets and what not")
+
   let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
 
   link = getLinkWithFilters(link, selectedFilters)

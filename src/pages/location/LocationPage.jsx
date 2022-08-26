@@ -23,6 +23,7 @@ const LocationPage = () => {
   //         },
   //       ],
   //     },
+
   //     {
   //       country: { name: "Uk", id: 1234 },
   //       cities: [

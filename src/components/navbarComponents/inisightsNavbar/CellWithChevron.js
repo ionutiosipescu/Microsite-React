@@ -10,7 +10,6 @@ const CellWithChevron = ({
   onlyMobile,
   dropdownOpened,
 }) => {
-  console.log("This is highlight", highlight)
   return (
     <S.NavbarCell
       onClick={() => handleClick()}

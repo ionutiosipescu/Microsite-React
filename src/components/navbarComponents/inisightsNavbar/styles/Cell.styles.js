@@ -16,8 +16,9 @@ export const NavbarCell = styled.div`
   transition: all 0.2s ease-in-out;
   text-decoration: none;
 
-  color: ${({ selected, highlight }) =>
-    selected || highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+  /* If the the Filter is selected then hightligh otherwise have normal color */
+  color: ${({ highlight }) =>
+    highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
 
   :hover {
     color: var(--yellowCategory);
