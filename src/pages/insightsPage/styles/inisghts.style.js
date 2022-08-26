@@ -24,9 +24,11 @@ import { size } from "../../../utils/breakpoints"
 // `
 
 export const InsightsContainer = styled.div`
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr 1fr;
-  display: initial; */
+  div {
+    & > :last-child {
+      border-bottom: none;
+    }
+  }
 
   @media ${size.lg} {
     display: grid;

@@ -69,7 +69,7 @@ const Home = () => {
         <StyledContainer>
           <ArticlesSection articles={insightsArticles.data} />
         </StyledContainer>
-      </ArticlesContainer>{" "}
+      </ArticlesContainer>
     </HomeContainer>
   )
 }

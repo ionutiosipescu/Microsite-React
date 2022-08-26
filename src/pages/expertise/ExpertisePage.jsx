@@ -18,6 +18,8 @@ import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContai
 import { BorderBottom } from "../../components/cards/styles/ArticlePreviewCard.styles"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 import ArticlesSection from "../../components/section/ArticlesSection"
+import { IndustryContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
+import { ContainerContent } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 
 import { SocialsCard, ContactSubscribeCard } from "../../components/cards"
 const ExpertisePageContainer = styled.div`
@@ -39,6 +41,11 @@ const ExpertisePageContainer = styled.div`
       letter-spacing: 1px;
     }
   }
+
+  span {
+    color: var(--hover-blue);
+    padding-right: 1rem;
+  }
 `
 
 const ExpertisePage = () => {
@@ -54,8 +61,6 @@ const ExpertisePage = () => {
   useDocumentTitle(
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
   )
-  // console.log(state)
-  // console.log(expertise)
   return (
     <ExpertisePageContainer>
       <HeroSection
@@ -63,56 +68,62 @@ const ExpertisePage = () => {
         pageCategory="Expertise"
         title={expertise?.name}
       />
-      <StyledContainer>
-        <StyledRow>
-          <StyledCol1 className="leftSection">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: expertise?.description ?? expertise?.teaser_text,
-              }}
-              className="descriptionContainer"
-            />
-
-            <UnalignedItemsConainer columnsNumber={expertise?.articles?.legnth}>
-              {expertise?.articles?.map(article => (
-                <ServiceCard
-                  title={article?.title}
-                  conntent={article?.text_teaser}
-                />
-              ))}
-            </UnalignedItemsConainer>
-            <BorderBottom color={"var(--hover-blue)"} className="my-3" />
-            <div className="industrySection mt-4">
-              <h3 className=" fw-bold">Industries:</h3>
-              {expertise?.industries?.map(expertiseIndustry => (
-                <span key={expertiseIndustry?.id} className="expertiseIndustry">
-                  {expertiseIndustry?.name}
-                </span>
-              ))}
+      <ContainerContent>
+        <IndustryContainer>
+          <div className="d-lg-flex">
+            <div className="col-12 col-lg-8 px-4 px-lg-0 container-left">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: expertise?.description ?? expertise?.teaser_text,
+                }}
+                className="descriptionContainer"
+              />
+              <UnalignedItemsConainer
+                columnsNumber={expertise?.articles?.legnth}
+              >
+                {expertise?.articles?.map(article => (
+                  <ServiceCard
+                    title={article?.title}
+                    conntent={article?.text_teaser}
+                  />
+                ))}
+              </UnalignedItemsConainer>
+              <BorderBottom color={"var(--hover-blue)"} className="my-3" />
+              <div className="industrySection mt-4">
+                <h3 className=" fw-bold">Industries:</h3>
+                {expertise?.industries?.map(expertiseIndustry => (
+                  <span
+                    key={expertiseIndustry?.id}
+                    className="expertiseIndustry"
+                  >
+                    {expertiseIndustry?.name}
+                  </span>
+                ))}
+              </div>
             </div>
-          </StyledCol1>
-          <StyledCol2>
-            {expertise?.experts?.map(expert => {
-              let cardContent = {
-                imageSrc: expert?.image,
-                name: expert?.name,
-                position: expert?.profession_title,
-                country: expert?.global_location,
-              }
-              return <ProfessionalCard {...cardContent} />
-            })}
-            <div className="w-100">
-              <SocialsCard />
-              <ContactSubscribeCard />
+            <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5 container-right">
+              {expertise?.experts?.map(expert => {
+                let cardContent = {
+                  imageSrc: expert?.image,
+                  name: expert?.name,
+                  position: expert?.profession_title,
+                  country: expert?.global_location,
+                }
+                return <ProfessionalCard {...cardContent} />
+              })}
+              <div className="w-100">
+                <SocialsCard />
+                <ContactSubscribeCard />
+              </div>
             </div>
-          </StyledCol2>
-        </StyledRow>
-        <ArticlesContainer>
-          <StyledContainer>
-            <ArticlesSection articles={expertise?.articles} />
-          </StyledContainer>
-        </ArticlesContainer>
-      </StyledContainer>
+          </div>
+        </IndustryContainer>
+      </ContainerContent>
+      <ArticlesContainer>
+        <StyledContainer>
+          <ArticlesSection articles={expertise?.articles} />
+        </StyledContainer>
+      </ArticlesContainer>
     </ExpertisePageContainer>
   )
 }
@@ -122,5 +133,4 @@ const ArticlesContainer = styled.div`
   width: 100%;
   background-color: var(--graySections);
   color: var(--darkBlueHome);
-  /* background-color: #f2f2f2; */
 `

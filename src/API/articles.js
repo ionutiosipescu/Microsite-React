@@ -6,40 +6,121 @@ import {
   grabRelatedPeople,
 } from "./helper"
 
-const jsonApi = process.env.REACT_APP_BASE_API_URL + "/jsonapi"
+const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
 export const getInsights = (
   setInsightsContent,
   selectedFilters,
-  InsightType
+  insightType
 ) => {
-  let link = `${customApi}/hls`
+  const categories = {
+    industryInsights:
+      "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+    caseStudies:
+      "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
+    healthPodcasts:
+      "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
+  }
+
+  const categoryPretty = {
+    industryInsights: "business & industry inisights",
+    caseStudies: "health & life case studies",
+    healthPodcasts: "health & life podcasts",
+  }
+
+  let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  link = getLinkWithFilters(link, selectedFilters)
 
   Axios.get(link).then(res => {
-    if (InsightType === "all") {
-      setInsightsContent({
-        businessInsights: res.data.block_two,
-        caseStudies: res.data.block_one,
-        podcasts: res.data.block_three,
+    const articles = res.data.data.map(article => {
+      const uuid = article.id
+      const title = article.attributes.title
+      const teaserText = article.attributes.field_teaser_text
+      const alias = article.attributes.path.alias.split("/")[2]
+      const date = new Date(
+        article.attributes.changed || article.attributes.created
+      ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       })
-    } else {
-      setInsightsContent({
-        content: res.data.block_one,
+      // const date = article.attributes.changed || article.attributes.created
+
+      return {
+        uuid,
+        title,
+        teaserText,
+        alias,
+        date,
+        category: categoryPretty[insightType],
+      }
+    })
+
+    setInsightsContent(articles)
+  })
+}
+
+export const getPodcasts = (
+  setInsightsContent,
+  selectedFilters,
+  insightType
+) => {
+  //   const categories = {
+  //     industryInsights:
+  //   "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
+  //   caseStudies:
+  //   "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
+  //   healthPodcasts:
+  //   "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
+  // }
+
+  const categoryPretty = {
+    industryInsights: "business & industry inisights",
+    caseStudies: "health & life case studies",
+    healthPodcasts: "health & life podcasts",
+  }
+
+  let link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+  // console.log("This is selectedFilters", selectedFilters)
+
+  // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  link = getLinkWithFilters(link, selectedFilters)
+  // console.log("This is link", link)
+
+  Axios.get(link).then(res => {
+    const articles = res.data.data.map(podcast => {
+      const uuid = podcast.id
+      const title = podcast.attributes.title
+      const teaserText = podcast.attributes.field_teaser_text
+      const alias = podcast.attributes.path.alias.split("/")[2]
+      const date = new Date(
+        podcast.attributes.changed || podcast.attributes.created
+      ).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       })
-    }
+
+      return {
+        uuid,
+        title,
+        teaserText,
+        alias,
+        date,
+        category: categoryPretty[insightType],
+      }
+    })
+
+    setInsightsContent(articles)
   })
 }
 
 export const getSingleArticle = (setArticleData, id) => {
-  // Good one?
-  // const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_featured_expert.field_professional_title,field_pdf`
+  const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
 
-  const link = `${jsonApi}/node/article/${id}`
-
-  // const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_authors.field_professional_title,field_featured_expert.field_professional_title&filter[id]=${id}`
-
-  // console.log(link)
   Axios.get(link).then(res => {
     const data = res.data.data
 
@@ -56,10 +137,8 @@ export const getSingleArticle = (setArticleData, id) => {
     })
 
     article.title = data.attributes.title
-    // console.log(article)
-    //
-    // article.authors = grabRelatedPeople("field_authors", res.data, 0)
-    // article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
+    article.authors = grabRelatedPeople("field_authors", res.data, 0)
+    article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
 
     setArticleData(article)
   })
@@ -87,16 +166,3 @@ export const getSinglePodcast = (setPodcastData, id) => {
     setPodcastData(podcast)
   })
 }
-
-
-// in progress data simluation ...
-// export const getSingleLocation = (objecttest) => {
-//   const data ={objecttest}
-
-//   console.log(objecttest)
-//   let location = {}
-
-//   location.country = data.data[0].locations[0].country  
-//   location.key = data.data[0].key
-// }
-

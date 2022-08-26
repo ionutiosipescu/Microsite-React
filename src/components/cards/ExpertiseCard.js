@@ -2,11 +2,11 @@ import React from "react"
 import { ButtonWithAnimation } from "../buttons"
 import styled from "styled-components"
 import DOMPurify from "dompurify"
+
 const Container = styled.div`
-  /* display: inline-block; */
   margin-bottom: 2rem;
-  /* padding-right: 0.4rem; */
-  /* border: 2px solid red; */
+
+  border-bottom: 1px solid var(--hover-blue);
 
   color: var(--darkBlue2);
   padding-bottom: 1rem;
@@ -19,20 +19,16 @@ const Container = styled.div`
       cursor: pointer;
     }
   }
+
   p {
     color: var(--darkBlueHome);
     font-size: 1rem;
   }
 `
-const BorderBottom = styled.div`
-  padding-top: 1rem;
-  border-bottom: 1px solid var(--hover-blue);
-`
-
-const ExpertiseCard = ({ name, content, buttonText, border, onClick }) => {
+const ExpertiseCard = ({ name, content, buttonText, onClick }) => {
   return (
-    <Container className="">
-      <div className="">
+    <Container>
+      <div>
         <h3 onClick={() => onClick()}>{name || "Title"}</h3>
         <p
           dangerouslySetInnerHTML={{
@@ -43,8 +39,10 @@ const ExpertiseCard = ({ name, content, buttonText, border, onClick }) => {
         </p>
         {/* <p>{content || "content"}</p> */}
 
-        <ButtonWithAnimation text={buttonText || "Read more"} />
-        {border && <BorderBottom />}
+        <ButtonWithAnimation
+          text={buttonText || "Read more"}
+          onClick={onClick}
+        />
       </div>
     </Container>
   )

@@ -2,14 +2,15 @@ import React from "react"
 import * as S from "./styles/ButtonWithAnimation.style"
 import { ChevronRight } from "../../assets/icons"
 
-const ButtonWithAnimation = ({ text, black, href }) => {
+const ButtonWithAnimation = ({ text, black, href, onClick }) => {
   let link
-  black
-    ? (link = "https://bulletins.alvarezandmarsal.com")
-    : (link = "https://contact.alvarezandmarsal.com")
+
+  // black
+  //   ? (link = "https://bulletins.alvarezandmarsal.com")
+  //   : (link = "https://contact.alvarezandmarsal.com")
 
   return (
-    <S.Container href={href || link}>
+    <S.Container onClick={onClick} href={href || link}>
       <S.ChevronContainer black={black}>
         <ChevronRight />
       </S.ChevronContainer>

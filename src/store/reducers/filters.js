@@ -30,6 +30,7 @@ const filters = (state = initialState, { type, payload }) => {
 }
 
 const addFilter = (state, payload) => {
+  // console.log(payload)
   const newArr = state.filters.filter(
     filter => filter.category !== payload.category
   )

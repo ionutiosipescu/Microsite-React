@@ -12,14 +12,10 @@ import { Spinner } from "../../components"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import * as S from "./styles/SingleInsgightPage.styles"
 import DOMPurify from "dompurify"
-// import { jsPDF } from "jspdf"
 
 const SingleInsgightPage = () => {
   const { state } = useLocation()
-  // const doc = new jsPDF()
   const article = useRef(null)
-
-  // console.log("This is article", article?.current.textContent)
 
   const [articleData, setArticleData] = useState(null)
 
@@ -28,14 +24,6 @@ const SingleInsgightPage = () => {
   }, [])
 
   useDocumentTitle(articleData?.title)
-
-  // console.log("This is articleData", articleData)
-
-  const SavePdf = () => {
-    // doc.text(article?.current.textContent, 10, 10)
-    // doc.save("a4.pdf")
-    console.log("Print?")
-  }
 
   return (
     <>
@@ -60,17 +48,33 @@ const SingleInsgightPage = () => {
                 }}
               ></S.Article>
               <S.RightSection>
-                <h3>FEATURED PROFILES</h3>
-                <FeaturedProfileCard />
-                <FeaturedProfileCard />
-                <FeaturedProfileCard />
+                {articleData.authors && (
+                  <>
+                    <h3>AUTHORS</h3>
+                    {articleData.authors &&
+                      articleData.authors.map((author, index) => (
+                        <FeaturedProfileCard {...author} key={index} />
+                      ))}
+                  </>
+                )}
+
+                {articleData.experts && (
+                  <>
+                    <h3>FEATURED PROFILES</h3>
+
+                    {articleData.experts &&
+                      articleData.experts.map((expert, index) => (
+                        <FeaturedProfileCard {...expert} key={index} />
+                      ))}
+                  </>
+                )}
                 <ContactSubscribeCard />
                 <SocialsCard />
               </S.RightSection>
             </S.Container>
-            <div onClick={SavePdf} className="btn-primary">
+            {/* <div onClick={SavePdf} className="btn-primary">
               Get the Pdf
-            </div>
+            </div> */}
           </StyledContainer>
         </>
       ) : (

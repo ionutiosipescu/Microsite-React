@@ -11,9 +11,11 @@ export const FilterCell = styled.div`
   transition: all 0.2s ease-in-out;
 
   border: 1px solid var(--hover-blue);
+
   span {
     color: ${props => props.filtercolor || "var(--white)"};
   }
+
   svg {
     transition: all 0.2s ease-in-out;
 

@@ -3,12 +3,20 @@ import React from "react"
 import { ChevronDownWhite, ChevronUpWhite } from "../../../assets/icons"
 import * as S from "./styles/Cell.styles"
 
-const CellWithChevron = ({ text, handleClick, onlyMobile, dropdownOpened }) => {
+const CellWithChevron = ({
+  highlight,
+  text,
+  handleClick,
+  onlyMobile,
+  dropdownOpened,
+}) => {
+  console.log("This is highlight", highlight)
   return (
     <S.NavbarCell
       onClick={() => handleClick()}
       onlyMobile={onlyMobile}
       dropdownOpened={dropdownOpened}
+      highlight={highlight}
     >
       {text || "No text"}
       {/* <ChevronDownWhite /> */}
