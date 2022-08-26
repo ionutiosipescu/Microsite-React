@@ -39,12 +39,12 @@ const Dropdown = ({ text, iconColor }) => {
   const addFilter = filts => {
     filts.category = text.name
     if (navbarFilters?.length > 0) {
-      const found = navbarFilters.find(f => f.type === filter.type)
+      const found = navbarFilters.find(f => f.type === filts.type)
       if (!found) {
-        dispatch(addNavbarFilters(filter))
+        dispatch(addNavbarFilters(filts))
       }
     } else {
-      dispatch(addNavbarFilters(filter))
+      dispatch(addNavbarFilters(filts))
     }
   }
   // console.log(filtersPersons)
@@ -59,18 +59,6 @@ const Dropdown = ({ text, iconColor }) => {
     return color
   }
   // console.log(filtersPersons)
-
-  const handleColorDrop = () => {
-    let color = ""
-    navbarFilters?.forEach(el => {
-      if (el?.category === text?.name) {
-        color = "var(--yellowCategory)"
-      }
-    })
-    return color
-  }
-
-  const colorDrop = handleColorDrop()
 
   const colorDrop = handleColorDrop()
 

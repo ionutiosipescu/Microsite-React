@@ -48,7 +48,7 @@ export const Card = styled.div`
   }
   @media ${sizem.smm} {
     padding: 5px;
-    height: ${props => (props.display !== "none" ? "700px" : "550px")};
+    height: ${props => (props.display !== "none" ? "750px" : "550px")};
   }
 `
 export const XContainer = styled.a`
