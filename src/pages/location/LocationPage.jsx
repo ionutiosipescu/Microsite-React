@@ -2,15 +2,16 @@ import React, {useEffect, useState} from "react"
 import { HeroSection } from "../../components/cards"
 import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import LocationCardRow from "../../components/cards/LocationCardRow"
-import { getSingleLocation } from "../../API"
+import { getLocations, getSingleLocation } from "../../API"
+
 
 const LocationPage = () => {
-  // const [location, setLocation] = useState(null)
+  const [location, setLocations] = useState(null)
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   getSingleLocation(setLocation);
-  // }, []);
+    getLocations(setLocations);
+  }, []);
   //   let i = [
     //     {
       //       country: { name: "Germany", id: 1234 },
@@ -58,7 +59,9 @@ const LocationPage = () => {
         }
         />
       <StyledContainerLocation>
-        {/* <LocationCardRow location={location}/> */}
+      {location?.map((location, index) => (
+                  <LocationCardRow location={location} key={index} />
+                ))}
       </StyledContainerLocation>
     </>
   )

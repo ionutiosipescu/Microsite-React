@@ -45,7 +45,7 @@ const {
     phone,
     fax
 } = location
-    // console.log(location)
+    console.log(location)
 
     return(
         <>

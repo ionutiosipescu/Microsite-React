@@ -25,15 +25,18 @@ const LocationCardRow = ({location}) => {
         country,
     } = location
 
-    console.log(location)
+    // console.log(location)
+    // console.log(country)
+    // console.log(location.city)
+    // console.log(location.city[0])
     return(
         <>
         <Card>
-            <div className="coutry">{country}</div>
+            <div className="coutry">{country.country}</div>
             <ContainerLocation>
-                <LocationCard location={location}/>
-                <LocationCard location={location}/>
-                <LocationCard location={location}/>
+                  {location.city?.map((location, index) => (
+                  <LocationCard location={location} key={index} />
+                ))}
             </ContainerLocation>
         </Card>
         </>

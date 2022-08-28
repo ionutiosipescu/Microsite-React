@@ -206,7 +206,7 @@ export const getSinglePodcast = (setPodcastData, id) => {
 
 // getSingleLocation()
 
-export const getLocations = () => {
+export const getLocations = (setLocations) => {
   const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag`
 
   Axios.get(link).then(res => {
@@ -251,15 +251,12 @@ export const getLocations = () => {
     combinedArrays.cities = dataFiltered
     combinedArrays.countries = includedFiltered
     
-
-    
     let location = []
     
     for(let key of combinedArrays.countries) {
       let final = {}
       let countriesarr = []
       for(let element of combinedArrays.cities) {
-        
         if(key.idd === element.id) {
           countriesarr.push(element)
         }
@@ -271,10 +268,11 @@ export const getLocations = () => {
       
     }
     
-    console.log(location)
+    // console.log(location)
+    setLocations(location)
               
-            })
+  })
             
-          }
+}
           
-          getLocations()
+getLocations()
