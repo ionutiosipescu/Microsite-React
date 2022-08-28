@@ -68,3 +68,29 @@ arr = [
     location.id = data[0].relationships.field_countries_tag.data[0].id
     location.country = included[0].attributes.name
     location.idd = included[0].id
+
+
+
+Arr of objects
+    [
+        {},
+        {},
+        {},
+    ]
+
+Arr of arr of objects
+    [
+        [
+            {},
+            {},
+        ],
+        [
+            {},
+        ],
+        [
+            {},
+            {},
+            {}
+        ],
+
+    ]

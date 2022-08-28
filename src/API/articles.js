@@ -1,4 +1,5 @@
 import Axios from "axios"
+import { arr } from "../utils/data"
 import {
   months,
   getLink,
@@ -198,11 +199,12 @@ export const getSinglePodcast = (setPodcastData, id) => {
 //     location.area = data[0].attributes.field_address.administrative_area
 //     location.id = data[0].relationships.field_countries_tag.data[0].id
 //     location.idd = included[0].id
-// // console.log(location)
+// console.log(location)
 // setLocation(location)
 //   })
-
 // }
+
+// getSingleLocation()
 
 export const getLocations = () => {
   const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag`
@@ -211,7 +213,7 @@ export const getLocations = () => {
 
     let data = res.data.data
     let included = res.data.included
-
+    
     let dataFiltered = data.map(element => {
       const city = element.attributes.name
       const phone = element.attributes.field_contact_phone
@@ -233,34 +235,46 @@ export const getLocations = () => {
         id,
       }
     })
-
+    
     let includedFiltered = included.map(element => {
-    const country = element.attributes.name
-    const idd = element.id
+      const country = element.attributes.name
+      const idd = element.id
       return{
         country,
         idd,
       }
     })
-
-
+    
+    
     let combinedArrays = []
-
+    
     combinedArrays.cities = dataFiltered
     combinedArrays.countries = includedFiltered
+    
 
-    for(let key of combinedArrays.countries){
-      // let cities = combinedArrays.cities
-      console.log(key.idd)
-      // for(let element in combinedArrays.cities){
-        // console.log(element.id)
-      // }
+    
+    let location = []
+    
+    for(let key of combinedArrays.countries) {
+      let final = {}
+      let countriesarr = []
+      for(let element of combinedArrays.cities) {
+        
+        if(key.idd === element.id) {
+          countriesarr.push(element)
+        }
+      }
+      
+      final.city = countriesarr
+      final.country = key
+      location.push(final)
+      
     }
-
-    // console.log(combinedArrays)
-
-  })
-  
-}
-
-getLocations()
+    
+    console.log(location)
+              
+            })
+            
+          }
+          
+          getLocations()
