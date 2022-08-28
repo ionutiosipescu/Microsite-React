@@ -11,7 +11,7 @@ import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
-import InfiniteScroll from "react-infinite-scroll-component"
+// import InfiniteScroll from "react-infinite-scroll-component"
 
 const Insights = () => {
   const { currentInsightType, filters } = useSelector(state => state.filters)
