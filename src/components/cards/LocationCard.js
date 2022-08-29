@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import { ButtonWithAnimation } from "../buttons";
 import { size } from "../../utils/breakpoints";
@@ -43,7 +43,8 @@ const {
     postal,
     city,
     phone,
-    fax
+    fax,
+    map,
 } = location
     // console.log(location)
 
@@ -61,11 +62,11 @@ const {
                     <div className="address-line">{address_line1}</div>
                     <div className="address-line">{address_line2}</div>
                     <div className="address-line">{area}</div>
-                    <div className="address-line">{country}</div>
                     <div className="address-line">{postal}</div>
+                    <div className="address-line">{country}</div>
                 </p>
             </div>
-            <ButtonWithAnimation/>
+            <ButtonWithAnimation text={"VIEW MAP"} href={map}/>
         </Card>
         </>
     )

@@ -10,7 +10,7 @@ const ButtonWithAnimation = ({ text, black, href, onClick }) => {
   //   : (link = "https://contact.alvarezandmarsal.com")
 
   return (
-    <S.Container onClick={onClick} href={href || link}>
+    <S.Container onClick={onClick} href={href || link} target={"_blank"}>
       <S.ChevronContainer black={black}>
         <ChevronRight />
       </S.ChevronContainer>

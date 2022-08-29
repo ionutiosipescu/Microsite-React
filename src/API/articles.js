@@ -223,6 +223,7 @@ export const getLocations = (setLocations) => {
       const postal = element.attributes.field_address.postal_code
       const area = element.attributes.field_address.administrative_area
       const id = element.relationships.field_countries_tag.data[0].id
+      const map = element.attributes.field_google_map_url
       
       
       return{
@@ -234,6 +235,7 @@ export const getLocations = (setLocations) => {
         postal,
         area,
         id,
+        map,
       }
     })
     
@@ -255,22 +257,23 @@ export const getLocations = (setLocations) => {
     let location = []
     
     for(let key of combinedArrays.countries) {
-      let add = key.country
-      let final = {}
+      let addCountryToCity = key.country
+      let locationObject = {}
       let countriesarr = []
+
       for(let element of combinedArrays.cities) {
         if(key.idd === element.id) {
-          element.country = add
+          element.country = addCountryToCity
           countriesarr.push(element)
         }
       }
-      final.city = countriesarr
-      final.country = key
-      location.push(final)
+
+      locationObject.city = countriesarr
+      locationObject.country = key
+      location.push(locationObject)
     }
-    console.log(location)
     setLocations(location)
-              
+    console.log(dataFiltered)
   })
             
 }
