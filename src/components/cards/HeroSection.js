@@ -93,6 +93,7 @@ const HeroSection = ({
   height,
   heroBrazilianText,
   transparent,
+  Custom
 }) => {
   let navigate = useNavigate()
   const location = useLocation()
@@ -150,11 +151,12 @@ const HeroSection = ({
                     ></p>
                   )}
 
-                  {buttonText && (
+                   {buttonText ? (
                     <div className="buttonContainer">
                       <ButtonWithAnimation text={buttonText.toUpperCase()} />
                     </div>
-                  )}
+                  ) : <Custom/>}
+                  {/* {Custom && <Custom/>} */}
                 </div>
               )}
             </>
