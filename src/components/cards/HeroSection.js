@@ -51,6 +51,7 @@ const Hero = styled.div`
       font-size: 3rem;
       line-height: 3rem;
       text-transform: uppercase;
+
       @media ${sizem.smm} {
         font-size: 1.8rem;
         line-height: 1.8rem;
@@ -63,6 +64,7 @@ const Hero = styled.div`
       font-size: 1rem;
       line-height: 1.5rem;
       color: #fff;
+
       @media ${sizem.smm} {
         width: 90%;
         font-size: 0.9rem;

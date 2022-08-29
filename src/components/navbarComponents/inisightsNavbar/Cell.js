@@ -3,17 +3,26 @@ import * as S from "./styles/Cell.styles"
 import { useSelector, useDispatch } from "react-redux"
 import { changeInsightsType } from "../../../store/actions/filters"
 
-const Cell = ({ text, type }) => {
+const Cell = ({ name, identifier, id }) => {
   const dispatch = useDispatch()
   const { currentInsightType } = useSelector(state => state.filters)
 
   const handleClick = () => {
-    dispatch(changeInsightsType(type))
+    dispatch(
+      changeInsightsType({
+        name,
+        identifier,
+        id,
+      })
+    )
   }
 
   return (
-    <S.NavbarCell highlight={currentInsightType === type} onClick={handleClick}>
-      {text || "No text"}
+    <S.NavbarCell
+      highlight={currentInsightType.identifier === identifier}
+      onClick={handleClick}
+    >
+      {name || "No text"}
     </S.NavbarCell>
   )
 }

@@ -5,7 +5,12 @@ import {
 } from "../actions/filters"
 
 const initialState = {
-  currentInsightType: "all",
+  currentInsightType: {
+    name: "all insights",
+    identifier: "all",
+    id: null,
+  },
+
   filters: [],
 }
 
