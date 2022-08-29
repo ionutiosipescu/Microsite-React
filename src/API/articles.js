@@ -224,6 +224,7 @@ export const getLocations = (setLocations) => {
       const area = element.attributes.field_address.administrative_area
       const id = element.relationships.field_countries_tag.data[0].id
       
+      
       return{
         city,
         phone,
@@ -254,21 +255,20 @@ export const getLocations = (setLocations) => {
     let location = []
     
     for(let key of combinedArrays.countries) {
+      let add = key.country
       let final = {}
       let countriesarr = []
       for(let element of combinedArrays.cities) {
         if(key.idd === element.id) {
+          element.country = add
           countriesarr.push(element)
         }
       }
-      
       final.city = countriesarr
       final.country = key
       location.push(final)
-      
     }
-    
-    // console.log(location)
+    console.log(location)
     setLocations(location)
               
   })
