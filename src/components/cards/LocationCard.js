@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import { ButtonWithAnimation } from "../buttons";
 import { size } from "../../utils/breakpoints";
@@ -25,29 +25,48 @@ const Card = styled.div`
 .adress {
     margin: 30px 0 15px;
 }
+.address-line {
+    margin-bottom: 10px;
+
+    :last-child{
+        margin-bottom: 0;
+    }
+}
 `
 
-const LocationCard = (datadeeper) => {
+const LocationCard = ({location}) => {
+const {
+    address_line1,
+    address_line2,
+    area,
+    country,
+    postal,
+    city,
+    phone,
+    fax,
+    map,
+} = location
+    // console.log(location)
+
     return(
         <>
         <Card>
-            <div className="city">{datadeeper.datadeeper.cities[0].city}</div>
+            <div className="city">{city}</div>
             <div className="phone contact-field">
-                <span>{datadeeper.datadeeper.cities[0].contact_field[0].phone.props.children}</span>
+                <div className="address-line">{phone}</div>
+                <div className="address-line">{fax}</div>
                 
             </div>
             <div className="contact-field">
                 <p className="adress">
-                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[0].props.children}</span>
-                    <br/>
-                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[1].props.children}</span>
-                    <br/>
-                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[2].props.children}</span>
-                    <br/>
-                    <span>{datadeeper.datadeeper.cities[0].contact_field_addres[0].addres[3].props.children}</span>
+                    <div className="address-line">{address_line1}</div>
+                    <div className="address-line">{address_line2}</div>
+                    <div className="address-line">{area}</div>
+                    <div className="address-line">{postal}</div>
+                    <div className="address-line">{country}</div>
                 </p>
             </div>
-            <ButtonWithAnimation/>
+            <ButtonWithAnimation text={"VIEW MAP"} href={map}/>
         </Card>
         </>
     )
