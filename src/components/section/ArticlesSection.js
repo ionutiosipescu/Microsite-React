@@ -14,9 +14,10 @@ const ArticleSection = ({ articles }) => {
       {articles?.map((article, index) => {
         let cardInfo = {
           id: article?.uuid,
-          category: articles?.title ?? "HEALTHCARE & LIFE SCIENCES INSIGHTS",
+          category: article?.categoryName,
           title: article?.title,
-          updated: dateFromSecondsToShortLocale(article?.updated),
+          date: article.date,
+          alias: article.alias,
           text_teaser: article?.text_teaser,
           uuid: article?.uuid,
         }

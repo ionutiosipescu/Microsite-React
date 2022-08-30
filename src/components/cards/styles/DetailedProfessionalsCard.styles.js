@@ -22,7 +22,6 @@ export const Card = styled.div`
   margin-right: auto;
   /* padding-left: 32px; */
   margin-top: 15px;
-
   margin-bottom: 15px;
 
   :after {
