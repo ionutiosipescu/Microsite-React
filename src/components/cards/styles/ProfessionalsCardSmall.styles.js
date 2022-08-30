@@ -1,7 +1,9 @@
 import styled from "styled-components"
+import { size } from "../../../utils/breakpoints"
+import { sizem } from "../../../utils/breakpoints"
 
 export const Container = styled.div`
-  padding-bottom: ${({ padding }) => padding + "px" || 0};
+  padding-bottom: ${({ padding }) => padding +  "px" || 0};
   /* padding-bottom: 490px !important; */
   cursor: pointer;
   /* max-height: 300px; */
@@ -18,7 +20,10 @@ export const Card = styled.div`
 
 export const ImageContainer = styled.div`
   background: gray;
-  flex: 1;
+  flex: 2;
+  @media ${size.sm} {
+      flex: 1;
+    }
 
   img {
     width: 100%;

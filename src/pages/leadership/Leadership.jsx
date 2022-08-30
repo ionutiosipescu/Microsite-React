@@ -46,6 +46,10 @@ const Leadership = () => {
   const [openedStatePersons, setOpenedStatePersons] = useState(
     Array.from(persons ?? [], () => false)
   )
+
+  const [filterDropdownActive, setFiltersDropdownActive] = useState(
+    Array.from(filtersPersons ?? [], () => false)
+  )
   // console.log(persons)
   const handleDisplay2 = (index, array, state, setState) => {
     if (!state[index]) {
@@ -152,7 +156,7 @@ const Leadership = () => {
                   )
                 })}
               </LeaadersContainer>
-              <h1 className="pb-4"> Leaders</h1>
+              <h1 className=" mt-4"> Leaders</h1>
               <LeaadersContainer>
                 {persons?.map((cardInfo, index) => {
                   return (
