@@ -62,11 +62,14 @@ const IndustrySection = ({ industries }) => {
             <div className="industry " key={index}>
               <div className="body">
                 <h2
-                  onClick={() =>
-                    navigate(`/industry/${industry.name.toLowerCase()}`, {
-                      state: industry.id,
+                  onClick={() => {
+                    navigate(`/industry/${industry?.name?.toLowerCase()}`, {
+                      state: {
+                        inustryId: industry.id,
+                        industryUUID: industry.uuid,
+                      },
                     })
-                  }
+                  }}
                 >
                   {industry?.name}
                 </h2>

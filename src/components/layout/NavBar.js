@@ -95,7 +95,10 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
                   <NavDropdown.Item
                     onClick={() => {
                       navigate(`/industry/${industry?.name?.toLowerCase()}`, {
-                        state: industry.id,
+                        state: {
+                          industryId: industry.id,
+                          industryUUID: industry.uuid,
+                        },
                       })
                     }}
                     id="something"
