@@ -1,0 +1,96 @@
+Single Location
+
+Included : 
+
+
+includedCountry {
+    country name
+    id
+}
+
+dataCities {
+    cities:
+    adresa:
+    telephone;
+    .
+    .
+}
+
+obiect x = [
+    {
+        country: includedObiect
+        cities:[dataCities]
+    }
+]
+
+
+
+
+
+
+
+
+
+Many locations
+
+arr = [
+    {},
+    {},
+    .
+    .
+    .
+    ]
+
+
+
+    prin get obtin un obiect cu data si included sau mai zis orase si tari
+
+    daca fac un for() si caut fiecare id la included iar pentru fieacare mai fac un for() in care caut id la data si daca idurile sunt identice atunci imping cele 2 obiecte intr-unul singur 
+
+
+    1. emptyArr = []
+    2. for() in Included => caut id
+    3. for() in for() in data => caut id
+    4. if(idIncluded === idData)
+    5. emptyArr.push(dataObject)
+
+    cum trimit datele in modul asta 
+
+    let location = {}
+
+    location.city = data[0].attributes.name
+    location.phone = data[0].attributes.field_contact_phone
+    location.fax = data[0].attributes.field_fax_number
+    location.address_line1 = data[0].attributes.field_address.address_line1
+    location.address_line2 = data[0].attributes.field_address.address_line2
+    location.postal = data[0].attributes.field_address.postal_code
+    location.area = data[0].attributes.field_address.administrative_area
+    location.id = data[0].relationships.field_countries_tag.data[0].id
+    location.country = included[0].attributes.name
+    location.idd = included[0].id
+
+
+
+Arr of objects
+    [
+        {},
+        {},
+        {},
+    ]
+
+Arr of arr of objects
+    [
+        [
+            {},
+            {},
+        ],
+        [
+            {},
+        ],
+        [
+            {},
+            {},
+            {}
+        ],
+
+    ]

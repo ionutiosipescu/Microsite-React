@@ -7,7 +7,10 @@ import {
   HeroSection,
   SocialsCard,
 } from "../../components/cards"
-import { fetchIndustry } from "../../store/actions/hls/hlsHome"
+import {
+  fetchIndustry,
+  fetchIndustryArticles,
+} from "../../store/actions/hls/hlsHome"
 
 import { ProfessionalCard, ContactSubscribeCard } from "../../components/cards"
 
@@ -29,13 +32,14 @@ const IndustryPage = () => {
   const dispatch = useDispatch()
 
   const industry = useSelector(state => state.hlsHero.industry)
+  const industryArticles = useSelector(state => state.hlsHero.industryArticles)
 
-  console.log(industry)
-  console.log(state)
   useEffect(() => {
-    dispatch(fetchIndustry(state))
+    dispatch(fetchIndustry(state?.industryId))
+    dispatch(fetchIndustryArticles(state.industryUUID))
   }, [dispatch, state])
 
+  console.log(industry)
   return (
     <>
       <HeroSection
@@ -84,9 +88,9 @@ const IndustryPage = () => {
         bgColor={"var(--graySections)"}
         className="px-4 py-3 px-md-4"
       >
-        {/* <ContainerContent>
-          <ArticlesSection />
-        </ContainerContent> */}
+        <ContainerContent>
+          <ArticlesSection articles={industryArticles} />
+        </ContainerContent>
       </FullWidthContainer>
     </>
   )

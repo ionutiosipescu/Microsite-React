@@ -20,15 +20,23 @@ const Card = styled.div`
 }
 `
 
-const LocationCardRow = (data) => {
+const LocationCardRow = ({location}) => {
+    const {
+        country,
+    } = location
+
+    // console.log(location)
+    // console.log(country)
+    // console.log(location.city)
+    // console.log(location.city[0])
     return(
         <>
         <Card>
-            <div className="coutry">{data.data[0].locations[0].country}</div>
+            <div className="coutry">{country.country}</div>
             <ContainerLocation>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
-                <LocationCard datadeeper={data.data[0].locations[0]}/>
+                  {location.city?.map((location, index) => (
+                  <LocationCard location={location} key={index} />
+                ))}
             </ContainerLocation>
         </Card>
         </>

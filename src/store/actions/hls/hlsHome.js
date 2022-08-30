@@ -1,5 +1,9 @@
 import axios from "axios"
 import Axios from "axios"
+import {
+  dateFromSecondsToShortLocale,
+  dateToShortLocale,
+} from "../../../utils/dateFormat"
 
 export const GET_HERO_SECTION_DATA = "GET_HERO_SECTION_DATA"
 export const GET_INDUSTRIES = "GET_INDUSTRIES"
@@ -9,6 +13,7 @@ export const GET_INDUSTRY = "GET_INDUSTRY"
 export const GET_EXPERTISE = "GET_EXPERTISE"
 export const GET_INSIGHTS_ARTICLES = "GET_INSIGHTS_ARTICLES"
 export const GET_RECENT_RECOGNITION = "GET_RECENT_RECOGNITION"
+export const GET_INDUSTRY_ARTICLES = "GET_INDUSTRY_ARTICLES"
 // export const GET_OVERVIEW_SECTION_DATA = "GET_OVERVIEW_DATA";
 
 const link = "https://akamai.alvarezandmarsal.com/api/v1/hls"
@@ -117,13 +122,57 @@ export const fetchIndustry = industryId => {
       .catch(err => {
         console.log(err)
       })
-    let industryID = ""
-    const res = await Axios.get(
-      `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
-    )
-    industryID = res?.data?.data[0].id
-    console.log(industryID)
+
     // await Axios.gey()
+  }
+}
+
+export const fetchIndustryArticles = industryUUID => {
+  return async dispatch => {
+    // const link =`https://akamai.alvarezandmarsal.com/jsonapi/node/article?filter[field_industry.id]=d1bdf615-e445-44aa-ae95-206fbc107bde`
+    const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/article?include=field_category&filter[field_industry.id]=${industryUUID}`
+    Axios.get(link)
+      .then(data => {
+        const jsonData = data?.data.data
+        const dataIncluded = data?.data.included
+        console.log(dataIncluded)
+        let articles = []
+
+        jsonData?.forEach(article => {
+          let x = {
+            uuid: article.id,
+            title: article.attributes.title,
+            alias: article.attributes.path?.alias.split("/")[2],
+            text_teaser: article.attributes.field_teaser_text,
+            date: dateToShortLocale(
+              article.attributes.changed || article.attributes.created
+            ),
+            category: {
+              id: article.relationships.field_category.data[0].id,
+              type: article.relationships.field_category.data[0].type,
+            },
+          }
+          articles.push(x)
+        })
+        articles.forEach(article => {
+          dataIncluded.forEach(included => {
+            if (article.category.type == included.type) {
+              article.categoryName = included.attributes.name
+            }
+          })
+          return article
+        })
+
+        dispatch({
+          type: GET_INDUSTRY_ARTICLES,
+          payload: articles,
+        })
+        // console.log(articles)
+        // console.log(dataIncluded)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 }
 const getIndustryId_byDrupalTid = async industryId => {
@@ -181,25 +230,29 @@ export const fetchExpertise = expertiseId => {
         let articles = []
         let expertise = {}
         let expertiseIndustries = []
+
         for (const [key, value] of Object.entries(expertises)) {
           if (key == expertiseId) {
             expertise = value
           }
         }
-        expertise?.featured_expert.map(expert => {
+        expertise?.featured_expert?.map(expert => {
           for (const [key, value] of Object.entries(
             data?.data.expertise_parent_expert_profile
           )) {
+            console.log(key)
+
             if (key == expert) {
               experts.push(value)
             }
           }
         })
-        expertise?.articles.map(expert => {
+        expertise?.articles?.map(expert => {
           for (const [key, value] of Object.entries(
             data?.data.expertise_parent_articles
           )) {
             if (key == expert) {
+              console.log(key)
               articles.push(value)
             }
           }
@@ -207,13 +260,23 @@ export const fetchExpertise = expertiseId => {
 
         const industries = data.data.healthcare_industries
         for (const [key, value] of Object.entries(industries)) {
-          value.expertise.map(expertiseID => {
+          value?.expertise?.map(expertiseID => {
             if (expertiseId == expertiseID) {
               // console.log(value);
               expertiseIndustries.push(value)
             }
           })
         }
+        // expertise?.articles.map(article => {
+        //   console.log(article)
+        //   article.alias = article.title.toLowerCase().join("-")
+        // })
+        let formatedArticles = []
+        articles?.forEach(article => {
+          article.date = dateFromSecondsToShortLocale(article?.updated)
+          formatedArticles.push(article)
+        })
+
         expertise.articles = articles
         expertise.experts = experts
         expertise.industries = expertiseIndustries

@@ -62,7 +62,7 @@ const ExpertiseSection = ({ expertises }) => {
             if (lastRowElements == 0) {
               lastRowElements = 3
             }
-            console.log(expertise)
+
             return (
               <ExpertiseCard
                 key={index}

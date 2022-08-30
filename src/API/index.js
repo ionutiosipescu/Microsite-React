@@ -4,6 +4,7 @@ export {
   getSinglePodcast,
   getPodcasts,
   getAllInsightTypes,
+  getLocations,
 } from "./articles"
 export { fetchHeroSectionDataHome } from "./heroSection"
 export { fetchData, fetchRecentRecognition } from "./home"
