@@ -105,11 +105,7 @@ const InsightsNavbar = () => {
           filters={filters.region}
         />
 
-        <Dropdown
-          text={"date"}
-          filters={filters.created}
-          category={"created"}
-        />
+        <Dropdown text={"date"} filters={filters.date} category={"date"} />
       </S.Navbar>
       <FiltersContainer />
     </S.Container>

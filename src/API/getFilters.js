@@ -1,4 +1,5 @@
 import Axios from "axios"
+import { cleanDateFilter } from "./helper"
 
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
@@ -10,7 +11,8 @@ export const getInsightFilters = setFilters => {
   let filters = {}
 
   Axios.get(link).then(res => {
-    filters = res.data
+    filters.region = res.data.region
+    filters.date = cleanDateFilter(res.data.created)
 
     Axios.get(hlsLink).then(res => {
       const expertises = Object.values(res.data.expertise_parent_children).map(

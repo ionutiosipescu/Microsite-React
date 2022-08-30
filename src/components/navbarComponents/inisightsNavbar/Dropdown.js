@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext, useState } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
 import { useDispatch, useSelector } from "react-redux"
@@ -17,8 +17,9 @@ const Dropdown = ({ text, filters, category }) => {
     highlightFilterNames.push(selectedFilter.category)
   })
 
-  // console.log("This is selectedFilters", selectedFilters)
-  // console.log("This is highlightFilterNames", highlightFilterNames)
+  const highlightCell = name => {
+    return highlightFilterNames.includes(name)
+  }
 
   const [isOpen, setIsOpen] = useState(false)
   const [margin, setMargin] = useState(0)
@@ -63,19 +64,19 @@ const Dropdown = ({ text, filters, category }) => {
         highlight={highlightFilterNames.includes(category)}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
-        {category === "created" ? (
+        {category === "date" ? (
           <TimeDropdown
             filters={filters}
             addFilterToRedux={addFilterToRedux}
             category={category}
-            highlightFilterNames={highlightFilterNames}
+            highlightCell={highlightCell}
           />
         ) : (
           <NormalDropdown
             filters={filters}
             addFilterToRedux={addFilterToRedux}
             category={category}
-            highlightFilterNames={highlightFilterNames}
+            highlightCell={highlightCell}
           />
         )}
       </S.DropdownContainer>
@@ -87,21 +88,22 @@ const NormalDropdown = ({
   filters,
   category,
   addFilterToRedux,
-  highlightFilterNames,
+  highlightCell,
 }) => {
   return filters.map((filter, index) => {
+    const addToRedux = () => {
+      addFilterToRedux({
+        id: filter.id,
+        name: filter.name,
+        category: category,
+        uuid: filter.uuid,
+      })
+    }
+
     return (
       <S.DropdownItem
-        // highlight={}
-        onClick={() =>
-          addFilterToRedux({
-            id: filter.id,
-            name: filter.name,
-            category: category,
-            uuid: filter.uuid,
-          })
-        }
-        highlight={highlightFilterNames.includes(filter.name)}
+        onClick={addToRedux}
+        highlight={highlightCell(filter.name)}
         key={index}
       >
         {filter.name}
@@ -114,64 +116,50 @@ const TimeDropdown = ({
   filters,
   addFilterToRedux,
   category,
-  highlightFilterNames,
+  highlightCell,
 }) => {
+  const addToRedux = filter => {
+    addFilterToRedux({
+      ...filter,
+      category: category,
+    })
+  }
+
   return (
     <>
-      <div>
-        <S.FlexContainer>
-          {/* This shit is bad. Need to move it to the api folder and to data cleaning there */}
-          {Object.entries(filters.period).map((filter, index) => (
-            <S.DropdownItem
-              onClick={() =>
-                addFilterToRedux({
-                  name: filter[1],
-                  value: filter[0],
-                  category: category,
-                })
-              }
-              key={index}
-              highlight={highlightFilterNames.includes(filter[1])}
-            >
-              {filter[1]}
-            </S.DropdownItem>
-          ))}
-        </S.FlexContainer>
-        <S.FlexContainer>
-          {Object.entries(filters.years).map((filter, index) => (
-            <S.DropdownItem
-              onClick={() =>
-                addFilterToRedux({
-                  name: filter[1],
-                  value: filter[0],
-                  category: category,
-                })
-              }
-              key={index}
-              highlight={highlightFilterNames.includes(filter[1])}
-            >
-              {filter[1]}
-            </S.DropdownItem>
-          ))}
-        </S.FlexContainer>
-        <S.FlexContainer>
-          {Object.entries(filters.months).map((filter, index) => (
-            <S.DropdownItem
-              onClick={() =>
-                addFilterToRedux({
-                  name: filter[1],
-                  value: filter[0],
-                  category: category,
-                })
-              }
-              highlight={highlightFilterNames.includes(filter[1])}
-              key={index}
-            >
-              {filter[1]}
-            </S.DropdownItem>
-          ))}
-        </S.FlexContainer>
-      </div>
+      <S.FlexContainer>
+        {filters.period.map((filter, index) => (
+          <S.DropdownItem
+            onClick={() => addToRedux(filter)}
+            key={index}
+            highlight={highlightCell(filter.name)}
+          >
+            {filter.name}
+          </S.DropdownItem>
+        ))}
+      </S.FlexContainer>
+      <S.FlexContainer>
+        {filters.years.map((filter, index) => (
+          <S.DropdownItem
+            onClick={() => addToRedux(filter)}
+            key={index}
+            highlight={highlightCell(filter.name)}
+          >
+            {filter.name}
+          </S.DropdownItem>
+        ))}
+      </S.FlexContainer>
+      <S.FlexContainer>
+        {filters.months.map((filter, index) => (
+          <S.DropdownItem
+            onClick={() => addToRedux(filter)}
+            highlight={highlightCell(filter.name)}
+            key={index}
+          >
+            {filter.name}
+          </S.DropdownItem>
+        ))}
+      </S.FlexContainer>
     </>
   )
 }

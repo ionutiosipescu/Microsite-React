@@ -8,9 +8,8 @@ const initialState = {
   currentInsightType: {
     name: "all insights",
     identifier: "all",
-    id: null,
+    id: [1776, 3976, 3971],
   },
-
   filters: [],
 }
 
@@ -35,7 +34,6 @@ const filters = (state = initialState, { type, payload }) => {
 }
 
 const addFilter = (state, payload) => {
-  // console.log(payload)
   const newArr = state.filters.filter(
     filter => filter.category !== payload.category
   )

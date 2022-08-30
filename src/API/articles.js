@@ -1,87 +1,62 @@
 import Axios from "axios"
-import {
-  months,
-  getLink,
-  getLinkWithFilters,
-  grabRelatedPeople,
-  cleanInsights,
-} from "./helper"
+import { dateToShortLocale } from "../utils/dateFormat"
+import { getLinkWithFilters, grabRelatedPeople, cleanInsights } from "./helper"
 
 const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-// export const getInsights = (
-//   setInsightsContent,
-//   selectedFilters,
-//   insightType
-// ) => {
-//   const categories = {
-//     industryInsights:
-//       "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
-//     caseStudies:
-//       "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
-//     healthPodcasts:
-//       "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
-//   }
+export const getInsights = async (setData, insightType, filters, next) => {
+  const link = `${customApi}/insight-filter?insight[]=${insightType.id}&page[limit]=10`
 
-//   const categoryPretty = {
-//     industryInsights: "business & industry inisights",
-//     caseStudies: "health & life case studies",
-//     healthPodcasts: "health & life podcasts",
-//   }
+  const linkWithFilters = getLinkWithFilters(link, filters)
 
-//   let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+  console.log("This is filters", filters)
+  console.log("This is linkWithFilters", linkWithFilters)
 
-//   link = getLinkWithFilters(link, selectedFilters)
+  const res = await Axios.get(linkWithFilters)
 
-//   Axios.get(link).then(res => {
-//     const articles = res.data.data.map(article => {
-//       const uuid = article.id
-//       const title = article.attributes.title
-//       const teaserText = article.attributes.field_teaser_text
-//       const alias = article.attributes.path.alias.split("/")[2]
-//       const date = new Date(
-//         article.attributes.changed || article.attributes.created
-//       ).toLocaleDateString("en-US", {
-//         year: "numeric",
-//         month: "long",
-//         day: "numeric",
-//       })
-//       // const date = article.attributes.changed || article.attributes.created
+  const cleanedData = cleanInsights(res.data, insightType.name)
 
-//       return {
-//         uuid,
-//         title,
-//         teaserText,
-//         alias,
-//         date,
-//         category: categoryPretty[insightType],
-//       }
-//     })
-
-//     setInsightsContent(articles)
-//   })
-// }
-
-export const getInsights = async (setData, insightType) => {
-  const link =
-    "https://akamai.alvarezandmarsal.com/api/v1/insight-filter?insight[]=3976"
-
-  const res = await Axios.get(link)
-  const cleanedData = cleanInsights(res.data, insightType)
-
-  console.log("This is res.data", res.data)
-  setData(res.data)
+  setData(cleanedData)
 }
 
-export const getAllInsightTypes = setData => {
-  setData("f YOu")
+export const getAllInsightTypes = async (setData, insightType, filters) => {
+  // business & industry inisights
+  const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}`
+
+  // health & life case studies
+  const link2 = `${customApi}/insight-filter?insight[]=${insightType.id[1]}`
+
+  // Health & Life Podcast
+  const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
+
+  const linkWithFilters1 = getLinkWithFilters(link1, filters)
+  const linkWithFilters2 = getLinkWithFilters(link2, filters)
+  const linkWithFilters3 = getLinkWithFilters(link3, filters)
+
+  const res1 = await Axios.get(linkWithFilters1)
+  const res2 = await Axios.get(linkWithFilters2)
+  const res3 = await Axios.get(linkWithFilters3)
+
+  const cleanedData1 = cleanInsights(res1.data, "business & industry inisights")
+  const cleanedData2 = cleanInsights(res2.data, "health & life case studies")
+
+  // For podcasts. Yet to see.
+  const cleanedData3 = cleanInsights(res3.data, "Health & Life Podcast")
+
+  const allInsights = {
+    industryInsights: cleanedData1,
+    caseStudies: cleanedData2,
+    healthPodcasts: cleanedData3,
+  }
+
+  setData(allInsights)
 }
 
 export const getPodcasts = (
   setInsightsContent,
-  selectedFilters,
-  insightType
+  insightType,
+  selectedFilters
 ) => {
   //   const categories = {
   //     industryInsights:
@@ -112,13 +87,10 @@ export const getPodcasts = (
       const title = podcast.attributes.title
       const teaserText = podcast.attributes.field_teaser_text
       const alias = podcast.attributes.path.alias.split("/")[2]
-      const date = new Date(
+
+      const date = dateToShortLocale(
         podcast.attributes.changed || podcast.attributes.created
-      ).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
+      )
 
       return {
         uuid,
@@ -144,13 +116,9 @@ export const getSingleArticle = (setArticleData, id) => {
 
     article.content = data.attributes.body.value
 
-    article.date = new Date(
+    article.date = dateToShortLocale(
       data.attributes.changed || data.attributes.created
-    ).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
+    )
 
     article.title = data.attributes.title
     article.authors = grabRelatedPeople("field_authors", res.data, 0)

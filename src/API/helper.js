@@ -1,42 +1,33 @@
+import { dateToShortLocale } from "../utils/dateFormat"
+
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL
 const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL
 
-export const cleanInsights = (rawData, insightType) => {
-  console.log("This is rawData", rawData)
-  console.log("This is insightType", insightType)
+export const cleanInsights = (rawData, insightTypeName) => {
+  const cleanedData = rawData.map(item => {
+    // Get the data for each individual article
+    const articlePreview = {
+      uuid: item.uuid,
+      alias: item.view_node.split("/")[2],
+      title: item.title,
+      date: dateToShortLocale(item.created),
+      teaserText: item.field_teaser_text,
+      nid: item.nid,
+      insightType: insightTypeName,
+    }
+
+    return articlePreview
+  })
+
+  return cleanedData
 }
 
 // Creates a link with filters to be used on request to the API
 export const getLinkWithFilters = (link, selectedFilters) => {
   link += "&"
 
-  // Create a single object for the time filter
-  let timeFilter = {
-    filterType: "time",
-  }
-
-  const newFilterArr = []
-
-  // Adding properties to the time filter object and pushiing everything to the newFilterArr
-  selectedFilters.forEach(filter => {
-    if (filter.filterType === "years") {
-      timeFilter.years = filter.value
-      timeFilter.yearsList = filter.yearsList
-    } else if (filter.filterType === "months") {
-      timeFilter.months = filter.id
-    } else if (filter.filterType === "days") {
-      timeFilter.days = filter.value
-    } else {
-      newFilterArr.push(filter)
-    }
-  })
-
-  if (Object.keys(timeFilter).length > 1) {
-    newFilterArr.push(timeFilter)
-  }
-
   // Constructing up the link with the filters
-  newFilterArr.forEach(filter => {
+  selectedFilters.forEach(filter => {
     link += getFilterSyntax(filter) + "&"
   })
 
@@ -46,8 +37,6 @@ export const getLinkWithFilters = (link, selectedFilters) => {
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0)
-
-  // console.log("This is ids", peopleIds)
 
   let personData = peopleIds.map(id => {
     const personObject = object.included.find(author => author.id === id)
@@ -63,9 +52,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
       const citiesIds = grabSubIds("field_city", personObject)
 
       const imageUrlIds = grabSubIds("field_image_background", personObject)
-
-      // console.log("This is imageUrl", imageUrlId)
-      // console.log(professionalTitleIds)
 
       const professionalTitle = professionalTitleIds.map(title => {
         return object.included.find(item => item.id === title).attributes.name
@@ -86,8 +72,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
         .image_style_uri.filter(
           item => item.people_thumbnail_desktop__296x434_ !== undefined
         )[0].people_thumbnail_desktop__296x434_
-
-      // console.log("This is imageUrl", imageUrl)
 
       const personalPageLink = mainWebsite + personObject.attributes.path.alias
 
@@ -125,57 +109,46 @@ const grabSubIds = (fieldName, singleObject) => {
 // Decides what syntax to return for the specific filter
 const getFilterSyntax = filter => {
   // All the filters that exist. Add more as needed.
-  // const filterCases = {
-  //   // Repeating code. Not good
-  //   industries: `${filter.filterType}[]=${filter.id}`,
-  //   expertise: `${filter.filterType}[]=${filter.id}`,
-  //   bulletin: `${filter.filterType}[]=${filter.id}`,
-  //   region: `${filter.filterType}[]=${filter.id}`,
-
-  //   userInput: `insight_search=${filter.value}`,
-
-  //   time: getTimeFilterSyntax(filter),
-  // }
-
   const filterCases = {
     // Repeating code. Not good
-    industries: `filter[field_industry.id]=${filter.uuid}`,
-    expertise: `filter[field_expertise.id]=${filter.uuid}`,
-    bulletin: `filter[field_.id]=${filter.uuid}`,
+    industries: `${filter.category}[]=${filter.id}`,
+    expertise: `${filter.category}[]=${filter.id}`,
+    bulletin: `${filter.category}[]=${filter.id}`,
+    region: `${filter.category}[]=${filter.id}`,
 
-    // This one is bad
-    region: `filter[field_region.name]=${filter.name}`,
+    userInput: `insight_search=${filter.name}`,
 
-    // userInput: `insight_search=${filter.value}`,
-
-    // time: getTimeFilterSyntax(filter),
-    // created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
-    //   filter.value.split(":")[1]
-    // }`,
+    date: `created[min]=${filter.minDate}&created[max]=${filter.maxDate}`,
   }
 
   return filterCases[filter.category]
 }
 
-// The time filter is more complicated. It's a range of dates. Plus, we need to keep in mind if a month, year or month and year are selected.
-// I put some logic for the days filer just case we will need it for the future.
-const getTimeFilterSyntax = filter => {
-  const minYear = filter.years ? filter.years : 2014
-  const maxYear = filter.years ? filter.years : new Date().getFullYear()
-  const minMonth = filter.months ? filter.months : 1
-  const maxMonth = filter.months ? filter.months : 12
+// The filter with dates is really awkwardly formated.
+// I brake it down in more usable stuff here
+export const cleanDateFilter = dateFilter => {
+  const cleanedDateObject = {}
+  cleanedDateObject.months = getDateFields(dateFilter.months)
+  cleanedDateObject.years = getDateFields(dateFilter.years)
+  cleanedDateObject.period = getDateFields(dateFilter.period)
 
-  const minDay = filter.days ? filter.days : 1
-  const maxDay = filter.days ? filter.days : daysInMonth(maxMonth, maxYear)
-
-  // return `created[min]=${minYear}-${minMonth}-${minDay}&created[max]=${maxYear}-${maxMonth}-${maxDay}`
+  return cleanedDateObject
 }
 
-// Month in JavaScript is 0-indexed (January is 0, February is 1, etc),
-// but by using 0 as the day it will give us the last day of the prior
-// month. So passing in 1 as the month number will return the last day
-// of January, not February
-// Get how many days are in a specific month of the year
-const daysInMonth = (month, year) => {
-  return new Date(year, month, 0).getDate()
+const getDateFields = dateObj => {
+  return Object.entries(dateObj).map(item => {
+    const periods = item[0].split(":")
+    if (item[1] === "Today") {
+      return {
+        name: item[1],
+        minDate: `${periods[0]}:${periods[1]}`,
+        maxDate: `${periods[2]}:${periods[3]}`,
+      }
+    }
+    return {
+      name: item[1],
+      minDate: periods[0],
+      maxDate: periods[1],
+    }
+  })
 }
