@@ -1,6 +1,11 @@
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL
 const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL
 
+export const cleanInsights = (rawData, insightType) => {
+  console.log("This is rawData", rawData)
+  console.log("This is insightType", insightType)
+}
+
 // Creates a link with filters to be used on request to the API
 export const getLinkWithFilters = (link, selectedFilters) => {
   link += "&"

@@ -4,6 +4,7 @@ import {
   getLink,
   getLinkWithFilters,
   grabRelatedPeople,
+  cleanInsights,
 } from "./helper"
 
 const jsonApi = process.env.REACT_APP_JSON_API_URL
@@ -62,14 +63,14 @@ const customApi = process.env.REACT_APP_CUSTOM_API_URL
 //   })
 // }
 
-export const getInsights = async (setData, type) => {
+export const getInsights = async (setData, insightType) => {
   const link =
     "https://akamai.alvarezandmarsal.com/api/v1/insight-filter?insight[]=3976"
 
   const res = await Axios.get(link)
+  const cleanedData = cleanInsights(res.data, insightType)
 
-  // const
-
+  console.log("This is res.data", res.data)
   setData(res.data)
 }
 
