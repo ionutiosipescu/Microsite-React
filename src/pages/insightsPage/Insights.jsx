@@ -54,18 +54,18 @@ const OneInsightCategory = () => {
   )
   return (
     <UnalignedItemsConainer>
-      <InfiniteScroll
+      {/* <InfiniteScroll
         loader={loader}
         hasMore={true}
         loadMore={getInsights(setContent, currentInsightType, filters, next)}
-      >
-        {content.map((item, index) => {
-          if (currentInsightType === "healthPodcasts") {
-            return <PodcastCard {...item} key={index} />
-          }
-          return <ArticlePreviewCard key={index} {...item} />
-        })}
-      </InfiniteScroll>
+      > */}
+      {content.map((item, index) => {
+        if (currentInsightType === "healthPodcasts") {
+          return <PodcastCard {...item} key={index} />
+        }
+        return <ArticlePreviewCard key={index} {...item} />
+      })}
+      {/* </InfiniteScroll> */}
     </UnalignedItemsConainer>
   )
 }
