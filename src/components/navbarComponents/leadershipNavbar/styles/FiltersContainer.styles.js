@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { sizem } from "../../../../utils/breakpoints"
 export const FiltersContainer = styled.div`
   display: flex;

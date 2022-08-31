@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { size, sizem } from "../../../utils/breakpoints"
 
 export const StyledRow = styled.div`
@@ -29,7 +29,7 @@ export const StyledContainer = styled.div`
 
 export const ContainerContent = styled.div`
   padding: 0;
-  
+
   @media ${sizem.md} {
     padding: 0;
   }
@@ -62,7 +62,7 @@ export const ContainerLocation = styled.div`
   }
 `
 export const IndustryContainer = styled.div`
- width: 100%;
+  width: 100%;
   margin: auto;
   padding: 40px 0 0;
   @media ${size.lg} {

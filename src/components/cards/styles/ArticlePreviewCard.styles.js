@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components/macro"
 
 export const Card = styled.div`
   border-bottom: 1px solid var(--gray3);

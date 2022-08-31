@@ -11,7 +11,7 @@ import {
   StyledRow,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 import { useDocumentTitle } from "../../hook"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { fetchExpertise } from "../../store/actions/hls/hlsHome"
 import { useDispatch, useSelector } from "react-redux"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"

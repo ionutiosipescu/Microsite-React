@@ -57,6 +57,7 @@ const OneInsightCategory = () => {
       Loading ...
     </div>
   )
+
   const getMore = () => {
     console.log("fetching data")
     getInsights(setContent, currentInsightType, filters)

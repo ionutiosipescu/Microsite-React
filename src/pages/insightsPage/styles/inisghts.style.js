@@ -1,5 +1,5 @@
 import FormCheckInput from "react-bootstrap/esm/FormCheckInput"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { size } from "../../../utils/breakpoints"
 
 export const InsightsContainer = styled.div`

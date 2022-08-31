@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { HeroSection, ProfessionalsCardSmallOld } from "../../components/cards"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { leadersList } from "../../utils/data"
 
 import { useDocumentTitle } from "../../hook"

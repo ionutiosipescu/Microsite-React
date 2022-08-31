@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { size } from "../../../../utils/breakpoints"
 import { NavbarCell } from "./Cell.styles"
 

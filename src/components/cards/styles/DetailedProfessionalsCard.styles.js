@@ -1,5 +1,5 @@
 import { size, sizem } from "../../../utils/breakpoints"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { CountryPage } from "../../../assets/icons"
 import { ButtonWithAnimation } from "../../buttons"
 

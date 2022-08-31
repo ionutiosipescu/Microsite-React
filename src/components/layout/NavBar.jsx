@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { routeNames } from "../../routes/routes"
 import { Search, XIcon, Logo, AlvarezMarsal } from "../../assets/icons"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { sizem } from "../../utils/breakpoints"
 import { expertiseData } from "../../utils/data"
 

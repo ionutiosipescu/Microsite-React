@@ -1,6 +1,6 @@
 import React from "react"
 import Connor from "../../assets/images/ConnorWine"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { size } from "../../utils/breakpoints"
 import { ChevronRightWhite } from "../../assets/icons"
 import { ButtonWithAnimation } from "../buttons"
@@ -34,10 +34,10 @@ const CardBody = styled.div`
 
   @media ${size.lg} {
     flex-direction: column;
-      .button-animation {
-        padding: 0 0 20px 20px;
-        display: block;
-      }
+    .button-animation {
+      padding: 0 0 20px 20px;
+      display: block;
+    }
   }
 `
 
@@ -128,9 +128,9 @@ const Info = styled.a`
   font-weight: bold;
   line-height: 1;
   cursor: pointer;
-    :hover {
-      color: var(--hover-blue);
-    }
+  :hover {
+    color: var(--hover-blue);
+  }
 
   @media ${size.lg} {
     font-size: 0.813rem;

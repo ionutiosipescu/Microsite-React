@@ -14,7 +14,7 @@ import {
 
 import { ProfessionalCard, ContactSubscribeCard } from "../../components/cards"
 
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import {
   ContainerContent,
   FullWidthContainer,

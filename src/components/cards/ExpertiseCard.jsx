@@ -1,6 +1,6 @@
 import React from "react"
 import { ButtonWithAnimation } from "../buttons"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import DOMPurify from "dompurify"
 
 const Container = styled.div`

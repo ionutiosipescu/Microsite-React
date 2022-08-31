@@ -7,7 +7,7 @@ import {
 } from "../../components/cards"
 import { ButtonWithAnimation } from "../../components/buttons"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 
 const Practice = () => {
   const link = process.env.REACT_APP_CUSTOM_API_URL + "/hls"

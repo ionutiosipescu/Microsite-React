@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import { sizem } from "../../utils/breakpoints"
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import NavBar from "../layout/NavBar"

@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled from "styled-components/macro"
 import Col from "react-bootstrap/esm/Col"
 import {
   FooterFacebookIcon,
@@ -37,64 +37,65 @@ const SectionsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-    .bulletin-container {
-      justify-content: center;
-    }
+  .bulletin-container {
+    justify-content: center;
+  }
 
+  p {
+    color: #fff;
+  }
+  .list-info-container {
+    line-height: 1.6;
     p {
-      color: #fff;
+      margin: 0;
     }
-    .list-info-container {
-      line-height: 1.6;
-      p {
-        margin: 0;
-      }
-      .global-careers-box,
-      .contact-privacy-box {
-        width: 50%;
-      }
-      .global,
-      .contact {
-        margin-bottom: 1.25rem;
-      }
-      .privacy {
-        opacity: 0.8;
-      }
+    .global-careers-box,
+    .contact-privacy-box {
+      width: 50%;
     }
-    .logo-container,
-    .list-info-container {
-      margin-bottom: 1.875rem;
-    }
-    .list-info-container, .contact {
-      font-weight: 500;
+    .global,
+    .contact {
+      margin-bottom: 1.25rem;
     }
     .privacy {
-      font-weight: 300;
+      opacity: 0.8;
     }
-    .bulletin-signup {
-      font-weight: 700;
-    }
+  }
+  .logo-container,
+  .list-info-container {
+    margin-bottom: 1.875rem;
+  }
+  .list-info-container,
+  .contact {
+    font-weight: 500;
+  }
+  .privacy {
+    font-weight: 300;
+  }
+  .bulletin-signup {
+    font-weight: 700;
+  }
   /* MEDIA */
   @media ${size.md} {
     margin-bottom: 0;
     align-items: unset;
     flex-direction: row;
     justify-content: space-between;
-      .logo-container,
-      .list-info-container,
-      .bulletin-container,
-      .contact,
-      .global {
-        margin-bottom: 0 !important;
-      }
+    .logo-container,
+    .list-info-container,
+    .bulletin-container,
+    .contact,
+    .global {
+      margin-bottom: 0 !important;
+    }
 
-      .global-careers-box,
-      .contact-privacy-box {
-        display: flex;
-      }
-      .privacy {
-        padding-left: 6.25rem;
-      }
+    .global-careers-box,
+    .contact-privacy-box {
+      display: flex;
+    }
+    .privacy {
+      padding-left: 6.25rem;
+    }
   }
 `
 const ColContainer = styled.div`
@@ -183,86 +184,83 @@ const BrandSection = styled.div`
 
 const Footer = () => {
   return (
-    <>
-      <FooterContainer className="bg-light fluid">
-        <ContentContainer>
-          <SectionsContainer>
-            <ColContainer className="logo-container">
-              <Col className="logo">
-                <LogoFooter />
+    <FooterContainer className="bg-light fluid">
+      <ContentContainer>
+        <SectionsContainer>
+          <ColContainer className="logo-container">
+            <Col className="logo">
+              <LogoFooter />
+            </Col>
+          </ColContainer>
+          <ColContainer className="list-info-container">
+            <ColBox className="global-careers-box">
+              <Col className="global">
+                <p>Global Locations</p>
+                <p>Expertise</p>
+                <p>Industries</p>
+                <p>Insights</p>
+                <p>Our People</p>
               </Col>
-            </ColContainer>
-            <ColContainer className="list-info-container">
-              <ColBox className="global-careers-box">
-                <Col className="global">
-                  <p>Global Locations</p>
-                  <p>Expertise</p>
-                  <p>Industries</p>
-                  <p>Insights</p>
-                  <p>Our People</p>
-                </Col>
-                <Col className="careers">
-                  <p>#AMon Social</p>
-                  <p>Careers </p>
-                  <p>About A&M</p>
-                </Col>
-              </ColBox>
-              <ColBox className="contact-privacy-box">
-                <Col className="contact">
-                  <p>Contact</p>
-                  <p>Alumni</p>
-                  <p>A&M Capital</p>
-                  <p>A&M Capital Real Estate</p>
-                  <p>Employee Portal</p>
-                </Col>
-                <Col className="privacy">
-                  <p>Privacy Policy</p>
-                  <p>Privacy Shield Notice</p>
-                  <p>California Privacy Notice</p>
-                  <p>Cookie Policy</p>
-                  <p>Terms of Use</p>
-                </Col>
-              </ColBox>
-            </ColContainer>
-            <ColContainer className="bulletin-container">
-              <ColBox className="bulletin-box">
-                <Col className="icons-container">
-                  <div>
-                    <FooterFacebookIcon />
-                  </div>
-                  <div>
-                    <FooterLinkedinIcon />
-                  </div>
-                  <div>
-                    <FooterTwitterIcon />
-                  </div>
-                  <div>
-                    <FooterYoutTubeIcon />
-                  </div>
-                </Col>
-                <Col className="bulletin-signup">
-                  <p>AM Bulletin Signup</p>
-                  <input placeholder="E-MAIL"></input>
-                  <p>
-                    Subscribe{" "}
-                    <span>
-                      <ArrowRight />
-                    </span>
-                  </p>
-                </Col>
-              </ColBox>
-            </ColContainer>
-          </SectionsContainer>
-          <BottomContainer>
-            <CopyrightSection>
-              © Copyright 2022. Alvarez Marsal Holdings, LLC. All Rights
-              Reserved.
-            </CopyrightSection>
-            <BrandSection>Alvarez Marsal</BrandSection>
-          </BottomContainer>
-        </ContentContainer>
-      </FooterContainer>
-    </>
+              <Col className="careers">
+                <p>#AMon Social</p>
+                <p>Careers </p>
+                <p>About A&M</p>
+              </Col>
+            </ColBox>
+            <ColBox className="contact-privacy-box">
+              <Col className="contact">
+                <p>Contact</p>
+                <p>Alumni</p>
+                <p>A&M Capital</p>
+                <p>A&M Capital Real Estate</p>
+                <p>Employee Portal</p>
+              </Col>
+              <Col className="privacy">
+                <p>Privacy Policy</p>
+                <p>Privacy Shield Notice</p>
+                <p>California Privacy Notice</p>
+                <p>Cookie Policy</p>
+                <p>Terms of Use</p>
+              </Col>
+            </ColBox>
+          </ColContainer>
+          <ColContainer className="bulletin-container">
+            <ColBox className="bulletin-box">
+              <Col className="icons-container">
+                <div>
+                  <FooterFacebookIcon />
+                </div>
+                <div>
+                  <FooterLinkedinIcon />
+                </div>
+                <div>
+                  <FooterTwitterIcon />
+                </div>
+                <div>
+                  <FooterYoutTubeIcon />
+                </div>
+              </Col>
+              <Col className="bulletin-signup">
+                <p>AM Bulletin Signup</p>
+                <input placeholder="E-MAIL"></input>
+                <p>
+                  Subscribe{" "}
+                  <span>
+                    <ArrowRight />
+                  </span>
+                </p>
+              </Col>
+            </ColBox>
+          </ColContainer>
+        </SectionsContainer>
+        <BottomContainer>
+          <CopyrightSection>
+            © Copyright 2022. Alvarez Marsal Holdings, LLC. All Rights Reserved.
+          </CopyrightSection>
+          <BrandSection>Alvarez Marsal</BrandSection>
+        </BottomContainer>
+      </ContentContainer>
+    </FooterContainer>
   )
 }
 

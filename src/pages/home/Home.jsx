@@ -8,7 +8,7 @@ import ArticlesSection from "../../components/section/ArticlesSection"
 import { Spinner } from "../../components"
 import { sizem } from "../../utils/breakpoints"
 
-import styled from "styled-components"
+import styled from "styled-components/macro"
 
 import {
   fetchHlsExpertises,
