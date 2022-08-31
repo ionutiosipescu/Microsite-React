@@ -34,6 +34,29 @@ export const getLinkWithFilters = (link, selectedFilters) => {
   return link
 }
 
+export const cleanPodcastsData = rawData => {
+  const podcasts = rawData.data.map(podcast => {
+    const uuid = podcast.id
+    const title = podcast.attributes.title
+    const teaserText = podcast.attributes.field_teaser_text
+    const alias = podcast.attributes.path.alias.split("/")[2]
+
+    const date = dateToShortLocale(
+      podcast.attributes.changed || podcast.attributes.created
+    )
+
+    return {
+      uuid,
+      title,
+      teaserText,
+      alias,
+      date,
+      // category: categoryPretty[insightType],
+    }
+  })
+  return podcasts
+}
+
 // Return a list of objects that contain the name, job and link of the associated people
 export const grabRelatedPeople = (includedField, object, index) => {
   const peopleIds = grabIds(includedField, object, 0)

@@ -5,13 +5,18 @@ import {
   PodcastCard,
 } from "../../components/cards"
 import { InsightsContainer } from "./styles/inisghts.style"
-import { getAllInsightTypes, getPodcasts, getInsights } from "../../API"
+import {
+  getPodcasts,
+  getAllInsightTypes,
+  getNextInsights,
+  getInsights,
+} from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
 import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
-// import InfiniteScroll from "react-infinite-scroll-component"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 const Insights = () => {
   const { currentInsightType } = useSelector(state => state.filters)
@@ -52,13 +57,23 @@ const OneInsightCategory = () => {
       Loading ...
     </div>
   )
+  const getMore = () => {
+    console.log("fetching data")
+    getInsights(setContent, currentInsightType, filters)
+  }
+  console.log("This is content", content)
+
   return (
     <UnalignedItemsConainer>
       {/* <InfiniteScroll
-        loader={loader}
-        hasMore={true}
-        loadMore={getInsights(setContent, currentInsightType, filters, next)}
-      > */}
+      dataLength={content.length || 0}
+      loader={loader}
+      hasMore={true}
+      // loadMore={getInsights(setContent, currentInsightType, filters, next)}
+      next={() =>
+        getNextInsights(content, setContent, currentInsightType, next)
+      }
+    > */}
       {content.map((item, index) => {
         if (currentInsightType === "healthPodcasts") {
           return <PodcastCard {...item} key={index} />
@@ -76,6 +91,7 @@ const MultipleInsightCategories = () => {
 
   useEffect(() => {
     getAllInsightTypes(setAllInsightTypes, currentInsightType, filters)
+    // getPodcasts()
   }, [currentInsightType, filters])
 
   if (!allInsightTypes) {

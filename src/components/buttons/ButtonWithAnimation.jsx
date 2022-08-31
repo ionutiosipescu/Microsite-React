@@ -5,10 +5,6 @@ import { ChevronRight } from "../../assets/icons"
 const ButtonWithAnimation = ({ text, black, href, onClick }) => {
   let link
 
-  // black
-  //   ? (link = "https://bulletins.alvarezandmarsal.com")
-  //   : (link = "https://contact.alvarezandmarsal.com")
-
   return (
     <S.Container onClick={onClick} href={href || link} target={"_blank"}>
       <S.ChevronContainer black={black}>

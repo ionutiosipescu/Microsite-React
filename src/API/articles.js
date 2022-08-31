@@ -1,23 +1,41 @@
 import Axios from "axios"
 import { dateToShortLocale } from "../utils/dateFormat"
-import { getLinkWithFilters, grabRelatedPeople, cleanInsights } from "./helper"
+import {
+  cleanPodcastsData,
+  getLinkWithFilters,
+  grabRelatedPeople,
+  cleanInsights as cleanInsightsData,
+} from "./helper"
 
 const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-export const getInsights = async (setData, insightType, filters, next) => {
+export const getInsights = async (setData, insightType, filters) => {
   const link = `${customApi}/insight-filter?insight[]=${insightType.id}&page[limit]=10`
 
   const linkWithFilters = getLinkWithFilters(link, filters)
+
+  // const linkWithFilters =
+  //   "https://akamai.alvarezandmarsal.com/jsonapi/node/article?page[limit]=5"
 
   console.log("This is filters", filters)
   console.log("This is linkWithFilters", linkWithFilters)
 
   const res = await Axios.get(linkWithFilters)
 
-  const cleanedData = cleanInsights(res.data, insightType.name)
+  const cleanedData = cleanInsightsData(res.data, insightType.name)
 
   setData(cleanedData)
+}
+
+export const getNextInsights = async (data, setData, insightType, nextPage) => {
+  console.log("F dude")
+
+  const res = await Axios.get(nextPage)
+
+  const cleanedData = cleanInsightsData(res.data, insightType.name)
+
+  setData(data, cleanedData)
 }
 
 export const getAllInsightTypes = async (setData, insightType, filters) => {
@@ -28,21 +46,30 @@ export const getAllInsightTypes = async (setData, insightType, filters) => {
   const link2 = `${customApi}/insight-filter?insight[]=${insightType.id[1]}`
 
   // Health & Life Podcast
-  const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
+  // const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
+  const link3 = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
 
   const linkWithFilters1 = getLinkWithFilters(link1, filters)
   const linkWithFilters2 = getLinkWithFilters(link2, filters)
-  const linkWithFilters3 = getLinkWithFilters(link3, filters)
+  // const linkWithFilters3 = getLinkWithFilters(link3, filters)
+  const linkWithFilters3 = link3
 
   const res1 = await Axios.get(linkWithFilters1)
   const res2 = await Axios.get(linkWithFilters2)
-  const res3 = await Axios.get(linkWithFilters3)
 
-  const cleanedData1 = cleanInsights(res1.data, "business & industry inisights")
-  const cleanedData2 = cleanInsights(res2.data, "health & life case studies")
+  const res3 = await Axios.get(link3)
+
+  const cleanedData1 = cleanInsightsData(
+    res1.data,
+    "business & industry inisights"
+  )
+  const cleanedData2 = cleanInsightsData(
+    res2.data,
+    "health & life case studies"
+  )
 
   // For podcasts. Yet to see.
-  const cleanedData3 = cleanInsights(res3.data, "Health & Life Podcast")
+  const cleanedData3 = cleanPodcastsData(res3.data, "Health & Life Podcast")
 
   const allInsights = {
     industryInsights: cleanedData1,
@@ -53,36 +80,18 @@ export const getAllInsightTypes = async (setData, insightType, filters) => {
   setData(allInsights)
 }
 
-export const getPodcasts = (
-  setInsightsContent,
-  insightType,
-  selectedFilters
-) => {
-  //   const categories = {
-  //     industryInsights:
-  //   "?filter[field_category.id]=b7d6df12-5304-4aaf-ab3d-265acd0fb33c&include=field_category",
-  //   caseStudies:
-  //   "?filter[field_category.id]=f1d36195-6097-4860-ad51-3e7146dba239&include=field_category",
-  //   healthPodcasts:
-  //   "?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&include=field_category",
-  // }
-
-  const categoryPretty = {
-    industryInsights: "business & industry inisights",
-    caseStudies: "health & life case studies",
-    healthPodcasts: "health & life podcasts",
-  }
-
+export const getPodcasts = (setData, insightType, filters) => {
   let link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
   // console.log("This is selectedFilters", selectedFilters)
 
   // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
 
-  link = getLinkWithFilters(link, selectedFilters)
+  link = getLinkWithFilters(link, filters)
+
   // console.log("This is link", link)
 
   Axios.get(link).then(res => {
-    const articles = res.data.data.map(podcast => {
+    const podcasts = res.data.data.map(podcast => {
       const uuid = podcast.id
       const title = podcast.attributes.title
       const teaserText = podcast.attributes.field_teaser_text
@@ -98,11 +107,12 @@ export const getPodcasts = (
         teaserText,
         alias,
         date,
-        category: categoryPretty[insightType],
+        // category: categoryPretty[insightType],
       }
     })
 
-    setInsightsContent(articles)
+    console.log("This is podcasts", podcasts)
+    setData(podcasts)
   })
 }
 
@@ -245,5 +255,3 @@ export const getLocations = setLocations => {
     console.log(dataFiltered)
   })
 }
-
-getLocations()
