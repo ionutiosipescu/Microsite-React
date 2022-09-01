@@ -1,11 +1,10 @@
 export {
   getSingleArticle,
-  getInsights,
   getSinglePodcast,
   getPodcasts,
   getAllInsightTypes,
   getLocations,
-  getNextInsights,
+  getInsights,
 } from "./articles"
 export { fetchHeroSectionDataHome } from "./heroSection"
 export { fetchData, fetchRecentRecognition } from "./home"

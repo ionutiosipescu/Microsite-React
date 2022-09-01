@@ -10,40 +10,30 @@ import {
 const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
-export const getInsights = async (setData, insightType, filters) => {
-  const link = `${customApi}/insight-filter?insight[]=${insightType.id}&page[limit]=10`
+export const getInsights = async (insightType, filters, nextPage) => {
+  const link = `${customApi}/insight-filter?insight[]=${insightType.id}&page=${nextPage}`
 
   const linkWithFilters = getLinkWithFilters(link, filters)
 
-  // const linkWithFilters =
-  //   "https://akamai.alvarezandmarsal.com/jsonapi/node/article?page[limit]=5"
-
-  console.log("This is filters", filters)
-  console.log("This is linkWithFilters", linkWithFilters)
-
   const res = await Axios.get(linkWithFilters)
 
-  const cleanedData = cleanInsightsData(res.data, insightType.name)
+  const cleanedData = await cleanInsightsData(res.data, insightType.name)
 
-  setData(cleanedData)
+  return cleanedData
 }
 
-export const getNextInsights = async (data, setData, insightType, nextPage) => {
-  console.log("F dude")
-
-  const res = await Axios.get(nextPage)
-
-  const cleanedData = cleanInsightsData(res.data, insightType.name)
-
-  setData(data, cleanedData)
-}
-
-export const getAllInsightTypes = async (setData, insightType, filters) => {
+export const getAllInsightTypes = async (
+  data,
+  setData,
+  insightType,
+  filters,
+  nextPage
+) => {
   // business & industry inisights
-  const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}`
+  const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}&page=${nextPage}`
 
   // health & life case studies
-  const link2 = `${customApi}/insight-filter?insight[]=${insightType.id[1]}`
+  const link2 = `${customApi}/insight-filter?insight[]=${insightType.id[1]}&page=${nextPage}`
 
   // Health & Life Podcast
   // const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
