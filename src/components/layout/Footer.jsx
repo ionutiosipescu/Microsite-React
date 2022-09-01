@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "../../assets/icons"
 import { size } from "../../utils/breakpoints"
+import ScrollToTop from "../buttons/ScrollToTop"
 
 const FooterContainer = styled.div`
   background-color: var(--darkBlue) !important;
@@ -185,6 +186,7 @@ const BrandSection = styled.div`
 const Footer = () => {
   return (
     <FooterContainer className="bg-light fluid">
+      <ScrollToTop />
       <ContentContainer>
         <SectionsContainer>
           <ColContainer className="logo-container">
