@@ -138,7 +138,7 @@ export const fetchIndustryArticles = industryUUID => {
         console.log(dataIncluded)
         let articles = []
 
-        jsonData?.forEach(article => {
+        jsonData?.forach(article => {
           let x = {
             uuid: article.id,
             title: article.attributes.title,

@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import HeroSection from "../../components/cards/HeroSection"
+import HeroSection from "../../components/heroSection/HeroSection"
 
 import RecongnitionSection from "../../components/section/RecongnitionSection"
 import ExpertiseSection from "../../components/section/ExpertiseSection"
 import ArticlesSection from "../../components/section/ArticlesSection"
-import { Spinner } from "../../components"
-import { sizem } from "../../utils/breakpoints"
 
 import styled from "styled-components/macro"
 
 import {
-  fetchHlsExpertises,
   fetchHLSHeroSection,
   fetchHLSIndustries,
   fetchInsightsArticles,
   fetchRecentRecognition,
 } from "../../store/actions/hls/hlsHome"
+
 import IndustrySection from "../../components/section/IndustrySection"
 
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 const ECMEA_HEALTCARE_ID = "c11b8f8f-9d3a-433a-949e-5518b9b24c25"
+
 const HomeContainer = styled.div`
   .heroContainer {
     margin: 0;
@@ -65,6 +64,7 @@ const Home = () => {
           titleSection="Recent Recognition"
         />
       </StyledContainer>
+
       <ArticlesContainer>
         <StyledContainer>
           <ArticlesSection articles={insightsArticles.data} />

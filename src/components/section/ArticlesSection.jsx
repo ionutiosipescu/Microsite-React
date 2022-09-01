@@ -1,14 +1,9 @@
 import React from "react"
-import styled from "styled-components/macro"
-import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
-import { sizem } from "../../utils/breakpoints"
-
 import { ArticlePreviewCard } from "../cards"
 import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
 import { dateFromSecondsToShortLocale } from "../../utils/dateFormat"
 
 const ArticleSection = ({ articles }) => {
-  console.log(articles)
   return (
     <UnalignedItemsConainer columnsNumber={3}>
       {articles?.map((article, index) => {
@@ -16,15 +11,16 @@ const ArticleSection = ({ articles }) => {
           id: article?.uuid,
           category: article?.categoryName,
           title: article?.title,
-          date: article.date,
+          date: dateFromSecondsToShortLocale(article.updated),
           alias: article.alias,
-          text_teaser: article?.text_teaser,
+          teaserText: article?.text_teaser,
           uuid: article?.uuid,
         }
+
         return (
           <ArticlePreviewCard
             key={index}
-            articleInfo={cardInfo}
+            {...cardInfo}
             onClick={() => alert("click")}
           />
         )

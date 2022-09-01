@@ -1,4 +1,4 @@
-export { default as HeroSection } from "./HeroSection"
+export { default as HeroSection } from "../heroSection/HeroSection"
 export { default as DetailedProfessionalsCard } from "./DetailedProfessionalsCard"
 export { default as ProfessionalsCardSmallOld } from "./ProfessionalsCardSmallOld"
 export { default as ArticlePreviewCard } from "./ArticlePreviewCard"

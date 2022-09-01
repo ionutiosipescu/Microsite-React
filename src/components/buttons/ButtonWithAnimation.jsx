@@ -2,11 +2,9 @@ import React from "react"
 import * as S from "./styles/ButtonWithAnimation.style"
 import { ChevronRight } from "../../assets/icons"
 
-const ButtonWithAnimation = ({ text, black, href, onClick }) => {
-  let link
-
+const ButtonWithAnimation = ({ text, black, href = "#", onClick }) => {
   return (
-    <S.Container onClick={onClick} href={href || link} target={"_blank"}>
+    <S.Container onClick={onClick} href={href} target={"_blank"}>
       <S.ChevronContainer black={black}>
         <ChevronRight />
       </S.ChevronContainer>
