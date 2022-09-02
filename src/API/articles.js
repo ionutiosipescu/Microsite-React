@@ -18,17 +18,10 @@ export const getInsights = async (currentInsightType, filters, nextPage) => {
 
   const res = await Axios.get(linkWithFilters)
 
-  const cleanedData = await cleanInsightsData(res.data, currentInsightType.name)
-  return cleanedData
+  return cleanInsightsData(res.data, currentInsightType.name)
 }
 
-export const getAllInsightTypes = async (
-  data,
-  setData,
-  insightType,
-  filters,
-  nextPage
-) => {
+export const getAllInsightTypes = async (insightType, filters, nextPage) => {
   // business & industry inisights
   const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}&page=${nextPage}`
 
@@ -42,12 +35,12 @@ export const getAllInsightTypes = async (
   const linkWithFilters1 = getLinkWithFilters(link1, filters)
   const linkWithFilters2 = getLinkWithFilters(link2, filters)
   // const linkWithFilters3 = getLinkWithFilters(link3, filters)
-  const linkWithFilters3 = link3
+  // const linkWithFilters3 = link3
 
   const res1 = await Axios.get(linkWithFilters1)
   const res2 = await Axios.get(linkWithFilters2)
 
-  const res3 = await Axios.get(link3)
+  // const res3 = await Axios.get(link3)
 
   const cleanedData1 = cleanInsightsData(
     res1.data,
@@ -59,15 +52,15 @@ export const getAllInsightTypes = async (
   )
 
   // For podcasts. Yet to see.
-  const cleanedData3 = cleanPodcastsData(res3.data, "Health & Life Podcast")
+  // const cleanedData3 = cleanPodcastsData(res3.data, "Health & Life Podcast")
 
-  const allInsights = {
+  return {
     industryInsights: cleanedData1,
     caseStudies: cleanedData2,
-    healthPodcasts: cleanedData3,
+    // healthPodcasts: cleanedData3,
   }
 
-  setData(allInsights)
+  // setData(allInsights)
 }
 
 export const getPodcasts = (setData, insightType, filters) => {
