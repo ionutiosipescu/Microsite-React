@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, createContext, useContext } from "react"
 import {
   ArticlePreviewCard,
   HeroSection,
@@ -12,6 +12,7 @@ import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContai
 import { Spinner } from "../../components"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useCallback } from "react"
+import { useMemo } from "react"
 
 const loader = (
   <div key="loader" className="loader">
@@ -19,11 +20,23 @@ const loader = (
   </div>
 )
 
+export const ContentContext = createContext()
+
 const Insights = () => {
   const { currentInsightType } = useSelector(state => state.filters)
 
+  const [content, setContent] = useState([])
+  const [nextPage, setNextPage] = useState(1)
+
+  const value = {
+    content: content,
+    setContent: setContent,
+    nextPage: nextPage,
+    setNextPage: setNextPage,
+  }
+
   return (
-    <>
+    <ContentContext.Provider value={value}>
       <HeroSection
         title=" Latest Studies"
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -35,34 +48,40 @@ const Insights = () => {
           <OneInsightCategory />
         )}
       </StyledContainer>
-    </>
+    </ContentContext.Provider>
   )
 }
 
 const OneInsightCategory = () => {
-  const [content, setContent] = useState([])
   const { currentInsightType, filters } = useSelector(state => state.filters)
-  const [nextPage, setNextPage] = useState(1)
+
+  const { content, setContent, nextPage, setNextPage } =
+    useContext(ContentContext)
 
   const getData = useCallback(async () => {
+    console.log("filters before get", filters)
     const data = await getInsights(currentInsightType, filters, nextPage)
-    setContent([...content, ...data])
-  }, [content, currentInsightType, filters, nextPage])
+
+    if (data.length > 0) {
+      setNextPage(nextPage + 1)
+      setContent([...content, ...data])
+    }
+  }, [content, setContent, setNextPage, filters, currentInsightType, nextPage])
+
+  console.log("This is filters", filters)
 
   // Get data for the first time
   useEffect(() => {
-    console.log("fuck")
-    // setContent([])
-    // setNextPage(1)
-    // getData()
-  }, [currentInsightType, filters, getData])
+    // if (content.length === 0) {
+    // }
+    getData(currentInsightType, filters, nextPage)
+  }, [getData, content.length, currentInsightType, filters, nextPage])
 
   // This is for infinite scrolling
-  // const getMoreInsights = () => {
-  //   console.log("running")
-  //   getData()
-  //   setNextPage(nextPage + 1)
-  // }
+  const getMoreInsights = () => {
+    console.log("asdlkajdsflsakjdf")
+    getData(currentInsightType, filters, nextPage)
+  }
 
   if (!content.length > 0) {
     return <Spinner />
@@ -73,7 +92,7 @@ const OneInsightCategory = () => {
       dataLength={content.length || 0}
       loader={loader}
       hasMore={true}
-      // next={getMoreInsights}
+      next={getMoreInsights}
     >
       <UnalignedItemsConainer>
         {content.map((item, index) => {

@@ -11,17 +11,18 @@ const jsonApi = process.env.REACT_APP_JSON_API_URL
 const customApi = process.env.REACT_APP_CUSTOM_API_URL
 
 // Get insights from the api
-export const getInsights = async (insightType, filters, nextPage) => {
-  const link = `${customApi}/insight-filter?insight[]=${insightType.id}&page=${nextPage}`
+export const getInsights = async (currentInsightType, filters, nextPage) => {
+  const link = `${customApi}/insight-filter?insight[]=${currentInsightType.id}&page=${nextPage}`
 
+  console.log("This is filters", filters)
   const linkWithFilters = getLinkWithFilters(link, filters)
+  console.log("This is linkWithFilters", linkWithFilters)
 
-  // const res = await Axios.get(linkWithFilters)
+  console.log("This is linkWithFilters", linkWithFilters)
 
-  // const cleanedData = await cleanInsightsData(res.data, insightType.name)
+  const res = await Axios.get(linkWithFilters)
 
-  const cleanedData = [{ name: "f" }]
-  console.log("whyyyyy")
+  const cleanedData = await cleanInsightsData(res.data, currentInsightType.name)
 
   return cleanedData
 }
