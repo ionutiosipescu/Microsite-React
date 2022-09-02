@@ -11,7 +11,7 @@ const Cell = ({ name, identifier, id }) => {
   const { setNextPage, setContent } = useContext(ContentContext)
 
   const handleClick = () => {
-    setNextPage(1)
+    setNextPage(0)
     setContent([])
     dispatch(
       changeInsightsType({

@@ -26,7 +26,7 @@ const Insights = () => {
   const { currentInsightType } = useSelector(state => state.filters)
 
   const [content, setContent] = useState([])
-  const [nextPage, setNextPage] = useState(1)
+  const [nextPage, setNextPage] = useState(0)
 
   const value = {
     content: content,
@@ -58,30 +58,23 @@ const OneInsightCategory = () => {
   const { content, setContent, nextPage, setNextPage } =
     useContext(ContentContext)
 
-  const getData = useCallback(async () => {
-    console.log("filters before get", filters)
-    const data = await getInsights(currentInsightType, filters, nextPage)
-
-    if (data.length > 0) {
-      setNextPage(nextPage + 1)
-      setContent([...content, ...data])
-    }
-  }, [content, setContent, setNextPage, filters, currentInsightType, nextPage])
-
-  console.log("This is filters", filters)
-
-  // Get data for the first time
   useEffect(() => {
-    // if (content.length === 0) {
-    // }
-    getData(currentInsightType, filters, nextPage)
-  }, [getData, content.length, currentInsightType, filters, nextPage])
+    const getData = async () => {
+      const data = await getInsights(currentInsightType, filters, nextPage)
+      setContent(data)
+    }
+    getData()
+  }, [filters])
 
   // This is for infinite scrolling
-  const getMoreInsights = () => {
-    console.log("asdlkajdsflsakjdf")
-    getData(currentInsightType, filters, nextPage)
+  const getMoreInsights = async () => {
+    const data = await getInsights(currentInsightType, filters, nextPage)
+    setNextPage(nextPage + 1)
+    setContent([...content, ...data])
   }
+
+  console.log("This is content", content)
+  console.log("This is nextPage", nextPage)
 
   if (!content.length > 0) {
     return <Spinner />

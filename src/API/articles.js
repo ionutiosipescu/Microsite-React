@@ -14,16 +14,11 @@ const customApi = process.env.REACT_APP_CUSTOM_API_URL
 export const getInsights = async (currentInsightType, filters, nextPage) => {
   const link = `${customApi}/insight-filter?insight[]=${currentInsightType.id}&page=${nextPage}`
 
-  console.log("This is filters", filters)
   const linkWithFilters = getLinkWithFilters(link, filters)
-  console.log("This is linkWithFilters", linkWithFilters)
-
-  console.log("This is linkWithFilters", linkWithFilters)
 
   const res = await Axios.get(linkWithFilters)
 
   const cleanedData = await cleanInsightsData(res.data, currentInsightType.name)
-
   return cleanedData
 }
 
