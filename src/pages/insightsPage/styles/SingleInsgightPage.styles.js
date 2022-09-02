@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const Article = styled.div`
-  /* flex: 0 0 50%; */
+  width: 75%;
 `
 
 export const RightSection = styled.div`
@@ -19,6 +19,6 @@ export const RightSection = styled.div`
     letter-spacing: 0;
   }
   @media ${size.lg} {
-    width: 80%;
+    width: 25%;
   }
 `
