@@ -51,16 +51,18 @@ const OneInsightCategory = () => {
 
   // Get data for the first time
   useEffect(() => {
-    setContent([])
-    setNextPage(1)
-    getData()
+    console.log("fuck")
+    // setContent([])
+    // setNextPage(1)
+    // getData()
   }, [currentInsightType, filters, getData])
 
   // This is for infinite scrolling
-  const getMoreInsights = () => {
-    getData()
-    setNextPage(nextPage + 1)
-  }
+  // const getMoreInsights = () => {
+  //   console.log("running")
+  //   getData()
+  //   setNextPage(nextPage + 1)
+  // }
 
   if (!content.length > 0) {
     return <Spinner />
@@ -71,7 +73,7 @@ const OneInsightCategory = () => {
       dataLength={content.length || 0}
       loader={loader}
       hasMore={true}
-      next={getMoreInsights}
+      // next={getMoreInsights}
     >
       <UnalignedItemsConainer>
         {content.map((item, index) => {
