@@ -4,6 +4,7 @@ import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import { sizem } from "../../utils/breakpoints"
 import { useNavigate } from "react-router"
 import UnalignedItemsContainer from "../layout/UnalignedItemsContainer"
+import { ExpertiseCard } from "../cards"
 
 const IndustrySectionContainer = styled.div`
   width: 100%;
@@ -51,35 +52,62 @@ const IndustrySectionContainer = styled.div`
   }
 `
 
+// const IndustrySection = ({ industries }) => {
+//   const navigate = useNavigate()
+//   return (
+//     <IndustrySectionContainer className="">
+//       <div className="grayContainer">
+//         <h2 className="">Industries: </h2>
+//         <UnalignedItemsContainer columnsNumber={2}>
+//           {industries?.map((industry, index) => (
+//             <div className="industry " key={index}>
+//               <div className="body">
+//                 <h2
+//                   onClick={() => {
+//                     navigate(`/industry/${industry?.name?.toLowerCase()}`, {
+//                       state: {
+//                         inustryId: industry.id,
+//                         industryUUID: industry.uuid,
+//                       },
+//                     })
+//                   }}
+//                 >
+//                   {industry?.name}
+//                 </h2>
+//                 <p>{industry?.description}</p>
+//               </div>
+
+//               <div className="buttonContainer">
+//                 <ButtonWithAnimation />
+//               </div>
+//             </div>
+//           ))}
+//         </UnalignedItemsContainer>
+//       </div>
+//     </IndustrySectionContainer>
+//   )
+// }
+
 const IndustrySection = ({ industries }) => {
   const navigate = useNavigate()
+  console.log("This is industries", industries)
   return (
     <IndustrySectionContainer className="">
       <div className="grayContainer">
         <h2 className="">Industries: </h2>
         <UnalignedItemsContainer columnsNumber={2}>
           {industries?.map((industry, index) => (
-            <div className="industry " key={index}>
-              <div className="body">
-                <h2
-                  onClick={() => {
-                    navigate(`/industry/${industry?.name?.toLowerCase()}`, {
-                      state: {
-                        inustryId: industry.id,
-                        industryUUID: industry.uuid,
-                      },
-                    })
-                  }}
-                >
-                  {industry?.name}
-                </h2>
-                <p>{industry?.description}</p>
-              </div>
-
-              <div className="buttonContainer">
-                <ButtonWithAnimation />
-              </div>
-            </div>
+            <ExpertiseCard
+              key={index}
+              name={industry?.name}
+              content={industry?.description}
+              index={index}
+              onClick={() =>
+                navigate(`/industry/${industry?.name.toLowerCase()}`, {
+                  state: industry.id,
+                })
+              }
+            />
           ))}
         </UnalignedItemsContainer>
       </div>

@@ -42,18 +42,12 @@ const ExpertiseSection = ({ expertises }) => {
 
         <UnalignedItemsContainer columnsNumber={3}>
           {expertises?.map((expertise, index) => {
-            let lastRowElements = expertises.length % 3
-            if (lastRowElements == 0) {
-              lastRowElements = 3
-            }
-
             return (
               <ExpertiseCard
                 key={index}
                 name={expertise?.name}
                 content={expertise?.description}
                 index={index}
-                className="expertise"
                 onClick={() =>
                   navigate(`/expertise/${expertise?.name.toLowerCase()}`, {
                     state: expertise.id,
