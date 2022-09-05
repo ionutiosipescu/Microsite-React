@@ -1,6 +1,5 @@
 export {
   getSingleArticle,
-  getSinglePodcast,
   getPodcasts,
   getAllInsightTypes,
   getLocations,

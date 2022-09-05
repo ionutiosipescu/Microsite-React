@@ -11,7 +11,7 @@ const Dropdown = ({ text, filters, category }) => {
   const dropdownHeightRef = useRef(null)
   const { filters: selectedFilters } = useSelector(state => state.filters)
 
-  const { content, setContent, nextPage, setNextPage } =
+  const { content, setContent, setNextPodcastPage, setNextPage } =
     useContext(ContentContext)
 
   // Determines the names of the filters that should be highlighted
@@ -58,6 +58,7 @@ const Dropdown = ({ text, filters, category }) => {
   const addFilterToRedux = filter => {
     setNextPage(0)
     setContent([])
+    setNextPodcastPage(null)
     dispatch(addFilter(filter))
   }
 

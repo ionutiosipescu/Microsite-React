@@ -19,12 +19,22 @@ const Insights = () => {
 
   const [content, setContent] = useState(null)
   const [nextPage, setNextPage] = useState(0)
+  const [nextPodcastPage, setNextPodcastPage] = useState(null)
 
   const value = {
     content: content,
     setContent: setContent,
     nextPage: nextPage,
     setNextPage: setNextPage,
+    nextPodcastPage: nextPodcastPage,
+    setNextPodcastPage: setNextPodcastPage,
+  }
+
+  const insightTypeObj = {
+    all: <MultipleInsightCategories />,
+    caseStudies: <ArticleCategory />,
+    industryInsights: <ArticleCategory />,
+    healthPodcasts: <HealthPodcasts />,
   }
 
   return (
@@ -34,17 +44,13 @@ const Insights = () => {
         backgroundUrl="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
       />
       <StyledContainer>
-        {currentInsightType.identifier === "all" ? (
-          <MultipleInsightCategories />
-        ) : (
-          <OneInsightCategory />
-        )}
+        {insightTypeObj[currentInsightType.identifier]}
       </StyledContainer>
     </ContentContext.Provider>
   )
 }
 
-const OneInsightCategory = () => {
+const ArticleCategory = () => {
   const { currentInsightType, filters } = useSelector(state => state.filters)
 
   const { content, setContent, nextPage, setNextPage } =
@@ -53,12 +59,7 @@ const OneInsightCategory = () => {
   // Get the initial data from the server
   useEffect(() => {
     const getData = async () => {
-      let data
-      if (currentInsightType.identifier === "healthPodcasts") {
-        data = await getPodcasts(currentInsightType, filters, nextPage)
-      } else {
-        data = await getInsights(currentInsightType, filters, nextPage)
-      }
+      const data = await getInsights(currentInsightType, filters, nextPage)
       setNextPage(nextPage + 1)
       setContent(data)
     }
@@ -84,10 +85,70 @@ const OneInsightCategory = () => {
     >
       <UnalignedItemsContainer>
         {content.map((item, index) => {
-          if (currentInsightType.identifier === "healthPodcasts") {
-            return <PodcastCard {...item} key={index} />
-          }
           return <ArticlePreviewCard key={index} {...item} />
+        })}
+      </UnalignedItemsContainer>
+    </InfiniteScroll>
+  )
+}
+
+const HealthPodcasts = () => {
+  const { currentInsightType, filters } = useSelector(state => state.filters)
+  const { content, setContent, nextPodcastPage, setNextPodcastPage } =
+    useContext(ContentContext)
+  const [hasMore, setHasMore] = useState(true)
+
+  // Get the initial data from the server
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getPodcasts(
+        currentInsightType,
+        filters,
+        nextPodcastPage
+      )
+
+      setNextPodcastPage(data.nextPageLink)
+
+      if (!data.nextPageLink) {
+        setHasMore(false)
+      } else {
+        setHasMore(true)
+      }
+
+      setContent(data.cleanData)
+    }
+
+    getData()
+  }, [filters])
+
+  // This is for infinite scrolling
+  const getMorePodcasts = async () => {
+    const data = await getPodcasts(currentInsightType, filters, nextPodcastPage)
+
+    setNextPodcastPage(data.nextPageLink)
+
+    if (!data.nextPageLink) {
+      setHasMore(false)
+    } else {
+      setHasMore(true)
+    }
+
+    setContent([...content, ...data.cleanData])
+  }
+
+  if (!content) {
+    return <Spinner />
+  }
+
+  return (
+    <InfiniteScroll
+      dataLength={content.length || 0}
+      hasMore={hasMore}
+      next={getMorePodcasts}
+    >
+      <UnalignedItemsContainer>
+        {content.map((item, index) => {
+          return <PodcastCard key={index} {...item} />
         })}
       </UnalignedItemsContainer>
     </InfiniteScroll>
@@ -108,6 +169,7 @@ const MultipleInsightCategories = () => {
         filters,
         nextPage
       )
+      console.log("This is data", data)
       setNextPage(nextPage + 1)
       setContent(data)
     }
@@ -117,11 +179,13 @@ const MultipleInsightCategories = () => {
   // This is for infinite scrolling
   const getMoreInsights = async () => {
     const data = await getAllInsightTypes(currentInsightType, filters, nextPage)
+
     setNextPage(nextPage + 1)
+
     setContent({
       industryInsights: [...content.industryInsights, ...data.industryInsights],
       caseStudies: [...content.caseStudies, ...data.caseStudies],
-      // industryInsights: [...content.industryInsights, ...data.industryInsights],
+      // healthPodcasts: [...content.healthPodcasts, ...data.healthPodcasts],
     })
   }
 
@@ -130,29 +194,29 @@ const MultipleInsightCategories = () => {
   }
 
   return (
-    <InfiniteScroll
-      dataLength={content.length || 0}
-      hasMore={true}
-      next={getMoreInsights}
-    >
-      <InsightsContainer>
-        <div>
-          {content.industryInsights.map((article, index) => (
-            <ArticlePreviewCard {...article} key={index} />
-          ))}
-        </div>
-        <div>
-          {content.caseStudies.map((article, index) => (
-            <ArticlePreviewCard {...article} key={index} />
-          ))}
-        </div>
-        {/* <div>
+    // <InfiniteScroll
+    //   dataLength={content.length || 0}
+    //   hasMore={true}
+    //   next={getMoreInsights}
+    // >
+    <InsightsContainer>
+      <div>
+        {content.industryInsights.map((article, index) => (
+          <ArticlePreviewCard {...article} key={index} />
+        ))}
+      </div>
+      <div>
+        {content.caseStudies.map((article, index) => (
+          <ArticlePreviewCard {...article} key={index} />
+        ))}
+      </div>
+      <div>
         {content.healthPodcasts.map((podcast, index) => (
           <PodcastCard {...podcast} key={index} />
         ))}
-      </div> */}
-      </InsightsContainer>
-    </InfiniteScroll>
+      </div>
+    </InsightsContainer>
+    // </InfiniteScroll>
   )
 }
 

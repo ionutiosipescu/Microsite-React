@@ -3,7 +3,7 @@ import { dateToShortLocale } from "../utils/dateFormat"
 const baseApiUrl = process.env.REACT_APP_BASE_API_URL
 const mainWebsite = process.env.REACT_APP_MAIN_WEBSITE_URL
 
-export const cleanInsights = (rawData, insightTypeName) => {
+export const cleanInsightsData = (rawData, insightTypeName) => {
   const cleanedData = rawData.map(item => {
     // Get the data for each individual article
     const articlePreview = {
@@ -49,10 +49,6 @@ export const cleanPodcastsData = (rawData, isnightType) => {
       teaserImageUrl =
         baseApiUrl +
         getObjectFromIncluded(rawData.included, teaserImageId).uri.url
-      console.log(
-        "This is ",
-        getObjectFromIncluded(rawData.included, teaserImageId)
-      )
     }
 
     const date = dateToShortLocale(
@@ -166,6 +162,41 @@ const getFilterSyntax = filter => {
     userInput: `insight_search=${filter.name}`,
 
     date: `created[min]=${filter.minDate}&created[max]=${filter.maxDate}`,
+  }
+
+  return filterCases[filter.category]
+}
+
+// Creates a link with filters to be used on request to the Json API
+export const getLinkWithJsonApiFilters = (link, selectedFilters) => {
+  link += "&"
+
+  // Constructing up the link with the filters
+  selectedFilters.forEach(filter => {
+    link += getJsonApiFilterSyntax(filter) + "&"
+  })
+
+  console.log("This is link", link)
+
+  return link
+}
+
+const getJsonApiFilterSyntax = filter => {
+  const filterCases = {
+    // Repeating code. Not good
+    industries: `filter[field_industry.id]=${filter.uuid}`,
+    expertise: `filter[field_expertise.id]=${filter.uuid}`,
+    bulletin: `filter[field_.id]=${filter.uuid}`,
+
+    // This one is bad
+    region: `filter[field_region.name]=${filter.name}`,
+
+    // No idea how to do it for those 2
+    // userInput: `insight_search=${filter.value}`,
+    // time: getTimeFilterSyntax(filter),
+    // created: `created[min]=${filter.value.split(":")[0]}&created[max]=${
+    //   filter.value.split(":")[1]
+    // }`,
   }
 
   return filterCases[filter.category]

@@ -4,7 +4,8 @@ import {
   cleanPodcastsData,
   getLinkWithFilters,
   grabRelatedPeople,
-  cleanInsights as cleanInsightsData,
+  cleanInsightsData,
+  getLinkWithJsonApiFilters,
 } from "./helper"
 
 const jsonApi = process.env.REACT_APP_JSON_API_URL
@@ -21,20 +22,38 @@ export const getInsights = async (currentInsightType, filters, nextPage) => {
   return cleanInsightsData(res.data, currentInsightType.name)
 }
 
-export const getPodcasts = async (currentInsightType, filters, nextPage) => {
-  // let link = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
-  let link = `${jsonApi}/node/podcast?include=field_teaser_image`
+export const getPodcasts = async (
+  currentInsightType,
+  filters,
+  nextPodcastPage
+) => {
+  let link
 
-  // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
-
-  // link = getLinkWithFilters(link, filters)
+  if (nextPodcastPage) {
+    link = nextPodcastPage
+  } else {
+    // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+    // let link = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+    link = `${jsonApi}/node/podcast?include=field_teaser_image`
+    link = getLinkWithJsonApiFilters(link, filters)
+  }
 
   const res = await Axios.get(link)
 
-  return cleanPodcastsData(res.data, currentInsightType.name)
+  const nextPageLink = (await res.data.links?.next?.href) || null
+  console.log("This is nextPageLInk", nextPageLink)
+
+  const cleanData = await cleanPodcastsData(res.data, currentInsightType.name)
+
+  return { cleanData, nextPageLink }
 }
 
-export const getAllInsightTypes = async (insightType, filters, nextPage) => {
+export const getAllInsightTypes = async (
+  insightType,
+  filters,
+  nextPage,
+  nextPodcastPage
+) => {
   // business & industry inisights
   const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}&page=${nextPage}`
 
@@ -43,17 +62,24 @@ export const getAllInsightTypes = async (insightType, filters, nextPage) => {
 
   // Health & Life Podcast
   // const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
-  const link3 = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+  // const link3 = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+
+  let link3
+  if (nextPodcastPage) {
+    link3 = nextPodcastPage
+  } else {
+    // let link3 = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+    // let link3 = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&page[limit]=10&sort=-created`
+    link3 = `${jsonApi}/node/podcast?include=field_teaser_image&page[limit]=10&sort=-created`
+    link3 = getLinkWithJsonApiFilters(link3, filters)
+  }
 
   const linkWithFilters1 = getLinkWithFilters(link1, filters)
   const linkWithFilters2 = getLinkWithFilters(link2, filters)
-  // const linkWithFilters3 = getLinkWithFilters(link3, filters)
-  // const linkWithFilters3 = link3
 
   const res1 = await Axios.get(linkWithFilters1)
   const res2 = await Axios.get(linkWithFilters2)
-
-  // const res3 = await Axios.get(link3)
+  const res3 = await Axios.get(link3)
 
   const cleanedData1 = cleanInsightsData(
     res1.data,
@@ -63,17 +89,16 @@ export const getAllInsightTypes = async (insightType, filters, nextPage) => {
     res2.data,
     "health & life case studies"
   )
-
-  // For podcasts. Yet to see.
-  // const cleanedData3 = cleanPodcastsData(res3.data, "Health & Life Podcast")
+  const cleanedData3 = await cleanPodcastsData(
+    res3.data,
+    "Health & Life Podcast"
+  )
 
   return {
     industryInsights: cleanedData1,
     caseStudies: cleanedData2,
-    // healthPodcasts: cleanedData3,
+    healthPodcasts: cleanedData3,
   }
-
-  // setData(allInsights)
 }
 
 export const getSingleArticle = (setArticleData, id) => {
@@ -97,55 +122,6 @@ export const getSingleArticle = (setArticleData, id) => {
     setArticleData(article)
   })
 }
-
-export const getSinglePodcast = (setPodcastData, id) => {
-  // const link = `${jsonApi}/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=${id}`;
-  const link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?include=field_authors,field_authors.field_professional_title&filter[id]=2249cb18-f903-4c2f-a610-e7d50cd5681c`
-
-  Axios.get(link).then(res => {
-    const data = res.data.data
-
-    let podcast = {}
-
-    podcast.content = data[0].attributes.body.value
-
-    podcast.title = data[0].attributes.title
-
-    podcast.date = new Date(
-      data[0].attributes.revision_timestamp
-    ).toLocaleDateString()
-
-    podcast.authors = grabRelatedPeople("field_authors", res.data, 0)
-
-    setPodcastData(podcast)
-  })
-}
-
-// export const getSingleLocation = (setLocation) => {
-//   const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag&filter%5Bfield_countries_tag.id%5D=4b03a3f5-b7c1-4d73-b792-248c37e92e7c`
-
-//   Axios.get(link).then(res =>  {
-//     let data = res.data.data
-
-//     let included = res.data.included
-//     let location = {}
-
-//     location.country = included[0].attributes.name
-//     location.city = data[0].attributes.name
-//     location.phone = data[0].attributes.field_contact_phone
-//     location.fax = data[0].attributes.field_fax_number
-//     location.address_line1 = data[0].attributes.field_address.address_line1
-//     location.address_line2 = data[0].attributes.field_address.address_line2
-//     location.postal = data[0].attributes.field_address.postal_code
-//     location.area = data[0].attributes.field_address.administrative_area
-//     location.id = data[0].relationships.field_countries_tag.data[0].id
-//     location.idd = included[0].id
-// console.log(location)
-// setLocation(location)
-//   })
-// }
-
-// getSingleLocation()
 
 export const getLocations = setLocations => {
   const link = `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/cities?include=field_countries_tag`
