@@ -12,12 +12,6 @@ import UnalignedItemsContainer from "../../components/layout/UnalignedItemsConta
 import { Spinner } from "../../components"
 import InfiniteScroll from "react-infinite-scroll-component"
 
-const loader = (
-  <div key="loader" className="loader">
-    Loading ...
-  </div>
-)
-
 export const ContentContext = createContext()
 
 const Insights = () => {
@@ -59,7 +53,12 @@ const OneInsightCategory = () => {
   // Get the initial data from the server
   useEffect(() => {
     const getData = async () => {
-      const data = await getInsights(currentInsightType, filters, nextPage)
+      let data
+      if (currentInsightType.identifier === "healthPodcasts") {
+        data = await getPodcasts(currentInsightType, filters, nextPage)
+      } else {
+        data = await getInsights(currentInsightType, filters, nextPage)
+      }
       setNextPage(nextPage + 1)
       setContent(data)
     }
@@ -85,7 +84,7 @@ const OneInsightCategory = () => {
     >
       <UnalignedItemsContainer>
         {content.map((item, index) => {
-          if (currentInsightType === "healthPodcasts") {
+          if (currentInsightType.identifier === "healthPodcasts") {
             return <PodcastCard {...item} key={index} />
           }
           return <ArticlePreviewCard key={index} {...item} />

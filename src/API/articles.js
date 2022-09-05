@@ -21,6 +21,19 @@ export const getInsights = async (currentInsightType, filters, nextPage) => {
   return cleanInsightsData(res.data, currentInsightType.name)
 }
 
+export const getPodcasts = async (currentInsightType, filters, nextPage) => {
+  // let link = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
+  let link = `${jsonApi}/node/podcast?include=field_teaser_image`
+
+  // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
+
+  // link = getLinkWithFilters(link, filters)
+
+  const res = await Axios.get(link)
+
+  return cleanPodcastsData(res.data, currentInsightType.name)
+}
+
 export const getAllInsightTypes = async (insightType, filters, nextPage) => {
   // business & industry inisights
   const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}&page=${nextPage}`
@@ -63,42 +76,6 @@ export const getAllInsightTypes = async (insightType, filters, nextPage) => {
   // setData(allInsights)
 }
 
-export const getPodcasts = (setData, insightType, filters) => {
-  let link = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
-  // console.log("This is selectedFilters", selectedFilters)
-
-  // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
-
-  link = getLinkWithFilters(link, filters)
-
-  // console.log("This is link", link)
-
-  Axios.get(link).then(res => {
-    const podcasts = res.data.data.map(podcast => {
-      const uuid = podcast.id
-      const title = podcast.attributes.title
-      const teaserText = podcast.attributes.field_teaser_text
-      const alias = podcast.attributes.path.alias.split("/")[2]
-
-      const date = dateToShortLocale(
-        podcast.attributes.changed || podcast.attributes.created
-      )
-
-      return {
-        uuid,
-        title,
-        teaserText,
-        alias,
-        date,
-        // category: categoryPretty[insightType],
-      }
-    })
-
-    console.log("This is podcasts", podcasts)
-    setData(podcasts)
-  })
-}
-
 export const getSingleArticle = (setArticleData, id) => {
   const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
 
@@ -116,8 +93,6 @@ export const getSingleArticle = (setArticleData, id) => {
     article.title = data.attributes.title
     article.authors = grabRelatedPeople("field_authors", res.data, 0)
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
-
-    console.log("This is data", data)
 
     setArticleData(article)
   })

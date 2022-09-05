@@ -25,32 +25,16 @@ const ExpertiseSectionContainer = styled.div`
     width: 100%;
     h2 {
       padding-top: 20px;
-      /* padding-left: 30px; */
     }
   }
-
   .infoContainer {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
   }
-  /* .expertise {
-    padding-top: 40px;
-    h3 {
-      color: var(--darkBlueHome);
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-    p {
-      color: var(--darkBlueHome);
-      font-size: 0.9rem;
-    }
-  } */
 `
 
 const ExpertiseSection = ({ expertises }) => {
   const navigate = useNavigate()
-  // console.log(expertises)
   return (
     <ExpertiseSectionContainer className="">
       <div className="grayContainer">

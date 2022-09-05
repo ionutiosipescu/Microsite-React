@@ -34,12 +34,26 @@ export const getLinkWithFilters = (link, selectedFilters) => {
   return link
 }
 
-export const cleanPodcastsData = rawData => {
+export const cleanPodcastsData = (rawData, isnightType) => {
   const podcasts = rawData.data.map(podcast => {
     const uuid = podcast.id
     const title = podcast.attributes.title
     const teaserText = podcast.attributes.field_teaser_text
     const alias = podcast.attributes.path.alias.split("/")[2]
+
+    let teaserImageUrl
+    // Check for null
+    if (grabSubIds("field_teaser_image", podcast)) {
+      const teaserImageId = grabSubIds("field_teaser_image", podcast)[0]
+
+      teaserImageUrl =
+        baseApiUrl +
+        getObjectFromIncluded(rawData.included, teaserImageId).uri.url
+      console.log(
+        "This is ",
+        getObjectFromIncluded(rawData.included, teaserImageId)
+      )
+    }
 
     const date = dateToShortLocale(
       podcast.attributes.changed || podcast.attributes.created
@@ -51,9 +65,11 @@ export const cleanPodcastsData = rawData => {
       teaserText,
       alias,
       date,
-      // category: categoryPretty[insightType],
+      isnightType: isnightType,
+      teaserImageUrl: teaserImageUrl,
     }
   })
+
   return podcasts
 }
 
@@ -126,7 +142,15 @@ const grabIds = (includedField, object) => {
 const grabSubIds = (fieldName, singleObject) => {
   const data = singleObject.relationships[fieldName].data
 
-  return data.id ? [data.id] : data.map(item => item.id)
+  if (!data) {
+    return null
+  } else {
+    return data.id ? [data.id] : data.map(item => item.id)
+  }
+}
+
+const getObjectFromIncluded = (includedArray, id) => {
+  return includedArray.find(imageObj => (imageObj.id = id)).attributes
 }
 
 // Decides what syntax to return for the specific filter
