@@ -25,6 +25,8 @@ const SingleInsgightPage = () => {
 
   useDocumentTitle(articleData?.title)
 
+  console.log("This is articleData", articleData)
+
   return (
     <>
       {articleData ? (

@@ -3,7 +3,7 @@ import styled from "styled-components/macro"
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import { sizem } from "../../utils/breakpoints"
 import { useNavigate } from "react-router"
-import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../layout/UnalignedItemsContainer"
 
 const IndustrySectionContainer = styled.div`
   width: 100%;
@@ -57,7 +57,7 @@ const IndustrySection = ({ industries }) => {
     <IndustrySectionContainer className="">
       <div className="grayContainer">
         <h2 className="">Industries: </h2>
-        <UnalignedItemsConainer columnsNumber={2}>
+        <UnalignedItemsContainer columnsNumber={2}>
           {industries?.map((industry, index) => (
             <div className="industry " key={index}>
               <div className="body">
@@ -81,7 +81,7 @@ const IndustrySection = ({ industries }) => {
               </div>
             </div>
           ))}
-        </UnalignedItemsConainer>
+        </UnalignedItemsContainer>
       </div>
     </IndustrySectionContainer>
   )

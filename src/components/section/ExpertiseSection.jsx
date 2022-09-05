@@ -5,7 +5,7 @@ import { sizem } from "../../utils/breakpoints"
 import { useNavigate } from "react-router"
 
 import { ExpertiseCard } from "../cards"
-import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../layout/UnalignedItemsContainer"
 
 const ExpertiseSectionContainer = styled.div`
   width: 100%;
@@ -56,7 +56,7 @@ const ExpertiseSection = ({ expertises }) => {
       <div className="grayContainer">
         <h2 className="">Expertise: </h2>
 
-        <UnalignedItemsConainer columnsNumber={3}>
+        <UnalignedItemsContainer columnsNumber={3}>
           {expertises?.map((expertise, index) => {
             let lastRowElements = expertises.length % 3
             if (lastRowElements == 0) {
@@ -78,7 +78,7 @@ const ExpertiseSection = ({ expertises }) => {
               />
             )
           })}
-        </UnalignedItemsConainer>
+        </UnalignedItemsContainer>
       </div>
     </ExpertiseSectionContainer>
   )

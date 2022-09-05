@@ -117,6 +117,8 @@ export const getSingleArticle = (setArticleData, id) => {
     article.authors = grabRelatedPeople("field_authors", res.data, 0)
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)
 
+    console.log("This is data", data)
+
     setArticleData(article)
   })
 }
@@ -151,7 +153,6 @@ export const getSinglePodcast = (setPodcastData, id) => {
 //     let data = res.data.data
 
 //     let included = res.data.included
-
 //     let location = {}
 
 //     location.country = included[0].attributes.name

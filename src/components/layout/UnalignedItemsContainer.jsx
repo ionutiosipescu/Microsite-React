@@ -20,7 +20,7 @@ const Container = styled.div`
   }
 `
 
-const UnalignedItemsConainer = ({ children, columnsNumber }) => {
+const UnalignedItemsContainer = ({ children, columnsNumber }) => {
   if (!columnsNumber) {
     columnsNumber = 3
   }
@@ -57,4 +57,4 @@ const UnalignedItemsConainer = ({ children, columnsNumber }) => {
   )
 }
 
-export default UnalignedItemsConainer
+export default UnalignedItemsContainer

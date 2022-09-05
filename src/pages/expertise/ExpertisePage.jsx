@@ -14,7 +14,7 @@ import { useDocumentTitle } from "../../hook"
 import styled from "styled-components/macro"
 import { fetchExpertise } from "../../store/actions/hls/hlsHome"
 import { useDispatch, useSelector } from "react-redux"
-import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../../components/layout/UnalignedItemsContainer"
 import { BorderBottom } from "../../components/cards/styles/ArticlePreviewCard.styles"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style.js"
 import ArticlesSection from "../../components/section/ArticlesSection"
@@ -78,7 +78,7 @@ const ExpertisePage = () => {
                 }}
                 className="descriptionContainer"
               />
-              <UnalignedItemsConainer
+              <UnalignedItemsContainer
                 columnsNumber={expertise?.articles?.legnth}
               >
                 {expertise?.articles?.map(article => (
@@ -87,7 +87,7 @@ const ExpertisePage = () => {
                     conntent={article?.text_teaser}
                   />
                 ))}
-              </UnalignedItemsConainer>
+              </UnalignedItemsContainer>
               <BorderBottom color={"var(--hover-blue)"} className="my-3" />
               <div className="industrySection mt-4">
                 <h3 className=" fw-bold">Industries:</h3>

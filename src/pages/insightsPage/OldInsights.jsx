@@ -9,7 +9,7 @@ import { getPodcasts, getInsights } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import { useSelector } from "react-redux"
 import { useDocumentTitle } from "../../hook"
-import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { ButtonWithAnimation } from "../../components/buttons"
@@ -60,14 +60,14 @@ const Insights = () => {
       articles.healthPodcasts ? (
         <StyledContainer>
           {currentInsightType !== "all" ? (
-            <UnalignedItemsConainer>
+            <UnalignedItemsContainer>
               {articles[currentInsightType].map((item, index) => {
                 if (currentInsightType === "healthPodcasts") {
                   return <PodcastCard {...item} key={index} />
                 }
                 return <ArticlePreviewCard key={index} articleInfo={item} />
               })}
-            </UnalignedItemsConainer>
+            </UnalignedItemsContainer>
           ) : (
             <InsightsContainer>
               <div>

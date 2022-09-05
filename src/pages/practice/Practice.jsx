@@ -6,7 +6,7 @@ import {
   HeroSection,
 } from "../../components/cards"
 import { ButtonWithAnimation } from "../../components/buttons"
-import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../../components/layout/UnalignedItemsContainer"
 import styled from "styled-components/macro"
 
 const Practice = () => {
@@ -26,7 +26,7 @@ const Practice = () => {
   return (
     <>
       <HeroSection height={300} pageCategory="Expertise" title={"f"} />
-      <UnalignedItemsConainer columnsNumber={4}>
+      <UnalignedItemsContainer columnsNumber={4}>
         <Item>{content}</Item>
         <Item>{content2}</Item>
         <Item>{content3}</Item>
@@ -36,7 +36,7 @@ const Practice = () => {
         <Item>{content}</Item>
         <Item>{content2}</Item>
         <Item>{content3}</Item>
-      </UnalignedItemsConainer>
+      </UnalignedItemsContainer>
 
       {/* <Container>
         <div>Something</div>

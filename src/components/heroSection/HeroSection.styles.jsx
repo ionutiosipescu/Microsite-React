@@ -4,19 +4,21 @@ import { size, sizem } from "../../utils/breakpoints"
 export const Hero = styled.div`
   position: relative;
   height: ${props => props.height + "px" || ""};
+  /* height: 100%; */
   width: 100%;
   background: url(${props => props.backgroundUrl || ""}), rgba(6, 25, 49, 0.7);
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: multiply;
   @media ${sizem.mdm_m} {
-    height: 500px;
+    min-height: 500px;
   }
 
   .contentContainer {
     height: inherit;
     padding-left: 6%;
     padding-right: 5%;
+
     nav {
       z-index: 100;
     }
@@ -27,6 +29,7 @@ export const Hero = styled.div`
       flex-direction: column;
       padding-top: 2rem;
     }
+
     .buttonContainer {
       margin: auto 0px;
       @media ${sizem.mdm} {

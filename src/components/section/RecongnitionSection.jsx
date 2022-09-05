@@ -4,7 +4,7 @@ import digital from "../../assets/images/digital"
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 import { arr } from "../../utils/data"
-import UnalignedItemsConainer from "../layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../layout/UnalignedItemsContainer"
 //style to overload the carousel's indicators
 // import "../cards/CarouselSection.scss";
 
@@ -50,7 +50,7 @@ const RecongnitionSection = ({ arr, titleSection }) => {
       <div className="contentContainer">
         <h3>{titleSection || "Recent Recognition:"}</h3>
         {/* <div className="articlesContainer"> */}
-        <UnalignedItemsConainer columnsNumber={2}>
+        <UnalignedItemsContainer columnsNumber={2}>
           {articles?.map((element, index) => (
             <div className="" key={index}>
               <p
@@ -68,7 +68,7 @@ const RecongnitionSection = ({ arr, titleSection }) => {
               </p>
             </div>
           ))}
-        </UnalignedItemsConainer>
+        </UnalignedItemsContainer>
         {/* </div> */}
       </div>
     </CarouselContainer>

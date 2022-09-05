@@ -8,7 +8,7 @@ import { InsightsContainer } from "./styles/inisghts.style"
 import { getPodcasts, getAllInsightTypes, getInsights } from "../../API"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import { useSelector } from "react-redux"
-import UnalignedItemsConainer from "../../components/layout/UnalignedItemsContainer"
+import UnalignedItemsContainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
 import InfiniteScroll from "react-infinite-scroll-component"
 
@@ -83,14 +83,14 @@ const OneInsightCategory = () => {
       hasMore={true}
       next={getMoreInsights}
     >
-      <UnalignedItemsConainer>
+      <UnalignedItemsContainer>
         {content.map((item, index) => {
           if (currentInsightType === "healthPodcasts") {
             return <PodcastCard {...item} key={index} />
           }
           return <ArticlePreviewCard key={index} {...item} />
         })}
-      </UnalignedItemsConainer>
+      </UnalignedItemsContainer>
     </InfiniteScroll>
   )
 }
@@ -126,7 +126,7 @@ const MultipleInsightCategories = () => {
     })
   }
 
-  if (!content) {
+  if (!content?.industryInsights) {
     return <Spinner />
   }
 
