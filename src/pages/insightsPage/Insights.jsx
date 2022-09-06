@@ -185,7 +185,7 @@ const MultipleInsightCategories = () => {
     setContent({
       industryInsights: [...content.industryInsights, ...data.industryInsights],
       caseStudies: [...content.caseStudies, ...data.caseStudies],
-      // healthPodcasts: [...content.healthPodcasts, ...data.healthPodcasts],
+      healthPodcasts: [...content.healthPodcasts, ...data.healthPodcasts],
     })
   }
 
@@ -194,29 +194,29 @@ const MultipleInsightCategories = () => {
   }
 
   return (
-    // <InfiniteScroll
-    //   dataLength={content.length || 0}
-    //   hasMore={true}
-    //   next={getMoreInsights}
-    // >
-    <InsightsContainer>
-      <div>
-        {content.industryInsights.map((article, index) => (
-          <ArticlePreviewCard {...article} key={index} />
-        ))}
-      </div>
-      <div>
-        {content.caseStudies.map((article, index) => (
-          <ArticlePreviewCard {...article} key={index} />
-        ))}
-      </div>
-      <div>
-        {content.healthPodcasts.map((podcast, index) => (
-          <PodcastCard {...podcast} key={index} />
-        ))}
-      </div>
-    </InsightsContainer>
-    // </InfiniteScroll>
+    <InfiniteScroll
+      dataLength={content.length || 0}
+      hasMore={true}
+      next={getMoreInsights}
+    >
+      <InsightsContainer>
+        <div>
+          {content.industryInsights.map((article, index) => (
+            <ArticlePreviewCard {...article} key={index} />
+          ))}
+        </div>
+        <div>
+          {content.caseStudies.map((article, index) => (
+            <ArticlePreviewCard {...article} key={index} />
+          ))}
+        </div>
+        <div>
+          {content.healthPodcasts.map((podcast, index) => (
+            <PodcastCard {...podcast} key={index} />
+          ))}
+        </div>
+      </InsightsContainer>
+    </InfiniteScroll>
   )
 }
 
