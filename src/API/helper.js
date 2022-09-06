@@ -176,8 +176,6 @@ export const getLinkWithJsonApiFilters = (link, selectedFilters) => {
     link += getJsonApiFilterSyntax(filter) + "&"
   })
 
-  console.log("This is link", link)
-
   return link
 }
 
