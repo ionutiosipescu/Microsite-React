@@ -12,14 +12,6 @@ const DropDownContainer = styled("div")`
 `;
 
 const DropDownHeader = styled("div")`
-
-  /* padding: 0.4em 2em 0.4em 1em;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  font-weight: 500;
-  font-size: 1.3rem;
-  color: #3faffa;
-  background: #ffffff; */
-
   display: inline-flex;
     justify-content: flex-start;
     align-items: center;
@@ -53,19 +45,6 @@ const DropDownListContainer = styled("div")`
 `;
 
 const DropDownList = styled("ul")`
-  /* padding: 0;
-  margin: 0;
-  padding-left: 1em;
-  background: #ffffff;
-  border: 2px solid #e5e5e5;
-  box-sizing: border-box;
-  color: #3faffa;
-  font-size: 1.3rem;
-  font-weight: 500;
-  &:first-child {
-    padding-top: 0.8em;
-  } */
-
 
   display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -86,64 +65,150 @@ const ListItem = styled("li")`
     margin: 0;
     list-style: none;
 `;
-const Link = styled.div`
-        display: block;
-    padding: 1rem 2rem;
-    transition: background-color 0.2s ease-out,color 0.2s ease-out;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    :hover {
-        background-color: #00244A;
-        color: #fff;
-    }
+// const Link = styled.div`
+//         display: block;
+//     padding: 1rem 2rem;
+//     transition: background-color 0.2s ease-out,color 0.2s ease-out;
+//     color: white;
+//     text-decoration: none;
+//     cursor: pointer;
+//     :hover {
+//         background-color: #00244A;
+//         color: #fff;
+//     }
+// `
+
+// const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
+
+
+const Select = styled.select`
+
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  // Additional resets for further consistency
+   margin: 0;
+  width: 100%;
+  font-family: inherit;
+  cursor: inherit;
+  line-height: inherit; 
+
+
 `
 
-const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
+const Option = styled.option`
 
-// constructor(props) = () => {
-//     super(props);
-//     this.state = {value: options };
-//     this.handleChange = this.handleChange.bind(this)
-//   }
+`
 
 const TestButton = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+   const [isOpen, setIsOpen] = useState(false);
+   const [selectedOption, setSelectedOption] = useState(null);
 
-  const toggling = () => setIsOpen(!isOpen);
+   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = value => () => {
-    setSelectedOption(value);
-    setIsOpen(false);
-  };
-  
-//   const handleChange = event => {
-//     this.setState({value: event.target.value})
-//   }
+   const onOptionClicked = value => () => {
+     console.log(value)
 
-  return (
-<>
-      <DropDownContainer>
-        <DropDownHeader onClick={toggling}>
-          {selectedOption || "Jump to Country"}
-        </DropDownHeader>
-        {isOpen && (
-          <DropDownListContainer>
-            <DropDownList 
-            onSelect={handleSelect}
-            >
-              {options.map(option => (
-                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                  <Link >{option}</Link>
-                </ListItem>
-              ))}
-            </DropDownList>
-          </DropDownListContainer>
-        )}
-      </DropDownContainer>
-      </>
-  );
+     setSelectedOption(value);
+     setIsOpen(false);
+   };
+const changeType = (e) =>{
+console.log(e.target.value)
 }
 
+return(
+    <>
+  <DropDownContainer>
+          <DropDownHeader onClick={toggling}>
+          {selectedOption || "Jump to Country"}
+         </DropDownHeader>
+                {isOpen && (
+            <DropDownListContainer>
+                <DropDownList>
+                    <Select
+                    onChange={changeType}
+                    >
+                        <ListItem><Option>hey</Option></ListItem>
+                        <ListItem><Option>hey</Option></ListItem>
+                        <ListItem><Option value='something'>hey</Option></ListItem>
+                    </Select>
+                </DropDownList>
+        </DropDownListContainer>
+                )}
+  </DropDownContainer>
+  </>
+)
+
+}
 export default TestButton
+
+
+
+
+
+
+
+
+        {/* <Option value="" disabled selected hidden className="first-item">Please Choose</Option> */}
+
+
+//   <select
+//   required="required"
+//   name="productType"
+//   id="productType"
+//   defaultValue={''}
+//   onChange={changeType}
+// >
+//   <option value="" disabled hidden>
+//     Select a Type
+//   </option>
+//   <option value="DVD">DVD</option>
+//   <option value="Furniture">Furniture</option>
+//   <option value="Book">Book</option>
+// </select>
+  
+// const changeType = e => {
+//   setCurrentType(e.target.value);
+// }
+
+
+
+
+
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   const toggling = () => setIsOpen(!isOpen);
+
+//   const onOptionClicked = value => () => {
+//     console.log(value)
+
+//     setSelectedOption(value);
+//     setIsOpen(false);
+//   };
+
+
+
+
+
+
+//   return (
+// <>
+//       <DropDownContainer>
+//         <DropDownHeader onClick={toggling}>
+//           {selectedOption || "Jump to Country"}
+//         </DropDownHeader>
+//         {isOpen && (
+//           <DropDownListContainer>
+//             <DropDownList>
+//               {options.map((option, index) => (
+//                 <ListItem onClick={(option)=>onOptionClicked(option)} key={index}>
+//                   <Link >{option}</Link>
+//                 </ListItem>
+//               ))}
+//             </DropDownList>
+//           </DropDownListContainer>
+//         )}
+//       </DropDownContainer>
+//       </>
+//   );
+// }
