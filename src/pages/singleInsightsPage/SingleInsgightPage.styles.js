@@ -1,5 +1,5 @@
 import styled from "styled-components/macro"
-import { size } from "../../../utils/breakpoints"
+import { size } from "../../utils/breakpoints"
 
 export const Container = styled.div`
   @media ${size.lg} {

@@ -10,7 +10,7 @@ import {
 } from "../../components/cards"
 import { Spinner } from "../../components"
 import { StyledContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
-import * as S from "./styles/SingleInsgightPage.styles"
+import * as S from "./SingleInsgightPage.styles"
 import DOMPurify from "dompurify"
 
 const SingleInsgightPage = () => {

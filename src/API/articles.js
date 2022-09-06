@@ -1,4 +1,5 @@
 import Axios from "axios"
+import { insightTypes } from "../components/navbarComponents/inisightsNavbar/InsightsNavbar"
 import { dateToShortLocale } from "../utils/dateFormat"
 import {
   cleanPodcastsData,
@@ -14,6 +15,7 @@ const customApi = process.env.REACT_APP_CUSTOM_API_URL
 // Get insights from the api
 export const getInsights = async (currentInsightType, filters, nextPage) => {
   const link = `${customApi}/insight-filter?insight[]=${currentInsightType.id}&page=${nextPage}`
+  // const link = `${customApi}/insight-filter?insight[]=${currentInsightType.id}&page=35`
 
   const linkWithFilters = getLinkWithFilters(link, filters)
 
@@ -33,15 +35,14 @@ export const getPodcasts = async (
     link = nextPodcastPage
   } else {
     // let link = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
-    // let link = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
-    link = `${jsonApi}/node/podcast?include=field_teaser_image`
+    // let link = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&page[limit]=10&sort=-created`
+    link = `${jsonApi}/node/podcast?include=field_teaser_image&page[limit]=10&sort=-created`
     link = getLinkWithJsonApiFilters(link, filters)
   }
 
   const res = await Axios.get(link)
 
   const nextPageLink = (await res.data.links?.next?.href) || null
-  console.log("This is nextPageLInk", nextPageLink)
 
   const cleanData = await cleanPodcastsData(res.data, currentInsightType.name)
 
@@ -49,55 +50,24 @@ export const getPodcasts = async (
 }
 
 export const getAllInsightTypes = async (
-  insightType,
+  insightTypes,
   filters,
   nextPage,
   nextPodcastPage
 ) => {
-  // business & industry inisights
-  const link1 = `${customApi}/insight-filter?insight[]=${insightType.id[0]}&page=${nextPage}`
-
-  // health & life case studies
-  const link2 = `${customApi}/insight-filter?insight[]=${insightType.id[1]}&page=${nextPage}`
-
-  // Health & Life Podcast
-  // const link3 = `${customApi}/insight-filter?insight[]=${insightType.id[2]}`
-  // const link3 = `https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6`
-
-  let link3
-  if (nextPodcastPage) {
-    link3 = nextPodcastPage
-  } else {
-    // let link3 = `${jsonApi}/node/article${categories[insightType]}&page[limit]=10&sort=-created`
-    // let link3 = `${jsonApi}/node/podcast?filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&page[limit]=10&sort=-created`
-    link3 = `${jsonApi}/node/podcast?include=field_teaser_image&page[limit]=10&sort=-created`
-    link3 = getLinkWithJsonApiFilters(link3, filters)
-  }
-
-  const linkWithFilters1 = getLinkWithFilters(link1, filters)
-  const linkWithFilters2 = getLinkWithFilters(link2, filters)
-
-  const res1 = await Axios.get(linkWithFilters1)
-  const res2 = await Axios.get(linkWithFilters2)
-  const res3 = await Axios.get(link3)
-
-  const cleanedData1 = cleanInsightsData(
-    res1.data,
-    "business & industry inisights"
-  )
-  const cleanedData2 = cleanInsightsData(
-    res2.data,
-    "health & life case studies"
-  )
-  const cleanedData3 = await cleanPodcastsData(
-    res3.data,
-    "Health & Life Podcast"
+  const industryInsights = await getInsights(insightTypes[1], filters, nextPage)
+  const caseStudies = await getInsights(insightTypes[2], filters, nextPage)
+  const healthPodcasts = await getPodcasts(
+    insightTypes[3],
+    filters,
+    nextPodcastPage
   )
 
   return {
-    industryInsights: cleanedData1,
-    caseStudies: cleanedData2,
-    healthPodcasts: cleanedData3,
+    industryInsights: industryInsights,
+    caseStudies: caseStudies,
+    healthPodcasts: healthPodcasts.cleanData,
+    nextPageLink: healthPodcasts.nextPageLink,
   }
 }
 

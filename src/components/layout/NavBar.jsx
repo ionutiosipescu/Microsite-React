@@ -66,12 +66,7 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
 
           <CustomNavbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0 fw-bold f navbarHLS">
-              <NavDropdown
-                className=""
-                title="Expertise"
-                id="navbar-scrolling-dropdown"
-              >
-                {/* {expertiseData?.map((expertise, index) => ( */}
+              <NavDropdown title="Expertise" id="navbar-scrolling-dropdown">
                 {expertises?.map((expertise, index) => (
                   <NavDropdown.Item
                     onClick={() => {
