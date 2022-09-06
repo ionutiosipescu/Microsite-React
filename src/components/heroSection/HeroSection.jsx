@@ -18,6 +18,7 @@ const HeroSection = ({
   route,
   date,
   height,
+  Custom
 }) => {
   const location = useLocation()
   const [navbarActive, setNavbarActive] = useState(true)
@@ -72,14 +73,14 @@ const HeroSection = ({
                     ></p>
                   )}
 
-                  {buttonText && (
+                  {buttonText ? (
                     <div className="buttonContainer">
                       <ButtonWithAnimation
                         text={buttonText}
                         href={"https://contact.alvarezandmarsal.com"}
                       />
                     </div>
-                  )}
+                  ) : <Custom/>}
                 </div>
               )}
             </>
