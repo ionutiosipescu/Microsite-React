@@ -90,7 +90,6 @@ const IndustrySectionContainer = styled.div`
 
 const IndustrySection = ({ industries }) => {
   const navigate = useNavigate()
-  console.log("This is industries", industries)
   return (
     <IndustrySectionContainer className="">
       <div className="grayContainer">
@@ -104,7 +103,10 @@ const IndustrySection = ({ industries }) => {
               index={index}
               onClick={() =>
                 navigate(`/industry/${industry?.name.toLowerCase()}`, {
-                  state: industry.id,
+                  state: {
+                    inustryId: industry.id,
+                    industryUUID: industry.uuid,
+                  },
                 })
               }
             />

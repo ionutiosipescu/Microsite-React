@@ -1,30 +1,19 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router"
-import {
-  ArticlePreviewCard,
-  CardProfessionals,
-  HeroSection,
-  SocialsCard,
-} from "../../components/cards"
+import { HeroSection, SocialsCard } from "../../components/cards"
 import {
   fetchIndustry,
   fetchIndustryArticles,
 } from "../../store/actions/hls/hlsHome"
-
 import { ProfessionalCard, ContactSubscribeCard } from "../../components/cards"
-
 import styled from "styled-components/macro"
 import {
   ContainerContent,
   FullWidthContainer,
 } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import ExpertiseSection from "../../components/section/ExpertiseSection"
-import { expertiseData } from "../../utils/data"
 import ArticlesSection from "../../components/section/ArticlesSection"
-// import CardProfessionalsNew from "../../components/cards/CardProfessionalsNew"
-import { sizem } from "../../utils/breakpoints"
-import { size } from "../../utils/breakpoints"
 import { IndustryContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 const IndustryPage = () => {
@@ -39,7 +28,10 @@ const IndustryPage = () => {
     dispatch(fetchIndustryArticles(state.industryUUID))
   }, [dispatch, state])
 
-  console.log(industry)
+  console.log("This is industryArticles", industryArticles)
+  console.log("This is industry", industry)
+  console.log("This is state", state)
+
   return (
     <>
       <HeroSection
@@ -49,8 +41,8 @@ const IndustryPage = () => {
       />
       <ContainerContent>
         <IndustryContainer>
-          <div className=" d-lg-flex  ">
-            <div className=" col-12 col-lg-8 px-4 px-lg-0 container-left">
+          <div className="d-lg-flex  ">
+            <div className="col-12 col-lg-8 px-4 px-lg-0 container-left">
               <div
                 dangerouslySetInnerHTML={{
                   __html: industry?.description ?? industry?.teaser_text,
@@ -61,7 +53,6 @@ const IndustryPage = () => {
                 <ExpertiseSection expertises={industry?.expertises} />
               </ExpertiseContainer>
             </div>
-
             <div className="expertsContainer col-12 col-lg-4  ps-lg-3 ps-xxl-5 container-right">
               {industry?.experts?.map((expert, index) => {
                 return (
@@ -72,7 +63,7 @@ const IndustryPage = () => {
                     imageSrc={expert?.image}
                     position={expert?.profession_title}
                     country={expert?.global_location}
-                    buttonText={"connect".toUpperCase()}
+                    buttonText={"connect"}
                   />
                 )
               })}

@@ -61,6 +61,7 @@ const ExpertisePage = () => {
   useDocumentTitle(
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
   )
+
   return (
     <ExpertisePageContainer>
       <HeroSection

@@ -49,7 +49,6 @@ export const fetchHLSIndustries = () => {
       .then(data => {
         var parsedIndustriesArray = []
         const industries = data?.data.healthcare_industries
-        // console.log(industries);
         for (const [key, value] of Object.entries(industries)) {
           let industryObj = {
             id: value.id,
@@ -77,7 +76,6 @@ export const fetchHLSIndustries = () => {
 }
 export const fetchIndustry = industryId => {
   return async dispatch => {
-    // console.log(industryId)
     let industry = {}
     Axios.get(link)
       .then(data => {
@@ -87,7 +85,6 @@ export const fetchIndustry = industryId => {
             industry = value
           }
         }
-        console.log(industry)
         var experts = []
         var expertises = []
         industry?.featured_expert.map(expert => {
@@ -110,7 +107,6 @@ export const fetchIndustry = industryId => {
         })
 
         // awaitfetchIndustryArticles
-        // console.log(expertises);
         industry.expertises = expertises
         industry.experts = experts
 
