@@ -4,6 +4,7 @@ import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/R
 import LocationCardRow from "../../components/cards/LocationCardRow"
 import { getLocations, getSingleLocation } from "../../API"
 import ButtonJumpToCountry from "../../components/buttons/ButtonJumpToCountry"
+import TestButton from "../../components/buttons/TestButton"
 
 
 const LocationPage = () => {
@@ -21,7 +22,7 @@ const LocationPage = () => {
         description={
           "Cross border, no problem. Our global team of senior professionals are ready to execute your business solutions."
         }
-        Custom = {ButtonJumpToCountry}
+        Custom = {TestButton}
         />
       <StyledContainerLocation>
       {location?.map((location, index) => (
