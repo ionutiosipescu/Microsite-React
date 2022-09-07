@@ -48,13 +48,13 @@ const SocialsCard = () => {
     <Card>
       <Share className="box" />
       <div className="blue-box box">
-        <FooterFacebookIcon className="icon" />
+        <a href="https://www.facebook.com/alvarezandmarsal"><FooterFacebookIcon className="icon" /></a>
       </div>
       <div className="blue-box box">
-        <FooterLinkedinIcon className="icon" />
+        <a href="https://www.linkedin.com/company/alvarez-&-marsal/"><FooterLinkedinIcon className="icon" /></a>
       </div>
       <div className="blue-box box">
-        <FooterTwitterIcon className="icon" />
+        <a href="https://twitter.com/alvarezmarsal"><FooterTwitterIcon className="icon" /></a>
       </div>
       <Mail className="box" />
       <Pdf className="box" />

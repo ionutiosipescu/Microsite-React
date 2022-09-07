@@ -136,10 +136,13 @@ const ColBox = styled.div`
     border-radius: inherit;
      transition: border-color none; 
   }
-
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
   .form-control:focus {
     color: #fff;
-    background-color: inherit;
+    background-color: transparent;
     border-color: #fff !important;
     outline: inherit;
     box-shadow: none;
@@ -328,8 +331,6 @@ const Footer = () => {
                 
                   </Form.Group>
                 </Form>
-                {/* <div onClick={handleClick}>HErro</div> */}
-
 
             </ColBox>
           </ColContainer>
