@@ -1,9 +1,10 @@
 import styled from "styled-components/macro"
 
 export const Wrapper = styled.div`
-  border: 2px solid red;
   display: flex;
   justify-content: flex-end;
+
+  position: relative;
 `
 
 export const Container = styled.a`
@@ -16,7 +17,7 @@ export const Container = styled.a`
 
   position: absolute;
 
-  top: 35rem;
+  top: 15rem;
 
   div {
     transition: all 0.5s ease-out;
@@ -63,8 +64,6 @@ export const TextContainer = styled.div`
   padding: 0.75rem 1rem;
   position: relative;
   text-transform: uppercase;
-
-  /* transform: rotate(90deg); */
 
   div {
     z-index: 2;

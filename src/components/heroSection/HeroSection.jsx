@@ -18,7 +18,7 @@ const HeroSection = ({
   route,
   date,
   height,
-  Custom
+  Custom,
 }) => {
   const location = useLocation()
   const [navbarActive, setNavbarActive] = useState(true)
@@ -80,13 +80,15 @@ const HeroSection = ({
                         href={"https://contact.alvarezandmarsal.com"}
                       />
                     </div>
-                  ) : <Custom/>}
+                  ) : (
+                    <Custom />
+                  )}
                 </div>
               )}
             </>
           )}
         </div>
-        <BreadCrumb text={"fudge"} />
+        <BreadCrumb />
       </S.Hero>
     </>
   )
