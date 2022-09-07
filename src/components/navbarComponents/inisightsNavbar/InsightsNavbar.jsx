@@ -8,10 +8,11 @@ import CellWithChevron from "./CellWithChevron"
 import { getInsightFilters } from "../../../API/getFilters"
 import { useDispatch } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
+import Spinner from "../../Spinner"
 
 // Those are are insight insight types/categories. The id for each type of insight can be found on
 // https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/insights.  If you want to add/remove new ones, just grab the name
-// of the insight type, grab it's drupal_internal__tid or id for short, give it a identifier for ease of use and put its' id in the all type.
+// of the insight type, grab it's drupal_internal__tid or id for short and give it a identifier for ease of use
 // The order of the items in the array is important
 export const insightTypes = [
   {
@@ -54,16 +55,19 @@ const InsightsNavbar = () => {
         category: "userInput",
       })
     )
-
     e.target[0].value = ""
   }
 
   useEffect(() => {
-    getInsightFilters(setFilters)
+    const getData = async () => {
+      const data = await getInsightFilters()
+      setFilters(data)
+    }
+    getData()
   }, [])
 
   if (!filters) {
-    return null
+    return <Spinner />
   }
 
   return (
@@ -98,13 +102,11 @@ const InsightsNavbar = () => {
           category={"industries"}
           filters={filters.industries}
         />
-
         <Dropdown
           text={"location"}
           category={"region"}
           filters={filters.region}
         />
-
         <Dropdown text={"date"} filters={filters.date} category={"date"} />
       </S.Navbar>
       <FiltersContainer />

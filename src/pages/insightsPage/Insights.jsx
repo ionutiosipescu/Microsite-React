@@ -10,7 +10,7 @@ import CaseStudies from "./CaseStudies"
 export const ContentContext = createContext()
 
 const Insights = () => {
-  const { currentInsightType, filters } = useSelector(state => state.filters)
+  const { currentInsightType } = useSelector(state => state.filters)
 
   const [content, setContent] = useState(null)
   const [nextPage, setNextPage] = useState(0)
@@ -26,6 +26,7 @@ const Insights = () => {
     setNextPodcastPage: setNextPodcastPage,
   }
 
+  // Object with all components. The key names of the object are important. they are the equal to currentInsightType.identifier values
   const insightTypeObj = {
     all: <MultipleInsightTypes />,
     industryInsights: <ArticleInsightType insightType={insightTypes[1]} />,

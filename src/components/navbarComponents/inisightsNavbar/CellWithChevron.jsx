@@ -18,7 +18,6 @@ const CellWithChevron = ({
       highlight={highlight}
     >
       {text || "No text"}
-      {/* <ChevronDownWhite /> */}
 
       {dropdownOpened ? <ChevronUpWhite /> : <ChevronDownWhite />}
     </S.NavbarCell>

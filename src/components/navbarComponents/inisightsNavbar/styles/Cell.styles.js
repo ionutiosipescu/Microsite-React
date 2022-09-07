@@ -3,6 +3,8 @@ import { size } from "../../../../utils/breakpoints"
 
 export const NavbarCell = styled.div`
   /* border: 2px solid green; */
+  display: flex;
+  align-items: center;
 
   height: 100%;
   cursor: pointer;

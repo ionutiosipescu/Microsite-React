@@ -74,7 +74,6 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
                         state: expertise?.id,
                       })
                     }}
-                    id="something"
                     key={index}
                   >
                     {(expertise?.name).toUpperCase()}
@@ -96,7 +95,6 @@ const NavBar = ({ setNavbarActive, navbarActive }) => {
                         },
                       })
                     }}
-                    id="something"
                     key={index}
                   >
                     {industry?.name}

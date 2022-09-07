@@ -97,9 +97,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
       })
 
       // This one is bad
-      // const imageUrl = imageUrlIds.map(title => {
-      //   return object.included.find(item => item.id === title).attributes
-      // })[0].image_style_uri[5].article_image_small__576x322_
       const imageUrl = imageUrlIds
         .map(title => {
           return object.included.find(item => item.id === title).attributes

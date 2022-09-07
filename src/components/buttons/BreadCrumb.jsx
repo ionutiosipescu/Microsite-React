@@ -3,10 +3,10 @@ import * as S from "./styles/BreadCrumb.styles"
 import { ChevronRightWhite } from "../../assets/icons"
 import { useLocation } from "react-router"
 
-const BreadCrumb = ({ text = "Read More" }) => {
+const BreadCrumb = () => {
   const location = useLocation()
 
-  text = location.pathname.split("/")[1]
+  const text = location.pathname.split("/")[1] || "Home"
 
   return (
     <S.Wrapper>

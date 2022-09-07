@@ -11,7 +11,7 @@ const Dropdown = ({ text, filters, category }) => {
   const dropdownHeightRef = useRef(null)
   const { filters: selectedFilters } = useSelector(state => state.filters)
 
-  const { content, setContent, setNextPodcastPage, setNextPage } =
+  const { setContent, setNextPodcastPage, setNextPage } =
     useContext(ContentContext)
 
   // Determines the names of the filters that should be highlighted
@@ -20,10 +20,6 @@ const Dropdown = ({ text, filters, category }) => {
     highlightFilterNames.push(selectedFilter.name)
     highlightFilterNames.push(selectedFilter.category)
   })
-
-  const highlightCell = name => {
-    return highlightFilterNames.includes(name)
-  }
 
   const [isOpen, setIsOpen] = useState(false)
   const [margin, setMargin] = useState(0)
@@ -35,10 +31,6 @@ const Dropdown = ({ text, filters, category }) => {
       setMargin(0)
     }
   }, [isOpen])
-
-  const handleClick = () => {
-    setIsOpen(!isOpen)
-  }
 
   // Listtening to clicks outside of the dropdown
   useEffect(() => {
@@ -60,6 +52,14 @@ const Dropdown = ({ text, filters, category }) => {
     setContent([])
     setNextPodcastPage(null)
     dispatch(addFilter(filter))
+  }
+
+  const highlightCell = name => {
+    return highlightFilterNames.includes(name)
+  }
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -133,7 +133,7 @@ const TimeDropdown = ({
   }
 
   return (
-    <>
+    <S.TimedropdownWrapper>
       <S.FlexContainer>
         {filters.period.map((filter, index) => (
           <S.DropdownItem
@@ -156,18 +156,31 @@ const TimeDropdown = ({
           </S.DropdownItem>
         ))}
       </S.FlexContainer>
-      <S.FlexContainer>
-        {filters.months.map((filter, index) => (
-          <S.DropdownItem
-            onClick={() => addToRedux(filter)}
-            highlight={highlightCell(filter.name)}
-            key={index}
-          >
-            {filter.name}
-          </S.DropdownItem>
-        ))}
-      </S.FlexContainer>
-    </>
+      <S.MonthsContainer>
+        <S.FlexContainer>
+          {filters.months.slice(0, 6).map((filter, index) => (
+            <S.DropdownItem
+              onClick={() => addToRedux(filter)}
+              highlight={highlightCell(filter.name)}
+              key={index}
+            >
+              {filter.name}
+            </S.DropdownItem>
+          ))}
+        </S.FlexContainer>
+        <S.FlexContainer>
+          {filters.months.slice(6, 11).map((filter, index) => (
+            <S.DropdownItem
+              onClick={() => addToRedux(filter)}
+              highlight={highlightCell(filter.name)}
+              key={index}
+            >
+              {filter.name}
+            </S.DropdownItem>
+          ))}
+        </S.FlexContainer>
+      </S.MonthsContainer>
+    </S.TimedropdownWrapper>
   )
 }
 

@@ -5,7 +5,6 @@ import {
   SingleInsgightPage,
   ExpertisePage,
   IndustryPage,
-  Practice,
   Location,
 } from "../pages/"
 
@@ -20,7 +19,6 @@ export const routeNames = {
   expertisePage: "/expertise/:id",
   industryPage: "/industry/:id",
 
-  practice: "/practice",
   location: "/location",
 }
 
@@ -57,11 +55,6 @@ export const routes = [
     path: routeNames.leadership,
     exact: true,
     element: <Leadership />,
-  },
-  {
-    path: routeNames.practice,
-    exact: true,
-    element: <Practice />,
   },
   {
     path: routeNames.location,
