@@ -65,43 +65,44 @@ const ListItem = styled("li")`
     margin: 0;
     list-style: none;
 `;
-// const Link = styled.div`
-//         display: block;
-//     padding: 1rem 2rem;
-//     transition: background-color 0.2s ease-out,color 0.2s ease-out;
-//     color: white;
-//     text-decoration: none;
-//     cursor: pointer;
-//     :hover {
-//         background-color: #00244A;
-//         color: #fff;
-//     }
+const Link = styled.a`
+        display: block;
+    padding: 1rem 2rem;
+    transition: background-color 0.2s ease-out,color 0.2s ease-out;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    :hover {
+        background-color: #00244A;
+        color: #fff;
+    }
+`
+
+const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
+
+
+// const Select = styled.select`
+
+//   // A reset of styles, including removing the default dropdown arrow
+//   appearance: none;
+//   // Additional resets for further consistency
+//    margin: 0;
+//   width: 100%;
+//   font-family: inherit;
+//   cursor: inherit;
+//   line-height: inherit; 
+
+
 // `
 
-// const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
+// const Option = styled.option`
 
-
-const Select = styled.select`
-
-  // A reset of styles, including removing the default dropdown arrow
-  appearance: none;
-  // Additional resets for further consistency
-   margin: 0;
-  width: 100%;
-  font-family: inherit;
-  cursor: inherit;
-  line-height: inherit; 
-
-
-`
-
-const Option = styled.option`
-
-`
+// `
 
 const TestButton = () => {
    const [isOpen, setIsOpen] = useState(false);
    const [selectedOption, setSelectedOption] = useState(null);
+   const [isSelected, setisSelected] = useState(null)
 
    const toggling = () => setIsOpen(!isOpen);
 
@@ -111,31 +112,33 @@ const TestButton = () => {
      setSelectedOption(value);
      setIsOpen(false);
    };
+
 const changeType = (e) =>{
 console.log(e.target.value)
 }
-
+const handleClick = (option) => {
+  setisSelected(option)
+  console.log(option)
+}
 return(
-    <>
-  <DropDownContainer>
-          <DropDownHeader onClick={toggling}>
+<>
+      <DropDownContainer>
+        <DropDownHeader onClick={toggling}>
           {selectedOption || "Jump to Country"}
-         </DropDownHeader>
-                {isOpen && (
-            <DropDownListContainer>
-                <DropDownList>
-                    <Select
-                    onChange={changeType}
-                    >
-                        <ListItem><Option>hey</Option></ListItem>
-                        <ListItem><Option>hey</Option></ListItem>
-                        <ListItem><Option value='something'>hey</Option></ListItem>
-                    </Select>
-                </DropDownList>
-        </DropDownListContainer>
-                )}
-  </DropDownContainer>
-  </>
+        </DropDownHeader>
+        {isOpen && (
+          <DropDownListContainer>
+            <DropDownList >
+              {options.map((option, index) => (
+                <ListItem onClick={()=>handleClick(option)} key={index}>
+                  <Link href="#">{option}</Link>
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
+      </>
 )
 
 }
@@ -190,7 +193,7 @@ export default TestButton
 
 
 
-
+// REACT INSPIRATION FOR DROPDOWN
 //   return (
 // <>
 //       <DropDownContainer>
@@ -212,3 +215,26 @@ export default TestButton
 //       </>
 //   );
 // }
+
+
+// REACT WITH SELECT
+{/* <>
+<DropDownContainer>
+        <DropDownHeader onClick={toggling}>
+        {selectedOption || "Jump to Country"}
+       </DropDownHeader>
+              {isOpen && (
+          <DropDownListContainer>
+              <DropDownList>
+                  <Select
+                  onChange={changeType}
+                  >
+                      <ListItem><Option>hey</Option></ListItem>
+                      <ListItem><Option>hey</Option></ListItem>
+                      <ListItem><Option value='something'>hey</Option></ListItem>
+                  </Select>
+              </DropDownList>
+      </DropDownListContainer>
+              )}
+</DropDownContainer>
+</> */}
