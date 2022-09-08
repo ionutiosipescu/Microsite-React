@@ -56,6 +56,8 @@ const HealthPodcasts = ({ columnsNumber }) => {
     return <Spinner />
   }
 
+  console.log("This is podcasts", podcasts)
+
   return (
     <InfiniteScroll
       dataLength={podcasts.length || 0}

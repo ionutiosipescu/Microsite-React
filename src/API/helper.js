@@ -51,25 +51,32 @@ export const cleanPodcastsData = (rawData, insightType) => {
         getObjectFromIncluded(rawData.included, teaserImageId).uri.url
     }
 
-    let podcastLinks = {}
+    let podcastLinks = {
+      amazon: null,
+      apple: null,
+      google: null,
+      spotify: null,
+    }
     // One podcast can actually have more than one "field_bulletin_category". I am grabbing the first one for now
     const bulletinCategoryIds = grabSubIds(
       "field_bulletin_category",
       podcast
     )[0]
-    const bulletinObjext = getObjectFromIncluded(
-      rawData.included,
-      bulletinCategoryIds
-    )
+    if (bulletinCategoryIds) {
+      const bulletinObjext = getObjectFromIncluded(
+        rawData.included,
+        bulletinCategoryIds
+      )
 
-    podcastLinks.amazon =
-      bulletinObjext.field_podcast_serie_amazon_link?.uri || null
-    podcastLinks.apple =
-      bulletinObjext.field_podcast_serie_apple_link?.uri || null
-    podcastLinks.google =
-      bulletinObjext.field_podcast_serie_google_link?.uri || null
-    podcastLinks.spotify =
-      bulletinObjext.field_podcast_serie_spotify?.uri || null
+      podcastLinks.amazon =
+        bulletinObjext.field_podcast_serie_amazon_link?.uri || null
+      podcastLinks.apple =
+        bulletinObjext.field_podcast_serie_apple_link?.uri || null
+      podcastLinks.google =
+        bulletinObjext.field_podcast_serie_google_link?.uri || null
+      podcastLinks.spotify =
+        bulletinObjext.field_podcast_serie_spotify?.uri || null
+    }
 
     const date = dateToShortLocale(
       podcast.attributes.changed || podcast.attributes.created
@@ -163,6 +170,7 @@ const grabSubIds = (fieldName, singleObject) => {
 }
 
 const getObjectFromIncluded = (includedArray, id) => {
+  console.log("This is includedArray", includedArray)
   return includedArray.find(item => item.id === id).attributes
 }
 

@@ -55,6 +55,8 @@ const CaseStudies = ({ insightType, columnsNumber }) => {
     return <Spinner />
   }
 
+  console.log("This is articles", articles)
+
   return (
     <InfiniteScroll
       dataLength={articles.length || 0}

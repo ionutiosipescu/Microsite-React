@@ -16,7 +16,7 @@ export const getPodcasts = async (
     } else {
       // let link =
       //   "https://akamai.alvarezandmarsal.com/jsonapi/node/podcast?include=field_teaser_image,field_bulletin_category&filter[field_category.id]=f488f6ff-6a3d-4637-b45c-5ed578cf85f6&sort=-created"
-      link = `${jsonApi}/node/podcast?include=field_teaser_image,field_bulletin_category&page[limit]=10&sort=-created`
+      link = `${jsonApi}/node/podcast?include=field_teaser_image,field_bulletin_category&sort=-created`
       link = getLinkWithJsonApiFilters(link, filters)
     }
 
