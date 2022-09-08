@@ -19,7 +19,6 @@ const ArticleInsightType = ({ insightType, columnsNumber }) => {
 
   // Get the initial data from the server
   useEffect(() => {
-    console.log("This is ")
     const getData = async () => {
       const data = await getInsights(insightType, filters, nextPage)
       setArticles(data)
@@ -54,8 +53,6 @@ const ArticleInsightType = ({ insightType, columnsNumber }) => {
   if (!articles) {
     return <Spinner />
   }
-
-  console.log("This is articles", articles)
 
   return (
     <InfiniteScroll

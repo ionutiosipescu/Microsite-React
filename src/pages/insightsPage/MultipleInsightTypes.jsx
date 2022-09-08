@@ -1,6 +1,6 @@
 import React from "react"
 import { InsightsContainer } from "./styles/inisghts.style"
-import { insightTypes } from "../../components/navbarComponents/inisightsNavbar/InsightsNavbar"
+import { insightTypes } from "../../components/navbars/InsightsNavbar"
 import HealthPodcasts from "./HealthPodcasts"
 import ArticleInsightType from "./ArticleInsightType"
 
@@ -14,7 +14,7 @@ const MultipleInsightTypes = () => {
         <ArticleInsightType insightType={insightTypes[2]} columnsNumber={1} />
       </div>
       <div>
-        <HealthPodcasts columnsNumber={1} />
+        <HealthPodcasts columnsNumber={1} insightType={insightTypes[3]} />
       </div>
     </InsightsContainer>
   )

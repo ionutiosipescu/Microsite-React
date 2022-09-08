@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 import BreadCrumb from "../buttons/BreadCrumb"
 import ButtonWithAnimation from "../buttons/ButtonWithAnimation"
 import NavBar from "../layout/NavBar"
-import { InsightsNavbar } from "../navbarComponents"
+import { InsightsNavbar } from "../navbars"
 import * as S from "./HeroSection.styles"
 
 const HeroSection = ({
@@ -24,7 +24,6 @@ const HeroSection = ({
   // console.log(locationButton)
   const location = useLocation()
   const [navbarActive, setNavbarActive] = useState(true)
-
 
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"

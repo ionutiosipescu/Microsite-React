@@ -1,27 +1,29 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect } from "react"
 import { PodcastCard } from "../../components/cards"
 import { getPodcasts } from "../../API"
 import { useSelector } from "react-redux"
 import UnalignedItemsContainer from "../../components/layout/UnalignedItemsContainer"
 import { Spinner } from "../../components"
 import InfiniteScroll from "react-infinite-scroll-component"
-import { ContentContext } from "./Insights"
 
-const HealthPodcasts = ({ columnsNumber }) => {
+const HealthPodcasts = ({ columnsNumber, insightType }) => {
   const { currentInsightType, filters } = useSelector(state => state.filters)
-  const { nextPodcastPage, setNextPodcastPage } = useContext(ContentContext)
+  const [nextPodcastPage, setNextPodcastPage] = useState(null)
   const [hasMore, setHasMore] = useState(true)
 
   const [podcasts, setPodcasts] = useState(null)
+  // console.log("This is insightType", insightType)
+
+  if (insightType === undefined) {
+    insightType = currentInsightType
+  }
+
+  // console.log("This is insightType", insightType)
 
   // Get the initial data from the server
   useEffect(() => {
     const getData = async () => {
-      const data = await getPodcasts(
-        currentInsightType,
-        filters,
-        nextPodcastPage
-      )
+      const data = await getPodcasts(insightType, filters, nextPodcastPage)
 
       setNextPodcastPage(data.nextPageLink)
 
@@ -39,7 +41,7 @@ const HealthPodcasts = ({ columnsNumber }) => {
 
   // This is for infinite scrolling
   const getMorePodcasts = async () => {
-    const data = await getPodcasts(currentInsightType, filters, nextPodcastPage)
+    const data = await getPodcasts(insightType, filters, nextPodcastPage)
 
     setNextPodcastPage(data.nextPageLink)
 
@@ -55,8 +57,6 @@ const HealthPodcasts = ({ columnsNumber }) => {
   if (!podcasts) {
     return <Spinner />
   }
-
-  console.log("This is podcasts", podcasts)
 
   return (
     <InfiniteScroll

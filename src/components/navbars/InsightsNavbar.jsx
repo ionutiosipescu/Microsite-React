@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react"
-import * as S from "./styles/InsightsNavbar.styles"
-import Cell from "./Cell"
-import Dropdown from "./Dropdown"
-import FiltersContainer from "./FiltersContainer"
-import { Search } from "../../../assets/icons"
-import CellWithChevron from "./CellWithChevron"
-import { getInsightFilters } from "../../../API/getFilters"
+import * as S from "./inisightsNavbarComponents/styles/InsightsNavbar.styles"
+import Cell from "./inisightsNavbarComponents/Cell"
+import Dropdown from "./inisightsNavbarComponents/Dropdown"
+import FiltersContainer from "./inisightsNavbarComponents/FiltersContainer"
+import { Search } from "../../assets/icons"
+import CellWithChevron from "./inisightsNavbarComponents/CellWithChevron"
+import { getInsightFilters } from "../../API/getFilters"
 import { useDispatch } from "react-redux"
-import { addFilter } from "../../../store/actions/filters"
-import Spinner from "../../Spinner"
+import { addFilter } from "../../store/actions/filters"
+import Spinner from "../Spinner"
 
 // Those are are insight insight types/categories. The id for each type of insight can be found on
 // https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/insights.  If you want to add/remove new ones, just grab the name

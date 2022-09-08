@@ -3,7 +3,7 @@ import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
 import { useDispatch, useSelector } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
-import { ContentContext } from "../../../pages/insightsPage/Insights"
+// import { ContentContext } from "../../../pages/insightsPage/Insights"
 
 const Dropdown = ({ text, filters, category }) => {
   const dropdownRef = useRef()
@@ -11,8 +11,8 @@ const Dropdown = ({ text, filters, category }) => {
   const dropdownHeightRef = useRef(null)
   const { filters: selectedFilters } = useSelector(state => state.filters)
 
-  const { setContent, setNextPodcastPage, setNextPage } =
-    useContext(ContentContext)
+  // const { setContent, setNextPodcastPage, setNextPage } =
+  //   useContext(ContentContext)
 
   // Determines the names of the filters that should be highlighted
   const highlightFilterNames = []
@@ -48,9 +48,9 @@ const Dropdown = ({ text, filters, category }) => {
   }, [isOpen])
 
   const addFilterToRedux = filter => {
-    setNextPage(0)
-    setContent([])
-    setNextPodcastPage(null)
+    // setNextPage(0)
+    // setContent([])
+    // setNextPodcastPage(null)
     dispatch(addFilter(filter))
   }
 

@@ -6,14 +6,14 @@ import { removeFilter } from "../../../store/actions/filters"
 import { ContentContext } from "../../../pages/insightsPage/Insights"
 
 const FilterCell = ({ filter }) => {
-  const { setContent, setNextPodcastPage, setNextPage } =
-    useContext(ContentContext)
+  // const { setContent, setNextPodcastPage, setNextPage } =
+  //   useContext(ContentContext)
   const dispatch = useDispatch()
 
   const remove = () => {
-    setNextPage(0)
-    setContent([])
-    setNextPodcastPage(null)
+    // setNextPage(0)
+    // setContent([])
+    // setNextPodcastPage(null)
 
     dispatch(removeFilter(filter))
   }

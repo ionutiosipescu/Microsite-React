@@ -11,16 +11,17 @@ import {
   fetchHLSPersons,
   filterHLSPersons,
 } from "../../store/actions/leaders"
-import * as S from "../../components/navbarComponents/leadershipNavbar/styles/InsightsNavbar.styles"
+import * as S from "../../components/navbars/leadershipNavbar/styles/InsightsNavbar.styles"
 
-import Dropdown from "../../components/navbarComponents/leadershipNavbar/Dropdown"
-import { InsightsNavbarContext } from "../../components/navbarComponents/leadershipNavbar/InsightsNavbar"
-import CellWithChevron from "../../components/navbarComponents/leadershipNavbar/CellWithChevron"
-import FiltersContainer from "../../components/navbarComponents/leadershipNavbar/FiltersContainer"
+import Dropdown from "../../components/navbars/leadershipNavbar/Dropdown"
+import { InsightsNavbarContext } from "../../components/navbars/leadershipNavbar/InsightsNavbar"
+import CellWithChevron from "../../components/navbars/leadershipNavbar/CellWithChevron"
+import FiltersContainer from "../../components/navbars/leadershipNavbar/FiltersContainer"
 import { FullWidthContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 import { LeaadersContainer } from "./style/Leadership.style"
+import { LeadershipNavbar } from "../../components/navbars"
 
 const Leadership = () => {
   const dispatch = useDispatch()
@@ -124,6 +125,7 @@ const Leadership = () => {
                 filtercolor={"var(--hover-blue)"}
                 marginTop="6rem"
               />
+              {/* <LeadershipNavbar /> */}
             </InsightsNavbarContext.Provider>
 
             <h1 className=""> Leaders</h1>

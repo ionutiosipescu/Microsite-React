@@ -10,6 +10,7 @@ const PodcastCard = ({
   teaserImageUrl,
   podcastLinks,
 }) => {
+  console.log("This is podcastLinks", podcastLinks)
   return (
     <S.Card>
       <S.Category>{insightType}</S.Category>

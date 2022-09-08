@@ -8,11 +8,11 @@ import { ContentContext } from "../../../pages/insightsPage/Insights"
 const Cell = ({ name, identifier, id }) => {
   const dispatch = useDispatch()
   const { currentInsightType } = useSelector(state => state.filters)
-  const { setNextPage, setContent } = useContext(ContentContext)
+  // const { setNextPage, setContent } = useContext(ContentContext)
 
   const handleClick = () => {
-    setNextPage(0)
-    setContent([])
+    // setNextPage(0)
+    // setContent([])
     dispatch(
       changeInsightsType({
         name,

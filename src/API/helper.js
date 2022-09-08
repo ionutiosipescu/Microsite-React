@@ -170,7 +170,6 @@ const grabSubIds = (fieldName, singleObject) => {
 }
 
 const getObjectFromIncluded = (includedArray, id) => {
-  console.log("This is includedArray", includedArray)
   return includedArray.find(item => item.id === id).attributes
 }
 
