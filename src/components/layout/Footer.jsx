@@ -30,11 +30,13 @@ const ContentContainer = styled.div`
   width: 100%;
   padding: 3.125rem 4.375rem;
   font-size: 0.875rem;
+  /* change */
 `
 const SectionsContainer = styled.div`
+  /* margin: 0; */
   position: relative;
   height: 100%;
-  padding-bottom: 3.125rem;
+  /* padding-bottom: 3.125rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +56,7 @@ const SectionsContainer = styled.div`
     }
     .global-careers-box,
     .contact-privacy-box {
-      width: 50%;
+      width: 100%;
     }
     .global,
     .contact {
@@ -80,16 +82,22 @@ const SectionsContainer = styled.div`
   }
   /* MEDIA */
   @media ${size.md} {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     align-items: unset;
     flex-direction: row;
     justify-content: space-between;
     .logo-container,
     .list-info-container,
-    .bulletin-container,
     .contact,
-    .global {
-      margin-bottom: 0 !important;
+    .global,
+    .contact-privacy-box {
+      /* margin-bottom: 0 !important; */
+      flex-grow: 1;
+      margin: 0 30px 30px 0;
+    }
+    .bulletin-container{
+      flex-grow: 1;
+      margin-bottom: 30px;
     }
 
     .global-careers-box,
@@ -97,7 +105,7 @@ const SectionsContainer = styled.div`
       display: flex;
     }
     .privacy {
-      padding-left: 6.25rem;
+      /* padding-left: 6.25rem; */
     }
   }
 `
@@ -105,8 +113,8 @@ const ColContainer = styled.div`
   display: flex;
   .logo {
     svg {
-      height: 3.438rem;
-      width: auto;
+      height: 66.898px;
+      width: 75.667px;
     }
   }
   /* MEDIA */
@@ -114,6 +122,11 @@ const ColContainer = styled.div`
     .bulletin-box {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      .form-col{
+        display: flex;
+        justify-content: end;
+      }
     }
   }
 `
@@ -199,7 +212,7 @@ const ColBox = styled.div`
       align-items: end;
     }
     .icons-container {
-      margin-bottom: 0;
+      /* margin-bottom: 0; */
     }
   }
 `
@@ -238,24 +251,6 @@ const Footer = () => {
     
     console.log(email)
   };
-    // let link = `https://bulletins.alvarezandmarsal.com/?email=`;
-    //   Axios.post(link, {
-    //     email: email,
-    //   })
-    //   .then((response) => {
-    //     console.log(response)
-    //   }, (error) => {
-    //     console.error(error)
-    //   });
-
-  
-  // const handleClick = () => {
-  //   // let link = `https://bulletins.alvarezandmarsal.com/?email=${encodeURIComponent(email)}`
-  //   let link = `https://bulletins.alvarezandmarsal.com/?email`
-
-  //   window.location.replace(link)
-  //   console.log(link)
-  // }
     
 
 
@@ -283,8 +278,6 @@ const Footer = () => {
                 <p>Careers </p>
                 <p>About A&M</p>
               </Col>
-            </ColBox>
-            <ColBox className="contact-privacy-box">
               <Col className="contact">
                 <p>Contact</p>
                 <p>Alumni</p>
@@ -292,6 +285,9 @@ const Footer = () => {
                 <p>A&M Capital Real Estate</p>
                 <p>Employee Portal</p>
               </Col>
+            </ColBox>
+          </ColContainer>
+            <ColContainer className="contact-privacy-box">
               <Col className="privacy">
                 <p>Privacy Policy</p>
                 <p>Privacy Shield Notice</p>
@@ -299,8 +295,7 @@ const Footer = () => {
                 <p>Cookie Policy</p>
                 <p>Terms of Use</p>
               </Col>
-            </ColBox>
-          </ColContainer>
+            </ColContainer>
           <ColContainer className="bulletin-container">
             <ColBox className="bulletin-box">
               <Col className="icons-container">
@@ -319,7 +314,7 @@ const Footer = () => {
               </Col>
 
 
-              <Form onSubmit={handleSubmit} >
+              <Form onSubmit={handleSubmit} className="form-col">
               <Form.Group controlId='email' className="bulletin-signup">
                 <Form.Label>AM Bulletin Signup</Form.Label>
                 <Form.Control placeholder="E-MAIL" type='email' value={email} onChange={ev => setEmail(ev.target.value)} required={true} />
