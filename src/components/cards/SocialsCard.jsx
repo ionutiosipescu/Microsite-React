@@ -56,7 +56,9 @@ const SocialsCard = () => {
       <div className="blue-box box">
         <a href="https://twitter.com/alvarezmarsal"><FooterTwitterIcon className="icon" /></a>
       </div>
-      <Mail className="box" />
+      <a href="https://contact.alvarezandmarsal.com/">
+        <Mail className="box" />
+      </a>
       <Pdf className="box" />
     </Card>
   )
