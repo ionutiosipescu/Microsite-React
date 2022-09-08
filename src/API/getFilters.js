@@ -38,5 +38,3 @@ export const getInsightFilters = async () => {
     return null
   }
 }
-
-console.log(getInsightFilters())

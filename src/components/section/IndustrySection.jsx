@@ -93,7 +93,7 @@ const IndustrySection = ({ industries }) => {
   return (
     <IndustrySectionContainer className="">
       <div className="grayContainer">
-        <h2 className="">Industries: </h2>
+        <h2>Industries: </h2>
         <UnalignedItemsContainer columnsNumber={2}>
           {industries?.map((industry, index) => (
             <ExpertiseCard

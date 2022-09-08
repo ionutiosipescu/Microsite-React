@@ -13,7 +13,6 @@ const ArticlePreviewCard = ({
   insightType,
 }) => {
   const navigate = useNavigate()
-
   const handleClick = () => {
     navigate(`${routeNames.insights}/${alias}`, {
       state: uuid,

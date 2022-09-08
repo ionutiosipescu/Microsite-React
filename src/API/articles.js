@@ -29,7 +29,9 @@ export const getSingleArticle = async id => {
   try {
     const link = `${jsonApi}/node/article/${id}?include=field_authors.field_professional_title,field_authors.field_city,field_authors.field_image_background,field_featured_expert.field_professional_title,field_featured_expert.field_city,field_featured_expert.field_image_background`
 
-    const res = Axios.get(link)
+    // console.log("This is link", link)
+
+    const res = await Axios.get(link)
     const data = res.data.data
 
     let article = {}
@@ -115,6 +117,5 @@ export const getLocations = setLocations => {
       location.push(locationObject)
     }
     setLocations(location)
-    console.log(dataFiltered)
   })
 }

@@ -91,7 +91,7 @@ const ExpertisePage = () => {
               </UnalignedItemsContainer>
               <BorderBottom color={"var(--hover-blue)"} className="my-3" />
               <div className="industrySection mt-4">
-                <h3 className=" fw-bold">Industries:</h3>
+                <h3 className="fw-bold">Industries:</h3>
                 {expertise?.industries?.map(expertiseIndustry => (
                   <span
                     key={expertiseIndustry?.id}
@@ -106,9 +106,10 @@ const ExpertisePage = () => {
               {expertise?.experts?.map(expert => {
                 let cardContent = {
                   imageSrc: expert?.image,
-                  name: expert?.name,
+                  name: expert?.title,
                   position: expert?.profession_title,
                   country: expert?.global_location,
+                  buttonText: "connect",
                 }
                 return <ProfessionalCard {...cardContent} />
               })}
@@ -130,6 +131,7 @@ const ExpertisePage = () => {
 }
 
 export default ExpertisePage
+
 const ArticlesContainer = styled.div`
   width: 100%;
   background-color: var(--graySections);

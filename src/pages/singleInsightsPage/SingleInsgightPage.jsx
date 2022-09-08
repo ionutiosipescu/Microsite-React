@@ -20,7 +20,7 @@ const SingleInsgightPage = () => {
   const [articleData, setArticleData] = useState(null)
 
   useEffect(() => {
-    const getData = async state => {
+    const getData = async () => {
       const data = await getSingleArticle(state)
       setArticleData(data)
     }

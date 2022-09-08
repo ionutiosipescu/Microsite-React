@@ -236,8 +236,6 @@ export const fetchExpertise = expertiseId => {
           for (const [key, value] of Object.entries(
             data?.data.expertise_parent_expert_profile
           )) {
-            console.log(key)
-
             if (key == expert) {
               experts.push(value)
             }

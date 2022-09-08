@@ -15,6 +15,7 @@ import {
 import ExpertiseSection from "../../components/section/ExpertiseSection"
 import ArticlesSection from "../../components/section/ArticlesSection"
 import { IndustryContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
+import { Spinner } from "../../components"
 
 const IndustryPage = () => {
   const { state } = useLocation()
@@ -25,12 +26,16 @@ const IndustryPage = () => {
 
   useEffect(() => {
     dispatch(fetchIndustry(state?.industryId))
-    dispatch(fetchIndustryArticles(state.industryUUID))
+    dispatch(fetchIndustryArticles(state?.industryUUID))
   }, [dispatch, state])
 
   console.log("This is industryArticles", industryArticles)
   console.log("This is industry", industry)
   console.log("This is state", state)
+
+  if (!industry && industryArticles.length > 0) {
+    return <Spinner />
+  }
 
   return (
     <>
@@ -59,7 +64,7 @@ const IndustryPage = () => {
                   <ProfessionalCard
                     key={index}
                     id="professional-card-industries"
-                    name={expert.name}
+                    name={expert.title}
                     imageSrc={expert?.image}
                     position={expert?.profession_title}
                     country={expert?.global_location}

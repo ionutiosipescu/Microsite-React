@@ -73,16 +73,15 @@ const HeroSection = ({
                     ></p>
                   )}
 
-                  {buttonText ? (
+                  {buttonText && (
                     <div className="buttonContainer">
                       <ButtonWithAnimation
                         text={buttonText}
                         href={"https://contact.alvarezandmarsal.com"}
                       />
                     </div>
-                  ) : (
-                    <Custom />
                   )}
+                  {Custom && <Custom />}
                 </div>
               )}
             </>

@@ -121,13 +121,12 @@ const Position = styled.p`
   }
 `
 
-const Info = styled.a`
+const Info = styled.div`
   color: var(--hover-blue);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: bold;
   line-height: 1;
-  cursor: pointer;
   :hover {
     color: var(--hover-blue);
   }
@@ -138,12 +137,15 @@ const Info = styled.a`
 `
 
 const ProfessionalCard = ({
-  name,
-  imageSrc,
+  name = "Connor Colquhoun",
+  imageSrc = "wine connoisseur",
   position,
   country,
   buttonText,
+  expertPageLink = null,
 }) => {
+  // const expertPageLink = `${process.env.REACT_APP_BASE_API_URL}/our-people/${expertPageLink}`
+
   return (
     <Card>
       <ImageContainer>
@@ -152,12 +154,12 @@ const ProfessionalCard = ({
 
       <CardBody>
         <Content>
-          <Name>{name || "Connor Colquhoun"}</Name>
-          <Position>{position || "wine connoisseur"}</Position>
+          <Name href={expertPageLink}>{name}</Name>
+          <Position>{position}</Position>
           <Info>{country} </Info>
         </Content>
         <div className="button-animation">
-          <ButtonWithAnimation text={buttonText} />
+          <ButtonWithAnimation text={buttonText} href={expertPageLink} />
         </div>
       </CardBody>
       <ArrowContainer>
