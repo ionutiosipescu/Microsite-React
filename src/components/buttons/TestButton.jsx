@@ -1,9 +1,9 @@
-import React, { useState, handleSelect } from "react";
+import React, { useState, handleSelect, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 
 const DropDownContainer = styled("div")`
-    max-width: 250px;
+    max-width: 300px;
 `;
 
 const DropDownHeader = styled("div")`
@@ -73,15 +73,37 @@ const Link = styled.a`
     }
 `
 
-const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
 
 const TestButton = ({location}) => {
-  // let fullLink = location?.map((location, index) => {
-  //   return "#" + location.country.idd
-  // })
-  // console.log(location)
-  // console.log(country)
 
+  // Variables
+  // const dropdownRef = useRef()
+  // const [isOpen, setIsOpen] = useState(false)
+  
+  // When click anywhere on page dropdown is closed
+
+  // const handleClickOpen = () => {
+  //  setIsOpen(!isOpen)
+  // }
+
+  
+  // useEffect(() => {
+  //   const closeDropdown = e => {
+  //     if (!dropdownRef.current.contains(e.target) && isOpen) {
+  //       setIsOpen(false)
+  //     }
+  //   }
+
+  //   document.body.addEventListener("click", closeDropdown)
+
+  //   return () => {
+  //     document.body.removeEventListener("click", closeDropdown)
+  //   }
+  // }, [isOpen])
+
+
+
+// functionality for dropdown
 
    const [isOpen, setIsOpen] = useState(false);
    const [selectedOption, setSelectedOption] = useState(null);
@@ -89,23 +111,16 @@ const TestButton = ({location}) => {
 
    const toggling = () => setIsOpen(!isOpen);
 
-   const onOptionClicked = value => () => {
-     setSelectedOption(value);
-   };
-
-// const changeType = (e) =>{
-// console.log(e.target.value)
-// }
-const handleClick = (location) => {
-  setSelectedOption(location.country);
-  setIsOpen(false);
-  setisSelected(location.country.country)
-  console.log(location.idd)
+    const handleClick = (location) => {
+    setSelectedOption(location.country);
+    setIsOpen(false);
+    setisSelected(location.country.country)
+    console.log(location.idd)
 }
 return(
       
 <>
-      <DropDownContainer>
+      <DropDownContainer >
         <DropDownHeader onClick={toggling}>
           {selectedOption || "Jump to Country"}
         </DropDownHeader>

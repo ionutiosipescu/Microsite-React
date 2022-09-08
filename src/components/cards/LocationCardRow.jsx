@@ -30,7 +30,6 @@ const LocationCardRow = ({ location }) => {
     <>
       <Card>
         <div className="coutry" id={country.idd}>{country.country}</div>
-        {/* <a  className="idd" id={country.idd}>here</a> */}
         <ContainerLocation>
           {location.city?.map((location, index) => (
             <LocationCard location={location} key={index} />
