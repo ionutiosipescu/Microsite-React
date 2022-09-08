@@ -1,11 +1,6 @@
 import React, { useState, handleSelect } from "react";
 import styled from "styled-components";
 
-// const Main = styled("div")`
-//   font-family: sans-serif;
-//   background: #f0f0f0;
-//   height: 10;
-// `;
 
 const DropDownContainer = styled("div")`
     max-width: 250px;
@@ -80,6 +75,70 @@ const Link = styled.a`
 
 const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"];
 
+const TestButton = ({location}) => {
+  // let fullLink = location?.map((location, index) => {
+  //   return "#" + location.country.idd
+  // })
+  // console.log(location)
+  // console.log(country)
+
+
+   const [isOpen, setIsOpen] = useState(false);
+   const [selectedOption, setSelectedOption] = useState(null);
+   const [isSelected, setisSelected] = useState(null)
+
+   const toggling = () => setIsOpen(!isOpen);
+
+   const onOptionClicked = value => () => {
+     setSelectedOption(value);
+   };
+
+// const changeType = (e) =>{
+// console.log(e.target.value)
+// }
+const handleClick = (location) => {
+  setSelectedOption(location.country);
+  setIsOpen(false);
+  setisSelected(location.country.country)
+  console.log(location.idd)
+}
+return(
+      
+<>
+      <DropDownContainer>
+        <DropDownHeader onClick={toggling}>
+          {selectedOption || "Jump to Country"}
+        </DropDownHeader>
+        {isOpen && (
+          <DropDownListContainer>
+            <DropDownList >
+              {location?.map((location, index) => (
+                <ListItem onClick={()=>handleClick(location.country)} key={index}>
+                  <Link  href={"#" + location.country.idd}>{location.country.country}</Link>
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
+      </>
+)
+
+}
+export default TestButton
+
+
+
+
+
+
+
+// const Main = styled("div")`
+//   font-family: sans-serif;
+//   background: #f0f0f0;
+//   height: 10;
+// `;
+
 
 // const Select = styled.select`
 
@@ -98,54 +157,6 @@ const options = ["Mangoes", "Apples", "Oranges", "Mangoes", "Apples", "Oranges"]
 // const Option = styled.option`
 
 // `
-
-const TestButton = () => {
-   const [isOpen, setIsOpen] = useState(false);
-   const [selectedOption, setSelectedOption] = useState(null);
-   const [isSelected, setisSelected] = useState(null)
-
-   const toggling = () => setIsOpen(!isOpen);
-
-   const onOptionClicked = value => () => {
-     console.log(value)
-
-     setSelectedOption(value);
-     setIsOpen(false);
-   };
-
-const changeType = (e) =>{
-console.log(e.target.value)
-}
-const handleClick = (option) => {
-  setisSelected(option)
-  console.log(option)
-}
-return(
-<>
-      <DropDownContainer>
-        <DropDownHeader onClick={toggling}>
-          {selectedOption || "Jump to Country"}
-        </DropDownHeader>
-        {isOpen && (
-          <DropDownListContainer>
-            <DropDownList >
-              {options.map((option, index) => (
-                <ListItem onClick={()=>handleClick(option)} key={index}>
-                  <Link href="#">{option}</Link>
-                </ListItem>
-              ))}
-            </DropDownList>
-          </DropDownListContainer>
-        )}
-      </DropDownContainer>
-      </>
-)
-
-}
-export default TestButton
-
-
-
 
 
 

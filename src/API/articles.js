@@ -187,6 +187,6 @@ export const getLocations = setLocations => {
       location.push(locationObject)
     }
     setLocations(location)
-    console.log(dataFiltered)
+    // console.log(dataFiltered)
   })
 }

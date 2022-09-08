@@ -23,14 +23,14 @@ const Card = styled.div`
 const LocationCardRow = ({ location }) => {
   const { country } = location
 
-  // console.log(location)
-  // console.log(country)
+  // console.log(typeof(location.country.idd))
   // console.log(location.city)
   // console.log(location.city[0])
   return (
     <>
       <Card>
-        <div className="coutry">{country.country}</div>
+        <div className="coutry" id={country.idd}>{country.country}</div>
+        {/* <a  className="idd" id={country.idd}>here</a> */}
         <ContainerLocation>
           {location.city?.map((location, index) => (
             <LocationCard location={location} key={index} />
