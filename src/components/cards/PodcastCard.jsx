@@ -21,10 +21,35 @@ const PodcastCard = ({
       <S.Date>{date}</S.Date>
       <S.Content>{teaserText}</S.Content>
       <S.Socials>
-        <Spotify />
-        <Antena />
-        <Slack />
-        <AmazonMusic />
+
+        {podcastLinks.spotify && (
+
+        <a href={podcastLinks.spotify}>
+          <Spotify />
+          </a>
+        )}
+
+        {podcastLinks.apple && (
+
+        <a href={podcastLinks.apple}>
+          <Antena />
+          </a>
+        )}
+
+        {podcastLinks.google && (
+
+        <a href={podcastLinks.google}>
+          <Slack />
+          </a>
+        )}
+
+        {podcastLinks.amazon && (
+
+        <a href={podcastLinks.amazon}>
+          <AmazonMusic />
+          </a>
+        )}
+        
       </S.Socials>
     </S.Card>
   )
