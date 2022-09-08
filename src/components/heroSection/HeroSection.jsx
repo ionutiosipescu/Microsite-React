@@ -19,9 +19,12 @@ const HeroSection = ({
   date,
   height,
   Custom,
+  locationButton,
 }) => {
+  // console.log(locationButton)
   const location = useLocation()
   const [navbarActive, setNavbarActive] = useState(true)
+
 
   const backgr =
     "https://www.alvarezandmarsal.com/sites/default/files/176916_hig_impact_of_new_admin_on_healthcare_webpage_r.jpg"
@@ -81,7 +84,7 @@ const HeroSection = ({
                       />
                     </div>
                   )}
-                  {Custom && <Custom />}
+                  {Custom && <Custom location={locationButton} />}
                 </div>
               )}
             </>

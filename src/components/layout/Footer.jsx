@@ -1,6 +1,7 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components/macro"
 import Col from "react-bootstrap/esm/Col"
+import { Form } from "react-bootstrap"
 import {
   FooterFacebookIcon,
   FooterLinkedinIcon,
@@ -46,6 +47,7 @@ const SectionsContainer = styled.div`
     color: #fff;
   }
   .list-info-container {
+    cursor: pointer;
     line-height: 1.6;
     p {
       margin: 0;
@@ -116,19 +118,56 @@ const ColContainer = styled.div`
   }
 `
 const ColBox = styled.div`
+/* 'initial', sometimes its the value 'auto' or 'none' */
+  .form-control {
+    display: auto;
+    width: auto;
+    /* width: 100%; this was the solution to have a bigger email
+     space but instead we will need to increase size of right container*/
+    padding: inherit;
+    font-size: auto;
+    font-weight: auto;
+    line-height: inherit;
+    color: auto;
+    background-color: inherit;
+    background-clip: inherit;
+    border: auto;
+    appearance: inherit;
+    border-radius: inherit;
+     transition: border-color none; 
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
+  .form-control:focus {
+    color: #fff;
+    background-color: transparent;
+    border-color: #fff !important;
+    outline: inherit;
+    box-shadow: none;
+  }
+
   .bulletin-signup {
     display: flex;
     gap: 0.7rem;
     flex-direction: column;
     align-items: center;
-    p {
+    .form-label {
       margin: 0;
+      color: #fff;
+
     }
-    span {
+    button {
       margin-left: 0.188rem;
+      border: 0;
+      background-color: transparent;
+      margin: 0;
+      color: #fff;
       svg {
         height: 0.688rem;
         width: auto;
+        margin-left: 5px;
       }
     }
   }
@@ -183,7 +222,43 @@ const BrandSection = styled.div`
   color: #fff;
 `
 
+
+
+
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let link = `https://bulletins.alvarezandmarsal.com/?email=${encodeURIComponent(email)}`
+
+    window.location.replace(link)
+    console.log(link)
+    
+    console.log(email)
+  };
+    // let link = `https://bulletins.alvarezandmarsal.com/?email=`;
+    //   Axios.post(link, {
+    //     email: email,
+    //   })
+    //   .then((response) => {
+    //     console.log(response)
+    //   }, (error) => {
+    //     console.error(error)
+    //   });
+
+  
+  // const handleClick = () => {
+  //   // let link = `https://bulletins.alvarezandmarsal.com/?email=${encodeURIComponent(email)}`
+  //   let link = `https://bulletins.alvarezandmarsal.com/?email`
+
+  //   window.location.replace(link)
+  //   console.log(link)
+  // }
+    
+
+
   return (
     <FooterContainer className="bg-light fluid">
       <ScrollToTop />
@@ -230,28 +305,33 @@ const Footer = () => {
             <ColBox className="bulletin-box">
               <Col className="icons-container">
                 <div>
-                  <FooterFacebookIcon />
+                  <a target="_blank" href="https://www.facebook.com/alvarezandmarsal"><FooterFacebookIcon /></a>
                 </div>
                 <div>
-                  <FooterLinkedinIcon />
+                  <a target="_blank" href="https://www.linkedin.com/company/alvarez-&-marsal/"><FooterLinkedinIcon /></a>
                 </div>
                 <div>
-                  <FooterTwitterIcon />
+                  <a target="_blank" href="https://twitter.com/alvarezmarsal"><FooterTwitterIcon /></a>
                 </div>
                 <div>
-                  <FooterYoutTubeIcon />
+                  <a target="_blank" href="https://www.youtube.com/user/AlvarezMarsal"><FooterYoutTubeIcon /></a>
                 </div>
               </Col>
-              <Col className="bulletin-signup">
-                <p>AM Bulletin Signup</p>
-                <input placeholder="E-MAIL"></input>
-                <p>
-                  Subscribe{" "}
+
+
+              <Form onSubmit={handleSubmit} >
+              <Form.Group controlId='email' className="bulletin-signup">
+                <Form.Label>AM Bulletin Signup</Form.Label>
+                <Form.Control placeholder="E-MAIL" type='email' value={email} onChange={ev => setEmail(ev.target.value)} required={true} />
+                <button  type="submit" className="">Subscribe
                   <span>
                     <ArrowRight />
-                  </span>
-                </p>
-              </Col>
+                  </span></button>
+
+                
+                  </Form.Group>
+                </Form>
+
             </ColBox>
           </ColContainer>
         </SectionsContainer>
