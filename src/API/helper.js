@@ -34,7 +34,7 @@ export const getLinkWithFilters = (link, selectedFilters) => {
   return link
 }
 
-export const cleanPodcastsData = (rawData, isnightType) => {
+export const cleanPodcastsData = (rawData, insightType) => {
   const podcasts = rawData.data.map(podcast => {
     const uuid = podcast.id
     const title = podcast.attributes.title
@@ -51,6 +51,26 @@ export const cleanPodcastsData = (rawData, isnightType) => {
         getObjectFromIncluded(rawData.included, teaserImageId).uri.url
     }
 
+    let podcastLinks = {}
+    // One podcast can actually have more than one "field_bulletin_category". I am grabbing the first one for now
+    const bulletinCategoryIds = grabSubIds(
+      "field_bulletin_category",
+      podcast
+    )[0]
+    const bulletinObjext = getObjectFromIncluded(
+      rawData.included,
+      bulletinCategoryIds
+    )
+
+    podcastLinks.amazon =
+      bulletinObjext.field_podcast_serie_amazon_link?.uri || null
+    podcastLinks.apple =
+      bulletinObjext.field_podcast_serie_apple_link?.uri || null
+    podcastLinks.google =
+      bulletinObjext.field_podcast_serie_google_link?.uri || null
+    podcastLinks.spotify =
+      bulletinObjext.field_podcast_serie_spotify?.uri || null
+
     const date = dateToShortLocale(
       podcast.attributes.changed || podcast.attributes.created
     )
@@ -61,11 +81,11 @@ export const cleanPodcastsData = (rawData, isnightType) => {
       teaserText,
       alias,
       date,
-      isnightType: isnightType,
+      insightType: insightType,
       teaserImageUrl: teaserImageUrl,
+      podcastLinks,
     }
   })
-
   return podcasts
 }
 
@@ -143,7 +163,7 @@ const grabSubIds = (fieldName, singleObject) => {
 }
 
 const getObjectFromIncluded = (includedArray, id) => {
-  return includedArray.find(imageObj => (imageObj.id = id)).attributes
+  return includedArray.find(item => item.id === id).attributes
 }
 
 // Decides what syntax to return for the specific filter
