@@ -122,11 +122,10 @@ export const grabRelatedPeople = (includedField, object, index) => {
       })
 
       // This one is bad
-      console.log("This is personObject", personObject)
-      const imageUrlIds = grabSubIds("field_image_background", personObject)[0]
+      const imageUrlIds = grabSubIds("field_image_background", personObject)
       let imageUrl = null
       if (imageUrlIds) {
-        const imageObj = getObjectFromIncluded(object.included, imageUrlIds)
+        const imageObj = getObjectFromIncluded(object.included, imageUrlIds[0])
 
         imageUrl = imageObj.image_style_uri.filter(
           item => item.people_thumbnail_desktop__296x434_ !== undefined

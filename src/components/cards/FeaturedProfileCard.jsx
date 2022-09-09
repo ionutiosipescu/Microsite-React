@@ -12,7 +12,7 @@ const FeaturedProfileCard = ({
   return (
     <S.Container>
       <S.ImageContainer>
-        <img src={imageUrl || Connor} alt="featured expert" />
+        <img src={imageUrl} alt="featured expert" />
       </S.ImageContainer>
       <S.Content>
         <a href={personalPageLink}>
