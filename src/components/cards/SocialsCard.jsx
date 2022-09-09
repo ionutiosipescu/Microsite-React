@@ -43,15 +43,11 @@ const Card = styled.div`
   }
 `
 
-<<<<<<< HEAD
-const SocialsCard = ( internalId ) => {
+const SocialsCard = internalId => {
   console.log("This is interanlId", internalId)
 
   let link = `https://www.alvarezandmarsal.com/printpdf/${internalId.internalId}`
 
-=======
-const SocialsCard = ({ internalId }) => {
->>>>>>> 9adcc4f (did some refactoring)
   return (
     <Card>
       <Share className="box" />
