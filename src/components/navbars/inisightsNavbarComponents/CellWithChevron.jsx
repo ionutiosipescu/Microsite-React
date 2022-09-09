@@ -9,6 +9,7 @@ const CellWithChevron = ({
   handleClick,
   onlyMobile,
   dropdownOpened,
+  colors,
 }) => {
   return (
     <S.NavbarCell
@@ -16,6 +17,11 @@ const CellWithChevron = ({
       onlyMobile={onlyMobile}
       dropdownOpened={dropdownOpened}
       highlight={highlight}
+      style={{
+        "--textColor": colors?.textColor,
+        "--chevronColor": colors?.chevronColor,
+        "--highlightColor": colors.highlightColor,
+      }}
     >
       {text || "No text"}
 

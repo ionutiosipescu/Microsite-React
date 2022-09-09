@@ -34,6 +34,7 @@ const Leadership = () => {
   const cities = useSelector(state => state?.leaders?.cities)
   const filtersPersons = useSelector(state => state?.leaders?.filtersPersons)
 
+  console.log("This is filtersPersons", filtersPersons)
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
 
   const [openedState, setOpenedState] = useState(
@@ -104,28 +105,7 @@ const Leadership = () => {
         ) : (
           <div>
             <InsightsNavbarContext.Provider value={values}>
-              <CellWithChevron
-                text={"Filter by"}
-                handleClick={handleClick}
-                onlyMobile
-              />
-              <S.Navbar showNavbar={showNavbar}>
-                {/* {filtersPersons?.map(term => {
-                console.log(term)
-              })} */}
-                {filtersPersons?.map((term, index) => (
-                  <Dropdown
-                    text={term}
-                    iconColor={"var(--hover-blue)"}
-                    key={index}
-                  />
-                ))}
-              </S.Navbar>
-              <FiltersContainer
-                filtercolor={"var(--hover-blue)"}
-                marginTop="6rem"
-              />
-              {/* <LeadershipNavbar /> */}
+              <LeadershipNavbar />
             </InsightsNavbarContext.Provider>
 
             <h1 className=""> Leaders</h1>

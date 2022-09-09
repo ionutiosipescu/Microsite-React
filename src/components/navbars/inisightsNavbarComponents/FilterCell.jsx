@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { removeFilter } from "../../../store/actions/filters"
 import { ContentContext } from "../../../pages/insightsPage/Insights"
 
-const FilterCell = ({ filter }) => {
+const FilterCell = ({ filter, colors }) => {
   // const { setContent, setNextPodcastPage, setNextPage } =
   //   useContext(ContentContext)
   const dispatch = useDispatch()
@@ -19,7 +19,13 @@ const FilterCell = ({ filter }) => {
   }
 
   return (
-    <S.FilterCell onClick={() => remove(filter)}>
+    <S.FilterCell
+      onClick={() => remove(filter)}
+      style={{
+        "--textColor": colors.textColor,
+        "--highlightColor": colors.highlightColor,
+      }}
+    >
       {filter.name || "FilterCell"} <XIcon />
     </S.FilterCell>
   )

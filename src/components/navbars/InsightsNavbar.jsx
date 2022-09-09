@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, createContext } from "react"
 import * as S from "./inisightsNavbarComponents/styles/InsightsNavbar.styles"
 import Cell from "./inisightsNavbarComponents/Cell"
 import Dropdown from "./inisightsNavbarComponents/Dropdown"
@@ -70,6 +70,13 @@ const InsightsNavbar = () => {
     return <Spinner />
   }
 
+  // Those are the color scheme for the navbar
+  const colors = {
+    textColor: "var(--filtersBlue)",
+    chevronColor: "var(--filtersBlue)",
+    highlightColor: "var(--yellowCategory)",
+  }
+
   return (
     <S.Container>
       <S.TitleSection>
@@ -83,33 +90,42 @@ const InsightsNavbar = () => {
       </S.TitleSection>
       <S.Navbar showNavbar={true}>
         {insightTypes.map((insightType, index) => (
-          <Cell {...insightType} key={index} />
+          <Cell {...insightType} key={index} colors={colors} />
         ))}
       </S.Navbar>
       <CellWithChevron
         text={"Filter by"}
         handleClick={handleClick}
         onlyMobile
+        colors={colors}
       />
       <S.Navbar showNavbar={showNavbar}>
         <Dropdown
           text={"expertise"}
           category={"expertise"}
           filters={filters.expertise}
+          colors={colors}
         />
         <Dropdown
           text={"industry"}
           category={"industries"}
           filters={filters.industries}
+          colors={colors}
         />
         <Dropdown
           text={"location"}
           category={"region"}
           filters={filters.region}
+          colors={colors}
         />
-        <Dropdown text={"date"} filters={filters.date} category={"date"} />
+        <Dropdown
+          text={"date"}
+          filters={filters.date}
+          category={"date"}
+          colors={colors}
+        />
       </S.Navbar>
-      <FiltersContainer />
+      <FiltersContainer colors={colors} />
     </S.Container>
   )
 }

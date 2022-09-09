@@ -41,13 +41,13 @@ export const FlexContainer = styled.div`
 export const DropdownItem = styled.li`
   padding-right: 1rem;
   color: ${({ highlight }) =>
-    highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+    highlight ? "var(--highlightColor)" : "var(--textColor)"};
 
   transition: all 0.2s ease-in-out;
   font-size: 20px;
   text-transform: initial;
 
   :hover {
-    color: var(--yellowCategory);
+    color: var(--highlightColor);
   }
 `

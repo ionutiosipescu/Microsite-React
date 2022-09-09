@@ -42,6 +42,8 @@ export const getSingleArticle = async id => {
       data.attributes.changed || data.attributes.created
     )
 
+    article.id = data.attributes.id
+    article.internalId = data.attributes.drupal_internal__nid
     article.title = data.attributes.title
     article.authors = grabRelatedPeople("field_authors", res.data, 0)
     article.experts = grabRelatedPeople("field_featured_expert", res.data, 0)

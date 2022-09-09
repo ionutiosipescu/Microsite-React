@@ -43,18 +43,25 @@ const Card = styled.div`
   }
 `
 
-const SocialsCard = () => {
+const SocialsCard = ({ internalId }) => {
+  console.log("This is interanlId", internalId)
   return (
     <Card>
       <Share className="box" />
       <div className="blue-box box">
-        <a href="https://www.facebook.com/alvarezandmarsal"><FooterFacebookIcon className="icon" /></a>
+        <a href="https://www.facebook.com/alvarezandmarsal">
+          <FooterFacebookIcon className="icon" />
+        </a>
       </div>
       <div className="blue-box box">
-        <a href="https://www.linkedin.com/company/alvarez-&-marsal/"><FooterLinkedinIcon className="icon" /></a>
+        <a href="https://www.linkedin.com/company/alvarez-&-marsal/">
+          <FooterLinkedinIcon className="icon" />
+        </a>
       </div>
       <div className="blue-box box">
-        <a href="https://twitter.com/alvarezmarsal"><FooterTwitterIcon className="icon" /></a>
+        <a href="https://twitter.com/alvarezmarsal">
+          <FooterTwitterIcon className="icon" />
+        </a>
       </div>
       <a href="https://contact.alvarezandmarsal.com/">
         <Mail className="box" />

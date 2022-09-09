@@ -3,16 +3,12 @@ import CellWithChevron from "./CellWithChevron"
 import * as S from "./styles/Dropdown.styles"
 import { useDispatch, useSelector } from "react-redux"
 import { addFilter } from "../../../store/actions/filters"
-// import { ContentContext } from "../../../pages/insightsPage/Insights"
 
-const Dropdown = ({ text, filters, category }) => {
+const Dropdown = ({ text, filters, category, colors }) => {
   const dropdownRef = useRef()
   const dispatch = useDispatch()
   const dropdownHeightRef = useRef(null)
   const { filters: selectedFilters } = useSelector(state => state.filters)
-
-  // const { setContent, setNextPodcastPage, setNextPage } =
-  //   useContext(ContentContext)
 
   // Determines the names of the filters that should be highlighted
   const highlightFilterNames = []
@@ -48,9 +44,6 @@ const Dropdown = ({ text, filters, category }) => {
   }, [isOpen])
 
   const addFilterToRedux = filter => {
-    // setNextPage(0)
-    // setContent([])
-    // setNextPodcastPage(null)
     dispatch(addFilter(filter))
   }
 
@@ -69,6 +62,7 @@ const Dropdown = ({ text, filters, category }) => {
         handleClick={handleClick}
         dropdownOpened={isOpen}
         highlight={highlightFilterNames.includes(category)}
+        colors={colors}
       />
       <S.DropdownContainer isOpen={isOpen} ref={dropdownHeightRef}>
         {category === "date" ? (
@@ -77,6 +71,7 @@ const Dropdown = ({ text, filters, category }) => {
             addFilterToRedux={addFilterToRedux}
             category={category}
             highlightCell={highlightCell}
+            colors={colors}
           />
         ) : (
           <NormalDropdown
@@ -84,6 +79,7 @@ const Dropdown = ({ text, filters, category }) => {
             addFilterToRedux={addFilterToRedux}
             category={category}
             highlightCell={highlightCell}
+            colors={colors}
           />
         )}
       </S.DropdownContainer>
@@ -96,6 +92,7 @@ const NormalDropdown = ({
   category,
   addFilterToRedux,
   highlightCell,
+  colors,
 }) => {
   return filters.map((filter, index) => {
     const addToRedux = () => {
@@ -112,6 +109,10 @@ const NormalDropdown = ({
         onClick={addToRedux}
         highlight={highlightCell(filter.name)}
         key={index}
+        style={{
+          "--textColor": colors.textColor,
+          "--highlightColor": colors.highlightColor,
+        }}
       >
         {filter.name}
       </S.DropdownItem>
@@ -124,6 +125,7 @@ const TimeDropdown = ({
   addFilterToRedux,
   category,
   highlightCell,
+  colors,
 }) => {
   const addToRedux = filter => {
     addFilterToRedux({
@@ -140,6 +142,10 @@ const TimeDropdown = ({
             onClick={() => addToRedux(filter)}
             key={index}
             highlight={highlightCell(filter.name)}
+            style={{
+              "--textColor": colors.textColor,
+              "--highlightColor": colors.highlightColor,
+            }}
           >
             {filter.name}
           </S.DropdownItem>
@@ -151,6 +157,10 @@ const TimeDropdown = ({
             onClick={() => addToRedux(filter)}
             key={index}
             highlight={highlightCell(filter.name)}
+            style={{
+              "--textColor": colors?.textColor,
+              "--highlightColor": colors.highlightColor,
+            }}
           >
             {filter.name}
           </S.DropdownItem>
@@ -163,6 +173,10 @@ const TimeDropdown = ({
               onClick={() => addToRedux(filter)}
               highlight={highlightCell(filter.name)}
               key={index}
+              style={{
+                "--textColor": colors?.textColor,
+                "--highlightColor": colors.highlightColor,
+              }}
             >
               {filter.name}
             </S.DropdownItem>
@@ -174,6 +188,10 @@ const TimeDropdown = ({
               onClick={() => addToRedux(filter)}
               highlight={highlightCell(filter.name)}
               key={index}
+              style={{
+                "--textColor": colors?.textColor,
+                "--highlightColor": colors.highlightColor,
+              }}
             >
               {filter.name}
             </S.DropdownItem>

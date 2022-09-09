@@ -2,17 +2,12 @@ import React from "react"
 import * as S from "./styles/Cell.styles"
 import { useSelector, useDispatch } from "react-redux"
 import { changeInsightsType } from "../../../store/actions/filters"
-import { useContext } from "react"
-import { ContentContext } from "../../../pages/insightsPage/Insights"
 
-const Cell = ({ name, identifier, id }) => {
+const Cell = ({ colors, filters, name, identifier, id }) => {
   const dispatch = useDispatch()
   const { currentInsightType } = useSelector(state => state.filters)
-  // const { setNextPage, setContent } = useContext(ContentContext)
 
   const handleClick = () => {
-    // setNextPage(0)
-    // setContent([])
     dispatch(
       changeInsightsType({
         name,
@@ -26,6 +21,10 @@ const Cell = ({ name, identifier, id }) => {
     <S.NavbarCell
       highlight={currentInsightType.identifier === identifier}
       onClick={handleClick}
+      style={{
+        "--textColor": colors?.textColor,
+        "--highlightColor": colors.highlightColor,
+      }}
     >
       {name || "No text"}
     </S.NavbarCell>

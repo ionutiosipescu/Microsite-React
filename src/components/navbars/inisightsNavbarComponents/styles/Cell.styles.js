@@ -9,7 +9,6 @@ export const NavbarCell = styled.div`
   height: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  color: var(--filtersBlue);
 
   text-transform: uppercase;
   margin: 0.5rem 0;
@@ -20,24 +19,24 @@ export const NavbarCell = styled.div`
 
   /* If the the Filter is selected then hightligh otherwise have normal color */
   color: ${({ highlight }) =>
-    highlight ? "var(--yellowCategory)" : "var(--filtersBlue)"};
+    highlight ? "var(--highlightColor)" : `var(--textColor)`};
 
   :hover {
-    color: var(--yellowCategory);
+    color: var(--highlightColor);
   }
 
   svg {
     transition: all 0.2s ease-in-out;
-
+    fill: var(--textColor);
     padding-left: 0.5rem;
     width: 2rem;
     height: rem;
   }
 
   :hover {
-    color: var(--yellowCategory);
+    color: var(--highlightColor);
     svg {
-      fill: var(--yellowCategory);
+      fill: var(--highlightColor);
       /* transform: rotate(180deg);
       padding-right: 0.5rem;
       padding-left: 0; */

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { getSingleArticle } from "../../API"
 import { useDocumentTitle } from "../../hook/useDocumentTitle"
@@ -15,7 +15,6 @@ import DOMPurify from "dompurify"
 
 const SingleInsgightPage = () => {
   const { state } = useLocation()
-  const article = useRef(null)
 
   const [articleData, setArticleData] = useState(null)
 
@@ -33,6 +32,8 @@ const SingleInsgightPage = () => {
     return <Spinner />
   }
 
+  console.log("This is articleData", articleData)
+
   return (
     <>
       <HeroSection
@@ -48,7 +49,6 @@ const SingleInsgightPage = () => {
       <StyledContainer>
         <S.Container>
           <S.Article
-            ref={article}
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(articleData.content),
             }}
@@ -75,7 +75,7 @@ const SingleInsgightPage = () => {
               </>
             )}
             <ContactSubscribeCard />
-            <SocialsCard />
+            <SocialsCard internalId={articleData.internalId} />
           </S.RightSection>
         </S.Container>
       </StyledContainer>

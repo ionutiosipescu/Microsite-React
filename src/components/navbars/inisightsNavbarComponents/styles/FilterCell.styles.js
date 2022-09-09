@@ -7,7 +7,7 @@ export const FilterCell = styled.div`
   cursor: pointer;
   padding: 0.25rem;
   font-size: 20px;
-  color: var(--white);
+  color: var(--textColor);
   transition: all 0.2s ease-in-out;
 
   border: 1px solid var(--hover-blue);
@@ -20,11 +20,11 @@ export const FilterCell = styled.div`
   }
 
   :hover {
-    color: var(--yellowCategory);
-    border: 1px solid var(--yellowCategory);
+    color: var(--highlightColor);
+    border: 1px solid var(--highlightColor);
 
     svg {
-      fill: var(--yellowCategory);
+      fill: var(--highlightColor);
     }
   }
 `
