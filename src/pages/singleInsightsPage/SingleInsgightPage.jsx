@@ -32,8 +32,6 @@ const SingleInsgightPage = () => {
     return <Spinner />
   }
 
-  console.log("This is articleData", articleData)
-
   return (
     <>
       <HeroSection

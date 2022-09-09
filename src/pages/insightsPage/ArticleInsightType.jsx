@@ -39,6 +39,7 @@ const ArticleInsightType = ({ insightType, columnsNumber }) => {
 
   // This is for infinite scrolling
   const getMoreArticles = async () => {
+    // console.log("getMoreArticles", insightType)
     setNextPage(nextPage + 1)
     const data = await getInsights(insightType, filters, nextPage + 1)
     setArticles([...articles, ...data])
@@ -54,6 +55,7 @@ const ArticleInsightType = ({ insightType, columnsNumber }) => {
     return <Spinner />
   }
 
+  // console.log("This is articles.length", articles.length)
   return (
     <InfiniteScroll
       dataLength={articles.length || 0}

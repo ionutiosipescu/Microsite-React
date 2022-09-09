@@ -41,6 +41,7 @@ const HealthPodcasts = ({ columnsNumber, insightType }) => {
 
   // This is for infinite scrolling
   const getMorePodcasts = async () => {
+    // console.log("This is getMorePodcasts")
     const data = await getPodcasts(insightType, filters, nextPodcastPage)
 
     setNextPodcastPage(data.nextPageLink)
@@ -57,7 +58,7 @@ const HealthPodcasts = ({ columnsNumber, insightType }) => {
   if (!podcasts) {
     return <Spinner />
   }
-
+  // console.log("This is podcasts.length", podcasts.length)
   return (
     <InfiniteScroll
       dataLength={podcasts.length || 0}
