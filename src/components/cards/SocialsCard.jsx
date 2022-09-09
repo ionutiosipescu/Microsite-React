@@ -45,6 +45,9 @@ const Card = styled.div`
 
 const SocialsCard = ( internalId ) => {
   console.log("This is interanlId", internalId)
+
+  let link = `https://www.alvarezandmarsal.com/printpdf/${internalId.internalId}`
+
   return (
     <Card>
       <Share className="box" />
@@ -66,7 +69,9 @@ const SocialsCard = ( internalId ) => {
       <a href="https://contact.alvarezandmarsal.com/">
         <Mail className="box" />
       </a>
-      <Pdf className="box" />
+      <a href={link}>
+        <Pdf className="box" />
+      </a>
     </Card>
   )
 }
