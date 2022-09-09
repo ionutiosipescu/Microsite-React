@@ -13,10 +13,10 @@ import {
 } from "../../store/actions/leaders"
 import * as S from "../../components/navbars/leadershipNavbar/styles/InsightsNavbar.styles"
 
-import Dropdown from "../../components/navbars/leadershipNavbar/Dropdown"
-import { InsightsNavbarContext } from "../../components/navbars/leadershipNavbar/InsightsNavbar"
-import CellWithChevron from "../../components/navbars/leadershipNavbar/CellWithChevron"
-import FiltersContainer from "../../components/navbars/leadershipNavbar/FiltersContainer"
+// import Dropdown from "../../components/navbars/leadershipNavbar/Dropdown"
+// import { InsightsNavbarContext } from "../../components/navbars/leadershipNavbar/InsightsNavbar"
+// import CellWithChevron from "../../components/navbars/leadershipNavbar/CellWithChevron"
+// import FiltersContainer from "../../components/navbars/leadershipNavbar/FiltersContainer"
 import { FullWidthContainer } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
 
 import { StyledContainerLocation } from "../../components/layout/Rows&Collumns/Rows&Collumns.style"
@@ -85,6 +85,30 @@ const Leadership = () => {
     setSelectedFilters: setSelectedFilters,
     selectedFilters: selectedFilters,
   }
+
+  //   <InsightsNavbarContext.Provider value={values}>
+  //   <CellWithChevron
+  //     text={"Filter by"}
+  //     handleClick={handleClick}
+  //     onlyMobile
+  //   />
+  //   <S.Navbar showNavbar={showNavbar}>
+  //     {/* {filtersPersons?.map(term => {
+  //     console.log(term)
+  //   })} */}
+  //     {filtersPersons?.map((term, index) => (
+  //       <Dropdown
+  //         text={term}
+  //         iconColor={"var(--hover-blue)"}
+  //         key={index}
+  //       />
+  //     ))}
+  //   </S.Navbar>
+  //   <FiltersContainer
+  //     filtercolor={"var(--hover-blue)"}
+  //     marginTop="6rem"
+  //   />
+  // </InsightsNavbarContext.Provider>
   return (
     <FullWidthContainer bgColor="white">
       <HeroSection
@@ -104,9 +128,8 @@ const Leadership = () => {
           <Spinner />
         ) : (
           <div>
-            <InsightsNavbarContext.Provider value={values}>
-              <LeadershipNavbar />
-            </InsightsNavbarContext.Provider>
+            {/* Try  to*/}
+            <LeadershipNavbar />
 
             <h1 className=""> Leaders</h1>
 

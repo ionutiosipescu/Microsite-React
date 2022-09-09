@@ -7,7 +7,6 @@ import { useSelector } from "react-redux/es/exports"
 
 const FiltersContainer = ({ filtercolor, marginTop }) => {
   const { dropdownHeight, selectedFilters } = useContext(InsightsNavbarContext)
-  // console.log(selectedFilters)
   const navbarFilters = useSelector(state => state.leaders.navbarFilters)
   console.log(navbarFilters)
   return (
