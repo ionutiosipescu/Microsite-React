@@ -60,7 +60,7 @@ export const fetchBrazilianOverview = () => {
 }
 
 const getImageFromInclude = (dataIncluded, type) => {
-  const newArr = dataIncluded?.filter(x => x.type == type)
+  const newArr = dataIncluded?.filter(x => x.type === type)
 
   return newArr
 }

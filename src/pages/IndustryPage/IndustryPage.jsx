@@ -34,9 +34,11 @@ const IndustryPage = () => {
   // console.log("This is state", state)
   // console.log(state[0])
 
-  if (!industry && industryArticles.length > 0) {
+  if (!Object.entries(industry).length > 0) {
     return <Spinner />
   }
+
+  console.log("passing the checker. this is indusry", industry)
 
   return (
     <>

@@ -62,6 +62,8 @@ const ExpertisePage = () => {
     "Expertise | Pharma & MedTech Portfolio Management | Alvarez & Marsal"
   )
 
+  console.log("This is expertise", expertise.industries)
+
   return (
     <ExpertisePageContainer>
       <HeroSection

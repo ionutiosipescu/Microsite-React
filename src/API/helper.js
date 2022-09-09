@@ -225,7 +225,7 @@ const getJsonApiFilterSyntax = filter => {
 }
 
 // The filter with dates is really awkwardly formated.
-// I brake it down in more usable stuff here
+// I breaked it down in more usable stuff here
 export const cleanDateFilter = dateFilter => {
   const cleanedDateObject = {}
   cleanedDateObject.months = getDateFields(dateFilter.months)

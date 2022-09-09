@@ -51,7 +51,7 @@ export const fetchBrazilLeaders = () => {
         const dataIncluded = data?.data.included
 
         let profiles = data.data.included?.filter(
-          x => x.type == "node--profile"
+          x => x.type === "node--profile"
         )
         let expertises = getIdAndNamebyTaxonomyType(
           dataIncluded,
@@ -59,7 +59,7 @@ export const fetchBrazilLeaders = () => {
         )
 
         data.data.included?.filter(
-          x => x.type == "taxonomy_term--global_locations"
+          x => x.type === "taxonomy_term--global_locations"
         )
         let cities = getIdAndNamebyTaxonomyType(
           dataIncluded,
@@ -115,16 +115,16 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
 
     let firstName = profile.attributes.field_first_name
     let lastName = profile.attributes.field_last_name
-    let country = dataIncluded?.find(x => x?.id == locationId)
+    let country = dataIncluded?.find(x => x?.id === locationId)
 
     // console.log(country);
     let imageURL =
-      dataIncluded?.find(x => x.id == imageId)?.attributes.uri.url ||
-      dataIncluded?.find(x => x.id == imageId1)?.attributes.uri.url
+      dataIncluded?.find(x => x.id === imageId)?.attributes.uri.url ||
+      dataIncluded?.find(x => x.id === imageId1)?.attributes.uri.url
 
     //some leaders can have 2 relations with 2 regions
     let locationId1 = profile?.relationships?.field_region?.data[1]?.id
-    let country1 = dataIncluded?.find(x => x?.id == locationId1) ?? {}
+    let country1 = dataIncluded?.find(x => x?.id === locationId1) ?? {}
     let person = {
       id: profile.id,
       firstName: firstName,
@@ -149,7 +149,7 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
         uri: profile.attributes.field_linkedin.uri,
         title: profile.attributes.field_linkedin.title,
       },
-      position: dataIncluded?.find(x => x.id == professionId)?.attributes.name,
+      position: dataIncluded?.find(x => x.id === professionId)?.attributes.name,
 
       // profile?.relationships?.field_professional_title?.data?.id,
 
@@ -166,11 +166,11 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
       image: liveAM + imageURL,
       // image:
       //   liveAM +
-      //     dataIncluded?.find((x) => x.id == imageId)?.attributes.uri.url ||
-      //   dataIncluded?.find((x) => x.id == imageId1)?.attributes.uri.url,
+      //     dataIncluded?.find((x) => x.id === imageId)?.attributes.uri.url ||
+      //   dataIncluded?.find((x) => x.id === imageId1)?.attributes.uri.url,
       // image1:
       //   liveAM +
-      //   dataIncluded?.find((x) => x.id == imageId1)?.attributes.uri.url,
+      //   dataIncluded?.find((x) => x.id === imageId1)?.attributes.uri.url,
       // image1: imageId1,
       linkLocation:
         linkLocation +
@@ -188,7 +188,7 @@ const getInformationOfLeaders = (dataIncluded, profiles) => {
 
 const getIdAndNamebyTaxonomyType = (dataIncluded, type) => {
   const newArr = dataIncluded
-    ?.filter(x => x.type == type)
+    ?.filter(x => x.type === type)
     ?.map(city => {
       let newCity = {
         id: city.id,
@@ -212,61 +212,61 @@ export const addFilterTags = tag => {
 export const filterLeaders = filterByTags => {
   return (dispatch, getState) => {
     const { leaders } = getState().leaders
-    var myArrayFiltered = []
-    if (filterByTags.length == 1) {
+    let myArrayFiltered = []
+    if (filterByTags.length === 1) {
       leaders?.forEach(leader => {
         filterByTags.forEach(filter => {
           if (
-            leader?.country.id == filter.id ||
-            leader?.city.id == filter.id ||
-            leader?.expertise.id == filter.id
+            leader?.country.id === filter.id ||
+            leader?.city.id === filter.id ||
+            leader?.expertise.id === filter.id
           ) {
             myArrayFiltered.push(leader)
           }
         })
       })
-    } else if (filterByTags.length == 2) {
+    } else if (filterByTags.length === 2) {
       leaders?.forEach(leader => {
         if (
-          leader?.country.id == filterByTags[0].id ||
-          leader?.city.id == filterByTags[0].id ||
-          leader?.expertise.id == filterByTags[0].id
+          leader?.country.id === filterByTags[0].id ||
+          leader?.city.id === filterByTags[0].id ||
+          leader?.expertise.id === filterByTags[0].id
         ) {
           let foundendLeader = leader
           if (
-            foundendLeader?.country.id == filterByTags[1].id ||
-            foundendLeader?.city.id == filterByTags[1].id ||
-            foundendLeader?.expertise.id == filterByTags[1].id
+            foundendLeader?.country.id === filterByTags[1].id ||
+            foundendLeader?.city.id === filterByTags[1].id ||
+            foundendLeader?.expertise.id === filterByTags[1].id
           ) {
             myArrayFiltered.push(foundendLeader)
           }
         }
       })
-    } else if (filterByTags.length == 3) {
+    } else if (filterByTags.length === 3) {
       leaders?.forEach(leader => {
         if (
-          leader?.country.id == filterByTags[0].id ||
-          leader?.city.id == filterByTags[0].id ||
-          leader?.expertise.id == filterByTags[0].id
+          leader?.country.id === filterByTags[0].id ||
+          leader?.city.id === filterByTags[0].id ||
+          leader?.expertise.id === filterByTags[0].id
         ) {
           let foundendLeader = leader
           if (
-            foundendLeader?.country.id == filterByTags[1].id ||
-            foundendLeader?.city.id == filterByTags[1].id ||
-            foundendLeader?.expertise.id == filterByTags[1].id
+            foundendLeader?.country.id === filterByTags[1].id ||
+            foundendLeader?.city.id === filterByTags[1].id ||
+            foundendLeader?.expertise.id === filterByTags[1].id
           ) {
             let foundLeader1 = foundendLeader
             if (
-              foundLeader1?.country.id == filterByTags[2].id ||
-              foundLeader1?.city.id == filterByTags[2].id ||
-              foundLeader1?.expertise.id == filterByTags[2].id
+              foundLeader1?.country.id === filterByTags[2].id ||
+              foundLeader1?.city.id === filterByTags[2].id ||
+              foundLeader1?.expertise.id === filterByTags[2].id
             ) {
               myArrayFiltered.push(foundLeader1)
             }
           }
         }
       })
-    } else if (filterByTags.length == 0) {
+    } else if (filterByTags.length === 0) {
       myArrayFiltered = [...leaders]
     } else {
       myArrayFiltered = []

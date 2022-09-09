@@ -11,7 +11,7 @@ export const getInsightFilters = async () => {
 
     const res = await Axios.get(hlsLink)
 
-    const expertises = Object.values(res.data.expertise_parent_children).map(
+    filters.expertise = Object.values(res.data.expertise_parent_children).map(
       filterName => {
         return {
           id: filterName.id,
@@ -21,14 +21,12 @@ export const getInsightFilters = async () => {
       }
     )
 
-    const industries = Object.values(res.data.healthcare_industries).map(
+    filters.industries = Object.values(res.data.healthcare_industries).map(
       filter => {
         return { id: filter.id, uuid: filter.uuid, name: filter.name }
       }
     )
 
-    filters.expertise = expertises
-    filters.industries = industries
     filters.region = res.data.region
     filters.date = cleanDateFilter(res.data.date_range)
 

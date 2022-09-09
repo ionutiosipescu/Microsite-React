@@ -1,4 +1,3 @@
-import axios from "axios"
 import Axios from "axios"
 import {
   dateFromSecondsToShortLocale,
@@ -47,7 +46,7 @@ export const fetchHLSIndustries = () => {
     // const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
     await Axios.get(link)
       .then(data => {
-        var parsedIndustriesArray = []
+        let parsedIndustriesArray = []
         const industries = data?.data.healthcare_industries
         for (const [key, value] of Object.entries(industries)) {
           let industryObj = {
@@ -81,27 +80,29 @@ export const fetchIndustry = industryId => {
       .then(data => {
         const industries = data.data.healthcare_industries
         for (const [key, value] of Object.entries(industries)) {
-          if (key == industryId) {
+          if (key === industryId) {
             industry = value
           }
         }
-        var experts = []
-        var expertises = []
-        industry?.featured_expert.map(expert => {
+
+        console.log("This is industry", industry)
+        console.log("This is data", data)
+
+        let experts = industry?.featured_expert.map(expert => {
           for (const [key, value] of Object.entries(
             data?.data?.expertise_parent_expert_profile
           )) {
-            if (key == expert) {
-              experts.push(value)
+            if (key === expert) {
+              return value
             }
           }
         })
-        industry?.expertise.map(expert => {
+        let expertises = industry?.expertise.map(expert => {
           for (const [key, value] of Object.entries(
             data?.data?.expertise_parent_children
           )) {
-            if (key == expert) {
-              expertises.push(value)
+            if (key === expert) {
+              return value
             }
           }
         })
@@ -131,10 +132,8 @@ export const fetchIndustryArticles = industryUUID => {
       .then(data => {
         const jsonData = data?.data.data
         const dataIncluded = data?.data.included
-        console.log(dataIncluded)
-        let articles = []
 
-        jsonData?.forach(article => {
+        let articles = jsonData?.forach(article => {
           let x = {
             uuid: article.id,
             title: article.attributes.title,
@@ -148,11 +147,12 @@ export const fetchIndustryArticles = industryUUID => {
               type: article.relationships.field_category.data[0].type,
             },
           }
-          articles.push(x)
+          return x
         })
+
         articles.forEach(article => {
           dataIncluded.forEach(included => {
-            if (article.category.type == included.type) {
+            if (article.category.type === included.type) {
               article.categoryName = included.attributes.name
             }
           })
@@ -163,33 +163,11 @@ export const fetchIndustryArticles = industryUUID => {
           type: GET_INDUSTRY_ARTICLES,
           payload: articles,
         })
-        // console.log(articles)
-        // console.log(dataIncluded)
       })
       .catch(err => {
         console.log(err)
       })
   }
-}
-const getIndustryId_byDrupalTid = async industryId => {
-  console.log(industryId)
-  let industryID = ""
-  const res = await Axios.get(
-    `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
-  )
-  // await Axios.get(
-  //   `https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/industries?filter[drupal_internal__tid]=${industryId}`
-  // )
-  //   .then(data => {
-  //     industryID = data?.data?.data[0].id
-  //     // console.log()
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // console.log()
-  industryID = res?.data?.data[0].id
-  return industryID
 }
 
 export const fetchHlsExpertises = () => {
@@ -223,12 +201,11 @@ export const fetchExpertise = expertiseId => {
       .then(data => {
         const expertises = data?.data.expertise_parent_children
         let experts = []
-        let articles = []
         let expertise = {}
         let expertiseIndustries = []
 
         for (const [key, value] of Object.entries(expertises)) {
-          if (key == expertiseId) {
+          if (key === expertiseId) {
             expertise = value
           }
         }
@@ -236,18 +213,19 @@ export const fetchExpertise = expertiseId => {
           for (const [key, value] of Object.entries(
             data?.data.expertise_parent_expert_profile
           )) {
-            if (key == expert) {
+            if (key === expert) {
               experts.push(value)
             }
           }
         })
-        expertise?.articles?.map(expert => {
+
+        let articles = expertise?.articles?.map(expert => {
           for (const [key, value] of Object.entries(
             data?.data.expertise_parent_articles
           )) {
-            if (key == expert) {
+            if (key === expert) {
               console.log(key)
-              articles.push(value)
+              return value
             }
           }
         })
@@ -255,16 +233,13 @@ export const fetchExpertise = expertiseId => {
         const industries = data.data.healthcare_industries
         for (const [key, value] of Object.entries(industries)) {
           value?.expertise?.map(expertiseID => {
-            if (expertiseId == expertiseID) {
+            if (expertiseId === expertiseID) {
               // console.log(value);
               expertiseIndustries.push(value)
             }
           })
         }
-        // expertise?.articles.map(article => {
-        //   console.log(article)
-        //   article.alias = article.title.toLowerCase().join("-")
-        // })
+
         let formatedArticles = []
         articles?.forEach(article => {
           article.date = dateFromSecondsToShortLocale(article?.updated)
@@ -318,151 +293,3 @@ export const fetchRecentRecognition = () => {
       })
   }
 }
-// export const fetchBrazilianOverview = () => {
-//   return async (dispatch) => {
-//     const link =
-//       "https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/global_locations/22b1e094-5617-463a-9f66-5b7237553a05?include=field_featured_background_image";
-//     await Axios.get(link)
-//       .then((data) => {
-//         const attributes = data?.data.data.attributes;
-//         const included = data?.data.included;
-
-//         // console.log(attributes);
-
-//         const obj = {
-//           title: attributes?.description.value,
-//           descriptionBody: attributes?.field_overview_body.value,
-//           careersText: attributes?.field_overview_careers_desc,
-//         };
-//         // console.log(obj);
-//         dispatch({
-//           type: GET_OVERVIEW_SECTION_DATA,
-//           payload: obj,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   };
-// };
-
-const getImageFromInclude = (dataIncluded, type) => {
-  const newArr = dataIncluded?.filter(x => x.type == type)
-
-  return newArr
-}
-// export const fetchIndustr
-
-// const fetchIndustry = async (industryId) => {
-//   const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries/${industryId}?include=field_image`;
-//   var industryInfo;
-//   await Axios.get(link)
-//     .then((data) => {
-//       industryInfo = data;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-//   return industryInfo.data;
-// };
-// export const fetchHLSHeroSection = (industryId) => {
-//   return async (dispatch) => {
-//     const liveLink = "https://www.alvarezandmarsal.com/";
-//     const liveLinkImage =
-//       "https://www.alvarezandmarsal.com/sites/default/files/";
-//     const data = await fetchIndustry(industryId);
-//     const attributes = data?.data.attributes;
-//     const included = data?.included;
-//     const imageBg = getImageFromInclude(included, "file--file");
-
-//     const obj = {
-//       title: attributes?.name,
-//       description: attributes?.description.value,
-//       backgroundUrl: liveLinkImage + imageBg[0]?.attributes.filename,
-//     };
-//     dispatch({
-//       type: GET_HERO_SECTION_DATA,
-//       payload: obj,
-//     });
-//   };
-// };
-
-// export const fetchHLSIndustries = (industryId) => {
-//   return async (dispatch) => {
-//     const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries?filter[parent.id]=${industryId}`;
-//     await Axios.get(link)
-//       .then((data) => {
-//         var parsedIndustriesArray = [];
-//         const industries = data?.data.data;
-//         industries.map((industry) => {
-//           const attributes = industry?.attributes;
-
-//           let industryObj = {
-//             id: industry.id,
-//             name: attributes.name,
-//             description: attributes.field_teaser_text,
-//           };
-//           parsedIndustriesArray.push(industryObj);
-//         });
-
-//         dispatch({
-//           type: GET_INDUSTRIES,
-//           payload: parsedIndustriesArray,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-
-//     // dispatch({
-//     //   type: GET_HERO_SECTION_DATA,
-//     //   payload: industries,
-//     // });
-//   };
-// };
-// // export const fetchBrazilianOverview = () => {
-// //   return async (dispatch) => {
-// //     const link =
-// //       "https://akamai.alvarezandmarsal.com/jsonapi/taxonomy_term/global_locations/22b1e094-5617-463a-9f66-5b7237553a05?include=field_featured_background_image";
-// //     await Axios.get(link)
-// //       .then((data) => {
-// //         const attributes = data?.data.data.attributes;
-// //         const included = data?.data.included;
-
-// //         // console.log(attributes);
-
-// //         const obj = {
-// //           title: attributes?.description.value,
-// //           descriptionBody: attributes?.field_overview_body.value,
-// //           careersText: attributes?.field_overview_careers_desc,
-// //         };
-// //         // console.log(obj);
-// //         dispatch({
-// //           type: GET_OVERVIEW_SECTION_DATA,
-// //           payload: obj,
-// //         });
-// //       })
-// //       .catch((err) => {
-// //         console.log(err);
-// //       });
-// //   };
-// // };
-
-// const getImageFromInclude = (dataIncluded, type) => {
-//   const newArr = dataIncluded?.filter((x) => x.type == type);
-
-//   return newArr;
-// };
-
-// const fetchIndustry = async (industryId) => {
-//   const link = `http://192.168.0.113:8080/jsonapi/taxonomy_term/industries/${industryId}?include=field_image`;
-//   var industryInfo;
-//   await Axios.get(link)
-//     .then((data) => {
-//       industryInfo = data;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-//   return industryInfo.data;
-// };
