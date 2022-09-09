@@ -43,7 +43,7 @@ const Card = styled.div`
   }
 `
 
-const SocialsCard = ({ internalId }) => {
+const SocialsCard = ( internalId ) => {
   console.log("This is interanlId", internalId)
   return (
     <Card>

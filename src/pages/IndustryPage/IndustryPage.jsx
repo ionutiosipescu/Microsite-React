@@ -29,9 +29,10 @@ const IndustryPage = () => {
     dispatch(fetchIndustryArticles(state?.industryUUID))
   }, [dispatch, state])
 
-  console.log("This is industryArticles", industryArticles)
-  console.log("This is industry", industry)
-  console.log("This is state", state)
+  // console.log("This is industryArticles", industryArticles)
+  // console.log("This is industry", industry)
+  // console.log("This is state", state)
+  // console.log(state[0])
 
   if (!industry && industryArticles.length > 0) {
     return <Spinner />
