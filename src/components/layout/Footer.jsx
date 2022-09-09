@@ -28,11 +28,28 @@ const FooterContainer = styled.div`
 const ContentContainer = styled.div`
   height: 100%;
   width: 100%;
-  padding: 3.125rem 4.375rem;
+  padding: 50px 10px;
   font-size: 0.875rem;
+  @media ${size.md} {
+    padding: 3.125rem 4.375rem;
+  }
   /* change */
 `
 const SectionsContainer = styled.div`
+.icons-mobile {
+  display: flex;
+    img {
+      height: 2.063rem;
+      width: auto;
+    }
+    justify-content: end;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .contact-privacy-box{
+    margin-bottom: 30px;
+  }
   /* margin: 0; */
   position: relative;
   height: 100%;
@@ -43,8 +60,16 @@ const SectionsContainer = styled.div`
   align-items: center;
   .bulletin-container {
     justify-content: center;
+    margin-bottom: 30px;
+    width: 100%;
   }
-
+  .global-careers-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
   p {
     color: #fff;
   }
@@ -66,6 +91,9 @@ const SectionsContainer = styled.div`
       opacity: 0.8;
     }
   }
+  .logo-container {
+    width: 100%;
+  }
   .logo-container,
   .list-info-container {
     margin-bottom: 1.875rem;
@@ -76,12 +104,20 @@ const SectionsContainer = styled.div`
   }
   .privacy {
     font-weight: 300;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
   }
   .bulletin-signup {
     font-weight: 700;
   }
   /* MEDIA */
   @media ${size.md} {
+    .icons-mobile {
+      display: none;
+    }
+    .logo-container {
+      width: unset !important;
+    }
     /* margin-bottom: 0; */
     align-items: unset;
     flex-direction: row;
@@ -97,7 +133,7 @@ const SectionsContainer = styled.div`
     }
     .bulletin-container{
       flex-grow: 1;
-      margin-bottom: 30px;
+      width: unset;
     }
 
     .global-careers-box,
@@ -106,6 +142,7 @@ const SectionsContainer = styled.div`
     }
     .privacy {
       /* padding-left: 6.25rem; */
+      grid-template-columns: unset !important;
     }
   }
 `
@@ -117,12 +154,14 @@ const ColContainer = styled.div`
       width: 75.667px;
     }
   }
+  .bulletin-box {
+    width: 100%;
+  }
   /* MEDIA */
   @media ${size.md} {
     .bulletin-box {
       display: flex;
       flex-direction: column;
-      width: 100%;
       .form-col{
         display: flex;
         justify-content: end;
@@ -131,10 +170,17 @@ const ColContainer = styled.div`
   }
 `
 const ColBox = styled.div`
+
+.icons-container{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  margin-bottom: 0 !important;
+}
 /* 'initial', sometimes its the value 'auto' or 'none' */
   .form-control {
     display: auto;
-    width: auto;
+    width: 100%;
     /* width: 100%; this was the solution to have a bigger email
      space but instead we will need to increase size of right container*/
     padding: inherit;
@@ -164,7 +210,7 @@ const ColBox = styled.div`
   .bulletin-signup {
     display: flex;
     gap: 0.7rem;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     .form-label {
       margin: 0;
@@ -207,19 +253,25 @@ const ColBox = styled.div`
   }
   /* MEDIA */
   @media ${size.md} {
+    .form-control{
+      width: auto;
+    }
     .bulletin-signup {
       flex-direction: row;
       align-items: end;
     }
     .icons-container {
-      /* margin-bottom: 0; */
+      visibility: visible !important;
+      height: initial;
+      width: initial;
+      margin-bottom: initial;
     }
   }
 `
 const BottomContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   border-top: 1px solid #fff;
   padding-top: 1.25rem;
   flex-direction: column;
@@ -263,6 +315,20 @@ const Footer = () => {
             <Col className="logo">
               <LogoFooter />
             </Col>
+            <Col className="icons-mobile">
+                <div>
+                  <a target="_blank" href="https://www.facebook.com/alvarezandmarsal"><FooterFacebookIcon /></a>
+                </div>
+                <div>
+                  <a target="_blank" href="https://www.linkedin.com/company/alvarez-&-marsal/"><FooterLinkedinIcon /></a>
+                </div>
+                <div>
+                  <a target="_blank" href="https://twitter.com/alvarezmarsal"><FooterTwitterIcon /></a>
+                </div>
+                <div>
+                  <a target="_blank" href="https://www.youtube.com/user/AlvarezMarsal"><FooterYoutTubeIcon /></a>
+                </div>
+              </Col>
           </ColContainer>
           <ColContainer className="list-info-container">
             <ColBox className="global-careers-box">
