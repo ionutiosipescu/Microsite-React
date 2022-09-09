@@ -1,3 +1,4 @@
+import { current } from "@reduxjs/toolkit";
 import React, { useState, handleSelect, useEffect, useRef } from "react";
 import styled from "styled-components";
 
@@ -30,7 +31,7 @@ const DropDownHeader = styled("div")`
         height: 20px;
         background: transparent url(https://akamai.alvarezandmarsal.com/themes/custom/am/images/icons/arrow-right-white-64.png) no-repeat center center;
         background-size: contain;
-        transform: rotate(90deg);
+        transform: ${({ isActive }) => isActive ? "rotate(-90deg)" : "rotate(90deg)"};
         transition: all 0.5s;
         }
 `;
@@ -75,6 +76,46 @@ const Link = styled.a`
 
 
 const TestButton = ({location}) => {
+  const [isActive, setIsActive] = useState(false)
+   const [isOpen, setIsOpen] = useState(false);
+   const [selectedOption, setSelectedOption] = useState(null);
+   const [isSelected, setisSelected] = useState(null)
+
+   const toggling = () => {
+     setIsOpen(!isOpen);
+     setIsActive(current => !current)
+   }
+
+    const handleClick = (location) => {
+    setSelectedOption(location.country);
+    setIsOpen(false);
+    setisSelected(location.country.country)
+    console.log(location.idd)
+}
+return(
+      
+<>
+      <DropDownContainer >
+        <DropDownHeader isActive={isActive} onClick={toggling}>
+          {selectedOption || "Jump to Country"}
+        </DropDownHeader>
+        {isOpen && (
+          <DropDownListContainer>
+            <DropDownList >
+              {location?.map((location, index) => (
+                <ListItem onClick={()=>handleClick(location.country)} key={index}>
+                  <Link  href={"#" + location.country.idd}>{location.country.country}</Link>
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
+      </>
+)
+
+}
+export default TestButton
 
   // Variables
   // const dropdownRef = useRef()
@@ -104,45 +145,6 @@ const TestButton = ({location}) => {
 
 
 // functionality for dropdown
-
-   const [isOpen, setIsOpen] = useState(false);
-   const [selectedOption, setSelectedOption] = useState(null);
-   const [isSelected, setisSelected] = useState(null)
-
-   const toggling = () => setIsOpen(!isOpen);
-
-    const handleClick = (location) => {
-    setSelectedOption(location.country);
-    setIsOpen(false);
-    setisSelected(location.country.country)
-    console.log(location.idd)
-}
-return(
-      
-<>
-      <DropDownContainer >
-        <DropDownHeader onClick={toggling}>
-          {selectedOption || "Jump to Country"}
-        </DropDownHeader>
-        {isOpen && (
-          <DropDownListContainer>
-            <DropDownList >
-              {location?.map((location, index) => (
-                <ListItem onClick={()=>handleClick(location.country)} key={index}>
-                  <Link  href={"#" + location.country.idd}>{location.country.country}</Link>
-                </ListItem>
-              ))}
-            </DropDownList>
-          </DropDownListContainer>
-        )}
-      </DropDownContainer>
-      </>
-)
-
-}
-export default TestButton
-
-
 
 
 
