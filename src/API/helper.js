@@ -113,8 +113,6 @@ export const grabRelatedPeople = (includedField, object, index) => {
 
       const citiesIds = grabSubIds("field_city", personObject)
 
-      const imageUrlIds = grabSubIds("field_image_background", personObject)
-
       const professionalTitle = professionalTitleIds.map(title => {
         return object.included.find(item => item.id === title).attributes.name
       })
@@ -124,13 +122,15 @@ export const grabRelatedPeople = (includedField, object, index) => {
       })
 
       // This one is bad
-      const imageUrl = imageUrlIds
-        .map(title => {
-          return object.included.find(item => item.id === title).attributes
-        })[0]
-        .image_style_uri.filter(
+      const imageUrlIds = grabSubIds("field_image_background", personObject)
+      let imageUrl = null
+      if (imageUrlIds) {
+        const imageObj = getObjectFromIncluded(object.included, imageUrlIds[0])
+
+        imageUrl = imageObj.image_style_uri.filter(
           item => item.people_thumbnail_desktop__296x434_ !== undefined
         )[0].people_thumbnail_desktop__296x434_
+      }
 
       const personalPageLink = mainWebsite + personObject.attributes.path.alias
 

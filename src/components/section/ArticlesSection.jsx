@@ -2,6 +2,7 @@ import React from "react"
 import { ArticlePreviewCard } from "../cards"
 import UnalignedItemsContainer from "../layout/UnalignedItemsContainer"
 import { dateFromSecondsToShortLocale } from "../../utils/dateFormat"
+// import {}
 
 const ArticleSection = ({ articles }) => {
   return (
@@ -17,13 +18,7 @@ const ArticleSection = ({ articles }) => {
           uuid: article?.uuid,
         }
 
-        return (
-          <ArticlePreviewCard
-            key={index}
-            {...cardInfo}
-            onClick={() => alert("click")}
-          />
-        )
+        return <ArticlePreviewCard key={index} {...cardInfo} />
       })}
     </UnalignedItemsContainer>
   )
