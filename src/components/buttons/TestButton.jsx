@@ -1,6 +1,7 @@
 import { current } from "@reduxjs/toolkit";
 import React, { useState, handleSelect, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { size } from "../../utils/breakpoints";
 
 
 const DropDownContainer = styled("div")`
@@ -42,18 +43,25 @@ const DropDownListContainer = styled("div")`
 
 const DropDownList = styled("ul")`
 
-  display: grid;
-    grid-template-columns: repeat(3,1fr);
+    overflow-y: auto;
+    height: 310px;   
     background-color: #0085CA;
     position: absolute;
     z-index: 99;
-    width: 100%;
+    width: 88%;
     max-width: 750px;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
     margin: 0;
     padding: 0;
     list-style: none;
+    @media ${size.md} {
+      display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100%;
+    overflow: unset;
+    height: unset;
+    }
 `;
 
 const ListItem = styled("li")`

@@ -7,16 +7,16 @@ import { size } from "../../utils/breakpoints"
 const Card = styled.div`
   width: 100%;
   .coutry {
-    text-align: center;
+    text-align: start;
     font-size: 36px;
     line-height: 1;
     font-weight: 700;
     color: #0085ca;
     text-transform: uppercase;
     margin: 40px 0;
-    @media ${size.lg} {
+    /* @media ${size.lg} {
       text-align: unset;
-    }
+    } */
   }
 `
 

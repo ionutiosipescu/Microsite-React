@@ -54,11 +54,11 @@ export const ContainerLocation = styled.div`
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(1fr);
-  justify-items: center;
+  justify-items: start;
 
   @media ${size.lg} {
     grid-template-columns: repeat(3, 1fr);
-    justify-items: unset;
+    /* justify-items: center; */
   }
 `
 export const IndustryContainer = styled.div`

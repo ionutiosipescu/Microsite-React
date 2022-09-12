@@ -4,17 +4,22 @@ import { ButtonWithAnimation } from "../buttons"
 import { size } from "../../utils/breakpoints"
 
 const Card = styled.div`
+width: 100%;
+/* text-align: center; */
   border-bottom: 1px solid #c4c4c4;
   padding-bottom: 40px;
+  /* @media ${size.lg} {
+      text-align: unset;
+    } */
   .city {
-    text-align: center;
+    text-align: start;
     font-weight: 700;
     font-size: 30px;
     line-height: 1;
     color: #00244a;
     margin-bottom: 30px;
     @media ${size.lg} {
-      text-align: unset;
+      /* text-align: center; */
     }
   }
   .contact-field {
