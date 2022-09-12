@@ -14,7 +14,7 @@ import { size } from "../../utils/breakpoints"
 import ScrollToTop from "../buttons/ScrollToTop"
 
 const FooterContainer = styled.div`
-  background-color: var(--darkBlue) !important;
+  background-color: var(--darkBlue2) !important;
   /* max-width: 80rem; */
   height: auto;
   width: 100%;
@@ -37,6 +37,7 @@ const ContentContainer = styled.div`
 `
 const SectionsContainer = styled.div`
 .icons-mobile {
+  margin-bottom: 30px;
   display: flex;
     img {
       height: 2.063rem;
@@ -50,10 +51,8 @@ const SectionsContainer = styled.div`
   .contact-privacy-box{
     margin-bottom: 30px;
   }
-  /* margin: 0; */
   position: relative;
   height: 100%;
-  /* padding-bottom: 3.125rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,6 +73,7 @@ const SectionsContainer = styled.div`
     color: #fff;
   }
   .list-info-container {
+    font-weight: 700;
     cursor: pointer;
     line-height: 1.6;
     p {
@@ -100,7 +100,7 @@ const SectionsContainer = styled.div`
   }
   .list-info-container,
   .contact {
-    font-weight: 500;
+    /* font-weight: 500; */
   }
   .privacy {
     font-weight: 300;
@@ -114,6 +114,7 @@ const SectionsContainer = styled.div`
   @media ${size.md} {
     .icons-mobile {
       display: none;
+      margin-bottom: unset;
     }
     .logo-container {
       width: unset !important;
@@ -211,13 +212,18 @@ const ColBox = styled.div`
     display: flex;
     gap: 0.7rem;
     /* flex-direction: column; */
-    align-items: center;
+    align-items: end;
     .form-label {
       margin: 0;
       color: #fff;
-
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1;
     }
     button {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
       margin-left: 0.188rem;
       border: 0;
       background-color: transparent;
@@ -239,6 +245,8 @@ const ColBox = styled.div`
     text-align: center;
     ::placeholder {
       color: #fff;
+      font-size: 13px;
+    font-weight: 600;
     }
   }
   .icons-container {
@@ -269,11 +277,12 @@ const ColBox = styled.div`
   }
 `
 const BottomContainer = styled.div`
+  font-size: 9px;
   display: flex;
   justify-content: space-between;
   align-items: start;
   border-top: 1px solid #fff;
-  padding-top: 1.25rem;
+  padding-top: 30px;
   flex-direction: column;
   /* MEDIA */
   @media ${size.md} {
@@ -382,8 +391,8 @@ const Footer = () => {
 
               <Form onSubmit={handleSubmit} className="form-col">
               <Form.Group controlId='email' className="bulletin-signup">
-                <Form.Label>AM Bulletin Signup</Form.Label>
-                <Form.Control placeholder="E-MAIL" type='email' value={email} onChange={ev => setEmail(ev.target.value)} required={true} />
+                <Form.Label>A&M BULLETIN SIGNUP</Form.Label>
+                <Form.Control placeholder="EMAIL" type='email' value={email} onChange={ev => setEmail(ev.target.value)} required={true} />
                 <button  type="submit" className="">Subscribe
                   <span>
                     <ArrowRight />
