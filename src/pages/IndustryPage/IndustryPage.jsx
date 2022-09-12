@@ -85,7 +85,7 @@ const IndustryPage = () => {
       </ContainerContent>
       <FullWidthContainer
         bgColor={"var(--graySections)"}
-        className="px-4 py-3 px-md-4"
+        className=""
       >
         <ContainerContent>
           <ArticlesSection articles={industryArticles} />

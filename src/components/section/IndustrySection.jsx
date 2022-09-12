@@ -17,7 +17,7 @@ const IndustrySectionContainer = styled.div`
     width: 100%;
     height: 90%;
     background-color: #f2f2f2;
-    padding-bottom: 20px;
+    padding: 35px 40px 35px;
 
     h2 {
       /* padding-top: 20px; */

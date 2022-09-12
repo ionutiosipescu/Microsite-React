@@ -105,5 +105,8 @@ export const IndustryContainer = styled.div`
   .descriptionContainer {
     padding-bottom: 1rem;
     border-bottom: 3px solid var(--hover-blue);
+    ul {
+      padding-left: 0;
+    }
   }
 `

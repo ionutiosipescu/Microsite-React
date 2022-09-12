@@ -55,8 +55,9 @@ export const ChevronContainer = styled.div`
 `
 
 export const TextContainer = styled.div`
+  border: 1px solid #0085ca;
   color: var(--hover-blue);
-  transition: all 0.5s ease-out;
+  transition: all 0.2s ease-out;
   font-size: 0.8rem;
   font-weight: bolder;
   display: flex;
@@ -68,6 +69,9 @@ export const TextContainer = styled.div`
   div {
     z-index: 2;
   }
+  /* :before{
+    transition: all 0.2s;
+  } */
 
   :after {
     content: "";
