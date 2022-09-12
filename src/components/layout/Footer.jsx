@@ -72,6 +72,13 @@ const SectionsContainer = styled.div`
   p {
     color: #fff;
   }
+  .list-info-container,
+  .contact-privacy-box {
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
   .list-info-container {
     font-weight: 700;
     cursor: pointer;
@@ -342,33 +349,33 @@ const Footer = () => {
           <ColContainer className="list-info-container">
             <ColBox className="global-careers-box">
               <Col className="global">
-                <p>Global Locations</p>
-                <p>Expertise</p>
-                <p>Industries</p>
-                <p>Insights</p>
-                <p>Our People</p>
+                <p><a href="/location">Global Locations</a></p>
+                <p><a href="">Expertise</a></p>
+                <p><a href="">Industries</a></p>
+                <p><a href="/insights">Insights</a></p>
+                <p><a href="">Our People</a></p>
               </Col>
               <Col className="careers">
-                <p>#AMon Social</p>
-                <p>Careers </p>
-                <p>About A&M</p>
+                <p><a href="https://amonsocial.alvarezandmarsal.com/">#AMon Social</a></p>
+                <p><a href="">Careers</a></p>
+                <p><a href="">About A&M</a></p>
               </Col>
               <Col className="contact">
-                <p>Contact</p>
-                <p>Alumni</p>
-                <p>A&M Capital</p>
-                <p>A&M Capital Real Estate</p>
-                <p>Employee Portal</p>
+                <p><a href="https://contact.alvarezandmarsal.com/">Contact</a></p>
+                <p><a href="https://www.alvarezandmarsal.com/alumni">Alumni</a></p>
+                <p><a href="https://www.a-mcapital.com/">A&M Capital</a></p>
+                <p><a href="https://www.amcapitalre.com/">A&M Capital Real Estate</a></p>
+                <p><a href="https://globalconnect.alvarezandmarsal.com/my.policy">Employee Portal</a></p>
               </Col>
             </ColBox>
           </ColContainer>
             <ColContainer className="contact-privacy-box">
               <Col className="privacy">
-                <p>Privacy Policy</p>
-                <p>Privacy Shield Notice</p>
-                <p>California Privacy Notice</p>
-                <p>Cookie Policy</p>
-                <p>Terms of Use</p>
+                <p><a href="">Privacy Policy</a></p>
+                <p><a href="">Privacy Shield Notice</a></p>
+                <p><a href="">California Privacy Notice</a></p>
+                <p><a href="">Cookie Policy</a></p>
+                <p><a href="">Terms of Use</a></p>
               </Col>
             </ColContainer>
           <ColContainer className="bulletin-container">
